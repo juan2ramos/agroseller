@@ -1,0 +1,23 @@
+commit af29ec6dc90c55219b987400532d683aa70b0216
+Author: juan2ramos <juan2ramos@gmail.com>
+Date:   Sun Nov 22 13:42:16 2015 -0500
+
+    merge
+
+commit ad89f37cc0799ba7267cb2bbb0ff2e35ca11c87e
+Author: juan2ramos <juan2ramos@gmail.com>
+Date:   Sun Nov 22 13:39:39 2015 -0500
+
+    cnews
+
+commit 3fc2f57f832a43cce0b23fab6b240997b40093c2
+Author: juan2ramos <juan2ramos@gmail.com>
+Date:   Sun Nov 8 07:12:23 2015 -0500
+
+    logo
+
+commit 75f07f86da756b01d3130afdefd1b1fee3cf1427
+Author: juan2ramos <juan2ramos@gmail.com>
+Date:   Sat Nov 7 20:56:19 2015 -0500
+
+    init
