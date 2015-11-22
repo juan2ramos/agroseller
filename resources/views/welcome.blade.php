@@ -41,7 +41,6 @@
                 <div>
                     <img src="http://agrosellers.com/images/logo.png" alt="">
                 </div>
-                <div class="title">Laravel 5</div>
             </div>
         </div>
     </body>
