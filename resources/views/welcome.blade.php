@@ -11,6 +11,7 @@
             }
 
             body {
+                background: #303c23;
                 margin: 0;
                 padding: 0;
                 width: 100%;
@@ -33,13 +34,17 @@
             .title {
                 font-size: 96px;
             }
+            .image{
+                max-width: 500px;
+                width: 90%;
+            }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
-                <div>
-                    <img src="http://agrosellers.com/images/logo.png" alt="">
+                <div >
+                    <img class="image" src="/images/agroseller-logo.png" alt="">
                 </div>
             </div>
         </div>
