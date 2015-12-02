@@ -1,63 +1,32 @@
 @extends('layout')
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Login</div>
-                    <div class="panel-body">
-                        @if (count($errors) > 0)
-                            <div class="alert alert-danger">
-                                Por favor corrige los siguientes errores:<br><br>
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-
-                        <form class="form-horizontal" role="form" method="POST" action="/auth/login">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">{{ trans('validation.attributes.email') }}</label>
-                                <div class="col-md-6">
-                                    {!! Form::text('email', null, ['class' => 'form-control', 'type' => 'email']) !!}
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">{{ trans('validation.attributes.password') }}</label>
-                                <div class="col-md-6">
-                                    {!! Form::password('password', ['class' => 'form-control']) !!}
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember"> Remember Me
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary" style="margin-right: 15px;">
-                                        Login
-                                    </button>
-
-                                    <a href="/password/email">Forgot Your Password?</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+    <main class="Login">
+        @if (count($errors) > 0)
+            <div class="">
+                Por favor corrige los siguientes errores:<br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
-        </div>
-    </div>
+        @endif
+        <figure class="Login-logo">
+            <img src="images/agroseller-logo.png" alt="">
+        </figure>
+        <hr class="Logo-hr">
+        <form class="" role="form" method="POST" action="/auth/login">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+            <input type="email" placeholder="E-mail" name="email">
+
+            <input type="password" name="password" placeholder="Contraseña">
+
+            <a class="login-restartPassword" href="/password/email">Olvido su contraseña?</a>
+
+            <button type="submit" class="Login-submit">INICIO DE SESIÓN</button>
+
+        </form>
+    </main>
 @endsection
