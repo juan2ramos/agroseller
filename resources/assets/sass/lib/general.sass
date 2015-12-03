@@ -6,13 +6,18 @@ body, html
   height: 100%
 
 body
+  background: url("../images/back.jpg") center
+  background-size: cover
+  background-attachment: fixed
+  height: 100%
+  color: white
+  font-size: 16px
+  font-family: 'Roboto', sans-serif
+body.Login-Body
   background: rgb(64,90,97)
   background: -moz-linear-gradient(to bottom, #303c24 50%, #455436 100%)
   background: -webkit-linear-gradient(to bottom, #303c24 50%, #455436 100%)
   background: linear-gradient(to bottom, #303c24 50%, #455436 100%)
-  height: 100%
-  color: white
-  font-size: 16px
 
 
 *:focus
@@ -36,6 +41,9 @@ h1, h2, h3, ul, figure
   box-sizing: border-box
 main
   margin: auto
-  max-width: 70rem
   width: 100%
+main.container
+  margin-left: 12rem
+  width: calc(100vw - 12.5rem )
+
 

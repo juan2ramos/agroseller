@@ -9,11 +9,18 @@ html {
 }
 
 body {
-  background: #405a61;
-  background: linear-gradient(to bottom, #303c24 50%, #455436 100%);
+  background: url("../images/back.jpg") center;
+  background-size: cover;
+  background-attachment: fixed;
   height: 100%;
   color: white;
   font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+}
+
+body.Login-Body {
+  background: #405a61;
+  background: linear-gradient(to bottom, #303c24 50%, #455436 100%);
 }
 
 *:focus {
@@ -43,8 +50,176 @@ figure {
 
 main {
   margin: auto;
-  max-width: 70rem;
   width: 100%;
+}
+
+main.container {
+  margin-left: 12rem;
+  width: calc(100vw - 12.5rem);
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src: url("fonts/icomoon.eot?wg3tz2");
+  src: url("fonts/icomoon.eot?wg3tz2#iefix") format("embedded-opentype"), url("fonts/icomoon.ttf?wg3tz2") format("truetype"), url("fonts/icomoon.woff?wg3tz2") format("woff"), url("fonts/icomoon.svg?wg3tz2#icomoon") format("svg");
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {
+  content: "\e901";
+}
+
+.icon-tag:before {
+  content: "\e902";
+}
+
+.icon-cart:before {
+  content: "\e900";
+}
+
+.icon-credit:before {
+  content: "\e903";
+}
+
+.icon-notebook:before {
+  content: "\e904";
+}
+
+.icon-bell:before {
+  content: "\e905";
+}
+
+.icon-calendar:before {
+  content: "\e608";
+}
+
+.icon-bubbles:before {
+  content: "\e906";
+}
+
+.icon-bubble:before {
+  content: "\e907";
+}
+
+.icon-user:before {
+  content: "\e908";
+}
+
+.icon-user2:before {
+  content: "\e909";
+}
+
+.icon-busy:before {
+  content: "\e90a";
+}
+
+.icon-binoculars:before {
+  content: "\e90b";
+}
+
+.icon-zoomin:before {
+  content: "\e90c";
+}
+
+.icon-zoomout:before {
+  content: "\e90d";
+}
+
+.icon-wrench:before {
+  content: "\e90e";
+}
+
+.icon-settings:before {
+  content: "\e90f";
+}
+
+.icon-stats:before {
+  content: "\e910";
+}
+
+.icon-bars:before {
+  content: "\e911";
+}
+
+.icon-leaf:before {
+  content: "\e912";
+}
+
+.icon-lab:before {
+  content: "\e913";
+}
+
+.icon-remove:before {
+  content: "\e914";
+}
+
+.icon-briefcase:before {
+  content: "\e915";
+}
+
+.icon-switch:before {
+  content: "\e916";
+}
+
+.icon-signup:before {
+  content: "\e917";
+}
+
+.icon-cloud-download:before {
+  content: "\e918";
+}
+
+.icon-cloud-upload:before {
+  content: "\e919";
+}
+
+.icon-upload:before {
+  content: "\e91a";
+}
+
+.icon-earth:before {
+  content: "\e91b";
+}
+
+.icon-point-up:before {
+  content: "\e91c";
+}
+
+.icon-cancel-circle:before {
+  content: "\e91d";
+}
+
+.icon-filter:before {
+  content: "\e91e";
+}
+
+.icon-facebook:before {
+  content: "\e602";
+}
+
+.icon-instagram:before {
+  content: "\e60a";
+}
+
+.icon-twitter:before {
+  content: "\e601";
+}
+
+.icon-wallet:before {
+  content: "\e91f";
 }
 
 .Login {
@@ -100,6 +275,10 @@ main {
   font-weight: bold;
 }
 
+.login-restartPassword:hover {
+  text-decoration: underline;
+}
+
 .Login-submit {
   color: #313D25;
   display: block;
@@ -114,6 +293,10 @@ main {
   box-shadow: 0 0.25rem 0 #8ca273;
   border-radius: 3px;
   line-height: 2.5rem;
+}
+
+.Login-submit:hover {
+  box-shadow: 0 0 1rem #0E0E0E;
 }
 
 .Login-logo {
@@ -132,4 +315,184 @@ main {
   border-right: none;
   border-left: none;
   box-shadow: 0px 1px 1px rgba(226, 226, 226, 0.24);
+}
+
+.Login-error {
+  max-width: 25rem;
+  display: block;
+  margin: auto;
+  color: tomato;
+}
+
+.Header {
+  position: relative;
+  padding: 1.5rem;
+}
+
+.Header h1 {
+  font-size: 2rem;
+  font-weight: 100;
+  color: #F5FBEB;
+}
+
+.Header-messages {
+  position: absolute;
+  right: 1rem;
+  top: 1.5rem;
+}
+
+.Header-messages span {
+  border-radius: 50%;
+  display: inline-block;
+  background: rgba(63, 78, 49, 0.48);
+  padding: .5rem;
+  font-size: 1.2rem;
+  color: #DAE2CD;
+  cursor: pointer;
+  position: relative;
+}
+
+.Header-messages span.active:after {
+  content: '2';
+  position: absolute;
+  top: -6px;
+  left: -5px;
+  border-radius: 50%;
+  background: tomato;
+  display: block;
+  font-size: .6rem;
+  padding: 4px 6px 5px;
+  line-height: .6rem;
+}
+
+.AdminHome {
+  padding: 1.5rem;
+  display: -ms-flexbox;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.AdminHome h2 {
+  font-weight: 100;
+  font-size: 1.2rem;
+  padding: .4rem 1rem;
+}
+
+.AdminHome h2 span {
+  padding-right: .8rem;
+}
+
+.AdminHome-article {
+  background: rgba(84, 97, 69, 0.55);
+  width: calc( 33% - 1rem);
+  margin: .5rem;
+  padding: .5rem;
+  color: #DAE2CD;
+}
+
+.AdminHome-table {
+  width: 94%;
+  border: 1px dashed;
+  font-weight: 100;
+  margin: .4rem auto .5rem;
+  font-size: .9rem;
+}
+
+.AdminHome-table th {
+  font-weight: 300;
+  border-bottom: 1px dashed;
+}
+
+.AdminHome-table td,
+.AdminHome-table th {
+  padding: .5rem;
+  text-align: center;
+}
+
+.AdminHome-table tbody tr:hover {
+  background: #1c2117;
+  cursor: pointer;
+}
+
+.Bar {
+  max-width: 12rem;
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+  position: fixed;
+}
+
+.Bar-logo {
+  padding: 1rem 0;
+  width: 100%;
+  background: #3F4E31;
+  text-align: center;
+}
+
+.Bar-logo img {
+  max-width: 7rem;
+}
+
+.Bar-user {
+  padding: .5rem 0 .4rem;
+  background: rgba(8, 8, 8, 0.15);
+}
+
+.Bar-user figure {
+  width: 4rem;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.Bar-user h4 {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: right;
+  font-size: .8rem;
+  font-weight: 400;
+  margin: 0;
+  padding-right: .5rem;
+  width: 7.5rem;
+  color: #F5FBEB;
+}
+
+.Bar-user span {
+  display: block;
+  font-weight: 200;
+  font-size: .8em;
+}
+
+.Bar-user img {
+  border-radius: 50%;
+  width: 3rem;
+}
+
+.Nav {
+  background: rgba(57, 72, 43, 0.82);
+  height: calc(100vh - 9rem);
+  padding-top: 1rem;
+  overflow: auto;
+}
+
+.Nav li {
+  font-size: .85rem;
+}
+
+.Nav a {
+  color: #DAE2CD;
+  padding: 1rem 2rem;
+  display: block;
+}
+
+.Nav a:hover {
+  background: #1c2117;
+}
+
+.Nav [class^="icon-"],
+.Nav [class*=" icon-"] {
+  padding-right: .5rem;
 }
