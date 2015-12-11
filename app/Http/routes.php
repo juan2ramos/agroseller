@@ -1,6 +1,6 @@
 <?php
 Route::get('/', function () {
-    return view('welcome');
+    return view('layoutFront');
 });
 
 Route::get('login', [

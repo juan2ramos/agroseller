@@ -1,0 +1,253 @@
+a {
+    text-decoration: none;
+}
+
+body,
+html {
+    font-weight: 100;
+    height: 100%;
+}
+
+body {
+    background: url("../images/back.jpg") center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+    color: white;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+body.Login-Body {
+    background: #405a61;
+    background: linear-gradient(to bottom, #303c24 50%, #455436 100%);
+}
+
+*:focus {
+    outline: 0;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+ul,
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+main {
+    margin: auto;
+    width: 100%;
+}
+
+main.container {
+    margin-left: 12rem;
+    width: calc(100vw - 12.5rem);
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src: url("fonts/icomoon.eot?wg3tz2");
+    src: url("fonts/icomoon.eot?wg3tz2#iefix") format("embedded-opentype"), url("fonts/icomoon.ttf?wg3tz2") format("truetype"), url("fonts/icomoon.woff?wg3tz2") format("woff"), url("fonts/icomoon.svg?wg3tz2#icomoon") format("svg");
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {
+    content: "\e901";
+}
+
+.icon-tag:before {
+    content: "\e902";
+}
+
+.icon-cart:before {
+    content: "\e900";
+}
+
+.icon-credit:before {
+    content: "\e903";
+}
+
+.icon-notebook:before {
+    content: "\e904";
+}
+
+.icon-bell:before {
+    content: "\e905";
+}
+
+.icon-calendar:before {
+    content: "\e608";
+}
+
+.icon-bubbles:before {
+    content: "\e906";
+}
+
+.icon-bubble:before {
+    content: "\e907";
+}
+
+.icon-user:before {
+    content: "\e908";
+}
+
+.icon-user2:before {
+    content: "\e909";
+}
+
+.icon-busy:before {
+    content: "\e90a";
+}
+
+.icon-binoculars:before {
+    content: "\e90b";
+}
+
+.icon-zoomin:before {
+    content: "\e90c";
+}
+
+.icon-zoomout:before {
+    content: "\e90d";
+}
+
+.icon-wrench:before {
+    content: "\e90e";
+}
+
+.icon-settings:before {
+    content: "\e90f";
+}
+
+.icon-stats:before {
+    content: "\e910";
+}
+
+.icon-bars:before {
+    content: "\e911";
+}
+
+.icon-leaf:before {
+    content: "\e912";
+}
+
+.icon-lab:before {
+    content: "\e913";
+}
+
+.icon-remove:before {
+    content: "\e914";
+}
+
+.icon-briefcase:before {
+    content: "\e915";
+}
+
+.icon-switch:before {
+    content: "\e916";
+}
+
+.icon-signup:before {
+    content: "\e917";
+}
+
+.icon-cloud-download:before {
+    content: "\e918";
+}
+
+.icon-cloud-upload:before {
+    content: "\e919";
+}
+
+.icon-upload:before {
+    content: "\e91a";
+}
+
+.icon-earth:before {
+    content: "\e91b";
+}
+
+.icon-point-up:before {
+    content: "\e91c";
+}
+
+.icon-cancel-circle:before {
+    content: "\e91d";
+}
+
+.icon-filter:before {
+    content: "\e91e";
+}
+
+.icon-facebook:before {
+    content: "\e602";
+}
+
+.icon-instagram:before {
+    content: "\e60a";
+}
+
+.icon-twitter:before {
+    content: "\e601";
+}
+
+.icon-wallet:before {
+    content: "\e91f";
+}
+
+
+.Header{
+    background: #263A1C;
+    text-align: center;
+    padding: 2rem;
+}
+.Header h2{
+    margin-top: .8rem;
+    color: white;
+    font-size: 1rem;
+    font-weight: 400;
+}
+.Header-figure{
+    max-width: 300px;
+    margin: auto;
+
+}
+.Nav{
+    position: relative;
+    text-align: center;
+}
+.Nav-user{
+    position: absolute;
+}
+.Nav li{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 1rem;
+}
