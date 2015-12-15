@@ -1,6 +1,12 @@
 <?php
 Route::get('/', function () {
-    return view('layoutFront');
+    return view('front.home');
+});
+Route::get('productos', function () {
+    return view('front.products');
+});
+Route::get('productos/topmix', function () {
+    return view('front.topmix');
 });
 
 Route::get('login', [

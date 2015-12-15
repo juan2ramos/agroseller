@@ -9,18 +9,12 @@ html {
 }
 
 body {
-    background: url("../images/back.jpg") center;
-    background-size: cover;
-    background-attachment: fixed;
+
+    background: #FFF8E8;
     height: 100%;
     color: white;
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
-}
-
-body.Login-Body {
-    background: #405a61;
-    background: linear-gradient(to bottom, #303c24 50%, #455436 100%);
 }
 
 *:focus {
@@ -222,32 +216,295 @@ main.container {
     content: "\e91f";
 }
 
-
-.Header{
+.Header {
     background: #263A1C;
     text-align: center;
-    padding: 2rem;
+    padding: 1.2rem;
 }
-.Header h2{
-    margin-top: .8rem;
+
+.Header h2 {
+    margin-top: .5rem;
     color: white;
-    font-size: 1rem;
+    font-size: .8rem;
     font-weight: 400;
 }
-.Header-figure{
-    max-width: 300px;
+
+.Header-figure {
+    max-width: 150px;
     margin: auto;
 
 }
-.Nav{
+
+.Nav {
     position: relative;
     text-align: center;
+    background: #BCCD4B;
 }
-.Nav-user{
+
+.Nav-user {
     position: absolute;
 }
-.Nav li{
+
+.Nav li {
     display: inline-block;
     vertical-align: middle;
+    padding: .6rem;
+    border-left: 1px solid #263A1C;
+}
+
+.Nav li:hover a {
+    color: white;
+}
+
+.Nav li:last-child {
+    border-right: 1px solid #263A1C;
+}
+
+.Nav a {
+    width: 7rem;
+    color: #263A1C;
+    display: block;
+}
+
+.Banner {
+    background: url("../images/banner1.jpg") center;
+    background-size: cover;
+    height: 22rem;
+    border-bottom: .4rem solid #BCCD4B;
+}
+
+.Search {
+    text-align: center;
+    color: #25391B;
+    margin: 1rem auto .5rem;
+}
+
+.Search-form {
+    padding: .5rem;
+}
+
+.Search-form input, .Search-form select, .Search-form button {
+    border: 1px solid #263A1C;
+    border-radius: .5rem;
+    padding: .5rem;
+    height: 28px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+    vertical-align: middle;
+
+}
+
+.Search-form select {
+    height: 26px;
+}
+
+.Search-form button {
+    background: #263A1C;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 10px;
+    font-size: .7rem;
+    text-transform: uppercase;
+    color: white;
+}
+
+.title {
+    text-align: center;
+    background: #BCCD4B;
+    color: #263a1e;
+    padding: .6rem 0 .5rem;
+    font-weight: 400;
+}
+
+.CategoriesHome {
+    width: 60rem;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.CategoriesHome article {
+    cursor: pointer;
+    width: 30%;
+    height: 200px;
+    border: 4px solid #BCCD4B;
+    border-radius: .5rem;
+    margin: 1rem;
+    background: url("../images/banner1.jpg") center;
+    background-size: cover;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.56);
+    overflow: hidden;
+
+}
+
+.CategoriesHome-article {
+    display: table-cell;
+    vertical-align: middle;
+    line-height: 200px;
+    text-align: center;
+    width: inherit;
+    color: white;
+}
+
+.CategoriesHome-article:hover span {
+    line-height: 180px;
+    -webkit-transition: width 2s;
+}
+
+.CategoriesHome span {
+    background: rgba(0, 0, 0, 0.4);
+    padding: .7rem;
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 22px;
+    font-weight: bold;
+
+}
+
+.Footer {
+    background: #263A1C;
+    color: white;
+    border-top: 4px solid #BCCD4B;
+    position: relative;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.Footer-logo {
+    position: absolute;
+    max-width: 150px;
+    top: 3rem;
+}
+
+.NavFooter {
+    width: 40rem;
+    margin: auto;
+}
+
+.NavFooter a {
+    color: #FFF8E8;
+}
+
+.NavFooter a:hover {
+    text-decoration: underline;
+}
+
+.NavFooter ul {
+    display: inline-block;
+    vertical-align: top;
+    margin: 1.5rem .7rem;
+}
+
+.NavFooter li {
+    font-size: .7rem;
+    text-align: left;
+    padding: .1rem 0;
+}
+
+.copy {
+    padding-bottom: 1rem;
+    font-size: .75rem;
+}
+
+.NavFooter-TitleUL {
+    font-weight: bold;
+}
+
+.associatedHome {
+    max-width: 60rem;
+    margin: 1rem auto;
+    text-align: center;
+
+}
+
+.associatedHome img {
+    border-radius: 10px;
+    border: 4px solid #BCCD4B;
+}
+
+.Products {
+    max-width: 60rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem auto;
+}
+
+.Products article {
+    cursor: pointer;
+    text-align: center;
+    width: 21%;
+    margin: 1rem;
+    background-size: cover;
+}
+
+.Products article figure {
+    padding: 1rem 0;
+    background: white;
+    border: 4px solid #BCCD4B;
+    border-radius: .5rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.56);
+}
+
+.Products figcaption {
+    color: #263a1e;
+    margin: .8rem 0 0;
+    font-weight: bold;
+
+}
+
+.Products figcaption span {
+    display: block;
+    font-weight: 400;
+
+}
+
+.Product {
+    margin: 1rem auto;
+    max-width: 60rem;
+
+}
+
+.Product figure, .Product .Product-content {
+    display: inline-block;
+    vertical-align: top;
+    width: 64%;
+    color: #263A1C;
+}
+
+.Product figure {
+    padding: 1rem 0;
+    background: white;
+    border: 4px solid #BCCD4B;
+    border-radius: 10px;
+    width: 35%;
+    text-align: center;
+}
+.Product-content{
+    padding: .4rem 0 1rem 1rem;
+    text-align: justify;
+}
+.Product-content h2{
+    font-weight: 400;
+}
+.Product-price{
+    font-weight: 600;
+    font-size: 1.4rem;
+    display: block;
+}
+.Product-button{
+    margin: 1rem 0;
+    border: none;
+    color: #FFF8E8;
+    background: #263A1C;
     padding: 1rem;
+    cursor: pointer;
+}
+.Product-button:hover{
+    color: white;
+}
+.Cart{
+    margin: 5rem auto 0;
+    width: 60rem;
+    background: url("../images/cart.png") center no-repeat;
+    height: 10rem;
 }

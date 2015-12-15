@@ -45,6 +45,7 @@
         <div class="Header-messages">
             <span class="icon-bell active"></span>
             <span class="icon-bubbles"></span>
+            <a href="{{ url('logout') }}"><span class="icon-switch"></span></a>
         </div>
     </header>
 
