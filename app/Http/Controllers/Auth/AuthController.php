@@ -36,22 +36,30 @@ class AuthController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-        ]);
+        $messages = [
+            'required' => 'The :attribute field is required.',
+        ];
+        return Validator::make($data,
+            [
+                'name' => 'required|max:255',
+                'email' => 'required|email|max:255|unique:users',
+                'password' => 'required|confirmed|min:6',
+                'role_id' => 'required|numeric|between:3,4',
+            ],
+            [
+                'between' => 'Debes escoger que tipo de cliente eres',
+            ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return User
      */
     protected function create(array $data)
@@ -61,17 +69,19 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'role_id' => $data['role_id'],
         ]);
 
-        $user->role = 'client';
         $user->save();
 
         return $user;
     }
+
     public function loginPath()
     {
         return route('login');
     }
+
     /**
      * Get the post register / login redirect path.
      *
@@ -79,9 +89,7 @@ class AuthController extends Controller
      */
     public function redirectPath()
     {
-        if (property_exists($this, 'redirectPath')) {
-            return $this->redirectPath;
-        }
-        return route ('admin');
+        return route('admin');
     }
+
 }

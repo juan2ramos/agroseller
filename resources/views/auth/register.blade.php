@@ -3,14 +3,7 @@
 @section('content')
     <main class="Login">
         @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+            <?php $errorArray = $errors->getMessages(); print_r($errorArray) ?>
         @endif
 
         <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
@@ -25,6 +18,11 @@
 
             <input type="email" class="form-control" placeholder="E-mail" name="email" value="{{ old('email') }}">
 
+            <select name="role_id" id="">
+                <option value="0">¿Que tipo  de cliente eres?</option>
+                <option value="3">Cliente</option>
+                <option value="4">Proveedor</option>
+            </select>
 
             <input type="password" class="form-control" placeholder="Contraseña" name="password">
 

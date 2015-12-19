@@ -264,6 +264,7 @@ main.container {
     width: 7rem;
     color: #263A1C;
     display: block;
+    font-weight: 500;
 }
 
 .Banner {

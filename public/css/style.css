@@ -230,7 +230,7 @@ main.container {
   top: calc(50vh - 15rem);
 }
 
-.Login input {
+.Login input, .Login select {
   line-height: normal;
   display: block;
   width: 90%;

@@ -45,9 +45,13 @@ Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' =>  'auth'], function () {
     Route::get('/', [
         'uses' => 'HomeAdminControl@index',
         'as' => 'admin'
+    ]);
+    Route::get('categorias', [
+        'uses' => 'CategoryController@index',
+        'as' => 'category'
     ]);
 });

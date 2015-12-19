@@ -40,7 +40,7 @@
 <main class="container">
 
     <header class="Header">
-        <h1><span class="icon-leaf"></span> Bienvenido Agroseller </h1>
+        <h1><span class="icon-leaf"></span> Bienvenido a Agroseller </h1>
 
         <div class="Header-messages">
             <span class="icon-bell active"></span>

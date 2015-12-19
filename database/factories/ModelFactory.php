@@ -14,10 +14,17 @@
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
+        'last_name' => $faker->name,
         'email' => $faker->email,
-        'user-name' => $faker->userName,
+        'username' => $faker->userName,
         'password' => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
-        'role' => $faker->randomElement(['administrator','provider','client'])
+        'mobile_phone' => $faker->phoneNumber,
+        'phone' => $faker->phoneNumber,
+        'photo' => 'user.png',
+        'role_id' => $faker->randomElement([2,3,4]),
+
     ];
 });
+
+

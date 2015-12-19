@@ -27,7 +27,7 @@
     <ul>
         <li><a href="/">Inicio </a></li>
         <li><a href="#">Directorio</a></li>
-        <li><a href="#">Clientes</a></li>
+        <li><a href="{{ route('admin') }}">Clientes</a></li>
         <li><a href="#">Contáctenos</a></li>
     </ul>
 </nav>
