@@ -21,6 +21,9 @@
         <img src="{{ url('images/agroseller-logo.png')  }}" alt="">
     </figure>
     <h2>El directorio agrario #1 en Colombia</h2>
+    <a href="{{ route('register') }}" class="Header-register">
+        Registrate
+    </a>
 </header>
 <nav class="Nav">
     <div class="Nav-user">Miller Preciado</div>
