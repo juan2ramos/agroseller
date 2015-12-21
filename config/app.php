@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'timezone' => env('TIMEZONE', false),
+    'timezone' => 'UTC',
 
     /*
     |--------------------------------------------------------------------------
@@ -141,10 +141,10 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Agrosellers\Providers\AppServiceProvider::class,
+        Agrosellers\Providers\AuthServiceProvider::class,
+        Agrosellers\Providers\EventServiceProvider::class,
+        Agrosellers\Providers\RouteServiceProvider::class,
 
     ],
 

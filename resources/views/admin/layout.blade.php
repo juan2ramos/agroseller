@@ -27,7 +27,7 @@
             <li><a href=""><span class="icon-user2"></span>Usuarios</a></li>
             <li><a href=""><span class="icon-settings"></span>Permisos</a></li>
             <li><a href=""><span class="icon-briefcase"></span>Proveedores</a></li>
-            <li><a href=""><span class="icon-notebook"></span>Categorias</a></li>
+            <li><a href="{{ route('category') }}"><span class="icon-notebook"></span>Categorias</a></li>
             <li><a href=""><span class="icon-user"></span>Clientes</a></li>
             <li><a href=""><span class="icon-credit"></span>Ofertas</a></li>
             <li><a href=""><span class="icon-wallet"></span>Facturas</a></li>

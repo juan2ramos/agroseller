@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Agrosellers\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

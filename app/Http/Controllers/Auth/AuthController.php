@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Agrosellers\Http\Controllers\Auth;
 
-use App\User;
+use Agrosellers\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use Agrosellers\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

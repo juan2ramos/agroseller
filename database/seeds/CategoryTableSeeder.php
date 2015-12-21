@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Agrosellers\Entities\Category;
 
 class CategoryTableSeeder extends Seeder
 {
@@ -10,15 +9,11 @@ class CategoryTableSeeder extends Seeder
      *
      * @return void
      */
-    public function getModel()
+    public function run()
     {
-        return new Category();
+        $this->createCategory();
     }
+    private function createCategory(){
 
-    public function getDummyData()
-    {
-        return [
-            'name' => 'Duilio Palacios'
-        ];
     }
 }

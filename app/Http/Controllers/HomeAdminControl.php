@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Agrosellers\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Agrosellers\Http\Requests;
+use Agrosellers\Http\Controllers\Controller;
 
 class HomeAdminControl extends Controller
 {
