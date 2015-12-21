@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(Agrosellers\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'last_name' => $faker->name,
