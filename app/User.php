@@ -1,6 +1,6 @@
 <?php
 
-namespace Agrosellers\Entities;
+namespace Agrosellers;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
