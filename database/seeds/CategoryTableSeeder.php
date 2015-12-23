@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Agrosellers\Entities\Category;
 
 class CategoryTableSeeder extends Seeder
 {
@@ -14,6 +15,7 @@ class CategoryTableSeeder extends Seeder
         $this->createCategory();
     }
     private function createCategory(){
-
+        Category::create(['name' => 'FERTILIZANTES']);
+        Category::create(['name' => 'INSUMOS AGRÍCOLAS']);
     }
 }

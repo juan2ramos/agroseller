@@ -1,3 +1,4 @@
+<?php $role = [1=>'Super Administrador',2 => 'Administrador', 3 => 'Proveedor', 4 => 'Cliente'] ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -18,13 +19,13 @@
         <img src="{{ url('images/agroseller-logo.png') }}" alt="">
     </figure>
     <div class="Bar-user">
-        <figure><img src="{{url('images/pp.jpg')}}" alt=""></figure>
-        <h4>Alejandra Betancur <span> Administrador</span></h4>
+        <figure><img src="{{url('images/pp.svg')}}" alt=""></figure>
+        <h4>{{ auth()->user()->name }} <span> {{ $role[auth()->user()->role_id] }}</span></h4>
     </div>
     <nav class="Nav">
         <ul>
-            <li><a href=""><span class="icon-leaf"></span>Inicio</a></li>
-            <li><a href=""><span class="icon-user2"></span>Usuarios</a></li>
+            <li><a href="{{ route('admin') }}"><span class="icon-leaf"></span>Inicio</a></li>
+            <li><a href="{{ route('users') }}"><span class="icon-user2"></span>Usuarios</a></li>
             <li><a href=""><span class="icon-settings"></span>Permisos</a></li>
             <li><a href=""><span class="icon-briefcase"></span>Proveedores</a></li>
             <li><a href="{{ route('category') }}"><span class="icon-notebook"></span>Categorias</a></li>
@@ -53,6 +54,8 @@
     @yield('content')
 
 </main>
+<script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
+<script src="{{asset('js/main.js')}}"></script>
 @yield('scripts')
 </body>
 </html>

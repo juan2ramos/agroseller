@@ -1,0 +1,41 @@
+$(document).ready(function () {
+
+
+
+    function VoteForm(form, button) {
+
+
+        var id = button.data('id');
+        var action = form.attr('action').replace(':id', id);
+        var tr = button.parents('tr');
+
+        this.submit = function (success) {
+            $.post(action, form.serialize(), function (response) {
+                console.log(response);
+                success(response);
+                tr.hide();
+            }).fail(function () {
+                button.removeClass('hidden');
+                alert('Ocurrió un error :(');
+            });
+        };
+    }
+
+    $('.CategoryDelete').click(function (e) {
+        e.preventDefault();
+
+        var voteForm = new VoteForm($('#FormDeleteCategory'), $(this));
+
+        voteForm.submit(function (response) {
+            if (response.success) {
+                alert('¡Gracias por tu voto!');
+            }else {
+
+            }
+
+        });
+    });
+
+
+
+});

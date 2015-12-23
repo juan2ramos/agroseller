@@ -45,13 +45,41 @@ Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 
-Route::group(['prefix' => 'admin', 'middleware' =>  'auth'], function () {
-    Route::get('/', [
-        'uses' => 'HomeAdminControl@index',
-        'as' => 'admin'
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+
+    Route::get('proveedor', [
+        'uses' => 'HomeAdminControl@isValidateProviders',
+        'as' => 'isValidateProviders'
     ]);
-    Route::get('categorias', [
-        'uses' => 'CategoryController@index',
-        'as' => 'category'
-    ]);
+
+    Route::group(['middleware' => 'isValidateProviders'], function () {
+        Route::get('/', [
+            'uses' => 'HomeAdminControl@index',
+            'as' => 'admin'
+        ]);
+        Route::get('usuarios', [
+            'uses' => 'UserController@index',
+            'as' => 'users'
+        ]);
+
+        Route::post('usuario/{id}', [
+            'uses' => 'UserController@showUser',
+            'as' => 'showUser'
+        ]);
+        Route::get('categorias', [
+            'uses' => 'CategoryController@index',
+            'as' => 'category'
+        ]);
+        Route::post('categorias', [
+            'uses' => 'CategoryController@newCategory',
+            'as' => 'category'
+        ]);
+        Route::post('categorias/{id}', [
+            'uses' => 'CategoryController@destroyCategory',
+            'as' => 'categoryDelete'
+        ]);
+    });
+
 });
+
+

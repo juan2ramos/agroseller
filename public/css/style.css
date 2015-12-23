@@ -230,7 +230,8 @@ main.container {
   top: calc(50vh - 15rem);
 }
 
-.Login input, .Login select {
+.Login input,
+.Login select {
   line-height: normal;
   display: block;
   width: 90%;
@@ -245,7 +246,8 @@ main.container {
   border: 1px solid #87AD5D;
 }
 
-.Login input:focus {
+.Login input:focus,
+.Login select:focus {
   box-shadow: 0 0 .25rem white;
 }
 
@@ -415,6 +417,74 @@ main.container {
 .AdminHome-table tbody tr:hover {
   background: #1c2117;
   cursor: pointer;
+}
+
+/* Categories */
+
+.ContentInfo {
+  background: rgba(84, 97, 69, 0.55);
+  width: 100%;
+  margin: 2rem auto;
+  padding: 1rem 1rem 1.5rem;
+  color: #DAE2CD;
+  max-width: 60rem;
+  border: 2px solid #5A6D60;
+  border-radius: 2px;
+  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+.ContentInfo ::-webkit-input-placeholder {
+  color: #dce5dd;
+}
+
+.ContentInfo :-moz-placeholder {
+  color: #dce5dd;
+}
+
+.ContentInfo ::-moz-placeholder {
+  color: #dce5dd;
+}
+
+.ContentInfo :-ms-input-placeholder {
+  color: #dce5dd;
+}
+
+.ContentInfo h2 {
+  text-align: center;
+  margin: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.ContentInfo input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  max-width: 15rem;
+  padding: 0.3rem .5rem;
+  background: #869980;
+  color: white;
+}
+
+.ContentInfo button {
+  background: #5A6D60;
+  border: 1px solid;
+  padding: .3rem 2rem;
+  margin-left: 0.5rem;
+}
+
+.ContentInfo a {
+  color: #DAE2CD;
+  font-size: 1.1rem;
+  padding: .3rem;
+}
+
+.ContentInfo a:hover {
+  color: #869980;
+}
+
+.ContentInfo-form {
+  margin: 2.2rem 0 1rem;
+  text-align: center;
 }
 
 .Bar {

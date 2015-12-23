@@ -2,16 +2,20 @@
 
 namespace Agrosellers\Http\Controllers;
 
+use Agrosellers\User;
 use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
 use Agrosellers\Entities\Category;
 
-class CategoryController extends Controller
+class UserController extends Controller
 {
+    private $roleName = [1=>'Super Administrador',2 => 'Administrador', 3 => 'Proveedor', 4 => 'Cliente'];
+
     function index()
     {
-        $categories = Category::all();
-        return view('admin.categories', compact('categories'));
+        $users = User::all();
+        $roleName = $this->roleName;
+        return view('admin.users', compact('users','roleName'));
 
     }
     function newCategory(Request $request){

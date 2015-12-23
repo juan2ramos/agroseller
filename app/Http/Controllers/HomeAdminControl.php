@@ -13,4 +13,7 @@ class HomeAdminControl extends Controller
 
         return view('admin.home');
     }
+    function isValidateProviders(){
+        return view('admin.isValidateProviders');
+    }
 }

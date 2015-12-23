@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->string('photo', 60);
+            $table->integer('validate');
             //$table->enum('role', ['superAdministrator','administrator','provider','client']);
             $table->integer('role_id');
             $table->rememberToken();

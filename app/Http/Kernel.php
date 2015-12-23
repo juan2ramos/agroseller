@@ -29,5 +29,7 @@ class Kernel extends HttpKernel
         'auth' => \Agrosellers\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \Agrosellers\Http\Middleware\RedirectIfAuthenticated::class,
+        'isValidateProviders' => \Agrosellers\Http\Middleware\isValidateProviders::class,
+
     ];
 }

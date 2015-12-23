@@ -22,8 +22,8 @@
 
             <select name="role_id" id="">
                 <option value="0">¿Que tipo de cliente eres?</option>
-                <option value="3">Cliente</option>
-                <option value="4">Proveedor</option>
+                <option value="3">Proveedor</option>
+                <option value="4">Cliente</option>
             </select>
 
             <input type="password" class="form-control" placeholder="Contraseña" name="password">
