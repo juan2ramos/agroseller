@@ -18,22 +18,10 @@ class UserController extends Controller
         return view('admin.users', compact('users','roleName'));
 
     }
-    function newCategory(Request $request){
+    function showUser($id){
 
-        $category = new Category([
-            'name' => $request->input('nameCategory'),
-        ]);
-        $category->save();
-        $categories = Category::all();
-        return view('admin.categories', compact('categories'));
+        $user = User::find($id);
+        return view('admin.user',compact('user'));
     }
-    function destroyCategory($id, Request $request){
-        $category = Category::find($id);
-        $category->delete();
-        if ($request->ajax()) {
-            return response()->json(compact('success'));
-        }
-        return response()->json(compact('success'));
 
-    }
 }

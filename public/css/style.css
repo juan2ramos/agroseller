@@ -230,6 +230,10 @@ main.container {
   top: calc(50vh - 15rem);
 }
 
+.Login select {
+  padding: 0;
+}
+
 .Login input,
 .Login select {
   line-height: normal;
