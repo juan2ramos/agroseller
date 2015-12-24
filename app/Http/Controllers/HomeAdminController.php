@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
 use Agrosellers\Http\Controllers\Controller;
 
-class HomeAdminControl extends Controller
+class HomeAdminController extends Controller
 {
     function index(){
 

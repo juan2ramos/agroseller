@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  background: url("../images/back.jpg") center;
+  background: #181D13;
   background-size: cover;
   background-attachment: fixed;
   height: 100%;
@@ -56,6 +56,39 @@ main {
 main.container {
   margin-left: 12rem;
   width: calc(100vw - 12.5rem);
+}
+
+.pagination {
+  text-align: center;
+  margin: 2rem 0 0;
+}
+
+.pagination li {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.pagination a {
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid #515D40;
+  padding: .3rem .6rem !important;
+  margin: 0 .15rem;
+  border-radius: .25rem;
+  background: #586549;
+}
+
+.pagination span {
+  color: #DAE2CD;
+  font-size: 1.1rem;
+  padding: .3rem;
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid #515D40;
+  padding: .3rem .6rem !important;
+  margin: 0 .15rem;
+  border-radius: .25rem;
+  background: #788166;
 }
 
 @font-face {
@@ -437,6 +470,12 @@ main.container {
   box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.1);
 }
 
+.ContentInfo p {
+  width: 94%;
+  margin: 2rem auto 1rem;
+  font-size: .9rem;
+}
+
 .ContentInfo ::-webkit-input-placeholder {
   color: #dce5dd;
 }
@@ -467,6 +506,10 @@ main.container {
   padding: 0.3rem .5rem;
   background: #869980;
   color: white;
+}
+
+.ContentInfo input[type='file'] {
+  padding: .25rem;
 }
 
 .ContentInfo button {

@@ -13,9 +13,9 @@ class UserController extends Controller
 
     function index()
     {
-        $users = User::all();
+        $users = User::paginate(10);
         $roleName = $this->roleName;
-        return view('admin.users', compact('users','roleName'));
+        return view('admin.users', compact('users','roleName','menu'));
 
     }
     function showUser($id){

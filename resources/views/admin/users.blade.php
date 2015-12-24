@@ -26,7 +26,7 @@
             @endforeach
             </tbody>
         </table>
-
+        {!! $users->render() !!}
     </div>
     <form role="form" method="delete" id="FormDeleteCategory" action="{{ route('categoryDelete',':id') }}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">

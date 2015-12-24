@@ -10,6 +10,10 @@
   border: 2px solid #5A6D60
   border-radius: 2px
   box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, .1)
+  & p
+    width: 94%
+    margin: 2rem auto 1rem
+    font-size: .9rem
   @include placeholder
     color: #dce5dd
   & h2
@@ -24,6 +28,8 @@
     padding: 0.3rem .5rem
     background: #869980
     color: white
+    &[type='file']
+      padding: .25rem
   & button
     background: #5A6D60
     border: 1px solid

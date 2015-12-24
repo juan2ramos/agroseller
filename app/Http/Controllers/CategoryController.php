@@ -16,9 +16,15 @@ class CategoryController extends Controller
     }
     function newCategory(Request $request){
 
+
+        $imageName = str_random(40) . '**' . $request->file('categoryImage')->getClientOriginalName();
         $category = new Category([
             'name' => $request->input('nameCategory'),
+            'url_image' => $imageName,
         ]);
+
+        $request->file('categoryImage')->move(base_path() . '/public/uploads/categories/', $imageName);
+
         $category->save();
         $categories = Category::all();
         return view('admin.categories', compact('categories'));

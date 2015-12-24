@@ -1,7 +1,5 @@
 <?php
-Route::get('/', function () {
-    return view('front.home');
-});
+Route::get('/', 'HomeController@index');
 Route::get('productos', function () {
     return view('front.products');
 });
@@ -48,13 +46,48 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::get('proveedor', [
-        'uses' => 'HomeAdminControl@isValidateProviders',
+        'uses' => 'HomeAdminController@isValidateProviders',
         'as' => 'isValidateProviders'
+    ]);
+
+    Route::get('proveedores', [
+        'uses' => 'HomeAdminController@isValidateProviders',
+        'as' => 'providers'
+    ]);
+
+    Route::get('categorias', [
+        'uses' => 'HomeAdminController@isValidateProviders',
+        'as' => 'isValidateProviders'
+    ]);
+    Route::get('productos', [
+        'uses' => 'HomeAdminController@isValidateProviders',
+        'as' => 'products'
+    ]);
+
+    Route::get('clientes', [
+        'uses' => 'HomeAdminController@isValidateProviders',
+        'as' => 'clients'
+    ]);
+    Route::get('ofertas', [
+        'uses' => 'HomeAdminController@isValidateProviders',
+        'as' => 'offers'
+    ]);
+    Route::get('facturas', [
+        'uses' => 'HomeAdminController@isValidateProviders',
+        'as' => 'bills'
+    ]);
+    Route::get('pedidos', [
+        'uses' => 'HomeAdminController@isValidateProviders',
+        'as' => 'orders'
+    ]);
+    Route::get('reportes', [
+        'uses' => 'HomeAdminController@isValidateProviders',
+        'as' => 'reports'
     ]);
 
     Route::group(['middleware' => 'isValidateProviders'], function () {
         Route::get('/', [
-            'uses' => 'HomeAdminControl@index',
+            'uses' => 'HomeAdminController@index',
             'as' => 'admin'
         ]);
         Route::get('usuarios', [

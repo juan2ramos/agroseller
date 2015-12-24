@@ -22,20 +22,7 @@
         <figure><img src="{{url('images/pp.svg')}}" alt=""></figure>
         <h4>{{ auth()->user()->name }} <span> {{ $role[auth()->user()->role_id] }}</span></h4>
     </div>
-    <nav class="Nav">
-        <ul>
-            <li><a href="{{ route('admin') }}"><span class="icon-leaf"></span>Inicio</a></li>
-            <li><a href="{{ route('users') }}"><span class="icon-user2"></span>Usuarios</a></li>
-            <li><a href=""><span class="icon-settings"></span>Permisos</a></li>
-            <li><a href=""><span class="icon-briefcase"></span>Proveedores</a></li>
-            <li><a href="{{ route('category') }}"><span class="icon-notebook"></span>Categorias</a></li>
-            <li><a href=""><span class="icon-user"></span>Clientes</a></li>
-            <li><a href=""><span class="icon-credit"></span>Ofertas</a></li>
-            <li><a href=""><span class="icon-wallet"></span>Facturas</a></li>
-            <li><a href=""><span class="icon-cart"></span>Pedidos</a></li>
-            <li><a href=""><span class="icon-bars"></span>Reportes</a></li>
-        </ul>
-    </nav>
+   @include('admin.partial.menu')
 
 </div>
 <main class="container">
