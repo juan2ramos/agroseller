@@ -24,13 +24,16 @@
     <a href="{{ route('register') }}" class="Header-register">
         Registrate
     </a>
+    <a href="{{ route('login') }}" class="Header-login">
+        Inicio sesión
+    </a>
 </header>
 <nav class="Nav">
-    <div class="Nav-user">Miller Preciado</div>
+    <div class="Nav-user"></div>
     <ul>
         <li><a href="/">Inicio </a></li>
         <li><a href="#">Directorio</a></li>
-        <li><a href="{{ route('admin') }}">Clientes</a></li>
+       {{-- <li><a href="{{ route('admin') }}">Clientes</a></li>--}}
         <li><a href="#">Contáctenos</a></li>
     </ul>
 </nav>

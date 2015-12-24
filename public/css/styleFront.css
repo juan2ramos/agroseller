@@ -235,7 +235,7 @@ main.container {
     margin: auto;
 
 }
-.Header-register{
+.Header-register,.Header-login{
     position: absolute;
     display: block;
     top: 2.5rem;
@@ -248,7 +248,12 @@ main.container {
     box-shadow: 6px -2px 1px rgb(38, 58, 28);
     border: 1px solid rgba(255, 255, 255, 0.03);
 }
-.Header-register:hover{
+.Header-login{
+    left: 2rem;
+    max-width: 10rem;
+}
+
+.Header-register:hover,.Header-login:hover{
     box-shadow: inset 0px 0px 14px rgba(0, 0, 0, 0.39);
 }
 .Nav {

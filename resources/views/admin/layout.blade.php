@@ -16,7 +16,7 @@
 <body>
 <div class="Bar">
     <figure class="Bar-logo">
-        <img src="{{ url('images/agroseller-logo.png') }}" alt="">
+        <a href=""> <img src="{{ url('images/agroseller-logo.png') }}" alt=""></a>
     </figure>
     <div class="Bar-user">
         <figure><img src="{{url('images/pp.svg')}}" alt=""></figure>
@@ -33,7 +33,7 @@
         <div class="Header-messages">
             <span class="icon-bell active"></span>
             <span class="icon-bubbles"></span>
-            <a href="{{ url('logout') }}"><span class="icon-switch"></span></a>
+            <a href="{{ url('logout') }}"><span class="">Cerrar</span></a>
         </div>
     </header>
 
