@@ -22,6 +22,41 @@ class UserTableSeeder extends Seeder
             'role_id' => '1',
             'password' => bcrypt('12345'),
         ]);
+        factory(Agrosellers\User::class)->create([
+            'name' => 'Ximena',
+            'email' => 'xigom@hotmail.com',
+            'username' => 'ximena',
+            'last_name' => 'Gomez',
+            'mobile_phone' => '',
+            'phone' => '',
+            'photo' => '',
+            'role_id' => '1',
+            'password' => bcrypt('12345'),
+        ]);
+
+        factory(Agrosellers\User::class)->create([
+            'name' => 'miller',
+            'email' => 'millerpreciado@gmail.com',
+            'username' => 'miller',
+            'last_name' => 'preciado',
+            'mobile_phone' => '',
+            'phone' => '',
+            'photo' => '',
+            'role_id' => '1',
+            'password' => bcrypt('12345'),
+        ]);
+
+        factory(Agrosellers\User::class)->create([
+            'name' => 'Alejandra',
+            'email' => 'luza.231@hotmail.com',
+            'username' => 'Alejandra',
+            'last_name' => 'Betancur',
+            'mobile_phone' => '',
+            'phone' => '',
+            'photo' => '',
+            'role_id' => '1',
+            'password' => bcrypt('12345'),
+        ]);
         factory(Agrosellers\User::class, 49)->create();
     }
 }
