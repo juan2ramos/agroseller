@@ -4,6 +4,15 @@
 
     <div class="ContentInfo">
         <h2>Usuarios</h2>
+
+        <form action="{{ route($routeSearch) }}" method="post" class="Search">
+            <input type="text" name="search"  value="{{{ $search or '' }}}" placeholder="Buscar usuario">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <button class="">
+                @include('svg.search')
+            </button>
+
+        </form>
         <table class="AdminHome-table">
             <thead>
             <tr>
@@ -16,13 +25,16 @@
             </thead>
             <tbody>
             @foreach($users as $user)
-            <tr>
+                <tr>
 
-                <td> {{ $user->name }}</td>
-                <td> {{ $roleName[$user->role_id ] }}</td>
-                <td>{{ $user->email }}</td>
-                <td><a href="{{ route('showUser',$user->id) }}" class="icon-binoculars"></a><a href="#" data-id="{{ $user->id }}"  class="CategoryDelete icon-remove"></a> </td>
-            </tr>
+                    <td> {{ $user->name }}</td>
+                    <td> {{ $roleName[$user->role_id ] }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td><a href="{{ route('showUser',$user->id) }}" class="icon-binoculars"></a><a href="#"
+                                                                                                   data-id="{{ $user->id }}"
+                                                                                                   class="CategoryDelete icon-remove"></a>
+                    </td>
+                </tr>
             @endforeach
             </tbody>
         </table>

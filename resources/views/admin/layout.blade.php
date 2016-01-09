@@ -23,7 +23,6 @@
         <h4>{{ auth()->user()->name }} <span> {{ $role[auth()->user()->role_id] }}</span></h4>
     </div>
    @include('admin.partial.menu')
-
 </div>
 <main class="container">
 

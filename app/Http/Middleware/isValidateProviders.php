@@ -4,6 +4,7 @@ namespace Agrosellers\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Agrosellers\Entities\Provider;
 
 class isValidateProviders
 {
@@ -18,6 +19,11 @@ class isValidateProviders
     {
 
         $user = Auth::user();
+        $provider = Provider::where('user_id', '=', $user->id )->get();
+
+        if($provider->isEmpty()){
+            return redirect()->route('registerProvider');
+        }
         if($user->role_id == 3 && $user->validate == 0){
             return redirect()->route('isValidateProviders');
         }

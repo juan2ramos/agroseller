@@ -45,74 +45,31 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
-    Route::get('proveedor', [
-        'uses' => 'HomeAdminController@isValidateProviders',
-        'as' => 'isValidateProviders'
-    ]);
-
-    Route::get('proveedores', [
-        'uses' => 'HomeAdminController@isValidateProviders',
-        'as' => 'providers'
-    ]);
-
-    Route::get('categorias', [
-        'uses' => 'HomeAdminController@isValidateProviders',
-        'as' => 'isValidateProviders'
-    ]);
-    Route::get('productos', [
-        'uses' => 'HomeAdminController@isValidateProviders',
-        'as' => 'products'
-    ]);
-
-    Route::get('clientes', [
-        'uses' => 'HomeAdminController@isValidateProviders',
-        'as' => 'clients'
-    ]);
-    Route::get('ofertas', [
-        'uses' => 'HomeAdminController@isValidateProviders',
-        'as' => 'offers'
-    ]);
-    Route::get('facturas', [
-        'uses' => 'HomeAdminController@isValidateProviders',
-        'as' => 'bills'
-    ]);
-    Route::get('pedidos', [
-        'uses' => 'HomeAdminController@isValidateProviders',
-        'as' => 'orders'
-    ]);
-    Route::get('reportes', [
-        'uses' => 'HomeAdminController@isValidateProviders',
-        'as' => 'reports'
-    ]);
-
     Route::group(['middleware' => 'isValidateProviders'], function () {
         Route::get('/', [
             'uses' => 'HomeAdminController@index',
-            'as' => 'admin'
+            'as' => 'admin',
         ]);
-        Route::get('usuarios', [
-            'uses' => 'UserController@index',
-            'as' => 'users'
-        ]);
-
-        Route::post('usuario/{id}', [
-            'uses' => 'UserController@showUser',
-            'as' => 'showUser'
-        ]);
-        Route::get('categorias', [
-            'uses' => 'CategoryController@index',
-            'as' => 'category'
-        ]);
-        Route::post('categorias', [
-            'uses' => 'CategoryController@newCategory',
-            'as' => 'category'
-        ]);
-        Route::post('categorias/{id}', [
-            'uses' => 'CategoryController@destroyCategory',
-            'as' => 'categoryDelete'
-        ]);
+        include 'Routes/admin.php';
     });
 
+    Route::get('proveedor', [
+        'uses' => 'HomeAdminController@isValidateProviders',
+        'as' => 'isValidateProviders',
+        'middleware' => 'sendHome:validateProvider'
+    ]);
+
+    /* Provider without register in providers table   */
+    Route::get('registro-proveedor', [
+        'uses' => 'ProviderController@registerProvider',
+        'as' => 'registerProvider',
+        'middleware' => 'sendHome:registerProvider'
+    ]);
+    Route::post('registro-proveedor', [
+        'uses' => 'ProviderController@insertProvider',
+        'as' => 'registerProvider',
+        'middleware' => 'sendHome:registerProvider'
+    ]);
 });
 
 

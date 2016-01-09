@@ -30,6 +30,8 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \Agrosellers\Http\Middleware\RedirectIfAuthenticated::class,
         'isValidateProviders' => \Agrosellers\Http\Middleware\isValidateProviders::class,
+        'Roles' => \Agrosellers\Http\Middleware\Roles::class,
+        'sendHome' => \Agrosellers\Http\Middleware\sendHome::class,
 
     ];
 }
