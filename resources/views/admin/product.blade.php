@@ -3,9 +3,9 @@
 @section('content')
 
     <div class="ContentInfo">
-        <h2>Llena los datos de tu empresa</h2>
-        @include('admin.partial.error')
-        <form id="Provider-form" class="form-horizontal" role="form" method="POST" action="{{ route('registerProvider') }}" enctype="multipart/form-data">
+        <h2>Productos</h2>
+
+        <form id="Provider-form" class="form-horizontal" role="form" method="POST" action="{{ route('newProduct') }}" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" id="Location" name="location" value="{{ old('location') }}">
 
@@ -33,7 +33,8 @@
             <button> Enviar </button>
         </form>
 
-    </div>
-
 @endsection
-
+@section('scripts')
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap" async defer></script>
+      <script src="{{asset('js/maps.js')}}"></script>
+@endsection

@@ -2,6 +2,7 @@
 
 namespace Agrosellers\Http\Controllers;
 
+use Agrosellers\Entities\Subcategory;
 use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
 use Agrosellers\Entities\Category;
@@ -37,5 +38,18 @@ class CategoryController extends Controller
         }
         return response()->json(compact('success'));
 
+    }
+
+    function newSubcategory(Request $request){
+
+
+        $subcategory = new Subcategory([
+            'categories_id' => $request->input('category'),
+            'name' => $request->input('subcategory'),
+
+        ]);
+        $subcategory->save();
+        $categories = Category::all();
+        return view('admin.categories', compact('categories'));
     }
 }

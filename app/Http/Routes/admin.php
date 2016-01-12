@@ -2,13 +2,13 @@
 
 
 Route::get('proveedores', [
-    'uses' => 'UserController@showProviders',
+    'uses' => 'ProviderController@showProviders',
     'as' => 'providers'
 ]);
 
 
 Route::get('productos', [
-    'uses' => 'HomeAdminController@showUser',
+    'uses' => 'ProductController@index',
     'as' => 'products'
 ]);
 
@@ -56,10 +56,23 @@ Route::post('categorias/{id}', [
 
 /* Search */
 Route::post('proveedores', [
-    'uses' => 'UserController@searchProviders',
+    'uses' => 'ProviderController@searchProviders',
     'as' => 'searchProvider'
 ]);
 Route::post('usuarios', [
     'uses' => 'UserController@searchUsers',
     'as' => 'searchUser'
+]);
+
+
+Route::post('updateProvider/{id}', [
+    'uses' => 'ProviderController@updateProvider',
+    'as' => 'updateProvider',
+    'middleware' => 'Roles:1-2'
+]);
+
+Route::post('categorias', [
+    'uses' => 'CategoryController@newSubcategory',
+    'as' => 'newSubcategory',
+    'middleware' => 'Roles:1-2'
 ]);

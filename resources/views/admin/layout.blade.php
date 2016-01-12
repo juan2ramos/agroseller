@@ -16,7 +16,7 @@
 <body>
 <div class="Bar">
     <figure class="Bar-logo">
-        <a href=""> <img src="{{ url('images/agroseller-logo.png') }}" alt=""></a>
+        <a href="{{url('/')}}"> <img src="{{ url('images/agroseller-logo.png') }}" alt=""></a>
     </figure>
     <div class="Bar-user">
         <figure><img src="{{url('images/pp.svg')}}" alt=""></figure>

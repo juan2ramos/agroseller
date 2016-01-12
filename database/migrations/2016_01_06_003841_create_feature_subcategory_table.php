@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoryProviderTable extends Migration
+class CreateFeatureSubcategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class CreateCategoryProviderTable extends Migration
      */
     public function up()
     {
-        Schema::create('category_provider', function (Blueprint $table) {
+        Schema::create('feature_subcategory', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->integer('provider_id')->unsigned();
-            $table->foreign('provider_id')->references('id')->on('providers') ;
+            $table->integer('feature_id')->unsigned();
+            $table->foreign('feature_id')->references('id')->on('features')->onDelete('cascade');
+            $table->integer('subcategory_id')->unsigned();
+            $table->foreign('subcategory_id')->references('id')->on('subcategories') ;
             $table->timestamps();
         });
     }

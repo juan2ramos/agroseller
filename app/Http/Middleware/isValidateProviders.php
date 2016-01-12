@@ -21,6 +21,11 @@ class isValidateProviders
         $user = Auth::user();
         $provider = Provider::where('user_id', '=', $user->id )->get();
 
+
+        if($user->role_id != '3'){
+            return $next($request);
+        }
+
         if($provider->isEmpty()){
             return redirect()->route('registerProvider');
         }

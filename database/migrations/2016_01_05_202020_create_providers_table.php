@@ -17,6 +17,7 @@ class CreateProvidersTable extends Migration
             $table->string('location');
             $table->string('address');
             $table->string('contact');
+            $table->string('contact-phone');
             $table->string('description');
             $table->string('NIT');
             $table->string('url-video');

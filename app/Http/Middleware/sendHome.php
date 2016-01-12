@@ -18,7 +18,6 @@ class sendHome
     public function handle($request, Closure $next, $validate)
     {
         $user = Auth::user();
-
         if($validate == 'registerProvider'){
             $provider = Provider::where('user_id', '=', $user->id )->get();
             if(!$provider->isEmpty()){

@@ -499,7 +499,8 @@ main.container {
   letter-spacing: 4px;
 }
 
-.ContentInfo input {
+.ContentInfo input,
+.ContentInfo select {
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.5);
   max-width: 15rem;
@@ -508,7 +509,8 @@ main.container {
   color: white;
 }
 
-.ContentInfo input[type='file'] {
+.ContentInfo input[type='file'],
+.ContentInfo select[type='file'] {
   padding: .25rem;
 }
 
@@ -644,11 +646,14 @@ main.container {
   height: 400px;
 }
 
-.Marker-add {
-  display: block;
-  background: #77A940;
+.Marker {
+  position: relative;
+  width: 49%;
+  display: inline-block;
+  background: #65804a;
   color: white;
   padding: 1rem;
   text-align: center;
   cursor: pointer;
+  margin-left: 0.3rem;
 }
