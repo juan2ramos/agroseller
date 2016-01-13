@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  background: #181D13;
+  background: #7AA57C;
   background-size: cover;
   background-attachment: fixed;
   height: 100%;
@@ -459,11 +459,11 @@ main.container {
 /* Categories */
 
 .ContentInfo {
-  background: rgba(84, 97, 69, 0.55);
+  background: #e3ecde;
   width: 100%;
   margin: 2rem auto;
   padding: 1rem 1rem 1.5rem;
-  color: #DAE2CD;
+  color: #3F4633;
   max-width: 60rem;
   border: 2px solid #5A6D60;
   border-radius: 2px;
@@ -663,4 +663,8 @@ main.container {
 #Product-form textarea {
   display: block;
   margin: 1rem;
+}
+
+#Product-form input[type='checkbox'] {
+  display: inline;
 }

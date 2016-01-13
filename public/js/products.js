@@ -1,5 +1,11 @@
 $(document).ready(function () {
 
+    $('.datetimepicker_mask').datetimepicker({
+        mask:'9999/19/39 29:59'
+    });
+    $('.datetimepicker_mask').click(function(){
+        $(this).datetimepicker('show');
+    });
     var  $sub = $('#subcategories');
 
     $('#categories').on('change', function () {
