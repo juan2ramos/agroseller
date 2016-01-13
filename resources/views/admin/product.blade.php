@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="ContentInfo">
-        <h2>Productos</h2>
+        <h2>Agregar nuevo productos</h2>
 
         <form id="Provider-form" class="form-horizontal" role="form" method="POST" action="{{ route('newProduct') }}"
               enctype="multipart/form-data">
