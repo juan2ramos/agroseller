@@ -37,3 +37,7 @@
 
 @endsection
 
+@section('scripts')
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap" async defer></script>
+    <script src="{{asset('js/maps.js')}}"></script>
+@endsection

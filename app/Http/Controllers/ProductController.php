@@ -15,5 +15,8 @@ class ProductController extends Controller
         return view('admin.product', compact('categories'));
 
     }
+    function newProduct(){
+
+    }
 
 }

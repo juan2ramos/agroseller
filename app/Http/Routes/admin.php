@@ -76,3 +76,19 @@ Route::post('categorias', [
     'as' => 'newSubcategory',
     'middleware' => 'Roles:1-2'
 ]);
+
+Route::post('productos', [
+    'uses' => 'ProductController@newProduct',
+    'as' => 'newProduct',
+    'middleware' => 'Roles:1-2-3'
+]);
+Route::post('subcategoriesQuery', [
+    'uses' => 'CategoryController@subcategoriesQuery',
+    'as' => 'subcategoriesQuery',
+    'middleware' => 'Roles:1-2-3'
+]);
+Route::post('featuresQuery', [
+    'uses' => 'CategoryController@featuresQuery',
+    'as' => 'featuresQuery',
+    'middleware' => 'Roles:1-2-3'
+]);
