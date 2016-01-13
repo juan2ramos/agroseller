@@ -4,11 +4,12 @@
 
     <div class="ContentInfo">
         <h2>Agregar nuevo productos</h2>
-
-        <form id="Provider-form" class="form-horizontal" role="form" method="POST" action="{{ route('newProduct') }}"
+        <hr class="Logo-hr">
+        <form id="Product-form" class="form-horizontal" role="form" method="POST" action="{{ route('newProduct') }}"
               enctype="multipart/form-data">
 
-            <select name="" data-token="{{ csrf_token() }}" data-route="{{route('subcategoriesQuery')}}"  id="categories">
+            <select name="" data-token="{{ csrf_token() }}" data-route="{{route('subcategoriesQuery')}}"
+                    id="categories">
                 <option value="">Selecciona una categoria</option>
                 @foreach( $categories as $category)
                     <option value="{{$category->id}}">{{$category->name}}</option>
@@ -18,20 +19,31 @@
                 <option value="">Selecciona una subcategoria</option>
             </select>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+
             <input type="hidden" id="Location" name="location" value="{{ old('location') }}">
 
-            <hr class="Logo-hr">
 
-            <span class="Marker" id="addMaker">Agregar locación del producto</span>
+            <span class="Marker" id="addMaker">Agregar las locaciones del producto</span>
             <span class="Marker" id="removeMaker">Eliminar locación</span>
 
             <div id="map" class="Map-provider"></div>
             <div>
-                <label for="imageProvider">Imágen </label>
-                <input type="file" name="imageProvider">
+                <input type="file" name="imageProduct">
             </div>
+            <select name="presentation" >
+                <option value="">Selecione la presentación</option>
+                <option value="Bolsa">Bolsa</option>
+                <option value="Caja">Caja</option>
+                <option value="Botella">Botella</option>
+            </select>
 
-            <input type="text" class="form-control" placeholder="Dirección" name="address" value="{{ old('address') }}">
+            <input type="text"  placeholder="Tamaño " name="size" value="{{ old('size') }}">
+            <input type="text"  placeholder="Peso " name="weight" value="{{ old('weight') }}">
+            <input type="text"  placeholder="Medida " name="measure" value="{{ old('measure') }}">
+            <input type="text"  placeholder="Material " name="material" value="{{ old('material') }}">
+
+
             <input type="text" class="form-control" placeholder="Nombre del contacto comercial" name="contact"
                    value="{{ old('contact') }}">
             <input type="text" class="form-control" placeholder="Teléfono del contacto comercial" name="contact-phone"

@@ -657,3 +657,10 @@ main.container {
   cursor: pointer;
   margin-left: 0.3rem;
 }
+
+#Product-form input,
+#Product-form select,
+#Product-form textarea {
+  display: block;
+  margin: 1rem;
+}
