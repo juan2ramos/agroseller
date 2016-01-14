@@ -661,10 +661,18 @@ main.container {
 #Product-form input,
 #Product-form select,
 #Product-form textarea {
-  display: block;
+  display: none;
   margin: 1rem;
 }
 
 #Product-form input[type='checkbox'] {
-  display: inline;
+  display: none;
+}
+
+#Product-form label {
+  display: none;
+}
+
+#Product-form button {
+  display: none;
 }

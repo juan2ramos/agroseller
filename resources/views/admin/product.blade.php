@@ -5,19 +5,20 @@
     <div class="ContentInfo">
         <h2>Agregar nuevo productos</h2>
         <hr class="Logo-hr">
+        <select name="" data-token="{{ csrf_token() }}" data-route="{{route('subcategoriesQuery')}}"
+                id="categories">
+            <option value="">Selecciona una categoria</option>
+            @foreach( $categories as $category)
+                <option value="{{$category->id}}">{{$category->name}}</option>
+            @endforeach
+        </select>
+        <select name="" data-route="{{route('featuresQuery')}}" id="subcategories">
+            <option value="">Selecciona una subcategoria</option>
+        </select>
         <form id="Product-form" class="form-horizontal" role="form" method="POST" action="{{ route('newProduct') }}"
               enctype="multipart/form-data">
 
-            <select name="" data-token="{{ csrf_token() }}" data-route="{{route('subcategoriesQuery')}}"
-                    id="categories">
-                <option value="">Selecciona una categoria</option>
-                @foreach( $categories as $category)
-                    <option value="{{$category->id}}">{{$category->name}}</option>
-                @endforeach
-            </select>
-            <select name="" data-route="{{route('featuresQuery')}}" id="subcategories">
-                <option value="">Selecciona una subcategoria</option>
-            </select>
+
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 
