@@ -22,15 +22,28 @@
   cursor: pointer
   margin-left: 0.3rem
 
+.Product-select
+  margin: 1rem .5rem
+  height: 2rem
 
 #Product-form
-  & input , & select, & textarea
-    display: none
-    margin: 1rem
-  & input[type='checkbox']
-    //display: inline
-    display: none
   & label
-    display: none
+    margin: 1rem 1rem 0
+  & input , & select
+    max-width: 60rem
+    height: 2rem
+  & input , & select, & textarea
+    margin: 1rem
+    width: calc(100% - 2rem)
   & button
     display: none
+    color: white
+    margin: 1rem calc(50% - 7.5rem)
+    width: 15rem
+  & .dataForm
+    display: none
+  & input[type='checkbox']
+    width: 1.5rem
+    vertical-align: middle
+    & span
+      display: inline

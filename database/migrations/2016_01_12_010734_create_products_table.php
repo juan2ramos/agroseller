@@ -21,7 +21,6 @@ class CreateProductsTable extends Migration
             $table->string('material');
             $table->string('description');
             $table->string('composition');
-            $table->string('description-use');
             $table->string('forms-employment');
             $table->string('price');
             $table->string('taxes');

@@ -2,17 +2,17 @@
 
 @section('content')
 
-    <div class="ContentInfo">
+    <div class="ContentInfo Products">
         <h2>Agregar nuevo productos</h2>
         <hr class="Logo-hr">
-        <select name="" data-token="{{ csrf_token() }}" data-route="{{route('subcategoriesQuery')}}"
+        <select name="" class="Product-select" data-token="{{ csrf_token() }}" data-route="{{route('subcategoriesQuery')}}"
                 id="categories">
             <option value="">Selecciona una categoria</option>
             @foreach( $categories as $category)
                 <option value="{{$category->id}}">{{$category->name}}</option>
             @endforeach
         </select>
-        <select name="" data-route="{{route('featuresQuery')}}" id="subcategories">
+        <select name="" class="Product-select" data-route="{{route('featuresQuery')}}" id="subcategories">
             <option value="">Selecciona una subcategoria</option>
         </select>
         <form id="Product-form" class="form-horizontal" role="form" method="POST" action="{{ route('newProduct') }}"
@@ -25,47 +25,47 @@
             <input type="hidden" id="Location" name="location" value="{{ old('location') }}">
 
 
-            <span class="Marker" id="addMaker">Agregar las locaciones del producto</span>
-            <span class="Marker" id="removeMaker">Eliminar locación</span>
+            <span class="Marker " id="addMaker">Agregar las locaciones del producto</span>
+            <span class="Marker " id="removeMaker">Eliminar locación</span>
 
-            <div id="map" class="Map-provider"></div>
+            <div id="map" class="Map-provider "></div>
 
-            <select name="presentation">
+            <select  class="presentation dataForm" name="presentation">
                 <option value="">Selecione la presentación</option>
                 <option value="Bolsa">Bolsa</option>
                 <option value="Caja">Caja</option>
                 <option value="Botella">Botella</option>
             </select>
 
-            <input type="text" placeholder="Tamaño " name="size" value="{{ old('size') }}">
-            <input type="text" placeholder="Peso " name="weight" value="{{ old('weight') }}">
-            <input type="text" placeholder="Medida " name="measure" value="{{ old('measure') }}">
-            <input type="text" placeholder="Material " name="material" value="{{ old('material') }}">
-            <textarea name="description" placeholder="Descripción" cols="30" rows="10"></textarea>
+            <input type="text" class="size dataForm" placeholder="Tamaño " name="size" value="{{ old('size') }}">
+            <input type="text" class="weight dataForm" placeholder="Peso " name="weight" value="{{ old('weight') }}">
+            <input type="text"  class="measure dataForm" placeholder="Medida " name="measure" value="{{ old('measure') }}">
+            <input type="text" class="material dataForm"  placeholder="Material " name="material" value="{{ old('material') }}">
+            <textarea name="description" class="description dataForm"  placeholder="Descripción" cols="30" rows="10"></textarea>
 
-            <div>
-                <label for="composition">Composición , propiedades(Ficha tecnica) PDF</label>
-                <input id="composition" type="file" name="composition">
+            <div  class="composition dataForm" >
+                <label class="composition dataForm" for="composition">Composición , propiedades(Ficha tecnica) PDF</label>
+                <input class="composition dataForm" id="composition" type="file" name="composition">
             </div>
-            <textarea name="forms-employment" placeholder="Descripción de uso" cols="30" rows="10"></textarea>
-            <input type="text" placeholder="Precio " name="price" value="{{ old('price') }}">
+            <textarea name="forms-employment"  class="forms-employment dataForm"  placeholder="Descripción de uso" cols="30" rows="10"></textarea>
+            <input  type="text"  class="price dataForm"  placeholder="Precio " name="price" value="{{ old('price') }}">
 
-            <input type="checkbox" name="taxes[]" value="1">Iva 16% <br>
-            <input type="checkbox" name="taxes[]" value="1">Retefuente 2.5% <br>
+            <input type="checkbox" class="taxes dataForm"  name="taxes[]" value="1"><span class="taxes dataForm">Iva 16%</span>
+            <input type="checkbox"  class="taxes dataForm" name="taxes[]" value="1"><span class="taxes dataForm">Retefuente 2.5%</span>
 
-            <input type="text" placeholder="Cantidad disponible " name="available-quantity"
+            <input type="text"  class="available-quantity dataForm" placeholder="Cantidad disponible " name="available-quantity dataForm"
                    value="{{ old('available-quantity') }}">
 
-            <div>
-                <label for="image-scale">Imagen del producto</label>
-                <input id="image-scale" type="file" name="image-scale">
+            <div  class="image-scale dataForm dataForm" >
+                <label class="image-scale dataForm" for="image-scale">Imagen del producto</label>
+                <input class="image-scale dataForm" id="image-scale" type="file" name="image-scale">
             </div>
-            <input type="text"  name="offer-price" placeholder="precio en oferta">
-            <input type="text" class="datetimepicker_mask" name="offer-on" placeholder="Dia y hora de inicio de la oferta">
-            <input type="text" class="datetimepicker_mask" name="offer-off" placeholder="Dia y hora de cierre de la oferta">
+            <input  type="text" class="offer-price dataForm"   name="offer-price" placeholder="precio en oferta">
+            <input type="text"  class="offer-on dataForm" class="datetimepicker_mask" name="offer-on" placeholder="Dia y hora de inicio de la oferta">
+            <input type="text" class="offer-off dataForm"  class="datetimepicker_mask" name="offer-off" placeholder="Dia y hora de cierre de la oferta">
 
 
-            <button> Enviar</button>
+            <button class="Product-formButton dataForm"> Enviar</button>
         </form>
     </div>
 @endsection

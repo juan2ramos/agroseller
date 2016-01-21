@@ -33,10 +33,12 @@ $(document).ready(function () {
 
     $('#subcategories').on('change', function () {
         if ($(this).val() != '') {
+            $('.dataForm').hide("slow");
             $.post($(this).data('route'), { id: $(this).val(),_token:  $('#categories').data('token') }, function (response) {
-
-               console.log(response);
-
+                $.each(response.features, function(arrayID,group) {
+                    $('.' + group.name ).show("slow");
+                });
+                $('.Product-formButton' ).show("slow");
             }).fail(function () {
                 button.removeClass('hidden');
                 alert('Ocurrió un error :(');

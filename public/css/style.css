@@ -658,21 +658,44 @@ main.container {
   margin-left: 0.3rem;
 }
 
-#Product-form input,
-#Product-form select,
-#Product-form textarea {
-  display: none;
-  margin: 1rem;
-}
-
-#Product-form input[type='checkbox'] {
-  display: none;
+.Product-select {
+  margin: 1rem .5rem;
+  height: 2rem;
 }
 
 #Product-form label {
-  display: none;
+  margin: 1rem 1rem 0;
+}
+
+#Product-form input,
+#Product-form select {
+  max-width: 60rem;
+  height: 2rem;
+}
+
+#Product-form input,
+#Product-form select,
+#Product-form textarea {
+  margin: 1rem;
+  width: calc(100% - 2rem);
 }
 
 #Product-form button {
   display: none;
+  color: white;
+  margin: 1rem calc(50% - 7.5rem);
+  width: 15rem;
+}
+
+#Product-form .dataForm {
+  display: none;
+}
+
+#Product-form input[type='checkbox'] {
+  width: 1.5rem;
+  vertical-align: middle;
+}
+
+#Product-form input[type='checkbox'] span {
+  display: inline;
 }
