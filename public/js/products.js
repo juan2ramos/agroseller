@@ -1,8 +1,23 @@
 $(document).ready(function () {
-
+    jQuery.datetimepicker.setLocale('es');
     $('.datetimepicker_mask').datetimepicker({
-        mask:'9999/19/39 29:59'
+        i18n:{
+            es:{
+                months:[
+                    'Enero','Febrero','Marzo','Abril',
+                    'Mayo','Junio','Julio','Agosto',
+                    'Septiembre','Octubre','Noviembre','Diciembre',
+                ],
+                dayOfWeek:[
+                    "Do", "Lu", "Ma", "Mi",
+                    "Ju", "Vi", "Sa",
+                ]
+            }
+        },
     });
+
+    $('.datetimepicker_mask').datetimepicker({ defaultDate: new Date() });
+
     $('.datetimepicker_mask').click(function(){
         $(this).datetimepicker('show');
     });
