@@ -5,31 +5,31 @@
     <div class="ContentInfo Products">
         <h2>Agregar nuevo productos</h2>
         <hr class="Logo-hr">
-        <select name="" class="Product-select" data-token="{{ csrf_token() }}" data-route="{{route('subcategoriesQuery')}}"
-                id="categories">
-            <option value="">Selecciona una categoria</option>
-            @foreach( $categories as $category)
-                <option value="{{$category->id}}">{{$category->name}}</option>
-            @endforeach
-        </select>
-        <select name="" class="Product-select" data-route="{{route('featuresQuery')}}" id="subcategories">
-            <option value="">Selecciona una subcategoria</option>
-        </select>
+
         <form id="Product-form" class="form-horizontal" role="form" method="POST" action="{{ route('newProduct') }}"
               enctype="multipart/form-data">
 
-
+            <select name="" class="Product-select" data-token="{{ csrf_token() }}" data-route="{{route('subcategoriesQuery')}}"
+                    id="categories">
+                <option value="">Selecciona una categoria</option>
+                @foreach( $categories as $category)
+                    <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+            </select>
+            <select name="subcategory_id" class="Product-select" data-route="{{route('featuresQuery')}}" id="subcategories">
+                <option value="">Selecciona una subcategoria</option>
+            </select>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 
-            <input type="hidden" id="Location" name="location" value="{{ old('location') }}">
+            <input type="hidden" id="Location" name="location" value="">
 
 
             <span class="Marker " id="addMaker">Agregar las locaciones del producto</span>
             <span class="Marker " id="removeMaker">Eliminar locación</span>
 
             <div id="map" class="Map-provider "></div>
-
+            <input type="text" class="name dataForm offer " placeholder="Nombre " name="name" value="{{ old('name') }}">
             <select  class="presentation dataForm" name="presentation">
                 <option value="">Selecione la presentación</option>
                 <option value="Bolsa">Bolsa</option>
@@ -51,9 +51,9 @@
             <input  type="text"  class="price dataForm"  placeholder="Precio " name="price" value="{{ old('price') }}">
 
             <input type="checkbox" class="taxes dataForm"  name="taxes[]" value="1"><span class="taxes dataForm">Iva 16%</span>
-            <input type="checkbox"  class="taxes dataForm" name="taxes[]" value="1"><span class="taxes dataForm">Retefuente 2.5%</span>
+            <input type="checkbox"  class="taxes dataForm" name="taxes[]" value="2"><span class="taxes dataForm">Retefuente 2.5%</span>
 
-            <input type="text"  class="available-quantity dataForm" placeholder="Cantidad disponible " name="available-quantity dataForm"
+            <input type="text"  class="available-quantity dataForm" placeholder="Cantidad disponible " name="available-quantity"
                    value="{{ old('available-quantity') }}">
 
             <div  class="image-scale dataForm dataForm" >
@@ -61,8 +61,8 @@
                 <input class="image-scale dataForm" id="image-scale" type="file" name="image-scale">
             </div>
             <input  type="text" class="offer-price dataForm"   name="offer-price" placeholder="precio en oferta">
-            <input type="text"  class="offer-on dataForm" class="datetimepicker_mask" name="offer-on" placeholder="Dia y hora de inicio de la oferta">
-            <input type="text" class="offer-off dataForm"  class="datetimepicker_mask" name="offer-off" placeholder="Dia y hora de cierre de la oferta">
+            <input type="text"  class="offer-on offer dataForm datetimepicker_mask" name="offer-on" placeholder="Dia y hora de inicio de la oferta">
+            <input type="text" class="offer-off offer dataForm datetimepicker_mask" name="offer-off" placeholder="Dia y hora de cierre de la oferta">
 
 
             <button class="Product-formButton dataForm"> Enviar</button>

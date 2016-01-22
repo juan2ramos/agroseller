@@ -29,7 +29,7 @@ class CreateProductsTable extends Migration
             $table->string('location');
             $table->string('offer');
             $table->string('offer-price');
-
+            $table->longText('description-use');
 
 
 

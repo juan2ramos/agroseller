@@ -39,6 +39,7 @@ $(document).ready(function () {
                     $('.' + group.name ).show("slow");
                 });
                 $('.Product-formButton' ).show("slow");
+                $('.offer' ).show("slow");
             }).fail(function () {
                 button.removeClass('hidden');
                 alert('Ocurrió un error :(');

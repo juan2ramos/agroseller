@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnProductTable extends Migration
+class AddColumnNameProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,8 @@ class AddColumnProductTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->longText('description-use');
+            $table->string('name');
+            $table->string('slug');
 
         });
     }

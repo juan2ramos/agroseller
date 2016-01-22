@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnDuProductTable extends Migration
+class AddColumnOfferOnProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,8 @@ class AddColumnDuProductTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->longText('description-use');
+            $table->dateTime('offer-on')->nullable();
+            $table->dateTime('offer-off')->nullable();
 
         });
     }

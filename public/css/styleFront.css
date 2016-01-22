@@ -231,8 +231,9 @@ main.container {
 }
 
 .Header-figure {
-    max-width: 150px;
-    margin: auto;
+    max-width: 12rem;
+    position: absolute;
+    top: 1rem;
 
 }
 .Header-register,.Header-login{
@@ -248,9 +249,13 @@ main.container {
     box-shadow: 6px -2px 1px rgb(38, 58, 28);
     border: 1px solid rgba(255, 255, 255, 0.03);
 }
-.Header-login{
+.Nav a.Header-login{
     left: 2rem;
-    max-width: 10rem;
+    width: 10rem;
+    top: 0;
+    line-height: 1rem;
+    height: 0;
+    box-shadow: none;
 }
 
 .Header-register:hover,.Header-login:hover{
@@ -260,6 +265,7 @@ main.container {
     position: relative;
     text-align: center;
     background: #BCCD4B;
+    padding: .6rem;
 }
 
 .Nav-user {
@@ -269,7 +275,7 @@ main.container {
 .Nav li {
     display: inline-block;
     vertical-align: middle;
-    padding: .6rem;
+    padding: 0 2rem;
     border-left: 1px solid #263A1C;
 }
 
@@ -477,29 +483,74 @@ main.container {
 .Products figcaption span {
     display: block;
     font-weight: 400;
-
 }
 
 .Product {
-    margin: 1rem auto;
+    margin: 5rem auto 2rem;
     max-width: 60rem;
 
 }
-
+.Product img{
+    width: 90%;
+}
 .Product figure, .Product .Product-content {
     display: inline-block;
     vertical-align: top;
-    width: 64%;
     color: #263A1C;
+    margin: 0 19% 3rem;
 }
-
+.Product .Product-content {
+    width: 74%;
+    margin: 0;
+    padding: 2rem;
+}
 .Product figure {
     padding: 1rem 0;
     background: white;
     border: 4px solid #BCCD4B;
     border-radius: 10px;
-    width: 35%;
+    width: 62.5%;
     text-align: center;
+}
+.Product h4 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 2rem 0 0;
+}
+.Product-features li {
+    margin: 1rem;
+    list-style: inherit;
+    font-weight: 400;
+}
+.Product-features li span {
+    font-weight: 100;
+}
+.Product-offer{
+    display: inline-block;
+    vertical-align: top;
+    width:25%;
+    color:black;
+}
+.Product-offer h4{
+    text-align: center;
+    font-size: 3rem;
+    margin: .25rem 0 .5rem;
+    font-weight: 500;
+    color: #263A1C;
+}
+.Product-offerBuy{
+    margin: auto;
+    display: block;
+    width: 10rem;
+    text-align: center;
+    padding: 1rem;
+    background: #6F945C;
+    color: white;
+    font-weight: 400;
+    letter-spacing: 1px;
+    border: #FDF8ED 1px solid;
+    box-shadow: 0px 0px 4px rgba(105,105,105,0.3);
+    border-radius: 2rem;
 }
 .Product-content{
     padding: .4rem 0 1rem 1rem;
@@ -529,4 +580,48 @@ main.container {
     width: 60rem;
     background: url("../images/cart.png") center no-repeat;
     height: 10rem;
+}
+
+.Home-top{
+    margin: 2rem auto;
+    width: 60rem;
+    color: #000000;
+}
+.Home-top h3{
+    max-width: 16rem;
+    text-align: center;
+    margin: 1.5rem 0 1rem;
+}
+.NavCategories-ul ul{
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: -.5rem;
+    width: 16rem;
+    background: #FFF8E8;
+}
+.NavCategories-ul li{
+    text-transform: capitalize;
+    margin: .4rem 1rem;
+    font-weight: 400;
+    border-bottom: 1px dashed;
+    padding: 0.5rem 0;
+    cursor: pointer;
+    position: relative;
+}
+.NavCategories-ul li ul li:last-child{
+    border: none;
+}
+.NavCategories-ul li:hover ul{
+    display: block;
+}
+.NavCategories-ul{
+    max-width: 16rem;
+
+}
+#map{
+    width: 100%;
+    height: 22rem;
+    margin: .5rem 0 2rem;
+    border: .2rem solid;
 }

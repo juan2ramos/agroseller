@@ -39,7 +39,6 @@ class CategoryController extends Controller
         return response()->json(compact('success'));
 
     }
-
     function newSubcategory(Request $request){
 
 
@@ -52,13 +51,16 @@ class CategoryController extends Controller
         $categories = Category::all();
         return view('admin.categories', compact('categories'));
     }
-
     function subcategoriesQuery(Request $request){
         $category = Category::find($request->input('id'));
         $subcategories = $category->subcategories()->get();
         if ($request->ajax()) {
             return response()->json(compact('subcategories'));
         }
+    }
+    function categoriesSubcategories(){
+
+        return Category::all();
     }
     function featuresQuery(Request $request){
         $subCategory = Subcategory::find($request->input('id'));

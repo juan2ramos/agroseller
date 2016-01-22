@@ -38,7 +38,7 @@ $('#removeMaker').on('click', function () {
 });
 
 
-$('#Provider-form').on('submit', function () {
+$('#Provider-form,#Product-form').on('submit', function () {
 
     var pos = '';
     for (var i = 0; i < markers.length; i++) {
