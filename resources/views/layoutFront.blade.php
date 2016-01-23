@@ -50,6 +50,8 @@
         {{-- <li><a href="{{ route('admin') }}">Clientes</a></li>--}}
         <li><a href="#">Contáctenos</a></li>
     </ul>
+        <a class="Shopping">@include('front.tractor') $0</a>
+
 </nav>
 
 
@@ -94,6 +96,46 @@
 
     </div>
     <div class="copy">Copyright © 2015 Creado por Agroseller</div>
+    <sidebar class="YouCart">
+
+        <section class="YouCart-content">
+            <h3>Tus Compras</h3>
+            <ul class="YouCart-list">
+                <li>
+                    <figure>
+                        <img src="" alt="">
+                    </figure>
+                    <div class="YouCart-item">
+                        <h5>Nombre</h5>
+                        <small>Esta es una pequña descripción</small>
+                        <button class="YouCart-more">+</button>
+                        <button class="YouCart-less">-</button>
+                        <button class="YouCart-delete">X</button>
+                    </div>
+                </li>
+                <li>
+                    <figure>
+                        <img src="" alt="">
+                    </figure>
+                    <div class="YouCart-item">
+                        <h5>Nombre</h5>
+                        <small>Esta es una pequña descripción</small>
+                        <button class="YouCart-more">+</button>
+                        <button class="YouCart-less">-</button>
+                        <button class="YouCart-delete">X</button>
+                    </div>
+                </li>
+
+                <div class="YouCart-checkout">
+                    <span>Subtotal</span>
+                    <span>$300.000</span>
+                    <button class="YouCart-checkoutButton">COMPRAR</button>
+                </div>
+
+            </ul>
+        </section>
+        <div class="YouCart-closed"></div>
+    </sidebar>
 </footer>
 <script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
 <script src="{{asset('js/owl.carousel.js')}}"></script>

@@ -38,16 +38,18 @@
         </div>
         <div class="Product-offer">
             <span>Descuento</span>
-            <h4>${{$product->price}}</h4>
+            <h4>${{$product['offer-price']}}</h4>
             <a href="" class="Product-offerBuy">COMPRAR</a>
+            <p class="Product-offerValue">Valor : <span>${{$product->price}}</span></p>
             <p>tiempo limitado</p>
-            <div id="date" data-time="{{$product['offer-off']}}"></div>
+            <div class="Product-offerTime">
+                <div id="date" data-time="{{$product['offer-off']}}"></div>
 
-            <span id="dayNumber"></span>
-            <span id="hourNumber"></span>
-            <span id="minNumber"></span>
-            <span id="secNumber"></span>
-
+                <span id="dayNumber"></span>
+                <span id="hourNumber"></span>
+                <span id="minNumber"></span>
+                <span id="secNumber"></span>
+            </div>
 
         </div>
     </div>
