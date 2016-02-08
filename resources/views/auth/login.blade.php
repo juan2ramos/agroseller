@@ -1,13 +1,17 @@
 @extends('layout')
 
 @section('content')
+    <figure class="Login-logo">
+        <a href="/"><img src="{{ url('images/agroseller-logo.png') }}" alt=""></a>
+    </figure>
+    <a href="{{route('register')}}">
+        <button class="Header-login">Registrate</button>
+    </a>
     <main class="Login">
         @if (count($errors) > 0)
             <?php $errorArray = $errors->getMessages();  ?>
         @endif
-        <figure class="Login-logo">
-            <img src="{{ url('images/agroseller-logo.png') }}" alt="">
-        </figure>
+        <h2>Inicio de sesión</h2>
         <hr class="Logo-hr">
         <form class="" role="form" method="POST" action="{{ route('login') }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">

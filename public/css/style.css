@@ -263,6 +263,12 @@ main.container {
   top: calc(50vh - 15rem);
 }
 
+.Login h2 {
+  text-align: center;
+  font-weight: 300;
+  font-size: 3rem;
+}
+
 .Login select {
   padding: 0 !important;
 }
@@ -276,7 +282,7 @@ main.container {
   max-width: 25rem;
   height: 2.5rem;
   border-radius: 0.2rem;
-  padding: 1rem 1rem 0.9rem;
+  padding: 0 1rem 0;
   color: #E4FFC8;
   background: #65804A;
   background: linear-gradient(to right, #65804A 50%, #576B43 100%);
@@ -339,8 +345,25 @@ main.container {
 }
 
 .Login-logo {
-  max-width: 22rem;
+  max-width: 10rem;
   margin: auto;
+  top: 1rem;
+  left: 1rem;
+  position: absolute;
+}
+
+.Header-login {
+  position: absolute;
+  display: block;
+  top: 1.5rem;
+  right: 2rem;
+  color: #263A1C;
+  padding: .8rem 2rem;
+  background: #BCCD4B;
+  border-radius: .2rem;
+  font-weight: 400;
+  box-shadow: 6px -2px 1px #263a1c;
+  border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 .Logo-hr {

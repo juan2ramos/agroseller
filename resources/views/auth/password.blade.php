@@ -1,6 +1,13 @@
 @extends('layout')
 
 @section('content')
+    <figure class="Login-logo">
+        <img src="{{ url('images/agroseller-logo.png') }}" alt="">
+    </figure>
+
+    <a href="{{route('login')}}">
+        <button class="Header-login">Inicia Sesión</button>
+    </a>
     <main class="Login">
         @if (session('status'))
             <div class="alert alert-success">
@@ -18,9 +25,7 @@
                 </ul>
             </div>
         @endif
-        <figure class="Login-logo">
-            <img src="{{ url('images/agroseller-logo.png') }}" alt="">
-        </figure>
+        <h2 style="font-size: 2rem">¡Recuperar contraseña!</h2>
         <hr class="Logo-hr">
         <form class="form-horizontal" role="form" method="POST" action="/password/email">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -35,7 +40,7 @@
             <div class="form-group">
                 <div class="col-md-6 col-md-offset-4">
                     <button type="submit" class="Login-submit">
-                        Send Password Reset Link
+                       Recuperar Contraseña
                     </button>
                 </div>
             </div>
