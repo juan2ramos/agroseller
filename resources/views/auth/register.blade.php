@@ -29,7 +29,7 @@
                 <option value="3">Proveedor - Comerciante</option>
                 <option value="4">Cliente - productor</option>
             </select>
-            <input type="number" placeholder="Número de teléfono">
+            <input type="number" placeholder="Número de teléfono" name="mobile_phone" value="{{ old('mobile_phone') }}">
             <input type="password" class="form-control" placeholder="Contraseña" name="password">
             <input type="password" class="form-control" placeholder="Confirmar Contraseña "
                    name="password_confirmation">
