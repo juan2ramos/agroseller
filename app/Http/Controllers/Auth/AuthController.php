@@ -3,6 +3,7 @@
 namespace Agrosellers\Http\Controllers\Auth;
 
 use Agrosellers\User;
+use Illuminate\Http\Request;
 use Validator;
 use Agrosellers\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -92,4 +93,23 @@ class AuthController extends Controller
         return route('admin');
     }
 
+    public function postRegister(Request $request)
+    {
+        $validator = $this->validator($request->all());
+        dd($request);
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        Auth::login($this->create($request->all()));
+
+        $user = $request->user();
+        Mail::send('emails.welcome', ['user' => $user], function ($m) use ($user) {
+            $m->to($user->email, $user->name)->subject('Bienvenido!');
+        });
+
+        return redirect($this->redirectPath());
+    }
 }
