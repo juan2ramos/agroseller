@@ -4,6 +4,7 @@ namespace Agrosellers\Http\Controllers\Auth;
 
 use Agrosellers\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Validator;
 use Agrosellers\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -106,6 +107,7 @@ class AuthController extends Controller
         $this->create($request->all());
 
         $user = $request->user();
+
         Mail::send('emails.welcome', ['user' => $user], function ($m) use ($user) {
             $m->to($user->email, $user->name)->subject('Bienvenido!');
         });
