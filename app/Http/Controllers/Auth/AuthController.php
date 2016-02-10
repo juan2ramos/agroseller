@@ -104,9 +104,8 @@ class AuthController extends Controller
             );
         }
 
-        $this->create($request->all());
+        $user = $this->create($request->all());
 
-        $user = $request->user();
 
         Mail::send('emails.welcome', ['user' => $user], function ($m) use ($user) {
             $m->to($user->email, $user->name)->subject('Bienvenido!');
