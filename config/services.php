@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => 'mailgun.agrosellers.com',
+        'secret' => 'key-9b744616eaaefb49db74ee8f4df64324',
     ],
 
     'mandrill' => [
