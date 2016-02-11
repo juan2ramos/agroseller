@@ -53,9 +53,12 @@ class AuthController extends Controller
                 'password' => 'required|confirmed|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/|
                 confirmed',
                 'role_id' => 'required|numeric|between:3,4',
+                'mobile_phone' => 'required|numeric',
             ],
             [
                 'between' => 'Debes escoger que tipo de cliente eres',
+                'password.regex' => 'Tu contraseña es muy débil, revisa las recomendaciones ',
+                'mobile_phone.required' => 'EL campo teléfono es obligatorio ',
             ]);
     }
 
