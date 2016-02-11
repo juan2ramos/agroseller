@@ -14,7 +14,7 @@
 </head>
 <body class="Login-Body">
 
-
+<script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
 @yield('content')
 
 @yield('scripts')

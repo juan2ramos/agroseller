@@ -50,7 +50,8 @@ class AuthController extends Controller
             [
                 'name' => 'required|max:255',
                 'email' => 'required|email|max:255|unique:users',
-                'password' => 'required|confirmed|min:6',
+                'password' => 'required|confirmed|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/|
+                confirmed',
                 'role_id' => 'required|numeric|between:3,4',
             ],
             [

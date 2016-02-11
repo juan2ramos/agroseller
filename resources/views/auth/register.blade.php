@@ -29,8 +29,10 @@
                 <option value="3">Proveedor - Comerciante</option>
                 <option value="4">Cliente - productor</option>
             </select>
-            <input type="number" placeholder="Número de teléfono" name="mobile_phone" value="{{ old('mobile_phone') }}">
-            <input type="password" class="form-control" placeholder="Contraseña" name="password">
+            <input type="number" placeholder="Número de teléfono" name="mobile_phone"
+                   value="{{ old('mobile_phone') }}">
+            <input type="password" class="form-control" id="password"  placeholder="Contraseña" name="password">
+            <span id="passstrength"></span>
             <input type="password" class="form-control" placeholder="Confirmar Contraseña "
                    name="password_confirmation">
             <button type="submit" class="Login-submit"> Registrarse</button>
@@ -38,4 +40,7 @@
 
         </form>
     </main>
+@endsection
+@section('scripts')
+    <script src="{{asset('js/password.js')}}"></script>
 @endsection
