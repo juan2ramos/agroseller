@@ -1,0 +1,115 @@
+@import "../lib/settings"
+@import "../lib/general"
+@import "../lib/grid"
+
+$greenDark: #253A1B
+$greenLight: #C5D257
+$widthContent: 71.25rem
+
+main
+  max-width: $widthContent
+  margin: auto
+
+.Button
+  line-height: 2.75rem
+  background: #C5D257
+  font-size: .85rem
+  font-weight: 500
+  width: 8rem
+  display: inline-block
+  text-align: center
+  color: #253A1B
+  border-radius: .125rem
+
+
+body
+  background: white
+  color: $greenDark
+.BarInfo
+  font-size: .75rem
+  line-height: 2.5em
+  background: #F5F5F5
+  font-weight: 500
+  & a
+    color: $greenDark
+    display: inline-block
+    margin-left: 1.25rem
+  & svg
+    position: relative
+    top: .125rem
+.BarInfo-content
+  max-width: $widthContent
+  margin: auto
+  text-align: right
+.Header
+  background: $greenDark
+
+.Header-container
+  margin: auto
+  max-width: $widthContent
+  height: 7.5rem
+
+.Header-search
+  & div
+    position: relative
+    max-width: 25.25rem
+    margin: auto
+  & input
+    width: 100%
+    max-width: 25.25rem
+    max-height: 100%
+    height: 2.75rem
+    padding: 0 1rem
+  & button
+    position: absolute
+    top: .5rem
+    right: 1rem
+
+.Header-linksBack
+  text-align: right
+
+.Header-login
+  font-size: .8125rem
+  font-weight: 400
+  line-height: 11em
+  border-bottom: .0625rem solid
+  color: white
+  margin-right: 1rem
+
+.BarNav
+  background: $greenLight
+
+.BarNav-content
+  margin: auto
+  max-width: $widthContent
+  height: 2.5rem
+  & button
+    height: .875rem
+    & span
+      background: #253A1B
+      display: block
+      width: 2.125rem
+      height: .25rem
+      margin-bottom: .25rem
+.BarNav-a
+  text-transform: uppercase
+  font-size: .9rem
+  font-weight: 500
+  & a
+    color: $greenDark
+    border-bottom: .0625rem solid $greenDark
+
+.Cart
+  text-align: right
+  padding-right: .3125rem
+.Cart-content
+  position: relative
+  & span
+    position: absolute
+    right: 0
+    font-size: .9rem
+    font-weight: 500
+    top: .125rem
+
+.BannerHome
+  margin: 2.5rem auto
