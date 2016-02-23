@@ -165,6 +165,15 @@
 <main>
     @yield('content')
 </main>
+@if(isset($relate))
+<section class="Relate">
+    <article class="row">
+        <figure><img src="{{url('images/inquifersa.jpg')}}" alt=""><figcaption>Inquifersa $50.000</figcaption></figure>
+        <figure><img src="{{url('images/potassio.jpg')}}" alt=""><figcaption>Inquifersa $25.000</figcaption></figure>
+        <figure><img src="{{url('images/glyfos.jpg')}}" alt=""><figcaption>Inquifersa $90.000</figcaption></figure>
+    </article>
+</section>
+@endif
 <footer class="Footer">
     <div class="Footer-content">
         <figure class="Footer-logo">
