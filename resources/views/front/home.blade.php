@@ -2,188 +2,109 @@
 
 @section('content')
 
-
-
-    {{--<section class="CategoriesHome">
-
-        @foreach($categories as $category)
-            <article style="background-image: url('{{ url('uploads/categories/' . $category->url_image ) }}');">
-                <a href="productos" class="CategoriesHome-article">
-                    <span>{{$category->name}}</span>
-                </a>
-            </article>
-        @endforeach
-    </section>--}}
-    <div class="Home-top" >
-        <nav class="NavCategories">
-            <h3>Categorías</h3>
-            <ul class="NavCategories-ul">
-                @foreach ($categories as $category)
-                    <li>
-                        {{strtolower($category->name)}}
-                        <ul>
-                            @foreach($category->subcategories as $subcategory)
-                                <li>{{strtolower($subcategory->name)}} </li>
-                            @endforeach
-                        </ul>
-                    </li>
-
-                @endforeach
-            </ul>
-        </nav>
-        <div class="OfferTop">
-
+    <section class="BannerTop">
+        <img src="{{url('images/image-banner.jpg')}}" alt="">
+        <div class="BannerTop-info row middle">
+            <div class="col-6 ">
+                <h2>TRACTOR VALTRA A850</h2>
+                <h3>ENTREGA INMENDIATA</h3>
+                <p class="BannerTop-infoPrice"><span>$80.000.000</span> Ahora $50.000.000</p>
+            </div>
+            <div class="col-6 AlignRight"><a class="Button" href="">VER OFERTA</a></div>
         </div>
-    </div>
-    <div class="Products">
-        <article>
-            <a href="{{url('productos/topmix')}}">
-                <figure>
-                    <img src="{{ url('images/products/1.jpg') }}" alt="">
+    </section>
+    <section class="Products">
+        <h2 class="Title">Lo Más Destacado</h2>
+        <div class="Product-content row">
+            <article class="col-3">
+                <figure class="Product-Image">
+                    <a href="{{route('productDetail')}}"> <img src="{{url('images/inquifersa.jpg')}}" alt=""></a>
                 </figure>
-                <figcaption>
-                    TOPMIX
-                    <span>Fertilizante Organíco</span>
-                </figcaption>
-            </a>
-        </article>
+                <div class="Product-info">
+                    <a href="{{route('productDetail')}}"><h4>Inquifersa</h4></a>
+                    <h5>Fertilizante </h5>
+                    <p>$50.000 <span>$80.000</span></p>
 
-        <article>
-            <a href="{{url('productos/topmix')}}">
-                <figure>
-                    <img src="{{ url('images/products/3.jpg') }}" alt="">
+                    <a href="" class="Button">COMPRAR</a>
+                </div>
+            </article>
+            <article class="col-3">
+                <figure class="Product-Image">
+                    <img src="{{url('images/potassio.jpg')}}" alt="">
                 </figure>
-                <figcaption>
-                    CREATBIO
-                    <span>Insecticida</span>
-                </figcaption>
-            </a>
-        </article>
-        <article>
-            <a href="{{url('productos/topmix')}}">
-                <figure>
-                    <img src="{{ url('images/products/4.jpg') }}" alt="">
+                <div class="Product-info">
+                    <h4>Nitro Potassio</h4>
+                    <h5>Fertilizante </h5>
+                    <p>$50.000 <span>$80.000</span></p>
+                    <a href="" class="Button">COMPRAR</a>
+                </div>
+            </article>
+            <article class="col-3">
+                <figure class="Product-Image">
+                    <img src="{{url('images/glyfos.jpg')}}" alt="">
                 </figure>
-
-                <figcaption>
-                    NEUDORFF
-                    <span>Fertilizante universal</span>
-                </figcaption>
-            </a>
-        </article>
-        <article>
-            <a href="{{url('productos/topmix')}}">
-                <figure>
-                    <img src="{{ url('images/products/2.jpg') }}" alt="">
+                <div class="Product-info">
+                    <h4>Glyfos</h4>
+                    <h5>Fertilizante </h5>
+                    <p>$50.000 <span>$80.000</span></p>
+                    <a href="" class="Button">COMPRAR</a>
+                </div>
+            </article>
+            <article class="col-3">
+                <figure class="Product-Image">
+                    <img src="{{url('images/cosmo.jpg')}}" alt="">
                 </figure>
-                <figcaption>
-                    NEUDORFF
-                    <span>Fertilizante universal</span>
-                </figcaption>
-            </a>
-        </article>
-        <article>
-            <a href="{{url('productos/topmix')}}">
-                <figure>
-                    <img src="{{ url('images/products/4.jpg') }}" alt="">
+                <div class="Product-info">
+                    <h4>Cosmos O-C</h4>
+                    <h5>Fertilizante </h5>
+                    <p>$50.000 <span>$80.000</span></p>
+                    <a href="" class="Button">COMPRAR</a>
+                </div>
+            </article>
+            <article class="col-3">
+                <figure class="Product-Image">
+                    <img src="{{url('images/inquifersa.jpg')}}" alt="">
                 </figure>
-                <figcaption>
-                    NEUDORFF
-                    <span>Fertilizante universal</span>
-                </figcaption>
-            </a>
-        </article>
-        <article>
-
-            <a href="{{url('productos/topmix')}}">
-                <figure>
-                    <img src="{{ url('images/products/2.jpg') }}" alt="">
+                <div class="Product-info">
+                    <h4>Inquifersa</h4>
+                    <h5>Fertilizante </h5>
+                    <p>$50.000 <span>$80.000</span></p>
+                    <a href="" class="Button">COMPRAR</a>
+                </div>
+            </article>
+            <article class="col-3">
+                <figure class="Product-Image">
+                    <img src="{{url('images/potassio.jpg')}}" alt="">
                 </figure>
-                <figcaption>
-                    NEUDORFF
-                    <span>Fertilizante universal</span>
-                </figcaption>
-            </a>
-        </article>
-        <article>
-            <a href="{{url('productos/topmix')}}">
-                <figure>
-                    <img src="{{ url('images/products/1.jpg') }}" alt="">
+                <div class="Product-info">
+                    <h4>Nitro Potassio</h4>
+                    <h5>Fertilizante </h5>
+                    <p>$50.000 <span>$80.000</span></p>
+                    <a href="" class="Button">COMPRAR</a>
+                </div>
+            </article>
+            <article class="col-3">
+                <figure class="Product-Image">
+                    <img src="{{url('images/glyfos.jpg')}}" alt="">
                 </figure>
-                <figcaption>
-                    TOPMIX
-                    <span>Fertilizante Organíco</span>
-                </figcaption>
-            </a>
-        </article>
-
-        <article>
-            <a href="{{url('productos/topmix')}}">
-                <figure>
-                    <img src="{{ url('images/products/3.jpg') }}" alt="">
+                <div class="Product-info">
+                    <h4>Glyfos</h4>
+                    <h5>Fertilizante </h5>
+                    <p>$50.000 <span>$80.000</span></p>
+                    <a href="" class="Button">COMPRAR</a>
+                </div>
+            </article>
+            <article class="col-3">
+                <figure class="Product-Image">
+                    <img src="{{url('images/cosmo.jpg')}}" alt="">
                 </figure>
-                <figcaption>
-                    CREATBIO
-                    <span>Insecticida</span>
-                </figcaption>
-            </a>
-        </article>
-        <article>
-            <a href="{{url('productos/topmix')}}">
-                <figure>
-                    <img src="{{ url('images/products/4.jpg') }}" alt="">
-                </figure>
-
-                <figcaption>
-                    NEUDORFF
-                    <span>Fertilizante universal</span>
-                </figcaption>
-            </a>
-        </article>
-        <article>
-            <a href="{{url('productos/topmix')}}">
-                <figure>
-                    <img src="{{ url('images/products/2.jpg') }}" alt="">
-                </figure>
-                <figcaption>
-                    NEUDORFF
-                    <span>Fertilizante universal</span>
-                </figcaption>
-            </a>
-        </article>
-        <article>
-            <a href="{{url('productos/topmix')}}">
-                <figure>
-                    <img src="{{ url('images/products/4.jpg') }}" alt="">
-                </figure>
-                <figcaption>
-                    NEUDORFF
-                    <span>Fertilizante universal</span>
-                </figcaption>
-            </a>
-        </article>
-        <article>
-            <a href="{{url('productos/topmix')}}">
-                <figure>
-                    <img src="{{ url('images/products/2.jpg') }}" alt="">
-                </figure>
-                <figcaption>
-                    NEUDORFF
-                    <span>Fertilizante universal</span>
-                </figcaption>
-            </a>
-        </article>
-    </div>
-    <div class="title">ASOCIADOS</div>
-    <section class="associatedHome">
-        <div id="owl-demo" class="owl-carousel">
-            <div class="item"><img src="{{ url('images/a1.jpg') }}" alt="Owl Image"></div>
-            <div class="item"><img src="{{ url('images/s2.jpg') }}" alt="Owl Image"></div>
-            <div class="item"><img src="{{ url('images/s3.jpg') }}" alt="Owl Image"></div>
-            <div class="item"><img src="{{ url('images/s2.jpg') }}" alt="Owl Image"></div>
-            <div class="item"><img src="{{ url('images/a1.jpg') }}" alt="Owl Image"></div>
-            <div class="item"><img src="{{ url('images/s2.jpg') }}" alt="Owl Image"></div>
-            <div class="item"><img src="{{ url('images/s3.jpg') }}" alt="Owl Image"></div>
+                <div class="Product-info">
+                    <h4>Cosmos O-C</h4>
+                    <h5>Fertilizante </h5>
+                    <p>$50.000 <span>$80.000</span></p>
+                    <a href="" class="Button">COMPRAR</a>
+                </div>
+            </article>
         </div>
     </section>
     <script>

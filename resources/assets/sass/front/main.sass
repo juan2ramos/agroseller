@@ -20,7 +20,11 @@ main
   text-align: center
   color: #253A1B
   border-radius: .125rem
-
+.AlignRight
+  text-align: right
+.Title
+  padding: 1rem 0 2.5rem
+  font-weight: 500
 
 body
   background: white
@@ -40,7 +44,6 @@ body
 .BarInfo-content
   max-width: $widthContent
   margin: auto
-  text-align: right
 .Header
   background: $greenDark
 
@@ -64,9 +67,6 @@ body
     position: absolute
     top: .5rem
     right: 1rem
-
-.Header-linksBack
-  text-align: right
 
 .Header-login
   font-size: .8125rem
@@ -100,7 +100,6 @@ body
     border-bottom: .0625rem solid $greenDark
 
 .Cart
-  text-align: right
   padding-right: .3125rem
 .Cart-content
   position: relative
@@ -111,5 +110,140 @@ body
     font-weight: 500
     top: .125rem
 
-.BannerHome
+.BannerTop
   margin: 2.5rem auto
+  position: relative
+
+.BannerTop-info
+  position: absolute
+  bottom: .25rem
+  width: 100%
+  background: rgba(0, 0, 0, 0.7)
+  height: 7.5rem
+  padding: 0 3.25rem
+
+  & h2
+    color: white
+    font-size: 1.25rem
+    font-weight: 300
+  & h3
+    color: #CCCCCC
+    font-size: .875rem
+    font-weight: 300
+    margin: .25rem 0
+  & p
+    color: #C5D257
+    margin: 0
+    font-size: .875rem
+    & span
+      color: #CCCCCC
+      text-decoration: line-through
+
+.Products article
+  margin-bottom: 2.5rem
+
+.Product-Image
+  max-width: 15.5rem
+  margin: auto
+
+.Product-info
+  max-width: 15.5rem
+  margin: auto
+  background: #EEEEEE
+  padding: 1.25rem 1rem
+  & a h4
+    font-size: 1.125rem
+    font-weight: 500
+    line-height: 1.5em
+    color: $greenDark
+  & h5
+    color: #7E7E7E
+    font-size: .875rem
+    font-weight: 400
+  & p
+    font-size: .875rem
+    font-weight: 400
+  & span
+    color: #CCCCCC
+    text-decoration: line-through
+  & .Button
+    margin: 2.25rem auto 0
+    display: block
+.Platform
+  margin: 4rem 3rem
+  text-align: center
+  & p
+    font-size: 1.5rem
+    font-weight: 400
+    max-width: 31rem
+    margin: 1rem auto
+  & .Button
+    width: 17.75rem
+    border-bottom: .375rem solid #A8B250
+.Pricing
+  text-align: center
+  margin: 2.5rem 3rem
+  color: #454545
+  & article
+    padding: 2rem
+    background: #F5F5F5
+    border-top: .5rem solid #4A90E2
+    &:nth-last-of-type(2)
+      border-top-color: $greenLight
+      border-bottom: 2px solid #D4D4D4
+      border-left: 1px solid #D4D4D4
+      border-right: 1px solid #D4D4D4
+      & .Pricing-price
+        font-size: 3.5rem
+      & li
+        font-size: 1rem
+      & .Button
+        margin-top: 4rem
+        width: 16rem
+      & ul
+        padding: 0 1rem
+  & h2, & h3
+    font-family: 'Alegreya', serif
+    font-style: italic
+    font-weight: 400
+    font-size: 2rem
+    line-height: 1.2em
+  & h3
+    color: #7E7E7E
+    font-size: 1.125rem
+    font-weight: 400
+  & .Button
+    border-bottom: .375rem solid #A8B250
+    width: 11rem
+    margin-top: 3rem
+
+.Pricing-price
+  font-size: 2.25rem
+  color: #454545
+  font-weight: 500
+  margin: 2.5rem 0
+  & small
+    font-size: 1.25rem
+  & span
+    display: block
+    font-size: 1rem
+    font-weight: 400
+  + ul
+    text-align: left
+    padding: 0 2.5rem
+    & li
+      margin-bottom: .625rem
+      font-weight: 300
+      font-size: .875rem
+
+.ProductDetail
+  margin: 3.5rem 0
+  & figure
+    background: #FFFFFF
+    box-shadow: 0 0 1rem 0 rgba(228,228,228,0.50)
+    max-width: 31rem
+  & h1
+    font-weight: 300
+    font-size: 1.75rem
+    border-bottom: .0625rem solid #D9D9D9
+    padding: 0 0 1rem

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/front/style.css') }}">
     <link href="{{ asset('css/owl.carousel.css') }}" rel="stylesheet">
     <link href="{{ asset('css/owl.transitions.css') }}" rel="stylesheet">
+    @yield('styles')
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
 
@@ -16,7 +17,7 @@
 </head>
 <body>
 <div class="BarInfo">
-    <div class="BarInfo-content">
+    <div class="BarInfo-content AlignRight">
         <a href="tel:3168704270">
             <svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -64,7 +65,7 @@
 <header class="Header">
     <div class="Header-container row middle">
         <figure class="Header-logo col-3">
-            <img src="{{url('images/agroseller-logo.png')}}" alt="Logo Agrosellers">
+            <a href="{{route('home')}}"><img src="{{url('images/agroseller-logo.png')}}" alt="Logo Agrosellers"></a>
         </figure>
 
         <form action="" class="Header-search col-6">
@@ -99,7 +100,7 @@
             </div>
         </form>
 
-        <div class="Header-linksBack col-3">
+        <div class="Header-linksBack AlignRight col-3">
             <a class="Header-login" href="">INICIO DE SESIÓN</a>
             <a class="Button" href="">REGISTRATE</a>
         </div>
@@ -109,9 +110,9 @@
             <div class="col-4">
                 <button><span></span><span></span><span></span></button>
             </div>
-            <div class="BarNav-a col-4  center"><a href="#" class="">Ver Planes</a></div>
+            <div class="BarNav-a col-4  center"><a href="{{route('pricing')}}" >Ver Planes</a></div>
 
-            <div class="Cart col-4">
+            <div class="Cart AlignRight col-4">
                 <div class="Cart-content">
                     <svg width="117px" height="29px" viewBox="0 0 117 29" version="1.1"
                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -161,39 +162,9 @@
         </div>
     </div>
 </header>
-
 <main>
-    <section class="BannerTop">
-        <img src="{{url('images/image-banner.jpg')}}" alt="">
-        <div class="BannerTop-info">
-            <div class="col-6">
-                <h2>TRACTOR VALTRA A850</h2>
-
-            </div>
-            <div class="col-6"></div>
-        </div>
-    </section>
+    @yield('content')
 </main>
-
-<nav class="Nav">
-    @if(Auth::user())
-        <a href="{{ route('admin') }}" class="Header-login"> {{Auth::user()->name}} {{Auth::user()->last_name}}</a>
-    @else
-        <a href="{{ route('login') }}" class="Header-login">Inicio sesión</a>
-    @endif
-    <div class="Nav-user"></div>
-    <ul>
-        <li><a href="/">Inicio </a></li>
-        <li><a href="#">Directorio</a></li>
-        {{-- <li><a href="{{ route('admin') }}">Clientes</a></li>--}}
-        <li><a href="#">Contáctenos</a></li>
-    </ul>
-
-
-</nav>
-
-
-@yield('content')
 <footer class="Footer">
     <div class="Footer-content">
         <figure class="Footer-logo">

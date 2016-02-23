@@ -13,4 +13,12 @@ class HomeController extends Controller
 
         return view('front.home',compact('categories'));
     }
+    function pricing(){
+
+        return view('front.pricing');
+    }
+    function productDetail(){
+
+        return view('front.productDetail');
+    }
 }
