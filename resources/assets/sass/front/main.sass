@@ -6,6 +6,7 @@ $greenDark: #253A1B
 $greenLight: #C5D257
 $widthContent: 71.25rem
 
+
 main
   max-width: $widthContent
   margin: auto
@@ -109,6 +110,8 @@ body
     font-size: .9rem
     font-weight: 500
     top: .125rem
+.Cart-button
+  cursor: pointer
 
 .BannerTop
   margin: 2.5rem auto
@@ -357,3 +360,150 @@ body
     text-align: center
     font-weight: 400
     font-size: 1.125rem
+
+.LightBoxContent
+  position: fixed
+  z-index: 2
+  background: rgba(0, 0, 0, 0.5)
+  top: 0
+  left: 0
+  height: 100vh
+  width: 100vw
+  visibility: hidden
+  opacity: 0
+  @include transition(all .2s linear)
+
+.LightBoxContent-close
+  position: absolute
+  top: 0
+  left: 0
+  height: 100vh
+  width: 100vw
+  cursor: e-resize
+.NavCategories
+  top: 11.875rem
+  left: -20rem
+  background: white
+  position: absolute
+  @include transition(all .5s)
+  & hr
+    border: none
+    height: .0625rem
+    background: #D7D7D7
+    margin: 0 auto
+    width: 90%
+  & a
+    font-weight: 300
+    color: #818181
+  & ul
+    max-width: 17.75rem
+    padding: 1.5rem 0 1rem
+    color: #818181
+    & ul
+      position: absolute
+      left: 100%
+      background: white
+      box-shadow: -.0625rem 0 .375rem 0 rgba(0,0,0,0.24)
+      top: 0
+      display: none
+    &:nth-last-of-type(1)
+      padding-top: 1rem
+    & li
+      line-height: 2.375rem
+      width: 17.75rem
+      position: relative
+      cursor: pointer
+      font-weight: 300
+      & div
+        padding: 0 2.25rem
+      &:hover > div
+        background: #F5F5F5
+        color: $greenLight
+        & a
+          color: $greenLight
+      &:hover ul
+        display: block
+      &:hover > a
+        color: $greenLight
+      &:hover svg g
+        fill: $greenLight
+    & svg
+      position: absolute
+      right: 2.5rem
+      top: .9375rem
+
+.Show .NavCategories
+  left: 0
+.NavCategories-network
+  max-width: 10rem
+  margin: auto
+  padding-bottom: 1.5rem
+
+.Show
+  visibility: visible
+  opacity: 1
+
+.CartDetail
+  background: white
+  max-width: 18rem
+  width: 18rem
+  position: absolute
+  right: -18rem
+  top: 11.875rem
+  box-shadow: -.0625rem 0 .5rem 0 rgba(0,0,0,0.50)
+  height: calc(100vh - 11.875rem)
+  @include transition(all .5s)
+  & h2
+    font-size: 1.25rem
+    text-align: center
+    line-height: 4rem
+    background: $greenLight
+    font-weight: 400
+  & ul
+    border-bottom: .0625rem solid #D9D9D9
+  & figure
+    padding: 1rem
+  & h3
+    font-size: 1.115rem
+    font-weight: 400
+  & h4
+    color: #7E7E7E
+    font-size: .875rem
+    font-weight: 300
+  & small
+    font-size: 1rem
+    font-weight: 400
+  & span
+    font-size: 1rem
+    font-weight: 400
+    padding: 0 .25rem
+  & val
+    font-weight: 400
+    position: absolute
+    right: 1rem
+    bottom: 0
+
+.Show .CartDetail
+  right: 0
+
+.CartDetail-content
+  position: relative
+.CartDetail-hGroup
+  margin-bottom: 1.25rem
+.CartDetail-close
+  position: absolute
+  right: 1rem
+  top: .8rem
+
+.CartDetail-footer
+  position: absolute
+  bottom: 0
+  background: #F5F5F5
+  padding: 1rem 1rem 1.25rem 1rem
+  width: 100%
+  & span
+    font-size: .875rem
+
+  & button
+    width: 100%
+    margin-top: 1.25rem
