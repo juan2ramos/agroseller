@@ -19,6 +19,10 @@ Route::get('productos', [
     'as' => 'product'
 ]);
 
+Route::get('finalizar-compra', [
+    'uses' => 'ProductController@checkout',
+    'as' => 'checkout'
+]);
 /*Route::get('productos/{slug}', [
     'uses' => 'ProductController@productDetailFront',
     'as' => 'productDetail'

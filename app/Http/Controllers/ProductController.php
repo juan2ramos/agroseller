@@ -56,6 +56,10 @@ class ProductController extends Controller
         return view('front.products', compact('products'));
 
     }
+    function checkout(Request $request)
+    {
+        return view('front.checkout');
+    }
     function productDetailFront(Request $request, $slug){
 
         $product = Product::where('slug', '=', $slug)->first();

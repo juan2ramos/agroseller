@@ -454,7 +454,7 @@
         <section class="CartDetail-footer row">
             <span class="col-6">Subtotal</span>
             <span class="col-6 AlignRight">$290.000</span>
-            <button class="Button ">REALIZAR COMPRA</button>
+            <a class="Button" href="{{route('checkout')}}">REALIZAR COMPRA</a>
         </section>
     </section>
 
