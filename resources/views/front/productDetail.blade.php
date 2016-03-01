@@ -2,10 +2,13 @@
 
 @section('content')
     <section class="ProductDetail row">
-        <article class="ProductDetail-slider col-6">
-            <figure>
-                <img src="{{url('images/inquifersa.jpg')}}" alt="">
-            </figure>
+        <article class="ProductDetail-slider col-6 ">
+            <div class="owl-carousel" id="sync1">
+                <figure class="item"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
+                <figure class="item"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
+                <figure class="item"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
+                <figure class="item"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
+            </div>
         </article>
         <article class="col-6">
             <h1>INQUIFERSA</h1>
@@ -152,11 +155,11 @@
             </nav>
         </article>
         <article class="col-6 ProductDetail-thumbnail">
-            <div class="row between">
-                <figure class="col-3"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
-                <figure class="col-3"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
-                <figure class="col-3"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
-                <figure class="col-3"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
+            <div class="row between owl-carousel" id="sync2">
+                <figure class="item" class="col-3"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
+                <figure class="item" class="col-3"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
+                <figure class="item" class="col-3"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
+                <figure class="item" class="col-3"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
             </div>
         </article>
         <article class="col-6 ProductDetail-data row middle">
@@ -229,4 +232,9 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap"
             async defer></script>
     <script src="{{asset('js/front/map.js')}}"></script>
+    <script src="{{asset('js/front/slide.js')}}"></script>
+    <script src="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.js"></script>
+@endsection
+@section('styles')
+    <link href="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.css" rel="stylesheet">
 @endsection

@@ -149,6 +149,11 @@ body
   max-width: 15.5rem
   margin: auto
 
+.ProductDetail-slider .owl-carousel
+  background: #FFFFFF
+  box-shadow: 0 0 1rem 0 rgba(228, 228, 228, 0.5)
+  max-width: 31rem
+
 .Product-info
   max-width: 15.5rem
   margin: auto
@@ -241,10 +246,7 @@ body
 
 .ProductDetail
   margin: 3.5rem 0 1.5rem
-  & figure
-    background: #FFFFFF
-    box-shadow: 0 0 1rem 0 rgba(228,228,228,0.50)
-    max-width: 31rem
+
   & h1
     font-weight: 300
     font-size: 1.75rem
@@ -296,8 +298,10 @@ body
   margin: 2.5rem 0
   & div
     max-width: 31rem
+    padding: .0625rem 0
+    top: -.0625rem
   & figure
-    max-width: 7rem
+    max-width: 6.625rem
     box-shadow:  0 0 .0625rem 0 rgba(0,0,0,0.50)
 
 .ProductDetail-data
@@ -581,3 +585,27 @@ body
   font-size: .875rem
   top: .75rem
   color: gray
+
+.owl-buttons
+  position: absolute
+  top: 50%
+  width: 100%
+  & i
+    font-size: 1.25rem
+    font-style: inherit
+    padding: 2px 8px
+    background: rgba(208, 208, 208, 0.23)
+    border-radius: 3px
+    color: #253A1B
+    font-weight: 300
+.ProductDetail-thumbnail .owl-wrapper
+  left: .625rem !important
+.owl-next
+  position: absolute
+  right: .5rem
+  top: 0
+.owl-prev
+  left: .5rem
+  position: absolute
+.owl-item
+  cursor: pointer
