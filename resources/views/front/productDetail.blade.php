@@ -227,6 +227,15 @@
             </div>
         </article>
     </section>
+    <section class="Comments">
+        <h2>2 Comentarios y preguntas</h2>
+        <form action="">
+            <textarea name="" id="" cols="30" rows="10">
+
+            </textarea>
+        </form>
+
+    </section>
 @endsection
 @section('scripts')
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap"
