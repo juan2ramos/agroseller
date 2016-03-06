@@ -663,7 +663,7 @@ body {
 }
 
 .ProductDetail {
-  margin: 3.5rem 0 1.5rem;
+  margin: 3.5rem 0 0;
 }
 
 .ProductDetail h1 {
@@ -1172,4 +1172,86 @@ body {
 
 .owl-item {
   cursor: pointer;
+}
+
+.Comments h2 {
+  font-weight: 400;
+  margin: 4rem 0 2rem;
+}
+
+.Comments textarea {
+  width: calc(100% - 5rem);
+  max-height: 4rem;
+  border: .125rem solid #C1C1C1;
+  margin-left: 1rem;
+  padding: .5rem;
+  font-size: .875rem;
+  font-weight: 300;
+  color: #454545;
+  border-radius: .25rem;
+}
+
+.Comments figure {
+  max-width: 4rem;
+}
+
+.Comments img {
+  border-radius: .25rem;
+}
+
+.Comments form {
+  margin-bottom: 2rem;
+}
+
+.Comments-user {
+  margin-left: 1rem;
+  max-width: calc(100% - 5rem);
+}
+
+.Comments-user h5 {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.Comments-user time {
+  color: #454545;
+  font-weight: 400;
+  font-size: .875rem;
+}
+
+.Comments-user p {
+  font-size: .875rem;
+  font-weight: 400;
+  text-align: justify;
+  color: #454545;
+  line-height: 1.375em;
+}
+
+.Provider-detail {
+  padding: 1rem 2rem;
+  background: whitesmoke;
+  margin-bottom: 2.5rem;
+}
+
+.Provider-detail figure {
+  max-width: 3.5rem;
+}
+
+.Provider-detail img {
+  border-radius: 50%;
+  display: block;
+}
+
+.Provider-detail a {
+  text-align: right;
+  font-weight: 400;
+  color: #C5D257;
+}
+
+.Provider-detail h4 {
+  margin: 0 1rem;
+}
+
+.Provider-star span:nth-child(5) g {
+  fill: #C1C1C1;
 }

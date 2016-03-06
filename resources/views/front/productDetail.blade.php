@@ -169,6 +169,18 @@
                 <b>Tags:</b> Fertilizante</p>
         </article>
     </section>
+    <section class="Provider-detail row middle">
+        <div class="col-8 row middle">
+            <figure><img src="{{url('images/bayer_logo.jpg')}}" alt=""></figure>
+            <h4>Bayer Colombia</h4>
+            <div class="Provider-star col-2">
+                @for($i = 0; $i < 5; $i++)
+                    <span>@include('front.stars')</span>
+                @endfor
+            </div>
+        </div>
+        <a href="" class="col-4">Mas Información</a>
+    </section>
     <section id="Map" class="col-12"></section>
     <section class="ProductInfo">
         <h2>Descripción</h2>
@@ -227,15 +239,53 @@
             </div>
         </article>
     </section>
-    <section class="Comments">
-        <h2>2 Comentarios y preguntas</h2>
-        <form action="">
-            <textarea name="" id="" cols="30" rows="10">
-
-            </textarea>
+    <aside class="Comments">
+        <h2>Comentarios y preguntas</h2>
+        <form action="" class="row">
+            <figure>
+                <img src="{{url('images/mujer-comentarios.jpg')}}" alt="">
+            </figure>
+            <textarea name="comment"></textarea>
         </form>
+        <ul>
+            <li class="row">
+                <figure>
+                    <img src="{{url('images/mujer-comentarios.jpg')}}" alt="">
+                </figure>
+                <div class="Comments-user">
+                    <h5>Anita Perez
+                        <time> • hace 25 días</time>
+                    </h5>
+                    <p>
+                        Hola, Me gustaría saber si relaizan envíos a toda Colombia y que precios manejan. Muchas gracias
+                        quedo muy pendiente, es una compra urgente.Hola, Me gustaría saber si relaizan envíos a toda
+                        Colombia y que precios manejan. Muchas gracias
+                        quedo muy pendiente, es una compra urgente.Hola, Me gustaría saber si relaizan envíos a toda
+                        Colombia y que precios manejan. Muchas gracias
+                        quedo muy pendiente, es una compra urgente.Hola, Me gustaría saber si relaizan envíos a toda
+                        Colombia y que precios manejan. Muchas gracias
+                        quedo muy pendiente, es una compra urgente.Hola, Me gustaría saber si relaizan envíos a toda
+                        Colombia y que precios manejan. Muchas gracias
+                        quedo muy pendiente, es una compra urgente.
+                    </p>
+                </div>
+            </li>
 
-    </section>
+            <li class="row">
+                <figure>
+                    <img src="{{url('images/mujer-comentarios.jpg')}}" alt="">
+                </figure>
+                <div class="Comments-user">
+                    <h5>Anita Perez
+                        <time> • hace 25 días</time>
+                    </h5>
+                    <p>
+                        Un comentario más.
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </aside>
 @endsection
 @section('scripts')
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap"
