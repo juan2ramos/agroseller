@@ -101,8 +101,8 @@
         </form>
 
         <div class="Header-linksBack AlignRight col-3">
-            <a class="Header-login" href="">INICIO DE SESIÓN</a>
-            <a class="Button" href="">REGISTRATE</a>
+            <a class="Header-login" href="{{route('login')}}">INICIO DE SESIÓN</a>
+            <a class="Button" href="{{route('register')}}">REGISTRATE</a>
         </div>
     </div>
     <div class="BarNav">

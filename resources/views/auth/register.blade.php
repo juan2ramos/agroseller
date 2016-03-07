@@ -14,10 +14,10 @@
             <?php $errorArray = $errors->getMessages(); print_r($errorArray) ?>
         @endif
 
-        <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
+        <form class="" role="form" method="POST" action="{{ route('register') }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-            <h2>¡Únete a Agroseller!</h2>
+            <h2>¡Haz parte de Agroseller!</h2>
             <hr class="Logo-hr">
 
             <input type="text" class="form-control" placeholder="Nombre" name="name" value="{{ old('name') }}">
@@ -31,10 +31,21 @@
             </select>
             <input type="number" placeholder="Número de teléfono" name="mobile_phone"
                    value="{{ old('mobile_phone') }}">
-            <input type="password" class="form-control" id="password"  placeholder="Contraseña" name="password">
-            <span id="passstrength"></span>
+            <label class="Login-label" >
+                <input type="password" class="form-control" id="password" placeholder="Contraseña" name="password">
+                <span id="passStrength" class="passStrength"></span>
+            </label>
             <input type="password" class="form-control" placeholder="Confirmar Contraseña "
                    name="password_confirmation">
+            <label for="policy" class="Label-checkout">
+                <input type="checkbox" name="policy" id="policy">
+                Acepto las politicas de uso del sitio Agrosellers <a href="">VER</a>
+            </label>
+            <label for="terms" class="Label-checkout">
+                <input type="checkbox" name="terms" id="terms">
+                Acepto las politicas de privacidad. <a href="">VER</a>
+            </label>
+
             <button type="submit" class="Login-submit"> Registrarse</button>
 
 
