@@ -68,6 +68,10 @@ main.container {
   width: calc(100vw - 12.5rem);
 }
 
+*:focus {
+  outline: none;
+}
+
 .pagination {
   text-align: center;
   margin: 2rem 0 0;

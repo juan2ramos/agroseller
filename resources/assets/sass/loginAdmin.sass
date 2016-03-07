@@ -7,7 +7,7 @@
   & h2
     text-align: center
     font-weight: 300
-    font-size: 3rem
+    font-size: 2.5rem
   & select
     padding: 0 !important
   & input, & select
@@ -29,7 +29,56 @@
       box-shadow: 0 0 .25rem white
   @include placeholder
     color: #C1C1C1
+  & input[type='checkbox']
+    max-width: 1.25rem
+    display: inline-block
+    vertical-align: middle
+    height:  1.25rem
+    margin: 0
+    position: relative
+    opacity: 0.5
+    outline: none
+    @include transform(scale(.8))
+    @include transition(0.1s ease-out all)
+    cursor: pointer
+    &:before, &:after
+      content: ''
+      position: absolute
+    &:after
+      border-bottom: 2px solid #fff
+      border-right: 2px solid #fff
+      z-index: 2
+      height: 10px
+      width: 5px
+      top: 2px
+      left: 6px
+      @include transform(rotate(-35deg) scale(.8))
+      opacity: 0
+      @include transition(0.4s cubic-bezier(0.65, 0.05, 0.36, 1)  all)
+    &:before
+      background: #5A7045
+      border-radius: 50%
+      height: 18px
+      width: 18px
+      top: -2px
+      left: -1px
+      border: 2px solid #5A7045
+    &:checked
+      opacity: 1
+      &:after
+        @include transform(rotate(35deg) scale(1))
+        opacity: 1
+    &:focus
+      box-shadow: 0 0 0 0
 
+.Label-checkout
+  max-width: 82%
+  margin: .5rem auto
+  display: block
+  font-size: .875rem
+  & a
+    color: #BCCD4B
+    font-weight: 400
 .login-restartPassword
   color: #E4FFC8
   display: block
@@ -83,10 +132,7 @@
   max-width: 25rem
   background: rgba(0, 0, 0, 0.3)
   height: 1px
-  border-bottom: none
-  border-top: none
-  border-right: none
-  border-left: none
+  border: none
   box-shadow: 0px 1px 1px rgba(226, 226, 226, 0.24)
 
 .Login-error
@@ -94,5 +140,19 @@
   display: block
   margin: auto
   color: tomato
-
-
+.Login-label
+  position: relative
+  display: block
+.passStrength
+  max-width: 25rem
+  position: absolute
+  bottom: 0
+  left: 2.5rem
+  width: 20%
+  height: .375rem
+  display: block
+  @include transition(background-color 0.55s cubic-bezier(0.3, 0.55, 0.1, 0.9), width 0.55s cubic-bezier(0.3, 0.55, 0.1, 0.9))
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.15)))
+  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15))
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15))
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15))
