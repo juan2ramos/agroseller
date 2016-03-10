@@ -10,7 +10,12 @@ Route::post('login', [
     ]
 );
 
-Route::get('logout', 'Auth\AuthController@getLogout');
+Route::get('logout', [
+        'uses' => 'Auth\AuthController@getLogout',
+        'as' => 'logout'
+    ]
+);
+
 
 Route::get('registro', [
         'uses' => 'Auth\AuthController@getRegister',
