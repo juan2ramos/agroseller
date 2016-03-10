@@ -1,13 +1,10 @@
-@extends('layout')
+@extends('admin.layout')
 
 @section('content')
     <a href="/">
         <figure class="Login-logo">
             <a href="/"><img src="{{ url('images/agroseller-logo.png') }}" alt=""> </a>
         </figure>
-    </a>
-    <a href="{{route('logout')}}">
-        <button class="Header-login">Cerrar Sesión</button>
     </a>
     <main class="Login">
         @if (count($errors) > 0)
