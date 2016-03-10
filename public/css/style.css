@@ -730,3 +730,41 @@ main.container {
 #Product-form input[type='checkbox'] span {
   display: inline;
 }
+
+.DataUser {
+  width: 80%;
+  margin: auto;
+  min-width: 30rem;
+  position: relative;
+  top: calc(50vh - 15rem);
+}
+
+.DataUser h2 {
+  text-align: center;
+  font-weight: 300;
+  font-size: 3rem;
+}
+
+.DataUser input,
+.DataUser select {
+  line-height: normal;
+  display: block;
+  margin: 1rem;
+  min-width: 10rem;
+  height: 2.5rem;
+  border-radius: 0.2rem;
+  padding: 0 1rem 0;
+  color: #E4FFC8;
+  background: #65804A;
+  background: linear-gradient(to right, #65804A 50%, #576B43 100%);
+  border: 1px solid #87AD5D;
+}
+
+.DataUser input form .form-group,
+.DataUser select form .form-group {
+  width: 100%;
+}
+
+input[type='file'] {
+  opacity: 1;
+}

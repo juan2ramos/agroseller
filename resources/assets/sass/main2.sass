@@ -1,49 +1,36 @@
-@import "lib/settings"
-@import "lib/general"
-@import "lib/font"
-@import "loginAdmin"
-@import "admin/home"
-@import "admin/categories"
-@import "bar"
-@import "admin/search"
+//Optimizar con la clase Login
 
-
-.Map-provider
-  width: 100%
-  height: 400px
-.Marker
+.DataUser
+  width: 80%
+  margin: auto
+  min-width: 30rem
   position: relative
-  width: 49%
-  display: inline-block
-  background: #65804a
-  color: white
-  padding: 1rem
+  top: calc(50vh - 15rem)
+
+.DataUser h2
   text-align: center
-  cursor: pointer
-  margin-left: 0.3rem
+  font-weight: 300
+  font-size: 3rem
 
-.Product-select
-  margin: 1rem .5rem
-  height: 2rem
+.DataUser input, .DataUser select
 
-#Product-form
-  & label
-    margin: 1rem 1rem 0
-  & input , & select
-    max-width: 60rem
-    height: 2rem
-  & input , & select, & textarea
-    margin: 1rem
-    width: calc(100% - 2rem)
-  & button
-    display: none
-    color: white
-    margin: 1rem calc(50% - 7.5rem)
-    width: 15rem
-  & .dataForm
-    display: none
-  & input[type='checkbox']
-    width: 1.5rem
-    vertical-align: middle
-    & span
-      display: inline
+  line-height: normal
+  display: block
+  margin: 1rem
+  min-width: 10rem
+  height: 2.5rem
+  border-radius: 0.2rem
+  padding: 0 1rem 0
+  color: #E4FFC8
+  background: #65804A
+  background: linear-gradient(to right, #65804A 50%, #576B43 100%)
+  border: 1px solid #87AD5D
+
+  form .form-group
+    width: 100%
+
+input[type='file']
+  opacity: 1
+
+.button
+

@@ -1031,3 +1031,55 @@ body {
   width: 100%;
   margin-top: 1.25rem;
 }
+
+.Footer {
+  background: #253A1B;
+  padding-top: 30px;
+}
+
+.Footer a {
+  color: white;
+}
+
+.Footer-content {
+  margin: auto;
+  max-width: 71.25rem;
+  height: 100%;
+}
+
+.NavFooter-TitleUL {
+  position: relative;
+  padding-bottom: 30px;
+}
+
+.NavFooter-TitleUL ul {
+  border-radius: 5px;
+  display: none;
+  position: absolute;
+  padding: 10px;
+  background: #1E2E16;
+  width: 100%;
+}
+
+.NavFooter-TitleUL a {
+  display: block;
+  padding: 5px;
+  width: 100%;
+}
+
+.NavFooter-TitleUL:hover ul {
+  display: block;
+}
+
+.NavFooter-TitleUL ul a:hover {
+  color: #C5D257;
+}
+
+.NavSocial {
+  width: 100%;
+}
+
+.NavSocial a {
+  display: block;
+  margin: 20px 0.5rem;
+}
