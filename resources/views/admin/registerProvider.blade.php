@@ -1,4 +1,4 @@
-@extends('admin.layout')
+//@extends('admin.layout')
 
 @section('content')
 
@@ -12,7 +12,11 @@
             <hr class="Logo-hr">
             <span class="Marker" id="addMaker">Agregar locación</span>
             <span class="Marker" id="removeMaker">Eliminar locación</span>
+
+            <!-- ********** MAP *********** -->
             <div id="map" class="Map-provider"></div>
+            <!-- ********** MAP *********** -->
+
             <div>
                 <label for="imageProvider">Imágen </label>
                 <input type="file" name="imageProvider" >
