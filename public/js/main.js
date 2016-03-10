@@ -36,6 +36,13 @@ $(document).ready(function () {
         });
     });
 
+    //*********************** POPUP "Completar datos Proveedor" **************************//
 
+    $popup =$('#popup-provider');
+    $message = $('#popup-provider').children();
+
+    $message.children('.button').on('click',function(){
+        $popup.addClass('close-popup');
+    });
 
 });

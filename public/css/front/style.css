@@ -996,7 +996,7 @@ body {
   padding: 0 .25rem;
 }
 
-.CartDetail val {
+.CartDetailval {
   font-weight: 400;
   position: absolute;
   right: 1rem;
@@ -1038,7 +1038,6 @@ body {
   margin-top: 1.25rem;
 }
 
-<<<<<<< HEAD
 .Checkout {
   padding: 5rem 0 0;
 }
@@ -1061,6 +1060,9 @@ body {
 
 .Checkout ul {
   border-bottom: .0625rem solid #D9D9D9;
+}
+
+.Checkout ul h3 {
   font-size: 1.115rem;
   font-weight: 400;
 }
@@ -1086,7 +1088,7 @@ body {
   padding: 0 .25rem;
 }
 
-.Checkout val {
+.Checkoutval {
   font-weight: 400;
   position: absolute;
   right: 1rem;
@@ -1259,7 +1261,8 @@ body {
 
 .Provider-star span:nth-child(5) g {
   fill: #C1C1C1;
-=======
+}
+
 .Footer {
   background: #253A1B;
   padding-top: 30px;
@@ -1310,5 +1313,4 @@ body {
 .NavSocial a {
   display: block;
   margin: 20px 0.5rem;
->>>>>>> 44ef3da1f8a3bc79b053d1eb8565287c5e8ffd0a
 }

@@ -826,40 +826,51 @@ main.container {
   display: inline;
 }
 
-.DataUser {
-  width: 80%;
-  margin: auto;
-  min-width: 30rem;
-  position: relative;
-  top: calc(50vh - 15rem);
+.Message {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  z-index: 500;
+  top: 0;
+  left: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.DataUser h2 {
+.Message_Popup {
+  border-right: 1px #C5D257 solid;
+  border-left: 1px #C5D257 solid;
+  width: 30%;
+  background: rgba(37, 58, 27, 0.9);
+  border-radius: 10px;
+  padding: 60px;
+}
+
+.Message_Popuph3 {
   text-align: center;
-  font-weight: 300;
-  font-size: 3rem;
 }
 
-.DataUser input,
-.DataUser select {
-  line-height: normal;
-  display: block;
-  margin: 1rem;
-  min-width: 10rem;
-  height: 2.5rem;
-  border-radius: 0.2rem;
-  padding: 0 1rem 0;
-  color: #E4FFC8;
-  background: #65804A;
-  background: linear-gradient(to right, #65804A 50%, #576B43 100%);
-  border: 1px solid #87AD5D;
-}
-
-.DataUser input form .form-group,
-.DataUser select form .form-group {
+.button {
+  color: #000;
   width: 100%;
+  background: rgba(255, 255, 255, 0.6);
+  margin-top: 1em;
+  padding: 1rem;
+  border-radius: 5px;
 }
 
-input[type='file'] {
-  opacity: 1;
+.button:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.close-popup {
+  display: none;
 }

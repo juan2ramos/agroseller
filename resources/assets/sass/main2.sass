@@ -1,36 +1,42 @@
-//Optimizar con la clase Login
+$greenDark: #253A1B
+$greenLight: #C5D257
+$widthContent: 71.25rem
 
-.DataUser
-  width: 80%
-  margin: auto
-  min-width: 30rem
-  position: relative
-  top: calc(50vh - 15rem)
+//POPUP
 
-.DataUser h2
-  text-align: center
-  font-weight: 300
-  font-size: 3rem
+.Message
+  width: 100vw
+  height: 100vh
+  background: rgba(0,0,0,.8)
+  position: fixed
+  z-index: 500
+  top: 0
+  left: 0
+  display: flex
+  justify-content: center
+  align-items: center
 
-.DataUser input, .DataUser select
+  &_Popup
+    border-right: 1px $greenLight solid
+    border-left: 1px $greenLight solid
+    width: 30%
+    background: rgba($greenDark, .9)
+    border-radius: 10px
+    padding: 60px
 
-  line-height: normal
-  display: block
-  margin: 1rem
-  min-width: 10rem
-  height: 2.5rem
-  border-radius: 0.2rem
-  padding: 0 1rem 0
-  color: #E4FFC8
-  background: #65804A
-  background: linear-gradient(to right, #65804A 50%, #576B43 100%)
-  border: 1px solid #87AD5D
+    &h3
+      text-align: center
 
-  form .form-group
-    width: 100%
-
-input[type='file']
-  opacity: 1
 
 .button
+  color: #000
+  width: 100%
+  background: rgba(255,255,255, .6)
+  margin-top: 1em
+  padding: 1rem
+  border-radius: 5px
+  &:hover
+    background: rgba(255,255,255, .9)
 
+.close-popup
+  display: none
