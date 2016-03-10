@@ -2,10 +2,13 @@
 
 @section('content')
     <section class="ProductDetail row">
-        <article class="ProductDetail-slider col-6">
-            <figure>
-                <img src="{{url('images/inquifersa.jpg')}}" alt="">
-            </figure>
+        <article class="ProductDetail-slider col-6 ">
+            <div class="owl-carousel" id="sync1">
+                <figure class="item"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
+                <figure class="item"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
+                <figure class="item"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
+                <figure class="item"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
+            </div>
         </article>
         <article class="col-6">
             <h1>INQUIFERSA</h1>
@@ -152,11 +155,11 @@
             </nav>
         </article>
         <article class="col-6 ProductDetail-thumbnail">
-            <div class="row between">
-                <figure class="col-3"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
-                <figure class="col-3"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
-                <figure class="col-3"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
-                <figure class="col-3"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
+            <div class="row between owl-carousel" id="sync2">
+                <figure class="item" class="col-3"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
+                <figure class="item" class="col-3"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
+                <figure class="item" class="col-3"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
+                <figure class="item" class="col-3"><img src="{{url('images/inquifersa.jpg')}}" alt=""></figure>
             </div>
         </article>
         <article class="col-6 ProductDetail-data row middle">
@@ -165,6 +168,18 @@
                 <b>Categoría:</b> Fertilizante <br>
                 <b>Tags:</b> Fertilizante</p>
         </article>
+    </section>
+    <section class="Provider-detail row middle">
+        <div class="col-8 row middle">
+            <figure><img src="{{url('images/bayer_logo.jpg')}}" alt=""></figure>
+            <h4>Bayer Colombia</h4>
+            <div class="Provider-star col-2">
+                @for($i = 0; $i < 5; $i++)
+                    <span>@include('front.stars')</span>
+                @endfor
+            </div>
+        </div>
+        <a href="" class="col-4">Mas Información</a>
     </section>
     <section id="Map" class="col-12"></section>
     <section class="ProductInfo">
@@ -224,9 +239,61 @@
             </div>
         </article>
     </section>
+    <aside class="Comments">
+        <h2>Comentarios y preguntas</h2>
+        <form action="" class="row">
+            <figure>
+                <img src="{{url('images/mujer-comentarios.jpg')}}" alt="">
+            </figure>
+            <textarea name="comment"></textarea>
+        </form>
+        <ul>
+            <li class="row">
+                <figure>
+                    <img src="{{url('images/mujer-comentarios.jpg')}}" alt="">
+                </figure>
+                <div class="Comments-user">
+                    <h5>Anita Perez
+                        <time> • hace 25 días</time>
+                    </h5>
+                    <p>
+                        Hola, Me gustaría saber si relaizan envíos a toda Colombia y que precios manejan. Muchas gracias
+                        quedo muy pendiente, es una compra urgente.Hola, Me gustaría saber si relaizan envíos a toda
+                        Colombia y que precios manejan. Muchas gracias
+                        quedo muy pendiente, es una compra urgente.Hola, Me gustaría saber si relaizan envíos a toda
+                        Colombia y que precios manejan. Muchas gracias
+                        quedo muy pendiente, es una compra urgente.Hola, Me gustaría saber si relaizan envíos a toda
+                        Colombia y que precios manejan. Muchas gracias
+                        quedo muy pendiente, es una compra urgente.Hola, Me gustaría saber si relaizan envíos a toda
+                        Colombia y que precios manejan. Muchas gracias
+                        quedo muy pendiente, es una compra urgente.
+                    </p>
+                </div>
+            </li>
+
+            <li class="row">
+                <figure>
+                    <img src="{{url('images/mujer-comentarios.jpg')}}" alt="">
+                </figure>
+                <div class="Comments-user">
+                    <h5>Anita Perez
+                        <time> • hace 25 días</time>
+                    </h5>
+                    <p>
+                        Un comentario más.
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </aside>
 @endsection
 @section('scripts')
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap"
             async defer></script>
     <script src="{{asset('js/front/map.js')}}"></script>
+    <script src="{{asset('js/front/slide.js')}}"></script>
+    <script src="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.js"></script>
+@endsection
+@section('styles')
+    <link href="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.css" rel="stylesheet">
 @endsection

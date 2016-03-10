@@ -46,6 +46,7 @@
                 <div >
                     <img class="image" src="/images/agroseller-logo.png" alt="">
                 </div>
+                <div><h1>BIENVENIDO A AGROSELLER</h1></div>
             </div>
         </div>
     </body>
