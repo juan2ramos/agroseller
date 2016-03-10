@@ -3,6 +3,7 @@
 namespace Agrosellers\Http\Controllers\Auth;
 
 use Agrosellers\User;
+use Agrosellers\Entities\Provider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Validator;
@@ -50,7 +51,7 @@ class AuthController extends Controller
             [
                 'name' => 'required|max:255',
                 'email' => 'required|email|max:255|unique:users',
-                'password' => 'required|confirmed|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/|
+                'password' => 'required|confirmed|min:6|regex:/^.*(?=.{6,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%·?¿()&*]).*$/|
                 confirmed',
                 'role_id' => 'required|numeric|between:3,4',
                 'mobile_phone' => 'required|numeric',

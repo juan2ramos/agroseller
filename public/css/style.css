@@ -282,7 +282,8 @@ main.container {
 }
 
 .Login input,
-.Login select {
+.Login select,
+.Login textarea {
   line-height: normal;
   display: block;
   width: 90%;
@@ -298,8 +299,13 @@ main.container {
 }
 
 .Login input:focus,
-.Login select:focus {
+.Login select:focus,
+.Login textarea:focus {
   box-shadow: 0 0 .25rem white;
+}
+
+.Login textarea {
+  min-height: 100px;
 }
 
 .Login ::-webkit-input-placeholder {

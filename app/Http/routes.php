@@ -24,10 +24,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         'as' => 'registerProvider',
         'middleware' => 'sendHome:registerProvider'
     ]);
+
     Route::post('registro-proveedor', [
         'uses' => 'ProviderController@insertProvider',
         'as' => 'registerProvider',
         'middleware' => 'sendHome:registerProvider'
+    ]);
+
+
+    Route::post('data-provider', [
+        'uses' => 'ProviderController@insertProvider',
+        'as' => 'insertProvider'
     ]);
 });
 
