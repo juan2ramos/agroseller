@@ -433,16 +433,16 @@ body {
   height: 2.5rem;
 }
 
-.BarNav-content button {
-  height: .875rem;
-}
-
 .BarNav-content button span {
   background: #253A1B;
   display: block;
   width: 2.125rem;
   height: .25rem;
   margin-bottom: .25rem;
+}
+
+.BarNav-content button span:last-child {
+  margin-bottom: 0;
 }
 
 .BarNav-a {
@@ -996,7 +996,7 @@ body {
   padding: 0 .25rem;
 }
 
-.CartDetailval {
+.CartDetail val {
   font-weight: 400;
   position: absolute;
   right: 1rem;
@@ -1088,7 +1088,7 @@ body {
   padding: 0 .25rem;
 }
 
-.Checkoutval {
+.Checkout val {
   font-weight: 400;
   position: absolute;
   right: 1rem;

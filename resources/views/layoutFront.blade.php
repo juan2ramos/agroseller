@@ -107,7 +107,7 @@
     </div>
     <div class="BarNav">
         <div class="BarNav-content row middle">
-            <div class="col-4">
+            <div class="col-4 row">
                 <button id="Menu"><span></span><span></span><span></span></button>
             </div>
             <div class="BarNav-a col-4  center"><a href="{{route('pricing')}}">Ver Planes</a></div>

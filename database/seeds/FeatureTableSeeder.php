@@ -12,16 +12,5 @@ class FeatureTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->createFeature();
-    }
-
-    private function createFeature(){
-        Feature::create([
-            'baling' => 'Paquete',
-            'size' => 'Grande',
-            'weight' => 'Gramos',
-            'metering' => 'Metros',
-            'material' => 'Plastico',
-        ]);
     }
 }

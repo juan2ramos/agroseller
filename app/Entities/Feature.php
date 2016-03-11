@@ -7,7 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Feature extends Model
 {
-    protected $fillable = [
-        'baling', 'size', 'weight', 'metering', 'material'
-    ];
+    protected $fillable = ['name'];
 }

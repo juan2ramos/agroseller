@@ -14,11 +14,7 @@ class CreateFeaturesTable extends Migration
     {
         Schema::create('features', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('baling'); // Presentacion
-            $table->string('size'); // Tamaño
-            $table->string('weight'); // Peso
-            $table->string('metering'); //Medida
-            $table->string('material'); //Material
+            $table->string('name');
             $table->timestamps();
         });
     }
