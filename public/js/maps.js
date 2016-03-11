@@ -11,8 +11,6 @@ function initMap() {
     }
 
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-
 }
 
 function addMarker(n){
@@ -31,8 +29,8 @@ function addMarker(n){
         {
             if(arrayMarkers[a][ 'identificador'] == this.identificador)
             {
-                arrayMarkers[a].setMap(null); //borramos el marcador del mapa
-                arrayMarkers.splice(a, 1) //borramos el marcador de nuestro array
+                arrayMarkers[a].setMap(null);
+                arrayMarkers.splice(a, 1)
             }
         }
     });

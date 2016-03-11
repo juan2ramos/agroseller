@@ -14,16 +14,15 @@ class CreateFeaturesTable extends Migration
     {
         Schema::create('features', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('baling'); // Presentacion
+            $table->string('size'); // Tamaño
+            $table->string('weight'); // Peso
+            $table->string('metering'); //Medida
+            $table->string('material'); //Material
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::drop('features');
