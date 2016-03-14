@@ -534,7 +534,6 @@
             <a class="Button" href="{{route('checkout')}}">REALIZAR COMPRA</a>
         </section>
     </section>
-
 </div>
 <script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
 <script src="{{asset('js/front/main.js')}}"></script>
@@ -543,9 +542,10 @@
 <link rel="stylesheet" href="{{asset('css/front/easy-autocomplete.css')}}">  <!--****************** Pendiente optimizar *******************-->
 
 {!!
-$products = '"prueba1", "prueba2", "prueba3", "prueba4"';
+$products = '"prueba1", "prueba2", "prueba3", "prueba4", "Testing", "Santiago"';
 echo '<script> var options = {data: [' . $products . ']};$("#basics").easyAutocomplete(options);</script>';
 !!}
+
 @yield('scripts')
 </body>
 </html>
