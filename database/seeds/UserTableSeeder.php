@@ -57,6 +57,6 @@ class UserTableSeeder extends Seeder
             'role_id' => '1',
             'password' => bcrypt('12345'),
         ]);
-        factory(Agrosellers\User::class, 49)->create();
+        factory(Agrosellers\User::class, 10)->create();
     }
 }
