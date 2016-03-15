@@ -70,7 +70,7 @@
 
         <form action="" class="Header-search col-6">
             <div>
-                <input id="basics" type="text" name="headerSearch" placeholder="¿Que necesita tu campo?">
+                <input id="provider-json" type="text" name="headerSearch" placeholder="¿Que necesita tu campo?">
                 <button>
                     <svg width="28px" height="27px" viewBox="0 0 28 27" version="1.1" xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -542,11 +542,28 @@
 <script src="{{asset('js/easy-autocomplete.js')}}"></script> <!--****************** Pendiente optimizar *******************-->
 <link rel="stylesheet" href="{{asset('css/front/easy-autocomplete.css')}}">  <!--****************** Pendiente optimizar *******************-->
 
-{!!
-$products = '"prueba1", "prueba2", "prueba3", "prueba4", "Testing", "Santiago"';
-echo '<script> var options = {data: [' . $products . ']};$("#basics").easyAutocomplete(options);</script>';
-!!}
+<?php
+
+    $products = [
+                    '"FERTILIZANTES"',
+                    '"INSUMOS"',
+                    '"MAQUINARIA Y EQUIPOS"',
+                    '"LOGISTICA Y TRANSPORTE"',
+                    '"SERVICIOS ESPECIALES"',
+                    '"INSUMOS PECUARIOS"',
+                    '"TECNOLOGIA AGRICOLA"',
+                ];
+
+    $script = '<script>var options = {data:[';
+    foreach($products as $product){
+        $script .= '{"name":' . $product . '},';
+    }
+    $script .= '],getValue: "name",list: {match: {enabled: true}'.'}'.'}'.';$("#provider-json").easyAutocomplete(options);</script>';
+    echo $script;
+?>
+
 
 @yield('scripts')
 </body>
 </html>
+}
