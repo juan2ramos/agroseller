@@ -1,11 +1,9 @@
-
-$greenDark: #253A1B
-$greenLight: #C5D257
-$widthContent: 71.25rem
+/********************** FOOTER **********************/
 
 .Footer
   background: $greenDark
   padding-top: 30px
+  overflow: hidden
 
 .Footer a
   color: white
@@ -21,10 +19,10 @@ $widthContent: 71.25rem
 
 .NavFooter-TitleUL ul
   border-radius: 5px
-  display: none
+  opacity: .3
   position: absolute
   padding: 10px
-  background: #1E2E16
+  height: 155px
   width: 100%
 
 .NavFooter-TitleUL a
@@ -33,8 +31,9 @@ $widthContent: 71.25rem
   width: 100%
 
 .NavFooter-TitleUL:hover ul
-  display: block
-  
+  opacity: 1
+  background: rgba(30, 46, 22, 0.3)
+
 .NavFooter-TitleUL ul a:hover
   color: $greenLight
 
@@ -43,3 +42,9 @@ $widthContent: 71.25rem
   a
     display: block
     margin: 20px 0.5rem
+
+    &:hover
+      svg ellipse
+        stroke: #C6C6C6
+      svg path
+        fill: #C6C6C6

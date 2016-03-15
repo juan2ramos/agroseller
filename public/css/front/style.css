@@ -1271,9 +1271,12 @@ body {
   fill: #C1C1C1;
 }
 
+/********************** FOOTER **********************/
+
 .Footer {
   background: #253A1B;
   padding-top: 30px;
+  overflow: hidden;
 }
 
 .Footer a {
@@ -1293,10 +1296,10 @@ body {
 
 .NavFooter-TitleUL ul {
   border-radius: 5px;
-  display: none;
+  opacity: .3;
   position: absolute;
   padding: 10px;
-  background: #1E2E16;
+  height: 155px;
   width: 100%;
 }
 
@@ -1307,7 +1310,8 @@ body {
 }
 
 .NavFooter-TitleUL:hover ul {
-  display: block;
+  opacity: 1;
+  background: rgba(30, 46, 22, 0.3);
 }
 
 .NavFooter-TitleUL ul a:hover {
@@ -1321,4 +1325,12 @@ body {
 .NavSocial a {
   display: block;
   margin: 20px 0.5rem;
+}
+
+.NavSocial a:hover svg ellipse {
+  stroke: #C6C6C6;
+}
+
+.NavSocial a:hover svg path {
+  fill: #C6C6C6;
 }
