@@ -3,7 +3,6 @@
 namespace Agrosellers\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use Agrosellers\Entities\Category;
 
 class Provider extends Model
 {

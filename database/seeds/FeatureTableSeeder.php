@@ -4,7 +4,6 @@ use Illuminate\Database\Seeder;
 use Agrosellers\Entities\Feature;
 use Agrosellers\Entities\Subcategory;
 
-
 class FeatureTableSeeder extends Seeder
 {
     /**
@@ -14,6 +13,16 @@ class FeatureTableSeeder extends Seeder
      */
     public function run()
     {
+        //$this->createFeature();
+        //$this->createFeaturesSubcategories();
+    }
+    private function createFeaturesSubcategories(){
+        $feature = Feature::find(1);
+        $subcategory = Subcategory::find(1);
+        $feature->subcategories()->save($subcategory);
+
+    }
+    private function createFeature(){
         Feature::create(['id' => '1', 'name' => 'presentation']);
         Feature::create(['id' => '2', 'name' => 'size']);
         Feature::create(['id' => '3', 'name' => 'weight']);
