@@ -299,16 +299,66 @@ class Feature_SubcategoryTableSeeder extends Seeder
         Feature::create(['feature_id' => '7', 'subcategory_id' => '29']);
 
 
-        /********************************************************************************/
-        /*                                                                              */
-        /*                         8. FEATURE FORMS EMPLOYMENT                          */   /*************************** FALTA ********************
-        /*                                                                              */
-        /********************************************************************************/
-
 
         /********************************************************************************/
         /*                                                                              */
-        /*                         9. FEATURE PRECIO ACTUAL                             */
+        /*                         8. FEATURE PRECIO ACTUAL                             */
+        /*                                                                              */
+        /********************************************************************************/
+
+        /****************************** CATEGORY FERTILIZANTES **************************/
+
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '1']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '2']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '3']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '4']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '5']);
+
+        /******************************* CATEGORY INSUMOS *******************************/
+
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '6']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '7']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '8']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '9']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '10']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '11']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '12']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '13']);
+
+        /************************ CATERGORIA MAQUINARIA Y EQUIPOS *************************/
+
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '14']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '15']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '16']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '17']);
+
+        /*********************** CATEGORY LOGISTICA Y TRANSPORTE  *************************/
+
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '18']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '19']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '20']);
+
+        /*********************** CATEGORY SERVICIOS ESPECIALES  *************************/
+
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '21']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '22']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '23']);
+
+        /************************** CATEGORY INSUMOS PECUARIOS  *************************/
+
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '24']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '25']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '26']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '27']);
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '28']);
+
+        /************************** CATEGORY TECNOLOGIA AGRICOLA  *************************/
+
+        Feature::create(['feature_id' => '8', 'subcategory_id' => '29']);
+
+        /********************************************************************************/
+        /*                                                                              */
+        /*                         9. FEATURE IMPUESTOS                                */
         /*                                                                              */
         /********************************************************************************/
 
@@ -364,7 +414,7 @@ class Feature_SubcategoryTableSeeder extends Seeder
 
         /********************************************************************************/
         /*                                                                              */
-        /*                         10. FEATURE IMPUESTOS                                */
+        /*                     10. FEATURE CANTIDAD DISPONIBLE                          */
         /*                                                                              */
         /********************************************************************************/
 
@@ -400,12 +450,6 @@ class Feature_SubcategoryTableSeeder extends Seeder
         Feature::create(['feature_id' => '10', 'subcategory_id' => '19']);
         Feature::create(['feature_id' => '10', 'subcategory_id' => '20']);
 
-        /*********************** CATEGORY SERVICIOS ESPECIALES  *************************/
-
-        Feature::create(['feature_id' => '10', 'subcategory_id' => '21']);
-        Feature::create(['feature_id' => '10', 'subcategory_id' => '22']);
-        Feature::create(['feature_id' => '10', 'subcategory_id' => '23']);
-
         /************************** CATEGORY INSUMOS PECUARIOS  *************************/
 
         Feature::create(['feature_id' => '10', 'subcategory_id' => '24']);
@@ -414,13 +458,9 @@ class Feature_SubcategoryTableSeeder extends Seeder
         Feature::create(['feature_id' => '10', 'subcategory_id' => '27']);
         Feature::create(['feature_id' => '10', 'subcategory_id' => '28']);
 
-        /************************** CATEGORY TECNOLOGIA AGRICOLA  *************************/
-
-        Feature::create(['feature_id' => '10', 'subcategory_id' => '29']);
-
         /********************************************************************************/
         /*                                                                              */
-        /*                     11. FEATURE CANTIDAD DISPONIBLE                          */
+        /*                         11. FEATURE ESCALA IMAGEN                            */
         /*                                                                              */
         /********************************************************************************/
 
@@ -456,6 +496,12 @@ class Feature_SubcategoryTableSeeder extends Seeder
         Feature::create(['feature_id' => '11', 'subcategory_id' => '19']);
         Feature::create(['feature_id' => '11', 'subcategory_id' => '20']);
 
+        /*********************** CATEGORY SERVICIOS ESPECIALES  *************************/
+
+        Feature::create(['feature_id' => '11', 'subcategory_id' => '21']);
+        Feature::create(['feature_id' => '11', 'subcategory_id' => '22']);
+        Feature::create(['feature_id' => '11', 'subcategory_id' => '23']);
+
         /************************** CATEGORY INSUMOS PECUARIOS  *************************/
 
         Feature::create(['feature_id' => '11', 'subcategory_id' => '24']);
@@ -464,9 +510,13 @@ class Feature_SubcategoryTableSeeder extends Seeder
         Feature::create(['feature_id' => '11', 'subcategory_id' => '27']);
         Feature::create(['feature_id' => '11', 'subcategory_id' => '28']);
 
+        /************************** CATEGORY TECNOLOGIA AGRICOLA  *************************/
+
+        Feature::create(['feature_id' => '11', 'subcategory_id' => '29']);
+
         /********************************************************************************/
         /*                                                                              */
-        /*                         12. FEATURE ESCALA IMAGEN                            */
+        /*                         12. FEATURE UBICACION                                */
         /*                                                                              */
         /********************************************************************************/
 
@@ -552,18 +602,6 @@ class Feature_SubcategoryTableSeeder extends Seeder
         Feature::create(['feature_id' => '13', 'subcategory_id' => '16']);
         Feature::create(['feature_id' => '13', 'subcategory_id' => '17']);
 
-        /*********************** CATEGORY LOGISTICA Y TRANSPORTE  *************************/
-
-        Feature::create(['feature_id' => '13', 'subcategory_id' => '18']);
-        Feature::create(['feature_id' => '13', 'subcategory_id' => '19']);
-        Feature::create(['feature_id' => '13', 'subcategory_id' => '20']);
-
-        /*********************** CATEGORY SERVICIOS ESPECIALES  *************************/
-
-        Feature::create(['feature_id' => '13', 'subcategory_id' => '21']);
-        Feature::create(['feature_id' => '13', 'subcategory_id' => '22']);
-        Feature::create(['feature_id' => '13', 'subcategory_id' => '23']);
-
         /************************** CATEGORY INSUMOS PECUARIOS  *************************/
 
         Feature::create(['feature_id' => '13', 'subcategory_id' => '24']);
@@ -571,49 +609,5 @@ class Feature_SubcategoryTableSeeder extends Seeder
         Feature::create(['feature_id' => '13', 'subcategory_id' => '26']);
         Feature::create(['feature_id' => '13', 'subcategory_id' => '27']);
         Feature::create(['feature_id' => '13', 'subcategory_id' => '28']);
-
-        /************************** CATEGORY TECNOLOGIA AGRICOLA  *************************/
-
-        Feature::create(['feature_id' => '13', 'subcategory_id' => '29']);
-
-        /********************************************************************************/
-        /*                                                                              */
-        /*                         14. FEATURE UBICACION                                */
-        /*                                                                              */
-        /********************************************************************************/
-
-        /****************************** CATEGORY FERTILIZANTES **************************/
-
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '1']);
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '2']);
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '3']);
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '4']);
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '5']);
-
-        /******************************* CATEGORY INSUMOS *******************************/
-
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '6']);
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '7']);
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '8']);
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '9']);
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '10']);
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '11']);
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '12']);
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '13']);
-
-        /************************ CATERGORIA MAQUINARIA Y EQUIPOS *************************/
-
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '14']);
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '15']);
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '16']);
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '17']);
-
-        /************************** CATEGORY INSUMOS PECUARIOS  *************************/
-
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '24']);
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '25']);
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '26']);
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '27']);
-        Feature::create(['feature_id' => '14', 'subcategory_id' => '28']);
     }
 }

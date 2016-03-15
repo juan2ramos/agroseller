@@ -21,12 +21,12 @@ class FeatureTableSeeder extends Seeder
         Feature::create(['id' => '5', 'name' => 'material']);
         Feature::create(['id' => '6', 'name' => 'description']);
         Feature::create(['id' => '7', 'name' => 'composition']);
-        Feature::create(['id' => '8', 'name' => 'forms-employment']);
-        Feature::create(['id' => '9', 'name' => 'price']);
-        Feature::create(['id' => '10', 'name' => 'taxes']);
-        Feature::create(['id' => '11', 'name' => 'available-quantity']);
-        Feature::create(['id' => '12', 'name' => 'image-scale']);
-        Feature::create(['id' => '13', 'name' => 'location']);
-        Feature::create(['id' => '14', 'name' => 'description-use']);
+        //Feature::create(['id' => '8', 'name' => 'forms-employment']);
+        Feature::create(['id' => '8', 'name' => 'price']);
+        Feature::create(['id' => '9', 'name' => 'taxes']);
+        Feature::create(['id' => '10', 'name' => 'available-quantity']);
+        Feature::create(['id' => '11', 'name' => 'image-scale']);
+        Feature::create(['id' => '12', 'name' => 'location']);
+        Feature::create(['id' => '13', 'name' => 'description-use']);
     }
 }
