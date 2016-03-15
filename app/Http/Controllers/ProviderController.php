@@ -24,6 +24,8 @@ class ProviderController extends Controller
         } else {
             return view('admin.specificProviderForm');
         }
+
+        return view('admin.registerProvider', compact('categories'));
     }
 
     function showProviders()

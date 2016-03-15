@@ -31,10 +31,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         'middleware' => 'sendHome:registerProvider'
     ]);
 
-
     Route::post('data-provider', [
         'uses' => 'ProviderController@insertProvider',
-        'as' => 'insertProvider'
+        'as' => 'insertProvider',
+        'middleware' => 'sendHome:registerProvider'
     ]);
 });
 
