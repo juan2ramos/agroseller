@@ -15,7 +15,7 @@ class CreateCategoryProviderTable extends Migration
         Schema::create('category_provider', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->integer('provider_id')->unsigned();
             $table->foreign('provider_id')->references('id')->on('providers') ;
             $table->timestamps();
@@ -29,6 +29,6 @@ class CreateCategoryProviderTable extends Migration
      */
     public function down()
     {
-        Schema::drop('category_provider');
+       Schema::drop('category_provider');
     }
 }

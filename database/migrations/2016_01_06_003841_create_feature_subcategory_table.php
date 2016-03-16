@@ -29,6 +29,6 @@ class CreateFeatureSubcategoryTable extends Migration
      */
     public function down()
     {
-        Schema::drop('category_provider');
+        Schema::drop('feature_subcategory');
     }
 }

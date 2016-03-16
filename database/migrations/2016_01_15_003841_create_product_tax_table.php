@@ -29,6 +29,6 @@ class CreateProductTaxTable extends Migration
      */
     public function down()
     {
-        Schema::drop('category_provider');
+        Schema::drop('product_tax');
     }
 }

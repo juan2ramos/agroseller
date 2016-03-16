@@ -37,7 +37,7 @@
             </label>
             <input type="password" class="form-control" placeholder="Confirmar Contraseña "
                    name="password_confirmation">
-            <label for="policy" class="Label-checkout">
+            <label for="policy"  class="Label-checkout">
                 <input type="checkbox" name="policy" id="policy">
                 Acepto las politicas de uso del sitio Agrosellers <a href="">VER</a>
             </label>

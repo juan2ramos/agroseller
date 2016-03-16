@@ -27,6 +27,6 @@ class CreateFarmsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('features');
+        Schema::drop('farms');
     }
 }

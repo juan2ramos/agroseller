@@ -27,6 +27,6 @@ class CreateTaxesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('taxes');
     }
 }
