@@ -330,6 +330,36 @@ main.container {
   order: 1;
 }
 
+[class*='-message'] {
+  width: 100%;
+  opacity: 1;
+  overflow: hidden;
+  border-radius: 7px;
+  margin-bottom: 3rem;
+  padding: 1rem 2rem;
+  position: relative;
+  cursor: pointer;
+}
+
+[class*='-message'].hidden {
+  transition: opacity .7s ease;
+  opacity: 0;
+}
+
+[class*='-message'] ul li {
+  list-style: circle;
+  line-height: 1.5rem;
+}
+
+.successful-message {
+  text-align: center;
+  background: #C9FBA6;
+}
+
+.error-message {
+  background: #F7DADA;
+}
+
 main {
   max-width: 71.25rem;
   margin: auto;
@@ -1107,14 +1137,18 @@ body {
   box-shadow: 0 2px 4px rgba(187, 187, 187, 0.5);
 }
 
-.Checkout-form {
+.Checkout-form,
+.Form-Control {
   margin-top: 1.625rem;
   background: #F8F8F8;
   box-shadow: 0 2px 4px rgba(187, 187, 187, 0.5);
   padding: 1.5rem 2rem;
 }
 
-.Checkout-form input {
+.Checkout-form input,
+.Checkout-form textarea,
+.Form-Control input,
+.Form-Control textarea {
   width: 100%;
   border: none;
   height: 4rem;
@@ -1126,13 +1160,22 @@ body {
   color: #253A1B;
 }
 
-.Checkout-form label {
+.Checkout-form textarea,
+.Form-Control textarea {
+  resize: vertical;
+  min-height: 8rem;
+  max-height: 16rem;
+}
+
+.Checkout-form label,
+.Form-Control label {
   position: relative;
   display: block;
   cursor: text;
 }
 
-.Checkout-form span {
+.Checkout-form span,
+.Form-Control span {
   position: absolute;
   top: 1.5rem;
   color: #C5C5C5;
@@ -1142,7 +1185,8 @@ body {
   transition: all 0.2s ease;
 }
 
-.Checkout-form .Button {
+.Checkout-form .Button,
+.Form-Control .Button {
   width: 100%;
   padding: .375rem 0;
   margin-bottom: 1rem;
@@ -1333,4 +1377,34 @@ body {
 
 .NavSocial a:hover svg path {
   fill: #C6C6C6;
+}
+
+.Contact {
+  padding: 5rem 5rem 0;
+}
+
+.Contact_information {
+  padding-right: 2rem;
+  margin-top: 1rem;
+}
+
+.Contact_information_data {
+  line-height: 1.5rem;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.Contact_information_data span {
+  display: inline-block;
+  margin-left: 8px;
+  margin-bottom: 8px;
+}
+
+.Contact h1,
+.Contact h3 {
+  text-align: center;
 }

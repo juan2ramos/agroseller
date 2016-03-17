@@ -189,7 +189,7 @@
                     <ul>
                         <li><a href="#"> AgroSeller</a></li>
                         <li><a href="#"> Pauta con nosotros</a></li>
-                        <li><a href="#"> Contáctanos</a></li>
+                        <li><a href="{{route('contactForm')}}"> Contáctanos</a></li>
                         <li><a href="#"> Mapa del Sitio</a></li>
                     </ul>
                 </li>
@@ -315,7 +315,7 @@
                         <div><a href="">Pregutas Frecuentes </a></div>
                     </li>
                     <li>
-                        <div><a href="">Contáctanos </a></div>
+                        <div><a href=""> Contáctanos</a></div>
                     </li>
                 </ul>
             </li>

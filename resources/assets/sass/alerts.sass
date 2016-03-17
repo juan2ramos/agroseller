@@ -1,0 +1,24 @@
+[class*='-message']
+  width: 100%
+  opacity: 1
+  overflow: hidden
+  border-radius: 7px
+  margin-bottom: 3rem
+  padding: 1rem 2rem
+  position: relative
+  cursor: pointer
+  &.hidden
+    transition: opacity .7s ease
+    opacity: 0
+  & ul li
+    list-style: circle
+    line-height: 1.5rem
+
+.successful-message
+  text-align: center
+  background: #C9FBA6
+
+.error-message
+  background: #F7DADA
+
+

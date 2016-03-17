@@ -17,7 +17,7 @@ $(document).ready(function () {
         $('body').css('overflow-y', 'scroll')
     });
 
-    var $name = $('.Checkout-form input');
+    var $name = $('.Checkout-form input, .Form-Control input, .Form-Control textarea');
 
     $name.focus(function() {
         $(this).parent('label').addClass('open');
@@ -26,4 +26,10 @@ $(document).ready(function () {
             $(this).parent('label').removeClass('open');
         }
     });
+
+    var $message = $("[class*='-message']");
+    $message.on('click', function(){
+        $(this).addClass('hidden').slideUp(600);
+    });
+
 });
