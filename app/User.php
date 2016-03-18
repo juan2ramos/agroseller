@@ -9,7 +9,14 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+
+use Agrosellers\Entities\Administrator;
+use Agrosellers\Entities\Agent;
+use Agrosellers\Entities\Analyst;
+use Agrosellers\Entities\Client;
 use Agrosellers\Entities\Provider;
+use Agrosellers\Entities\Question;
+
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
@@ -39,10 +46,29 @@ class User extends Model implements AuthenticatableContract,
     protected $hidden = ['password', 'remember_token'];
 
 
+
+    public function administrator(){
+        return $this->hasOne(Administrator::class);
+    }
+
+    public function agent(){
+        return $this->hasOne(Agent::class);
+    }
+
+    public function analyst(){
+        return $this->hasOne(Analyst::class);
+    }
+
+    public function client(){
+        return $this->hasOne(Client::class);
+    }
+
     public function provider()
     {
         return $this->hasOne(Provider::class);
     }
 
-
+    public function questions(){
+        return $this->hasMany(Question::class);
+    }
 }

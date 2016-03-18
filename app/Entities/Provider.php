@@ -3,6 +3,7 @@
 namespace Agrosellers\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Agrosellers\User;
 
 class Provider extends Model
 {
@@ -14,8 +15,16 @@ class Provider extends Model
         'nick-name'
     ];
 
+    public function agent(){
+        return $this->belongsTo(Agent::class);
+    }
+
     public function categories()
     {
         return $this->belongsToMany(Category::class)->withTimestamps();
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

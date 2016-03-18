@@ -18,6 +18,16 @@ class Product extends Model
         return $this->belongsTo(Subcategory::class);
     }
 
+    public function offers(){
+        return $this->hasMany(Offer::class);
+    }
 
+    public function orders(){
+        return $this->belongsToMany(Order::class);
+    }
+
+    public function files(){
+        return $this->belongsToMany(File::class);
+    }
 }
 
