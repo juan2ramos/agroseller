@@ -12,7 +12,7 @@ class Question extends Model
         return $this->belongsTo(User::class);
     }
 
-  /*  public function texts(){
+    public function texts(){
         return $this->hasMany(Text::class);
-    }*/
+    }
 }
