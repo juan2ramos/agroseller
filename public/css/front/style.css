@@ -1319,6 +1319,78 @@ body {
   fill: #C1C1C1;
 }
 
+.container {
+  margin: 5rem 0;
+}
+
+.container_icon {
+  position: relative;
+  left: 50%;
+  margin-left: -17px;
+}
+
+.container h1 {
+  padding: .9rem 0;
+  text-transform: capitalize;
+  word-spacing: 2px;
+  letter-spacing: .1rem;
+}
+
+.container h1,
+.container > span {
+  display: block;
+  text-align: center;
+}
+
+.container span {
+  font-size: 1.2rem;
+}
+
+.container_questions_item ol li {
+  list-style-type: none;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.container_questions_item ol li > span {
+  cursor: pointer;
+  position: relative;
+  z-index: 100;
+  display: block;
+  padding: 1rem;
+  color: #888;
+  background: #F8F8F8;
+  box-shadow: 0 3px 5px -4px gray;
+}
+
+.container_questions_item ol li.open span {
+  box-shadow: 0 5px 5px -4px gray;
+}
+
+.container_questions_item ol li.open .text {
+  display: block;
+}
+
+.container_questions_item ol li:before {
+  position: relative;
+  z-index: 110;
+  content: attr(count);
+  float: left;
+  display: inline-block;
+  color: #C5D257;
+  font-size: 1.7rem;
+  font-weight: 500;
+  padding: 1rem .5rem 0 1.6rem;
+}
+
+.container_questions_item .text {
+  display: none;
+  padding: 1rem 4rem;
+  background: #f2f2f2;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
 /********************** FOOTER **********************/
 
 .Footer {
@@ -1385,6 +1457,7 @@ body {
 
 .Contact {
   padding: 5rem 5rem 0;
+  margin-bottom: 60px;
 }
 
 .Contact_information {
@@ -1404,7 +1477,7 @@ body {
 
 .Contact_information_data span {
   display: inline-block;
-  margin-left: 8px;
+  margin-right: 9px;
   margin-bottom: 8px;
 }
 

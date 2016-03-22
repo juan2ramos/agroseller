@@ -1,3 +1,56 @@
+.container
+  margin: 5rem 0
+  &_icon
+    position: relative
+    left: 50%
+    margin-left: -17px
+  h1
+    padding: .9rem 0
+    text-transform: capitalize
+    word-spacing: 2px
+    letter-spacing: .1rem
+  h1, >span
+    display: block
+    text-align: center
+  span
+    font-size: 1.2rem
+  &_questions_item
+      ol li
+        list-style-type: none
+        font-weight: 500
+        margin-bottom: 1rem
+        >span
+          cursor: pointer
+          position: relative
+          z-index: 100
+          display: block
+          padding: 1rem
+          color: #888
+          background: #F8F8F8
+          box-shadow: 0 3px 5px -4px gray
+        &.open
+          span
+            box-shadow: 0 5px 5px -4px gray
+          .text
+            display: block
+      ol li:before
+        position: relative
+        z-index: 110
+        content: attr(count)
+        float: left
+        display: inline-block
+        color: $greenLight
+        font-size: 1.7rem
+        font-weight: 500
+        padding: 1rem .5rem 0 1.6rem
+      .text
+        display: none
+        padding: 1rem 4rem
+        background: darken(#F8F8F8, 2.5)
+        font-size: 1.2rem
+        font-weight: 300
+
+
 /********************** FOOTER **********************/
 
 .Footer
@@ -53,6 +106,7 @@
 
 .Contact
   padding: 5rem 5rem 0
+  margin-bottom: 60px
   &_information
     padding-left: 2rem
     margin-top: 3.6rem
@@ -62,7 +116,7 @@
       align-items: center
       span
         display: inline-block
-        margin-left: 8px
+        margin-right: 9px
         margin-bottom: 8px
   h1, h3
     text-align: center

@@ -46,4 +46,8 @@ class HomeController extends Controller
         $answer = "El mensaje se ha enviado satisfactoriamente, pronto nos contactaremos contigo";
         return view('front.contactForm', ['mensaje' => $answer]);
     }
+
+    public function indexFaqs(){
+        return view('front.faqs');
+    }
 }

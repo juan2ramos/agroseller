@@ -313,10 +313,10 @@
                         <div><a href="">Directorio Agrario</a></div>
                     </li>
                     <li>
-                        <div><a href="">Pregutas Frecuentes </a></div>
+                        <div><a href="{{route('faqs')}}">Pregutas Frecuentes </a></div>
                     </li>
                     <li>
-                        <div><a href=""> Contáctanos</a></div>
+                        <div><a href="{{route('contactForm')}}"> Contáctanos</a></div>
                     </li>
                 </ul>
             </li>
@@ -327,10 +327,10 @@
                         <div><a href="">Directorio Agrario</a></div>
                     </li>
                     <li>
-                        <div><a href="">Pregutas Frecuentes </a></div>
+                        <div><a href="{{route('faqs')}}">Pregutas Frecuentes </a></div>
                     </li>
                     <li>
-                        <div><a href="">Contáctanos </a></div>
+                        <div><a href="{{route('contactForm')}}">Contáctanos </a></div>
                     </li>
                 </ul>
             </li>
@@ -356,10 +356,10 @@
                 <div><a href="">Directorio Agrario</a></div>
             </li>
             <li>
-                <div><a href="">Pregutas Frecuentes </a></div>
+                <div><a href="{{route('faqs')}}">Pregutas Frecuentes </a></div>
             </li>
             <li>
-                <div><a href="">Contáctanos </a></div>
+                <div><a href="{{route('contactForm')}}">Contáctanos </a></div>
             </li>
         </ul>
         <div class="NavCategories-network row">

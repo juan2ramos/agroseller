@@ -25,6 +25,11 @@ Route::get('finalizar-compra', [
     'as' => 'checkout'
 ]);
 
+Route::get('preguntas-frecuentes', [
+    'uses' => 'HomeController@indexFaqs',
+    'as' => 'faqs'
+]);
+
 //**************** Formulario de contacto ******************//
 Route::get('contacto', [
     'uses' => 'HomeController@indexContact',
