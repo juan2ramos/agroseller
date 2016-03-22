@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="row Contact">
+    <div class="row reverse Contact">
         @if(count($errors) > 0)
             <div class="error-message">
                 <ul>

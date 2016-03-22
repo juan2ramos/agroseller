@@ -339,6 +339,9 @@ main.container {
   padding: 1rem 2rem;
   position: relative;
   cursor: pointer;
+  color: white;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 
 [class*='-message'].hidden {
@@ -353,11 +356,11 @@ main.container {
 
 .successful-message {
   text-align: center;
-  background: #C9FBA6;
+  background: #86BB71;
 }
 
 .error-message {
-  background: #F7DADA;
+  background: #E48D8D;
 }
 
 main {
@@ -1385,8 +1388,8 @@ body {
 }
 
 .Contact_information {
-  padding-right: 2rem;
-  margin-top: 1rem;
+  padding-left: 2rem;
+  margin-top: 3.6rem;
 }
 
 .Contact_information_data {
