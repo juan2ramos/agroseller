@@ -61,31 +61,31 @@
        <section class="container_questions">
            <section class="container_questions_item">
                <ol>
-                   <li count="1." class="question">
+                   <li class="question">
                        <span>¿Como realizo la compra?</span>
                        <article class="text">
                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolore eveniet excepturi, in libero modi nihil nulla odio odit possimus quidem sapiente. Animi asperiores est eum exercitationem impedit, maiores natus pariatur quos ratione repellendus sint tempore veniam! A alias consequatur corporis eum, facilis, ipsam iure molestiae molestias nisi quidem quod sapiente ut? Accusamus delectus eos libero nisi voluptatem voluptates! A accusamus odio quasi sapiente veniam voluptate. Animi dignissimos dolorem doloremque dolores ducimus, ex excepturi exercitationem inventore nihil pariatur quae quos repellat tempora temporibus unde veniam veritatis voluptates. Aperiam corporis debitis dolores ducimus, fugit harum illum molestiae reprehenderit saepe sequi velit.</p>
                        </article>
                    </li>
-                   <li count="2." class="question">
+                   <li class="question">
                        <span>¿Como garantizan mi compra?</span>
                        <article class="text">
                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolore eveniet excepturi, in libero modi nihil nulla odio odit possimus quidem sapiente. Animi asperiores est eum exercitationem impedit, maiores natus pariatur quos ratione repellendus sint tempore veniam! A alias consequatur corporis eum, facilis, ipsam iure molestiae molestias nisi quidem quod sapiente ut? Accusamus delectus eos libero nisi voluptatem voluptates! A accusamus odio quasi sapiente veniam voluptate. Animi dignissimos dolorem doloremque dolores ducimus, ex excepturi exercitationem inventore nihil pariatur quae quos repellat tempora temporibus unde veniam veritatis voluptates. Aperiam corporis debitis dolores ducimus, fugit harum illum molestiae reprehenderit saepe sequi velit.</p>
                        </article>
                    </li>
-                   <li count="3." class="question">
+                   <li class="question">
                        <span>¿Como administro la informacion de mis clientes ?</span>
                        <article class="text">
                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolore eveniet excepturi, in libero modi nihil nulla odio odit possimus quidem sapiente. Animi asperiores est eum exercitationem impedit, maiores natus pariatur quos ratione repellendus sint tempore veniam! A alias consequatur corporis eum, facilis, ipsam iure molestiae molestias nisi quidem quod sapiente ut? Accusamus delectus eos libero nisi voluptatem voluptates! A accusamus odio quasi sapiente veniam voluptate. Animi dignissimos dolorem doloremque dolores ducimus, ex excepturi exercitationem inventore nihil pariatur quae quos repellat tempora temporibus unde veniam veritatis voluptates. Aperiam corporis debitis dolores ducimus, fugit harum illum molestiae reprehenderit saepe sequi velit.</p>
                        </article>
                    </li>
-                   <li count="4." class="question">
+                   <li class="question">
                        <span>¿Que riezgos corro durante la compra de un producto?</span>
                        <article class="text">
                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolore eveniet excepturi, in libero modi nihil nulla odio odit possimus quidem sapiente. Animi asperiores est eum exercitationem impedit, maiores natus pariatur quos ratione repellendus sint tempore veniam! A alias consequatur corporis eum, facilis, ipsam iure molestiae molestias nisi quidem quod sapiente ut? Accusamus delectus eos libero nisi voluptatem voluptates! A accusamus odio quasi sapiente veniam voluptate. Animi dignissimos dolorem doloremque dolores ducimus, ex excepturi exercitationem inventore nihil pariatur quae quos repellat tempora temporibus unde veniam veritatis voluptates. Aperiam corporis debitis dolores ducimus, fugit harum illum molestiae reprehenderit saepe sequi velit.</p>
                        </article>
                    </li>
-                   <li count="5." class="question">
+                   <li class="question">
                        <span>¿Cual es el proceso para realizar una venta?</span>
                        <article class="text">
                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolore eveniet excepturi, in libero modi nihil nulla odio odit possimus quidem sapiente. Animi asperiores est eum exercitationem impedit, maiores natus pariatur quos ratione repellendus sint tempore veniam! A alias consequatur corporis eum, facilis, ipsam iure molestiae molestias nisi quidem quod sapiente ut? Accusamus delectus eos libero nisi voluptatem voluptates! A accusamus odio quasi sapiente veniam voluptate. Animi dignissimos dolorem doloremque dolores ducimus, ex excepturi exercitationem inventore nihil pariatur quae quos repellat tempora temporibus unde veniam veritatis voluptates. Aperiam corporis debitis dolores ducimus, fugit harum illum molestiae reprehenderit saepe sequi velit.</p>

@@ -1346,9 +1346,13 @@ body {
   font-size: 1.2rem;
 }
 
+.container_questions_item ol {
+  counter-reset: li;
+}
+
 .container_questions_item ol li {
-  list-style-type: none;
-  font-weight: 500;
+  list-style: none;
+  font-size: 1.6rem;
   margin-bottom: 1rem;
 }
 
@@ -1374,13 +1378,12 @@ body {
 .container_questions_item ol li:before {
   position: relative;
   z-index: 110;
-  content: attr(count);
   float: left;
-  display: inline-block;
+  content: counter(li) ".";
+  counter-increment: li;
   color: #C5D257;
-  font-size: 1.7rem;
   font-weight: 500;
-  padding: 1rem .5rem 0 1.6rem;
+  padding: .75rem .5rem 0 1.6rem;
 }
 
 .container_questions_item .text {
