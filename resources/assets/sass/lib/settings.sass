@@ -1,14 +1,19 @@
+$browser-context: 16
+
 @mixin respond-to($breakpoint)
   @if $breakpoint == "small"
-    @media (min-width: 48em)
+    @media (min-width: 36rem)
       @content
 
-  @else if x == "medium"
-    @media (min-width: 56.25em)
+  @else if $breakpoint == "medium"
+    @media (min-width: 45rem)
       @content
   @else if $breakpoint == "large"
-  @media (min-width: 68.75em)
-    @content
+    @media (min-width: 65rem)
+      @content
+
+@function rem($pixels, $context: $browser-context)
+  @return #{$pixels/$context}rem
 
 @mixin transition($transition...)
   -moz-transition:    $transition

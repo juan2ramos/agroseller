@@ -1,12 +1,10 @@
 @import "lib/settings"
 @import "lib/general"
-@import "lib/font"
 @import "loginAdmin"
 @import "admin/home"
 @import "admin/categories"
-@import "bar"
+@import "lib/bar"
 @import "admin/search"
-
 
 .Map-provider
   width: 100%
@@ -45,7 +43,10 @@
   & input[type='checkbox']
     width: 1.5rem
     vertical-align: middle
+    @include respond-to(medium)
+      width: 1px
+
     & span
       display: inline
 
-@import 'main2'
+@import 'mainBack2'

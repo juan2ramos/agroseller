@@ -568,4 +568,3 @@
 @yield('socialScripts')
 </body>
 </html>
-}

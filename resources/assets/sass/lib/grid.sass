@@ -2,12 +2,6 @@ $columns: 12
 $container: 1140px
 $totalContainer: 100%
 
-
-.container
-  margin-right: auto
-  margin-left: auto
-  max-width: $container
-
 .row
   display: -webkit-flex
   display: -ms-flexbox
@@ -53,21 +47,45 @@ $totalContainer: 100%
   -webkit-box-flex: 0
   flex: 0 0 auto
 
-@mixin columns
-  @for $i from 1 through $columns - 1
+
+@for $i from 1 through $columns
+  .small-#{$i}
+    -ms-flex-preferred-size: ($i / $columns) * 100%
+    -webkit-flex-basis: ($i / $columns) * 100%
+    flex-basis: ($i / $columns) * 100%
+    max-width: ($i / $columns) * 100%
+
+@include respond-to(medium)
+  @for $i from 1 through $columns
+    .medium-#{$i}
+      -ms-flex-preferred-size: ($i / $columns) * 100%
+      -webkit-flex-basis: ($i / $columns) * 100%
+      flex-basis: ($i / $columns) * 100%
+      max-width: ($i / $columns) * 100%
+
+@include respond-to(large)
+  @for $i from 1 through $columns
     .col-#{$i}
       -ms-flex-preferred-size: ($i / $columns) * 100%
       -webkit-flex-basis: ($i / $columns) * 100%
       flex-basis: ($i / $columns) * 100%
       max-width: ($i / $columns) * 100%
 
-@mixin columns-offset
-  @for $i from 1 through $columns - 1
+
+@for $i from 1 through $columns
+  .offset-small-#{$i}
+    margin-left: ($totalContainer / $columns) * $i
+
+@include respond-to(medium)
+  @for $i from 1 through $columns
+    .offset-medium-#{$i}
+      margin-left: ($totalContainer / $columns) * $i
+
+@include respond-to(large)
+  @for $i from 1 through $columns
     .offset-#{$i}
       margin-left: ($totalContainer / $columns) * $i
 
-@include columns
-@include columns-offset
 
 .start
   -webkit-justify-content: flex-start

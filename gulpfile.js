@@ -12,6 +12,6 @@ elixir.config.sourcemaps = false;
  */
 
 elixir(function(mix) {
-    mix.sass("front/main.sass", 'public/css/front/style.css');
-    mix.sass("main.sass", 'public/css/style.css');
+    mix.sass("mainFront.sass", 'public/css/front/style.css');
+    mix.sass("mainBack.sass", 'public/css/style.css');
 });
