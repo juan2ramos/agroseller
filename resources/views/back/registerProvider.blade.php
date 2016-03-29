@@ -1,10 +1,10 @@
-//@extends('admin.layout')
+@extends('layoutBack')
 
 @section('content')
 
     <div class="ContentInfo">
         <h2>Llena los datos de tu empresa</h2>
-        @include('admin.partial.error')
+        @include('back.partial.error')
         <form id="Provider-form" class="form-horizontal" role="form" method="POST" action="{{ route('registerProvider') }}" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" id="Location" name="location" value="{{ old('location') }}">

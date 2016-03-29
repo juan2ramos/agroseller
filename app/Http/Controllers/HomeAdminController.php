@@ -11,9 +11,9 @@ class HomeAdminController extends Controller
 {
     function index(){
 
-        return view('admin.home');
+        return view('back.home');
     }
     function isValidateProviders(){
-        return view('admin.isValidateProviders');
+        return view('back.isValidateProviders');
     }
 }

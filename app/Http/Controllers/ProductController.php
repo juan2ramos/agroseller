@@ -14,7 +14,7 @@ class ProductController extends Controller
     function index()
     {
         $categories = Category::all();
-        return view('admin.product', compact('categories'));
+        return view('back.product', compact('categories'));
     }
 
     function newProduct(Request $request)

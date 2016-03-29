@@ -16,12 +16,12 @@ class UserController extends Controller
         $users = User::paginate(10);
         $roleName = $this->roleName;
         $routeSearch = 'searchUser';
-        return view('admin.users', compact('users','roleName','routeSearch'));
+        return view('back.users', compact('users','roleName','routeSearch'));
 
     }
     function showUser($id){
         $user = User::find($id);
-        return view('admin.user',compact('user'));
+        return view('back.user',compact('user'));
     }
 
 
@@ -38,6 +38,6 @@ class UserController extends Controller
         })->paginate(50);
         $roleName = $this->roleName;
         $routeSearch = 'searchUser';
-        return view('admin.users', compact('users','roleName','routeSearch','search'));
+        return view('back.users', compact('users','roleName','routeSearch','search'));
     }
 }

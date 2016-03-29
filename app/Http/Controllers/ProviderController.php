@@ -20,12 +20,12 @@ class ProviderController extends Controller
         $categories = Category::all();
 
         if (Provider::find(Auth::user()->id)) {
-            return view('admin.registerProvider', compact('categories'));
+            return view('back.registerProvider', compact('categories'));
         } else {
-            return view('admin.specificProviderForm');
+            return view('back.specificProviderForm');
         }
 
-        return view('admin.registerProvider', compact('categories'));
+        return view('back.registerProvider', compact('categories'));
     }
 
     function showProviders()
@@ -34,7 +34,7 @@ class ProviderController extends Controller
         $users = User::where('role_id', '=', 3)->with('provider')->paginate(10);
         $roleName = $this->roleName;
         $routeSearch = 'searchProvider';
-        return view('admin.provider', compact('users', 'roleName', 'routeSearch'));
+        return view('back.provider', compact('users', 'roleName', 'routeSearch'));
     }
 
     function searchProviders(Request $request)
@@ -53,7 +53,7 @@ class ProviderController extends Controller
         $roleName = $this->roleName;
         $routeSearch = 'searchProvider';
 
-        return view('admin.users', compact('users', 'roleName', 'routeSearch', 'search'));
+        return view('back.users', compact('users', 'roleName', 'routeSearch', 'search'));
 
     }
 

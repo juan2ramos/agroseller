@@ -12,7 +12,7 @@ class CategoryController extends Controller
     function index()
     {
         $categories = Category::all();
-        return view('admin.categories', compact('categories'));
+        return view('back.categories', compact('categories'));
 
     }
     function newCategory(Request $request){
@@ -28,7 +28,7 @@ class CategoryController extends Controller
 
         $category->save();
         $categories = Category::all();
-        return view('admin.categories', compact('categories'));
+        return view('back.categories', compact('categories'));
     }
     function destroyCategory($id, Request $request){
         $category = Category::find($id);
@@ -49,7 +49,7 @@ class CategoryController extends Controller
         ]);
         $subcategory->save();
         $categories = Category::all();
-        return view('admin.categories', compact('categories'));
+        return view('back.categories', compact('categories'));
     }
     function subcategoriesQuery(Request $request){
         $category = Category::find($request->input('id'));
