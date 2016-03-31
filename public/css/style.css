@@ -314,6 +314,7 @@ main {
 .Header {
   position: relative;
   padding: 1.5rem;
+  margin-left: 12rem;
 }
 
 .Header h1 {
@@ -587,6 +588,38 @@ main {
 .Search svg {
   max-width: 1rem;
   fill: #D6E5DA;
+}
+
+.BackContainer {
+  padding-left: 12rem;
+}
+
+.tables {
+  padding: 3.125rem;
+}
+
+.tables h2 {
+  font-weight: 300;
+}
+
+.tables table {
+  width: 100%;
+  text-align: center;
+  margin: 1.5625rem 0;
+}
+
+.tables thead {
+  color: white;
+  background: #4F4F4F;
+}
+
+.tables td,
+.tables th {
+  padding: 1.25rem 3.125rem;
+}
+
+.tables tbody tr:nth-child(even) {
+  background: #F8F8F8;
 }
 
 .Map-provider {

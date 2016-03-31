@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ProviderController extends Controller
 {
-    private $roleName = [1 => 'Super Administrador', 2 => 'Administrador', 3 => 'Proveedor', 4 => 'Cliente'];
+    private $roleName = [1 => 'Super Administrador', 2 => 'Administrador', 3 => 'Proveedor', 4 => 'Cliente', 5 => 'Agente'];
 
     function registerProvider()
     {
@@ -24,8 +24,6 @@ class ProviderController extends Controller
         } else {
             return view('back.specificProviderForm');
         }
-
-        return view('back.registerProvider', compact('categories'));
     }
 
     function showProviders()

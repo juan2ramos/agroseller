@@ -19,7 +19,7 @@ class isValidateProviders
     {
 
         $user = Auth::user();
-        $provider = Provider::where('user_id', '=', $user->id )->get();
+        $provider = Provider::where('user_id', $user->id )->get();
 
 
         if($user->role_id != '3'){
@@ -29,7 +29,7 @@ class isValidateProviders
         if($provider->isEmpty()){
             return redirect()->route('registerProvider');
         }
-        if($user->role_id == 3 && $user->validate == 0){
+        if($user->role_id == 3 && $user->provider->validate == 0){
             return redirect()->route('isValidateProviders');
         }
         return $next($request);

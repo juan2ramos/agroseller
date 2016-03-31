@@ -1,4 +1,4 @@
-<?php $role = [1 => 'Super Administrador', 2 => 'Administrador', 3 => 'Proveedor', 4 => 'Cliente'] ?>
+<?php $role = [1 => 'Super Administrador', 2 => 'Administrador', 3 => 'Proveedor', 4 => 'Cliente', 5 => 'Agente'] ?>
         <!DOCTYPE html>
 <html lang="es">
 <head>

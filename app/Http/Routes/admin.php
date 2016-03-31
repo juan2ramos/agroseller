@@ -41,6 +41,12 @@ Route::get('usuario/{id}', [
     'uses' => 'UserController@showUser',
     'as' => 'showUser'
 ]);
+
+Route::get('usuario/{id}/update', [
+    'uses' => 'UserController@validateProvider',
+    'as' => 'validateProvider'
+]);
+
 Route::get('categorias', [
     'uses' => 'CategoryController@index',
     'as' => 'category'

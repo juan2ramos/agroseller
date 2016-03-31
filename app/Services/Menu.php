@@ -33,7 +33,7 @@ class Menu
         return [
             'Inicio' => [
                 'route' => 'admin',
-                'roles' => [1, 2, 3, 4],
+                'roles' => [1, 2, 3, 4, 5],
                 'class' => 'icon-leaf'
             ],
             'Usuarios' => [
@@ -43,9 +43,10 @@ class Menu
             ],
             'Proveedores' => [
                 'route' => 'providers',
-                'roles' => [1, 2],
+                'roles' => [1, 2, 5],
                 'class' => 'icon-briefcase'
             ],
+
             'Categorias' => [
                 'route' => 'category',
                 'roles' => [1, 2],
@@ -78,7 +79,7 @@ class Menu
             ],
             'Reportes' => [
                 'route' => 'reports',
-                'roles' => [1, 2],
+                'roles' => [1, 2, 5],
                 'class' => 'icon-bars'
             ],
         ];

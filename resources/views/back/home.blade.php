@@ -1,6 +1,7 @@
 @extends('layoutBack')
 
 @section('content')
+    <div class="BackContainer">
     <section class="AdminHome">
         <article class="AdminHome-article">
             <header class="AdminHome-header">
@@ -57,4 +58,5 @@
             </header>
         </article>
     </section>
+    </div>
 @endsection
