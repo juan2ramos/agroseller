@@ -603,9 +603,15 @@ main {
 }
 
 .tables table {
-  width: 100%;
+  overflow-x: auto;
   text-align: center;
   margin: 1.5625rem 0;
+}
+
+.tables thead,
+.tables tbody {
+  display: block;
+  width: 100%;
 }
 
 .tables thead {
@@ -613,9 +619,14 @@ main {
   background: #4F4F4F;
 }
 
+.tables tbody {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .tables td,
 .tables th {
-  padding: 1.25rem 3.125rem;
+  padding: 1.25rem;
 }
 
 .tables tbody tr:nth-child(even) {
