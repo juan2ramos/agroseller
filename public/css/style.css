@@ -122,7 +122,12 @@ main {
 }
 
 .BackContainer {
-  padding-left: 12rem;
+  padding: 3.125rem;
+  padding-left: 15.125rem;
+}
+
+.BackContainer h2 {
+  font-weight: 300;
 }
 
 .Bar {
@@ -206,38 +211,28 @@ main {
 }
 
 .tables {
-  padding: 3.125rem;
-}
-
-.tables h2 {
-  font-weight: 300;
+  width: 100%;
+  overflow: auto;
 }
 
 .tables table {
-  overflow-x: auto;
+  margin: 1.25rem 0;
+  min-width: 53.125rem;
   text-align: center;
-  margin: 1.5625rem 0;
 }
 
-.tables thead,
-.tables tbody {
-  display: block;
+.tables tr {
   width: 100%;
+}
+
+.tables td,
+.tables th {
+  padding: 1.25rem 15px;
 }
 
 .tables thead {
   color: white;
   background: #4F4F4F;
-}
-
-.tables tbody {
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.tables td,
-.tables th {
-  padding: 1.25rem;
 }
 
 .tables tbody tr:nth-child(even) {
@@ -1055,44 +1050,6 @@ body {
   width: 24.375rem;
 }
 
-<<<<<<< HEAD
-.BackContainer {
-  padding: 3.125rem;
-  padding-left: 15.125rem;
-}
-
-.BackContainer h2 {
-  font-weight: 300;
-}
-
-.tables {
-  width: 100%;
-  overflow: auto;
-}
-
-.tables table {
-  margin: 1.25rem 0;
-  min-width: 53.125rem;
-  text-align: center;
-}
-
-.tables tr {
-  width: 100%;
-}
-
-.tables td,
-.tables th {
-  padding: 1.25rem 15px;
-}
-
-.tables thead {
-  color: white;
-  background: #4F4F4F;
-}
-
-.tables tbody tr:nth-child(even) {
-  background: #F8F8F8;
-=======
 .FormAuth h2 {
   font-weight: 500;
   font-size: 1.25rem;
@@ -1148,7 +1105,6 @@ body {
 .Search svg {
   max-width: 1rem;
   fill: #D6E5DA;
->>>>>>> 88c9737b97a485480f57dc34859942a3ee28b4cc
 }
 
 .Map-provider {
