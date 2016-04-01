@@ -1,14 +1,14 @@
-$Subtable = $('.Subtable');
-$Subtable_Father = $Subtable.parents('.Table');
-$Subtable_Father_Thead = $Subtable_Father.children('thead');
-$Subtable_Father_Tbody = $Subtable_Father_Thead.siblings();
+$SubTable = $('.SubTable');
+$SubTable_Father = $SubTable.parents('.Table');
+$SubTable_Father_tHead = $SubTable_Father.children('thead');
+$SubTable_Father_tBody = $SubTable_Father_tHead.siblings();
 
-$count = $Subtable_Father_Thead.children('tr').children('th').length;
-$Subtable.children('td').attr("colspan", $count);
-$Subtable_Father_Thead.children('tr').prepend('<td></td>');
-$Subtable_Father_Tbody.children('tr').prepend('<td><button class="iconPlus"></button></td>');
+$count = $SubTable_Father_tHead.children('tr').children('th').length;
+$SubTable.children('td').attr("colspan", $count);
+$SubTable_Father_tHead.children('tr').prepend('<td></td>');
+$SubTable_Father_tBody.children('tr').prepend('<td><button class="iconPlus"></button></td>');
 
-$Subtable.prev().click(function(){
+$SubTable.prev().click(function(){
     $(this).children().children('.iconPlus').toggleClass('open');
     $(this).next().children().children('.Table').toggleClass('open');
 });

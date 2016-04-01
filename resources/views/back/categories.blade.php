@@ -23,7 +23,7 @@
                     <td> {{$category->created_at}}</td>
                     <td><a href="#" data-id="{{ $category->id }}" class="CategoryDelete icon-remove"></a></td>
                 </tr>
-                <tr class="Subtable">
+                <tr class="SubTable">
                     <td>
                         <table class="Table">
                             <thead>

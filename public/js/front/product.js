@@ -41,6 +41,8 @@ $('.YouCart-closed  ').on('click',function(){
     $('.YouCart-content').removeClass('show');
 });
 function getTime() {
+    now = new Date();
+    alert(now);
     date = $('#date').data('time').split(" ");
     date = date[0].split("-");
     daysF = date[2].split(" ");
@@ -64,7 +66,6 @@ function getTime() {
     newtime = window.setTimeout("getTime();", 1000);
 }
 function zero(data){
-
     if (data < 10)
         return '0'+data;
     return data;
@@ -76,4 +77,4 @@ function parse(str) {
         d = str.substr(6,2);
     return new Date(y,m,d);
 }
-window.setTimeout("getTime();", 1000)
+window.setTimeout("getTime();", 1000);
