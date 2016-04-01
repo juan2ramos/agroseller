@@ -2,11 +2,10 @@
 
 @section('content')
 
-    <div class="BackContainer">
         <h2>Categorías</h2>
 
         <p>Las imagenes no deben exceder los 2MB y una resolución mínima recomendad de 400X400</p>
-        <table class="Table">
+        <table class="Table BackContainer">
             <thead>
             <tr>
                 <th>Id</th>
@@ -74,7 +73,7 @@
             </select>
             <button type="submit" class="">Añadir</button>
         </form>
-    </div>
+   
     <form role="form" method="delete" id="FormDeleteCategory" action="{{ route('categoryDelete',':id') }}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
     </form>
