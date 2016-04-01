@@ -14,14 +14,53 @@
 
 </head>
 <body>
-<div class="Bar">
-    <figure class="Bar-logo">
+
+<header class="row middle HeaderBack">
+    <figure class="col-2 HeaderBack-figure">
         <a href="{{url('/')}}"> <img src="{{ url('images/agroseller-logo.png') }}" alt=""></a>
     </figure>
-    <div class="Bar-user">
-        <figure><img src="{{url('images/pp.svg')}}" alt=""></figure>
-        <h4>{{ auth()->user()->name }} <span> {{ $role[auth()->user()->role_id] }}</span></h4>
+    <div class="row middle col-10 HeaderBack-right">
+        <h1 class="col-6">
+            <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g id="Dashboard" transform="translate(-243.000000, -26.000000)" fill="#253A1B">
+                        <g id="barTop" transform="translate(195.000000, 0.000000)">
+                            <path d="M63.7788621,28.094 C62.0488621,26.783 59.3858621,26 56.6548621,26 C53.2778621,26 50.5258621,27.179 49.1058621,29.235 C48.4388621,30.2 48.0698621,31.344 48.0088621,32.633 C47.9548621,33.781 48.1478621,35.051 48.5818621,36.417 C50.0638621,31.973 54.2038621,28.494 58.9768621,28.494 C58.9768621,28.494 54.5108621,29.669 51.7028621,33.31 C51.7008621,33.312 51.6638621,33.358 51.5998621,33.446 C51.0358621,34.2 50.5448621,35.058 50.1768621,36.029 C49.5538621,37.511 48.9768621,39.544 48.9768621,41.994 L50.9768621,41.994 C50.9768621,41.994 50.6728621,40.084 51.2008621,37.888 C52.0738621,38.006 52.8548621,38.065 53.5578621,38.065 C55.3968621,38.065 56.7038621,37.667 57.6728621,36.813 C58.5408621,36.048 59.0198621,35.019 59.5268621,33.931 C60.3008621,32.268 61.1778621,30.384 63.7248621,28.929 C63.8708621,28.846 63.9648621,28.695 63.9758621,28.527 C63.9868621,28.359 63.9128621,28.198 63.7788621,28.096 L63.7788621,28.094 Z"
+                                  id="Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+            Bienvenido(a) a Agroseller
+        </h1>
+        <div class="col-6 HeaderBack-profile row end middle ">
+            <figure><img src="{{url('images/user.png')}}" alt=""><span>2</span></figure>
+            <h3>{{ auth()->user()->name }} {{ auth()->user()->last_name }}
+                <span>{{ $role[auth()->user()->role_id] }}</span></h3>
+            <svg width="13px" height="8px" viewBox="0 0 13 8" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g id="Dashboard" transform="translate(-1079.000000, -26.000000)" fill="#A2A2A2">
+                        <g id="barTop" transform="translate(195.000000, 0.000000)">
+                            <g id="user" transform="translate(755.000000, 14.000000)">
+                                <path d="M131.485281,9.48528137 L131.485281,17.4852814 L139.485281,17.4852814 L139.485281,16.0037999 L132.913853,16.0037999 L132.913853,9.48528137 L131.485281,9.48528137 Z"
+                                      id="Path-23"
+                                      transform="translate(135.485281, 13.485281) rotate(-45.000000) translate(-135.485281, -13.485281) "></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+        </div>
     </div>
+</header>
+
+<div class="Bar">
+
+
     @include('back.partial.menu')
 </div>
 

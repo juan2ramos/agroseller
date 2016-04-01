@@ -30,6 +30,7 @@ button {
 
 img {
   max-width: 100%;
+  display: block;
 }
 
 h1,
@@ -121,6 +122,72 @@ main {
   padding: 3rem;
 }
 
+.HeaderBack {
+  max-width: 71.25rem;
+  margin: auto;
+}
+
+.HeaderBack-figure {
+  padding: 0.875rem 2.9375rem;
+  background: #253A1B;
+  height: 4.25rem;
+}
+
+.HeaderBack-right {
+  background: #FFFFFF;
+  box-shadow: 0 1px 10px 0 rgba(50, 50, 50, 0.12);
+  height: 4.25rem;
+  padding: 0 3rem;
+}
+
+.HeaderBack-right h1 {
+  color: #253A1B;
+  font-size: 1.0625rem;
+  font-weight: 400;
+}
+
+.HeaderBack-right svg {
+  vertical-align: top;
+}
+
+.HeaderBack-profile h3 {
+  color: #979797;
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-align: left;
+  margin-left: 0.375rem;
+}
+
+.HeaderBack-profile h3 span {
+  display: block;
+  font-size: 0.625rem;
+}
+
+.HeaderBack-profile figure {
+  max-width: 2.5rem;
+  position: relative;
+}
+
+.HeaderBack-profile figure img {
+  border-radius: 50%;
+}
+
+.HeaderBack-profile figure span {
+  position: absolute;
+  color: white;
+  background: #F36664;
+  border-radius: 50%;
+  top: -0.375rem;
+  left: -0.625rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 0.125rem solid white;
+  font-size: 0.625rem;
+  text-align: center;
+  line-height: 1.125rem;
+  font-weight: 400;
+}
+
 .BackContainer {
   padding: 3.125rem;
   padding-left: 15.125rem;
@@ -128,86 +195,6 @@ main {
 
 .BackContainer h2 {
   font-weight: 300;
-}
-
-.Bar {
-  max-width: 12rem;
-  display: inline-block;
-  vertical-align: top;
-  overflow: hidden;
-  position: fixed;
-}
-
-.Bar-logo {
-  padding: 1rem 0;
-  width: 100%;
-  background: #3F4E31;
-  text-align: center;
-}
-
-.Bar-logo img {
-  max-width: 7rem;
-}
-
-.Bar-user {
-  padding: .5rem 0 .4rem;
-  background: rgba(8, 8, 8, 0.15);
-}
-
-.Bar-user figure {
-  width: 4rem;
-  display: inline-block;
-  vertical-align: middle;
-  text-align: center;
-}
-
-.Bar-user h4 {
-  display: inline-block;
-  vertical-align: middle;
-  text-align: right;
-  font-size: .8rem;
-  font-weight: 400;
-  margin: 0;
-  padding-right: .5rem;
-  width: 7.5rem;
-  color: #F5FBEB;
-}
-
-.Bar-user span {
-  display: block;
-  font-weight: 200;
-  font-size: .8em;
-}
-
-.Bar-user img {
-  border-radius: 50%;
-  width: 3rem;
-}
-
-.Nav {
-  background: rgba(57, 72, 43, 0.82);
-  height: calc(100vh - 9rem);
-  padding-top: 1rem;
-  overflow: auto;
-}
-
-.Nav li {
-  font-size: .85rem;
-}
-
-.Nav a {
-  color: #DAE2CD;
-  padding: 1rem 2rem;
-  display: block;
-}
-
-.Nav a:hover {
-  background: #1c2117;
-}
-
-.Nav [class^="icon-"],
-.Nav [class*=" icon-"] {
-  padding-right: .5rem;
 }
 
 .tables {
@@ -739,100 +726,6 @@ main {
   -webkit-order: 1;
   -ms-flex-order: 1;
   order: 1;
-}
-
-.Header {
-  position: relative;
-  padding: 1.5rem;
-  margin-left: 12rem;
-}
-
-.Header h1 {
-  font-size: 2rem;
-  font-weight: 100;
-  color: #F5FBEB;
-}
-
-.Header-messages {
-  position: absolute;
-  right: 1rem;
-  top: 1.5rem;
-}
-
-.Header-messages span {
-  border-radius: 50%;
-  display: inline-block;
-  background: rgba(63, 78, 49, 0.48);
-  padding: .5rem;
-  font-size: 1.2rem;
-  color: #DAE2CD;
-  cursor: pointer;
-  position: relative;
-}
-
-.Header-messages span.active:after {
-  content: '2';
-  position: absolute;
-  top: -6px;
-  left: -5px;
-  border-radius: 50%;
-  background: tomato;
-  display: block;
-  font-size: .6rem;
-  padding: 4px 6px 5px;
-  line-height: .6rem;
-}
-
-.AdminHome {
-  padding: 1.5rem;
-  display: -ms-flexbox;
-  display: flex;
-  display: -webkit-flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
-.AdminHome h2 {
-  font-weight: 100;
-  font-size: 1.2rem;
-  padding: .4rem 1rem;
-}
-
-.AdminHome h2 span {
-  padding-right: .8rem;
-}
-
-.AdminHome-article {
-  background: rgba(84, 97, 69, 0.55);
-  width: calc( 33% - 1rem);
-  margin: .5rem;
-  padding: .5rem;
-  color: #DAE2CD;
-}
-
-.AdminHome-table {
-  width: 94%;
-  border: 1px dashed;
-  font-weight: 100;
-  margin: .4rem auto .5rem;
-  font-size: .9rem;
-}
-
-.AdminHome-table th {
-  font-weight: 300;
-  border-bottom: 1px dashed;
-}
-
-.AdminHome-table td,
-.AdminHome-table th {
-  padding: .5rem;
-  text-align: center;
-}
-
-.AdminHome-table tbody tr:hover {
-  background: #1c2117;
-  cursor: pointer;
 }
 
 /* Categories */
