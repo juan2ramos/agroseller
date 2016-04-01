@@ -84,7 +84,6 @@
                     </g>
                 </svg>
                 <span>01:02:41</span>
-            </time>
             <div class="ProductDetail-quantity">
                 <h4>Cantidad</h4>
                 <div class="row bottom">
@@ -363,6 +362,7 @@
     <script src="{{asset('js/front/map.js')}}"></script>
     <script src="{{asset('js/front/slide.js')}}"></script>
     <script src="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.js"></script>
+    <script src="{{asset('js/front/product.js')}}"></script>
 @endsection
 @section('styles')
     <link href="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.css" rel="stylesheet">
