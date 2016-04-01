@@ -12,11 +12,9 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
 
 </head>
-<body class="Login-Body">
-
-<script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
+<body>
 @yield('content')
-
+<script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
 @yield('scripts')
 </body>
 </html>

@@ -1,160 +1,41 @@
-.Login
-  width: 90%
+@import "lib/forms"
+body
+  background: #F8F8F8
+.HeaderAuth
+  background: $greenDark
+.HeaderAuth-content
+  padding: 1rem
+  background: $greenDark
+  max-width: $widthContent
+  width: 100%
   margin: auto
-  max-width: 30rem
-  position: relative
-  top: calc(50vh - 15rem)
+.FormAuth
+  margin: rem(48)
+  & input
+    width: rem(390)
   & h2
-    text-align: center
-    font-weight: 300
-    font-size: 2.5rem
-  & select
-    padding: 0 !important
-  & input, & select, & textarea
-    line-height: normal
-    display: block
-    width: 90%
-    margin: 1rem auto
-    max-width: 25rem
-    height: 2.5rem
-    border-radius: 0.2rem
-    padding: 0 1rem 0
-    color: #E4FFC8
-    background: #65804A
-    background: -moz-linear-gradient(to right, #65804A 50%, #576B43 100%)
-    background: -webkit-linear-gradient(to right, #65804A 50%, #576B43 100%)
-    background: linear-gradient(to right, #65804A 50%, #576B43 100%)
-    border: 1px solid #87AD5D
-    &:focus
-      box-shadow: 0 0 .25rem white
-  & textarea
-    min-height: 100px
-  @include placeholder
-    color: #C1C1C1
-  & input[type='checkbox']
-    max-width: 1.25rem
-    display: inline-block
-    vertical-align: middle
-    height:  1.25rem
-    margin: 0
-    position: relative
-    opacity: 0.5
-    outline: none
-    @include transform(scale(.8))
-    @include transition(0.1s ease-out all)
-    cursor: pointer
-    &:before, &:after
-      content: ''
-      position: absolute
-    &:after
-      border-bottom: 2px solid #fff
-      border-right: 2px solid #fff
-      z-index: 2
-      height: 10px
-      width: 5px
-      top: 2px
-      left: 6px
-      @include transform(rotate(-35deg) scale(.8))
-      opacity: 0
-      @include transition(0.4s cubic-bezier(0.65, 0.05, 0.36, 1)  all)
-    &:before
-      background: #5A7045
-      border-radius: 50%
-      height: 18px
-      width: 18px
-      top: -2px
-      left: -1px
-      border: 2px solid #5A7045
-    &:checked
-      opacity: 1
-      &:after
-        @include transform(rotate(35deg) scale(1))
-        opacity: 1
-    &:focus
-      box-shadow: 0 0 0 0
+    font-weight: 500
+    font-size: rem(20)
+    color: #616161
+    line-height: rem(24)
+    padding-bottom: rem(16)
 
-.Label-checkout
-  max-width: 82%
-  margin: .5rem auto
-  display: block
-  font-size: .875rem
+  & .Button
+    margin: rem(48) 0 0
+
+  & .Errors-password
+    width: 0
+    position: absolute
+    bottom: 0
+    background: #F36664
+    height: rem(4)
+    @include transition(width .4s )
+
+
+.Login
+  height: calc(100% - 15rem)
   & a
-    color: #BCCD4B
-    font-weight: 400
-.login-restartPassword
-  color: #E4FFC8
-  display: block
-  width: 90%
-  margin: auto
-  max-width: 25rem
-  font-size: .85rem
-  font-weight: bold
-  &:hover
-    text-decoration: underline
-.Login-submit
-  color: #313D25
-  display: block
-  width: 90%
-  margin: 1.5rem auto
-  max-width: 25rem
-  background: #DBE6CF
-  border: none
-  height: 2.5rem
-  font-weight: 500
-  font-size: .9rem
-  box-shadow: 0 0.25rem 0 #8ca273
-  border-radius: 3px
-  line-height: 2.5rem
-  &:hover
-    box-shadow: 0 0 1rem #0E0E0E
-
-.Login-logo
-  max-width: 10rem
-  margin: auto
-  top: 1rem
-  left: 1rem
-  position: absolute
-
-.Header-login
-  position: absolute
-  display: block
-  top: 1.5rem
-  right: 2rem
-  color: #263A1C
-  padding: .8rem 2rem
-  background: #BCCD4B
-  border-radius: .2rem
-  font-weight: 400
-  box-shadow: 6px -2px 1px rgb(38, 58, 28)
-  border: 1px solid rgba(255, 255, 255, 0.03)
-
-.Logo-hr
-  width: 90%
-  margin: 1rem auto 2rem
-  max-width: 25rem
-  background: rgba(0, 0, 0, 0.3)
-  height: 1px
-  border: none
-  box-shadow: 0px 1px 1px rgba(226, 226, 226, 0.24)
-
-.Login-error
-  max-width: 25rem
-  display: block
-  margin: auto
-  color: tomato
-.Login-label
-  position: relative
-  display: block
-.passStrength
-  max-width: 25rem
-  position: absolute
-  bottom: 0
-  left: 2.5rem
-  width: 20%
-  height: .375rem
-  display: block
-  @include transition(background-color 0.55s cubic-bezier(0.3, 0.55, 0.1, 0.9), width 0.55s cubic-bezier(0.3, 0.55, 0.1, 0.9))
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.15)))
-  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15))
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15))
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15))
+    margin-top: rem(-10)
+    display: block
+    text-align: right
+    color: #C5C5C5

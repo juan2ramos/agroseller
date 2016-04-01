@@ -1,31 +1,45 @@
 @extends('layout')
 
 @section('content')
-    <figure class="Login-logo">
-        <a href="/"><img src="{{ url('images/agroseller-logo.png') }}" alt=""></a>
-    </figure>
-    <a href="{{route('register')}}">
-        <button class="Header-login">Registrate</button>
-    </a>
-    <main class="Login">
-        @if (count($errors) > 0)
-            <?php $errorArray = $errors->getMessages();  ?>
-        @endif
-        <h2>Inicio de sesión</h2>
-        <hr class="Logo-hr">
-        <form class="" role="form" method="POST" action="{{ route('login') }}">
+    <header class="HeaderAuth">
+        <div class="HeaderAuth-content row middle ">
+            <figure class="col-6">
+                <a href="/"><img src="{{ url('images/agroseller-logo.png') }}" alt=""></a>
+            </figure>
+            <a class="col-6 end" href="{{route('register')}}">
+                <button class="Button">REGISTRATE</button>
+            </a>
+        </div>
+    </header>
+
+    @if (count($errors) > 0)
+        <?php $errorArray = $errors->getMessages();  ?>
+    @endif
+
+    <form class="row center middle FormAuth Forms Login" role="form" method="POST" action="{{ route('login') }}">
+        <div class="ContainerBack">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+            <h2>INICIO DE SESIÓN</h2>
             @if (!empty($errorArray["email"])) <span class="Login-error">{{ $errorArray["email"][0] }} </span>@endif
-            <input type="email" placeholder="E-mail" name="email" value="{{ old('email') }}">
+            <label for="email">
+                <input type="email" name="email" value="{{ old('email') }}">
+                <span>E-mail</span>
+            </label>
 
-            @if (!empty($errorArray["password"])) <span  class="Login-error">{{ $errorArray["password"][0] }} </span>@endif
-            <input type="password" name="password" placeholder="Contraseña">
+            @if (!empty($errorArray["password"])) <span
+                    class="Login-error">{{ $errorArray["password"][0] }} </span>@endif
 
+            <label for="password">
+                <input type="password" name="password">
+                <span>Contraseña</span>
+            </label>
             <a class="login-restartPassword" href="/password/email">Olvido su contraseña?</a>
 
-            <button type="submit" class="Login-submit">INICIO DE SESIÓN</button>
+            <button  type="submit" class="Button">INICIO DE SESIÓN</button>
+        </div>
+    </form>
 
-        </form>
-    </main>
+@endsection
+@section('scripts')
+    <script src="{{asset('js/forms.js')}}"></script>
 @endsection
