@@ -1045,6 +1045,10 @@ tr.SubTable .iconPlus {
   transform: rotate(45deg);
 }
 
+.FormAuth-container {
+  padding: 3rem;
+}
+
 .Forms-checkout {
   font-weight: 100;
   color: gray;

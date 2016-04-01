@@ -17,7 +17,7 @@
     @endif
 
     <form class="row center middle FormAuth Forms Login" role="form" method="POST" action="{{ route('login') }}">
-        <div class="ContainerBack">
+        <div class="BackContainer FormAuth-container">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <h2>INICIO DE SESIÓN</h2>
             @if (!empty($errorArray["email"])) <span class="Login-error">{{ $errorArray["email"][0] }} </span>@endif

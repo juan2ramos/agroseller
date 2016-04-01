@@ -17,7 +17,7 @@
     @endif
 
     <form class="row center middle FormAuth Forms" role="form" method="POST" action="{{ route('register') }}">
-        <div class="ContainerBack">
+        <div class="BackContainer FormAuth-container">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
             <h2>¡HAZ PARTE DE AGROSELLER!</h2>
