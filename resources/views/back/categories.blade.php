@@ -2,16 +2,16 @@
 
 @section('content')
 
-    <div class="ContentInfo">
+    <div class="BackContainer">
         <h2>Categorías</h2>
 
         <p>Las imagenes no deben exceder los 2MB y una resolución mínima recomendad de 400X400</p>
-        <table class="AdminHome-table">
+        <table class="Table">
             <thead>
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
-                <th>Fecha de Creación</th>
+                <th>Fecha de creación</th>
                 <th>Acciones</th>
             </tr>
             </thead>
@@ -19,17 +19,36 @@
             @foreach($categories as $category)
                 <tr>
                     <td> {{ $category->id }}</td>
-                    <td> {{ $category->name }}
-                        <br>
-                        @foreach($category->subcategories as $subcategories)
-                            {{$subcategories->name}} <br>
-                        @endforeach
+                    <td> {{ $category->name }}</td>
+                    <td> {{$category->created_at}}</td>
+                    <td><a href="#" data-id="{{ $category->id }}" class="CategoryDelete icon-remove"></a></td>
+                </tr>
+                <tr class="Subtable">
+                    <td>
+                        <table class="Table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Fecha de creación</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($category->subcategories as $subcategories)
+                                    <tr>
+                                        <td>{{$subcategories->id}}</td>
+                                        <td>{{$subcategories->name}}</td>
+                                        <td>{{$subcategories->created_at}}</td>
+                                        <td><a href="#">Actualizar</a><a href="#">Eliminar</a></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </td>
-                    <td>{{ $category->created_at }}</td>
-                    <td>{{--<a href="" class="icon-binoculars"></a>--}}<a href="#" data-id="{{ $category->id }}"
-                                                                          class="CategoryDelete icon-remove"></a></td>
                 </tr>
             @endforeach
+
             </tbody>
         </table>
         <form role="form" method="POST" class="ContentInfo-form" action="{{ route('category') }} "
@@ -59,4 +78,8 @@
     <form role="form" method="delete" id="FormDeleteCategory" action="{{ route('categoryDelete',':id') }}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
     </form>
+@endsection
+
+@section('scripts')
+    <script src="{{asset('js/tables.js')}}"></script>
 @endsection

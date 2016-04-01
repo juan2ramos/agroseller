@@ -15,9 +15,8 @@
     <div class="BackContainer">
         <section class="Provider">
             <h2>Lista de proveedores</h2>
-            <div class="tables">
-                <table class="table">
-                    <thead>
+            <table class="Table">
+                <thead>
                     <tr>
                         <th>Nombre proveedor</th>
                         <th>Email</th>
@@ -26,8 +25,107 @@
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
-                    </thead>
-                    <tbody>
+                </thead>
+                <tbody>
+                    @if(auth()->user()->role_id != 5)
+                        @foreach($users as $user)
+                            <tr>
+                                <td> {{ $user->name }}</td>
+                                <td> {{ $user->email }}</td>
+                                <td>@if( $user->provider) {{$user->provider->contact}} @endif</td>
+                                <td>@if( $user->provider) {{$user->provider['contact-phone']}} @endif</td>
+                                <td>
+                                    @if(!$user->provider)
+                                        Sin registro
+                                    @elseif($user->provider->validate == 0)
+                                        Sin validar
+                                    @else
+                                        Activo
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{ route('showUser',$user->id) }}" class="icon-binoculars">Ver</a>
+                                    <a href="#" data-id="{{ $user->id }}" class="CategoryDelete icon-remove">Eliminar</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
+                        @foreach($users as $user)
+                            <tr>
+                                <td> {{ $user->name }}</td>
+                                <td> {{ $user->email }}</td>
+                                <td>@if( $user->provider) {{$user->provider->contact}} @endif</td>
+                                <td>@if( $user->provider) {{$user->provider['contact-phone']}} @endif</td>
+                                <td>
+                                    @if(!$user->provider)
+                                        Sin registro
+                                    @elseif($user->provider->validate == 0)
+                                        Sin validar
+                                    @else
+                                        Activo
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($user->provider && $user->provider->validate == 0)
+                                        <a href="{{ route('showUser',$user->id) }}" class="icon-binoculars">Ver</a>
+                                    @endif
+                                        <a href="#" data-id="{{ $user->id }}" class="CategoryDelete icon-remove">Eliminar</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
+                    <tr class="Subtable">
+                        <td>
+                            <table class="Table">
+                                <thead>
+                                <tr>
+                                    <th>NOmbre</th>
+                                    <th>Telefono</th>
+                                    <th>Ciudad</th>
+                                    <th>Pais</th>
+                                    <th>Accion</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Santiago</td>
+                                    <td>4550786</td>
+                                    <td>Bogota</td>
+                                    <td>Colombia</td>
+                                    <td>Actualizar</td>
+                                </tr>
+                                <tr>
+                                    <td>Santiago</td>
+                                    <td>4550786</td>
+                                    <td>Bogota</td>
+                                    <td>Colombia</td>
+                                    <td>Actualizar</td>
+                                </tr>
+                                <tr>
+                                    <td>Santiago</td>
+                                    <td>4550786</td>
+                                    <td>Bogota</td>
+                                    <td>Colombia</td>
+                                    <td>Actualizar</td>
+                                </tr>
+                                <tr>
+                                    <td>Santiago</td>
+                                    <td>4550786</td>
+                                    <td>Bogota</td>
+                                    <td>Colombia</td>
+                                    <td>Actualizar</td>
+                                </tr>
+                                <tr>
+                                    <td>Santiago</td>
+                                    <td>4550786</td>
+                                    <td>Bogota</td>
+                                    <td>Colombia</td>
+                                    <td>Actualizar</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            </td>
+                        </tr>
                         @if(auth()->user()->role_id != 5)
                             @foreach($users as $user)
                                 <tr>
@@ -68,7 +166,7 @@
                                     </td>
                                     <td>
                                         @if($user->provider && $user->provider->validate == 0)
-                                        <a href="{{ route('showUser',$user->id) }}" class="icon-binoculars">Ver</a>
+                                            <a href="{{ route('showUser',$user->id) }}" class="icon-binoculars">Ver</a>
                                         @endif
                                         <a href="#" data-id="{{ $user->id }}" class="CategoryDelete icon-remove">Eliminar</a>
                                     </td>
@@ -88,4 +186,5 @@
 @endsection
 @section('scripts')
     <script src="{{asset('js/activeProvider.js')}}"></script>
+    <script src="{{asset('js/tables.js')}}"></script>
 @endsection
