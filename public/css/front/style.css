@@ -118,10 +118,9 @@ main {
   font-weight: 500;
 }
 
-.ContainerBack {
-  background: #FFFFFF;
+.BackContainer {
+  background: #ffffff;
   box-shadow: 0 0 1.875rem 0 rgba(0, 0, 0, 0.02);
-  padding: 3rem;
 }
 
 .row {

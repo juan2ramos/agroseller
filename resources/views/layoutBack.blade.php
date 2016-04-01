@@ -14,7 +14,6 @@
 
 </head>
 <body>
-
 <header class="row middle HeaderBack">
     <figure class="col-2 HeaderBack-figure">
         <a href="{{url('/')}}"> <img src="{{ url('images/agroseller-logo.png') }}" alt=""></a>
@@ -39,7 +38,8 @@
             <figure><img src="{{url('images/user.png')}}" alt=""><span>2</span></figure>
             <h3>{{ auth()->user()->name }} {{ auth()->user()->last_name }}
                 <span>{{ $role[auth()->user()->role_id] }}</span></h3>
-            <svg width="13px" height="8px" viewBox="0 0 13 8" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            <svg id="Profile-arrow" width="13px" height="8px" viewBox="0 0 13 8" version="1.1"
+                 xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink">
 
                 <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -55,29 +55,17 @@
                 </g>
             </svg>
         </div>
+        <ul class="HeaderBack-profileNav">
+            <li><a href="">Perfil</a></li>
+            <li><a href="{{ url('logout') }}">Cerrar Sesión</a></li>
+        </ul>
     </div>
 </header>
-
-<div class="Bar">
-
-
+<main class="MainBack row">
     @include('back.partial.menu')
-</div>
-
-
-<header class="Header">
-    <h1><span class="icon-leaf"></span>{{ auth()->user()->name }}, Bienvenido(a) a Agroseller </h1>
-
-    <div class="Header-messages">
-        <span class="icon-bell active"></span>
-        <span class="icon-bubbles"></span>
-        <a href="{{ url('logout') }}"><span class="">Cerrar</span></a>
+    <div class="col-10 MainBack-container">
+        @yield('content')
     </div>
-</header>
-
-
-@yield('content')
-
 </main>
 <script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>

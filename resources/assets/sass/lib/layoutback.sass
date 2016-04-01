@@ -1,6 +1,7 @@
 .HeaderBack
   max-width: $widthContent
   margin: auto
+  position: relative
 .HeaderBack-figure
   padding: rem(14) rem(47)
   background: #253A1B
@@ -16,13 +17,38 @@
     font-weight: 400
   & svg
     vertical-align: top
+.HeaderBack-profileNav
+  position: absolute
+  background: #FFFFFF
+  box-shadow: rem(5) rem(5) 0 0 rgba(212,212,212,0.25)
+  top: rem(-20)
+  right: rem(54)
+  text-align: center
+  width: rem(150)
+  padding: rem(18) 0
+  @include transition(all .5s)
+  & a
+    font-size: rem(14)
+    color: gray
+    &:hover
+      color: $greenLight
+  & li
+    &:first-child
+      margin-bottom: rem(8)
 .HeaderBack-profile
+  position: relative
+  background: white
+  z-index: 2
+  height: rem(68)
+  & svg
+    cursor: pointer
+    @include transition(all .5s)
   & h3
     color: #979797
     font-size: rem(14)
-    font-weight: 400
+    font-weight: 300
     text-align: left
-    margin-left: rem(6)
+    margin: 0 rem(6)
     & span
       display: block
       font-size: rem(10)
@@ -45,4 +71,41 @@
       text-align: center
       line-height: rem(18)
       font-weight: 400
+
+.HeaderBack-profileOpen
+  & + .HeaderBack-profileNav
+    top: rem(68)
+  & svg
+    @include transform(rotateX(180deg))
+
+.Nav
+  background: #FFFFFF
+  box-shadow: 0 rem(1) rem(10) 0 rgba(50,50,50,0.12)
+  min-height: calc(100vh - 68px)
+  z-index: 1
+  & img
+    margin: auto
+  & a
+    height: rem(64)
+    color: $greenDark
+    font-size: rem(15)
+    font-weight: 400
+    display: block
+    text-align: center
+    padding: rem(16) 0
+    &:hover
+      background: #F8F8F8
+  & li
+    border-bottom: 1px solid #D9D9D9
+    &:last-child
+      border: none
+.MainBack
+  max-width: $widthContent
+.MainBack-container
+  padding: 3rem
+  box-shadow: 0 rem(1) rem(10) 0 rgba(50,50,50,0.02)
+
+
+
+
 

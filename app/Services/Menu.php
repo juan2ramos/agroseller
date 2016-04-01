@@ -31,61 +31,61 @@ class Menu
     }
     private function menuConfig(){
         return [
-            'Inicio' => [
+            'Home' => [
                 'route' => 'admin',
                 'roles' => [1, 2, 3, 4, 5],
-                'class' => 'icon-leaf'
+                'class' => 'home'
             ],
             'Usuarios' => [
                 'route' => 'users',
                 'roles' => [1, 2],
-                'class' => 'icon-user2'
+                'class' => 'user'
             ],
             'Proveedores' => [
                 'route' => 'providers',
                 'roles' => [1, 2, 5],
-                'class' => 'icon-briefcase'
+                'class' => 'provider'
             ],
 
             'Categorias' => [
                 'route' => 'category',
                 'roles' => [1, 2],
-                'class' => 'icon-notebook'
+                'class' => 'category'
             ],
             'Cultivos' => [
                 'route' => 'farmIndex',
                 'roles' => [1, 2],
-                'class' => 'icon-bars'
+                'class' => 'farm'
             ],
             'Productos' => [
                 'route' => 'products',
                 'roles' => [1, 2, 3, 4],
-                'class' => 'icon-lab'
+                'class' => 'product'
             ],
             'Clientes' => [
                 'route' => 'clients',
                 'roles' => [1, 2, 3],
-                'class' => 'icon-user'
+                'class' => 'client'
             ],
             'Ofertas' => [
                 'route' => 'offers',
                 'roles' => [1, 2, 3],
-                'class' => 'icon-credit'
+                'class' => 'offer'
             ],
             'Facturas' => [
                 'route' => 'bills',
                 'roles' => [1, 2, 3, 4],
-                'class' => 'icon-wallet'
+                'class' => 'bill'
             ],
             'Pedidos' => [
                 'route' => 'orders',
                 'roles' => [1, 2, 3, 4],
-                'class' => 'icon-cart'
+                'class' => 'order'
             ],
             'Reportes' => [
                 'route' => 'reports',
                 'roles' => [1, 2, 5],
-                'class' => 'icon-bars'
+                'class' => 'report'
             ],
         ];
     }

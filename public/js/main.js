@@ -1,6 +1,10 @@
 $(document).ready(function () {
+    var $arrowProfile = $('#Profile-arrow');
+    var $HeaderBackProfile = $('.HeaderBack-profile');
 
-
+    $arrowProfile.on('click',function(){
+        $HeaderBackProfile.toggleClass('HeaderBack-profileOpen')
+    });
 
     function VoteForm(form, button) {
 
