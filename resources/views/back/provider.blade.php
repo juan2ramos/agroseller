@@ -13,72 +13,74 @@
     </svg>
 
     <div class="BackContainer">
-        <section class="tables">
+        <section class="Provider">
             <h2>Lista de proveedores</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>Nombre proveedor</th>
-                    <th>Email</th>
-                    <th>Contacto</th>
-                    <th>Teléfono</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-                </thead>
-                <tbody>
-                    @if(auth()->user()->role_id != 5)
-                        @foreach($users as $user)
-                            <tr>
-                                <td> {{ $user->name }}</td>
-                                <td> {{ $user->email }}</td>
-                                <td>@if( $user->provider) {{$user->provider->contact}} @endif</td>
-                                <td>@if( $user->provider) {{$user->provider['contact-phone']}} @endif</td>
-                                <td>
-                                    @if(!$user->provider)
-                                        Sin registro
-                                    @elseif($user->provider->validate == 0)
-                                        Sin validar
-                                    @else
-                                        Activo
-                                    @endif
-                                </td>
-                                <td>
-                                    <a href="{{ route('showUser',$user->id) }}" class="icon-binoculars">Ver</a>
-                                    <a href="#" data-id="{{ $user->id }}" class="CategoryDelete icon-remove">Eliminar</a>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @else
-                        @foreach($users as $user)
-                            <tr>
-                                <td> {{ $user->name }}</td>
-                                <td> {{ $user->email }}</td>
-                                <td>@if( $user->provider) {{$user->provider->contact}} @endif</td>
-                                <td>@if( $user->provider) {{$user->provider['contact-phone']}} @endif</td>
-                                <td>
-                                    @if(!$user->provider)
-                                        Sin registro
-                                    @elseif($user->provider->validate == 0)
-                                        Sin validar
-                                    @else
-                                        Activo
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($user->provider && $user->provider->validate == 0)
-                                    <a href="{{ route('showUser',$user->id) }}" class="icon-binoculars">Ver</a>
-                                    @endif
-                                    <a href="#" data-id="{{ $user->id }}" class="CategoryDelete icon-remove">Eliminar</a>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @endif
-                </tbody>
-            </table>
+            <div class="tables">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Nombre proveedor</th>
+                        <th>Email</th>
+                        <th>Contacto</th>
+                        <th>Teléfono</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        @if(auth()->user()->role_id != 5)
+                            @foreach($users as $user)
+                                <tr>
+                                    <td> {{ $user->name }}</td>
+                                    <td> {{ $user->email }}</td>
+                                    <td>@if( $user->provider) {{$user->provider->contact}} @endif</td>
+                                    <td>@if( $user->provider) {{$user->provider['contact-phone']}} @endif</td>
+                                    <td>
+                                        @if(!$user->provider)
+                                            Sin registro
+                                        @elseif($user->provider->validate == 0)
+                                            Sin validar
+                                        @else
+                                            Activo
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('showUser',$user->id) }}" class="icon-binoculars">Ver</a>
+                                        <a href="#" data-id="{{ $user->id }}" class="CategoryDelete icon-remove">Eliminar</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            @foreach($users as $user)
+                                <tr>
+                                    <td> {{ $user->name }}</td>
+                                    <td> {{ $user->email }}</td>
+                                    <td>@if( $user->provider) {{$user->provider->contact}} @endif</td>
+                                    <td>@if( $user->provider) {{$user->provider['contact-phone']}} @endif</td>
+                                    <td>
+                                        @if(!$user->provider)
+                                            Sin registro
+                                        @elseif($user->provider->validate == 0)
+                                            Sin validar
+                                        @else
+                                            Activo
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($user->provider && $user->provider->validate == 0)
+                                        <a href="{{ route('showUser',$user->id) }}" class="icon-binoculars">Ver</a>
+                                        @endif
+                                        <a href="#" data-id="{{ $user->id }}" class="CategoryDelete icon-remove">Eliminar</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
+                    </tbody>
+                </table>
+                {!! $users->render() !!}
+            </div>
         </section>
     </div>
-    {!! $users->render() !!}
     <form role="form" method="post" id="FormUpdateProvider" action="{{ route('updateProvider',':id') }}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
     </form>

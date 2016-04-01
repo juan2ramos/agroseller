@@ -1,25 +1,21 @@
 .tables
-  padding: rem(50)
-  & h2
-    font-weight: 300
-  & table
-    overflow-x: auto
-    text-align: center
-    margin: rem(25) 0
+  width: 100%
+  overflow: auto
 
-  & thead, & tbody
-    display: block
+  table
+    margin: rem(20) 0
+    min-width: rem(850)
+    text-align: center
+
+  tr
     width: 100%
-  
+
+  td, th
+    padding: rem(20) 15px
+
   & thead
     color: white
     background: #4F4F4F
-  & tbody
-    overflow-x: hidden
-    overflow-y: auto
-
-  & td, & th
-    padding: rem(20)
 
   & tbody tr:nth-child(even)
     background: #F8F8F8

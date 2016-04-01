@@ -591,42 +591,37 @@ main {
 }
 
 .BackContainer {
-  padding-left: 12rem;
-}
-
-.tables {
   padding: 3.125rem;
+  padding-left: 15.125rem;
 }
 
-.tables h2 {
+.BackContainer h2 {
   font-weight: 300;
 }
 
-.tables table {
-  overflow-x: auto;
-  text-align: center;
-  margin: 1.5625rem 0;
+.tables {
+  width: 100%;
+  overflow: auto;
 }
 
-.tables thead,
-.tables tbody {
-  display: block;
+.tables table {
+  margin: 1.25rem 0;
+  min-width: 53.125rem;
+  text-align: center;
+}
+
+.tables tr {
   width: 100%;
+}
+
+.tables td,
+.tables th {
+  padding: 1.25rem 15px;
 }
 
 .tables thead {
   color: white;
   background: #4F4F4F;
-}
-
-.tables tbody {
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.tables td,
-.tables th {
-  padding: 1.25rem;
 }
 
 .tables tbody tr:nth-child(even) {
