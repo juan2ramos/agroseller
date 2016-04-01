@@ -232,28 +232,28 @@ main {
   padding: 1.25rem 15px;
 }
 
-.Subtable {
+tr.SubTable {
   padding: 0;
 }
 
-.Subtable > td {
+tr.SubTable > td {
   padding: 0;
 }
 
-.Subtable .Table {
+tr.SubTable .Table {
   overflow: hidden;
   display: none;
 }
 
-.Subtable .Table.open {
+tr.SubTable .Table.open {
   display: table;
 }
 
-.Subtable .Table thead {
+tr.SubTable .Table thead {
   background: #9D9D9D;
 }
 
-.Subtable .iconPlus {
+tr.SubTable .iconPlus {
   display: none;
 }
 

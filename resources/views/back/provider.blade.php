@@ -74,7 +74,7 @@
                             </tr>
                         @endforeach
                     @endif
-                    <tr class="Subtable">
+                    <tr class="SubTable">
                         <td>
                             <table class="Table">
                                 <thead>
