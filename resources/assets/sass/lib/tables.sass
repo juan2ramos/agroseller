@@ -3,16 +3,23 @@
   & h2
     font-weight: 300
   & table
-    width: 100%
+    overflow-x: auto
     text-align: center
     margin: rem(25) 0
+
+  & thead, & tbody
+    display: block
+    width: 100%
   
   & thead
     color: white
     background: #4F4F4F
+  & tbody
+    overflow-x: hidden
+    overflow-y: auto
 
   & td, & th
-    padding: rem(20) rem(50)
+    padding: rem(20)
 
   & tbody tr:nth-child(even)
     background: #F8F8F8

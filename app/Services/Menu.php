@@ -52,7 +52,12 @@ class Menu
                 'roles' => [1, 2],
                 'class' => 'icon-notebook'
             ],
-            'productos' => [
+            'Cultivos' => [
+                'route' => 'farmIndex',
+                'roles' => [1, 2],
+                'class' => 'icon-bars'
+            ],
+            'Productos' => [
                 'route' => 'products',
                 'roles' => [1, 2, 3, 4],
                 'class' => 'icon-lab'

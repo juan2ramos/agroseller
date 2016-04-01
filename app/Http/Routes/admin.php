@@ -98,3 +98,9 @@ Route::post('featuresQuery', [
     'as' => 'featuresQuery',
     'middleware' => 'Roles:1-2-3'
 ]);
+
+Route::get('cultivos', [
+    'uses' => 'FarmController@index',
+    'as' => 'farmIndex',
+    'middleware' => 'Roles:1-2'
+]);
