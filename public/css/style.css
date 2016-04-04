@@ -863,86 +863,6 @@ tr.SubTable .iconPlus {
   order: 1;
 }
 
-/* Categories */
-
-.ContentInfo {
-  background: #e3ecde;
-  width: 100%;
-  margin: 2rem auto;
-  padding: 1rem 1rem 1.5rem;
-  color: #3F4633;
-  max-width: 60rem;
-  border: 2px solid #5A6D60;
-  border-radius: 2px;
-  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.1);
-}
-
-.ContentInfo p {
-  width: 94%;
-  margin: 2rem auto 1rem;
-  font-size: .9rem;
-}
-
-.ContentInfo ::-webkit-input-placeholder {
-  color: #dce5dd;
-}
-
-.ContentInfo :-moz-placeholder {
-  color: #dce5dd;
-}
-
-.ContentInfo ::-moz-placeholder {
-  color: #dce5dd;
-}
-
-.ContentInfo :-ms-input-placeholder {
-  color: #dce5dd;
-}
-
-.ContentInfo h2 {
-  text-align: center;
-  margin: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-}
-
-.ContentInfo input,
-.ContentInfo select {
-  width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  max-width: 15rem;
-  padding: 0.3rem .5rem;
-  background: #869980;
-  color: white;
-}
-
-.ContentInfo input[type='file'],
-.ContentInfo select[type='file'] {
-  padding: .25rem;
-}
-
-.ContentInfo button {
-  background: #5A6D60;
-  border: 1px solid;
-  padding: .3rem 2rem;
-  margin-left: 0.5rem;
-}
-
-.ContentInfo a {
-  color: #DAE2CD;
-  font-size: 1.1rem;
-  padding: .3rem;
-}
-
-.ContentInfo a:hover {
-  color: #869980;
-}
-
-.ContentInfo-form {
-  margin: 2.2rem 0 1rem;
-  text-align: center;
-}
-
 .Forms input,
 .Forms textarea,
 .Forms select {
@@ -1139,69 +1059,96 @@ body {
   fill: #D6E5DA;
 }
 
-.Map-provider {
-  width: 100%;
-  height: 400px;
-}
-
-.Marker {
+.Wizard {
   position: relative;
-  width: 49%;
-  display: inline-block;
-  background: #65804a;
-  color: white;
-  padding: 1rem;
-  text-align: center;
+  counter-reset: section;
+  font-size: 14px;
+}
+
+.Wizard svg {
+  display: block;
+  margin: 0.25rem auto;
+}
+
+.Wizard li {
+  padding: 1.375rem;
+  font-weight: 400;
+  color: #D9D9D9;
+  counter-increment: section;
+}
+
+.Wizard li.current {
+  color: #C5D257;
   cursor: pointer;
-  margin-left: 0.3rem;
 }
 
-.Product-select {
-  margin: 1rem .5rem;
-  height: 2rem;
+.Wizard li.current g {
+  fill: #C5D257;
 }
 
-#Product-form label {
-  margin: 1rem 1rem 0;
+.Wizard ul {
+  border-bottom: 0.25rem solid #D9D9D9;
 }
 
-#Product-form input,
-#Product-form select {
-  max-width: 60rem;
-  height: 2rem;
+.Wizard-line {
+  height: 0.25rem;
+  width: 25%;
+  display: block;
+  background: #C5D257;
+  position: absolute;
+  bottom: 0;
 }
 
-#Product-form input,
-#Product-form select,
-#Product-form textarea {
-  margin: 1rem;
-  width: calc(100% - 2rem);
+.Step {
+  padding: 3rem;
+  color: #818181;
+  text-align: left;
 }
 
-#Product-form button {
+.Step article ul:first-child {
+  border-right: none;
+}
+
+.Step-1 {
+  width: 48.125rem;
+  margin: auto;
+  text-align: left;
+}
+
+.Step-1 label {
+  font-weight: 400;
+  font-size: 1.125rem;
+  display: block;
+  width: 50%;
+}
+
+.Step-1 select {
   display: none;
-  color: white;
-  margin: 1rem calc(50% - 7.5rem);
-  width: 15rem;
 }
 
-#Product-form .dataForm {
-  display: none;
+.Step-1 ul {
+  border: 0.0625rem solid gray;
+  margin: 1rem 0;
+  padding: 2rem 0;
+  width: 50%;
 }
 
-#Product-form input[type='checkbox'] {
-  width: 1.5rem;
-  vertical-align: middle;
+.Step-1 li {
+  padding: 0.5rem 2.5rem;
+  position: relative;
+  text-align: left;
 }
 
-@media (min-width: 45rem) {
-  #Product-form input[type='checkbox'] {
-    width: 1px;
-  }
+.Step-1 li:hover {
+  cursor: pointer;
+  background: #F5F5F5;
+  color: #C5D257;
 }
 
-#Product-form input[type='checkbox'] span {
-  display: inline;
+.Step-1 svg {
+  position: absolute;
+  right: 2.5rem;
+  top: 0.8125rem;
 }
 
 .Message {
