@@ -276,11 +276,14 @@ main {
   box-shadow: 0 0.0625rem 0.625rem 0 rgba(50, 50, 50, 0.02);
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 .Table {
   width: 100%;
   overflow: auto;
   margin: 1.25rem 0;
-  min-width: 53.125rem;
   text-align: center;
 }
 

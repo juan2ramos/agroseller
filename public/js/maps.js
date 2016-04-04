@@ -56,12 +56,11 @@ $('#removeMaker').on('click', function () {
 });
 
 
-$('#Provider-form,#Product-form').on('submit', function () {
+$('#Provider-form,#Product-form, #Client-form').on('submit', function () {
 
     var pos = '';
     for (var i = 0; i < arrayMarkers.length; i++) {
         pos += arrayMarkers[i].getPosition().lat() + '&' + arrayMarkers[i].getPosition().lng() + ';';
-
     }
     $('#Location').val(pos)
 });

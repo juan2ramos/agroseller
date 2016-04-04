@@ -41,8 +41,6 @@ $('.YouCart-closed  ').on('click',function(){
     $('.YouCart-content').removeClass('show');
 });
 function getTime() {
-    now = new Date();
-    alert(now);
     date = $('#date').data('time').split(" ");
     date = date[0].split("-");
     daysF = date[2].split(" ");

@@ -83,7 +83,8 @@
                         </g>
                     </g>
                 </svg>
-                <span>01:02:41</span>
+                <span id="date">01:02:41x</span>
+
             <div class="ProductDetail-quantity">
                 <h4>Cantidad</h4>
                 <div class="row bottom">

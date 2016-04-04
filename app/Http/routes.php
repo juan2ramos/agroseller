@@ -36,6 +36,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         'as' => 'insertProvider',
         'middleware' => 'sendHome:registerProvider'
     ]);
+
+    Route::get('informacion-cliente', [
+        'uses' => 'ClientController@index',
+        'as' => 'clientInformationIndex',
+        //'middleware' => 'sendHome:registerProvider'
+    ]);
+
+    Route::post('informacion-cliente', [
+        'uses' => 'ClientController@store',
+        'as' => 'clientInformationStore',
+    ]);
 });
 
 

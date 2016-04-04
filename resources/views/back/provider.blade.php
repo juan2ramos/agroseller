@@ -89,5 +89,4 @@
 @endsection
 @section('scripts')
     <script src="{{asset('js/activeProvider.js')}}"></script>
-    <script src="{{asset('js/tables.js')}}"></script>
 @endsection
