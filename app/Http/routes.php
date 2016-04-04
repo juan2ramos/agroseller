@@ -40,7 +40,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('informacion-cliente', [
         'uses' => 'ClientController@index',
         'as' => 'clientInformationIndex',
-        //'middleware' => 'sendHome:registerProvider'
+        //'middleware' => 'sendHome:registerProvider'//
     ]);
 
     Route::post('informacion-cliente', [

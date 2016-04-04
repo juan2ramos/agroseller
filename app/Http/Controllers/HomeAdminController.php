@@ -12,7 +12,7 @@ class HomeAdminController extends Controller
 {
 
     function index(){
-        //Pendiente para modificar enrutamiento
+        //Pendiente para modificar enrutamiento //
         if(Auth::user()->role_id == 4) {
             return redirect()->route('clientInformationIndex');
         }

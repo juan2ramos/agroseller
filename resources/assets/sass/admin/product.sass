@@ -1,0 +1,63 @@
+.Wizard
+  position: relative
+  counter-reset: section
+  font-size: 14px
+  & svg
+    display: block
+    margin: rem(4) auto
+  & li
+    padding: rem(22)
+    font-weight: 400
+    color: #D9D9D9
+    counter-increment: section
+    &.current
+      color: $greenLight
+      cursor: pointer
+      & g
+        fill: $greenLight
+  & ul
+    border-bottom: rem(4) solid #D9D9D9
+.Wizard-line
+  height: rem(4)
+  width: 25%
+  display: block
+  background: $greenLight
+  position: absolute
+  bottom: 0
+
+.Step
+  padding: rem(48)
+  color: #818181
+  text-align: left
+  & article ul:first-child
+    border-right: none
+.Step-1
+  width: rem(770)
+  margin: auto
+  text-align: left
+  & label
+    font-weight: 400
+    font-size: rem(18)
+    display: block
+    width: 50%
+  & select
+    display: none
+  & ul
+    border: rem(1) solid gray
+    margin: rem(16) 0
+    padding: rem(32) 0
+    width: 50%
+  & li
+    padding: rem(8) rem(40)
+    position: relative
+    text-align: left
+    &:hover
+      cursor: pointer
+      background: #F5F5F5
+      color: #C5D257
+  & svg
+    position: absolute
+    right: rem(40)
+    top: rem(13)
+
+
