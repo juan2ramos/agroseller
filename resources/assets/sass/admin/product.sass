@@ -24,17 +24,17 @@
   background: $greenLight
   position: absolute
   bottom: 0
-
+  @include transition(width .4s )
 .Step
   padding: rem(48)
   color: #818181
   text-align: left
-  & article ul:first-child
-    border-right: none
+  //display: none
 .Step-1
   width: rem(770)
   margin: auto
   text-align: left
+  display: block
   & label
     font-weight: 400
     font-size: rem(18)
@@ -55,9 +55,41 @@
       cursor: pointer
       background: #F5F5F5
       color: #C5D257
+    &.selected
+      cursor: pointer
+      background: #F5F5F5
+      color: #C5D257
   & svg
     position: absolute
     right: rem(40)
     top: rem(13)
+  & .Button
+    margin: rem(16) 0 rem(8)
+    position: relative
+    left: calc( 100% - 128px)
+    &.invalid
+      background: #CCCCCC
+      color: #AFAFAF
+      cursor: not-allowed
+      &:hover
+        box-shadow: none
+#categoriesList
+  border-right: none !important
+
+/* Step 2 */
+
+.Step-2
+  & article
+    margin: rem(34) 0
+  & p
+    color: #818181
+    font-weight: 400
+    margin: 0
+    & span
+      display: block
+      font-size: rem(12)
+      font-weight: 100
+      text-align: justify
+      margin: rem(4) rem(17)
 
 

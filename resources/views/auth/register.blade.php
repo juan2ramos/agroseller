@@ -61,7 +61,7 @@
                 Acepto las politicas de privacidad. <a href="">Ver</a>
             </label>
 
-            <button type="submit" class="Button"> REGISTRATE</button>
+            <button type="submit" class="Button submit"> REGISTRATE</button>
         </div>
 
     </form>

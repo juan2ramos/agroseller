@@ -20,15 +20,15 @@
     position: relative
     display: block
     cursor: text
-  & span
-    position: absolute
-    top: 1.5rem
-    color: #C5C5C5
-    font-weight: 300
-    left: 1.25rem
-    font-size: 1rem
-    @include transition(all .2s ease)
-  & .Button
+    & span
+      position: absolute
+      top: 1.5rem
+      color: #C5C5C5
+      font-weight: 300
+      left: 1.25rem
+      font-size: 1rem
+      @include transition(all .2s ease)
+  & .submit
     width: 100%
     padding: .375rem 0
     margin-bottom: 1rem
@@ -67,6 +67,7 @@
     margin: 0 rem(4)
     height: rem(10)
     display: inline-block
+    opacity: 0
     &:checked + sub
       background: #C5D257
       &:before
@@ -82,4 +83,7 @@
   text-align: left
   margin-top: rem(10)
   cursor: pointer
-
+.Marker
+  width: rem(256)
+  font-size: rem(12)
+  margin: rem(16) rem(16) rem(24) 0

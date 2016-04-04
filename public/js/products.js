@@ -24,56 +24,73 @@ $(document).ready(function () {
 
 
     var $categories = $('#categories'),
-        $sub = $('#subcategories'),
+        $subcategories = $('#subcategories'),
         $options = $('#categories').children('option'),
-        optionsNumber = $options.length
-        $categoriesList = $('#categoriesList');
-    console.log(optionsNumber)
+        optionsNumber = $options.length,
+        $categoriesList = $('#categoriesList'),
+        $subcategoriesList = $('#subcategoriesList'),
+        inputsForm = new Array;
+
     for (var i = 0; i < optionsNumber; i += 1) {
-        j = $('<li />', {
+        $('<li />', {
             html: $options.eq(i).text() + '<svg width="7px" height="12px"><use xlink:href="#arrow" /></svg>',
-            rel: $options.eq(i).val()
+            'data-id': $options.eq(i).val()
         }).appendTo($categoriesList);
-
     }
-    $('#categories').on('change', function () {
-        if ($(this).val() != '') {
-            $.post($(this).data('route'), {id: $(this).val(), _token: $(this).data('token')}, function (response) {
 
-                var subcategories = response.subcategories;
-                $sub.html('');
-                $sub.append($("<option value=''>Selecciona una subcategoria</option>"));
-                for (var i in subcategories) {
-                    $sub.append($("<option></option>").attr("value", subcategories[i].id).text(subcategories[i].name));
-                }
+    $('#categoriesList li').on('click', function () {
 
-            }).fail(function () {
-                button.removeClass('hidden');
-                alert('Ocurrió un error :(');
-            });
-        } else {
-            $sub.html('');
-            $sub.append($("<option value=''>Selecciona una subcategoria</option>"));
-        }
+        $('#stepOneButton').addClass('invalid')
+        $('#categoriesList li').removeClass('selected');
+        $(this).addClass('selected');
+        inputsForm = [];
+
+        $.post($categories.data('route'), {
+            id: $(this).data('id'),
+            _token: $categories.data('token')
+        }, function (response) {
+            var subcategories = response.subcategories;
+            $subcategories.html('');
+            $subcategoriesList.html('');
+
+            for (var i in subcategories) {
+                $('<li />', {
+                    html: subcategories[i].name,
+                    'data-id': subcategories[i].id
+                }).appendTo($subcategoriesList);
+                $subcategories.append($("<option></option>").attr("value", subcategories[i].id).text(subcategories[i].name));
+            }
+
+
+        }).fail(function () {
+            button.removeClass('hidden');
+            alert('Ocurrió un error :(');
+        });
 
     });
-
-    $('#subcategories').on('change', function () {
-        if ($(this).val() != '') {
-            $('.dataForm').hide("slow");
-            $.post($(this).data('route'), {
-                id: $(this).val(),
-                _token: $('#categories').data('token')
-            }, function (response) {
+    $('#subcategoriesList').on('click', ' li', function () {
+        $('#subcategoriesList li').removeClass('selected');
+        $(this).addClass('selected')
+        inputsForm = [];
+        $.post($subcategories.data('route'), {id: $(this).data('id'), _token: $('#categories').data('token')},
+            function (response) {
                 $.each(response.features, function (arrayID, group) {
-                    $('.' + group.name).show("slow");
+                    inputsForm.push(group.name)
                 });
-                $('.Product-formButton').show("slow");
-                $('.offer').show("slow");
+                $('#stepOneButton').removeClass('invalid')
             }).fail(function () {
-                button.removeClass('hidden');
-                alert('Ocurrió un error :(');
-            });
+            button.removeClass('hidden');
+            alert('Ocurrió un error :(');
+        });
+    });
+
+
+    $('#stepOneButton').on('click', function () {
+        if(!$(this).hasClass('invalid')){
+            $('.Wizard li:nth-child(2)').addClass('current');
+            $('.Wizard-line').css('width','50%');
+            $('.Step-1').hide('slow');
+            $('.Step-2').show('slow');
         }
 
     });

@@ -35,7 +35,7 @@
             </label>
             <a class="login-restartPassword" href="/password/email">Olvido su contraseña?</a>
 
-            <button  type="submit" class="Button">INICIO DE SESIÓN</button>
+            <button  type="submit" class="Button submit">INICIO DE SESIÓN</button>
         </div>
     </form>
 
