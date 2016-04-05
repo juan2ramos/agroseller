@@ -88,3 +88,38 @@ $widthContent: 71.25rem
   height: rem(300)
   border-top: rem(6) solid rgba(0,0,0,0.5)
   border-bottom: rem(6) solid rgba(0,0,0,0.5)
+
+.MessagePlatform
+  height: 100vh
+  width: 100vw
+  background: rgba(242, 242, 242, 0.8)
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 20
+.MessagePlatform-content
+  max-width: rem(780)
+  height: auto
+  background: #FFFFFF
+  box-shadow: 0px 0px 33px 0px #D4D4D4
+  padding: rem(64)
+  position: relative
+  text-align: justify
+  & h2
+    color: $greenDark
+    font-weight: 100
+.MessagePlatform-last
+  text-align: right
+  & span
+    color: $greenDark
+    font-weight: 300
+.MessagePlatform-close
+  position: absolute
+  top: 0
+  right: 0
+  background: #7F7F7F
+  font-size: rem(24)
+  color: $greenLight
+  font-weight: 100
+  padding: 8px 12px 6px
+  cursor: pointer

@@ -24,7 +24,7 @@
                     </svg>
                     Categorías
                 </li>
-                <li class="col-3"  data-id="2">
+                <li class="col-3" data-id="2">
                     <svg width="16px" height="15px" viewBox="0 0 16 15" version="1.1" xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink">
                         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -50,7 +50,7 @@
                     </svg>
                     Producto
                 </li>
-                <li class="col-3"  data-id="3">
+                <li class="col-3" data-id="3">
                     <svg width="17px" height="16px" viewBox="0 0 17 16" version="1.1" xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink">
                         <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
@@ -77,7 +77,7 @@
                     </svg>
                     Oferta
                 </li>
-                <li class="col-3"  data-id="4">
+                <li class="col-3" data-id="4">
                     <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink">
                         <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
@@ -117,6 +117,22 @@
 
     </form>
 
+    @if(session()->has('messageSuccess'))
+        <div class="MessagePlatform row middle center">
+            <div class="MessagePlatform-content">
+                <span class="MessagePlatform-close">X</span>
+                <h2>!Tienes un nuevo mensaje!</h2>
+                <p>Tu producto ya casi esta listo, uno de nuestros agentes comerciales esta revisando que los datos que
+                    nos has suminstrado esten orden.</p>
+                <p>Una vez tu producto este listo y publicado se te notificará en tú centro de notificaciones, además te
+                    enviaremos un correo electrónico.</p>
+                <p>Si por alguna razón tu producto no es publicado, se te notificará por los mismos medios las razones y
+                    los pasos que debes serguir para mejorar la publicación de tu producto.</p>
+                <p>Gracias por elegirnos.</p>
+                <p class="MessagePlatform-last">Centro de notificaciones <span>Agroseller</span></p>
+            </div>
+        </div>
+    @endif
 @endsection
 @section('scripts')
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap"

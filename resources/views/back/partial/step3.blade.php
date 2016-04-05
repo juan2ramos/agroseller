@@ -1,6 +1,6 @@
 <section class="Step Step-3 Forms">
     <p>Si no deseas publicar una oferta para tu producto, puedes omitir este paso</p>
-    <div class="Button">OMITIR</div>
+    <div class="Button" id="omitir">OMITIR</div>
 
     <article>
         <p>1. Valor de la oferta - valor actual $200.000</p>
@@ -10,8 +10,6 @@
             <em>$</em>
         </label>
     </article>
-
-
     <article class="Step-3Offers">
         <p>2. Fechas de inicio y limite de la oferta</p>
         <div class="row middle  ">
