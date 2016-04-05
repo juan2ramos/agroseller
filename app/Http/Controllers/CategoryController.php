@@ -41,12 +41,14 @@ class CategoryController extends Controller
     }
     function newSubcategory(Request $request){
 
-
+        $imageName = str_random(40) . '**' . $request->file('subcategoryImage')->getClientOriginalName();
         $subcategory = new Subcategory([
             'categories_id' => $request->input('category'),
             'name' => $request->input('subcategory'),
-
         ]);
+        $request->file('subcategoryImage')->move(base_path() . '/public/uploads/categories/', $imageName);
+
+        $subcategory->url_image = $imageName;
         $subcategory->save();
         $categories = Category::all();
         return view('back.categories', compact('categories'));

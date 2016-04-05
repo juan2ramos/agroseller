@@ -26,8 +26,8 @@ class Product extends Model
         return $this->belongsToMany(Order::class);
     }
 
-    public function files(){
-        return $this->belongsToMany(File::class);
+    public function productFiles(){
+        return $this->hasToMany(ProductFile::class);
     }
 }
 

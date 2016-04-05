@@ -3,9 +3,10 @@
 @section('content')
 
         <h2>Categorías</h2>
+        <input type="image" name="image" src="/files/2917/fxlogo.png" width="50">
 
         <p>Las imagenes no deben exceder los 2MB y una resolución mínima recomendad de 400X400</p>
-        <table class="Table BackContainer">
+        <table class="Table BackContainer capitalize">
             <thead>
             <tr>
                 <th>Id</th>
@@ -29,16 +30,23 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nombre</th>
-                                    <th>Fecha de creación</th>
+                                    <th>Imagen destacada</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
+                            
                             <tbody>
                                 @foreach($category->subcategories as $subcategories)
                                     <tr>
                                         <td>{{$subcategories->id}}</td>
                                         <td>{{$subcategories->name}}</td>
-                                        <td>{{$subcategories->created_at}}</td>
+                                        <td>
+                                            @if($subcategories->url_image != null)
+                                                <a href="{{asset('uploads/categories/'.$subcategories->url_image)}}">Ver imagen</a>
+                                            @else
+                                                No hay imagen
+                                            @endif
+                                        </td>
                                         <td><a href="#">Actualizar</a><a href="#">Eliminar</a></td>
                                     </tr>
                                 @endforeach
@@ -71,6 +79,7 @@
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
+            <input type="file" name="subcategoryImage" value="">
             <button type="submit" class="">Añadir</button>
         </form>
    

@@ -1,9 +1,9 @@
 @extends('layoutBack')
 @section('content')
-    <div class="BackContainer">
-        <div class="tables">
+
             <h2>Listado de cultivos</h2>
-            <table>
+
+            <table class="Table BackContainer capitalize">
                 <thead>
                     <tr>
                         <th>#</th>

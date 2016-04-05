@@ -41,27 +41,7 @@ $('.YouCart-closed  ').on('click',function(){
     $('.YouCart-content').removeClass('show');
 });
 
-/************************ CONTADOR **********************/
-
-/************************************************************
-
-                <div class="timer">
-                    <span id="dayNumber"></span>
-                    <span id="hourNumber"></span>
-                    <span id="minNumber"> </span>
-                    <span id="secNumber"></span>
-                </div>
-                <script>
-                    countDown({
-                        "year" : 2016,
-                        "month" : 4,
-                        "day" : 5,
-                        "hour" : 0,
-                        "minute" : 60
-                    });
-                </script>
-
- ***********************************************************/
+/************************ CONTADOR **************************/
 
 var $date;
 function getTime() {
