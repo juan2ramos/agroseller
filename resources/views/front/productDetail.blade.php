@@ -83,8 +83,13 @@
                         </g>
                     </g>
                 </svg>
-                <span>01:02:41</span>
-            </time>
+                <span class="timer">
+                    <span id="dayNumber"></span>
+                    <span id="hourNumber"></span>
+                    <span id="minNumber"> </span>
+                    <span id="secNumber"></span>
+                </span>
+
             <div class="ProductDetail-quantity">
                 <h4>Cantidad</h4>
                 <div class="row bottom">
@@ -363,6 +368,16 @@
     <script src="{{asset('js/front/map.js')}}"></script>
     <script src="{{asset('js/front/slide.js')}}"></script>
     <script src="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.js"></script>
+    <script src="{{asset('js/front/product.js')}}"></script>
+    <script>
+        countDown({
+            "year" : 2016,
+            "month" : 7,
+            "day" : 5,
+            "hour" : 0,
+            "minute" : 60
+        });
+    </script>
 @endsection
 @section('styles')
     <link href="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.css" rel="stylesheet">

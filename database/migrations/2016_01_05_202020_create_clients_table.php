@@ -18,7 +18,8 @@ class CreateClientsTable extends Migration
             $table->string('crops');
             $table->string('sex');
             $table->string('birthdate');
-            $table->string('city');;
+            $table->string('city');
+            $table->string('location');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 

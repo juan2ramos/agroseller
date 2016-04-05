@@ -284,11 +284,14 @@ main {
   box-shadow: 0 0.0625rem 0.625rem 0 rgba(50, 50, 50, 0.02);
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 .Table {
   width: 100%;
   overflow: auto;
   margin: 1.25rem 0;
-  min-width: 53.125rem;
   text-align: center;
 }
 
@@ -1164,6 +1167,22 @@ body {
   display: none;
 }
 
+.Step .Next {
+  margin: 1rem 0 0.5rem;
+  position: relative;
+  left: calc( 100% - 128px);
+}
+
+.Step .Next.invalid {
+  background: #CCCCCC;
+  color: #AFAFAF;
+  cursor: not-allowed;
+}
+
+.Step .Next.invalid:hover {
+  box-shadow: none;
+}
+
 .Step-1 {
   width: 48.125rem;
   margin: auto;
@@ -1211,22 +1230,6 @@ body {
   position: absolute;
   right: 2.5rem;
   top: 0.8125rem;
-}
-
-.Step-1 .Button {
-  margin: 1rem 0 0.5rem;
-  position: relative;
-  left: calc( 100% - 128px);
-}
-
-.Step-1 .Button.invalid {
-  background: #CCCCCC;
-  color: #AFAFAF;
-  cursor: not-allowed;
-}
-
-.Step-1 .Button.invalid:hover {
-  box-shadow: none;
 }
 
 #categoriesList {
@@ -1416,4 +1419,9 @@ body {
 
 .close-popup {
   display: none;
+}
+
+.Map {
+  width: 100%;
+  height: 400px;
 }

@@ -24,6 +24,7 @@ class UserTableSeeder extends Seeder
             'role_id' => '1',
             'password' => bcrypt('12345'),
         ]);
+
         factory(User::class)->create([
             'name' => 'Ximena',
             'email' => 'xigom@hotmail.com',
@@ -61,6 +62,62 @@ class UserTableSeeder extends Seeder
         ]);
 
         factory(Agrosellers\User::class, 10)->create();
+
+        /******************** Super Administrator **********************/
+
+        factory(User::class)->create([
+            'name' => 'Santiago',
+            'email' => 'sanruiz1003@gmail.com',
+            'username' => 'santo52',
+            'last_name' => 'Ruiz',
+            'mobile_phone' => '',
+            'phone' => '',
+            'photo' => '',
+            'role_id' => '1',
+            'password' => bcrypt('12345'),
+        ]);
+
+        /******************** Administrator **********************/
+
+        factory(User::class)->create([
+            'name' => 'administrador',
+            'email' => 'administrador@gmail.com',
+            'username' => 'administrador',
+            'last_name' => '',
+            'mobile_phone' => '',
+            'phone' => '',
+            'photo' => '',
+            'role_id' => '2',
+            'password' => bcrypt('12345'),
+        ]);
+
+        /******************** Provider **********************/
+
+        factory(User::class)->create([
+            'name' => 'Proveedor',
+            'email' => 'proveedor@gmail.com',
+            'username' => 'proveedor',
+            'last_name' => '',
+            'mobile_phone' => '',
+            'phone' => '',
+            'photo' => '',
+            'role_id' => '3',
+            'password' => bcrypt('12345'),
+        ]);
+
+        /******************** Customer **********************/
+
+        factory(User::class)->create([
+            'name' => 'Cliente',
+            'email' => 'cliente@gmail.com',
+            'username' => 'cliente',
+            'last_name' => '',
+            'mobile_phone' => '',
+            'phone' => '',
+            'photo' => '',
+            'role_id' => '4',
+            'password' => bcrypt('12345'),
+        ]);
 
         /******************** Agents *************************/
 

@@ -164,4 +164,5 @@
 
         <div id="editorOffer" ql-container></div>
     </article>
+    <div class="Button Next" id="stepThreeButton">SIGUIENTE</div>
 </section>

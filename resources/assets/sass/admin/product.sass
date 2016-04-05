@@ -30,6 +30,16 @@
   color: #818181
   text-align: left
   display: none
+  & .Next
+    margin: rem(16) 0 rem(8)
+    position: relative
+    left: calc( 100% - 128px)
+    &.invalid
+      background: #CCCCCC
+      color: #AFAFAF
+      cursor: not-allowed
+      &:hover
+        box-shadow: none
 .Step-1
   width: rem(770)
   margin: auto
@@ -63,16 +73,7 @@
     position: absolute
     right: rem(40)
     top: rem(13)
-  & .Button
-    margin: rem(16) 0 rem(8)
-    position: relative
-    left: calc( 100% - 128px)
-    &.invalid
-      background: #CCCCCC
-      color: #AFAFAF
-      cursor: not-allowed
-      &:hover
-        box-shadow: none
+
 #categoriesList
   border-right: none !important
 

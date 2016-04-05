@@ -3,7 +3,6 @@
 namespace Agrosellers\Http\Controllers\Auth;
 
 use Agrosellers\User;
-use Agrosellers\Entities\Provider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Validator;

@@ -1,3 +1,4 @@
+var currentStep = 1;
 $(document).ready(function () {
     jQuery.datetimepicker.setLocale('es');
     $('.datetimepicker_mask').datetimepicker({
@@ -44,7 +45,7 @@ $(document).ready(function () {
         $('#categoriesList li').removeClass('selected');
         $(this).addClass('selected');
 
-        $('.DataForm').css('display','none');
+        $('.DataForm').css('display', 'none');
 
         inputsForm = [];
 
@@ -79,7 +80,7 @@ $(document).ready(function () {
         $.post($subcategories.data('route'), {id: $(this).data('id'), _token: $('#categories').data('token')},
             function (response) {
                 $.each(response.features, function (arrayID, group) {
-                    $('.' + group.name ).css('display','block');
+                    $('.' + group.name).css('display', 'block');
                     inputsForm.push(group.name)
                 });
                 $('#stepOneButton').removeClass('invalid')
@@ -88,16 +89,37 @@ $(document).ready(function () {
             alert('Ocurrió un error :(');
         });
     });
-
-
     $('#stepOneButton').on('click', function () {
-        if(!$(this).hasClass('invalid')){
-            $('.Wizard li:nth-child(2)').addClass('current');
-            $('.Wizard-line').css('width','50%');
-            $('.Step-1').hide('slow');
-            $('.Step-2').show('slow');
+        if (!$(this).hasClass('invalid')) {
+            steps(1, 2)
         }
-
+    });
+    $('#stepTwoButton').on('click', function () {
+        steps(2, 3)
+    });
+    $('#stepThreeButton').on('click', function () {
+        steps(3, 4)
+    });
+    $('.Wizard li').on('click', function () {
+        var index = $( this ).data('id');
+        if ($(this).hasClass('current')) {
+            steps(currentStep, index)
+        }
     });
 
+
 });
+function steps(from, to){
+    currentStep = to;
+    if(to == 2){
+        $("#map").animate({"height" : "400px"}, 500,function(){
+            initMap();
+        });
+    }
+    widthLine = 25 * to;
+    $('.Wizard li:nth-child('+ to +')').addClass('current');
+    $('.Wizard-line').css('width', widthLine + '%');
+    $('.Step-' + from).hide('slow');
+    $('.Step-' + to).show('slow');
+
+}

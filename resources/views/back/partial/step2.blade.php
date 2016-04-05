@@ -248,5 +248,5 @@
 
 
     </div>
-
+    <div class="Button  Next" id="stepTwoButton">SIGUIENTE</div>
 </section>

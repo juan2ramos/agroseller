@@ -16,5 +16,5 @@
         <ul id="subcategoriesList"></ul>
     </article>
 
-    <div class="Button invalid" id="stepOneButton">SIGUIENTE</div>
+    <div class="Button invalid Next" id="stepOneButton">SIGUIENTE</div>
 </section>
