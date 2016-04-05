@@ -105,115 +105,16 @@
             <span class="Wizard-line"></span>
         </section>
 
-        <section class="Step Step-1">
-            <article class="row center">
-                <label for="categoriesList">CATEGORÍAS</label>
-                <label for="subcategory_id">SUBCATEGORÍAS</label>
-            </article>
-            <article class="row center stretch">
-
-                <select data-token="{{ csrf_token() }}" data-route="{{route('subcategoriesQuery')}}" id="categories">
-                    @foreach( $categories as $category)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
-                    @endforeach
-                </select>
-                <select name="subcategory_id" class="Product-select" data-route="{{route('featuresQuery')}}"
-                        id="subcategories"></select>
-                <ul id="categoriesList"></ul>
-                <ul id="subcategoriesList"></ul>
-            </article>
-
-            <div class="Button invalid" id="stepOneButton">SIGUIENTE</div>
-        </section>
+        @include('back.partial.step1')
+        @include('back.partial.step2')
+        @include('back.partial.step3')
+        @include('back.partial.step4')
 
         <input type="hidden" id="Location" name="location" value="">
+        <input type="hidden" id="Description" name="description" value="">
+        <input type="hidden" id="DescriptionOffer" name="DescriptionOffer" value="">
 
-        <section class="Step Step-2 Forms">
 
-            <article class="Step-location">
-                <p>1. Añade los lugares donde te encuentras
-                    <span>Muevete por el mapa y coloca en el centro el lugar que deseas añadir,
-                        luego oprime el botón “AÑADE UNA UBICACIÓN”, se inserta un marcador de
-                        ubicación el cual puedes mover, para ubicarlo con mayor exactitud; para
-                        eliminar da doble clic, si deseas eliminar  todos tu marcadores para
-                        empezar de nuevo oprime “ELIMINAR TODAS LAS UBICACIONES”.</span>
-                </p>
-                <span class="Marker Button" id="addMaker">AÑADE UNA UBICACIÓN</span>
-                <span class="Marker Button" id="removeMaker">ELIMINAR TODAS LAS UBICACIONES</span>
-                <div id="map" class="Map"></div>
-            </article>
-
-            <article>
-                <p>2. Ingresa el nombre de tu producto
-                    <span>El nombre del producto debe iniciar con el nombre seguido por la marca luego la referencia o
-                        especificación ejemplo.</span>
-                </p>
-                <label for="nameProduct">
-                    <input type="text" id="nameProduct" name="name" value="{{ old('name') }}">
-                    <span>Nombre del producto</span>
-                </label>
-            </article>
-
-            <article>
-                <p>3. Información del producto</p>
-                <div id="toolbar">
-
-                    <select class="ql-size">
-                        <option value="10px">Small</option>
-                        <option value="13px" selected>Normal</option>
-                        <option value="18px">Large</option>
-                        <option value="32px">Huge</option>
-                    </select>
-
-                    <div class="ql-bold">dd</div>
-                </div>
-                <div id="editor"></div>
-            </article>
-            <select class="presentation dataForm" name="presentation">
-                <option value="">Selecione la presentación</option>
-                <option value="Bolsa">Bolsa</option>
-                <option value="Caja">Caja</option>
-                <option value="Botella">Botella</option>
-            </select>
-
-            <input type="text" class="size dataForm" placeholder="Tamaño " name="size" value="{{ old('size') }}">
-            <input type="text" class="weight dataForm" placeholder="Peso " name="weight" value="{{ old('weight') }}">
-            <input type="text" class="measure dataForm" placeholder="Medida " name="measure"
-                   value="{{ old('measure') }}">
-            <input type="text" class="material dataForm" placeholder="Material " name="material"
-                   value="{{ old('material') }}">
-        <textarea name="description" class="description dataForm" placeholder="Descripción" cols="30"
-                  rows="10"></textarea>
-
-            <div class="composition dataForm">
-                <label class="composition dataForm" for="composition">Composición , propiedades(Ficha tecnica)
-                    PDF</label>
-                <input class="composition dataForm" id="composition" type="file" name="composition">
-            </div>
-        <textarea name="forms-employment" class="forms-employment dataForm" placeholder="Descripción de uso" cols="30"
-                  rows="10"></textarea>
-            <input type="text" class="price dataForm" placeholder="Precio " name="price" value="{{ old('price') }}">
-
-            <input type="checkbox" class="taxes dataForm" name="taxes[]" value="1"><span
-                    class="taxes dataForm">Iva 16%</span>
-            <input type="checkbox" class="taxes dataForm" name="taxes[]" value="2"><span class="taxes dataForm">Retefuente 2.5%</span>
-
-            <input type="text" class="available-quantity dataForm" placeholder="Cantidad disponible "
-                   name="available-quantity"
-                   value="{{ old('available-quantity') }}">
-
-            <div class="image-scale dataForm dataForm">
-                <label class="image-scale dataForm" for="image-scale">Imagen del producto</label>
-                <input class="image-scale dataForm" id="image-scale" type="file" name="image-scale">
-            </div>
-            <input type="text" class="offer-price dataForm" name="offer-price" placeholder="precio en oferta">
-            <input type="text" class="offer-on offer dataForm datetimepicker_mask" name="offer-on"
-                   placeholder="Dia y hora de inicio de la oferta">
-            <input type="text" class="offer-off offer dataForm datetimepicker_mask" name="offer-off"
-                   placeholder="Dia y hora de cierre de la oferta">
-
-            <button class="Product-formButton dataForm"> Enviar</button>
-        </section>
     </form>
 
 @endsection
@@ -224,15 +125,32 @@
     <script src="{{asset('js/jquery.datetimepicker.full.min.js')}}"></script>
     <script src="{{asset('js/products.js')}}"></script>
     <script src="{{asset('js/forms.js')}}"></script>
+    <script src="{{asset('js/images.js')}}"></script>
     <script src="http://cdn.quilljs.com/latest/quill.js"></script>
     <script>
         var editor = new Quill('#editor', {
-            modules: { toolbar: '#toolbar' },
-            theme: 'snow'
+            theme: 'snow',
+            modules: {
+                'toolbar': {container: '#toolbar'},
+                'link-tooltip': true
+            }
+        });
+        editor.on('text-change', function (delta, source) {
+            $('#Description').val(editor.getHTML());
+        });
+        var editorOffer = new Quill('#editorOffer', {
+            theme: 'snow',
+            modules: {
+                'toolbar': {container: '#toolbarOffer'},
+                'link-tooltip': true
+            }
+        });
+        editorOffer.on('text-change', function (delta, source) {
+            $('#DescriptionOffer').val(editor.getHTML());
         });
     </script>
 @endsection
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/jquery.datetimepicker.css') }}">
-    <link rel="stylesheet" href="//cdn.quilljs.com/0.20.1/quill.snow.css" />
+    <link rel="stylesheet" href="//cdn.quilljs.com/0.20.1/quill.snow.css"/>
 @endsection

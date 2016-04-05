@@ -47,7 +47,7 @@
             </svg>
             CEL: 3168704270
         </a>
-        <a href="mailo:info@agrosellers.com">
+        <a href="mailto:info@agrosellers.com">
             <svg width="18px" height="13px" viewBox="0 0 18 13" version="1.1" xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink">
                 <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->

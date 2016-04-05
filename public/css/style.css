@@ -900,6 +900,15 @@ tr.SubTable .iconPlus {
   cursor: text;
 }
 
+.Forms label em {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-weight: 300;
+  font-size: 1rem;
+  color: #C5D257;
+}
+
 .Forms label span {
   position: absolute;
   top: 1.5rem;
@@ -991,6 +1000,39 @@ tr.SubTable .iconPlus {
   width: 16rem;
   font-size: 0.75rem;
   margin: 1rem 1rem 1.5rem 0;
+}
+
+/* Texto enriquecido */
+
+.ql-snow.ql-toolbar {
+  margin-top: 1.375rem;
+}
+
+.ql-container {
+  top: -0.0625rem;
+  padding: 0 !important;
+}
+
+.ql-editor {
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 100;
+  line-height: 1.5;
+  min-height: 200px !important;
+  border: 1px solid #C5C5C5;
+  padding: 0.75rem 0.9375rem;
+}
+
+.ql-editor ul li {
+  list-style: disc;
+}
+
+.ql-editor ol li {
+  list-style: decimal;
+}
+
+.ql-snow.ql-toolbar {
+  border: 1px solid #C5C5C5;
 }
 
 body {
@@ -1119,6 +1161,7 @@ body {
   padding: 3rem;
   color: #818181;
   text-align: left;
+  display: none;
 }
 
 .Step-1 {
@@ -1192,6 +1235,22 @@ body {
 
 /* Step 2 */
 
+.Step-2 input[type='file'] {
+  opacity: 0;
+}
+
+.Step-2 .file {
+  position: absolute;
+  top: 0;
+  height: 4rem;
+  width: 100%;
+  cursor: pointer;
+  font-weight: 300;
+  padding: 1.4rem 1.25rem 0;
+  color: #A1A1A1;
+  border: 1px solid #C5C5C5;
+}
+
 .Step-2 article {
   margin: 2.125rem 0;
 }
@@ -1208,6 +1267,105 @@ body {
   font-weight: 100;
   text-align: justify;
   margin: 0.25rem 1.0625rem;
+}
+
+.Step-2 h4 {
+  font-weight: 400;
+  font-size: 1.125rem;
+}
+
+.Step-2 h4 li {
+  font-size: 0.75rem;
+  font-weight: 100;
+  margin: 0.25rem 0.875rem;
+  list-style: disc;
+  color: #C5D257;
+}
+
+.Step-2 h4 li span {
+  color: gray;
+}
+
+.Step-2Images {
+  margin: 1.5rem 0;
+}
+
+.Step-2Images label {
+  cursor: pointer;
+  position: relative;
+  padding: 0.375rem;
+}
+
+.Step-2Images input {
+  opacity: 0;
+  cursor: pointer;
+  z-index: 10;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  top: -0.3125rem;
+  width: calc(100% + 5px);
+  height: 11.53125rem;
+}
+
+.Step-2Images figure {
+  position: absolute;
+  border: 0.0625rem dashed #979797;
+  border-radius: 0.125rem;
+  width: calc(100% - 5px);
+  top: 0;
+  height: 11.53125rem;
+  overflow: hidden;
+}
+
+.Step-2 .DataForm {
+  display: none;
+}
+
+/* Step 3 */
+
+.Step-3 article {
+  margin: 2.125rem 0;
+}
+
+.Step-3 p {
+  color: #818181;
+  font-weight: 400;
+  margin: 0;
+}
+
+.Step-3 .Button {
+  width: 10rem;
+  margin: 1rem 0;
+}
+
+.Step-3Offers {
+  margin-bottom: -1.375rem !important;
+}
+
+.Step-3Offers label {
+  margin-right: 1rem;
+}
+
+.Step-3Offers label em {
+  top: 2.625rem;
+  right: 1rem;
+}
+
+.Step-3Offers label span {
+  top: 2.75rem;
+}
+
+.Step-3Offers label input {
+  padding: 1rem 1.125rem 0;
+}
+
+.Step-3Offers label.open span {
+  top: 2.25rem;
+}
+
+.Step-3Offers input {
+  height: 3rem;
 }
 
 .Message {

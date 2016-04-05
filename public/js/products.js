@@ -43,6 +43,9 @@ $(document).ready(function () {
         $('#stepOneButton').addClass('invalid')
         $('#categoriesList li').removeClass('selected');
         $(this).addClass('selected');
+
+        $('.DataForm').css('display','none');
+
         inputsForm = [];
 
         $.post($categories.data('route'), {
@@ -72,9 +75,11 @@ $(document).ready(function () {
         $('#subcategoriesList li').removeClass('selected');
         $(this).addClass('selected')
         inputsForm = [];
+        $subcategories.val($(this).data('id'));
         $.post($subcategories.data('route'), {id: $(this).data('id'), _token: $('#categories').data('token')},
             function (response) {
                 $.each(response.features, function (arrayID, group) {
+                    $('.' + group.name ).css('display','block');
                     inputsForm.push(group.name)
                 });
                 $('#stepOneButton').removeClass('invalid')
