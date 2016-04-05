@@ -1,4 +1,9 @@
-var currentStep = 1;
+var currentStep = 1,
+    arrayInput = {
+        'description' : 'Descripción',
+        'location' : 'Locación',
+        'DescriptionOffer' : 'Descrpción oferta'
+    };
 $(document).ready(function () {
     jQuery.datetimepicker.setLocale('es');
     $('.datetimepicker_mask').datetimepicker({
@@ -143,11 +148,19 @@ function DetailsProduct(){
 
         nameProduct = $(this).siblings('span').text();
         ValueProduct = $(this).val();
-        if(nameProduct == ""){
 
+        if(nameProduct == "" ){
+
+            nameProduct = $(this).attr("name");
+
+            console.log(ValueProduct)
         }
-        html = '<p>' + '<span>' + nameProduct + ': </span>' + ValueProduct + '</p>'
-        $DetailsProduct.append(html) ;
+
+        if(ValueProduct != "" && nameProduct !="_token" && nameProduct !="taxes[]"){
+
+            html = '<p>' + '<span>' + nameProduct + ': </span>' + ValueProduct + '</p>'
+            $DetailsProduct.append(html) ;
+        }
 
 
     });

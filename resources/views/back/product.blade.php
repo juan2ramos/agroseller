@@ -113,8 +113,6 @@
         <input type="hidden" id="Location" name="location" value="">
         <input type="hidden" id="Description" name="description" value="">
         <input type="hidden" id="DescriptionOffer" name="DescriptionOffer" value="">
-
-
     </form>
 
     @if(session()->has('messageSuccess'))
@@ -162,7 +160,7 @@
             }
         });
         editorOffer.on('text-change', function (delta, source) {
-            $('#DescriptionOffer').val(editor.getHTML());
+            $('#DescriptionOffer').val(editorOffer.getHTML());
         });
     </script>
 @endsection
