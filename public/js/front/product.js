@@ -40,34 +40,60 @@ $('.YouCart-closed  ').on('click',function(){
     $('.YouCart').removeClass('show');
     $('.YouCart-content').removeClass('show');
 });
+
+/************************ CONTADOR **********************/
+
+/************************************************************
+
+                <div class="timer">
+                    <span id="dayNumber"></span>
+                    <span id="hourNumber"></span>
+                    <span id="minNumber"> </span>
+                    <span id="secNumber"></span>
+                </div>
+                <script>
+                    countDown({
+                        "year" : 2016,
+                        "month" : 4,
+                        "day" : 5,
+                        "hour" : 0,
+                        "minute" : 60
+                    });
+                </script>
+
+ ***********************************************************/
+
+var $date;
 function getTime() {
-    date = $('#date').data('time').split(" ");
-    date = date[0].split("-");
-    daysF = date[2].split(" ");
     now = new Date();
-    y2k = new Date(parseInt(date[0]),parseInt(date[1])-1,parseInt(daysF[0]),23,59,59);
-    days = (y2k - now) / 1000 / 60 / 60 / 24;
+    promo = new Date($date["year"],$date["month"],$date["day"],$date["hour"], $date["minute"], 59);
+    substraction = promo - now;
 
-    daysRound = Math.floor(days);
-    hours = (y2k - now) / 1000 / 60 / 60 - (24 * daysRound);
-    hoursRound = Math.floor(hours);
-    minutes = (y2k - now) / 1000 /60 - (24 * 60 * daysRound) - (60 * hoursRound);
-    minutesRound = Math.floor(minutes);
-    seconds = (y2k - now) / 1000 - (24 * 60 * 60 * daysRound) - (60 * 60 * hoursRound) - (60 * minutesRound);
-    secondsRound = Math.round(seconds);
+    if(substraction > 0) {
+        days = Math.floor(substraction / 1000 / 60 / 60 / 24);
+        hours = Math.floor(substraction / 1000 / 60 / 60 - (24 * days));
+        minutes = Math.floor(substraction / 1000 /60 - (24 * 60 * days) - (60 * hours));
+        seconds = Math.floor(substraction / 1000 - (24 * 60 * 60 * days) - (60 * 60 * hours) - (60 *  minutes));
 
-    $('#dayNumber').html((zero(daysRound))+'<span> Dias</span>');
-    $('#hourNumber').html(zero(hoursRound)+'<span>:</span>');
-    $('#minNumber').html(zero(minutesRound)+'<span>:</span>');
-    $('#secNumber').html(zero(secondsRound));
+        $('#dayNumber').html((zero(days))+'<span> Dias </span>');
+        $('#hourNumber').html(zero(hours)+'<span>:</span>');
+        $('#minNumber').html(zero(minutes)+'<span>:</span>');
+        $('#secNumber').html(zero(seconds));
 
-    newtime = window.setTimeout("getTime();", 1000);
+        newtime = window.setTimeout("getTime();", 1000);
+    }
+
+    else {
+        $('.timer').css('display', 'none');
+    }
 }
+
 function zero(data){
     if (data < 10)
         return '0'+data;
     return data;
 }
+
 function parse(str) {
     if(!/^(\d){8}$/.test(str)) return "invalid date";
     var y = str.substr(0,4),
@@ -75,4 +101,18 @@ function parse(str) {
         d = str.substr(6,2);
     return new Date(y,m,d);
 }
+
+function countDown(date){
+    date['month'] -= 1;
+
+    if(date['hour'] == undefined){
+        date['hour'] = 23;
+    }
+    if(!date['minute'] == undefined){
+        date['minute'] = 59;
+    }
+
+    $date = date;
+}
+
 window.setTimeout("getTime();", 1000);
