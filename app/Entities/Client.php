@@ -14,6 +14,6 @@ class Client extends Model
     }
 
     public function farms(){
-        return $this->bolongsToMany(Farm::class);
+        return $this->belongsToMany(Farm::class);
     }
 }

@@ -2,10 +2,13 @@
 
 namespace Agrosellers\Http\Controllers;
 
+use Agrosellers\Entities\Client;
+use Agrosellers\User;
 use Illuminate\Http\Request;
 use Agrosellers\Entities\Farm;
 use Agrosellers\Http\Requests;
 use Agrosellers\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
@@ -21,16 +24,6 @@ class ClientController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *as
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -38,7 +31,25 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
+        $user = User::find(Auth::user()->id);
+        $client = new Client();
+        $client->user_id = $user->id;
+        $client->location = $request->location;
+        $client->save();
 
+        $farms = Farm::all();
+
+        foreach($request->all() as $data){
+            foreach($farms as $farm){
+                if($data == $farm->id){
+                    $getClient = Client::find($client->id);
+                    $getFarm = Farm::find($farm->id);
+                    $getFarm->clients()->save($getClient);
+                }
+            }
+        }
+
+        return redirect()->route('admin');
     }
 
     /**

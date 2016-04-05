@@ -7,8 +7,8 @@ function initMap() {
     var mapOptions = {
         zoom: 4,
         center: myLatlng,
-        scrollwheel: false,
-    }
+        scrollwheel: false
+    };
 
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
 }
