@@ -152,11 +152,13 @@ function DetailsProduct(){
         if(nameProduct == "" ){
 
             nameProduct = $(this).attr("name");
+            if(nameProduct =="_token" || nameProduct =="taxes[]"){
+                return;
+            }
 
-            console.log(ValueProduct)
         }
 
-        if(ValueProduct != "" && nameProduct !="_token" && nameProduct !="taxes[]"){
+        if(ValueProduct != "" ){
 
             html = '<p>' + '<span>' + nameProduct + ': </span>' + ValueProduct + '</p>'
             $DetailsProduct.append(html) ;
