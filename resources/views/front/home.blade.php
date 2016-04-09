@@ -20,9 +20,11 @@
                 <article class="col-3">
                     <figure class="Product-Image">
                         <a href="{{route('productDetail')}}">
+                            {{$bool = true}}
                             @foreach($images as $image)
-                                @if($image->product_id == $product->id)
-                                    <img src="{{url($image->url_file)}}" alt="">
+                                @if($image->product_id == $product->id && $bool == true)
+                                    <img src="{{url('uploads/products/'.$image->name)}}" alt="">
+                                    {{$bool = false}}
                                 @endif
                             @endforeach
                         </a>
