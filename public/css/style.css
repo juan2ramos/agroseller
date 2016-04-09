@@ -128,6 +128,52 @@ main {
   border-bottom: 0.375rem solid rgba(0, 0, 0, 0.5);
 }
 
+.MessagePlatform {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(242, 242, 242, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+}
+
+.MessagePlatform-content {
+  max-width: 48.75rem;
+  height: auto;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 33px 0px #D4D4D4;
+  padding: 4rem;
+  position: relative;
+  text-align: justify;
+}
+
+.MessagePlatform-content h2 {
+  color: #253A1B;
+  font-weight: 100;
+}
+
+.MessagePlatform-last {
+  text-align: right;
+}
+
+.MessagePlatform-last span {
+  color: #253A1B;
+  font-weight: 300;
+}
+
+.MessagePlatform-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #7F7F7F;
+  font-size: 1.5rem;
+  color: #C5D257;
+  font-weight: 100;
+  padding: 8px 12px 6px;
+  cursor: pointer;
+}
+
 .HeaderBack {
   max-width: 71.25rem;
   margin: auto;
@@ -1369,6 +1415,28 @@ body {
 
 .Step-3Offers input {
   height: 3rem;
+}
+
+/* Step 4 */
+
+.Step-4 h4 {
+  font-weight: 400;
+  font-size: 1.375rem;
+  margin-bottom: 2rem;
+}
+
+.Step-4 p {
+  margin: 0.625rem;
+}
+
+.Step-4 span {
+  font-weight: 400;
+}
+
+.Step-finish {
+  margin: 32px auto;
+  width: 360px;
+  display: block;
 }
 
 .Message {

@@ -72,7 +72,7 @@ class ProductController extends Controller
         ];
         File::create($dataFile);*/
 
-        return redirect()->back();
+        return redirect()->back()->with('messageSuccess', 1);
     }
 
     private function removeAccents($string)

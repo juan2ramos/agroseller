@@ -1,4 +1,9 @@
-var currentStep = 1;
+var currentStep = 1,
+    arrayInput = {
+        'description' : 'Descripción',
+        'location' : 'Locación',
+        'DescriptionOffer' : 'Descrpción oferta'
+    };
 $(document).ready(function () {
     jQuery.datetimepicker.setLocale('es');
     $('.datetimepicker_mask').datetimepicker({
@@ -97,7 +102,10 @@ $(document).ready(function () {
     $('#stepTwoButton').on('click', function () {
         steps(2, 3)
     });
-    $('#stepThreeButton').on('click', function () {
+    $('.MessagePlatform-close').on('click', function () {
+        $('.MessagePlatform').hide();
+    });
+    $('#stepThreeButton, #omitir').on('click', function () {
         steps(3, 4)
     });
     $('.Wizard li').on('click', function () {
@@ -116,10 +124,47 @@ function steps(from, to){
             initMap();
         });
     }
+    if(to == 4){
+        DetailsProduct();
+    }
     widthLine = 25 * to;
     $('.Wizard li:nth-child('+ to +')').addClass('current');
     $('.Wizard-line').css('width', widthLine + '%');
     $('.Step-' + from).hide('slow');
     $('.Step-' + to).show('slow');
+
+}
+function DetailsProduct(){
+    var $DetailsProduct = $("#detailsProduct");
+    $DetailsProduct.html('') ;
+    var pos = '';
+    for (var i = 0; i < arrayMarkers.length; i++) {
+        pos += arrayMarkers[i].getPosition().lat() + '&' + arrayMarkers[i].getPosition().lng() + ';';
+    }
+    $('#Location').val(pos);
+
+    $("#Product-form input").each(function( i ) {
+
+
+        nameProduct = $(this).siblings('span').text();
+        ValueProduct = $(this).val();
+
+        if(nameProduct == "" ){
+
+            nameProduct = $(this).attr("name");
+            if(nameProduct =="_token" || nameProduct =="taxes[]"){
+                return;
+            }
+
+        }
+
+        if(ValueProduct != "" ){
+
+            html = '<p>' + '<span>' + nameProduct + ': </span>' + ValueProduct + '</p>'
+            $DetailsProduct.append(html) ;
+        }
+
+
+    });
 
 }
