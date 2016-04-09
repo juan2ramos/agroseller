@@ -1433,6 +1433,15 @@ body {
   font-weight: 400;
 }
 
+.ItemProduct {
+  margin: 1.25rem;
+}
+
+.ItemProduct li {
+  list-style: inherit;
+  margin-left: 1.25rem;
+}
+
 .Step-finish {
   margin: 32px auto;
   width: 360px;

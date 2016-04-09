@@ -2,7 +2,7 @@ var currentStep = 1,
     arrayInput = {
         'description' : 'Descripción',
         'location' : 'Locación',
-        'DescriptionOffer' : 'Descrpción oferta'
+        'DescriptionOffer' : 'Descripción oferta'
     };
 $(document).ready(function () {
     jQuery.datetimepicker.setLocale('es');
@@ -145,23 +145,29 @@ function DetailsProduct(){
 
     $("#Product-form input").each(function( i ) {
 
-
+        var nameProduct;
         nameProduct = $(this).siblings('span').text();
         ValueProduct = $(this).val();
 
-        if(nameProduct == "" ){
 
+        if (nameProduct == "") {
             nameProduct = $(this).attr("name");
-            if(nameProduct =="_token" || nameProduct =="taxes[]"){
+            if (nameProduct == "_token" || nameProduct == "taxes[]") {
                 return;
             }
-
+            if (arrayInput[nameProduct] != undefined) {
+                nameProduct = arrayInput[nameProduct];
+                console.log(arrayInput[nameProduct])
+            }
+            console.log(nameProduct)
         }
-
         if(ValueProduct != "" ){
+            if(ValueProduct != "" ){
 
-            html = '<p>' + '<span>' + nameProduct + ': </span>' + ValueProduct + '</p>'
-            $DetailsProduct.append(html) ;
+                html = '<p>' + '<span>' + nameProduct + ': </span></p><div class="ItemProduct">' + ValueProduct + '</div>'
+                $DetailsProduct.append(html) ;
+            }
+
         }
 
 

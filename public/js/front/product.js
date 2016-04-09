@@ -43,7 +43,7 @@ $('.YouCart-closed  ').on('click',function(){
 
 /************************ CONTADOR **************************/
 
-var $date;
+var dateGlobal;
 function getTime() {
     now = new Date();
     promo = new Date($date["year"],$date["month"],$date["day"],$date["hour"], $date["minute"], 59);
@@ -88,11 +88,11 @@ function countDown(date){
     if(date['hour'] == undefined){
         date['hour'] = 23;
     }
-    if(!date['minute'] == undefined){
+    if(date['minute'] == undefined){
         date['minute'] = 59;
     }
 
-    $date = date;
+    dateGlobal = date;
 }
 
 window.setTimeout("getTime();", 1000);
