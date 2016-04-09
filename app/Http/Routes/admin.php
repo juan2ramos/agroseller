@@ -8,7 +8,7 @@ Route::get('proveedores', [
 
 
 Route::get('productos', [
-    'uses' => 'ProductController@index',
+    'uses' => 'ProductController@indexBack',
     'as' => 'products'
 ]);
 

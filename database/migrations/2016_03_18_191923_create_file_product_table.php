@@ -18,6 +18,7 @@ class CreateFileProductTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->foreign('file_id')->references('id')->on('files');
             $table->foreign('product_id')->references('id')->on('products');
+            $table->timestamps();
         });
     }
 

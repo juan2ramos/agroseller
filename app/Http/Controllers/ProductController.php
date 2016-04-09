@@ -3,16 +3,18 @@
 namespace Agrosellers\Http\Controllers;
 
 
-use Agrosellers\Entities\File;
 use Agrosellers\Entities\Product;
+use Agrosellers\Entities\Question;
 use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
 use Agrosellers\Entities\Category;
 use Illuminate\Support\Facades\Auth;
+use Agrosellers\Entities\ProductFile;
+
 
 class ProductController extends Controller
 {
-    function index()
+    function indexBack()
     {
         $categories = Category::all();
         return view('back.product', compact('categories'));
@@ -36,8 +38,8 @@ class ProductController extends Controller
 
             $fileName = str_random(40) . '**' . $request->file($key)->getClientOriginalName();
             $Extension = $request->file($key)->getClientOriginalExtension();
-            $request->file('composition')->move(base_path() . '/public/uploads/products/', $fileName);
-            File::create(
+            $request->file($key)->move(base_path() . '/public/uploads/products/', $fileName);
+            ProductFile::create(
                 [
                     'product_id' => $product->id,
                     'name' => $fileName,
@@ -63,25 +65,22 @@ class ProductController extends Controller
     {
         $products = Product::take(10)->get();
         return view('front.products', compact('products'));
-
     }
-
     function checkout(Request $request)
     {
         return view('front.checkout');
     }
-
-    function productDetailFront(Request $request, $slug)
-    {
-
-        $product = Product::where('slug', '=', $slug)->first();
-        if (is_null($product)) {
-            return redirect()->route('product');
-            /*$product = Product::where('slug', 'like', '%' . $slug . '%')->first();
-            return redirect()->route('product', $product->slug);*/
-        }
-
-        return view('front.productDetail', compact('product'));
+    /*  function productDetailFront(Request $request, $slug){
+          $product = Product::where('slug', '=', $slug)->first();
+          if (is_null($product)) {
+              return redirect()->route('product');
+              /*$product = Product::where('slug', 'like', '%' . $slug . '%')->first();
+              return redirect()->route('product', $product->slug);*/
+    /*      }
+          return view('front.productDetail',compact('product'));
+      }*/
+    function productDetailFront(){
+        $questions = Question::where('product_id' , '=', 1);
+        return view('front.productDetail', compact('questions'));
     }
-
 }

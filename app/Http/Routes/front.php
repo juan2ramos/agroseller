@@ -6,7 +6,7 @@ Route::get('/', [
 ]);
 
 Route::get('producto', [
-    'uses' => 'HomeController@productDetail',
+    'uses' => 'ProductController@productDetailFront',
     'as' => 'productDetail'
 ]);
 

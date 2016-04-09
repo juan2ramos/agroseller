@@ -194,7 +194,7 @@
         </label>
     </div>
     <label for="available-quantity">
-        <input type="number" id="available-quantity" name="available-quantity" value="{{ old('available-quantity') }}">
+        <input type="number" id="available_quantity" name="available_quantity" value="{{ old('available_quantity') }}">
         <span>Cantidad disponible</span>
         <em></em>
     </label>

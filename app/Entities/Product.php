@@ -10,8 +10,8 @@ class Product extends Model
     protected $fillable =
         [
             'location','presentation','size','weight','measure','material','description','user_id','subcategory_id',
-            'forms-employment', 'price','taxes','available-quantity','image-scale','offer-price','offer-on','offer',
-            'offer-off','image-scale','name','slug','composition'];
+            'forms_employment', 'price','taxes','available_quantity','image_scale','offer_price','offer_on','offer',
+            'offer_off','image_scale','name','slug','composition'];
 
     public function subcategory()
     {
@@ -27,7 +27,11 @@ class Product extends Model
     }
 
     public function productFiles(){
-        return $this->hasToMany(ProductFile::class);
+        return $this->hasMany(ProductFile::class);
+    }
+
+    public function questions(){
+        return $this->hasMany(Question::class);
     }
 }
 

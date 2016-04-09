@@ -19,20 +19,17 @@ class CreateProductsTable extends Migration
             $table->string('weight');
             $table->string('measure');
             $table->string('material');
-            $table->string('description');
+            $table->longText('description');
             $table->string('composition');
-            $table->string('forms-employment');
-            $table->string('price');
+            $table->string('forms_employment');
+            $table->integer('price');
             $table->string('taxes');
-            $table->string('available-quantity');
-            $table->string('image-scale');
+            $table->integer('available_quantity');
+            $table->string('image_scale');
             $table->string('location');
-            $table->string('offer');
-            $table->string('offer-price');
+            $table->boolean('important_offer');
+            $table->integer('offer_price');
             $table->longText('description-use');
-
-
-
 
             $table->timestamps();
         });

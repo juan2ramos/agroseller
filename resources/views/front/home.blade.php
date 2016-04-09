@@ -16,95 +16,29 @@
     <section class="Products">
         <h2 class="Title">Lo Más Destacado</h2>
         <div class="Product-content row">
-            <article class="col-3">
-                <figure class="Product-Image">
-                    <a href="{{route('productDetail')}}"> <img src="{{url('images/inquifersa.jpg')}}" alt=""></a>
-                </figure>
-                <div class="Product-info">
-                    <a href="{{route('productDetail')}}"><h4>Inquifersa</h4></a>
-                    <h5>Fertilizante </h5>
-                    <p>$50.000 <span>$80.000</span></p>
-
-                    <a href="" class="Button">COMPRAR</a>
-                </div>
-            </article>
-            <article class="col-3">
-                <figure class="Product-Image">
-                    <img src="{{url('images/potassio.jpg')}}" alt="">
-                </figure>
-                <div class="Product-info">
-                    <h4>Nitro Potassio</h4>
-                    <h5>Fertilizante </h5>
-                    <p>$50.000 <span>$80.000</span></p>
-                    <a href="" class="Button">COMPRAR</a>
-                </div>
-            </article>
-            <article class="col-3">
-                <figure class="Product-Image">
-                    <img src="{{url('images/glyfos.jpg')}}" alt="">
-                </figure>
-                <div class="Product-info">
-                    <h4>Glyfos</h4>
-                    <h5>Fertilizante </h5>
-                    <p>$50.000 <span>$80.000</span></p>
-                    <a href="" class="Button">COMPRAR</a>
-                </div>
-            </article>
-            <article class="col-3">
-                <figure class="Product-Image">
-                    <img src="{{url('images/cosmo.jpg')}}" alt="">
-                </figure>
-                <div class="Product-info">
-                    <h4>Cosmos O-C</h4>
-                    <h5>Fertilizante </h5>
-                    <p>$50.000 <span>$80.000</span></p>
-                    <a href="" class="Button">COMPRAR</a>
-                </div>
-            </article>
-            <article class="col-3">
-                <figure class="Product-Image">
-                    <img src="{{url('images/inquifersa.jpg')}}" alt="">
-                </figure>
-                <div class="Product-info">
-                    <h4>Inquifersa</h4>
-                    <h5>Fertilizante </h5>
-                    <p>$50.000 <span>$80.000</span></p>
-                    <a href="" class="Button">COMPRAR</a>
-                </div>
-            </article>
-            <article class="col-3">
-                <figure class="Product-Image">
-                    <img src="{{url('images/potassio.jpg')}}" alt="">
-                </figure>
-                <div class="Product-info">
-                    <h4>Nitro Potassio</h4>
-                    <h5>Fertilizante </h5>
-                    <p>$50.000 <span>$80.000</span></p>
-                    <a href="" class="Button">COMPRAR</a>
-                </div>
-            </article>
-            <article class="col-3">
-                <figure class="Product-Image">
-                    <img src="{{url('images/glyfos.jpg')}}" alt="">
-                </figure>
-                <div class="Product-info">
-                    <h4>Glyfos</h4>
-                    <h5>Fertilizante </h5>
-                    <p>$50.000 <span>$80.000</span></p>
-                    <a href="" class="Button">COMPRAR</a>
-                </div>
-            </article>
-            <article class="col-3">
-                <figure class="Product-Image">
-                    <img src="{{url('images/cosmo.jpg')}}" alt="">
-                </figure>
-                <div class="Product-info">
-                    <h4>Cosmos O-C</h4>
-                    <h5>Fertilizante </h5>
-                    <p>$50.000 <span>$80.000</span></p>
-                    <a href="" class="Button">COMPRAR</a>
-                </div>
-            </article>
+            @foreach($products as $product)
+                <article class="col-3">
+                    <figure class="Product-Image">
+                        <a href="{{route('productDetail')}}">
+                            @foreach($images as $image)
+                                @if($image->product_id == $product->id)
+                                    <img src="{{url($image->url_file)}}" alt="">
+                                @endif
+                            @endforeach
+                        </a>
+                    </figure>
+                    <div class="Product-info">
+                        <a href="{{route('productDetail')}}"><h4>{{$product->name}}</h4></a>
+                        @foreach($subcategories as $subcategory)
+                            @if($subcategory->id == $product->subcategory_id)
+                                <h5>{{$subcategory->name}}</h5>
+                            @endif
+                        @endforeach
+                        <p>${{$product->offer_price}} <span>${{$product->price}}</span></p>
+                        <a href="" class="Button">COMPRAR</a>
+                    </div>
+                </article>
+            @endforeach
         </div>
     </section>
     <script>

@@ -1,27 +1,28 @@
 <?php
 
 namespace Agrosellers\Http\Controllers;
+use Agrosellers\Entities\ProductFile;
+use Agrosellers\Entities\Subcategory;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
 use Agrosellers\Http\Controllers\Controller;
+use Agrosellers\Entities\Product;
 
 class HomeController extends Controller
 {
     function index(CategoryController $categoryController){
 
         $categories = $categoryController->categoriesSubcategories();
-
-        return view('front.home',compact('categories'));
+        $products = Product::all();
+        $subcategories = Subcategory::all();
+        $images = ProductFile::whereRaw('extension = "jpg" or extension = "png"')->get();
+        return view('front.home',compact('categories', 'products', 'subcategories', 'images'));
     }
     function pricing(){
 
         return view('front.pricing');
-    }
-    function productDetail(){
-        $relate = true;
-        return view('front.productDetail',compact('relate'));
     }
 
     function indexContact(){

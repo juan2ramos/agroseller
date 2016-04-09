@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    protected $fillable = ['user_id'];
+    protected $fillable = ['user_id', 'product_id'];
 
     public function user(){
         return $this->belongsTo(User::class);
@@ -14,5 +14,9 @@ class Question extends Model
 
     public function texts(){
         return $this->hasMany(Text::class);
+    }
+
+    public function product(){
+        return $this->belongsTo(Product::class);
     }
 }
