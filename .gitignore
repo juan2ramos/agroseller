@@ -1,2 +1,13 @@
+<<<<<<< HEAD
 /vendor
 /.vagrant
+=======
+.DS_Store
+/vendor
+/node_modules
+Homestead.yaml
+Homestead.json
+.env
+.idea
+public/uploads
+>>>>>>> f117c6cd9196c3775f42f585e202ffe9b3982b98

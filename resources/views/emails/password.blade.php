@@ -1,0 +1,1 @@
+Clic <a href="{{ url('password/reset/'.$token) }}">Aquí</a> para reiniciar la contraseña

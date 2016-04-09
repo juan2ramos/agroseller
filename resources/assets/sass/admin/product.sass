@@ -1,0 +1,189 @@
+.Wizard
+  position: relative
+  counter-reset: section
+  font-size: 14px
+  & svg
+    display: block
+    margin: rem(4) auto
+  & li
+    padding: rem(22)
+    font-weight: 400
+    color: #D9D9D9
+    counter-increment: section
+    &.current
+      color: $greenLight
+      cursor: pointer
+      & g
+        fill: $greenLight
+  & ul
+    border-bottom: rem(4) solid #D9D9D9
+.Wizard-line
+  height: rem(4)
+  width: 25%
+  display: block
+  background: $greenLight
+  position: absolute
+  bottom: 0
+  @include transition(width .4s )
+.Step
+  padding: rem(48)
+  color: #818181
+  text-align: left
+  display: none
+  & .Next
+    margin: rem(16) 0 rem(8)
+    position: relative
+    left: calc( 100% - 128px)
+    &.invalid
+      background: #CCCCCC
+      color: #AFAFAF
+      cursor: not-allowed
+      &:hover
+        box-shadow: none
+.Step-1
+  width: rem(770)
+  margin: auto
+  text-align: left
+  display: block
+  & label
+    font-weight: 400
+    font-size: rem(18)
+    display: block
+    width: 50%
+  & select
+    display: none
+  & ul
+    border: rem(1) solid gray
+    margin: rem(16) 0
+    padding: rem(32) 0
+    width: 50%
+  & li
+    padding: rem(8) rem(40)
+    position: relative
+    text-align: left
+    &:hover
+      cursor: pointer
+      background: #F5F5F5
+      color: #C5D257
+    &.selected
+      cursor: pointer
+      background: #F5F5F5
+      color: #C5D257
+  & svg
+    position: absolute
+    right: rem(40)
+    top: rem(13)
+
+#categoriesList
+  border-right: none !important
+
+/* Step 2 */
+
+.Step-2
+  & input[type='file']
+    opacity: 0
+  & .file
+    position: absolute
+    top: 0
+    height: 4rem
+    width: 100%
+    cursor: pointer
+    font-weight: 300
+    padding: 1.4rem 1.25rem 0
+    color: #A1A1A1
+    border: 1px solid #C5C5C5
+  & article
+    margin: rem(34) 0
+  & p
+    color: #818181
+    font-weight: 400
+    margin: 0
+    & span
+      display: block
+      font-size: rem(12)
+      font-weight: 100
+      text-align: justify
+      margin: rem(4) rem(17)
+  & h4
+    font-weight: 400
+    font-size: rem(18)
+    & li
+      font-size: rem(12)
+      font-weight: 100
+      margin: rem(4) rem(14)
+      list-style: disc
+      color: $greenLight
+      & span
+        color: gray
+
+
+.Step-2Images
+  margin: rem(24) 0
+  & label
+    cursor: pointer
+    position: relative
+    padding: rem(6)
+  & input
+    opacity: 0
+    cursor: pointer
+    z-index: 10
+    position: relative
+    margin: 0
+    padding: 0
+    top: rem(-5)
+    width: calc(100% + 5px )
+    height: rem(184.5)
+  & figure
+    position: absolute
+    border: rem(1) dashed #979797
+    border-radius: rem(2)
+    width: calc(100% - 5px)
+    top: 0
+    height: rem(184.5)
+    overflow: hidden
+.Step-2 .DataForm
+  display: none
+
+/* Step 3 */
+
+.Step-3
+  & article
+    margin: rem(34) 0
+  & p
+    color: #818181
+    font-weight: 400
+    margin: 0
+  & .Button
+    width: rem(160)
+    margin: 1rem 0
+.Step-3Offers
+  margin-bottom: rem(-22) !important
+  & label
+    margin-right: rem(16)
+    & em
+      top: rem(42)
+      right: rem(16)
+    & span
+      top: rem(44)
+    & input
+      padding: 1rem rem(18) 0
+    &.open span
+      top: rem(36)
+  & input
+    height: 3rem
+
+/* Step 4 */
+
+.Step-4
+  & h4
+    font-weight: 400
+    font-size: rem(22)
+    margin-bottom: rem(32)
+  & p
+    margin: rem(10)
+  & span
+    font-weight: 400
+.Step-finish
+  margin: 32px auto
+  width: 360px
+  display: block

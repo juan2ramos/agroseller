@@ -1,0 +1,41 @@
+@import "lib/forms"
+body
+  background: #F8F8F8
+.HeaderAuth
+  background: $greenDark
+.HeaderAuth-content
+  padding: 1rem
+  background: $greenDark
+  max-width: $widthContent
+  width: 100%
+  margin: auto
+.FormAuth
+  margin: rem(48)
+  & input
+    width: rem(390)
+  & h2
+    font-weight: 500
+    font-size: rem(20)
+    color: #616161
+    line-height: rem(24)
+    padding-bottom: rem(16)
+
+  & .Button
+    margin: rem(48) 0 0
+
+  & .Errors-password
+    width: 0
+    position: absolute
+    bottom: 0
+    background: #F36664
+    height: rem(4)
+    @include transition(width .4s )
+
+
+.Login
+  height: calc(100% - 15rem)
+  & a
+    margin-top: rem(-10)
+    display: block
+    text-align: right
+    color: #C5C5C5
