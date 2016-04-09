@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+* text eol=lf
+=======
 * text=auto
 *.css linguist-vendored
 *.less linguist-vendored
+>>>>>>> f117c6cd9196c3775f42f585e202ffe9b3982b98
