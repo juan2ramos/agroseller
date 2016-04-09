@@ -7,12 +7,12 @@ class CreateProductFilesTable extends Migration
 {
     /**
      * Run the migrations.
-     *<!-- id, product_id, ruta, name, extension -->
+     *
      * @return void
      */
     public function up()
     {
-        Schema::create('productFiles', function(Blueprint $table){
+        Schema::create('product_files', function(Blueprint $table){
             $table->increments('id');
             $table->string('name');
             $table->string('extension');
@@ -29,6 +29,6 @@ class CreateProductFilesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('productFiles');
+        Schema::drop('product_files');
     }
 }

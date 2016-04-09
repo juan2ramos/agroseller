@@ -27,7 +27,11 @@ class Product extends Model
     }
 
     public function productFiles(){
-        return $this->hasToMany(ProductFile::class);
+        return $this->hasMany(ProductFile::class);
+    }
+
+    public function questions(){
+        return $this->hasMany(Question::class);
     }
 }
 

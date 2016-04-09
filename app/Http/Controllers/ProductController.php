@@ -3,8 +3,8 @@
 namespace Agrosellers\Http\Controllers;
 
 
-use Agrosellers\Entities\File;
 use Agrosellers\Entities\Product;
+use Agrosellers\Entities\Question;
 use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
 use Agrosellers\Entities\Category;
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    function index()
+    function indexBack()
     {
         $categories = Category::all();
         return view('back.product', compact('categories'));
@@ -96,16 +96,20 @@ class ProductController extends Controller
     {
         return view('front.checkout');
     }
-    function productDetailFront(Request $request, $slug){
+  /*  function productDetailFront(Request $request, $slug){
 
         $product = Product::where('slug', '=', $slug)->first();
         if (is_null($product)) {
             return redirect()->route('product');
             /*$product = Product::where('slug', 'like', '%' . $slug . '%')->first();
             return redirect()->route('product', $product->slug);*/
-        }
-
+  /*      }
         return view('front.productDetail',compact('product'));
-    }
+    }*/
 
+    function productDetailFront(){
+
+        $questions = Question::where('product_id' , '=', 1);
+        return view('front.productDetail', compact('questions'));
+    }
 }

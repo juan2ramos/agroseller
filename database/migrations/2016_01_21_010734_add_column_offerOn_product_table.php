@@ -13,8 +13,8 @@ class AddColumnOfferOnProductTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dateTime('offer-on')->nullable();
-            $table->dateTime('offer-off')->nullable();
+            $table->dateTime('offer_on')->nullable();
+            $table->dateTime('offer_off')->nullable();
 
         });
     }
