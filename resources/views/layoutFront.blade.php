@@ -74,7 +74,7 @@
 <header class="Header">
     <div class="Header-container row middle">
         <figure class="Header-logo col-3">
-            <a href="{{route('home')}}"><img src="{{url('images/agroseller-logo.png')}}" alt="Logo Agrosellers"></a>
+            <a href="{{route('home')}}"><img src="{{url('images/logo-agrosellers.svg')}}" alt="Logo Agrosellers"></a>
         </figure>
 
         <form action="" class="Header-search col-6">
@@ -228,7 +228,7 @@
         </nav>
         <div class="information row center col-11">
             <figure class="Footer-logo center col-11">
-                <img src="{{url('images/agroseller-logo.png')}}" alt="">
+                <img src="{{url('images/logo-agrosellers.svg')}}" alt="">
             </figure>
             <ul class="NavSocial col-11 row center">
                 <li>
