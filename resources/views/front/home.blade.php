@@ -19,7 +19,7 @@
             @foreach($products as $product)
                 <article class="col-3">
                     <figure class="Product-Image">
-                        <a href="{{route('productDetail')}}">
+                        <a href="{{route('productDetail', $product->id)}}">
                             <?php $bool = true ?>
                             @foreach($images as $image)
                                 @if($image->product_id == $product->id && $bool == true)
@@ -30,7 +30,7 @@
                         </a>
                     </figure>
                     <div class="Product-info">
-                        <a href="{{route('productDetail')}}"><h4>{{$product->name}}</h4></a>
+                        <a href="{{route('productDetail', $product->id)}}"><h4>{{$product->name}}</h4></a>
                         @foreach($subcategories as $subcategory)
                             @if($subcategory->id == $product->subcategory_id)
                                 <h5>{{$subcategory->name}}</h5>

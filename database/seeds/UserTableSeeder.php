@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Agrosellers\User;
-use Agrosellers\Entities\Agent;
+use Agrosellers\Entities\Provider;
+
 
 class UserTableSeeder extends Seeder
 {
@@ -103,6 +104,30 @@ class UserTableSeeder extends Seeder
             'photo' => '',
             'role_id' => '3',
             'password' => bcrypt('12345'),
+        ]);
+
+        Provider::create([
+            'company-name' => 'Bayer',
+            'location' => 'Bogota',
+            'address' => 'CR 45B 69C 33',
+            'contact' => 'Carlos el Contacto',
+            'contact-phone' => '3008656623',
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae culpa dolor ea eos modi perferendis porro qui, quisquam quod similique!',
+            'NIT' => '12234555433',
+            'url-video' => 'https://www.youtube.com/watch?v=6F6giu8nOcQ',
+            'sales-manager-name' => 'Santiago el Vendedor',
+            'licence' => 'http://academy.iglobalstores.com/wp-content/uploads/2011/11/sanitary-certificate.png',
+            'dispatch-time' => '5',
+            'legal-agent' => 'Andres el Rep Legal',
+            'user_id' => 17,
+            'logo' => 'http://www.activedocs.com/images/2013-12-Bayer-Gold-Award.jpg',
+            'nick-name' => 'bayer93',
+            'taxpayer' => 'taxpayer',
+            'web-site' => 'http://www.bayerandina.com/quienes_somos/nuestra_colombia.htm',
+            'titular-name' => 'Carlos el titular',
+            'bank-name' => 'Banco Agrario',
+            'bank-country' => 'Colombia',
+            'count-number' => '432476532262-1'
         ]);
 
         /******************** Customer **********************/

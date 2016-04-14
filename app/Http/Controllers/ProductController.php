@@ -79,8 +79,11 @@ class ProductController extends Controller
     /*      }
           return view('front.productDetail',compact('product'));
       }*/
-    function productDetailFront(){
-        $questions = Question::where('product_id' , '=', 1);
-        return view('front.productDetail', compact('questions'));
+    function productDetailFront($id){
+        $questions = Question::where('product_id' , '=', $id);
+        $products = Product::all();
+        $product = $products->find($id);
+        $images = ProductFile::whereRaw('extension = "jpg" or extension = "png"')->get();
+        return view('front.productDetail', compact('questions', 'product', 'images'));
     }
 }
