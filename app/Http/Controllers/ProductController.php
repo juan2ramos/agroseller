@@ -83,7 +83,7 @@ class ProductController extends Controller
         $questions = Question::where('product_id' , '=', $id);
         $products = Product::all();
         $product = $products->find($id);
-        $images = ProductFile::whereRaw('extension = "jpg" or extension = "png"')->get();
+        $images = ProductFile::whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->get();
         return view('front.productDetail', compact('questions', 'product', 'images'));
     }
 }
