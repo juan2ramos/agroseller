@@ -149,7 +149,7 @@ main {
 }
 
 .MessagePlatform-content h2 {
-  color: #253A1B;
+  color: #27383F;
   font-weight: 100;
 }
 
@@ -158,7 +158,7 @@ main {
 }
 
 .MessagePlatform-last span {
-  color: #253A1B;
+  color: #27383F;
   font-weight: 300;
 }
 
@@ -194,7 +194,7 @@ main {
 }
 
 .HeaderBack-right h1 {
-  color: #253A1B;
+  color: #27383F;
   font-size: 1.0625rem;
   font-weight: 400;
 }
@@ -301,7 +301,7 @@ main {
 
 .Nav a {
   height: 4rem;
-  color: #253A1B;
+  color: #27383F;
   font-size: 0.9375rem;
   font-weight: 400;
   display: block;
@@ -1089,12 +1089,12 @@ body {
 }
 
 .HeaderAuth {
-  background: #253A1B;
+  background: #27383F;
 }
 
 .HeaderAuth-content {
   padding: 1rem;
-  background: #253A1B;
+  background: #27383F;
   max-width: 71.25rem;
   width: 100%;
   margin: auto;
@@ -1472,7 +1472,7 @@ body {
   border-left: 1px #C5D257 solid;
   width: 30%;
   min-width: 320px;
-  background: rgba(37, 58, 27, 0.9);
+  background: rgba(39, 56, 63, 0.9);
   border-radius: 10px;
   padding: 60px;
 }

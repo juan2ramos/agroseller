@@ -151,7 +151,7 @@ main {
 }
 
 .MessagePlatform-content h2 {
-  color: #253A1B;
+  color: #27383F;
   font-weight: 100;
 }
 
@@ -160,7 +160,7 @@ main {
 }
 
 .MessagePlatform-last span {
-  color: #253A1B;
+  color: #27383F;
   font-weight: 300;
 }
 
@@ -718,7 +718,7 @@ main {
 
 body {
   background: white;
-  color: #253A1B;
+  color: #27383F;
 }
 
 .BarInfo {
@@ -729,7 +729,7 @@ body {
 }
 
 .BarInfo a {
-  color: #253A1B;
+  color: #27383F;
   display: inline-block;
   margin-left: 1.25rem;
 }
@@ -745,7 +745,7 @@ body {
 }
 
 .Header {
-  background: #253A1B;
+  background: #27383F;
 }
 
 .Header-container {
@@ -820,8 +820,8 @@ body {
 }
 
 .BarNav-a a {
-  color: #253A1B;
-  border-bottom: 0.0625rem solid #253A1B;
+  color: #27383F;
+  border-bottom: 0.0625rem solid #27383F;
 }
 
 .Cart {
@@ -908,7 +908,7 @@ body {
   font-size: 1.125rem;
   font-weight: 500;
   line-height: 1.5em;
-  color: #253A1B;
+  color: #27383F;
 }
 
 .Product-info h5 {
@@ -1092,13 +1092,13 @@ body {
 
 .ProductDetail-quantity input {
   border: none;
-  border-bottom: 0.1875rem solid #253A1B;
+  border-bottom: 0.1875rem solid #27383F;
   padding-bottom: .375rem;
   font-weight: 500;
   font-size: 1.25rem;
   text-align: center;
   padding-left: 1rem;
-  color: #253A1B;
+  color: #27383F;
 }
 
 .ProductDetail-thumbnail {
@@ -1487,7 +1487,7 @@ body {
   margin: 1.5rem 0;
   font-weight: 400;
   padding: 1rem 1.5rem 0;
-  color: #253A1B;
+  color: #27383F;
 }
 
 .Checkout-form textarea,
@@ -1724,7 +1724,7 @@ body {
 /********************** FOOTER **********************/
 
 .Footer {
-  background: #253A1B;
+  background: #27383F;
   padding-top: 30px;
   overflow: hidden;
 }
