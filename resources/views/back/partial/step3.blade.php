@@ -5,7 +5,7 @@
     <article>
         <p>1. Valor de la oferta - valor actual $200.000</p>
         <label for="offer-price">
-            <input type="number" name="offer-price" id="offer-price" value="{{ old('offer-price') }}">
+            <input type="number" name="offer_price" id="offer-price" value="{{ old('offer-price') }}">
             <span>Valor oferta</span>
             <em>$</em>
         </label>
@@ -14,7 +14,7 @@
         <p>2. Fechas de inicio y limite de la oferta</p>
         <div class="row middle  ">
             <label for="offer-on" class="col-4 ">
-                <input type="text" class="datetimepicker_mask" id="offer-on" name="offer-on"
+                <input type="text" class="datetimepicker_mask" id="offer-on" name="offer_on"
                        value="{{ old('offer-on') }}">
                 <span>Fecha inicio</span>
                 <em>
@@ -32,7 +32,7 @@
                 </em>
             </label>
             <label for="offer-off" class="col-4 ">
-                <input type="text" class="datetimepicker_mask" id="offer-off" name="offer-off"
+                <input type="text" class="datetimepicker_mask" id="offer-off" name="offer_off"
                        value="{{ old('offer-off') }}">
                 <span>Fecha cierre</span>
                 <em>
