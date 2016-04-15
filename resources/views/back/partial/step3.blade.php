@@ -161,6 +161,14 @@
         </div>
 
         <div id="editorOffer" ql-container></div>
+
+    </article>
+    <article class="end importOffer">
+        <label for="important_offer" class=" offset-9 col-3">
+            <input type="checkbox" name="important_offer" id="important_offer">
+            <sub></sub>
+           Oferta destacada
+        </label>
     </article>
     <div class="Button Next" id="stepThreeButton">SIGUIENTE</div>
 </section>

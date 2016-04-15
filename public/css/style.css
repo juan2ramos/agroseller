@@ -182,7 +182,7 @@ main {
 
 .HeaderBack-figure {
   padding: 0.875rem 2.9375rem;
-  background: #253A1B;
+  background: #27383F;
   height: 4.25rem;
 }
 
@@ -1446,6 +1446,10 @@ body {
   margin: 32px auto;
   width: 360px;
   display: block;
+}
+
+.importOffer sub {
+  left: 3rem;
 }
 
 .Message {
