@@ -151,6 +151,17 @@ function DetailsProduct(){
 
 
         if (nameProduct == "") {
+            if(nameProduct == "location"){
+                coordinates = ValueProduct.split(";");
+                for( j; j < coordinates.length ; j++){
+                    coord = coordinates[i].split("&");
+                    $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + coord[0] + ',' + coord[1], function(data) {
+                        var address = data.results[0].formatted_address;
+                        info.innerHTML = address;
+                    });
+                }
+                ValueProduct = ValueProduct
+            }
             nameProduct = $(this).attr("name");
             if (nameProduct == "_token" || nameProduct == "taxes[]") {
                 return;
@@ -159,6 +170,7 @@ function DetailsProduct(){
                 nameProduct = arrayInput[nameProduct];
                 console.log(arrayInput[nameProduct])
             }
+
             console.log(nameProduct)
         }
         if(ValueProduct != "" ){
@@ -169,7 +181,6 @@ function DetailsProduct(){
             }
 
         }
-
 
     });
 

@@ -5,6 +5,10 @@ $files.on('change', function () {
 
     $output = $(this).siblings('.result');
 
+    if(this.files[0].width != this.files[0].height){
+        alert("Las dimensión de  la imágen deben ser iguales ");
+        return;
+    }
 
     if (this.files[0].size < 2400000) {
 
