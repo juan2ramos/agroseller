@@ -238,9 +238,7 @@
     <section id="Map" class="col-12"></section>
     <section class="ProductInfo">
         <h2>Descripción</h2>
-            <div id="Descrip">
-                {{$product->description}}
-            </div>
+        {!!$product->description!!}
         <h2>Características </h2>
         <article class="row bottom">
             <ul class="col-2">

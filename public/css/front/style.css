@@ -887,6 +887,9 @@ body {
 }
 
 .Product-Image {
+  width: 248px;
+  height: 248px;
+  overflow: hidden;
   max-width: 15.5rem;
   margin: auto;
 }
@@ -909,6 +912,7 @@ body {
   font-weight: 500;
   line-height: 1.5em;
   color: #27383F;
+  text-transform: capitalize;
 }
 
 .Product-info h5 {
