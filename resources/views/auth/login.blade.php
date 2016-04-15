@@ -4,7 +4,7 @@
     <header class="HeaderAuth">
         <div class="HeaderAuth-content row middle ">
             <figure class="col-6">
-                <a href="/"><img src="{{ url('images/agroseller-logo.png') }}" alt=""></a>
+                <a href="/"><img src="{{ url('images/logo-agrosellers.svg') }}" alt=""></a>
             </figure>
             <a class="col-6 end" href="{{route('register')}}">
                 <button class="Button">REGISTRATE</button>
