@@ -1690,7 +1690,7 @@ body {
 .container_questions_item ol li > span {
   cursor: pointer;
   position: relative;
-  z-index: 100;
+  z-index: 1;
   display: block;
   padding: 1rem;
   color: #888;
@@ -1708,7 +1708,7 @@ body {
 
 .container_questions_item ol li:before {
   position: relative;
-  z-index: 110;
+  z-index: 2;
   float: left;
   content: counter(li) ".";
   counter-increment: li;

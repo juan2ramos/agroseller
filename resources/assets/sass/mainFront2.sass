@@ -16,7 +16,7 @@
     font-size: 1.2rem
   &_questions_item
       ol
-        counter-reset: li;
+        counter-reset: li
       ol li
         list-style: none
         font-size: 1.6rem
@@ -24,7 +24,7 @@
         >span
           cursor: pointer
           position: relative
-          z-index: 100
+          z-index: 1
           display: block
           padding: 1rem
           color: #888
@@ -37,7 +37,7 @@
             display: block
       ol li:before
         position: relative
-        z-index: 110
+        z-index: 2
         float: left
         content: counter(li) "."
         counter-increment: li
