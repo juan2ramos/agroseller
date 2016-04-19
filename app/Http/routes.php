@@ -1,16 +1,18 @@
 <?php
-include 'Routes/auth.php';
+Route::group(['middleware' => ['web']], function () {
+    include 'Routes/auth.php';
+});
 include 'Routes/front.php';
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
-    Route::group(['middleware' => 'isValidateProviders'], function () {
+
         Route::get('/', [
             'uses' => 'HomeAdminController@index',
             'as' => 'admin',
         ]);
         include 'Routes/admin.php';
-    });
+
 
     Route::get('proveedor', [
         'uses' => 'HomeAdminController@isValidateProviders',

@@ -24,7 +24,7 @@
                     <td><a href="#" data-id="{{ $category->id }}" class="CategoryDelete icon-remove"></a></td>
                 </tr>
                 <tr class="SubTable">
-                    <td>
+                    <td colspan="5">
                         <table class="Table">
                             <thead>
                                 <tr>
@@ -34,7 +34,7 @@
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
-                            
+
                             <tbody>
                                 @foreach($category->subcategories as $subcategories)
                                     <tr>

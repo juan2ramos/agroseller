@@ -12,9 +12,7 @@
         </div>
     </header>
 
-    @if (count($errors) > 0)
-        <?php $errorArray = $errors->getMessages();  ?>
-    @endif
+
 
     <form class="row center middle FormAuth Forms Login" role="form" method="POST" action="{{ route('login') }}">
         <div class="BackContainer FormAuth-container">
@@ -27,7 +25,8 @@
             </label>
 
             @if (!empty($errorArray["password"])) <span
-                    class="Login-error">{{ $errorArray["password"][0] }} </span>@endif
+                    class="Login-error">{{ $errorArray["password"][0] }} </span>
+            @endif
 
             <label for="password">
                 <input type="password" name="password">
