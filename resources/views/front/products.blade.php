@@ -3,9 +3,7 @@
 @section('content')
 
     <section class="Products">
-
         @foreach($products as $product)
-
             <article>
                 <a href="{{url('productos/'.$product->slug)}}">
                     <figure>

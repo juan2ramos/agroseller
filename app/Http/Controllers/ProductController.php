@@ -2,14 +2,17 @@
 
 namespace Agrosellers\Http\Controllers;
 
-
-use Agrosellers\Entities\Product;
-use Agrosellers\Entities\Question;
+use Agrosellers\Entities\Subcategory;
 use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
 use Agrosellers\Entities\Category;
 use Illuminate\Support\Facades\Auth;
+use Agrosellers\Entities\Product;
+use Agrosellers\Entities\Question;
 use Agrosellers\Entities\ProductFile;
+use Agrosellers\Entities\Feature;
+use Agrosellers\Entities\Text;
+use Agrosellers\User;
 
 
 class ProductController extends Controller
@@ -70,20 +73,78 @@ class ProductController extends Controller
     {
         return view('front.checkout');
     }
-    /*  function productDetailFront(Request $request, $slug){
-          $product = Product::where('slug', '=', $slug)->first();
-          if (is_null($product)) {
-              return redirect()->route('product');
-              /*$product = Product::where('slug', 'like', '%' . $slug . '%')->first();
-              return redirect()->route('product', $product->slug);*/
-    /*      }
-          return view('front.productDetail',compact('product'));
-      }*/
+
+    function addQuestion(Request $request){
+        if($request->ajax()){
+            $html = '';
+            $question = new Question;
+            $question->user_id = $request->user_id;
+            $question->product_id = $request->product_id;
+            $question->save();
+
+            $text = new Text;
+            $text->description = $request->comment;
+            $text->question_id = $question->id;
+            $text->save();
+
+            /*************************************/
+
+            $questions = Question::where('product_id' , '=', $request->product_id)->orderBy('id','desc')->get();
+            $users = [];
+            $texts = [];
+
+            foreach($questions as $question){
+                $users[] = User::find($question->user_id);
+                $texts[] = Text::where('question_id', '=', $question->id)->first();
+            }
+
+            /*************************************/
+
+            $i = 0;
+            foreach($questions as $question){
+
+                $html .= "
+                <li class='row'>
+                    <figure>
+                ";
+
+                if($users[$i]->photo) {
+                    $html .= "<img src = 'images/{$users[$i]->photo}' alt=''>";
+                }
+                else{
+                    $html .= "<img src = '{$request->index}/images/user.png' alt=''>";
+                }
+
+                $html .= "
+                    </figure>
+                    <div class='Comments-user'>
+                        <h5>{$users[$i]->name} {$users[$i]->second_name} {$users[$i]->last_name} {$users[$i]->second_last_name}
+                            <time> • hace 25 días</time>
+                        </h5>
+                        <p>
+                            {$texts[$i]->description}
+                        </p>
+                    </div>
+                </li>";
+                $i++;
+            }
+            echo $html;
+        }
+    }
     function productDetailFront($id){
-        $questions = Question::where('product_id' , '=', $id);
+        $questions = Question::where('product_id' , '=', $id)->orderBy('id','desc')->get();
         $products = Product::all();
         $product = $products->find($id);
+        $features = Feature::all();
+        $users = [];
+        $texts = [];
+
+        foreach($questions as $question){
+            $users[] = User::find($question->user_id);
+            $texts[] = Text::where('question_id', '=', $question->id)->first();
+        }
         $images = ProductFile::whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->get();
-        return view('front.productDetail', compact('questions', 'product', 'images'));
+        $subcategories = Subcategory::all();
+        return view('front.productDetail', compact('questions', 'product', 'images', 'users', 'texts'));
     }
 }

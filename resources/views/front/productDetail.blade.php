@@ -5,7 +5,7 @@
     <meta property="og:type"          content="{{route('home')}}" />
     <meta property="og:title"         content="{{$product->name}}" />
     <meta property="og:description"   content="{{$product->description}}" />
-    <meta property="og:image"         content="{{url('uploads/products' . $images->first()->name)}}" />
+    <meta property="og:image"         content="{{url('uploads/products/' . $images->first()->name)}}" />
 @endsection
 
 @section('content')
@@ -105,7 +105,6 @@
                 <div class="social-share">
                     <svg width="138px" height="32px" viewBox="0 0 138 32" version="1.1"
                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <title>facebook</title>
                         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <g id="Product-detail" transform="translate(-711.000000, -676.000000)">
                                 <g id="facebook" transform="translate(711.000000, 676.000000)">
@@ -120,7 +119,7 @@
                             </g>
                         </g>
                     </svg>
-                    <div class="fb-share-button" data-href="{{route('productDetail')}}" data-layout="button"></div>
+                    <div class="fb-share-button" data-href="{{route('productDetail', $product->id)}}" data-layout="button"></div>
                 </div>
                 <div class="social-share">
                     <svg width="138px" height="32px" viewBox="0 0 138 32" version="1.1"
@@ -144,7 +143,7 @@
                             </g>
                         </g>
                     </svg>
-                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{route('productDetail')}}" data-text="Descripcion producto" data-via="twitter-agroseller" data-lang="es" data-size="large" data-dnt="true">Twittear</a>
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{route('productDetail', $product->id)}}" data-text="{!!$product->name!!}" data-via="twitter-agroseller" data-lang="es" data-size="large" data-dnt="true">Twittear</a>
                 </div>
                 <div class="social-share">
                     <svg width="138px" height="32px" viewBox="0 0 138 32" version="1.1"
@@ -279,49 +278,48 @@
     </section>
     <aside class="Comments">
         <h2>Comentarios y preguntas</h2>
+
+        <?php isset(Auth::user()->role_id) ? $login = true : $login = false ?>
         <form action="" class="row">
-            <figure>
-                <img src="{{url('images/mujer-comentarios.jpg')}}" alt="">
-            </figure>
-            <textarea name="comment"></textarea>
+            @if($login)
+                <figure>
+                    @if(Auth::user()->photo)
+                        <img src="{{url('images/' . Auth::user()->photo)}}" alt="">
+                    @else
+                        <img src="{{url('images/user.png')}}" alt="">
+                    @endif
+                </figure>
+                <div class="commentBox">
+                    <textarea name="comment" id="commentBox"></textarea>
+                    <button class="commentButton" id="commentButton" onClick="addComment($('#commentBox').val(), '{{$product->id}}', '{{Auth::user()->id}}','{{route("addQuestion")}}', '{{url("/")}}'); return false;">Enviar</button>
+                </div>
+            @else
+                <b>Para comentar debes estar registrado</b>
+            @endif
         </form>
         <ul>
-            <li class="row">
-                <figure>
-                    <img src="{{url('images/mujer-comentarios.jpg')}}" alt="">
-                </figure>
-                <div class="Comments-user">
-                    <h5>Anita Perez
-                        <time> • hace 25 días</time>
-                    </h5>
-                    <p>
-                        Hola, Me gustaría saber si relaizan envíos a toda Colombia y que precios manejan. Muchas gracias
-                        quedo muy pendiente, es una compra urgente.Hola, Me gustaría saber si relaizan envíos a toda
-                        Colombia y que precios manejan. Muchas gracias
-                        quedo muy pendiente, es una compra urgente.Hola, Me gustaría saber si relaizan envíos a toda
-                        Colombia y que precios manejan. Muchas gracias
-                        quedo muy pendiente, es una compra urgente.Hola, Me gustaría saber si relaizan envíos a toda
-                        Colombia y que precios manejan. Muchas gracias
-                        quedo muy pendiente, es una compra urgente.Hola, Me gustaría saber si relaizan envíos a toda
-                        Colombia y que precios manejan. Muchas gracias
-                        quedo muy pendiente, es una compra urgente.
-                    </p>
-                </div>
-            </li>
-
-            <li class="row">
-                <figure>
-                    <img src="{{url('images/mujer-comentarios.jpg')}}" alt="">
-                </figure>
-                <div class="Comments-user">
-                    <h5>Anita Perez
-                        <time> • hace 25 días</time>
-                    </h5>
-                    <p>
-                        Un comentario más.
-                    </p>
-                </div>
-            </li>
+            <div id="reload">
+            <?php $i = 0 ?>
+            @foreach($questions as $question)
+                <li class="row">
+                    <figure>
+                        @if($users[$i]->photo)
+                            <img src="{{url('images/' . $users[0]->photo)}}" alt="">
+                        @else
+                            <img src="{{url('images/user.png')}}" alt="">
+                        @endif
+                    </figure>
+                    <div class="Comments-user">
+                        <h5>{{$users[$i]->name}} {{$users[$i]->second_name}} {{$users[$i]->last_name}} {{$users[$i]->second_last_name}}
+                            <time> • hace 25 días</time>
+                        </h5>
+                        <p>
+                            {{$texts[$i]->description}}
+                        </p>
+                    </div>
+                </li>
+                <?php $i++ ?>
+            @endforeach
         </ul>
     </aside>
 @endsection
@@ -358,6 +356,7 @@
     <script src="{{asset('js/front/slide.js')}}"></script>
     <script src="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.js"></script>
     <script src="{{asset('js/front/product.js')}}"></script>
+    <script src="{{asset('js/comments.js')}}"></script>
     <script>
         countDown({
             "year" : 2016,

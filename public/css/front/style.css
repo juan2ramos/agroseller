@@ -1586,11 +1586,11 @@ body {
 }
 
 .Comments figure {
-  max-width: 4rem;
-}
-
-.Comments img {
+  width: 4rem;
+  height: 4rem;
   border-radius: .25rem;
+  overflow: hidden;
+  background: #27383F;
 }
 
 .Comments form {
@@ -1837,4 +1837,27 @@ body {
   -webkit-transform: scaleX(3) scaleY(6.3);
   transform: scaleX(3) scaleY(6.3);
   opacity: 0;
+}
+
+.commentBox {
+  width: calc(100% - 5rem);
+  position: relative;
+}
+
+.commentBox textarea {
+  width: 100%;
+  padding-left: 4.5rem;
+  resize: none;
+}
+
+.commentBox .commentButton {
+  height: 100%;
+  width: 4rem;
+  background: #C1C1C1;
+  color: black;
+  border: none;
+  margin-left: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
 }

@@ -41,3 +41,8 @@ Route::post('contacto', [
     'as' => 'contactForm'
 ]);
 
+Route::post('questions/new', [
+    'uses' => 'ProductController@addQuestion',
+    'as' => 'addQuestion'
+]);
+

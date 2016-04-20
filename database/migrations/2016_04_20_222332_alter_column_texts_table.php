@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFilesTable extends Migration
+class AlterColumnTextsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('files', function(Blueprint $table){
-            $table->increments('id');
-            $table->text('description');
+        Schema::table('texts', function($table){
+            $table->dropForeign(['question_id']);
+            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
         });
     }
 
@@ -25,6 +25,6 @@ class CreateFilesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('files');
+        //
     }
 }

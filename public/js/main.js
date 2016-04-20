@@ -48,5 +48,4 @@ $(document).ready(function () {
     $message.children('.button').on('click',function(){
         $popup.addClass('close-popup');
     });
-
 });
