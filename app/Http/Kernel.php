@@ -1,6 +1,7 @@
 <?php
 namespace Agrosellers\Http;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Foundation\Http\Middleware\Authorize;
 class Kernel extends HttpKernel
 {
     /**
@@ -30,6 +31,12 @@ class Kernel extends HttpKernel
         ],
         'api' => [
             'throttle:60,1',
+        ],
+
+        'admin' =>[
+            'web',
+            'auth',
+            //Authorize::class.':admin'
         ],
     ];
     /**

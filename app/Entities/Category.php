@@ -14,4 +14,9 @@ class Category extends Model
         return $this->hasMany(Subcategory::class,'categories_id');
     }
 
+    public function getRouteKeyName()
+    {
+        return 'name'; //Nombre de la columna que deseamos buscar
+    }
+
 }

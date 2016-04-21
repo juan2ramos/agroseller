@@ -1,6 +1,9 @@
 <?php
 
 namespace Agrosellers\Providers;
+use Agrosellers\Entities\Category;
+use Agrosellers\User ;
+use Agrosellers\Policies\CategoryPolicy;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +16,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'Agrosellers\Model' => 'Agrosellers\Policies\ModelPolicy',
+        //'Agrosellers\Model' => 'Agrosellers\Policies\ModelPolicy',
+        Category::class => CategoryPolicy::class,
     ];
 
     /**
@@ -25,6 +29,10 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(GateContract $gate)
     {
         parent::registerPolicies($gate);
+
+        $gate->define('admin',function(User $user){
+            return $user->email == "juan2sramos@gmail.com";
+        });
 
         //
     }

@@ -6,11 +6,16 @@ use Agrosellers\Entities\Subcategory;
 use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
 use Agrosellers\Entities\Category;
+use Illuminate\Support\Facades\Gate;
 
 class CategoryController extends Controller
 {
     function index()
     {
+        $category = Category::find(1);
+        //$this->authorize('view');
+        $this->authorize('view', $category);
+
         $categories = Category::all();
         return view('back.categories', compact('categories'));
 
