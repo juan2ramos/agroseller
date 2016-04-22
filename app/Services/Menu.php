@@ -63,7 +63,7 @@ class Menu
                 'class' => 'product'
             ],
             'Preguntas' => [
-                'route' => 'reports',
+                'route' => 'questions',
                 'roles' => [1, 3, 4],
                 'class' => 'report'
             ],

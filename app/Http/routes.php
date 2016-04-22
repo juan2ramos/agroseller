@@ -1,54 +1,18 @@
 <?php
 Route::group(['middleware' => ['web']], function () {
-    include 'Routes/auth.php';
+    require __DIR__ . '/Routes/auth.php';
 });
-include 'Routes/front.php';
+require __DIR__ . '/Routes/front.php';
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
+    require __DIR__ . '/Routes/admin.php';
 
-
-        Route::get('/', [
-            'uses' => 'HomeAdminController@index',
-            'as' => 'admin',
-        ]);
-        include 'Routes/admin.php';
-
-
-    Route::get('proveedor', [
-        'uses' => 'HomeAdminController@isValidateProviders',
-        'as' => 'isValidateProviders',
-        'middleware' => 'sendHome:validateProvider'
-    ]);
-
-    /* Provider without register in providers table   */
-    Route::get('registro-proveedor', [
-        'uses' => 'ProviderController@registerProvider',
-        'as' => 'registerProvider',
-        'middleware' => 'sendHome:registerProvider'
-    ]);
-
-    Route::post('registro-proveedor', [
-        'uses' => 'ProviderController@insertProvider',
-        'as' => 'registerProvider',
-        'middleware' => 'sendHome:registerProvider'
-    ]);
-
-    Route::post('data-provider', [
-        'uses' => 'ProviderController@insertProvider',
-        'as' => 'insertProvider',
-        'middleware' => 'sendHome:registerProvider'
-    ]);
-
-    Route::get('informacion-cliente', [
-        'uses' => 'ClientController@index',
-        'as' => 'clientInformationIndex',
-        //'middleware' => 'sendHome:registerProvider'//
-    ]);
-
-    Route::post('informacion-cliente', [
-        'uses' => 'ClientController@store',
-        'as' => 'clientInformationStore',
-    ]);
+    Route::get('dashboard',function(){
+        return "probando ando los middleware con el nuevo componente de laravel authorize";
+    });
+});
+Route::get('test/{category}',function(\Agrosellers\Entities\Category $category = null){
+    return 'La Categoria es '. $category->name;
 });
 
 
