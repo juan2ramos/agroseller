@@ -104,3 +104,8 @@ Route::get('cultivos', [
     'as' => 'farmIndex',
     'middleware' => 'Roles:1-2'
 ]);
+
+Route::get('preguntas', [
+    'uses' => 'QuestionController@index',
+    'as' => 'questions'
+]);
