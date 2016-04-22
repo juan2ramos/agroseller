@@ -6,6 +6,8 @@ addComment = function(comment, product_id, user_id, url, index){
         'index'         :   index
     };
 
+    $("#commentBox").val('');
+
     $.ajax({
         data:  param,
         url:   url,

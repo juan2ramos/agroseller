@@ -62,6 +62,11 @@ class Menu
                 'roles' => [1, 2, 3, 4],
                 'class' => 'product'
             ],
+            'Preguntas' => [
+                'route' => 'reports',
+                'roles' => [1, 3, 4],
+                'class' => 'report'
+            ],
             'Clientes' => [
                 'route' => 'clients',
                 'roles' => [1, 2, 3],
