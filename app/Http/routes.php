@@ -1,4 +1,8 @@
 <?php
+
+use Jenssegers\Date\Date;
+
+Date::setLocale('nl');
 Route::group(['middleware' => ['web']], function () {
     require __DIR__ . '/Routes/auth.php';
 });
@@ -12,6 +16,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
     });
 });
 Route::get('test/{category}',function(\Agrosellers\Entities\Category $category = null){
+    dd( Date::now()->subDays(5)->diffForHumans() );
     return 'La Categoria es '. $category->name;
 });
 
