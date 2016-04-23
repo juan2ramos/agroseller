@@ -1,36 +1,4 @@
-var markers = [];
-var map;
-function initMap() {
 
-    var myLatlng = new google.maps.LatLng(4.716397271832087, -74.13149477499996);
-    var mapOptions = {
-        zoom: 4,
-        center: myLatlng,
-        scrollwheel: false,
-    }
-    var idMap = document.getElementById("map");
-    map = new google.maps.Map(idMap, mapOptions);
-
-    var locations =$('#map').data('location').split(";");
-    var length = locations.length - 1;
-    for(var i = 0; i < length; i++){
-        var location = locations[i].split('&');
-
-        var myLatLng = {lat: Number(location[0]), lng: Number(location[1])};
-        var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            title: 'Hello World!'
-        });
-
-    }
-
-
-    /*google.maps.event.addListener(map, 'dragend', function () {
-     alert(map.getCenter());
-     });*/
-
-}
 
 $('.Shopping').on('click',function(){
     $('.YouCart').addClass('show');

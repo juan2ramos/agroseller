@@ -165,7 +165,7 @@
     </article>
     <article class="end importOffer">
         <label for="important_offer" class=" offset-9 col-3">
-            <input type="checkbox" name="important_offer" id="important_offer">
+            <input type="checkbox" name="important_offer" id="important_offer" value="1">
             <sub></sub>
            Oferta destacada
         </label>

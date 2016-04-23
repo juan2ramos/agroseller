@@ -50,7 +50,7 @@ function uploadImage(file) {
 
 
         $output.append(figure);
-        console.log($output);
+
     });
     reader.readAsDataURL(file);
 

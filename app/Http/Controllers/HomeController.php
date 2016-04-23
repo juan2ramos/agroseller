@@ -12,7 +12,7 @@ use Agrosellers\Entities\Product;
 
 class HomeController extends Controller
 {
-    function index(CategoryController $categoryController){
+    function index(admin\CategoryController $categoryController){
 
         $categories = $categoryController->categoriesSubcategories();
         $products = Product::all();

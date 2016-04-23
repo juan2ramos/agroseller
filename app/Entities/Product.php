@@ -11,7 +11,7 @@ class Product extends Model
         [
             'location','presentation','size','weight','measure','material','description','user_id','subcategory_id',
             'forms_employment', 'price','taxes','available_quantity','image_scale','offer_price','offer_on','offer',
-            'offer_off','image_scale','name','slug','composition'];
+            'offer_off','image_scale','name','slug','composition','important_offer'];
 
     public function subcategory()
     {

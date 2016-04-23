@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Agrosellers\User;
 use Agrosellers\Entities\Provider;
+use Agrosellers\Entities\Agent;
 
 
 class UserTableSeeder extends Seeder
@@ -146,7 +147,7 @@ class UserTableSeeder extends Seeder
 
         /******************** Agents *************************/
 
-        factory(User::class)->create([
+        $user1 = factory(User::class)->create([
             'name' => 'Agent1',
             'email' => 'agent1@agrosellers.com',
             'username' => 'Agent One',
@@ -158,7 +159,11 @@ class UserTableSeeder extends Seeder
             'password' => bcrypt('12345'),
         ]);
 
-        factory(User::class)->create([
+        Agent::create([
+            'user_id' => $user1->id
+        ]);
+
+        $user2 = factory(User::class)->create([
             'name' => 'Agent2',
             'email' => 'agent2@agrosellers.com',
             'username' => 'Agent Two',
@@ -169,8 +174,10 @@ class UserTableSeeder extends Seeder
             'role_id' => '5',
             'password' => bcrypt('12345'),
         ]);
-
-        factory(User::class)->create([
+        Agent::create([
+            'user_id' => $user2->id
+        ]);
+        $user3 = factory(User::class)->create([
             'name' => 'Agent3',
             'email' => 'agent3@agrosellers.com',
             'username' => 'Agent Three',
@@ -181,8 +188,10 @@ class UserTableSeeder extends Seeder
             'role_id' => '5',
             'password' => bcrypt('12345'),
         ]);
-
-        factory(User::class)->create([
+        Agent::create([
+            'user_id' => $user3->id
+        ]);
+        $user4 = factory(User::class)->create([
             'name' => 'Agent4',
             'email' => 'agent4@agrosellers.com',
             'username' => 'Agent Four',
@@ -194,7 +203,10 @@ class UserTableSeeder extends Seeder
             'password' => bcrypt('12345'),
         ]);
 
-        factory(User::class)->create([
+        Agent::create([
+            'user_id' => $user4->id
+        ]);
+        $user5 = factory(User::class)->create([
             'name' => 'Agent5',
             'email' => 'agent5@agrosellers.com',
             'username' => 'Agent Five',
@@ -205,6 +217,9 @@ class UserTableSeeder extends Seeder
             'role_id' => '5',
             'password' => bcrypt('12345'),
 
+        ]);
+        Agent::create([
+            'user_id' => $user5->id
         ]);
     }
 }

@@ -159,7 +159,7 @@
         <span>Tamaño del producto</span>
         <em>Kg</em>
     </label>
-    <label for="weight " class="DataForm weight">
+    <label for="weight" class="DataForm weight">
         <input type="number" id="weight" name="weight" value="{{ old('weight') }}">
         <span>Peso del producto</span>
         <em>Mt</em>
@@ -183,17 +183,17 @@
 
     <div class="row middle">
         <label for="iva" class="col-6">
-            <input type="checkbox" name="taxes[]" id="iva">
+            <input type="checkbox" name="taxes[]" value="iva" id="iva">
             <sub></sub>
             Iva 16%
         </label>
         <label for="rete" class="col-6">
-            <input type="checkbox" name="taxes[]" id="rete">
+            <input type="checkbox" name="taxes[]" value="retefuente" id="rete">
             <sub></sub>
             Retefuente 2.5%
         </label>
     </div>
-    <label for="available-quantity">
+    <label for="available_quantity">
         <input type="number" id="available_quantity" name="available_quantity" value="{{ old('available_quantity') }}">
         <span>Cantidad disponible</span>
         <em></em>
