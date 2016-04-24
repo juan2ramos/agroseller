@@ -16,6 +16,7 @@ use Agrosellers\Entities\Analyst;
 use Agrosellers\Entities\Client;
 use Agrosellers\Entities\Provider;
 use Agrosellers\Entities\Question;
+use Agrosellers\Entities\Role;
 
 
 class User extends Model implements AuthenticatableContract,
@@ -67,7 +68,10 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasOne(Provider::class);
     }
-
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
     public function questions(){
         return $this->hasMany(Question::class);
     }

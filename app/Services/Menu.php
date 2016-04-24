@@ -11,9 +11,9 @@ class Menu
 
     function __construct()
     {
-        $this->menuUser();
+        $this->menuUsers();
     }
-    private function menuUser(){
+    private function menuUsers(){
 
         $userRole = Auth::user()->role_id;
         $menuUser = $this->menuConfig();
@@ -31,9 +31,9 @@ class Menu
     }
     private function menuConfig(){
         return [
-            'Home' => [
+            'Dashboard' => [
                 'route' => 'admin',
-                'roles' => [1, 2, 3, 4, 5],
+                'roles' => [1, 2, 3, 4, 5, 6],
                 'class' => 'home'
             ],
             'Usuarios' => [
@@ -46,7 +46,6 @@ class Menu
                 'roles' => [1, 2, 5],
                 'class' => 'provider'
             ],
-
             'Categorias' => [
                 'route' => 'category',
                 'roles' => [1, 2],
@@ -65,31 +64,26 @@ class Menu
             'Preguntas' => [
                 'route' => 'questions',
                 'roles' => [1, 3, 4],
-                'class' => 'report'
+                'class' => 'question'
             ],
-            'Clientes' => [
+            'Productores' => [
                 'route' => 'clients',
-                'roles' => [1, 2, 3],
+                'roles' => [1, 2, 5],
                 'class' => 'client'
             ],
-            'Ofertas' => [
-                'route' => 'offers',
-                'roles' => [1, 2, 3],
-                'class' => 'offer'
-            ],
-            'Facturas' => [
+            'Presupuestos' => [
                 'route' => 'bills',
-                'roles' => [1, 2, 3, 4],
-                'class' => 'bill'
+                'roles' => [1, 2, 4],
+                'class' => 'budgets'
             ],
-            'Pedidos' => [
+            'Ordenes' => [
                 'route' => 'orders',
-                'roles' => [1, 2, 3, 4],
+                'roles' => [1, 2, 3, 4, 5],
                 'class' => 'order'
             ],
             'Reportes' => [
                 'route' => 'reports',
-                'roles' => [1, 2, 5],
+                'roles' => [1,  6],
                 'class' => 'report'
             ],
         ];
