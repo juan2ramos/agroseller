@@ -135,6 +135,7 @@
 @section('scripts')
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap"
             async defer></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>
     <script src="{{asset('js/maps.js')}}"></script>
     <script src="{{asset('js/jquery.datetimepicker.full.min.js')}}"></script>
     <script src="{{asset('js/products.js')}}"></script>
