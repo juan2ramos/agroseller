@@ -38,9 +38,9 @@
                         @endforeach
                         <?php $hasOffer = $product->offer_on && strtotime($product->offer_on) - strtotime('now') > 0 ?>
                         @if($hasOffer)
-                            <p>${{$product->offer_price}} <span>${{$product->price}}</span></p>
+                            <p>${{number_format($product->offer_price, 0, " ", ".")}} <span>${{number_format($product->price, 0, " ", ".")}}</span></p>
                         @else
-                            <p>{{$money_format('%i', $product->price)}};</p>
+                            <p>${{number_format($product->price, 0, " ", ".")}}</p>
                         @endif
                         <a href="" class="Button">COMPRAR</a>
                     </div>
