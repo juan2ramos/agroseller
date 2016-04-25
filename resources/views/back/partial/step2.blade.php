@@ -175,8 +175,8 @@
         <em>PDF</em>
     </label>
 
-    <label for="price" >
-        <input type="number" id="price" name="price" value="{{ old('price') }}">
+    <label for="priceCurrent" >
+        <input type="number" id="priceCurrent" name="price" value="{{ old('price') }}">
         <span>Precio</span>
         <em>$</em>
     </label>

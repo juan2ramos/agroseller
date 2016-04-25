@@ -128,6 +128,11 @@ function steps(from, to) {
             map.setZoom(4);
         });
     }
+    if (to == 3) {
+        var stringPrice = numeral($('#priceCurrent').val()).format('0,0');
+        $('#priceForOffer').text(stringPrice)
+
+    }
     if (to == 4) {
         DetailsProduct();
     }

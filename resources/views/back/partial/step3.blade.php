@@ -3,7 +3,7 @@
     <div class="Button" id="omitir">OMITIR</div>
 
     <article>
-        <p>1. Valor de la oferta - valor actual $200.000</p>
+        <p>1. Valor de la oferta - valor actual es de $<span id="priceForOffer"></span></p>
         <label for="offer-price">
             <input type="number" name="offer_price" id="offer-price" value="{{ old('offer-price') }}">
             <span>Valor oferta</span>
