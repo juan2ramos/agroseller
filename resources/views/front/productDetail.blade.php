@@ -8,7 +8,7 @@
     <meta property="og:image"         content="{{url('uploads/products/' . $images->first()->name)}}" />
 @endsection
 
-<?php $hasOffer = $product->offer_on && strtotime($product->offer_on) - strtotime('now') > 0 ?>
+<?php $hasOffer = $product->offer_on && strtotime($product->offer_on) < strtotime('now') && strtotime($product->offer_off) - strtotime($product->offer_on) > 0 ?>
 @section('content')
     <svg style="display: none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs></defs>
@@ -282,7 +282,7 @@
     <script src="{{asset('js/front/product.js')}}"></script>
     @if($hasOffer)
         <?php
-            $fecha = explode('-', $product->offer_on);
+            $fecha = explode('-', $product->offer_off);
             $day = explode(' ', $fecha[2]);
             $time = explode(':', $day[1]);
 
@@ -303,6 +303,7 @@
                 </script>
             ";
             echo $html;
+            echo $hour . " " . $minute;
         ?>
     @endif
 @endsection

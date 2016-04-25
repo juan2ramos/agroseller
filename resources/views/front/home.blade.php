@@ -36,7 +36,7 @@
                                 <h5>{{$subcategory->name}}</h5>
                             @endif
                         @endforeach
-                        <?php $hasOffer = $product->offer_on && strtotime($product->offer_on) - strtotime('now') > 0 ?>
+                        <?php $hasOffer = $product->offer_on && strtotime($product->offer_on) < strtotime('now') && strtotime($product->offer_off) - strtotime($product->offer_on) > 0 ?>
                         @if($hasOffer)
                             <p>${{number_format($product->offer_price, 0, " ", ".")}} <span>${{number_format($product->price, 0, " ", ".")}}</span></p>
                         @else

@@ -3,6 +3,7 @@
 namespace Agrosellers\Http\Controllers\Auth;
 
 use Agrosellers\User;
+use Agrosellers\Entities\Agent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Validator;
@@ -109,12 +110,16 @@ class AuthController extends Controller
         }
 
         $user = $this->create($request->all());
+        if($user->role_id == 3){
+            $agents = count(Agent::all());
+        }
 
-
+/*
         Mail::send('emails.welcome', ['user' => $user], function ($m) use ($user) {
             $m->to($user->email, $user->name)->subject('Bienvenido!');
         });
 
         return redirect($this->redirectPath());
+*/
     }
 }
