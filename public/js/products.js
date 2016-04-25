@@ -121,8 +121,11 @@ $(document).ready(function () {
 function steps(from, to) {
     currentStep = to;
     if (to == 2) {
-        $("#map").animate({"height": "400px"}, 500, function () {
-            initMap();
+        $("#Map").animate({"height": "400px"}, 500, function () {
+            google.maps.event.trigger(map, 'resize');
+            var myLatlngCenter = new google.maps.LatLng(4.716397271832087, -74.13149477499996);
+            map.setCenter(myLatlngCenter);
+            map.setZoom(4);
         });
     }
     if (to == 4) {

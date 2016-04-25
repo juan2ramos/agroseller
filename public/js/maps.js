@@ -17,6 +17,7 @@ styleMap = [{
     "elementType": "labels.text.fill",
     "stylers": [{"visibility": "on"}, {"lightness": 24}]
 }, {"featureType": "road", "elementType": "geometry", "stylers": [{"lightness": 57}]}]
+
 function initMap() {
     var myLatlng = new google.maps.LatLng(4.716397271832087, -74.13149477499996);
 
@@ -27,7 +28,6 @@ function initMap() {
         scrollwheel: false,
         styles: styleMap
     };
-
 
     map = new google.maps.Map(document.getElementById("Map"), mapOptions);
 }
@@ -60,16 +60,15 @@ $('#addMaker').on('click', function () {
 
 
 function setMapOnAll(map) {
-    console.log(arrayMarkers.length)
+
     for (var i = 0; i < arrayMarkers.length; i++) {
-        console.log('f');
         arrayMarkers[i].setMap(map);
     }
 }
 
 $('#removeMaker').on('click', function () {
     setMapOnAll(null);
-    arrayMarkers = [];
+    arrayMarkers = [];;
 });
 
 
