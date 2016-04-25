@@ -61,11 +61,11 @@
                         </g>
                     </svg>
                     @if($hasOffer)
-                    <b>${{$product->offer_price}}
-                        <del>{{$product->price}}</del>
+                    <b>${{number_format($product->offer_price, 0, " ", ".")}}
+                        <del>${{number_format($product->price, 0, " ", ".")}}</del>
                     </b>
                     @else
-                        <b>${{$product->price}}</b>
+                        <b>${{number_format($product->price, 0, " ", ".")}}</b>
                     @endif
                 </div>
                 <div class="col-6 AlignRight">
@@ -280,21 +280,29 @@
     <script src="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.js"></script>
     <script src="{{asset('js/comments.js')}}"></script>
     <script src="{{asset('js/front/product.js')}}"></script>
-    @if(!$hasOffer)
+    @if($hasOffer)
         <?php
             $fecha = explode('-', $product->offer_on);
+            $day = explode(' ', $fecha[2]);
+            $time = explode(':', $day[1]);
+
             $year = $fecha[0];
             $month = $fecha[1];
-            $day = explode(' ', $fecha[2]);
             $day = $day[0];
+            $hour = $time[0];
+            $minute = $time[1];
             $html = "
                 <script>
                     countDown({
                         'year' : {$year},
                         'month' : {$month},
-                        'day' : {$day}
+                        'day' : {$day},
+                        'hour' : {$hour},
+                        'second' : {$minute}
                     });
-                </script>";
+                </script>
+            ";
+            echo $html;
         ?>
     @endif
 @endsection
