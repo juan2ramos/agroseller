@@ -29,7 +29,7 @@ function initMap() {
     };
 
 
-    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    map = new google.maps.Map(document.getElementById("Map"), mapOptions);
 }
 
 function addMarker(n) {

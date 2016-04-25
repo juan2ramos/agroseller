@@ -8,8 +8,8 @@
     <title>Agroseller</title>
     <link rel="stylesheet" href="{{ asset('css/normalize.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/front/style.css') }}">
-    <link href="{{ asset('css/owl.carousel.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/owl.transitions.css') }}" rel="stylesheet">
+    <link href="{{asset('css/owl.carousel.css')}}" rel="stylesheet">
+    <link href="{{asset('css/owl.transitions.css')}}" rel="stylesheet">
     @yield('styles')
             <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>

@@ -164,7 +164,8 @@
         });
     </script>
 @endsection
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('css/jquery.datetimepicker.css') }}">
-    <link rel="stylesheet" href="//cdn.quilljs.com/0.20.1/quill.snow.css"/>
+@section('scripts')
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap"
+            async defer></script>
+    <script src="{{asset('js/maps.js')}}"></script>
 @endsection

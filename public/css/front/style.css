@@ -1861,3 +1861,7 @@ body {
   top: 0;
   left: 0;
 }
+
+.ProductDetail-network {
+  width: 17.75rem;
+}
