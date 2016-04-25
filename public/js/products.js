@@ -1,8 +1,8 @@
 var currentStep = 1,
     arrayInput = {
-        'description' : 'Descripción',
-        'location' : 'Locación',
-        'DescriptionOffer' : 'Descripción oferta'
+        'description': 'Descripción',
+        'location': 'Locación',
+        'DescriptionOffer': 'Descripción oferta'
     };
 $(document).ready(function () {
     jQuery.datetimepicker.setLocale('es');
@@ -48,6 +48,7 @@ $(document).ready(function () {
 
         $('#stepOneButton').addClass('invalid')
         $('#categoriesList li').removeClass('selected');
+        $('.Wizard li:gt(0)').removeClass('current');
         $(this).addClass('selected');
 
         $('.DataForm').css('display', 'none');
@@ -109,7 +110,7 @@ $(document).ready(function () {
         steps(3, 4)
     });
     $('.Wizard li').on('click', function () {
-        var index = $( this ).data('id');
+        var index = $(this).data('id');
         if ($(this).hasClass('current')) {
             steps(currentStep, index)
         }
@@ -117,68 +118,99 @@ $(document).ready(function () {
 
 
 });
-function steps(from, to){
+function steps(from, to) {
     currentStep = to;
-    if(to == 2){
-        $("#map").animate({"height" : "400px"}, 500,function(){
+    if (to == 2) {
+        $("#map").animate({"height": "400px"}, 500, function () {
             initMap();
         });
     }
-    if(to == 4){
+    if (to == 4) {
         DetailsProduct();
     }
     widthLine = 25 * to;
-    $('.Wizard li:nth-child('+ to +')').addClass('current');
+    $('.Wizard li:nth-child(' + to + ')').addClass('current');
     $('.Wizard-line').css('width', widthLine + '%');
     $('.Step-' + from).hide('slow');
     $('.Step-' + to).show('slow');
 
 }
-function DetailsProduct(){
+function DetailsProduct() {
     var $DetailsProduct = $("#detailsProduct");
-    $DetailsProduct.html('') ;
+    $DetailsProduct.html('');
     var pos = '';
     for (var i = 0; i < arrayMarkers.length; i++) {
         pos += arrayMarkers[i].getPosition().lat() + '&' + arrayMarkers[i].getPosition().lng() + ';';
     }
     $('#Location').val(pos);
 
-    $("#Product-form input").each(function( i ) {
+    $("#Product-form input").each(function (i) {
 
-        var nameProduct;
-        nameProduct = $(this).siblings('span').text();
-        ValueProduct = $(this).val();
-
+        var nameProduct = $(this).siblings('span').text(),
+            ValueProduct = String($(this).val());
+            html = "";
 
         if (nameProduct == "") {
-            if(nameProduct == "location"){
-                coordinates = ValueProduct.split(";");
-                for( j; j < coordinates.length ; j++){
-                    coord = coordinates[i].split("&");
-                    $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + coord[0] + ',' + coord[1], function(data) {
-                        var address = data.results[0].formatted_address;
-                        info.innerHTML = address;
-                    });
-                }
-                ValueProduct = ValueProduct
-            }
+
             nameProduct = $(this).attr("name");
-            if (nameProduct == "_token" || nameProduct == "taxes[]") {
+            if (nameProduct == "_token") {
                 return;
             }
+
+            if (nameProduct == "location") {
+
+                var coordinates = ValueProduct.split(";");
+                nameProduct = arrayInput[nameProduct];
+                html = ""
+                for (var j = 0; j < coordinates.length - 1; j++) {
+
+                    coord = String(coordinates[j]).split("&");
+                    $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + coord[0] + ',' + coord[1], function (data) {
+
+                        html = '<p>' + '<span>' + nameProduct + ': </span></p> <div class="ItemProduct">' + data.results[0].formatted_address + '<br>' + '</div>'
+                        $DetailsProduct.append(html);
+
+                    });
+                }
+                return;
+            }
+
             if (arrayInput[nameProduct] != undefined) {
                 nameProduct = arrayInput[nameProduct];
-                console.log(arrayInput[nameProduct])
             }
 
-            console.log(nameProduct)
+
         }
-        if(ValueProduct != "" ){
-            if(ValueProduct != "" ){
 
-                html = '<p>' + '<span>' + nameProduct + ': </span></p><div class="ItemProduct">' + ValueProduct + '</div>'
-                $DetailsProduct.append(html) ;
+        if (ValueProduct != "") {
+
+
+            if (nameProduct == "taxes[]") {
+                if ($(this).is(':checked')) {
+                    nameProduct = "Impuesto"
+                } else {
+                    return;
+                }
             }
+            if (nameProduct == "important_offer") {
+                if ($(this).is(':checked')) {
+                    ValueProduct = 'si';
+                    nameProduct = "Producto Destacado"
+                } else {
+                    return;
+                }
+            }
+            if ($(this).hasClass('StepImages')) {
+                nameProduct = "Imagen "
+                ValueProduct = $(this).val().replace(/C:\\fakepath\\/i, '');
+
+            }
+
+            if (ValueProduct != "") {
+                html = '<p>' + '<span>' + nameProduct + ': </span></p><div class="ItemProduct">' + ValueProduct + '</div>'
+                $DetailsProduct.append(html);
+            }
+
 
         }
 

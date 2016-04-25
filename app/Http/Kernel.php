@@ -13,8 +13,6 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
-        // Start session for all pages
-        \Illuminate\Session\Middleware\StartSession::class
     ];
     /**
      * The application's route middleware groups.

@@ -5,64 +5,15 @@ namespace Agrosellers\Http\Controllers;
 use Agrosellers\Entities\Subcategory;
 use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
-use Agrosellers\Entities\Category;
-use Illuminate\Support\Facades\Auth;
 use Agrosellers\Entities\Product;
 use Agrosellers\Entities\Question;
-use Agrosellers\Entities\ProductFile;
 use Agrosellers\Entities\Feature;
 use Agrosellers\Entities\Text;
 use Agrosellers\User;
-
+use Agrosellers\Entities\ProductFile;
 
 class ProductController extends Controller
 {
-    function indexBack()
-    {
-        $categories = Category::all();
-        return view('back.product', compact('categories'));
-    }
-
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    function newProduct(Request $request)
-    {
-        $inputs = $request->all();
-        $files = $request->file();
-        if ($request->has('taxes'))
-            $inputs['taxes'] = implode(';', $inputs['taxes']);
-        $inputs['user_id'] = Auth::user()->id;
-        $inputs['slug'] = $this->removeAccents($inputs['name']);
-        $product = Product::create($inputs);
-
-        foreach ($files as $key => $file) {
-
-            $fileName = str_random(40) . '**' . $request->file($key)->getClientOriginalName();
-            $Extension = $request->file($key)->getClientOriginalExtension();
-            $request->file($key)->move(base_path() . '/public/uploads/products/', $fileName);
-            ProductFile::create(
-                [
-                    'product_id' => $product->id,
-                    'name' => $fileName,
-                    'extension' => $Extension
-                ]);
-        }
-
-        return redirect()->back()->with('messageSuccess', 1);
-    }
-
-    private function removeAccents($string)
-    {
-        $notAllowed = array("á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú", "ñ", "À", "Ã", "Ì", "Ò", "Ù", "Ã™", "Ã ", "Ã¨", "Ã¬", "Ã²", "Ã¹", "ç", "Ç", "Ã¢", "ê", "Ã®", "Ã´", "Ã»", "Ã‚", "ÃŠ", "ÃŽ", "Ã”", "Ã›", "ü", "Ã¶", "Ã–", "Ã¯", "Ã¤", "«", "Ò", "Ã", "Ã„", "Ã‹");
-        $allowed = array("a", "e", "i", "o", "u", "A", "E", "I", "O", "U", "n", "N", "A", "E", "I", "O", "U", "a", "e", "i", "o", "u", "c", "C", "a", "e", "i", "o", "u", "A", "E", "I", "O", "U", "u", "o", "O", "i", "a", "e", "U", "I", "A", "E");
-
-        $string = preg_replace('/[^A-Za-z0-9-]+/', '-', $string);
-        $string = strtolower(str_replace($notAllowed, $allowed, $string));
-
-        return (strrpos($string, "-") == strlen($string) - 1) ? substr($string, 0, -1) : $string;
-    }
 
     function productFront(Request $request)
     {

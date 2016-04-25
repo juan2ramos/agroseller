@@ -1,5 +1,4 @@
-<?php $role = [1 => 'Super Administrador', 2 => 'Administrador', 3 => 'Proveedor', 4 => 'Cliente', 5 => 'Agente'] ?>
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8">
@@ -14,10 +13,13 @@
 
 </head>
 <body>
-<svg  viewBox="0 0 7 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none" >
-    <g id="arrow"  transform="translate(-239.000000, -220.000000)" fill="#818181">
+<svg viewBox="0 0 7 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     style="display:none">
+    <g id="arrow" transform="translate(-239.000000, -220.000000)" fill="#818181">
         <g id="arows" transform="translate(239.000000, 220.000000)">
-            <path d="M2.85584492,9.15023539 L-2.44023535,3.8522724 C-2.71605326,3.57668984 -2.71605326,3.12978011 -2.44023535,2.85396221 C-2.16441745,2.5781443 -1.71774307,2.5781443 -1.44192516,2.85396221 L3.35500002,7.65277011 L8.1519252,2.85396221 C8.4277431,2.5781443 8.87441749,2.5781443 9.15023539,2.85396221 C9.42605329,3.12978011 9.42605329,3.57668984 9.15023539,3.8522724 L3.85415511,9.15023539 C3.72189431,9.28273153 3.54256561,9.35709882 3.35500002,9.35709882 C3.16743443,9.35709882 2.98810573,9.28273153 2.85584492,9.15023539 Z" id="Page-1-Copy-7" transform="translate(3.355000, 6.002099) rotate(-90.000000) translate(-3.355000, -6.002099) "></path>
+            <path d="M2.85584492,9.15023539 L-2.44023535,3.8522724 C-2.71605326,3.57668984 -2.71605326,3.12978011 -2.44023535,2.85396221 C-2.16441745,2.5781443 -1.71774307,2.5781443 -1.44192516,2.85396221 L3.35500002,7.65277011 L8.1519252,2.85396221 C8.4277431,2.5781443 8.87441749,2.5781443 9.15023539,2.85396221 C9.42605329,3.12978011 9.42605329,3.57668984 9.15023539,3.8522724 L3.85415511,9.15023539 C3.72189431,9.28273153 3.54256561,9.35709882 3.35500002,9.35709882 C3.16743443,9.35709882 2.98810573,9.28273153 2.85584492,9.15023539 Z"
+                  id="Page-1-Copy-7"
+                  transform="translate(3.355000, 6.002099) rotate(-90.000000) translate(-3.355000, -6.002099) "></path>
         </g>
     </g>
 </svg>
@@ -44,7 +46,7 @@
         <div class="col-6 HeaderBack-profile row end middle ">
             <figure><img src="{{url('images/user.png')}}" alt=""><span>2</span></figure>
             <h3>{{ auth()->user()->name }} {{ auth()->user()->last_name }}
-                <span>{{ $role[auth()->user()->role_id] }}</span></h3>
+                <span>{{ auth()->user()->role()->first()->name}}</span></h3>
             <svg id="Profile-arrow" width="13px" height="8px" viewBox="0 0 13 8" version="1.1"
                  xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink">

@@ -1,14 +1,27 @@
 <?php
 
+Route::group(['namespace' => 'admin'], function () {
+    Route::get('productos', [
+        'uses' => 'ProductController@index',
+        'as' => 'products'
+    ]);
+    Route::post('productos', [
+        'uses' => 'ProductController@newProduct',
+        'as' => 'newProduct',
+    ]);
+    Route::post('subcategoriesQuery', [
+        'uses' => 'CategoryController@subcategoriesQuery',
+        'as' => 'subcategoriesQuery',
+    ]);
+    Route::post('featuresQuery', [
+        'uses' => 'CategoryController@featuresQuery',
+        'as' => 'featuresQuery',
+    ]);
+});
+
 Route::get('proveedores', [
     'uses' => 'ProviderController@showProviders',
     'as' => 'providers'
-]);
-
-
-Route::get('productos', [
-    'uses' => 'ProductController@indexBack',
-    'as' => 'products'
 ]);
 
 Route::get('clientes', [
@@ -73,35 +86,20 @@ Route::post('usuarios', [
 Route::post('updateProvider/{id}', [
     'uses' => 'ProviderController@updateProvider',
     'as' => 'updateProvider',
-    'middleware' => 'Roles:1-2'
 ]);
 
 Route::post('categorias', [
     'uses' => 'CategoryController@newSubcategory',
     'as' => 'newSubcategory',
-    'middleware' => 'Roles:1-2'
 ]);
 
-Route::post('productos', [
-    'uses' => 'ProductController@newProduct',
-    'as' => 'newProduct',
-    'middleware' => 'Roles:1-2-3'
-]);
-Route::post('subcategoriesQuery', [
-    'uses' => 'CategoryController@subcategoriesQuery',
-    'as' => 'subcategoriesQuery',
-    'middleware' => 'Roles:1-2-3'
-]);
-Route::post('featuresQuery', [
-    'uses' => 'CategoryController@featuresQuery',
-    'as' => 'featuresQuery',
-    'middleware' => 'Roles:1-2-3'
-]);
+
+
 
 Route::get('cultivos', [
     'uses' => 'FarmController@index',
     'as' => 'farmIndex',
-    'middleware' => 'Roles:1-2'
+
 ]);
 Route::get('/', [
     'uses' => 'HomeAdminController@index',
@@ -110,32 +108,32 @@ Route::get('/', [
 Route::get('proveedor', [
     'uses' => 'HomeAdminController@isValidateProviders',
     'as' => 'isValidateProviders',
-    'middleware' => 'sendHome:validateProvider'
+
 ]);
 
 /* Provider without register in providers table   */
 Route::get('registro-proveedor', [
     'uses' => 'ProviderController@registerProvider',
     'as' => 'registerProvider',
-    'middleware' => 'sendHome:registerProvider'
+
 ]);
 
 Route::post('registro-proveedor', [
     'uses' => 'ProviderController@insertProvider',
     'as' => 'registerProvider',
-    'middleware' => 'sendHome:registerProvider'
+
 ]);
 
 Route::post('data-provider', [
     'uses' => 'ProviderController@insertProvider',
     'as' => 'insertProvider',
-    'middleware' => 'sendHome:registerProvider'
+
 ]);
 
 Route::get('informacion-cliente', [
     'uses' => 'ClientController@index',
     'as' => 'clientInformationIndex',
-    //'middleware' => 'sendHome:registerProvider'//
+
 ]);
 
 Route::post('informacion-cliente', [

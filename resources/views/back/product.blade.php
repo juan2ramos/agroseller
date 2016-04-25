@@ -115,7 +115,7 @@
         <input type="hidden" id="DescriptionOffer" name="DescriptionOffer" value="">
     </form>
 
-    @if(session()->has('messageSuccess'))
+    @if (session('messageSuccess'))
         <div class="MessagePlatform row middle center">
             <div class="MessagePlatform-content">
                 <span class="MessagePlatform-close">X</span>
