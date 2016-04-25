@@ -8,6 +8,7 @@
     <meta property="og:image"         content="{{url('uploads/products/' . $images->first()->name)}}" />
 @endsection
 
+<?php $hasOffer = $product->offer_on && strtotime($product->offer_on) - strtotime('now') > 0 ?>
 @section('content')
     <svg style="display: none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs></defs>
@@ -59,9 +60,13 @@
                             </g>
                         </g>
                     </svg>
+                    @if($hasOffer)
                     <b>${{$product->offer_price}}
                         <del>{{$product->price}}</del>
                     </b>
+                    @else
+                        <b>${{$product->price}}</b>
+                    @endif
                 </div>
                 <div class="col-6 AlignRight">
                     @for($i = 0; $i < 5; $i++)
@@ -72,6 +77,7 @@
                 </div>
             </div>
 
+            @if($hasOffer)
             <time class="ProductDetail-offer">
                 <h3>¡ Oferta por tiempo limitado !</h3>
                 <svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -90,6 +96,8 @@
                     <span id="minNumber"> </span>
                     <span id="secNumber"></span>
                 </span>
+            </time>
+            @endif
 
             <div class="ProductDetail-quantity">
                 <h4>Cantidad</h4>
@@ -262,6 +270,7 @@
             @endforeach
         </ul>
     </aside>
+
 @endsection
 @section('scripts')
     <script src="{{asset('js/maps.js')}}"></script>
@@ -271,15 +280,23 @@
     <script src="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.js"></script>
     <script src="{{asset('js/comments.js')}}"></script>
     <script src="{{asset('js/front/product.js')}}"></script>
-    <script>
-        countDown({
-            "year" : 2016,
-            "month" : 7,
-            "day" : 14,
-            "hour" : 15,
-            "minute" : 4
-        });
-    </script>
+    @if(!$hasOffer)
+        <?php
+            $fecha = explode('-', $product->offer_on);
+            $year = $fecha[0];
+            $month = $fecha[1];
+            $day = explode(' ', $fecha[2]);
+            $day = $day[0];
+            $html = "
+                <script>
+                    countDown({
+                        'year' : {$year},
+                        'month' : {$month},
+                        'day' : {$day}
+                    });
+                </script>";
+        ?>
+    @endif
 @endsection
 
 @section('styles')

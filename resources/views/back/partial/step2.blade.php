@@ -22,7 +22,7 @@
         </p>
         <span class="Marker Button" id="addMaker">AÑADE UNA UBICACIÓN</span>
         <span class="Marker Button" id="removeMaker">ELIMINAR TODAS LAS UBICACIONES</span>
-        <div id="map" class="Map"></div>
+        <div id="Map" class="Map"></div>
     </article>
     <article>
         <p>2. Ingresa el nombre de tu producto

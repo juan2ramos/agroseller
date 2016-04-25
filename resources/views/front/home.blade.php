@@ -36,7 +36,12 @@
                                 <h5>{{$subcategory->name}}</h5>
                             @endif
                         @endforeach
-                        <p>${{$product->offer_price}} <span>${{$product->price}}</span></p>
+                        <?php $hasOffer = $product->offer_on && strtotime($product->offer_on) - strtotime('now') > 0 ?>
+                        @if($hasOffer)
+                            <p>${{$product->offer_price}} <span>${{$product->price}}</span></p>
+                        @else
+                            <p>{{$money_format('%i', $product->price)}};</p>
+                        @endif
                         <a href="" class="Button">COMPRAR</a>
                     </div>
                 </article>
