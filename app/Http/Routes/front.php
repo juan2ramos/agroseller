@@ -45,4 +45,3 @@ Route::post('questions/new', [
     'uses' => 'ProductController@addQuestion',
     'as' => 'addQuestion'
 ]);
-

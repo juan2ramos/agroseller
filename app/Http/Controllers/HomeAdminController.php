@@ -24,7 +24,7 @@ class HomeAdminController extends Controller
         }
         else if($user->role_id == 3){
             $provider = Provider::where('user_id', '=', $user->id);
-            
+
             if(!$provider->first()->NIT){
                 return redirect()->route('registerProvider');
             }

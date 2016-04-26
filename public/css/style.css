@@ -952,6 +952,66 @@ tr.SubTable .iconPlus {
   order: 1;
 }
 
+label.file {
+  position: relative;
+  background: white;
+  height: 2.5rem;
+  border: 1px solid #C5C5C5;
+  overflow: hidden;
+}
+
+label.file span {
+  display: block;
+  margin-left: 50%;
+  position: absolute;
+  top: 32% !important;
+  height: 1.25rem;
+  overflow: hidden;
+}
+
+label.file:before {
+  transition: all .5s ease;
+  color: #253A1B;
+  font-size: .75rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  position: absolute;
+  z-index: 2;
+  content: attr(textFile);
+  width: 100%;
+  height: 100%;
+  background: #C5D257;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+label.file:hover:before {
+  box-shadow: inset 0 -.375rem 0 #B1BD4E;
+  width: 50%;
+}
+
+label.file [type="file"] {
+  opacity: 0;
+  cursor: pointer;
+}
+
+label.file.withFiles:before {
+  width: 50%;
+}
+
+.Forms .title span {
+  font-weight: 200;
+  font-size: .8rem;
+}
+
 .Forms input,
 .Forms textarea,
 .Forms select {
@@ -1099,7 +1159,7 @@ tr.SubTable .iconPlus {
   font-size: 0.875rem;
   font-weight: 100;
   line-height: 1.5;
-  min-height: 200px !important;
+  min-height: 12.5rem !important;
   border: 1px solid #C5C5C5;
   padding: 0.75rem 0.9375rem;
 }
@@ -1114,6 +1174,59 @@ tr.SubTable .iconPlus {
 
 .ql-snow.ql-toolbar {
   border: 1px solid #C5C5C5;
+}
+
+.ProviderForm .Logo {
+  width: 11.875rem !important;
+  margin: 1.25rem 0 0 0 !important;
+}
+
+.ProviderForm .Logo label {
+  padding: 0;
+}
+
+.Forms.form-little .Button {
+  margin-top: 1.25rem;
+}
+
+.Forms.form-little input,
+.Forms.form-little textarea {
+  height: 3rem;
+  margin: 1.25rem 0 0 0;
+}
+
+.Forms.form-little input {
+  padding-top: 0;
+}
+
+.Forms.form-little textarea {
+  padding-top: 1rem;
+}
+
+.Forms.form-little #Map {
+  margin-bottom: 1.875rem;
+}
+
+.Forms.form-little .FormGroup {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.Forms.form-little .FormGroup label {
+  width: 50%;
+  margin-top: 1.25rem;
+  padding: 0;
+}
+
+.Forms.form-little .FormGroup label input {
+  margin-top: 0;
+}
+
+.Forms.form-little .FormGroup label:nth-child(odd),
+.Forms.form-little .FormGroup input:nth-child(odd) {
+  margin-right: 0.625rem;
 }
 
 body {
@@ -1482,39 +1595,6 @@ body {
 
 .importOffer sub {
   left: 3rem;
-}
-
-.Message {
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
-  position: fixed;
-  z-index: 500;
-  top: 0;
-  left: 0;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.Message_Popup {
-  border-right: 1px #C5D257 solid;
-  border-left: 1px #C5D257 solid;
-  width: 30%;
-  min-width: 320px;
-  background: rgba(39, 56, 63, 0.9);
-  border-radius: 10px;
-  padding: 60px;
-}
-
-.Message_Popup h3 {
-  text-align: center;
 }
 
 .button {
