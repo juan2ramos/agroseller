@@ -14,16 +14,9 @@ use Illuminate\Support\Facades\Auth;
 class ProviderController extends Controller
 {
     private $roleName = [1 => 'Super Administrador', 2 => 'Administrador', 3 => 'Proveedor', 4 => 'Cliente', 5 => 'Agente'];
-
-    function registerProvider()
-    {
-        $categories = Category::all();
-
-        if (Provider::find(Auth::user()->id)) {
-            return view('back.registerProvider', compact('categories'));
-        } else {
-            return view('back.specificProviderForm');
-        }
+    
+    function registerProvider(){
+        return view('back.specificProviderForm');
     }
 
     function showProviders()
@@ -53,40 +46,7 @@ class ProviderController extends Controller
         return view('back.users', compact('users', 'roleName', 'routeSearch', 'search'));
 
     }
-
-    /*
-    function insertProvider(Request $request)
-    {
-        $user = Auth::user();
-        $this->validate(
-            $request,
-            [
-                'location' => 'required',
-                'address' => 'required',
-                'contact' => 'required',
-                'contact-phone' => 'required',
-                'description' => 'required',
-                'NIT' => 'required',
-                'category' => 'required',
-            ],
-            [
-                'location.required' => 'Debe agregar al menos una ubicación',
-                'address.required' => 'La dirección es requerida',
-                'contact.required' => 'El nombre de contacto es requerido',
-                'contact-phone.required' => 'El Teléfono de contacto es requerido',
-                'description.required' => 'La descripción es requerida',
-                'NIT.required' => 'El número del NIT es requerido',
-                'category.required' => 'Debe pertenecer al menos a una categoría',
-            ]
-        );
-
-        $provider = new Provider($request->all());
-        $user->provider()->save($provider);
-        $provider->categories()->attach($request->input('category'));
-        return redirect()->route('admin');
-    }
-    */
-
+    
     function insertProvider(Request $request)
     {
         $user = Auth::user();

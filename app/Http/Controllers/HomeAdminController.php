@@ -3,11 +3,13 @@
 namespace Agrosellers\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Gate;
 use Agrosellers\Http\Requests;
 use Agrosellers\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Agrosellers\Entities\Client;
+use Agrosellers\Entities\Agent;
+use Agrosellers\Entities\Provider;
 
 class HomeAdminController extends Controller
 {
@@ -20,9 +22,15 @@ class HomeAdminController extends Controller
         if($user->role_id == 4 && count($client) == 0) {
             return redirect()->route('clientInformationIndex');
         }
-        else{
-            return view('back.home');
+        else if($user->role_id == 3){
+            $provider = Provider::where('user_id', '=', $user->id);
+            
+            if(!$provider->first()->NIT){
+                return redirect()->route('registerProvider');
+            }
         }
+
+        return view('back.home');
     }
     function isValidateProviders(){
         return view('back.isValidateProviders');
