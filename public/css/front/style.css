@@ -678,6 +678,12 @@ main {
   order: 1;
 }
 
+.self-start {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+}
+
 [class*='-message'] {
   width: 100%;
   opacity: 1;

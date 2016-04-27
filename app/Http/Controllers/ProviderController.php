@@ -49,9 +49,7 @@ class ProviderController extends Controller
     
     function insertProvider(Request $request)
     {
-        $user = Auth::user();
         $this->validate(
-
             $request,
             [
                 'location' => 'required',
@@ -61,10 +59,8 @@ class ProviderController extends Controller
                 'description' => 'required',
                 'NIT' => 'required',
                 'company-name' => 'required',
-                'sales-manager-name' => 'required',
                 'licence' => 'required',
                 'logo' => 'required',
-                'nick-name' => 'required',
                 'taxpayer' => 'required',
             ],
             [
@@ -75,16 +71,24 @@ class ProviderController extends Controller
                 'description.required' => 'La descripción es requerida',
                 'NIT.required' => 'El número del NIT es requerido',
                 'company-name' => 'El nombre de la empresa es requerido',
-                'sales-manager-name' => 'El nombre del director comercial es requerido',
                 'licence' => 'Es necesario que adjunte su licencia de ventas',
                 'logo' => 'Debe adjuntar el logo de la empresa',
-                'nick-name' => 'Ingrese su User ID',
                 'taxpayer' => 'El tipo de contribuyente es requerido',
             ]
         );
 
-        $provider = new Provider($request->all());
-        $user->provider()->save($provider);
+        $user = Auth::user();
+        $provider = Provider::where('user_id', '=', $user->id)->first();
+        $files = $request->file();
+        $provider->update($request->all());
+
+        foreach ($files as $key => $file) {
+            $fileName = str_random(40) . '**' . $request->file($key)->getClientOriginalName();
+            $request->file($key)->move(base_path() . '/public/uploads/providers/', $fileName);
+            $provider[$key] = $fileName;
+        }
+
+        $provider->save();
         return redirect()->route('admin');
     }
 
@@ -92,7 +96,6 @@ class ProviderController extends Controller
     {
 
         $userProvider = User::find($id);
-
         $userProvider->validate = ($userProvider->validate) ? 0 : 1;
         $userProvider->save();
 
