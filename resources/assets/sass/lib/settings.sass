@@ -1,5 +1,8 @@
 $browser-context: 16
 
+@function rem($pixels, $context: $browser-context)
+  @return #{$pixels/$context}rem
+
 @mixin respond-to($breakpoint)
   @if $breakpoint == "small"
     @media (min-width: 36rem)
@@ -11,9 +14,6 @@ $browser-context: 16
   @else if $breakpoint == "large"
     @media (min-width: 65rem)
       @content
-
-@function rem($pixels, $context: $browser-context)
-  @return #{$pixels/$context}rem
 
 @mixin transition($transition...)
   -moz-transition:    $transition

@@ -17,6 +17,7 @@
 
     <section class="Provider">
         <h2>Lista de proveedores</h2>
+        <hr class="Logo-hr">
         <table class="Table BackContainer">
             <thead>
             <tr>

@@ -4,16 +4,16 @@
 
     <div class="ContentInfo">
         <h2>Usuarios</h2>
-
+        <hr>
         <form action="{{ route($routeSearch) }}" method="post" class="Search">
-            <input type="text" name="search"  value="{{{ $search or '' }}}" placeholder="Buscar usuario">
+            <input type="text" name="search"  value="{{ $search or '' }}            " placeholder="Buscar usuario">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <button class="">
-                @include('svg.search')
+
             </button>
 
         </form>
-        <table class="AdminHome-table">
+        <table class="BackContainer Table">
             <thead>
             <tr>
 

@@ -75,4 +75,7 @@ class User extends Model implements AuthenticatableContract,
     public function questions(){
         return $this->hasMany(Question::class);
     }
+    public function fullName(){
+        return $this->name . ' ' . $this->last_name;
+    }
 }

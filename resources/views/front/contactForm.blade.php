@@ -90,7 +90,6 @@
                 </div>
             </article>
         </section>
-
         <section class="col-8 Contact_form">
             <h1>Contáctanos</h1>
             <form action="{{route('contactForm')}}" class="Form-Control" method="POST">

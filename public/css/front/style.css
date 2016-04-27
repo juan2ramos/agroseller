@@ -1650,6 +1650,22 @@ body {
   fill: #C1C1C1;
 }
 
+.UserFront {
+  color: white;
+}
+
+.UserFront p {
+  margin: 0;
+}
+
+.UserFront a {
+  color: #C5D257;
+}
+
+.UserFront a:hover {
+  text-decoration: underline;
+}
+
 .container {
   margin: 5rem 0;
 }
