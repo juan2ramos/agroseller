@@ -86,7 +86,9 @@ class ProductController extends Controller
         $questions = Question::where('product_id' , '=', $id)->orderBy('id','desc')->get();
         $products = Product::all();
         $product = $products->find($id);
+        $subcategory = Subcategory::find($product->subcategory_id);
         $features = Feature::all();
+        
         $users = [];
         $texts = [];
 
@@ -94,8 +96,8 @@ class ProductController extends Controller
             $users[] = User::find($question->user_id);
             $texts[] = Text::where('question_id', '=', $question->id)->first();
         }
+
         $images = ProductFile::whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->get();
-        $subcategories = Subcategory::all();
-        return view('front.productDetail', compact('questions', 'product', 'images', 'users', 'texts'));
+        return view('front.productDetail', compact('questions', 'product', 'subcategory','images', 'users', 'texts', 'features'));
     }
 }

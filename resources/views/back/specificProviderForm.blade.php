@@ -6,7 +6,7 @@
             <?php $errorArray = $errors->getMessages(); print_r($errorArray) ?>
         @endif
 
-        <form class="Forms form-little ProviderForm row" role="form" method="POST" action="{{ route('insertProvider') }}">
+        <form id="Provider-form" class="Forms form-little ProviderForm row" role="form" method="POST" action="{{ route('insertProvider')}}" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="title col-12">
                 <h2>Complete sus datos</h2>
@@ -26,7 +26,7 @@
             </div>
             <div class="col-9">
                 <input type="text" class="form-control" placeholder="Nombre de la empresa" name="company-name" value="{{ old('company-name')}}">
-                <input type="number" class="form-control" placeholder="NIT" name="NIT">
+                <input type="number" class="form-control" placeholder="NIT" name="NIT" value="{{old('NIT')}}">
                 <input type="text" class="form-control" placeholder="Tipo de contribuyente" name="taxpayer" value="{{ old('taxpayer')}}">
             </div>
             <div class="FormGroup">
@@ -35,7 +35,7 @@
             </div>
             <div class="FormGroup">
                 <input type="text" class="form-control" placeholder="Contacto" name="contact" value="{{ old('contact')}}">
-                <input type="number" class="form-control" placeholder="Telefono de contacto" name="contact-phone">
+                <input type="number" class="form-control" placeholder="Telefono de contacto" name="contact-phone" value="{{old('contact-phone')}}">
             </div>
             <div class="FormGroup">
                 <label textFile="Cedula representante legal" for="legal-agent" class="file">
@@ -49,14 +49,13 @@
             </div>
             <textarea class="form-control" placeholder="Descripcion de la empresa" name="description" >{{ old('description')}}</textarea>
             <input type="text" class="form-control" placeholder="Direccion" name="address" value="{{ old('address')}}">
-            <input type="hidden" class="form-control" placeholder="Localizacion" name="location">
 
             <article class="Step-location col-12">
                 <span class="Marker Button" id="addMaker">AÑADE UNA UBICACIÓN</span>
                 <span class="Marker Button" id="removeMaker">ELIMINAR TODAS LAS UBICACIONES</span>
                 <div id="Map" class="Map"></div>
             </article>
-
+            <input type="hidden" id="Location" name="location" value="">
             <div class="title col-12">
                 <h2>Datos bancarios <span>(Opcional)</span></h2>
                 <hr class="Logo-hr">
@@ -65,7 +64,7 @@
             <input type="text" class="form-control" placeholder="Nombre del banco" name="bank-name" value="{{ old('bank-name')}}">
             <div class="FormGroup">
                 <input type="text" class="form-control" placeholder="Pais" name="bank-country" value="{{ old('bank-country')}}">
-                <input type="number" class="form-control" placeholder="Numero de cuenta" name="count-number">
+                <input type="number" class="form-control" placeholder="Numero de cuenta" name="count-number" value="{{ old('count-number')}}">
             </div>
 
             <div class="FormGroup">

@@ -189,20 +189,16 @@
         <h2>Características </h2>
         <article class="row bottom">
             <ul class="col-2">
-                <li>Tamaño: <b>{{$product->size}}</b></li>
-                <li>Peso: <b>{{$product->weight}}</b></li>
-                <li>Medida: <b>{{$product->measure}}</b></li>
-                <li>IVA: <b>16%</b></li>
-                <li>Peso: <b>{{$product->weight}}</b></li>
-                <li>Medida: <b>3mt</b></li>
+                @foreach($features as $feature)
+                    <li>{{$feature->name}}: <b></b></li>
+                @endforeach
             </ul>
-            <ul class="col-2">
-                <li>Tamaño: <b>12mt</b></li>
-                <li>Peso: <b>29.2kg</b></li>
-                <li>Medida: <b>3mt</b></li>
-                <li>IVA: <b>16%</b></li>
-                <li>Peso: <b>29.2kg</b></li>
-                <li>Medida: <b>3mt</b></li>
+            <ul class="col-2 self-start">
+                @foreach($features as $feature)
+                    @if($feature->id % 2 == 0)
+                        <li>{{$feature->name}}: <b></b></li>
+                    @endif
+                @endforeach
             </ul>
             <div class="col-8 AlignRight">
                 Descarga Ficha Técnica

@@ -121,7 +121,6 @@ Route::get('registro-proveedor', [
 Route::post('registro-proveedor', [
     'uses' => 'ProviderController@insertProvider',
     'as' => 'registerProvider',
-
 ]);
 
 Route::post('data-provider', [
