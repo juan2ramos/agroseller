@@ -2,12 +2,14 @@
 
 namespace Agrosellers\Services;
 
-
+use Gate;
 use Illuminate\Support\Facades\Auth;
+use Agrosellers\Entities\Provider;
 
 class Menu
 {
     private $menuUser = [];
+    private $user;
 
     function __construct()
     {
@@ -15,7 +17,9 @@ class Menu
     }
     private function menuUsers(){
 
-        $userRole = Auth::user()->role_id;
+        $user = Auth::user();
+        $this->user = $user;
+        $userRole = $user->role_id;
         $menuUser = $this->menuConfig();
 
         foreach ($menuUser as $key => $menu){
@@ -24,11 +28,14 @@ class Menu
                 unset($menuUser[$key]);
             }
         }
+
         $this->menuUser = $menuUser;
     }
+
     function getMenu(){
         return $this->menuUser;
     }
+    
     private function menuConfig(){
         return [
             'Dashboard' => [

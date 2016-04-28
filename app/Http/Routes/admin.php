@@ -3,7 +3,8 @@
 Route::group(['namespace' => 'admin'], function () {
     Route::get('productos', [
         'uses' => 'ProductController@index',
-        'as' => 'products'
+        'as' => 'products',
+        'middleware' => 'VerifyProvider',
     ]);
     Route::post('productos', [
         'uses' => 'ProductController@newProduct',
@@ -38,7 +39,8 @@ Route::get('facturas', [
 ]);
 Route::get('pedidos', [
     'uses' => 'HomeAdminController@showUser',
-    'as' => 'orders'
+    'as' => 'orders',
+    'middleware' => 'VerifyProvider',
 ]);
 Route::get('reportes', [
     'uses' => 'HomeAdminController@showUser',
@@ -104,7 +106,9 @@ Route::get('cultivos', [
 Route::get('/', [
     'uses' => 'HomeAdminController@index',
     'as' => 'admin',
+    'middleware' => 'VerifyProvider'
 ]);
+
 Route::get('proveedor', [
     'uses' => 'HomeAdminController@isValidateProviders',
     'as' => 'isValidateProviders',
@@ -112,10 +116,10 @@ Route::get('proveedor', [
 ]);
 
 /* Provider without register in providers table   */
+
 Route::get('registro-proveedor', [
     'uses' => 'ProviderController@registerProvider',
     'as' => 'registerProvider',
-
 ]);
 
 Route::post('registro-proveedor', [
@@ -143,5 +147,6 @@ Route::post('informacion-cliente', [
 
 Route::get('preguntas', [
     'uses' => 'QuestionController@index',
-    'as' => 'questions'
+    'as' => 'questions',
+    'middleware' => 'VerifyProvider',
 ]);

@@ -2,6 +2,7 @@
 
 namespace Agrosellers\Providers;
 use Agrosellers\Entities\Category;
+use Agrosellers\Policies\UserPolicy;
 use Agrosellers\User ;
 use Agrosellers\Policies\CategoryPolicy;
 
@@ -18,6 +19,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         //'Agrosellers\Model' => 'Agrosellers\Policies\ModelPolicy',
         Category::class => CategoryPolicy::class,
+        User::class => UserPolicy::class,
     ];
 
     /**
@@ -33,7 +35,5 @@ class AuthServiceProvider extends ServiceProvider
         $gate->define('admin',function(User $user){
             return $user->email == "juan2sramos@gmail.com";
         });
-
-        //
     }
 }
