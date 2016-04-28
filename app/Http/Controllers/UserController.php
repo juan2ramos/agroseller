@@ -15,7 +15,7 @@ class UserController extends Controller
 
     function index()
     {
-        $users = User::paginate(10);
+        $users = User::whereRaw('role_id in (1,2,5,6)')->paginate(0);
         $roleName = $this->roleName;
         $routeSearch = 'searchUser';
         return view('back.users', compact('users','roleName','routeSearch'));

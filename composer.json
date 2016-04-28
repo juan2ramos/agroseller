@@ -10,7 +10,8 @@
         "barryvdh/laravel-debugbar": "^2.0",
         "guzzlehttp/guzzle": "^6.1",
         "nesbot/carbon": "^1.21",
-        "jenssegers/date": "^3.2"
+        "jenssegers/date": "^3.2",
+        "gbrock/laravel-table": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -1047,6 +1047,12 @@ label.file.withFiles:before {
   cursor: text;
 }
 
+.Forms label button {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.125rem;
+}
+
 .Forms label em {
   position: absolute;
   top: 1.5rem;

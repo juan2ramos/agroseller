@@ -91,7 +91,7 @@
                         <desc>Created with Sketch.</desc>
                         <defs></defs>
                         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g id="Planes" transform="translate(-888.000000, -74.000000)" fill="#253A1B">
+                            <g id="Planes" transform="translate(-888.000000, -74.000000)" fill="#27383F ">
                                 <g id="Header">
                                     <g id="Header-bar" transform="translate(0.000000, 30.000000)"
                                     >

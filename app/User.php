@@ -1,7 +1,7 @@
 <?php
 
 namespace Agrosellers;
-
+use Gbrock\Table\Traits\Sortable;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -24,13 +24,14 @@ class User extends Model implements AuthenticatableContract,
                                     CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword;
-
+    use Sortable;
     /**
      * The database table used by the model.
      *
      * @var string
      */
     protected $table = 'users';
+    protected $sortable = ['name', 'role_id', 'created_at'];
 
     /**
      * The attributes that are mass assignable.
