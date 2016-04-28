@@ -4,6 +4,7 @@ namespace Agrosellers\Http\Controllers;
 
 use Agrosellers\Entities\Category;
 use Agrosellers\Entities\Provider;
+use Agrosellers\Entities\Role;
 use Agrosellers\User;
 use Illuminate\Http\Request;
 
@@ -13,18 +14,36 @@ use Illuminate\Support\Facades\Auth;
 
 class ProviderController extends Controller
 {
-    private $roleName = [1 => 'Super Administrador', 2 => 'Administrador', 3 => 'Proveedor', 4 => 'Cliente', 5 => 'Agente'];
-    
+    private $roleName = [];
+
+    public function __construct()
+    {
+        $this->roleName = Role::all();
+    }
+
     function registerProvider(){
         return view('back.specificProviderForm');
     }
 
     function showProviders()
     {
-        $users = User::where('role_id', '=', 3)->with('provider')->paginate(10);
+        $user = Auth::user();
+        $agent = $user->agent;
+/*
+        if(Auth::user()->role_id == 4){
+            $users = Provider::where('agent_id', '=', $agent->id)->paginate(10);
+        }
+        else{
+
+            $users = User::where('role_id', '=', 3)->with('provider')->paginate(10);
+        }
+*/
+        $providers = Provider::where('agent_id', '=', $agent->id)->paginate(10);
+
         $roleName = $this->roleName;
         $routeSearch = 'searchProvider';
-        return view('back.provider', compact('users', 'roleName', 'routeSearch'));
+
+        return view('back.provider', compact('providers', 'roleName', 'routeSearch'));
     }
 
     function searchProviders(Request $request)
