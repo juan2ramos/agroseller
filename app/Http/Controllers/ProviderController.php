@@ -28,20 +28,22 @@ class ProviderController extends Controller
     function showProviders()
     {
         $user = Auth::user();
-        $agent = $user->agent;
-
-        if(Auth::user()->role_id == 5){
-            $providers = Provider::where('agent_id', '=', $agent->id)->paginate(10);
+/*
+        if(Auth::user()->role_id == 4){
+            $users = User::where('role_id', '=', 3)->with('provider')->where('agent_id', '=', '1')->paginate(10);
         }
         else{
 
             $users = User::where('role_id', '=', 3)->with('provider')->paginate(10);
         }
+*/
+        //$users = Provider::where('agent_id', '=', $userId)->first();
+        //$users = User::where('role_id', '=', 3)->with('provider')->where('agent_id', '=', '1')->paginate(10);
 
         $roleName = $this->roleName;
         $routeSearch = 'searchProvider';
-
-        return view('back.provider', compact('providers', 'users', 'roleName', 'routeSearch'));
+        dd($user);
+        //return view('back.provider', compact('users', 'roleName', 'routeSearch'));
     }
 
     function searchProviders(Request $request)
@@ -63,7 +65,7 @@ class ProviderController extends Controller
         return view('back.users', compact('users', 'roleName', 'routeSearch', 'search'));
 
     }
-    
+
     function insertProvider(Request $request)
     {
         $this->validate(

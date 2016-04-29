@@ -11,6 +11,7 @@ use Agrosellers\Entities\Feature;
 use Agrosellers\Entities\Text;
 use Agrosellers\User;
 use Agrosellers\Entities\ProductFile;
+use Illuminate\Http\Response;
 
 class ProductController extends Controller
 {
@@ -26,61 +27,30 @@ class ProductController extends Controller
     }
 
     function addQuestion(Request $request){
-        if($request->ajax()){
-            $html = '';
-            $question = new Question;
-            $question->user_id = $request->user_id;
-            $question->product_id = $request->product_id;
-            $question->save();
+        $question = new Question;
+        $question->user_id = $request->user_id;
+        $question->product_id = $request->product_id;
+        $question->save();
 
-            $text = new Text;
-            $text->description = $request->comment;
-            $text->question_id = $question->id;
-            $text->save();
+        $text = new Text;
+        $text->description = $request->comment;
+        $text->question_id = $question->id;
+        $text->save();
 
-            /*************************************/
+        $questions = Question::where('product_id' , '=', $request->product_id)->orderBy('id','desc')->get();
+        $users = [];
+        $texts = [];
 
-            $questions = Question::where('product_id' , '=', $request->product_id)->orderBy('id','desc')->get();
-            $users = [];
-            $texts = [];
-
-            foreach($questions as $question){
-                $users[] = User::find($question->user_id);
-                $texts[] = Text::where('question_id', '=', $question->id)->first();
-            }
-
-            /*************************************/
-
-            $i = 0;
-            foreach($questions as $question){
-
-                $html .= "
-                <li class='row'>
-                    <figure>
-                ";
-
-                if($users[$i]->photo) {
-                    $html .= "<img src = 'images/{$users[$i]->photo}' alt=''>";
-                }
-                else{
-                    $html .= "<img src = '{$request->index}/images/user.png' alt=''>";
-                }
-
-                $html .= "
-                    </figure>
-                    <div class='Comments-user'>
-                        <h5>{$users[$i]->name} {$users[$i]->second_name} {$users[$i]->last_name} {$users[$i]->second_last_name}
-                            <time> • hace 25 días</time>
-                        </h5>
-                        <p>
-                            {$texts[$i]->description}
-                        </p>
-                    </div>
-                </li>";
-                $i++;
-            }
-            echo $html;
+        foreach($questions as $question){
+            $users[] = User::find($question->user_id);
+            $texts[] = Text::where('question_id', '=', $question->id)->first();
         }
+
+        if ($request->ajax()) {
+            return response()->json(['texts' => $texts, 'users' => $users]);
+        }
+
+        return response()->json(['texts' => $texts, 'users' => $users]);
     }
     function productDetailFront($id){
         $questions = Question::where('product_id' , '=', $id)->orderBy('id','desc')->get();

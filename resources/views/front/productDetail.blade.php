@@ -226,6 +226,7 @@
         <?php isset(Auth::user()->role_id) ? $login = true : $login = false ?>
         <form action="" class="row">
             @if($login)
+                <input id="token" type="hidden" name="_token" value="{{ csrf_token() }}">
                 <figure>
                     @if(Auth::user()->photo)
                         <img src="{{url('images/' . Auth::user()->photo)}}" alt="">
@@ -264,6 +265,7 @@
                 </li>
                 <?php $i++ ?>
             @endforeach
+            </div>
         </ul>
     </aside>
 
