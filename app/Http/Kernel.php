@@ -34,6 +34,7 @@ class Kernel extends HttpKernel
         'admin' =>[
             'web',
             'auth',
+            \Agrosellers\Http\Middleware\Routes::class,
             //Authorize::class.':admin'
         ],
     ];

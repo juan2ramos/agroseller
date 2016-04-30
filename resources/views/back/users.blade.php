@@ -1,9 +1,20 @@
 @extends('layoutBack')
 
 @section('content')
-
+    <svg width="81px" height="47px" display="none" viewBox="0 0 81 47" version="1.1">
+        <g id="imageTemp" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Paso-2" transform="translate(-627.000000, -1870.000000)" fill="#C5C5C5">
+                <g id="imagenes" transform="translate(307.000000, 1823.000000)">
+                    <g id="Image" transform="translate(290.000000, 0.000000)">
+                        <path d="M110.525,93.2974915 L92.6972512,47 L70.253812,76.5502124 L55.2899396,61.775896 L30,93.2974915 L110.525,93.2974915 Z M40.0227774,49.0124537 C36.6850109,49.0124537 33.9854165,51.7231055 33.9854165,55.0750888 C33.9854165,58.4239127 36.6865905,61.1345646 40.0227774,61.1345646 C43.3573847,61.1345646 46.0585588,58.4239127 46.0585588,55.0750888 C46.0585588,51.7231055 43.3573847,49.0124537 40.0227774,49.0124537 L40.0227774,49.0124537 Z"
+                              id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </svg>
     <div class="ContentInfo">
-        <h2>Usuarios</h2>
+        <h2>Usuarios internos</h2>
         <hr>
         <form action="{{ route($routeSearch) }}" method="post" class="Forms">
             <label for="Search" class="col-6 offset-6">
@@ -41,38 +52,79 @@
 
 
         </form>
-        <table class="BackContainer Table">
-            <thead>
-            <tr>
 
-                <th>Nombre</th>
-                <th>Tipo</th>
-                <th>Email</th>
-                <th>Acciones</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($users as $user)
-                <tr>
-
-                    <td> {{ $user->name }}</td>
-                    <td> {{ $roleName[$user->role_id ] }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>
-                        <a href="{{ route('showUser',$user->id) }}" class="icon-binoculars"></a>
-                        <a href="#" data-id="{{ $user->id }}" class="CategoryDelete icon-remove"></a>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
         {!! $users->render() !!}
     </div>
-    <form role="form" method="delete" id="FormDeleteCategory" action="{{ route('categoryDelete',':id') }}">
+    <h2>Crear usuario Interno</h2>
+    <hr>
+    <form class="Forms row columns" method="POST" action="{{ route('newProduct') }}" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div class=" col-6 center row ">
+            <label for="image1" class="col-9 Form-image">
+                <input type="file" class="StepImages" name="image1" id="image1">
+                <figure class=" row middle center ">
+                    <svg width="81px" height="47px">
+                        <use xlink:href="#imageTemp"></use>
+                    </svg>
+                </figure>
+                <output class="result"/>
+            </label>
+        </div>
+        <div class="col-6 ">
+            <label for="identification" class="DataForm ">
+                <input type="number" id="identification" name="identification" value="{{ old('identification') }}">
+                <span>Número de cédula</span>
+            </label>
+            <label for="name" class="DataForm ">
+                <input type="text" id="name" name="name" value="{{ old('name') }}">
+                <span>Nombre</span>
+            </label>
+        </div>
+
+        <div class="col-6 ">
+            <label for="last_name" class="DataForm ">
+                <input type="text" id="last_name" name="last_name" value="{{ old('last_name') }}">
+                <span>Apellido</span>
+            </label>
+        </div>
+        <div class="col-6 ">
+            <label for="mobile_phone" class="DataForm ">
+                <input type="text" id="mobile_phone" name="mobile_phone" value="{{ old('mobile_phone') }}">
+                <span>Celular</span>
+            </label>
+        </div>
+        <div class="col-6 ">
+            <label for="phone" class="DataForm ">
+                <input type="text" id="phone" name="phone" value="{{ old('phone') }}">
+                <span>Teléfono</span>
+            </label>
+        </div>
+        <div class="col-6 ">
+            <label for="email" class="DataForm ">
+                <input type="text" id="email" name="name" value="{{ old('email') }}">
+                <span>Email</span>
+            </label>
+        </div>
+        <div class="col-6 ">
+            <label for="password" class="DataForm ">
+                <input type="password" id="password" name="password" value="{{ old('password') }}">
+                <span>Password</span>
+            </label>
+        </div>
+        <div class="col-6 ">
+            <label for="role_id" class="DataForm ">
+                <input type="text" id="role_id" name="name" value="{{ old('email') }}">
+                <span>Role</span>
+            </label>
+        </div>
+        <div class="row center col-12">
+            <button class="Button col-6 "> AGREGAR USUARIO</button>
+        </div>
     </form>
+
 @endsection
 
 @section('scripts')
     <script src="{{asset('js/forms.js')}}"></script>
+    <script src="{{asset('js/images.js')}}"></script>
 @endsection

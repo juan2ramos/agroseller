@@ -22,6 +22,6 @@ class UserPolicy
     }
 
     public function isValidateProvider(){
-        return $this->user->role_id == 3 && $this->user->provider->validate == 1;
+        return $this->user->provider->validate == 1;
     }
 }

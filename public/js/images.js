@@ -45,6 +45,7 @@ function uploadImage(file) {
     reader.addEventListener("load", function (event) {
         var picFile = event.target;
         var figure = document.createElement("figure");
+        $output.html('');
         figure.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
             "title='" + picFile.name + "'/>";
 

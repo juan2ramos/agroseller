@@ -1,14 +1,14 @@
 .Table
   width: 100%
   overflow: auto
-  margin: rem(20) 0
+  margin: rem(20) 0 rem(48)
   text-align: center
   box-shadow: 0 0 1.875rem 0 rgba(0, 0, 0, 0.1)
   thead
     color: white
     background: #4F4F4F
-
-
+    a
+      width: auto
   tbody tr:nth-child(even)
     background: #F8F8F8
 
@@ -19,6 +19,7 @@
     font-size: rem(14)
     color: #9B9B9B
   a
+    color: #2196F3
     display: inline-block
     width: rem(16)
     &.delete
@@ -63,13 +64,11 @@ tr.SubTable
     margin-top: rem(-1)
     width: rem(12)
     height: rem(2)
-
   &:after
     transition: all .5s ease
     margin-top: rem(-6)
     margin-left: rem(-2)
     height: rem(12)
     width: rem(2)
-
   &.open:after
     transform: rotateZ(-90deg)

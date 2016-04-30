@@ -4,6 +4,7 @@ namespace Agrosellers\Http\Controllers;
 
 use DB;
 use Agrosellers\User;
+use Gbrock\Table\Facades\Table;
 use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
 use Agrosellers\Entities\Provider;
@@ -15,10 +16,16 @@ class UserController extends Controller
 
     function index()
     {
-        $users = User::whereRaw('role_id in (1,2,5,6)')->paginate(0);
-        $roleName = $this->roleName;
+        $rows = User::with('role')->whereRaw('role_id in (1,2,4,5)')->sorted()->paginate();
+        $users = Table::create($rows,[
+            'name' => 'Nombre',
+            'email' => 'Email',
+
+        ]);
+        $users->addColumn('role_id', 'Rol', function($model) {return $model->role()->first()->name;});
+        $users->addColumn('id', 'Acciones', function($model) {$id = $model->id;return '<a href="'.$id.'"> d </a>';});
         $routeSearch = 'searchUser';
-        return view('back.users', compact('users','roleName','routeSearch'));
+        return view('back.users', compact('users','routeSearch'));
 
     }
     function showUser($id){

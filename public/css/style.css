@@ -344,7 +344,7 @@ h2 {
 .Table {
   width: 100%;
   overflow: auto;
-  margin: 1.25rem 0;
+  margin: 1.25rem 0 3rem;
   text-align: center;
   box-shadow: 0 0 1.875rem 0 rgba(0, 0, 0, 0.1);
 }
@@ -352,6 +352,10 @@ h2 {
 .Table thead {
   color: white;
   background: #4F4F4F;
+}
+
+.Table thead a {
+  width: auto;
 }
 
 .Table tbody tr:nth-child(even) {
@@ -370,6 +374,7 @@ h2 {
 }
 
 .Table a {
+  color: #2196F3;
   display: inline-block;
   width: 1rem;
 }
@@ -958,6 +963,14 @@ tr.SubTable .iconPlus {
   align-self: flex-start;
 }
 
+.columns div:nth-child(even) {
+  padding-right: 0.625rem;
+}
+
+.columns div:nth-child(odd) {
+  padding-left: 0.625rem;
+}
+
 label.file {
   position: relative;
   background: white;
@@ -1239,6 +1252,28 @@ label.file.withFiles:before {
 .Forms.form-little .FormGroup label:nth-child(odd),
 .Forms.form-little .FormGroup input:nth-child(odd) {
   margin-right: 0.625rem;
+}
+
+.Form-image figure {
+  position: absolute;
+  border: 0.0625rem dashed #979797;
+  border-radius: 0.125rem;
+  width: calc(100% - 5px);
+  top: 0;
+  height: 11.53125rem;
+  overflow: hidden;
+}
+
+.Form-image input {
+  opacity: 0;
+  cursor: pointer;
+  z-index: 10;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  top: -0.3125rem;
+  width: calc(100% + 5px);
+  height: 11.53125rem;
 }
 
 body {

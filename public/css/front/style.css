@@ -684,6 +684,14 @@ main {
   align-self: flex-start;
 }
 
+.columns div:nth-child(even) {
+  padding-right: 0.625rem;
+}
+
+.columns div:nth-child(odd) {
+  padding-left: 0.625rem;
+}
+
 [class*='-message'] {
   width: 100%;
   opacity: 1;
