@@ -163,9 +163,9 @@
         </article>
         <article class="col-6 ProductDetail-data row middle">
             <p>
-                <b>SKU:</b> 447534883 <br>
-                <b>Categoría:</b> Fertilizante <br>
-                <b>Tags:</b> {{$product->subcategory_id}}</p>
+                <b>SKU:</b> {{$product->id}} <br>
+                <b>Subcategoría:</b> {{$product->subcategory->name}} <br>
+                <b>Tags:</b> Tag producto </p>
         </article>
     </section>
     <section class="Provider-detail row middle">
@@ -182,7 +182,7 @@
         </div>
         <a href="" class="col-4">Mas Información</a>
     </section>
-    <div id="Map" class="col-12"></div>
+    <div id="Map" class="col-12 Limited"></div>
     <section class="ProductInfo">
         <h2>Descripción</h2>
         {!!$product->description!!}
@@ -272,6 +272,8 @@
 @endsection
 @section('scripts')
     <script src="{{asset('js/maps.js')}}"></script>
+    {!!"<script>getPosition('$product->location')</script>"!!}
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap"
             async defer></script>
     <script src="{{asset('js/front/slide.js')}}"></script>
@@ -289,20 +291,19 @@
             $day = $day[0];
             $hour = $time[0];
             $minute = $time[1];
-            $html = "
-                <script>
-                    countDown({
-                        'year' : {$year},
-                        'month' : {$month},
-                        'day' : {$day},
-                        'hour' : {$hour},
-                        'second' : {$minute}
-                    });
-                </script>
-            ";
-            echo $html;
-            echo $hour . " " . $minute;
         ?>
+        {!!
+            "<script>
+                countDown({
+                  'year' : {$year},
+                  'month' : {$month},
+                  'day' : {$day},
+                  'hour' : {$hour},
+                  'second' : {$minute}
+                });
+            </script>
+            "
+        !!}
     @endif
 @endsection
 
