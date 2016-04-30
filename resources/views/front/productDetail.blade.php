@@ -1,5 +1,4 @@
 @extends('layoutFront')
-
 @section('openGraph')
     <meta property="og:url"           content="{{route('productDetail', $product->id)}}" />
     <meta property="og:type"          content="{{route('home')}}" />
@@ -163,9 +162,9 @@
         </article>
         <article class="col-6 ProductDetail-data row middle">
             <p>
-                <b>SKU:</b> 447534883 <br>
-                <b>Categoría:</b> Fertilizante <br>
-                <b>Tags:</b> {{$product->subcategory_id}}</p>
+                <b>SKU:</b> {{$product->id}} <br>
+                <b>Subcategoría:</b> {{$product->subcategory->name}} <br>
+                <b>Tags:</b> Tag producto </p>
         </article>
     </section>
     <section class="Provider-detail row middle">
@@ -182,23 +181,29 @@
         </div>
         <a href="" class="col-4">Mas Información</a>
     </section>
-    <div id="Map" class="col-12"></div>
+    <div id="Map" class="col-12 Limited"></div>
     <section class="ProductInfo">
         <h2>Descripción</h2>
         {!!$product->description!!}
         <h2>Características </h2>
         <article class="row bottom">
             <ul class="col-2">
-                @foreach($features as $feature)
-                    <li>{{$feature->name}}: <b></b></li>
-                @endforeach
+                @for($i = 0; $i < count($features); $i++)
+                    @if(!isset($featuresTranslate[$i]))
+                        @continue
+                    @elseif($featuresTranslate[$i]['id'] % 2 != 0)
+                        <li>{{$featuresTranslate[$i]['name']}}: <b>{{ $featuresTranslate[$i]['value'] }}</b></li>
+                    @endif
+                @endfor
             </ul>
             <ul class="col-2 self-start">
-                @foreach($features as $feature)
-                    @if($feature->id % 2 == 0)
-                        <li>{{$feature->name}}: <b></b></li>
+                @for($i = 0; $i < count($features); $i++)
+                    @if(!isset($featuresTranslate[$i]))
+                        @continue
+                    @elseif($featuresTranslate[$i]['id'] % 2 == 0)
+                        <li>{{$featuresTranslate[$i]['name']}}: <b>{{ $featuresTranslate[$i]['value'] }}</b></li>
                     @endif
-                @endforeach
+                @endfor
             </ul>
             <div class="col-8 AlignRight">
                 Descarga Ficha Técnica
@@ -226,6 +231,7 @@
         <?php isset(Auth::user()->role_id) ? $login = true : $login = false ?>
         <form action="" class="row">
             @if($login)
+                <input id="token" type="hidden" name="_token" value="{{ csrf_token() }}">
                 <figure>
                     @if(Auth::user()->photo)
                         <img src="{{url('images/' . Auth::user()->photo)}}" alt="">
@@ -255,7 +261,7 @@
                     </figure>
                     <div class="Comments-user">
                         <h5>{{$users[$i]->name}} {{$users[$i]->second_name}} {{$users[$i]->last_name}} {{$users[$i]->second_last_name}}
-                            <time> • hace 25 días</time>
+                            <time> • {{$dates[$i]}}</time>
                         </h5>
                         <p>
                             {{$texts[$i]->description}}
@@ -264,12 +270,15 @@
                 </li>
                 <?php $i++ ?>
             @endforeach
+            </div>
         </ul>
     </aside>
 
 @endsection
 @section('scripts')
     <script src="{{asset('js/maps.js')}}"></script>
+    {!!"<script>getPosition('$product->location')</script>"!!}
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap"
             async defer></script>
     <script src="{{asset('js/front/slide.js')}}"></script>
@@ -287,20 +296,19 @@
             $day = $day[0];
             $hour = $time[0];
             $minute = $time[1];
-            $html = "
-                <script>
-                    countDown({
-                        'year' : {$year},
-                        'month' : {$month},
-                        'day' : {$day},
-                        'hour' : {$hour},
-                        'second' : {$minute}
-                    });
-                </script>
-            ";
-            echo $html;
-            echo $hour . " " . $minute;
         ?>
+        {!!
+            "<script>
+                countDown({
+                  'year' : {$year},
+                  'month' : {$month},
+                  'day' : {$day},
+                  'hour' : {$hour},
+                  'second' : {$minute}
+                });
+            </script>
+            "
+        !!}
     @endif
 @endsection
 

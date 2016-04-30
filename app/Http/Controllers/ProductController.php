@@ -11,6 +11,8 @@ use Agrosellers\Entities\Feature;
 use Agrosellers\Entities\Text;
 use Agrosellers\User;
 use Agrosellers\Entities\ProductFile;
+use Illuminate\Http\Response;
+use Jenssegers\Date\Date;
 
 class ProductController extends Controller
 {
@@ -26,78 +28,127 @@ class ProductController extends Controller
     }
 
     function addQuestion(Request $request){
-        if($request->ajax()){
-            $html = '';
-            $question = new Question;
-            $question->user_id = $request->user_id;
-            $question->product_id = $request->product_id;
-            $question->save();
+        $question = new Question;
+        $question->user_id = $request->user_id;
+        $question->product_id = $request->product_id;
+        $question->save();
 
-            $text = new Text;
-            $text->description = $request->comment;
-            $text->question_id = $question->id;
-            $text->save();
+        $text = new Text;
+        $text->description = $request->comment;
+        $text->question_id = $question->id;
+        $text->save();
 
-            /*************************************/
-
-            $questions = Question::where('product_id' , '=', $request->product_id)->orderBy('id','desc')->get();
-            $users = [];
-            $texts = [];
-
-            foreach($questions as $question){
-                $users[] = User::find($question->user_id);
-                $texts[] = Text::where('question_id', '=', $question->id)->first();
-            }
-
-            /*************************************/
-
-            $i = 0;
-            foreach($questions as $question){
-
-                $html .= "
-                <li class='row'>
-                    <figure>
-                ";
-
-                if($users[$i]->photo) {
-                    $html .= "<img src = 'images/{$users[$i]->photo}' alt=''>";
-                }
-                else{
-                    $html .= "<img src = '{$request->index}/images/user.png' alt=''>";
-                }
-
-                $html .= "
-                    </figure>
-                    <div class='Comments-user'>
-                        <h5>{$users[$i]->name} {$users[$i]->second_name} {$users[$i]->last_name} {$users[$i]->second_last_name}
-                            <time> • hace 25 días</time>
-                        </h5>
-                        <p>
-                            {$texts[$i]->description}
-                        </p>
-                    </div>
-                </li>";
-                $i++;
-            }
-            echo $html;
-        }
-    }
-    function productDetailFront($id){
-        $questions = Question::where('product_id' , '=', $id)->orderBy('id','desc')->get();
-        $products = Product::all();
-        $product = $products->find($id);
-        $subcategory = Subcategory::find($product->subcategory_id);
-        $features = Feature::all();
-        
+        $questions = Question::where('product_id' , '=', $request->product_id)->orderBy('id','desc')->get();
         $users = [];
         $texts = [];
+        $dates = [];
 
         foreach($questions as $question){
+            $text    = Text::where('question_id', '=', $question->id)->first();
             $users[] = User::find($question->user_id);
-            $texts[] = Text::where('question_id', '=', $question->id)->first();
+            $texts[] = $text;
+            $dates[] = Date::parse($text->created_at)->diffForHumans();
+        }
+
+        if ($request->ajax()) {
+            return response()->json(['texts' => $texts, 'users' => $users, 'dates' => $dates]);
+        }
+
+        return response()->json(['texts' => $texts, 'users' => $users, 'dates' => $dates]);
+    }
+
+    private function setFeaturesTranslate(Product $product){
+        return
+        [[
+            'id'    =>  1,
+            'name'  =>  'Presentación',
+            'value' =>  $product->presentation
+         ],
+         [
+             'id'   =>  2,
+             'name'  =>  'Tamaño',
+             'value' =>  $product->size
+         ],
+         [
+             'id'    =>  3,
+             'name'  =>  'Peso',
+             'value' =>  $product->weight
+         ],
+         [
+             'id'    =>  4,
+             'name' => 'Medida',
+             'value' =>  $product->measure
+         ],
+         [
+             'id'    =>  5,
+             'name' => 'Material',
+             'value' =>  $product->material
+         ],
+         [
+             'id'    =>  6,
+             'name' => 'Description',
+             'value' =>  "",
+         ],
+         [
+             'id'    =>  7,
+             'name' => 'Composición',
+             'value' =>  $product->composition
+         ],
+         [
+             'id'    =>  8,
+             'name' => 'Precio',
+             'value' =>  $product->price
+         ],
+         [
+             'id'    =>  9,
+             'name' => 'Impuestos',
+             'value' =>  $product->taxes
+         ],
+         [
+             'id'    =>  10,
+             'name' => 'Cantidad disponible',
+             'value' =>  $product->available_quantity
+         ],
+         [
+             'id'    =>  11,
+             'name' => 'Tamaño imagen',
+             'value' =>  $product->image_scale
+         ],
+         [
+             'id'    =>  12,
+             'name' => 'Ubicación',
+             'value' =>  $product->location
+         ],
+         [
+             'id'    =>  13,
+             'name' => 'Descripción de uso',
+             'value' =>  $product->forms_employment
+        ]];
+    }
+    function productDetailFront($id){
+        $product = Product::find($id);
+        $featuresTranslate = $this->setFeaturesTranslate($product);
+
+        $questions = $product->questions;
+        $features = $product->subcategory->features;
+
+        foreach($featuresTranslate as $key => $translate){
+            if(!isset($features[$key]) || $featuresTranslate[$key]['value'] == ""){
+                unset($featuresTranslate[$key]);
+            }
+        }
+
+        $users = [];
+        $texts = [];
+        $dates = [];
+        foreach($questions as $question){
+            $text    = Text::where('question_id', '=', $question->id)->first();
+            $users[] = User::find($question->user_id);
+            $texts[] = $text;
+            $dates[] = Date::parse($text->created_at)->diffForHumans();
         }
 
         $images = ProductFile::whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->get();
-        return view('front.productDetail', compact('questions', 'product', 'subcategory','images', 'users', 'texts', 'features'));
+        return view('front.productDetail', compact('questions', 'product', 'images', 'users', 'texts', 'features', 'dates', 'features', 'featuresTranslate'));
     }
 }

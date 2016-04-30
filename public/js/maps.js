@@ -1,5 +1,6 @@
 var arrayMarkers = new Array;
 var map;
+var position;
 styleMap = [{
     "featureType": "landscape",
     "elementType": "labels",
@@ -29,7 +30,12 @@ function initMap() {
         styles: styleMap
     };
 
+
     map = new google.maps.Map(document.getElementById("Map"), mapOptions);
+
+    if($('#Map').hasClass('Limited')){
+        showMarkers();
+    }
 }
 
 function addMarker(n) {
@@ -47,7 +53,7 @@ function addMarker(n) {
         for (var a = 0; a < arrayMarkers.length; a++) {
             if (arrayMarkers[a]['identificador'] == this.identificador) {
                 arrayMarkers[a].setMap(null);
-                arrayMarkers.splice(a, 1)
+                arrayMarkers.splice(a, 1);
             }
         }
     });
@@ -55,9 +61,29 @@ function addMarker(n) {
 
 
 $('#addMaker').on('click', function () {
-    addMarker(arrayMarkers.length);
+    addMarker(arrayMarkers.length, true);
 });
 
+function getPosition(position){
+    this.position = position;
+}
+
+function showMarkers(){
+    var coord = this.position.split(';');
+    for(var i = 0; i < coord.length; i++){
+
+        var lat = parseFloat(coord[i].split('&')[0]);
+        var lng = parseFloat(coord[i].split('&')[1]);
+
+        var marker = new google.maps.Marker({
+            position: {lat: lat, lng: lng},
+            map: map
+        });
+
+        arrayMarkers.push(marker);
+    }
+    setMapOnAll(map);
+}
 
 function setMapOnAll(map) {
 
@@ -68,9 +94,8 @@ function setMapOnAll(map) {
 
 $('#removeMaker').on('click', function () {
     setMapOnAll(null);
-    arrayMarkers = [];;
+    arrayMarkers = [];
 });
-
 
 $('#Provider-form,#Product-form, #Client-form').on('submit', function () {
 

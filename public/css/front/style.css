@@ -1582,6 +1582,14 @@ body {
   cursor: pointer;
 }
 
+.Comments ul {
+  margin-bottom: 2rem;
+}
+
+.Comments ul li {
+  margin-bottom: 1rem;
+}
+
 .Comments h2 {
   font-weight: 400;
   margin: 4rem 0 2rem;
@@ -1871,11 +1879,13 @@ body {
 
 .commentBox {
   width: calc(100% - 5rem);
+  height: 4rem;
   position: relative;
 }
 
 .commentBox textarea {
   width: 100%;
+  height: 100%;
   padding-left: 4.5rem;
   resize: none;
 }
