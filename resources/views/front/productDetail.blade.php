@@ -256,7 +256,7 @@
                     </figure>
                     <div class="Comments-user">
                         <h5>{{$users[$i]->name}} {{$users[$i]->second_name}} {{$users[$i]->last_name}} {{$users[$i]->second_last_name}}
-                            <time> • hace 25 días</time>
+                            <time> • {{$dates[$i]}}</time>
                         </h5>
                         <p>
                             {{$texts[$i]->description}}

@@ -23,6 +23,8 @@ addComment = function(comment, product_id, user_id, url, index){
             var html = "";
             var texts = datos.texts;
             var users = datos.users;
+            var dates = datos.dates;
+            console.log(dates[0]);
 
             for(var i = 0; i < texts.length; i++){
 
@@ -38,7 +40,7 @@ addComment = function(comment, product_id, user_id, url, index){
                             "<div class='Comments-user'>" +
                                 "<h5>" +
                                     users[i].name + " " + users[i].second_name + " " + users[i].last_name + " " + users[i].second_last_name +
-                                    "<time> • " +  "hace 25 días" + "</time>" +
+                                    "<time> • " +  dates[i] + "</time>" +
                                 "</h5>" +
                                 "<p>" + texts[i].description + "</p>" +
                             "</div>" +

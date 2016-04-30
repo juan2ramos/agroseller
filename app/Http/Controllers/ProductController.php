@@ -12,6 +12,7 @@ use Agrosellers\Entities\Text;
 use Agrosellers\User;
 use Agrosellers\Entities\ProductFile;
 use Illuminate\Http\Response;
+use Jenssegers\Date\Date;
 
 class ProductController extends Controller
 {
@@ -40,17 +41,20 @@ class ProductController extends Controller
         $questions = Question::where('product_id' , '=', $request->product_id)->orderBy('id','desc')->get();
         $users = [];
         $texts = [];
+        $dates = [];
 
         foreach($questions as $question){
+            $text    = Text::where('question_id', '=', $question->id)->first();
             $users[] = User::find($question->user_id);
-            $texts[] = Text::where('question_id', '=', $question->id)->first();
+            $texts[] = $text;
+            $dates[] = Date::parse($text->created_at)->diffForHumans();
         }
 
         if ($request->ajax()) {
-            return response()->json(['texts' => $texts, 'users' => $users]);
+            return response()->json(['texts' => $texts, 'users' => $users, 'dates' => $dates]);
         }
 
-        return response()->json(['texts' => $texts, 'users' => $users]);
+        return response()->json(['texts' => $texts, 'users' => $users, 'dates' => $dates]);
     }
     function productDetailFront($id){
         $questions = Question::where('product_id' , '=', $id)->orderBy('id','desc')->get();
@@ -61,13 +65,16 @@ class ProductController extends Controller
         
         $users = [];
         $texts = [];
+        $dates = [];
 
         foreach($questions as $question){
+            $text    = Text::where('question_id', '=', $question->id)->first();
             $users[] = User::find($question->user_id);
-            $texts[] = Text::where('question_id', '=', $question->id)->first();
+            $texts[] = $text;
+            $dates[] = Date::parse($text->created_at)->diffForHumans();
         }
 
         $images = ProductFile::whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->get();
-        return view('front.productDetail', compact('questions', 'product', 'subcategory','images', 'users', 'texts', 'features'));
+        return view('front.productDetail', compact('questions', 'product', 'subcategory','images', 'users', 'texts', 'features', 'dates'));
     }
 }
