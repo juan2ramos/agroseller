@@ -129,7 +129,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $featuresTranslate = $this->setFeaturesTranslate($product);
 
-        $questions = $product->questions;
+        $questions = Question::where('product_id' , '=', $product->id)->orderBy('id','desc')->get();
         $features = $product->subcategory->features;
 
         foreach($featuresTranslate as $key => $translate){
