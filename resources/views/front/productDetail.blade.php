@@ -1,5 +1,4 @@
 @extends('layoutFront')
-
 @section('openGraph')
     <meta property="og:url"           content="{{route('productDetail', $product->id)}}" />
     <meta property="og:type"          content="{{route('home')}}" />
@@ -189,16 +188,22 @@
         <h2>Características </h2>
         <article class="row bottom">
             <ul class="col-2">
-                @foreach($features as $feature)
-                    <li>{{$feature->name}}: <b></b></li>
-                @endforeach
+                @for($i = 0; $i < count($features); $i++)
+                    @if(!isset($featuresTranslate[$i]))
+                        @continue
+                    @elseif($featuresTranslate[$i]['id'] % 2 != 0)
+                        <li>{{$featuresTranslate[$i]['name']}}: <b>{{ $featuresTranslate[$i]['value'] }}</b></li>
+                    @endif
+                @endfor
             </ul>
             <ul class="col-2 self-start">
-                @foreach($features as $feature)
-                    @if($feature->id % 2 == 0)
-                        <li>{{$feature->name}}: <b></b></li>
+                @for($i = 0; $i < count($features); $i++)
+                    @if(!isset($featuresTranslate[$i]))
+                        @continue
+                    @elseif($featuresTranslate[$i]['id'] % 2 == 0)
+                        <li>{{$featuresTranslate[$i]['name']}}: <b>{{ $featuresTranslate[$i]['value'] }}</b></li>
                     @endif
-                @endforeach
+                @endfor
             </ul>
             <div class="col-8 AlignRight">
                 Descarga Ficha Técnica

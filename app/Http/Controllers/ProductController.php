@@ -56,17 +56,91 @@ class ProductController extends Controller
 
         return response()->json(['texts' => $texts, 'users' => $users, 'dates' => $dates]);
     }
+
+    private function setFeaturesTranslate(Product $product){
+        return
+        [[
+            'id'    =>  1,
+            'name'  =>  'Presentación',
+            'value' =>  $product->presentation
+         ],
+         [
+             'id'   =>  2,
+             'name'  =>  'Tamaño',
+             'value' =>  $product->size
+         ],
+         [
+             'id'    =>  3,
+             'name'  =>  'Peso',
+             'value' =>  $product->weight
+         ],
+         [
+             'id'    =>  4,
+             'name' => 'Medida',
+             'value' =>  $product->measure
+         ],
+         [
+             'id'    =>  5,
+             'name' => 'Material',
+             'value' =>  $product->material
+         ],
+         [
+             'id'    =>  6,
+             'name' => 'Description',
+             'value' =>  "",
+         ],
+         [
+             'id'    =>  7,
+             'name' => 'Composición',
+             'value' =>  $product->composition
+         ],
+         [
+             'id'    =>  8,
+             'name' => 'Precio',
+             'value' =>  $product->price
+         ],
+         [
+             'id'    =>  9,
+             'name' => 'Impuestos',
+             'value' =>  $product->taxes
+         ],
+         [
+             'id'    =>  10,
+             'name' => 'Cantidad disponible',
+             'value' =>  $product->available_quantity
+         ],
+         [
+             'id'    =>  11,
+             'name' => 'Tamaño imagen',
+             'value' =>  $product->image_scale
+         ],
+         [
+             'id'    =>  12,
+             'name' => 'Ubicación',
+             'value' =>  $product->location
+         ],
+         [
+             'id'    =>  13,
+             'name' => 'Descripción de uso',
+             'value' =>  $product->forms_employment
+        ]];
+    }
     function productDetailFront($id){
-        $questions = Question::where('product_id' , '=', $id)->orderBy('id','desc')->get();
-        $products = Product::all();
-        $product = $products->find($id);
-        $subcategory = Subcategory::find($product->subcategory_id);
-        $features = Feature::all();
-        
+        $product = Product::find($id);
+        $featuresTranslate = $this->setFeaturesTranslate($product);
+
+        $questions = $product->questions;
+        $features = $product->subcategory->features;
+
+        foreach($featuresTranslate as $key => $translate){
+            if(!isset($features[$key]) || $featuresTranslate[$key]['value'] == ""){
+                unset($featuresTranslate[$key]);
+            }
+        }
+
         $users = [];
         $texts = [];
         $dates = [];
-
         foreach($questions as $question){
             $text    = Text::where('question_id', '=', $question->id)->first();
             $users[] = User::find($question->user_id);
@@ -75,6 +149,6 @@ class ProductController extends Controller
         }
 
         $images = ProductFile::whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->get();
-        return view('front.productDetail', compact('questions', 'product', 'subcategory','images', 'users', 'texts', 'features', 'dates'));
+        return view('front.productDetail', compact('questions', 'product', 'images', 'users', 'texts', 'features', 'dates', 'features', 'featuresTranslate'));
     }
 }
