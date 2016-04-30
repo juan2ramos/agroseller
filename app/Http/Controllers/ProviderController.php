@@ -1,5 +1,4 @@
 <?php
-
 namespace Agrosellers\Http\Controllers;
 
 use Agrosellers\Entities\Category;
@@ -7,49 +6,38 @@ use Agrosellers\Entities\Provider;
 use Agrosellers\Entities\Role;
 use Agrosellers\User;
 use Illuminate\Http\Request;
-
 use Agrosellers\Http\Requests;
 use Agrosellers\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-
 class ProviderController extends Controller
 {
     private $roleName = [];
-
     public function __construct()
     {
         $this->roleName = Role::all();
     }
-
     function registerProvider(){
         return view('back.specificProviderForm');
     }
-
     function showProviders()
     {
         $user = Auth::user();
-/*
-        if(Auth::user()->role_id == 4){
-            $users = User::where('role_id', '=', 3)->with('provider')->where('agent_id', '=', '1')->paginate(10);
+        $agent = $user->agent;
+
+        if(Auth::user()->role_id == 5){
+            $providers = Provider::where('agent_id', '=', $agent->id)->paginate(10);
         }
         else{
-
             $users = User::where('role_id', '=', 3)->with('provider')->paginate(10);
         }
-*/
-        //$users = Provider::where('agent_id', '=', $userId)->first();
-        //$users = User::where('role_id', '=', 3)->with('provider')->where('agent_id', '=', '1')->paginate(10);
-
         $roleName = $this->roleName;
         $routeSearch = 'searchProvider';
-        dd($user);
-        //return view('back.provider', compact('users', 'roleName', 'routeSearch'));
+        return view('back.provider', compact('providers', 'users', 'roleName', 'routeSearch'));
     }
 
     function searchProviders(Request $request)
     {
         $search = $request->input('search');
-
         $users = User::where('role_id', '=', 2)
             ->where(function ($query) use ($search) {
                 $query->Where('name', 'like', '%' . $search . '%')
@@ -61,11 +49,8 @@ class ProviderController extends Controller
             })->paginate(50);
         $roleName = $this->roleName;
         $routeSearch = 'searchProvider';
-
         return view('back.users', compact('users', 'roleName', 'routeSearch', 'search'));
-
     }
-
     function insertProvider(Request $request)
     {
         $this->validate(
@@ -95,29 +80,23 @@ class ProviderController extends Controller
                 'taxpayer' => 'El tipo de contribuyente es requerido',
             ]
         );
-
         $user = Auth::user();
         $provider = Provider::where('user_id', '=', $user->id)->first();
         $files = $request->file();
         $provider->update($request->all());
-
         foreach ($files as $key => $file) {
             $fileName = str_random(40) . '**' . $request->file($key)->getClientOriginalName();
             $request->file($key)->move(base_path() . '/public/uploads/providers/', $fileName);
             $provider[$key] = $fileName;
         }
-
         $provider->save();
         return redirect()->route('admin');
     }
-
     function updateProvider($id, Request $request)
     {
-
         $userProvider = User::find($id);
         $userProvider->validate = ($userProvider->validate) ? 0 : 1;
         $userProvider->save();
-
         if ($request->ajax()) {
             return response()->json(['name' => $userProvider->validate]);
         }
