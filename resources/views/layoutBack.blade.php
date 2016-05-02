@@ -46,7 +46,7 @@
         <div class="col-6 HeaderBack-profile row end middle ">
             <figure><img src="{{url('images/user.png')}}" alt=""><span>2</span></figure>
             <h3>{{ auth()->user()->fullName()   }}
-                <span>{{ auth()->user()->role()->first()->name}}</span></h3>
+                <span>{{--{{ auth()->user()->role()->first()->name}}--}}</span></h3>
             <svg id="Profile-arrow" width="13px" height="8px" viewBox="0 0 13 8" version="1.1"
                  xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink">

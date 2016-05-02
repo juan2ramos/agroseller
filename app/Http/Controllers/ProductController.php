@@ -26,7 +26,6 @@ class ProductController extends Controller
     {
         return view('front.checkout');
     }
-
     function addQuestion(Request $request){
         $question = new Question;
         $question->user_id = $request->user_id;

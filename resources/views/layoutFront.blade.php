@@ -115,7 +115,7 @@
         <div class="Header-linksBack AlignRight col-3">
             @if(Auth::check())
                 <div class="UserFront">
-                    <p> <span>Bienvenido </span>{{ auth()->user()->fullName()}}</p>
+                    <p><span>Bienvenido </span>{{ auth()->user()->fullName()}}</p>
                     <a href="{{route('admin')}}">Administra tus servicios</a>
                 </div>
             @else
@@ -342,78 +342,24 @@
     <div class="LightBoxContent-close"></div>
     <nav class="NavCategories">
         <ul>
-            <li>
-                <div>Fertilizantes
-                    <svg width="7px" height="12px">
-                        <use xlink:href="#arrow"/>
-                    </svg>
-                </div>
-                <ul>
-                    <li>
-                        <div><a href="">Directorio Agrario</a></div>
-                        <!-- esto esdkfn -->
-                    </li>
-                    <li>
-                        <div><a href="{{route('faqs')}}">Pregutas Frecuentes </a></div>
-                    </li>
-                    <li>
-                        <div><a href="{{route('contactForm')}}"> Contáctanos</a></div>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <div>Insumos
-                    <svg width="7px" height="12px">
-                        <use xlink:href="#arrow"/>
-                    </svg>
-                </div>
-                <ul>
-                    <li>
-                        <div><a href="">Directorio Agrario</a></div>
-                    </li>
-                    <li>
-                        <div><a href="{{route('faqs')}}">Pregutas Frecuentes </a></div>
-                    </li>
-                    <li>
-                        <div><a href="{{route('contactForm')}}">Contáctanos </a></div>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <div>Maquinaria Y Equipos
-                    <svg width="7px" height="12px">
-                        <use xlink:href="#arrow"/>
-                    </svg>
-                </div>
-            </li>
-            <li>
-                <div>Logistica Y Transporte
-                    <svg width="7px" height="12px">
-                        <use xlink:href="#arrow"/>
-                    </svg>
-                </div>
-            </li>
-            <li>
-                <div>Servicios Especiales
-                    <svg width="7px" height="12px">
-                        <use xlink:href="#arrow"/>
-                    </svg>
-                </div>
-            </li>
-            <li>
-                <div>Insumos Pecuarios
-                    <svg width="7px" height="12px">
-                        <use xlink:href="#arrow"/>
-                    </svg>
-                </div>
-            </li>
-            <li>
-                <div>Tecnologia Agricola
-                    <svg width="7px" height="12px">
-                        <use xlink:href="#arrow"/>
-                    </svg>
-                </div>
-            </li>
+
+            @inject('menu', 'Agrosellers\Services\MenuFront')
+            @foreach($menu->getCategory() as $key => $category)
+                <li>
+                    <div>{{$category->name}}
+                        <svg width="7px" height="12px">
+                            <use xlink:href="#arrow"/>
+                        </svg>
+                    </div>
+                    <ul>
+                        @foreach($category->subcategories as $subcategory)
+                            <li><div><a href="">{{$subcategory->name}}</a></div></li>
+                        @endforeach
+                    </ul>
+                </li>
+
+            @endforeach
+
         </ul>
         <hr>
         <ul>

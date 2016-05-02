@@ -31,16 +31,16 @@ class RoutePolicy
             '1' =>
                 [
                     'admin', 'users', 'providers', 'category', 'farmIndex', 'products', 'questions', 'clients',
-                    'bills', 'orders', 'reports', 'subcategoriesQuery','featuresQuery'
+                    'bills', 'orders', 'reports', 'subcategoriesQuery','featuresQuery','newProduct'
                 ],
             '2' =>
                 [
                     'admin', 'users', 'providers', 'category', 'farmIndex', 'products', 'clients', 'bills',
-                    'orders', 'subcategoriesQuery','featuresQuery'
+                    'orders', 'subcategoriesQuery','featuresQuery','newProduct'
                 ],
             '3' =>
                 [
-                    'admin', 'products', 'questions', 'orders',
+                    'admin', 'products', 'questions', 'orders','newProduct',
                 ],
             '4' =>
                 [
