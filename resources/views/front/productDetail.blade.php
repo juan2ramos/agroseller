@@ -163,8 +163,7 @@
         <article class="col-6 ProductDetail-data row middle">
             <p>
                 <b>SKU:</b> {{$product->id}} <br>
-                <b>Subcategoría:</b> {{$product->subcategory->name}} <br>
-                <b>Tags:</b> Tag producto </p>
+                <b>Subcategoría:</b> {{$product->subcategory->name}}
         </article>
     </section>
     <section class="Provider-detail row middle">

@@ -799,11 +799,11 @@ var EasyAutocomplete = (function(scope){
 
 				if (typeof _fields.iconSrc === "string") {
 					buildMethod = function(elementValue, element) {
-						return "<img class='eac-icon' src='" + element[_fields.iconSrc] + "' />" + elementValue;
+						return "<div class='image'><img class='eac-icon' src='" + element[_fields.iconSrc] + "' /></div>" + elementValue;
 					};					
 				} else if (typeof _fields.iconSrc === "function") {
 					buildMethod = function(elementValue, element) {
-						return "<img class='eac-icon' src='" + _fields.iconSrc(element) + "' />" + elementValue;
+						return "<div class='image'><img class='eac-icon' src='" + _fields.iconSrc(element) + "' /></div>" + elementValue;
 					};
 				}
 

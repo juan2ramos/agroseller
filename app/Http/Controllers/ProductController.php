@@ -96,7 +96,7 @@ class ProductController extends Controller
          [
              'id'    =>  8,
              'name' => 'Precio',
-             'value' =>  $product->price
+             'value' =>  '$' . number_format($product->price, 0, ',', '.')
          ],
          [
              'id'    =>  9,
