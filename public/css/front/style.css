@@ -1928,7 +1928,7 @@ body {
   border-bottom: 1px dashed gray;
   display: none;
   width: 98%;
-  background: rgba(255, 255, 255, 0.95);
+  background: #fff;
   border-radius: 0 0 3px 3px;
   padding: 14px 0;
 }
@@ -1936,6 +1936,13 @@ body {
 .autocomplete .result li {
   height: 50px;
   padding: 6px 12px;
+}
+
+.autocomplete .result li:hover {
+  background: #d7d7d7;
+}
+
+.autocomplete .result li a {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -1944,11 +1951,7 @@ body {
   align-items: center;
 }
 
-.autocomplete .result li:hover {
-  background: #d7d7d7;
-}
-
-.autocomplete .result li .no-data {
+.autocomplete .result li a .no-data {
   padding-left: 16px;
 }
 
@@ -1961,4 +1964,5 @@ body {
 
 .autocomplete-result-text {
   font-size: .85rem;
+  text-transform: capitalize;
 }

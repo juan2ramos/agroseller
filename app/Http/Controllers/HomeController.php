@@ -40,9 +40,9 @@ class HomeController extends Controller
         $data = $request->all();
 
         Mail::send('emails.contact',$data, function($msg) use($data){
-                $msg->from('luza.231@hotmail.com');
-                $msg->to($data['email'], $data['name'])->subject($data['subject']);
-            });
+            $msg->from('luza.231@hotmail.com');
+            $msg->to($data['email'], $data['name'])->subject($data['subject']);
+        });
 
         $answer = "El mensaje se ha enviado satisfactoriamente, pronto nos contactaremos contigo";
         return view('front.contactForm', ['mensaje' => $answer]);
@@ -53,18 +53,20 @@ class HomeController extends Controller
     }
 
     function searchBar(Request $request){
-        $Products = Product::where("name", "like", "{$request->value}%")->limit(10)->get();
+        $Products = Product::where("name", "like", "%{$request->value}%")->limit(10)->get();
         $products = [];
 
         foreach ($Products as $Product){
+            $id = $Product->id;
             $name = $Product->name;
             $image = $Product->productFiles()->whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->first();
             $image = $image->name;
 
             $products[] = [
-                            'name' => "{$name}",
-                            'icon' => "uploads/products/{$image}"
-                          ];
+                'name'  => "{$name}",
+                'icon'  => "/uploads/products/{$image}",
+                'route' => "/producto/{$id}"
+            ];
 
         }
 

@@ -16,19 +16,21 @@
     border-bottom: 1px dashed gray
     display: none
     width: 98%
-    background: rgba(255, 255, 255, 0.95)
+    background: #fff
     border-radius: 0 0 3px 3px
     padding: 14px 0
 
     li
       height: 50px
       padding: 6px 12px
-      display: flex
-      align-items: center
       &:hover
         background: #d7d7d7
-      .no-data
-        padding-left: 16px
+      a
+        display: flex
+        align-items: center
+        .no-data
+          padding-left: 16px
+
 .autocomplete-result-image
   width: 40px
   height: 40px
@@ -37,3 +39,4 @@
 
 .autocomplete-result-text
   font-size: .85rem
+  text-transform: capitalize
