@@ -36,5 +36,44 @@ $(document).ready(function () {
     $question.on('click', function(){
         $(this).siblings().slideToggle();
     });
-
 });
+
+/************************* Buscador Front ****************************/
+function autoSearch(){
+    var param = {
+        'search' : $('#template-icon-left').val(),
+        '_token' : $('#principalToken').val()
+    };
+
+    $.ajax({
+        url     :   $('#searchRoute').val(),
+        type    :  'POST',
+        dataType:  'json',
+        data    :   param,
+        success :   function (datos) {
+            console.log(datos.products);
+            var products = datos.products;
+            var data = [];
+            for(var i = 0; i < products.length; i++){
+                data.push({name: products[i]['name'], type: "air", icon: "http://lorempixel.com/100/50/transport/2"});
+            }
+            var xdatos = {name: products[0]['name'], type: "air", icon: "http://lorempixel.com/100/50/transport/2"};
+
+            console.log(data);
+            var options = {
+                data: xdatos,
+
+                getValue: "name",
+
+                template: {
+                    type: "iconLeft",
+                    fields: {
+                        iconSrc: "icon"
+                    }
+                }
+            };
+
+            $("#template-icon-left").easyAutocomplete(options);
+        }
+    });
+}

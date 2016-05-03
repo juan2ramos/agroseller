@@ -45,3 +45,8 @@ Route::post('questions/new', [
     'uses' => 'ProductController@addQuestion',
     'as' => 'addQuestion'
 ]);
+
+Route::post('searchBar', [
+    'uses' => 'HomeController@searchBar',
+    'as' => 'searchBar'
+]);

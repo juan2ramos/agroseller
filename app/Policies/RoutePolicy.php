@@ -31,16 +31,16 @@ class RoutePolicy
             '1' =>
                 [
                     'admin', 'users', 'providers', 'category', 'farmIndex', 'products', 'questions', 'clients',
-                    'bills', 'orders', 'reports', 'subcategoriesQuery','featuresQuery','newProduct'
+                    'bills', 'orders', 'reports', 'subcategoriesQuery','featuresQuery', 'showUser', 'validateProvider'
                 ],
             '2' =>
                 [
                     'admin', 'users', 'providers', 'category', 'farmIndex', 'products', 'clients', 'bills',
-                    'orders', 'subcategoriesQuery','featuresQuery','newProduct'
+                    'orders', 'subcategoriesQuery','featuresQuery'
                 ],
             '3' =>
                 [
-                    'admin', 'products', 'questions', 'orders','newProduct',
+                    'admin', 'products', 'questions', 'orders', 'registerProvider', 'isValidateProviders'
                 ],
             '4' =>
                 [
@@ -48,7 +48,7 @@ class RoutePolicy
                 ],
             '5' =>
                 [
-                    'admin', 'providers', 'clients', 'reports'
+                    'admin', 'providers', 'clients', 'reports', 'showUser', 'validateProvider'
                 ],
             '6' =>
                 [
