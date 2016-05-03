@@ -1,34 +1,30 @@
 var search = $('#input-search');
 var result;
 var marginSearch;
-var query = [];
 searchInit();
 
+
 search.on('keyup', function(){
+
     if(search.val()){
-        $(this).siblings().slideDown(200);
+        $(this).siblings().addClass('open');
         searchQuery();
     }
-    else{
-        $(this).siblings().slideUp(200);
-    }
-});
+    else $(this).siblings().removeClass('open');
 
-search.focus(function(){
-    $('.autocomplete-result').children().remove();
-    $(this).siblings().slideDown(200);
+}).focus(function(){
+    $(this).siblings().addClass('open');
     searchQuery();
+
+}).focusout(function(){
+    $(this).siblings().removeClass('open');
 });
 
-search.focusout(function(){
-  $(this).siblings().slideUp(200);
-  $('.autocomplete-result').children().remove();
-});
 
 function searchInit(){
     search.wrap('<div class="autocomplete"></div>');
-    $('<ul class="autocomplete-result"></ul>').appendTo('.autocomplete');
-    result = $('.autocomplete-result');
+    $('<ul class="result"></ul>').appendTo('.autocomplete');
+    result = $('.result');
     marginSearch = -(result.width()/2);
     result.css('margin-left', marginSearch + 'px');
 }
@@ -49,17 +45,19 @@ function searchQuery(){
         dataType :  'json',
         data     :  input,
         success  :  function(json) {
-            console.log(json.products);
-            var productsJson = json.products;
+            result.children().remove();
 
-            $('.autocomplete-result').children().remove();
-
-            for (var i = 0; i < productsJson.length; i++) {
-                result.append('<li class="thisSearch"></li>');
-                    $('.thisSearch')
-                        .append('<div class="autocomplete-result-image"><img src="' + productsJson[i].icon + '"></div>')
-                        .append('<span class="autocomplete-result-text">' + productsJson[i].name + '</span>')
-                        .removeClass('thisSearch');
+            if(json.products.length > 0){
+                for (var i = 0; i < json.products.length; i++) {
+                    result.append('<li class="thisSearch"></li>');
+                        $('.thisSearch')
+                            .append('<div class="autocomplete-result-image"><img src="' + json.products[i].icon + '"></div>')
+                            .append('<span class="autocomplete-result-text">' + json.products[i].name + '</span>')
+                            .removeClass('thisSearch');
+                }
+            }
+            else{
+                result.append('<li><span class="no-data">No hay resultados</span></li>');
             }
         }
     });

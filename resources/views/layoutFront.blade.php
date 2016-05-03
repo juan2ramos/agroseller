@@ -553,10 +553,6 @@
 <script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
 <script src="{{asset('js/front/main.js')}}"></script>
 <script src="{{asset('js/owl.carousel.js')}}"></script>
-<script src="{{asset('js/easy-autocomplete.js')}}"></script>
-<!--****************** Pendiente optimizar *******************-->
-<link rel="stylesheet" href="{{asset('css/front/easy-autocomplete.css')}}">
-<!--****************** Pendiente optimizar *******************-->
 <script src="{{asset('js/search.js')}}"></script>
 
 @yield('scripts')

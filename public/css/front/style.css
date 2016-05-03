@@ -1916,11 +1916,11 @@ body {
   cursor: pointer;
 }
 
-.autocomplete-result.open {
+.autocomplete .result.open {
   display: block;
 }
 
-.autocomplete-result {
+.autocomplete .result {
   position: relative;
   left: 50%;
   min-height: 79px;
@@ -1933,7 +1933,7 @@ body {
   padding: 14px 0;
 }
 
-.autocomplete-result li {
+.autocomplete .result li {
   height: 50px;
   padding: 6px 12px;
   display: -webkit-flex;
@@ -1944,8 +1944,12 @@ body {
   align-items: center;
 }
 
-.autocomplete-result li:hover {
+.autocomplete .result li:hover {
   background: #d7d7d7;
+}
+
+.autocomplete .result li .no-data {
+  padding-left: 16px;
 }
 
 .autocomplete-result-image {

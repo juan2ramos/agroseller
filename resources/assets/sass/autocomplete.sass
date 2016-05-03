@@ -5,28 +5,30 @@
   max-height: 400px
   cursor: pointer
 
-.autocomplete-result.open
-  display: block
+  .result.open
+    display: block
 
-.autocomplete-result
-  position: relative
-  left: 50%
-  min-height: 79px
-  font-weight: 300
-  border-bottom: 1px dashed gray
-  display: none
-  width: 98%
-  background: rgba(255, 255, 255, 0.95)
-  border-radius: 0 0 3px 3px
-  padding: 14px 0
+  .result
+    position: relative
+    left: 50%
+    min-height: 79px
+    font-weight: 300
+    border-bottom: 1px dashed gray
+    display: none
+    width: 98%
+    background: rgba(255, 255, 255, 0.95)
+    border-radius: 0 0 3px 3px
+    padding: 14px 0
 
-  li
-    height: 50px
-    padding: 6px 12px
-    display: flex
-    align-items: center
-    &:hover
-      background: #d7d7d7
+    li
+      height: 50px
+      padding: 6px 12px
+      display: flex
+      align-items: center
+      &:hover
+        background: #d7d7d7
+      .no-data
+        padding-left: 16px
 .autocomplete-result-image
   width: 40px
   height: 40px
