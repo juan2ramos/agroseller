@@ -17,16 +17,27 @@ use Jenssegers\Date\Date;
 class ProductController extends Controller
 {
 
-    function productFront(Request $request)
+    function productFront(Request $request, $subcategoriesName = null)
     {
-        $products = Product::take(10)->get();
-        return view('front.products', compact('products'));
+        if ($subcategoriesName) {
+
+            $products = Subcategory::where('slug', $subcategoriesName)->firstOrFail()->products()->get();
+            $subcategories = Subcategory::all();
+            $images = ProductFile::whereRaw('extension = "jpg" or extension = "png"')->get();
+            return view('front.home', compact('categories', 'products', 'subcategories', 'images'));
+
+        }
+        return redirect()->route('home');
+
     }
+
     function checkout(Request $request)
     {
         return view('front.checkout');
     }
-    function addQuestion(Request $request){
+
+    function addQuestion(Request $request)
+    {
         $question = new Question;
         $question->user_id = $request->user_id;
         $question->product_id = $request->product_id;
@@ -37,13 +48,13 @@ class ProductController extends Controller
         $text->question_id = $question->id;
         $text->save();
 
-        $questions = Question::where('product_id' , '=', $request->product_id)->orderBy('id','desc')->get();
+        $questions = Question::where('product_id', '=', $request->product_id)->orderBy('id', 'desc')->get();
         $users = [];
         $texts = [];
         $dates = [];
 
-        foreach($questions as $question){
-            $text    = Text::where('question_id', '=', $question->id)->first();
+        foreach ($questions as $question) {
+            $text = Text::where('question_id', '=', $question->id)->first();
             $users[] = User::find($question->user_id);
             $texts[] = $text;
             $dates[] = Date::parse($text->created_at)->diffForHumans();
@@ -56,83 +67,86 @@ class ProductController extends Controller
         return response()->json(['texts' => $texts, 'users' => $users, 'dates' => $dates]);
     }
 
-    private function setFeaturesTranslate(Product $product){
+    private function setFeaturesTranslate(Product $product)
+    {
         return
-        [[
-            'id'    =>  1,
-            'name'  =>  'Presentación',
-            'value' =>  $product->presentation
-         ],
-         [
-             'id'   =>  2,
-             'name'  =>  'Tamaño',
-             'value' =>  $product->size
-         ],
-         [
-             'id'    =>  3,
-             'name'  =>  'Peso',
-             'value' =>  $product->weight
-         ],
-         [
-             'id'    =>  4,
-             'name' => 'Medida',
-             'value' =>  $product->measure
-         ],
-         [
-             'id'    =>  5,
-             'name' => 'Material',
-             'value' =>  $product->material
-         ],
-         [
-             'id'    =>  6,
-             'name' => 'Description',
-             'value' =>  "",
-         ],
-         [
-             'id'    =>  7,
-             'name' => 'Composición',
-             'value' =>  $product->composition
-         ],
-         [
-             'id'    =>  8,
-             'name' => 'Precio',
-             'value' =>  '$' . number_format($product->price, 0, ',', '.')
-         ],
-         [
-             'id'    =>  9,
-             'name' => 'Impuestos',
-             'value' =>  $product->taxes
-         ],
-         [
-             'id'    =>  10,
-             'name' => 'Cantidad disponible',
-             'value' =>  $product->available_quantity
-         ],
-         [
-             'id'    =>  11,
-             'name' => 'Tamaño imagen',
-             'value' =>  $product->image_scale
-         ],
-         [
-             'id'    =>  12,
-             'name' => 'Ubicación',
-             'value' =>  $product->location
-         ],
-         [
-             'id'    =>  13,
-             'name' => 'Descripción de uso',
-             'value' =>  $product->forms_employment
-        ]];
+            [[
+                'id' => 1,
+                'name' => 'Presentación',
+                'value' => $product->presentation
+            ],
+                [
+                    'id' => 2,
+                    'name' => 'Tamaño',
+                    'value' => $product->size
+                ],
+                [
+                    'id' => 3,
+                    'name' => 'Peso',
+                    'value' => $product->weight
+                ],
+                [
+                    'id' => 4,
+                    'name' => 'Medida',
+                    'value' => $product->measure
+                ],
+                [
+                    'id' => 5,
+                    'name' => 'Material',
+                    'value' => $product->material
+                ],
+                [
+                    'id' => 6,
+                    'name' => 'Description',
+                    'value' => "",
+                ],
+                [
+                    'id' => 7,
+                    'name' => 'Composición',
+                    'value' => $product->composition
+                ],
+                [
+                    'id' => 8,
+                    'name' => 'Precio',
+                    'value' => '$' . number_format($product->price, 0, ',', '.')
+                ],
+                [
+                    'id' => 9,
+                    'name' => 'Impuestos',
+                    'value' => $product->taxes
+                ],
+                [
+                    'id' => 10,
+                    'name' => 'Cantidad disponible',
+                    'value' => $product->available_quantity
+                ],
+                [
+                    'id' => 11,
+                    'name' => 'Tamaño imagen',
+                    'value' => $product->image_scale
+                ],
+                [
+                    'id' => 12,
+                    'name' => 'Ubicación',
+                    'value' => $product->location
+                ],
+                [
+                    'id' => 13,
+                    'name' => 'Descripción de uso',
+                    'value' => $product->forms_employment
+                ]];
     }
-    function productDetailFront($id){
+
+    function productDetailFront($id)
+    {
         $product = Product::find($id);
         $featuresTranslate = $this->setFeaturesTranslate($product);
 
-        $questions = Question::where('product_id' , '=', $product->id)->orderBy('id','desc')->get();
+        $questions = Question::where('product_id', '=', $product->id)->orderBy('id', 'desc')->get();
         $features = $product->subcategory->features;
 
-        foreach($featuresTranslate as $key => $translate){
-            if(!isset($features[$key]) || $featuresTranslate[$key]['value'] == ""){
+        foreach ($featuresTranslate as $key => $translate) {
+            if (!isset($features[$key]) || $featuresTranslate[$key]['value'] == "") {
                 unset($featuresTranslate[$key]);
             }
         }
@@ -140,8 +154,8 @@ class ProductController extends Controller
         $users = [];
         $texts = [];
         $dates = [];
-        foreach($questions as $question){
-            $text    = Text::where('question_id', '=', $question->id)->first();
+        foreach ($questions as $question) {
+            $text = Text::where('question_id', '=', $question->id)->first();
             $users[] = User::find($question->user_id);
             $texts[] = $text;
             $dates[] = Date::parse($text->created_at)->diffForHumans();

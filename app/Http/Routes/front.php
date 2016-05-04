@@ -15,10 +15,6 @@ Route::get('precios', [
     'as' => 'pricing'
 ]);
 
-Route::get('productos', [
-    'uses' => 'ProductController@productFront',
-    'as' => 'product'
-]);
 
 Route::get('finalizar-compra', [
     'uses' => 'ProductController@checkout',
@@ -49,4 +45,13 @@ Route::post('questions/new', [
 Route::post('searchBar', [
     'uses' => 'HomeController@searchBar',
     'as' => 'searchBar'
+]);
+
+/*
+ * Ruta de productos
+ * */
+
+Route::get('productos/{name?}',[
+    'uses' => 'ProductController@productFront',
+    'as' => 'product'
 ]);

@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subcategory extends Model
 {
-    protected $fillable = ['name','categories_id', 'url_image'];
+    protected $fillable = ['name','categories_id', 'url_image','slug'];
 
     public function features()
     {
@@ -14,5 +14,8 @@ class Subcategory extends Model
 
     public function products(){
         return $this->hasMany(Product::class);
+    }
+    public function getProductsPublicAttribute(){
+        return $this->products()->where('status', 'public');
     }
 }
