@@ -31,7 +31,8 @@ class RoutePolicy
             '1' =>
                 [
                     'admin', 'users', 'providers', 'category', 'farmIndex', 'products', 'questions', 'clients',
-                    'bills', 'orders', 'reports', 'subcategoriesQuery','featuresQuery', 'showUser', 'validateProvider'
+                    'bills', 'orders', 'reports', 'subcategoriesQuery','featuresQuery', 'showUser', 'validateProvider',
+                    'newProduct'
                 ],
             '2' =>
                 [
@@ -40,7 +41,7 @@ class RoutePolicy
                 ],
             '3' =>
                 [
-                    'admin', 'products', 'questions', 'orders', 'registerProvider', 'isValidateProviders'
+                    'admin', 'products', 'questions', 'orders', 'registerProvider', 'isValidateProviders','newProduct'
                 ],
             '4' =>
                 [
@@ -59,6 +60,7 @@ class RoutePolicy
 
     function routeValidate()
     {
+
         $role = Auth::user()['role_id'];
         return !in_array($this->route, $this->acl[$role]);
     }

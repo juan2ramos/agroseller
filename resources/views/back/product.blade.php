@@ -116,7 +116,20 @@
     </form>
 
     @if (session('messageSuccess'))
-
+        <div class="MessagePlatform row middle center">
+            <div class="MessagePlatform-content">
+                <span class="MessagePlatform-close">X</span>
+                <h2>!Tienes un nuevo mensaje!</h2>
+                <p>Tu producto ya casi esta listo, uno de nuestros agentes comerciales esta revisando que los datos que
+                    nos has suminstrado esten orden.</p>
+                <p>Una vez tu producto este listo y publicado se te notificará en tú centro de notificaciones, además te
+                    enviaremos un correo electrónico.</p>
+                <p>Si por alguna razón tu producto no es publicado, se te notificará por los mismos medios las razones y
+                    los pasos que debes serguir para mejorar la publicación de tu producto.</p>
+                <p>Gracias por elegirnos.</p>
+                <p class="MessagePlatform-last">Centro de notificaciones <span>Agroseller</span></p>
+            </div>
+        </div>
     @endif
 @endsection
 @section('scripts')
