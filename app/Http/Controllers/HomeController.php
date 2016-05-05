@@ -53,47 +53,11 @@ class HomeController extends Controller
     }
 
     function searchBar(Request $request){
-        //$Products = Product::select('name', 'slug')->with('productFiles')->where("name", "like", "%{$request->value}%")->limit(10)->get();
-        //$Products = Product::with('productFiles')->select('name', 'slug', 'extension as productFiles')->get();
-        //$Products = Product::with(['productFiles' => function($file){
-        //    $file->whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->first();
-        //}])->get();
-        //$Products = Product::with('productFiles')->get();
-        $prueba = ['name' => 'Santiago', 'slug' => 'slug-prueba'];
-        //$Products = Product::select('name', 'slug')->where("name", "like", "%{$request->value}%")->limit(10)->get()->with('productFiles');
-        $Products = Product::select('name', 'slug')
-            ->where("name", "like", "%{$request->value}%")
-            ->limit(10)
-            ->get();
-        /*
-         *
 
-<<<<<<< HEAD
-        $products = [];
-
-        foreach ($Products as $Product){
-            $id = $Product->id;
-            $name = $Product->name;
-            $image = $Product->productFiles()->whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->first();
-            $image = $image->name;
-
-            $products[] = [
-                'name'  => "{$name}",
-                'icon'  => "/uploads/products/{$image}",
-                'route' => "/producto/{$id}"
-            ];
-
-        }
-*/
-        if($request->ajax()){
-            return response()->json(['products' => $Products]);
-        }
-=======
         return ['products' => Product::with(['productFiles' => function($file){
             $file->addSelect(array('id', 'name'))->whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->first();
         }])->get(['name', 'slug'])];
 
 
->>>>>>> 40c867110ab32a47e32fdeac5f12be6008616383
     }
 }
