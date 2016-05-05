@@ -355,7 +355,7 @@
                     </div>
                     <ul>
                         @foreach($category->subcategories as $subcategory)
-                            <li><div><a href="">{{$subcategory->name}}</a></div></li>
+                            <li><div><a href="{{route('product',['name' => $subcategory->slug])}}">{{$subcategory->name}}</a></div></li>
                         @endforeach
                     </ul>
                 </li>
