@@ -68,6 +68,7 @@ class HomeController extends Controller
         /*
          *
 
+<<<<<<< HEAD
         $products = [];
 
         foreach ($Products as $Product){
@@ -87,5 +88,12 @@ class HomeController extends Controller
         if($request->ajax()){
             return response()->json(['products' => $Products]);
         }
+=======
+        return ['products' => Product::with(['productFiles' => function($file){
+            $file->addSelect(array('id', 'name'))->whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->first();
+        }])->get(['name', 'slug'])];
+
+
+>>>>>>> 40c867110ab32a47e32fdeac5f12be6008616383
     }
 }
