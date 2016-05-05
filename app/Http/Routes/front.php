@@ -5,7 +5,7 @@ Route::get('/', [
     'as' => 'home'
 ]);
 
-Route::get('producto/{id}', [
+Route::get('producto/{name}', [
     'uses' => 'ProductController@productDetailFront',
     'as' => 'productDetail'
 ]);
