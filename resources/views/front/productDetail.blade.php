@@ -276,7 +276,7 @@
 @endsection
 @section('scripts')
     <script src="{{asset('js/maps.js')}}"></script>
-    {!!"<script>getPosition('$product->location')</script>"!!}
+    <script>getPosition('{!!$product->location!!}')</script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap"
             async defer></script>
@@ -296,18 +296,15 @@
             $hour = $time[0];
             $minute = $time[1];
         ?>
-        {!!
-            "<script>
-                countDown({
-                  'year' : {$year},
-                  'month' : {$month},
-                  'day' : {$day},
-                  'hour' : {$hour},
-                  'second' : {$minute}
-                });
-            </script>
-            "
-        !!}
+    <script>
+        countDown({
+            'year'   : "{!! $year !!}",
+            'month'  : "{!! $month !!}",
+            'day'    : "{!! $day !!}",
+            'hour'   : "{!! $hour !!}",
+            'second' : "{!! $minute !!}"
+        });
+    </script>
     @endif
 @endsection
 
