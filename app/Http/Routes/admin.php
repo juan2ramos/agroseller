@@ -18,6 +18,10 @@ Route::group(['namespace' => 'admin'], function () {
         'uses' => 'CategoryController@featuresQuery',
         'as' => 'featuresQuery',
     ]);
+    Route::get('agentsGet', [
+        'uses' => 'UserController@agentsGet',
+        'as' => 'agentsGet',
+    ]);
 });
 
 Route::get('proveedores', [
@@ -150,3 +154,4 @@ Route::get('preguntas', [
     'as' => 'questions',
     'middleware' => 'VerifyProvider',
 ]);
+

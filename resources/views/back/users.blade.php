@@ -112,8 +112,13 @@
         </div>
         <div class="col-6 ">
             <label for="role_id" class="DataForm ">
-                <input type="text" id="role_id" name="name" value="{{ old('email') }}">
-                <span>Role</span>
+
+                <select name="role" id="roles">
+                    <option value="">Selecciona un rol</option>
+                    @foreach($roles as $role)
+                        <option value="{{$role->id}}">{{$role->name}}</option>
+                    @endforeach
+                </select>
             </label>
         </div>
         <div class="row center col-12">
@@ -126,4 +131,5 @@
 @section('scripts')
     <script src="{{asset('js/forms.js')}}"></script>
     <script src="{{asset('js/images.js')}}"></script>
+    <script src="{{asset('js/users.js')}}"></script>
 @endsection

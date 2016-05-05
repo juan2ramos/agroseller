@@ -23,7 +23,17 @@ class RoutePolicy
         $this->route = $route;
         $this->acl();
     }
-
+    /**
+     *
+    1	Super Administrador
+    2	Administrador
+    3	Proveedor
+    4	Cliente
+    5	Agente
+    6	Analista
+     *
+     * @return void
+     */
     private function acl()
     {
 
@@ -32,12 +42,12 @@ class RoutePolicy
                 [
                     'admin', 'users', 'providers', 'category', 'farmIndex', 'products', 'questions', 'clients',
                     'bills', 'orders', 'reports', 'subcategoriesQuery','featuresQuery', 'showUser', 'validateProvider',
-                    'newProduct'
+                    'newProduct','agentsGet'
                 ],
             '2' =>
                 [
                     'admin', 'users', 'providers', 'category', 'farmIndex', 'products', 'clients', 'bills',
-                    'orders', 'subcategoriesQuery','featuresQuery'
+                    'orders', 'subcategoriesQuery','featuresQuery','agentsGet'
                 ],
             '3' =>
                 [

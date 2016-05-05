@@ -2,6 +2,7 @@
 
 namespace Agrosellers\Http\Controllers;
 
+use Agrosellers\Entities\Role;
 use DB;
 use Agrosellers\User;
 use Gbrock\Table\Facades\Table;
@@ -20,9 +21,8 @@ class UserController extends Controller
         $users = Table::create($rows,['name' => 'Nombre', 'email' => 'Email',]);
         $users->addColumn('role_id', 'Rol', function($model) {return $model->role()->first()->name;});
         $users->addColumn('id', 'Acciones', function($model) {$id = $model->id;return '<a href="'.$id.'"> d </a>';});
-
-
-        return view('back.users', compact('users','routeSearch'));
+        $roles = Role::whereRaw('id in (1,2,4,5)')->get();
+        return view('back.users', compact('users','roles'));
 
     }
     function showUser($id){
