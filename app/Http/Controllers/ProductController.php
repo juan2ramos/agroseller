@@ -137,9 +137,9 @@ class ProductController extends Controller
                 ]];
     }
 
-    function productDetailFront($id)
+    function productDetailFront($productSlug)
     {
-        $product = Product::find($id);
+        $product = Product::where('slug', $productSlug)->first();
         $featuresTranslate = $this->setFeaturesTranslate($product);
 
         $questions = Question::where('product_id', '=', $product->id)->orderBy('id', 'desc')->get();
