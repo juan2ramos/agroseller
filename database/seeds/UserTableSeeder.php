@@ -15,7 +15,7 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class)->create([
+        User::create([
             'name' => 'Juan',
             'email' => 'juan2ramos@gmail.com',
             'username' => 'juan2ramos',
@@ -27,7 +27,7 @@ class UserTableSeeder extends Seeder
             'password' => bcrypt('12345'),
         ]);
 
-        factory(User::class)->create([
+        User::create([
             'name' => 'Ximena',
             'email' => 'xigom@hotmail.com',
             'username' => 'ximena',
@@ -39,7 +39,7 @@ class UserTableSeeder extends Seeder
             'password' => bcrypt('12345'),
         ]);
 
-        factory(User::class)->create([
+        User::create([
             'name' => 'miller',
             'email' => 'millerpreciado@gmail.com',
             'username' => 'miller',
@@ -51,7 +51,7 @@ class UserTableSeeder extends Seeder
             'password' => bcrypt('12345'),
         ]);
 
-        factory(User::class)->create([
+        User::create([
             'name' => 'Alejandra',
             'email' => 'luza.231@hotmail.com',
             'username' => 'Alejandra',
@@ -63,11 +63,9 @@ class UserTableSeeder extends Seeder
             'password' => bcrypt('12345'),
         ]);
 
-        factory(Agrosellers\User::class, 10)->create();
-
         /******************** Super Administrator **********************/
 
-        factory(User::class)->create([
+        User::create([
             'name' => 'Santiago',
             'email' => 'sanruiz1003@gmail.com',
             'username' => 'santo52',
@@ -81,7 +79,7 @@ class UserTableSeeder extends Seeder
 
         /******************** Administrator **********************/
 
-        factory(User::class)->create([
+        User::create([
             'name' => 'administrador',
             'email' => 'administrador@gmail.com',
             'username' => 'administrador',
@@ -95,7 +93,7 @@ class UserTableSeeder extends Seeder
 
         /******************** Provider **********************/
 
-        factory(User::class)->create([
+        User::create([
             'name' => 'Proveedor',
             'email' => 'proveedor@gmail.com',
             'username' => 'proveedor',
@@ -107,7 +105,7 @@ class UserTableSeeder extends Seeder
             'password' => bcrypt('12345'),
         ]);
 
-        Provider::create([
+/*        Provider::create([
             'company-name' => 'Bayer',
             'location' => 'Bogota',
             'address' => 'CR 45B 69C 33',
@@ -130,10 +128,10 @@ class UserTableSeeder extends Seeder
             'bank-country' => 'Colombia',
             'count-number' => '432476532262-1'
         ]);
-
+*/
         /******************** Customer **********************/
 
-        factory(User::class)->create([
+        User::create([
             'name' => 'Cliente',
             'email' => 'cliente@gmail.com',
             'username' => 'cliente',
@@ -147,7 +145,7 @@ class UserTableSeeder extends Seeder
 
         /******************** Agents *************************/
 
-        $user1 = factory(User::class)->create([
+        $user1 = User::create([
             'name' => 'Agent1',
             'email' => 'agent1@agrosellers.com',
             'username' => 'Agent One',
@@ -163,7 +161,7 @@ class UserTableSeeder extends Seeder
             'user_id' => $user1->id
         ]);
 
-        $user2 = factory(User::class)->create([
+        $user2 = User::create([
             'name' => 'Agent2',
             'email' => 'agent2@agrosellers.com',
             'username' => 'Agent Two',
@@ -177,7 +175,7 @@ class UserTableSeeder extends Seeder
         Agent::create([
             'user_id' => $user2->id
         ]);
-        $user3 = factory(User::class)->create([
+        $user3 = User::create([
             'name' => 'Agent3',
             'email' => 'agent3@agrosellers.com',
             'username' => 'Agent Three',
@@ -191,7 +189,7 @@ class UserTableSeeder extends Seeder
         Agent::create([
             'user_id' => $user3->id
         ]);
-        $user4 = factory(User::class)->create([
+        $user4 = User::create([
             'name' => 'Agent4',
             'email' => 'agent4@agrosellers.com',
             'username' => 'Agent Four',
@@ -206,7 +204,7 @@ class UserTableSeeder extends Seeder
         Agent::create([
             'user_id' => $user4->id
         ]);
-        $user5 = factory(User::class)->create([
+        $user5 = User::create([
             'name' => 'Agent5',
             'email' => 'agent5@agrosellers.com',
             'username' => 'Agent Five',
