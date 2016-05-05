@@ -16,7 +16,7 @@
     <div class="ContentInfo">
         <h2>Usuarios internos</h2>
         <hr>
-        <form action="{{ route($routeSearch) }}" method="post" class="Forms">
+        <form action="{{ route('searchUser') }}" method="post" class="Forms">
             <label for="Search" class="col-6 offset-6">
                 <input type="text" name="search" id="Search">
                 <span>Buscar usuario</span>
@@ -59,7 +59,7 @@
     <hr>
     <form class="Forms row columns" method="POST" action="{{ route('newProduct') }}" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <div class=" col-6 center row ">
+        <div class=" col-6 center row middle">
             <label for="image1" class="col-9 Form-image">
                 <input type="file" class="StepImages" name="image1" id="image1">
                 <figure class=" row middle center ">
@@ -80,7 +80,6 @@
                 <span>Nombre</span>
             </label>
         </div>
-
         <div class="col-6 ">
             <label for="last_name" class="DataForm ">
                 <input type="text" id="last_name" name="last_name" value="{{ old('last_name') }}">

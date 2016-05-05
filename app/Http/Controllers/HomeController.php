@@ -54,12 +54,10 @@ class HomeController extends Controller
 
     function searchBar(Request $request){
 
-        $Products = Product::with(['productFiles' => function($file){
-            $file->whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->first();
-        }])->get();
+        return ['products' => Product::with(['productFiles' => function($file){
+            $file->addSelect(array('id', 'name'))->whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->first();
+        }])->get(['name', 'slug'])];
 
-        if($request->ajax()){
-            return response()->json(['products' => $Products]);
-        }
+
     }
 }

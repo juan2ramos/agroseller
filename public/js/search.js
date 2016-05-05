@@ -49,6 +49,8 @@ function searchQuery(){
         dataType :  'json',
         data     :  input,
         success  :  function(json) {
+
+            console.log(json)
             result.empty();
             if(json.products.length > 0){
                 for(var i = 0; i < json.products.length; i++) {
