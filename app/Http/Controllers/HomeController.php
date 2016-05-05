@@ -53,25 +53,13 @@ class HomeController extends Controller
     }
 
     function searchBar(Request $request){
-        $Products = Product::where("name", "like", "%{$request->value}%")->limit(10)->get();
-        $products = [];
 
-        foreach ($Products as $Product){
-            $id = $Product->id;
-            $name = $Product->name;
-            $image = $Product->productFiles()->whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->first();
-            $image = $image->name;
-
-            $products[] = [
-                'name'  => "{$name}",
-                'icon'  => "/uploads/products/{$image}",
-                'route' => "/producto/{$id}"
-            ];
-
-        }
+        $Products = Product::with(['productFiles' => function($file){
+            $file->whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->first();
+        }])->get();
 
         if($request->ajax()){
-            return response()->json(['products' => $products]);
+            return response()->json(['products' => $Products]);
         }
     }
 }
