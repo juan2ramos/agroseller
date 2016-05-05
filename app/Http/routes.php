@@ -8,4 +8,10 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
     require __DIR__ . '/Routes/admin.php';
 });
-
+Route::get('a',function(){
+    foreach(\Agrosellers\Entities\Subcategory::all() as $s){
+        $s->slug = str_slug($s->name);
+        echo $s->slug . '<br>';
+        $s->save();
+    }
+});
