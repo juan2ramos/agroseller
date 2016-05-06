@@ -1,6 +1,6 @@
 @extends('layoutFront')
 @section('openGraph')
-    <meta property="og:url"           content="{{route('productDetail', $product->id)}}" />
+    <meta property="og:url"           content="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}" />
     <meta property="og:type"          content="{{route('home')}}" />
     <meta property="og:title"         content="{{$product->name}}" />
     <meta property="og:description"   content="{{$product->description}}" />
@@ -123,7 +123,7 @@
                             </g>
                         </g>
                     </svg>
-                    <div class="fb-share-button" data-href="{{route('productDetail', $product->id)}}" data-layout="button"></div>
+                    <div class="fb-share-button" data-href="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}" data-layout="button"></div>
                 </div>
                 <div class="social-share">
                     <svg width="138px" height="32px" viewBox="0 0 138 32" version="1.1"
@@ -147,7 +147,7 @@
                             </g>
                         </g>
                     </svg>
-                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{route('productDetail', $product->id)}}" data-text="{!!$product->name!!}" data-via="twitter-agroseller" data-lang="es" data-size="large" data-dnt="true">Twittear</a>
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}" data-text="{!!$product->name!!}" data-via="twitter-agroseller" data-lang="es" data-size="large" data-dnt="true">Twittear</a>
                 </div>
             </nav>
         </article>
@@ -186,7 +186,7 @@
         {!!$product->description!!}
         <h2>Características </h2>
         <article class="row bottom">
-            <ul class="col-2">
+            <ul class="col-2 self-start">
                 @for($i = 0; $i < count($features); $i++)
                     @if(!isset($featuresTranslate[$i]))
                         @continue

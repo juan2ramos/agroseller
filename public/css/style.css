@@ -1644,6 +1644,160 @@ body {
   left: 3rem;
 }
 
+.QuestionList,
+.Question {
+  height: calc(100vh - 164px);
+}
+
+.QuestionList {
+  transition: all 1s ease;
+  overflow-y: scroll;
+  padding: 0 1rem;
+}
+
+.QuestionList-questions {
+  margin-top: 30px;
+}
+
+.QuestionList-item {
+  cursor: pointer;
+  padding: 5px 10px;
+  margin: 5px 0;
+  box-shadow: 3px 3px 3px -4px #B9BCC0;
+}
+
+.Question {
+  display: none;
+  position: relative;
+}
+
+.Question .QuestionUser {
+  overflow-y: scroll;
+  height: calc(100% - 70px);
+}
+
+.Question .QuestionHead {
+  padding: 1rem;
+  font-size: .9rem;
+  border-bottom: 1px inset #B9BCC0;
+  margin-bottom: 1rem;
+}
+
+.Question .QuestionHead-close {
+  cursor: pointer;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 1.3rem;
+  padding: 5px;
+}
+
+.Question .QuestionHead-date {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.Question .QuestionHead-date-icon {
+  margin-right: 0.625rem;
+}
+
+.Question .QuestionContent {
+  margin-top: 1.875rem;
+  padding: 0 1rem;
+}
+
+.Question .QuestionContent-Answers {
+  padding-left: 30px;
+}
+
+.Question .QuestionContent .QuestionContent-title {
+  padding: 10px;
+}
+
+.Question .QuestionContent .QuestionContent-title h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.Question .AnswerQuestion {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.Question .AnswerQuestion .answerBox,
+.Question .AnswerQuestion .answerBox textarea {
+  width: 100%;
+}
+
+.Question .AnswerQuestion .answerBox {
+  position: relative;
+}
+
+.Question .AnswerQuestion .answerBox textarea {
+  border: 1px solid #B9BCC0;
+  border-radius: 5px;
+  resize: none;
+  padding: 5px;
+  padding-left: 70px;
+  height: 70px;
+}
+
+.Question .AnswerQuestion .answerBox textarea:focus {
+  border: 1px solid #B9BCC0;
+}
+
+.Question .AnswerQuestion .answerBox .answerButton {
+  position: absolute;
+  left: 0;
+  background: #B9BCC0;
+  padding: 10px;
+  height: 70px;
+}
+
+.stateIcon {
+  width: 27px;
+  border: 2px solid #E1E3E6;
+  border-radius: 50%;
+  overflow: hidden;
+  height: 27px;
+  padding: 0.21875rem;
+  margin-right: 0.625rem;
+}
+
+.stateIcon svg polygon {
+  fill: #E1E3E6;
+}
+
+.Identity {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.Identity-avatar {
+  width: 2.5rem;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-right: 0.625rem;
+}
+
 .button {
   color: #000;
   width: 100%;

@@ -1,0 +1,91 @@
+.QuestionList,
+.Question
+  height: calc(100vh - 164px)
+
+.QuestionList
+  transition: all 1s ease
+  overflow-y: scroll
+  padding: 0 1rem
+  &-questions
+    margin-top: 30px
+  &-item
+    cursor: pointer
+    padding: 5px 10px
+    margin: 5px 0
+    box-shadow: 3px 3px 3px -4px #B9BCC0
+.Question
+  display: none
+  position: relative
+  .QuestionUser
+    overflow-y: scroll
+    height: calc(100% - 70px)
+  .QuestionHead
+    padding: 1rem
+    font-size: .9rem
+    border-bottom: 1px inset #B9BCC0
+    margin-bottom: 1rem
+    &-close
+      cursor: pointer
+      display: flex
+      justify-content: flex-end
+      align-items: center
+      font-size: 1.3rem
+      padding: 5px
+    &-date
+      display: flex
+      align-items: center
+      justify-content: flex-end
+      &-icon
+        margin-right: rem(10)
+  .QuestionContent
+    margin-top: rem(30)
+    padding: 0 1rem
+    &-Answers
+      padding-left: 30px
+    .QuestionContent-title
+      padding: 10px
+      h2
+        margin: 0
+        font-size: 1rem
+  .AnswerQuestion
+    position: absolute
+    bottom: 0
+    width: 100%
+    .answerBox,
+    .answerBox textarea
+      width: 100%
+    .answerBox
+      position: relative
+      textarea
+        border: 1px solid #B9BCC0
+        border-radius: 5px
+        resize: none
+        padding: 5px
+        padding-left: 70px
+        height: 70px
+        &:focus
+          border: 1px solid #B9BCC0
+      .answerButton
+        position: absolute
+        left: 0
+        background: #B9BCC0
+        padding: 10px
+        height: 70px
+.stateIcon
+  width: 27px
+  border: 2px solid #E1E3E6
+  border-radius: 50%
+  overflow: hidden
+  height: 27px
+  padding: rem(3.5)
+  margin-right: rem(10)
+  svg polygon
+    fill: #E1E3E6
+.Identity
+  display: flex
+  align-items: center
+  &-avatar
+    width: rem(40)
+    overflow: hidden
+    border-radius: 50%
+    margin-right: rem(10)
