@@ -16,6 +16,7 @@ use Agrosellers\Entities\Analyst;
 use Agrosellers\Entities\Client;
 use Agrosellers\Entities\Provider;
 use Agrosellers\Entities\Question;
+use Agrosellers\Entities\Text;
 use Agrosellers\Entities\Role;
 
 
@@ -76,6 +77,11 @@ class User extends Model implements AuthenticatableContract,
     public function questions(){
         return $this->hasMany(Question::class);
     }
+
+    public function texts(){
+        return $this->hasMany(Text::class);
+    }
+
     public function fullName(){
         return $this->name . ' ' . $this->last_name;
     }

@@ -134,7 +134,6 @@ Route::post('registro-proveedor', [
 Route::post('data-provider', [
     'uses' => 'ProviderController@insertProvider',
     'as' => 'insertProvider',
-
 ]);
 
 Route::get('informacion-cliente', [
@@ -155,3 +154,14 @@ Route::get('preguntas', [
     'middleware' => 'VerifyProvider',
 ]);
 
+Route::post('preguntas', [
+    'uses' => 'QuestionController@questionDetail',
+    'as' => 'questionDetail',
+    'middleware' => 'VerifyProvider',
+]);
+
+route::post('preguntas/new', [
+    'uses' => 'QuestionController@questionNew',
+    'as' => 'questionNew',
+    'middleware' => 'VerifyProvider',
+]);

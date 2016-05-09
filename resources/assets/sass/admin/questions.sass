@@ -13,6 +13,7 @@
     padding: 5px 10px
     margin: 5px 0
     box-shadow: 3px 3px 3px -4px #B9BCC0
+    text-transform: capitalize
 .Question
   display: none
   position: relative
@@ -24,13 +25,18 @@
     font-size: .9rem
     border-bottom: 1px inset #B9BCC0
     margin-bottom: 1rem
+    position: relative
     &-close
       cursor: pointer
       display: flex
-      justify-content: flex-end
+      justify-content: center
       align-items: center
       font-size: 1.3rem
       padding: 5px
+      width: 40px
+      position: absolute
+      right: 10px
+      top: 5px
     &-date
       display: flex
       align-items: center
@@ -45,6 +51,7 @@
     .QuestionContent-title
       padding: 10px
       h2
+        text-transform: capitalize
         margin: 0
         font-size: 1rem
   .AnswerQuestion
@@ -68,6 +75,7 @@
       .answerButton
         position: absolute
         left: 0
+        top: 0
         background: #B9BCC0
         padding: 10px
         height: 70px
@@ -81,6 +89,10 @@
   margin-right: rem(10)
   svg polygon
     fill: #E1E3E6
+  &.isResponded
+    border: 2px solid #C5D257
+    svg polygon
+      fill: #C5D257
 .Identity
   display: flex
   align-items: center

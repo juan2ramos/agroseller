@@ -6,8 +6,7 @@
     <meta property="og:description"   content="{{$product->description}}" />
     <meta property="og:image"         content="{{url('uploads/products/' . $images->first()->name)}}" />
 @endsection
-
-<?php $hasOffer = $product->offer_on && strtotime($product->offer_on) < strtotime('now') && strtotime($product->offer_off) - strtotime($product->offer_on) > 0 ?>
+<?php $hasOffer = strtotime($product->offer_on) < strtotime('now') && strtotime($product->offer_off) - strtotime('now') > 0 ?>
 @section('content')
     <svg style="display: none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs></defs>
@@ -186,24 +185,18 @@
         {!!$product->description!!}
         <h2>Características </h2>
         <article class="row bottom">
-            <ul class="col-2 self-start">
-                @for($i = 0; $i < count($features); $i++)
-                    @if(!isset($featuresTranslate[$i]))
-                        @continue
-                    @elseif($featuresTranslate[$i]['id'] % 2 != 0)
-                        <li>{{$featuresTranslate[$i]['name']}}: <b>{{ $featuresTranslate[$i]['value'] }}</b></li>
-                    @endif
-                @endfor
-            </ul>
-            <ul class="col-2 self-start">
-                @for($i = 0; $i < count($features); $i++)
-                    @if(!isset($featuresTranslate[$i]))
-                        @continue
-                    @elseif($featuresTranslate[$i]['id'] % 2 == 0)
-                        <li>{{$featuresTranslate[$i]['name']}}: <b>{{ $featuresTranslate[$i]['value'] }}</b></li>
-                    @endif
-                @endfor
-            </ul>
+            <?php $j = 0 ?>
+            @for($i = 0; $i < 2; $i++)
+                <ul class="col-2 self-start">
+                    @while($j < count($featuresTranslate))
+                        <li>{{$featuresTranslate[$j]['name']}}: <b>{{ $featuresTranslate[$j]['value'] }}</b></li>
+                        <?php $j++ ?>
+                        @if($j == count($featuresTranslate) /2)
+                            @break
+                        @endif
+                    @endwhile
+                </ul>
+            @endfor
             <div class="col-8 AlignRight">
                 Descarga Ficha Técnica
                 <svg width="32px" height="38px" viewBox="0 0 32 38" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -248,26 +241,45 @@
         </form>
         <ul>
             <div id="reload">
-            <?php $i = 0 ?>
             @foreach($questions as $question)
                 <li class="row">
                     <figure>
-                        @if($users[$i]->photo)
-                            <img src="{{url('images/' . $users[0]->photo)}}" alt="">
+                        @if($question->texts->first()->user->photo)
+                            <img src="{{url('images/' . $question->texts->first()->user->photo)}}">
                         @else
-                            <img src="{{url('images/user.png')}}" alt="">
+                            <img src="{{url('images/user.png')}}">
                         @endif
                     </figure>
                     <div class="Comments-user">
-                        <h5>{{$users[$i]->name}} {{$users[$i]->second_name}} {{$users[$i]->last_name}} {{$users[$i]->second_last_name}}
-                            <time> • {{$dates[$i]}}</time>
+                        <h5>{{$question->texts->first()->user->name}} {{$question->texts->first()->user->second_name}} {{$question->texts->first()->user->last_name}} {{$question->texts->first()->user->second_last_name}}
+                            <time> • {{$question->texts->first()->date}}</time>
                         </h5>
                         <p>
-                            {{$texts[$i]->description}}
+                            {{$question->texts->first()->description}}
                         </p>
                     </div>
+                    @for($i = 1; $i < count($question->texts); $i++)
+                        <ul class="col-12" style="padding-left:3.8rem; margin-bottom: 5px">
+                            <li class="row" style="margin-bottom: 0">
+                                <figure style="">
+                                    @if($question->texts[$i]->user->photo)
+                                        <img src="{{url('images/' . $question->texts[$i]->user->photo)}}">
+                                    @else
+                                        <img src="{{url('images/user.png')}}">
+                                    @endif
+                                </figure>
+                                <div class="Comments-user">
+                                    <h5>{{$question->texts[$i]->user->name}} {{$question->texts[$i]->user->second_name}} {{$question->texts[$i]->user->last_name}} {{$question->texts[$i]->user->second_last_name}}
+                                        <time> • {{$question->texts[$i]->date}}</time>
+                                    </h5>
+                                    <p>
+                                        {{$question->texts[$i]->description}}
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    @endfor
                 </li>
-                <?php $i++ ?>
             @endforeach
             </div>
         </ul>
@@ -298,11 +310,11 @@
         ?>
     <script>
         countDown({
-            'year'   : "{!! $year !!}",
-            'month'  : "{!! $month !!}",
-            'day'    : "{!! $day !!}",
-            'hour'   : "{!! $hour !!}",
-            'second' : "{!! $minute !!}"
+            'year'   : {!! $year !!},
+            'month'  : {!! $month !!},
+            'day'    : {!! $day !!},
+            'hour'   : {!! $hour !!},
+            'minute' : {!! $minute !!}
         });
     </script>
     @endif

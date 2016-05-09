@@ -18,40 +18,60 @@ addComment = function(comment, product_id, user_id, url, index){
         type    :  'POST',
         dataType:  'json',
         data    :   param,
-        success :   function (datos) {
+        success :   function (data) {
 
             var html = "";
-            var texts = datos.texts;
-            var users = datos.users;
-            var dates = datos.dates;
-            console.log(dates[0]);
+            var questions = data.questions;
 
-            for(var i = 0; i < texts.length; i++){
-
-                var photo = index + "/images/" + users[i].photo;
-                if(users[i].photo == ""){
-                    photo = index + "/images/user.png";
+            var setPhoto = function(photo){
+                var image = index + "/images/" + photo;
+                if(photo == ''){
+                    image = index + "/images/user.png";
                 }
+                return image;
+            };
 
+            for(var i = 0; i < questions.length; i++){
+                var texts = questions[i].texts;
+                var photo = setPhoto(texts[0].user.photo);
                 html += "<li class='row'>" +
                             "<figure>" +
                                 "<img src='" + photo + "'>" +
                             "</figure>" +
                             "<div class='Comments-user'>" +
                                 "<h5>" +
-                                    users[i].name + " " + users[i].second_name + " " + users[i].last_name + " " + users[i].second_last_name +
-                                    "<time> • " +  dates[i] + "</time>" +
+                                    texts[0].user.name + " " + texts[0].user.second_name + " " + texts[0].user.last_name + " " + texts[0].user.second_last_name +
+                                    "<time> • " +  texts[0].date + "</time>" +
                                 "</h5>" +
-                                "<p>" + texts[i].description + "</p>" +
-                            "</div>" +
+                                "<p>" + texts[0].description + "</p>" +
+                            "</div>";
+                        for(var j = 1; j < texts.length; j++){
+                            photo = setPhoto(texts[j].user.photo);
+
+                            html += "<ul class='col-12' style='padding-left:3.8rem; margin-bottom: 5px'>" +
+                                        "<li class='row' style='margin-bottom: 0'>" +
+                                            "<figure>" +
+                                                "<img src='" + photo + "'>" +
+                                            "</figure>" +
+                                            "<div class='Comments-user'>" +
+                                                "<h5>" +
+                                                    texts[j].user.name + " " + texts[j].user.second_name + " " + texts[j].user.last_name + " " + texts[j].user.second_last_name +
+                                                    "<time> • " +  texts[j].date + "</time>" +
+                                                "</h5>" +
+                                                "<p>" + texts[j].description + "</p>" +
+                                            "</div>" +
+                                        "</li>" +
+                                    "</ul>";
+                        }
+                html +=
                         "</li>";
             }
 
             $('#reload').html(html);
 
         },
-        error   :   function(e) {
-            alert("Error en el servidor, por favor, intentalo de nuevo mas tarde: " + e);
+        error   :   function() {
+            alert("Error");
         }
     });
 };

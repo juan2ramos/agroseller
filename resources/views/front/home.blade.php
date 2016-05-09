@@ -31,12 +31,8 @@
                     </figure>
                     <div class="Product-info">
                         <a href="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}"><h4>{{$product->name}}</h4></a>
-                        @foreach($subcategories as $subcategory)
-                            @if($subcategory->id == $product->subcategory_id)
-                                <h5>{{$subcategory->name}}</h5>
-                            @endif
-                        @endforeach
-                        <?php $hasOffer = $product->offer_on && strtotime($product->offer_on) < strtotime('now') && strtotime($product->offer_off) - strtotime($product->offer_on) > 0 ?>
+                        <h5>{{$product->subcategory->name}}</h5>
+                        <?php $hasOffer = strtotime($product->offer_on) < strtotime('now') && strtotime($product->offer_off) - strtotime('now') > 0 ?>
                         @if($hasOffer)
                             <p>${{number_format($product->offer_price, 0, " ", ".")}} <span>${{number_format($product->price, 0, " ", ".")}}</span></p>
                         @else

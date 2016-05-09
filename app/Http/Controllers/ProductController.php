@@ -16,15 +16,13 @@ use Jenssegers\Date\Date;
 
 class ProductController extends Controller
 {
-
     function productFront(Request $request, $subcategoriesName = null)
     {
         if ($subcategoriesName) {
 
             $products = Subcategory::where('slug', $subcategoriesName)->firstOrFail()->products()->get();
-            $subcategories = Subcategory::all();
             $images = ProductFile::whereRaw('extension = "jpg" or extension = "png"')->get();
-            return view('front.home', compact('categories', 'products', 'subcategories', 'images'));
+            return view('front.home', compact('products', 'images'));
 
         }
         return redirect()->route('home');
@@ -46,30 +44,42 @@ class ProductController extends Controller
         $text = new Text;
         $text->description = $request->comment;
         $text->question_id = $question->id;
+        $text->user_id = $request->user_id;
         $text->save();
 
         $questions = Question::where('product_id', '=', $request->product_id)->orderBy('id', 'desc')->get();
-        $users = [];
-        $texts = [];
-        $dates = [];
 
-        foreach ($questions as $question) {
-            $text = Text::where('question_id', '=', $question->id)->first();
-            $users[] = User::find($question->user_id);
-            $texts[] = $text;
-            $dates[] = Date::parse($text->created_at)->diffForHumans();
+        foreach($questions as $question){
+            $question['texts'] = Text::with('user')->where('question_id', $question->id)->get();
+            foreach($question->texts as $text){
+                $text['date'] = Date::parse($text->created_at)->diffForHumans();
+            }
         }
 
-        if ($request->ajax()) {
-            return response()->json(['texts' => $texts, 'users' => $users, 'dates' => $dates]);
+        return ['questions' => $questions];
+    }
+
+    function productDetailFront($slug, $id)
+    {
+        $product = Product::find($id);
+        $questions = Question::where('product_id', $id)->orderBy('created_at', 'DESC')->get();
+
+        foreach($questions as $question){
+            $question['texts'] = Text::with('user')->where('question_id', $question->id)->get();
+            foreach($question->texts as $text){
+                $text['date'] = Date::parse($text->created_at)->diffForHumans();
+            }
         }
 
-        return response()->json(['texts' => $texts, 'users' => $users, 'dates' => $dates]);
+        $featuresTranslate = $this->setFeaturesTranslate($product);
+        $images = ProductFile::whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->get();
+        return view('front.productDetail', compact('questions', 'product', 'images', 'featuresTranslate'));
     }
 
     private function setFeaturesTranslate(Product $product)
     {
-        return
+        $features = $product->subcategory->features;
+        $featuresTranslate =
             [[
                 'id' => 1,
                 'name' => 'Presentación',
@@ -128,22 +138,13 @@ class ProductController extends Controller
                 [
                     'id' => 12,
                     'name' => 'Ubicación',
-                    'value' => $product->location
+                    'value' => ''
                 ],
                 [
                     'id' => 13,
                     'name' => 'Descripción de uso',
                     'value' => $product->forms_employment
                 ]];
-    }
-
-    function productDetailFront($slug, $id)
-    {
-        $product = Product::find($id);
-        $featuresTranslate = $this->setFeaturesTranslate($product);
-
-        $questions = Question::where('product_id', '=', $product->id)->orderBy('id', 'desc')->get();
-        $features = $product->subcategory->features;
 
         foreach ($featuresTranslate as $key => $translate) {
             if (!isset($features[$key]) || $featuresTranslate[$key]['value'] == "") {
@@ -151,17 +152,6 @@ class ProductController extends Controller
             }
         }
 
-        $users = [];
-        $texts = [];
-        $dates = [];
-        foreach ($questions as $question) {
-            $text = Text::where('question_id', '=', $question->id)->first();
-            $users[] = User::find($question->user_id);
-            $texts[] = $text;
-            $dates[] = Date::parse($text->created_at)->diffForHumans();
-        }
-
-        $images = ProductFile::whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->get();
-        return view('front.productDetail', compact('questions', 'product', 'images', 'users', 'texts', 'features', 'dates', 'features', 'featuresTranslate'));
+        return array_values($featuresTranslate);
     }
 }

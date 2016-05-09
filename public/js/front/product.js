@@ -12,7 +12,7 @@ $('.YouCart-closed  ').on('click',function(){
 var dateGlobal;
 function getTime() {
     now = new Date();
-    promo = new Date(dateGlobal["year"],dateGlobal["month"],dateGlobal["day"],dateGlobal["hour"]-1, dateGlobal["minute"], 59);
+    promo = new Date(dateGlobal["year"],dateGlobal["month"],dateGlobal["day"],dateGlobal["hour"], dateGlobal["minute"], 59);
     substraction = promo - now;
 
     if(substraction > 0) {
