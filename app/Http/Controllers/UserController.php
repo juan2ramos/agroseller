@@ -26,7 +26,7 @@ class UserController extends Controller
 
     }
     function showUser($id){
-        $user = User::find($id);
+        $user = User::with('provider')->find($id);
         return view('back.user',compact('user'));
     }
 
