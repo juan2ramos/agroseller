@@ -20,13 +20,11 @@ class ProductController extends Controller
     {
         if ($subcategoriesName) {
 
-            $products = Subcategory::where('slug', $subcategoriesName)->firstOrFail()->products()->get();
-            $images = ProductFile::whereRaw('extension = "jpg" or extension = "png"')->get();
-            return view('front.home', compact('products', 'images'));
+            $products = Subcategory::where('slug', $subcategoriesName)->firstOrFail()->products()->paginate(8);
+            return view('front.home', compact('products'));
 
         }
         return redirect()->route('home');
-
     }
 
     function checkout(Request $request)
@@ -37,31 +35,27 @@ class ProductController extends Controller
     function addQuestion(Request $request)
     {
         $question = new Question;
-        $question->user_id = $request->user_id;
-        $question->product_id = $request->product_id;
-        $question->save();
+        $question->fill($request->all())->save();
 
         $text = new Text;
-        $text->description = $request->comment;
-        $text->question_id = $question->id;
+        $text->fill(['description' => $request->description, 'question_id' => $question->id]);
         $text->user_id = $request->user_id;
         $text->save();
 
-        $questions = Question::where('product_id', '=', $request->product_id)->orderBy('id', 'desc')->get();
-
-        foreach($questions as $question){
-            $question['texts'] = Text::with('user')->where('question_id', $question->id)->get();
-            foreach($question->texts as $text){
-                $text['date'] = Date::parse($text->created_at)->diffForHumans();
-            }
-        }
-
+        $questions = $this->reloadQuestions($request->product_id);
         return ['questions' => $questions];
     }
 
     function productDetailFront($slug, $id)
     {
         $product = Product::find($id);
+        $questions = $this->reloadQuestions($id);
+        $featuresTranslate = $this->setFeaturesTranslate($product);
+        return view('front.productDetail', compact('questions', 'product', 'featuresTranslate'));
+    }
+
+    private function reloadQuestions($id){
+
         $questions = Question::where('product_id', $id)->orderBy('created_at', 'DESC')->get();
 
         foreach($questions as $question){
@@ -70,12 +64,8 @@ class ProductController extends Controller
                 $text['date'] = Date::parse($text->created_at)->diffForHumans();
             }
         }
-
-        $featuresTranslate = $this->setFeaturesTranslate($product);
-        $images = ProductFile::whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->get();
-        return view('front.productDetail', compact('questions', 'product', 'images', 'featuresTranslate'));
+        return $questions;
     }
-
     private function setFeaturesTranslate(Product $product)
     {
         $features = $product->subcategory->features;
@@ -113,7 +103,7 @@ class ProductController extends Controller
                 [
                     'id' => 7,
                     'name' => 'Composición',
-                    'value' => $product->composition
+                    'value' => ''
                 ],
                 [
                     'id' => 8,

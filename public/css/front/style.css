@@ -72,24 +72,23 @@ main {
 .pagination a {
   display: inline-block;
   vertical-align: middle;
-  border: 1px solid #515D40;
   padding: .3rem .6rem !important;
   margin: 0 .15rem;
   border-radius: .25rem;
-  background: #586549;
+  color: white;
+  background: #C5D257;
 }
 
 .pagination span {
-  color: #DAE2CD;
-  font-size: 1.1rem;
-  padding: .3rem;
+  font-size: 1.3rem;
+  font-weight: 400;
   display: inline-block;
   vertical-align: middle;
-  border: 1px solid #515D40;
   padding: .3rem .6rem !important;
   margin: 0 .15rem;
   border-radius: .25rem;
-  background: #788166;
+  background: #EEE;
+  color: #C1C1C1;
 }
 
 .Button {
@@ -1160,6 +1159,10 @@ body {
   border-top: .375rem solid #C1C1C1;
 }
 
+.ProductInfo {
+  word-wrap: break-word;
+}
+
 .ProductInfo h2 {
   font-weight: 400;
   margin: 4rem 0 2rem;
@@ -1915,6 +1918,11 @@ body {
 
 .Comments-user {
   word-wrap: break-word;
+}
+
+.paginator {
+  width: 100%;
+  margin-bottom: 3.75rem;
 }
 
 .autocomplete {

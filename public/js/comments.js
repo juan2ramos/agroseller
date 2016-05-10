@@ -3,7 +3,7 @@ addComment = function(comment, product_id, user_id, url, index){
     var token = $('#token').val();
 
     var param = {
-        'comment'       :   comment,
+        'description'       :   comment,
         'product_id'    :   product_id,
         'user_id'       :   user_id,
         'index'         :   index,
@@ -75,35 +75,3 @@ addComment = function(comment, product_id, user_id, url, index){
         }
     });
 };
-
-
-
-
-
-
-       /*     for(var i = 0; i < data.length; i++){
-                var obj = data[i];
-                for(var key in obj){
-                    var attrName = key;
-                    var attrValue = obj[key];
-                }
-            }*/
-
-            /*
-             texts = "";
-             users = "";
-
-            for(var i = 0; i < data.texts.length; i++){
-                texts += data.texts[i]['description'];
-                if(data.users[i]['photo'] == ""){
-                    photos += index + "/images/user.png";
-                }
-                else{
-                    photos += index + data.users[i]['photo'];
-                }
-
-                alert(data.users[i]['photo']);
-            }*/
-
-            //$("#reload").html("Textos: " + texts + "</br> Usuarios: " + users);
-

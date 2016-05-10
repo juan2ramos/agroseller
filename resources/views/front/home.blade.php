@@ -20,11 +20,10 @@
                 <article class="col-3">
                     <figure class="Product-Image">
                         <a href="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}">
-                            <?php $bool = true ?>
-                            @foreach($images as $image)
-                                @if($image->product_id == $product->id && $bool == true)
-                                    <img src="{{url('uploads/products/'.$image->name)}}" alt="">
-                                    {!!$bool = false!!}
+                            @foreach($product->productFiles as $file)
+                                @if($file->extension != 'pdf')
+                                    <img src="{{url('uploads/products/'.$file->name)}}" alt="">
+                                    @break
                                 @endif
                             @endforeach
                         </a>
@@ -42,6 +41,9 @@
                     </div>
                 </article>
             @endforeach
+        </div>
+        <div class="paginator">
+            {!! $products->render() !!}
         </div>
     </section>
     <script>

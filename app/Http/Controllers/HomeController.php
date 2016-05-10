@@ -12,13 +12,9 @@ use Agrosellers\Entities\Product;
 
 class HomeController extends Controller
 {
-    function index(admin\CategoryController $categoryController){
-
-        $categories = $categoryController->categoriesSubcategories();
-        $products = Product::all();
-        $subcategories = Subcategory::all();
-        $images = ProductFile::whereRaw('extension = "jpg" or extension = "png"')->get();
-        return view('front.home',compact('categories', 'products', 'subcategories', 'images'));
+    function index(){
+        $products = Product::paginate(8);
+        return view('front.home',compact('products'));
     }
     function pricing(){
 
