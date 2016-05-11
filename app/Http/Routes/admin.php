@@ -10,6 +10,12 @@ Route::group(['namespace' => 'admin'], function () {
         'uses' => 'ProductController@newProduct',
         'as' => 'newProduct',
     ]);
+
+    Route::post('productos/delete', [
+        'uses' => 'ProductController@delete',
+        'as' => 'deleteProduct'
+    ]);
+
     Route::post('subcategoriesQuery', [
         'uses' => 'CategoryController@subcategoriesQuery',
         'as' => 'subcategoriesQuery',

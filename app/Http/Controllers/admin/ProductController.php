@@ -33,9 +33,15 @@ class ProductController extends Controller
     function index()
     {
         $categories = Category::all();
-
-        return view('back.product', compact('categories'));
+        $products = Product::where('user_id', auth()->user()->id)->orderBy('id', 'DESC')->get();
+        return view('back.product', compact('categories', 'products'));
     }
+
+    function delete(Request $request){
+        $product = Product::find($request->id);
+        $product->delete();
+    }
+
     function newProduct(Request $request)
     {
         $inputs = $request->all();
