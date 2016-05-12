@@ -49,14 +49,12 @@ function searchQuery(){
         dataType :  'json',
         data     :  input,
         success  :  function(json) {
-
-            console.log(json)
             result.empty();
             if(json.products.length > 0){
                 for(var i = 0; i < json.products.length; i++) {
                     var product = json.products[i];
                     var nameItem = String(product.name.toLowerCase()).replace(value, '<b>' + value + '</b>');
-                    var slugItem = '/producto/' + product.slug;
+                    var slugItem = '/producto/' + product.slug + '-' + product.id;
                     var imageItem = '/uploads/products/' + product.product_files[0].name;
 
                     result.append('<li><a class="thisSearch" href="' + slugItem + '"></a></li>');

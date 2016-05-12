@@ -12,13 +12,9 @@ use Agrosellers\Entities\Product;
 
 class HomeController extends Controller
 {
-    function index(admin\CategoryController $categoryController){
-
-        $categories = $categoryController->categoriesSubcategories();
-        $products = Product::all();
-        $subcategories = Subcategory::all();
-        $images = ProductFile::whereRaw('extension = "jpg" or extension = "png"')->get();
-        return view('front.home',compact('categories', 'products', 'subcategories', 'images'));
+    function index(){
+        $products = Product::paginate(8);
+        return view('front.home',compact('products'));
     }
     function pricing(){
 
@@ -55,8 +51,8 @@ class HomeController extends Controller
     function searchBar(Request $request){
 
         return ['products' => Product::with(['productFiles' => function($file){
-            $file->whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->first();
-        }])->where("name", "like", "%{$request->value}%")->limit(10)->get()];
+            $file->whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->get();
+        }])->where("name", "like", "%{$request->value}%")->limit(10)->get(['slug', 'name', 'id'])];
 
 
     }

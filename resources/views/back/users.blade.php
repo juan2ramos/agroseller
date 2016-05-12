@@ -52,6 +52,7 @@
         </form>
 
         {!! $users->render() !!}
+
     </div>
     <h2>Crear usuario Interno</h2>
     <hr>
@@ -144,7 +145,5 @@
 @endsection
 
 @section('scripts')
-    <script src="{{asset('js/forms.js')}}"></script>
     <script src="{{asset('js/images.js')}}"></script>
-    <script src="{{asset('js/users.js')}}"></script>
 @endsection

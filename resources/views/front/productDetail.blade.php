@@ -1,13 +1,17 @@
 @extends('layoutFront')
+<?php $hasOffer = strtotime($product->offer_on) < strtotime('now') && strtotime($product->offer_off) - strtotime('now') > 0;?>
 @section('openGraph')
-    <meta property="og:url"           content="{{route('productDetail', $product->id)}}" />
+    <meta property="og:url"           content="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}" />
     <meta property="og:type"          content="{{route('home')}}" />
     <meta property="og:title"         content="{{$product->name}}" />
-    <meta property="og:description"   content="{{$product->description}}" />
-    <meta property="og:image"         content="{{url('uploads/products/' . $images->first()->name)}}" />
+    <meta property="og:description"   content="{{$product->description}}"/>
+    @foreach($product->productFiles as $file)
+        @if($file->extension != 'pdf')
+            <meta property="og:image"         content="{{url('uploads/products/' . $file->name)}}" />
+            @break
+        @endif
+    @endforeach
 @endsection
-
-<?php $hasOffer = $product->offer_on && strtotime($product->offer_on) < strtotime('now') && strtotime($product->offer_off) - strtotime($product->offer_on) > 0 ?>
 @section('content')
     <svg style="display: none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs></defs>
@@ -33,9 +37,9 @@
     <section class="ProductDetail row">
         <article class="ProductDetail-slider col-6 ">
             <div class="owl-carousel" id="sync1">
-                @foreach($images as $image)
-                    @if($image->product_id == $product->id)
-                        <figure class="item"><img src="{{url('uploads/products/'. $image->name)}}" alt=""></figure>
+                @foreach($product->productFiles as $file)
+                    @if($file->extension != 'pdf')
+                        <figure class="item"><img src="{{url('uploads/products/'. $file->name)}}" alt=""></figure>
                     @endif
                 @endforeach
             </div>
@@ -101,8 +105,8 @@
             <div class="ProductDetail-quantity">
                 <h4>Cantidad</h4>
                 <div class="row bottom">
-                    <input type="number" class="col-4" value="1" maxlength="3">
-                    <span class="col-8 AlignRight"><button class="Button">COMPRAR</button></span>
+                    <input type="number" id="quantity" class="col-4" value="1" maxlength="3">
+                    <span class="col-8 AlignRight"><a href="{{url('shopping',['id' => $product->id])}}" class="Button">COMPRAR</a></span>
                 </div>
             </div>
             <nav class="ProductDetail-network row between">
@@ -123,7 +127,7 @@
                             </g>
                         </g>
                     </svg>
-                    <div class="fb-share-button" data-href="{{route('productDetail', $product->id)}}" data-layout="button"></div>
+                    <div class="fb-share-button" data-href="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}" data-layout="button"></div>
                 </div>
                 <div class="social-share">
                     <svg width="138px" height="32px" viewBox="0 0 138 32" version="1.1"
@@ -147,15 +151,15 @@
                             </g>
                         </g>
                     </svg>
-                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{route('productDetail', $product->id)}}" data-text="{!!$product->name!!}" data-via="twitter-agroseller" data-lang="es" data-size="large" data-dnt="true">Twittear</a>
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}" data-text="{!!$product->name!!}" data-via="twitter-agroseller" data-lang="es" data-size="large" data-dnt="true">Twittear</a>
                 </div>
             </nav>
         </article>
         <article class="col-6 ProductDetail-thumbnail">
             <div class="row between owl-carousel" id="sync2">
-                @foreach($images as $image)
-                    @if($image->product_id == $product->id)
-                        <figure class="item" class="col-3"><img src="{{url('uploads/products/'. $image->name)}}" alt=""></figure>
+                @foreach($product->productFiles as $file)
+                    @if($file->extension != 'pdf')
+                        <figure class="item" class="col-3"><img src="{{url('uploads/products/'. $file->name)}}" alt=""></figure>
                     @endif
                 @endforeach
             </div>
@@ -186,41 +190,40 @@
         {!!$product->description!!}
         <h2>Características </h2>
         <article class="row bottom">
-            <ul class="col-2">
-                @for($i = 0; $i < count($features); $i++)
-                    @if(!isset($featuresTranslate[$i]))
-                        @continue
-                    @elseif($featuresTranslate[$i]['id'] % 2 != 0)
-                        <li>{{$featuresTranslate[$i]['name']}}: <b>{{ $featuresTranslate[$i]['value'] }}</b></li>
-                    @endif
-                @endfor
-            </ul>
-            <ul class="col-2 self-start">
-                @for($i = 0; $i < count($features); $i++)
-                    @if(!isset($featuresTranslate[$i]))
-                        @continue
-                    @elseif($featuresTranslate[$i]['id'] % 2 == 0)
-                        <li>{{$featuresTranslate[$i]['name']}}: <b>{{ $featuresTranslate[$i]['value'] }}</b></li>
-                    @endif
-                @endfor
-            </ul>
+            <?php $j = 0 ?>
+            @for($i = 0; $i < 2; $i++)
+                <ul class="col-2 self-start">
+                    @while($j < count($featuresTranslate))
+                        <li>{{$featuresTranslate[$j]['name']}}: <b>{{ $featuresTranslate[$j]['value'] }}</b></li>
+                        <?php $j++ ?>
+                        @if($j == count($featuresTranslate) /2)
+                            @break
+                        @endif
+                    @endwhile
+                </ul>
+            @endfor
             <div class="col-8 AlignRight">
-                Descarga Ficha Técnica
-                <svg width="32px" height="38px" viewBox="0 0 32 38" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                     xmlns:xlink="http://www.w3.org/1999/xlink">
-
-                    <defs></defs>
-                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                        <g id="Product-detail" transform="translate(-1243.000000, -1928.000000)" fill="#C5D257">
-                            <g id="Page-1" transform="translate(1243.000000, 1928.000000)">
-                                <path d="M30.3275527,37.0132591 L1.66925731,37.0132591 C0.771177354,37.0132591 0.0423008675,36.2784171 0.0423008675,35.3738293 L0.0423008675,25.9933408 C0.0423008675,25.088753 0.771177354,24.3533687 1.66925731,24.3533687 C2.56733727,24.3533687 3.29621375,25.088753 3.29621375,25.9933408 L3.29621375,33.7338572 L28.7005963,33.7338572 L28.7005963,25.9933408 C28.7005963,25.088753 29.4294728,24.3533687 30.3275527,24.3533687 C31.2256327,24.3533687 31.9545092,25.088753 31.9545092,25.9933408 L31.9545092,35.3738293 C31.9545092,36.2784171 31.2256327,37.0132591 30.3275527,37.0132591 L30.3275527,37.0132591 Z"
-                                      id="Fill-1"></path>
-                                <path d="M24.0567203,17.4751391 L17.1464939,24.4363434 C16.9642748,24.6201895 16.7354163,24.7644463 16.4794418,24.8430826 C16.4262946,24.8598944 16.3731473,24.8723678 16.3205424,24.8832141 C16.2185865,24.9043646 16.1084957,24.9168379 15.9940665,24.9168379 C15.7207378,24.9168379 15.4647633,24.8512173 15.2418703,24.7286533 C15.1936039,24.7031643 15.1491338,24.675506 15.1046636,24.6456785 C15.0601935,24.6185626 15.0157233,24.5843965 14.9707109,24.5486034 C14.9262407,24.5144374 14.8861091,24.4786443 14.8481468,24.4379704 L7.93792048,17.4773084 C7.30232283,16.8373722 7.30232283,15.7972047 7.93792048,15.1572685 C8.57514509,14.5178747 9.60500852,14.5178747 10.2406062,15.1572685 L14.3692793,19.322277 L14.3692793,2.04616889 C14.3692793,1.13995415 15.1024943,0.406739111 15.9962357,0.406739111 C16.8943157,0.406739111 17.6231922,1.13995415 17.6231922,2.04616889 L17.6231922,19.3201078 L21.7562039,15.1550993 C22.3918015,14.5157054 23.4194957,14.5157054 24.0588895,15.1550993 C24.6923179,15.7950355 24.6923179,16.8373722 24.0567203,17.4751391 L24.0567203,17.4751391 Z"
-                                      id="Fill-2"></path>
-                            </g>
-                        </g>
-                    </g>
-                </svg>
+                @foreach($product->productFiles as $file)
+                    @if($file->extension == 'pdf')
+                        <a href="/uploads/products/{{$file->name}}" style="color : black" download>
+                            Descarga Ficha Técnica
+                            <svg width="32px" height="38px" viewBox="0 0 32 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <defs></defs>
+                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g id="Product-detail" transform="translate(-1243.000000, -1928.000000)" fill="#C5D257">
+                                        <g id="Page-1" transform="translate(1243.000000, 1928.000000)">
+                                            <path d="M30.3275527,37.0132591 L1.66925731,37.0132591 C0.771177354,37.0132591 0.0423008675,36.2784171 0.0423008675,35.3738293 L0.0423008675,25.9933408 C0.0423008675,25.088753 0.771177354,24.3533687 1.66925731,24.3533687 C2.56733727,24.3533687 3.29621375,25.088753 3.29621375,25.9933408 L3.29621375,33.7338572 L28.7005963,33.7338572 L28.7005963,25.9933408 C28.7005963,25.088753 29.4294728,24.3533687 30.3275527,24.3533687 C31.2256327,24.3533687 31.9545092,25.088753 31.9545092,25.9933408 L31.9545092,35.3738293 C31.9545092,36.2784171 31.2256327,37.0132591 30.3275527,37.0132591 L30.3275527,37.0132591 Z"
+                                                  id="Fill-1"></path>
+                                            <path d="M24.0567203,17.4751391 L17.1464939,24.4363434 C16.9642748,24.6201895 16.7354163,24.7644463 16.4794418,24.8430826 C16.4262946,24.8598944 16.3731473,24.8723678 16.3205424,24.8832141 C16.2185865,24.9043646 16.1084957,24.9168379 15.9940665,24.9168379 C15.7207378,24.9168379 15.4647633,24.8512173 15.2418703,24.7286533 C15.1936039,24.7031643 15.1491338,24.675506 15.1046636,24.6456785 C15.0601935,24.6185626 15.0157233,24.5843965 14.9707109,24.5486034 C14.9262407,24.5144374 14.8861091,24.4786443 14.8481468,24.4379704 L7.93792048,17.4773084 C7.30232283,16.8373722 7.30232283,15.7972047 7.93792048,15.1572685 C8.57514509,14.5178747 9.60500852,14.5178747 10.2406062,15.1572685 L14.3692793,19.322277 L14.3692793,2.04616889 C14.3692793,1.13995415 15.1024943,0.406739111 15.9962357,0.406739111 C16.8943157,0.406739111 17.6231922,1.13995415 17.6231922,2.04616889 L17.6231922,19.3201078 L21.7562039,15.1550993 C22.3918015,14.5157054 23.4194957,14.5157054 24.0588895,15.1550993 C24.6923179,15.7950355 24.6923179,16.8373722 24.0567203,17.4751391 L24.0567203,17.4751391 Z"
+                                                  id="Fill-2"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </a>
+                        @break
+                    @endif
+                @endforeach
             </div>
         </article>
     </section>
@@ -248,26 +251,45 @@
         </form>
         <ul>
             <div id="reload">
-            <?php $i = 0 ?>
             @foreach($questions as $question)
                 <li class="row">
                     <figure>
-                        @if($users[$i]->photo)
-                            <img src="{{url('images/' . $users[0]->photo)}}" alt="">
+                        @if($question->texts->first()->user->photo)
+                            <img src="{{url('images/' . $question->texts->first()->user->photo)}}">
                         @else
-                            <img src="{{url('images/user.png')}}" alt="">
+                            <img src="{{url('images/user.png')}}">
                         @endif
                     </figure>
                     <div class="Comments-user">
-                        <h5>{{$users[$i]->name}} {{$users[$i]->second_name}} {{$users[$i]->last_name}} {{$users[$i]->second_last_name}}
-                            <time> • {{$dates[$i]}}</time>
+                        <h5>{{$question->texts->first()->user->name}} {{$question->texts->first()->user->second_name}} {{$question->texts->first()->user->last_name}} {{$question->texts->first()->user->second_last_name}}
+                            <time> • {{$question->texts->first()->date}}</time>
                         </h5>
                         <p>
-                            {{$texts[$i]->description}}
+                            {{$question->texts->first()->description}}
                         </p>
                     </div>
+                    @for($i = 1; $i < count($question->texts); $i++)
+                        <ul class="col-12" style="padding-left:3.8rem; margin-bottom: 5px">
+                            <li class="row" style="margin-bottom: 0">
+                                <figure style="">
+                                    @if($question->texts[$i]->user->photo)
+                                        <img src="{{url('images/' . $question->texts[$i]->user->photo)}}">
+                                    @else
+                                        <img src="{{url('images/user.png')}}">
+                                    @endif
+                                </figure>
+                                <div class="Comments-user">
+                                    <h5>{{$question->texts[$i]->user->name}} {{$question->texts[$i]->user->second_name}} {{$question->texts[$i]->user->last_name}} {{$question->texts[$i]->user->second_last_name}}
+                                        <time> • {{$question->texts[$i]->date}}</time>
+                                    </h5>
+                                    <p>
+                                        {{$question->texts[$i]->description}}
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    @endfor
                 </li>
-                <?php $i++ ?>
             @endforeach
             </div>
         </ul>
@@ -276,7 +298,7 @@
 @endsection
 @section('scripts')
     <script src="{{asset('js/maps.js')}}"></script>
-    {!!"<script>getPosition('$product->location')</script>"!!}
+    <script>getPosition('{!!$product->location!!}')</script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap"
             async defer></script>
@@ -296,18 +318,18 @@
             $hour = $time[0];
             $minute = $time[1];
         ?>
-        {!!
-            "<script>
-                countDown({
-                  'year' : {$year},
-                  'month' : {$month},
-                  'day' : {$day},
-                  'hour' : {$hour},
-                  'second' : {$minute}
-                });
-            </script>
-            "
-        !!}
+    <script>
+        $('#quantity').on('change',function(){
+            $('this').val();
+        });
+        countDown({
+            'year'   : {!! $year !!},
+            'month'  : {!! $month !!},
+            'day'    : {!! $day !!},
+            'hour'   : {!! $hour !!},
+            'minute' : {!! $minute !!}
+        });
+    </script>
     @endif
 @endsection
 

@@ -178,7 +178,9 @@
                                 </g>
                             </g>
                         </svg>
-                        <span>$1'250.000</span>
+                        <span id="CartValue">
+                            {{session('products')}}
+                        </span>
                     </div>
                 </div>
             </div>

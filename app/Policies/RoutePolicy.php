@@ -51,11 +51,11 @@ class RoutePolicy
                 ],
             '3' =>
                 [
-                    'admin', 'products', 'questions', 'orders', 'registerProvider', 'isValidateProviders','newProduct'
+                    'admin', 'products', 'questions', 'orders', 'registerProvider', 'isValidateProviders', 'questions', 'subcategoriesQuery','featuresQuery', 'newProduct', 'insertProvider', 'questionDetail', 'questionNew', 'deleteProduct'
                 ],
             '4' =>
                 [
-                    'admin', 'products', 'bills', 'orders', 'reports'
+                    'admin', 'products', 'bills', 'orders', 'reports', 'questions', 'questionDetail', 'questionNew'
                 ],
             '5' =>
                 [

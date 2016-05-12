@@ -19,24 +19,19 @@
             @foreach($products as $product)
                 <article class="col-3">
                     <figure class="Product-Image">
-                        <a href="{{route('productDetail', $product->slug)}}">
-                            <?php $bool = true ?>
-                            @foreach($images as $image)
-                                @if($image->product_id == $product->id && $bool == true)
-                                    <img src="{{url('uploads/products/'.$image->name)}}" alt="">
-                                    {!!$bool = false!!}
+                        <a href="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}">
+                            @foreach($product->productFiles as $file)
+                                @if($file->extension != 'pdf')
+                                    <img src="{{url('uploads/products/'.$file->name)}}" alt="">
+                                    @break
                                 @endif
                             @endforeach
                         </a>
                     </figure>
                     <div class="Product-info">
-                        <a href="{{route('productDetail', $product->slug)}}"><h4>{{$product->name}}</h4></a>
-                        @foreach($subcategories as $subcategory)
-                            @if($subcategory->id == $product->subcategory_id)
-                                <h5>{{$subcategory->name}}</h5>
-                            @endif
-                        @endforeach
-                        <?php $hasOffer = $product->offer_on && strtotime($product->offer_on) < strtotime('now') && strtotime($product->offer_off) - strtotime($product->offer_on) > 0 ?>
+                        <a href="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}"><h4>{{$product->name}}</h4></a>
+                        <h5>{{$product->subcategory->name}}</h5>
+                        <?php $hasOffer = strtotime($product->offer_on) < strtotime('now') && strtotime($product->offer_off) - strtotime('now') > 0 ?>
                         @if($hasOffer)
                             <p>${{number_format($product->offer_price, 0, " ", ".")}} <span>${{number_format($product->price, 0, " ", ".")}}</span></p>
                         @else
@@ -46,6 +41,9 @@
                     </div>
                 </article>
             @endforeach
+        </div>
+        <div class="paginator">
+            {!! $products->render() !!}
         </div>
     </section>
     <script>

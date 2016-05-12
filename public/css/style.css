@@ -70,24 +70,23 @@ main {
 .pagination a {
   display: inline-block;
   vertical-align: middle;
-  border: 1px solid #515D40;
   padding: .3rem .6rem !important;
   margin: 0 .15rem;
   border-radius: .25rem;
-  background: #586549;
+  color: white;
+  background: #C5D257;
 }
 
 .pagination span {
-  color: #DAE2CD;
-  font-size: 1.1rem;
-  padding: .3rem;
+  font-size: 1.3rem;
+  font-weight: 400;
   display: inline-block;
   vertical-align: middle;
-  border: 1px solid #515D40;
   padding: .3rem .6rem !important;
   margin: 0 .15rem;
   border-radius: .25rem;
-  background: #788166;
+  background: #EEE;
+  color: #C1C1C1;
 }
 
 .Button {
@@ -117,6 +116,7 @@ main {
 }
 
 .BackContainer {
+  overflow: hidden;
   background: #ffffff;
   box-shadow: 0 0 1.875rem 0 rgba(0, 0, 0, 0.02);
 }
@@ -1669,6 +1669,176 @@ body {
   left: 3rem;
 }
 
+.QuestionList,
+.Question {
+  height: calc(100vh - 164px);
+}
+
+.QuestionList {
+  transition: all 1s ease;
+  overflow-y: scroll;
+  padding: 0 1rem;
+}
+
+.QuestionList-questions {
+  margin-top: 30px;
+}
+
+.QuestionList-item {
+  cursor: pointer;
+  padding: 5px 10px;
+  margin: 5px 0;
+  box-shadow: 3px 3px 3px -4px #B9BCC0;
+  text-transform: capitalize;
+}
+
+.Question {
+  display: none;
+  position: relative;
+}
+
+.Question .QuestionUser {
+  overflow-y: scroll;
+  height: calc(100% - 70px);
+}
+
+.Question .QuestionHead {
+  padding: 1rem;
+  font-size: .9rem;
+  border-bottom: 1px inset #B9BCC0;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.Question .QuestionHead-close {
+  cursor: pointer;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 1.3rem;
+  padding: 5px;
+  width: 40px;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+
+.Question .QuestionHead-date {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.Question .QuestionHead-date-icon {
+  margin-right: 0.625rem;
+}
+
+.Question .QuestionContent {
+  margin-top: 1.875rem;
+  padding: 0 1rem;
+}
+
+.Question .QuestionContent-Answers {
+  padding-left: 30px;
+}
+
+.Question .QuestionContent .QuestionContent-title {
+  padding: 10px;
+}
+
+.Question .QuestionContent .QuestionContent-title h2 {
+  text-transform: capitalize;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.Question .AnswerQuestion {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.Question .AnswerQuestion .answerBox,
+.Question .AnswerQuestion .answerBox textarea {
+  width: 100%;
+}
+
+.Question .AnswerQuestion .answerBox {
+  position: relative;
+}
+
+.Question .AnswerQuestion .answerBox textarea {
+  border: 1px solid #B9BCC0;
+  border-radius: 5px;
+  resize: none;
+  padding: 5px;
+  padding-left: 70px;
+  height: 70px;
+}
+
+.Question .AnswerQuestion .answerBox textarea:focus {
+  border: 1px solid #B9BCC0;
+}
+
+.Question .AnswerQuestion .answerBox .answerButton {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #B9BCC0;
+  padding: 10px;
+  height: 70px;
+}
+
+.stateIcon {
+  width: 27px;
+  border: 2px solid #E1E3E6;
+  border-radius: 50%;
+  overflow: hidden;
+  height: 27px;
+  padding: 0.21875rem;
+  margin-right: 0.625rem;
+}
+
+.stateIcon svg polygon {
+  fill: #E1E3E6;
+}
+
+.stateIcon.isResponded {
+  border: 2px solid #C5D257;
+}
+
+.stateIcon.isResponded svg polygon {
+  fill: #C5D257;
+}
+
+.Identity {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.Identity-avatar {
+  width: 2.5rem;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-right: 0.625rem;
+}
+
 .button {
   color: #000;
   width: 100%;
@@ -1689,4 +1859,162 @@ body {
 .Map {
   width: 100%;
   height: 400px;
+}
+
+/************** Questions **************/
+
+.UserValidate .BackContainer {
+  word-wrap: break-word;
+  padding: 0.9375rem 2.1875rem;
+}
+
+.UserValidate .BackContainer .item {
+  text-align: center;
+  padding: 0.625rem;
+}
+
+.UserValidate .BackContainer .item h3 {
+  font-weight: 400;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+/***************** Products *****************/
+
+.TabContainer {
+  width: 100%;
+  transition: all 1s ease;
+  display: none;
+}
+
+.Tab {
+  background: #fff;
+  padding: 1.375rem;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+[for^="tab"] {
+  color: #D9D9D9;
+}
+
+[id="tab1"]:checked ~ [for="tab1"],
+[id="tab2"]:checked ~ [for="tab2"] {
+  color: #C5D257;
+}
+
+#tab1:checked ~ #EditProduct,
+#tab2:checked ~ #NewProduct {
+  display: block;
+}
+
+input.Tab {
+  display: none;
+}
+
+label.Tab {
+  text-align: center;
+}
+
+.Line-bottom {
+  position: relative;
+  display: block;
+  height: 0.25rem;
+  background: #D9D9D9;
+}
+
+.Line-bottom:after {
+  transition: left .5s ease-in;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  height: 0.25rem;
+  width: 50%;
+  background: #C5D257;
+}
+
+.right.Line-bottom:after {
+  left: 50%;
+}
+
+#EditProduct {
+  width: 100%;
+}
+
+#EditProduct #ProductUpdate {
+  transition: left 1s ease;
+  width: 100%;
+  height: 5000px;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+#EditProduct #ProductUpdate.left {
+  left: 0;
+}
+
+#EditProduct .Product-item {
+  padding: 1.875rem 0.9375rem;
+}
+
+#EditProduct .Item-image {
+  height: 15.90625rem;
+  overflow: hidden;
+}
+
+#EditProduct .Item-info {
+  background: #EEE;
+  padding: 1.25rem 1rem;
+}
+
+#EditProduct .Item-info h4 {
+  font-size: 1rem;
+  line-height: 2rem;
+  color: #27383F;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+#EditProduct .Item-info h5 {
+  font-size: .8rem;
+  color: #7E7E7E;
+  font-weight: 400;
+}
+
+#EditProduct .Item-actions {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 1.25rem;
+}
+
+#EditProduct .Item-actions [class^='icon-'] {
+  cursor: pointer;
+  width: 1.5625rem;
+  height: 1.5625rem;
+  display: block;
+  overflow: hidden;
+  margin-right: 1.25rem;
+}
+
+.MessagePlatform-confirm {
+  margin-top: 35px;
+}
+
+.MessagePlatform-confirm .Button {
+  transition: all .5s ease;
+  margin: 5px;
+  opacity: .7;
+  background: #7F7F7F;
+  color: white;
+  font-weight: 400;
+}
+
+.MessagePlatform-confirm .Button:hover {
+  box-shadow: none;
+  opacity: 1;
 }

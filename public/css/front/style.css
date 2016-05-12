@@ -72,24 +72,23 @@ main {
 .pagination a {
   display: inline-block;
   vertical-align: middle;
-  border: 1px solid #515D40;
   padding: .3rem .6rem !important;
   margin: 0 .15rem;
   border-radius: .25rem;
-  background: #586549;
+  color: white;
+  background: #C5D257;
 }
 
 .pagination span {
-  color: #DAE2CD;
-  font-size: 1.1rem;
-  padding: .3rem;
+  font-size: 1.3rem;
+  font-weight: 400;
   display: inline-block;
   vertical-align: middle;
-  border: 1px solid #515D40;
   padding: .3rem .6rem !important;
   margin: 0 .15rem;
   border-radius: .25rem;
-  background: #788166;
+  background: #EEE;
+  color: #C1C1C1;
 }
 
 .Button {
@@ -119,6 +118,7 @@ main {
 }
 
 .BackContainer {
+  overflow: hidden;
   background: #ffffff;
   box-shadow: 0 0 1.875rem 0 rgba(0, 0, 0, 0.02);
 }
@@ -1160,6 +1160,10 @@ body {
   border-top: .375rem solid #C1C1C1;
 }
 
+.ProductInfo {
+  word-wrap: break-word;
+}
+
 .ProductInfo h2 {
   font-weight: 400;
   margin: 4rem 0 2rem;
@@ -1881,7 +1885,7 @@ body {
 
 .commentBox {
   width: calc(100% - 5rem);
-  height: 4rem;
+  height: 3rem;
   position: relative;
 }
 
@@ -1894,7 +1898,7 @@ body {
 
 .commentBox .commentButton {
   height: 100%;
-  width: 4rem;
+  width: 3.5rem;
   background: #C1C1C1;
   color: black;
   border: none;
@@ -1906,6 +1910,20 @@ body {
 
 .ProductDetail-network {
   width: 17.75rem;
+}
+
+.Comments figure {
+  width: 3rem;
+  height: 3rem;
+}
+
+.Comments-user {
+  word-wrap: break-word;
+}
+
+.paginator {
+  width: 100%;
+  margin-bottom: 3.75rem;
 }
 
 .autocomplete {
