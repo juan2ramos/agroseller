@@ -17,6 +17,7 @@
     <script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
 </head>
 <body>
+{{dd(session('products') )}}
 <svg viewBox="0 0 7 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
      style="display:none">
     <g id="arrow" transform="translate(-239.000000, -220.000000)" fill="#818181">
@@ -178,7 +179,9 @@
                                 </g>
                             </g>
                         </svg>
-                        <span>$1'250.000</span>
+                        <span id="CartValue">
+                            {{session('products')}}
+                        </span>
                     </div>
                 </div>
             </div>

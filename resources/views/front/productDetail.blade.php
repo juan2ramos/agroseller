@@ -106,7 +106,7 @@
                 <h4>Cantidad</h4>
                 <div class="row bottom">
                     <input type="number" class="col-4" value="1" maxlength="3">
-                    <span class="col-8 AlignRight"><button class="Button">COMPRAR</button></span>
+                    <span class="col-8 AlignRight"><a href="{{route('shopping',['id' => $product->id])}}" class="Button">COMPRAR</a></span>
                 </div>
             </div>
             <nav class="ProductDetail-network row between">

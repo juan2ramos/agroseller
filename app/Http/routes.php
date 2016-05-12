@@ -13,7 +13,6 @@ Route::get('a',function(){
         $file->addSelect(array('id', 'name'))->whereRaw('extension = "jpg" or extension = "png" or extension = "svg"')->first();
     }])->get(['name', 'slug']);
 
-
         return response()->json(['products' => $Products]);
 
 });
