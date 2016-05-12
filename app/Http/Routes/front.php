@@ -4,8 +4,8 @@ Route::get('/', [
     'uses' => 'HomeController@index',
     'as' => 'home'
 ]);
-Route::get('compras/{product}', [
-    'uses' => 'ShoppingController@index',
+Route::get('compras/{product}/{quantity}', [
+    'uses' => 'ShoppingController@add',
     'as' => 'shopping'
 ]);
 
