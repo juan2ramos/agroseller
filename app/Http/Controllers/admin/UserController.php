@@ -16,7 +16,31 @@ use Agrosellers\Http\Controllers\Controller;
 class UserController extends Controller
 {
     function agentsGet(){
-
-        return Agent::with('user');
+        return  Agent::with(['user' => function ($query) {
+            $query->addSelect(['id', 'name'])->get();
+        }])->get(['user_id','name']);
     }
+    function user( $id){
+
+        $user = User::findOrFail($id)->get();
+        return view('back.userEdit',compact('user'));
+    }
+    function newUserAdmin(Request $request){
+        $inputs = $request->all();
+        $files = $request->file();
+
+        $fileName = str_random(40) . '**' . $request->file('photo')->getClientOriginalName();
+        $request->file('photo')->move(base_path() . '/public/uploads/users/', $fileName);
+
+        $inputs['photo'] = $fileName;
+        $user = User::create($inputs);
+
+        if($inputs['role_id'] == 5 ){
+            $agent = Agent::where('user_id',$inputs['agent'])->first();
+            $agent['user_id'] = $user->id;
+            $agent->save();
+        }
+        return redirect()->back()->with('messageSuccess', 1);
+    }
+
 }

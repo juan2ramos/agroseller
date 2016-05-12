@@ -21,7 +21,6 @@ class ProductController extends Controller
     function newProduct(Request $request)
     {
         $inputs = $request->all();
-
         $files = $request->file();
         if ($request->has('taxes'))
             $inputs['taxes'] = implode(';', $inputs['taxes']);

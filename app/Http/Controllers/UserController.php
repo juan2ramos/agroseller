@@ -20,7 +20,7 @@ class UserController extends Controller
         $rows = User::with('role')->whereRaw('role_id in (1,2,4,5)')->sorted()->paginate();
         $users = Table::create($rows,['name' => 'Nombre', 'email' => 'Email',]);
         $users->addColumn('role_id', 'Rol', function($model) {return $model->role()->first()->name;});
-        $users->addColumn('id', 'Acciones', function($model) {$id = $model->id;return '<a href="'.$id.'"> d </a>';});
+        $users->addColumn('id', 'Acciones', function($model) {$id = $model->id;return '<a href="'.route('user', ['id' => $id ]) .'"> ver </a>';});
         $roles = Role::whereRaw('id in (1,2,4,5)')->get();
         return view('back.users', compact('users','roles'));
 

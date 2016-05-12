@@ -49,19 +49,17 @@
             </label>
 
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-
         </form>
 
         {!! $users->render() !!}
     </div>
     <h2>Crear usuario Interno</h2>
     <hr>
-    <form class="Forms row columns" method="POST" action="{{ route('newProduct') }}" enctype="multipart/form-data">
+    <form class="Forms row columns" method="POST" action="{{ route('newUserAdmin') }}"  enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class=" col-6 center row middle">
-            <label for="image1" class="col-9 Form-image">
-                <input type="file" class="StepImages" name="image1" id="image1">
+            <label for="photo" class="col-9 Form-image">
+                <input type="file" class="StepImages" name="photo" id="photo">
                 <figure class=" row middle center ">
                     <svg width="81px" height="47px">
                         <use xlink:href="#imageTemp"></use>
@@ -100,7 +98,7 @@
         </div>
         <div class="col-6 ">
             <label for="email" class="DataForm ">
-                <input type="text" id="email" name="name" value="{{ old('email') }}">
+                <input type="email" id="email" name="email" value="{{ old('email') }}">
                 <span>Email</span>
             </label>
         </div>
@@ -113,7 +111,7 @@
         <div class="col-6 ">
             <label for="role_id" class="DataForm ">
 
-                <select name="role" id="roles">
+                <select name="role_id" id="roles">
                     <option value="">Selecciona un rol</option>
                     @foreach($roles as $role)
                         <option value="{{$role->id}}">{{$role->name}}</option>
@@ -121,11 +119,28 @@
                 </select>
             </label>
         </div>
+        <div class="col-6 offset-6 Check-agent" id="checkAgent" >
+        </div>
         <div class="row center col-12">
             <button class="Button col-6 "> AGREGAR USUARIO</button>
         </div>
     </form>
-
+    @if (session('messageSuccess'))
+        <div class="MessagePlatform row middle center">
+            <div class="MessagePlatform-content">
+                <span class="MessagePlatform-close">X</span>
+                <h2>!Tienes un nuevo mensaje!</h2>
+                <p>Tu producto ya casi esta listo, uno de nuestros agentes comerciales esta revisando que los datos que
+                    nos has suminstrado esten orden.</p>
+                <p>Una vez tu producto este listo y publicado se te notificará en tú centro de notificaciones, además te
+                    enviaremos un correo electrónico.</p>
+                <p>Si por alguna razón tu producto no es publicado, se te notificará por los mismos medios las razones y
+                    los pasos que debes serguir para mejorar la publicación de tu producto.</p>
+                <p>Gracias por elegirnos.</p>
+                <p class="MessagePlatform-last">Centro de notificaciones <span>Agroseller</span></p>
+            </div>
+        </div>
+    @endif
 @endsection
 
 @section('scripts')
