@@ -66,7 +66,7 @@ class ProductController extends Controller
         }
         return $questions;
     }
-    private function setFeaturesTranslate(Product $product)
+    private function setFeaturesTranslate($product)
     {
         $features = $product->subcategory->features;
         $featuresTranslate =
