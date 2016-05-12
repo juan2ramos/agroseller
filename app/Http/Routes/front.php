@@ -4,10 +4,12 @@ Route::get('/', [
     'uses' => 'HomeController@index',
     'as' => 'home'
 ]);
-Route::get('compras/{id}', [
+Route::get('compras/{product}', [
     'uses' => 'ShoppingController@index',
     'as' => 'shopping'
 ]);
+
+
 Route::get('producto/{slug}-{id}', [
     'uses' => 'ProductController@productDetailFront',
     'as' => 'productDetail'
