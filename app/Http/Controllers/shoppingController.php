@@ -14,7 +14,6 @@ class shoppingController extends Controller
         if(!Session::has('cart')) Session::put('cart',array());
         if(!Session::has('valueTotal')) Session::put('valueTotal',array());
     }
-
     /**
      * @param Product $product
      * @param $quantity
