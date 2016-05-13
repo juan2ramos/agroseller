@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
 use Illuminate\Support\Facades\Session;
 
-class shoppingController extends Controller
+class ShoppingController extends Controller
 {
     public function __construct(){
         if(!Session::has('cart')) Session::put('cart',array());
