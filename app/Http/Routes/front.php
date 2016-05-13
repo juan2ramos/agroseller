@@ -9,6 +9,11 @@ Route::get('compras/{product}/{quantity}', [
     'as' => 'shopping'
 ]);
 
+Route::get('eliminar-compra/{p}',[
+    'uses'  => 'ShoppingController@delete',
+    'as'    => 'cartDelete'
+]);
+
 
 Route::get('producto/{slug}-{id}', [
     'uses' => 'ProductController@productDetailFront',

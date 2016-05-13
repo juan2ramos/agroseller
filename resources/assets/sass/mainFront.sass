@@ -445,16 +445,15 @@ body
 .Show
   visibility: visible
   opacity: 1
-
 .CartDetail
   background: white
   max-width: 18rem
   width: 18rem
   position: absolute
   right: -18rem
-  top: 11.875rem
+  top: 0
   box-shadow: -.0625rem 0 .5rem 0 rgba(0,0,0,0.50)
-  height: calc(100vh - 11.875rem)
+  height: 100vh
   @include transition(all .5s)
   & h2
     font-size: 1.25rem
@@ -465,7 +464,7 @@ body
   & ul
     border-bottom: .0625rem solid #D9D9D9
   & figure
-    padding: 1rem
+    padding: 1.8rem
   & h3
     font-size: 1.115rem
     font-weight: 400
@@ -520,10 +519,7 @@ body
     font-size: .875rem
     color: #595959
   & ul
-    margin-top: 1.625rem
     width: 21rem
-  & ul
-    border-bottom: .0625rem solid #D9D9D9
     & h3
       font-size: 1.115rem
       font-weight: 400
@@ -547,10 +543,12 @@ body
     right: 1rem
     bottom: 0
   & li
+    margin-top: 1.625rem
     box-shadow: 0 2px 4px rgba(187,187,187,.5)
+    border-bottom: .0625rem solid #D9D9D9
 
 .Checkout-form, .Form-Control
-  margin-top: 1.625rem
+  margin: 1.625rem 0
   background: #F8F8F8
   box-shadow: 0 2px 4px rgba(187,187,187,.5)
   padding: 1.5rem 2rem
@@ -683,6 +681,9 @@ body
     &:hover
       text-decoration: underline
 
+.Total
+  font-weight: 400
+  padding: rem(20) rem(46)
 
 @import "mainFront2"
 
