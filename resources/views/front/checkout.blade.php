@@ -60,33 +60,39 @@
         <section class="col-8">
             <h2>2. Detalle de facturación</h2>
             @if(Auth::check())
-                <h3>Completa los campos requeridos para realizar tu solicitud</h3>
-                <form action="" class="Checkout-form">
-                    <label for="name">
-                        <input type="text" id="name" value="{{auth()->user()->name .' '. auth()->user()->last_name}}">
-                        <span>Nombre y apellidos completos</span>
-                    </label>
-                    <label for="identification">
-                        <input type="text" id="identification" value="{{auth()->user()->identification}}">
-                        <span>Cédula de ciudadania o NIT </span>
-                    </label>
-                    <label for="address">
-                        <input type="text" id="address" value="{{auth()->user()->identification}}">
-                        <span>Dirección</span>
-                    </label>
-                    <label for="loca">
-                        <input type="text" placeholder="" value="{{ (auth()->user()->role_id == 5)?'':'' }}">
-                        <span>Localidad</span>
-                    </label>
-                    <label for="">
-                        <input type="text" placeholder="" value="{{auth()->user()->mobile_phone}} ">
-                        <span>Teléfono</span>
-                    </label>
-                    <button class="Button">FINALIZAR COMPRA</button>
-                </form>
+                @if(auth()->user()->role_id == 5)
+                    <h3>Completa los campos requeridos para realizar tu solicitud</h3>
+                    <form action="" class="Checkout-form">
+                        <label for="name">
+                            <input type="text" id="name"
+                                   value="{{auth()->user()->name .' '. auth()->user()->last_name}}">
+                            <span>Nombre y apellidos completos</span>
+                        </label>
+                        <label for="identification">
+                            <input type="text" id="identification" value="{{auth()->user()->identification}}">
+                            <span>Cédula de ciudadania o NIT </span>
+                        </label>
+                        <label for="address">
+                            <input type="text" id="address" value="{{auth()->user()->identification}}">
+                            <span>Dirección</span>
+                        </label>
+                        <label for="loca">
+                            <input type="text" placeholder="" value="{{ (auth()->user()->role_id == 5)?'':'' }}">
+                            <span>Localidad</span>
+                        </label>
+                        <label for="">
+                            <input type="text" placeholder="" value="{{auth()->user()->mobile_phone}} ">
+                            <span>Teléfono</span>
+                        </label>
+                        <button class="Button">FINALIZAR COMPRA</button>
+                    </form>
+                @else
+                    <p>Para realizar compras debes tener una cuenta cliente </p>
+                @endif
             @else
                 <h3>
-                    Para poder comprar debes tener una cuenta cliente con nosotros, da clic en registrarse y empieza a comprar.
+                    Para poder comprar debes tener una cuenta cliente con nosotros, da clic en registrarse y empieza a
+                    comprar.
                     Si ya tienes una cuenta inicia sesión y realiza tu compra.
                 </h3>
                 <div class="row middle arrow" style="margin-top: 3rem">
