@@ -45,10 +45,9 @@ class ShoppingController extends Controller
     private function valueTotal($cart){
         $valueTotal = 0;
         foreach($cart as $product){
-            $price = ($product->offer_price) ?$product->offer_price:$product->offer_price;
+            $price = ($product->offer_price) ?$product->offer_price:$product->price;
             $valueTotal += $product->quantity * $price;
         }
-
         Session::put('valueTotal',$valueTotal);
 
     }
