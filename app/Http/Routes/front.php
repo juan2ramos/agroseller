@@ -15,6 +15,15 @@ Route::get('eliminar-compra/{p}',[
 ]);
 
 
+Route::get('presupuestar',[
+    'uses'  => 'BudgetController@show',
+    'as'    => 'budget'
+]);
+Route::get('presupuesto-nuevo',[
+    'uses'  => 'BudgetController@add',
+    'as'    => 'addBudget'
+])->middleware('auth');
+
 Route::get('producto/{slug}-{id}', [
     'uses' => 'ProductController@productDetailFront',
     'as' => 'productDetail'

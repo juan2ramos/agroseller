@@ -520,6 +520,7 @@
             <span class="col-6">Subtotal</span>
             <span class="col-6 AlignRight">${{number_format(session('valueTotal'), 0, " ", ".")}}</span>
             <a class="Button" href="{{route('checkout')}}">REALIZAR COMPRA</a>
+            <a class="Button" href="{{route('budget')}}">PRESUPUESTO</a>
         </section>
     </section>
 </div>

@@ -25,6 +25,9 @@ class Product extends Model
     public function orders(){
         return $this->belongsToMany(Order::class);
     }
+    public function budgets(){
+        return $this->belongsToMany(Budget::class);
+    }
 
     public function productFiles(){
         return $this->hasMany(ProductFile::class);
