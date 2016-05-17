@@ -11,6 +11,16 @@ Route::group(['namespace' => 'admin'], function () {
         'as' => 'newProduct',
     ]);
 
+    Route::get('producto/edit/{id}', [
+        'uses' => 'ProductController@editProduct',
+        'as' => 'editProduct'
+    ]);
+
+    Route::post('producto/update/{id}', [
+        'uses' => 'ProductController@updateProduct',
+        'as' => 'updateProduct'
+    ]);
+
     Route::post('productos/delete', [
         'uses' => 'ProductController@delete',
         'as' => 'deleteProduct'

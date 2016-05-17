@@ -18,4 +18,5 @@ class Subcategory extends Model
     public function getProductsPublicAttribute(){
         return $this->products()->where('status', 'public');
     }
+
 }

@@ -10,7 +10,7 @@ Route::get('compras/{product}', [
 ]);
 
 
-Route::get('producto/{slug}-{id}', [
+Route::get('producto/{slug}_{id}', [
     'uses' => 'ProductController@productDetailFront',
     'as' => 'productDetail'
 ]);

@@ -32,8 +32,10 @@ main
 *:focus
   outline: none
 .pagination
+  width: 100%
   text-align: center
-  margin: 2rem 0 0
+  margin: 2rem 0 rem(60) 0
+
   & li
     display: inline-block
     vertical-align: middle
@@ -121,6 +123,7 @@ $widthContent: 71.25rem
     font-weight: 300
 .MessagePlatform-close
   position: absolute
+  z-index: 1
   top: 0
   right: 0
   background: #7F7F7F

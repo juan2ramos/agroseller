@@ -33,8 +33,11 @@ function initMap() {
 
     map = new google.maps.Map(document.getElementById("Map"), mapOptions);
 
-    if($('#Map').hasClass('Limited')){
-        showMarkers();
+    if($('#Map').hasClass('Limited') || $('#Map').hasClass('Editable')){
+        if($('#Map').hasClass('Editable'))
+            showMarkers(true);
+        else
+            showMarkers(false);
     }
 }
 
@@ -68,7 +71,7 @@ function getPosition(position){
     this.position = position;
 }
 
-function showMarkers(){
+function showMarkers(isDraggable){
     var coord = this.position.split(';');
     for(var i = 0; i < coord.length; i++){
 
@@ -77,7 +80,8 @@ function showMarkers(){
 
         var marker = new google.maps.Marker({
             position: {lat: lat, lng: lng},
-            map: map
+            map: map,
+            draggable : isDraggable
         });
 
         arrayMarkers.push(marker);

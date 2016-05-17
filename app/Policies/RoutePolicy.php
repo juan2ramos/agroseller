@@ -42,7 +42,7 @@ class RoutePolicy
                 [
                     'admin', 'users', 'providers', 'category', 'farmIndex', 'products', 'questions', 'clients',
                     'bills', 'orders', 'reports', 'subcategoriesQuery','featuresQuery', 'showUser', 'validateProvider',
-                    'newProduct','agentsGet'
+                    'newProduct','agentsGet', 'editProduct', 'deleteProduct', 'updateProduct'
                 ],
             '2' =>
                 [
@@ -51,7 +51,7 @@ class RoutePolicy
                 ],
             '3' =>
                 [
-                    'admin', 'products', 'questions', 'orders', 'registerProvider', 'isValidateProviders', 'questions', 'subcategoriesQuery','featuresQuery', 'newProduct', 'insertProvider', 'questionDetail', 'questionNew', 'deleteProduct'
+                    'admin', 'products', 'questions', 'orders', 'registerProvider', 'isValidateProviders', 'questions', 'subcategoriesQuery','featuresQuery', 'newProduct', 'insertProvider', 'questionDetail', 'questionNew', 'editProduct', 'deleteProduct', 'updateProduct'
                 ],
             '4' =>
                 [

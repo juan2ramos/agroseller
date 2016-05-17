@@ -70,11 +70,11 @@ class ProductController extends Controller
     {
         $features = $product->subcategory->features;
         $featuresTranslate =
-            [[
-                'id' => 1,
-                'name' => 'Presentación',
-                'value' => $product->presentation
-            ],
+            [   [
+                    'id' => 1,
+                    'name' => 'Presentación',
+                    'value' => $product->presentation
+                ],
                 [
                     'id' => 2,
                     'name' => 'Tamaño',
@@ -98,12 +98,12 @@ class ProductController extends Controller
                 [
                     'id' => 6,
                     'name' => 'Description',
-                    'value' => "",
+                    'value' => null
                 ],
                 [
                     'id' => 7,
                     'name' => 'Composición',
-                    'value' => ''
+                    'value' => null
                 ],
                 [
                     'id' => 8,
@@ -128,7 +128,7 @@ class ProductController extends Controller
                 [
                     'id' => 12,
                     'name' => 'Ubicación',
-                    'value' => ''
+                    'value' => null
                 ],
                 [
                     'id' => 13,
@@ -137,7 +137,7 @@ class ProductController extends Controller
                 ]];
 
         foreach ($featuresTranslate as $key => $translate) {
-            if (!isset($features[$key]) || $featuresTranslate[$key]['value'] == "") {
+            if (!isset($features[$key]) || !$featuresTranslate[$key]['value']) {
                 unset($featuresTranslate[$key]);
             }
         }

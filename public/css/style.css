@@ -58,8 +58,9 @@ main {
 }
 
 .pagination {
+  width: 100%;
   text-align: center;
-  margin: 2rem 0 0;
+  margin: 2rem 0 3.75rem 0;
 }
 
 .pagination li {
@@ -164,6 +165,7 @@ main {
 
 .MessagePlatform-close {
   position: absolute;
+  z-index: 1;
   top: 0;
   right: 0;
   background: #7F7F7F;
@@ -1869,17 +1871,26 @@ body {
   font-weight: 400;
 }
 
-[for^="tab"] {
+[for^="tab"],
+[for="categoryTab"],
+[for="productTab"],
+[for="offerTab"] {
   color: #D9D9D9;
 }
 
-[id="tab1"]:checked ~ [for="tab1"],
-[id="tab2"]:checked ~ [for="tab2"] {
+#tab1:checked ~ [for="tab1"],
+#tab2:checked ~ [for="tab2"],
+#categoryTab:checked ~ [for="categoryTab"],
+#productTab:checked ~ [for="productTab"],
+#offerTab:checked ~ [for="offerTab"] {
   color: #C5D257;
 }
 
 #tab1:checked ~ #EditProduct,
-#tab2:checked ~ #NewProduct {
+#tab2:checked ~ #NewProduct,
+#categoryTab:checked ~ #EditCategoryProduct,
+#productTab:checked ~ #EditDetailProduct,
+#offerTab:checked ~ #EditOfferProduct {
   display: block;
 }
 
@@ -1891,14 +1902,14 @@ label.Tab {
   text-align: center;
 }
 
-.Line-bottom {
+[class^='Line-bottom-'] {
   position: relative;
   display: block;
   height: 0.25rem;
   background: #D9D9D9;
 }
 
-.Line-bottom:after {
+[class^='Line-bottom-']:after {
   transition: left .5s ease-in;
   content: '';
   position: absolute;
@@ -1906,15 +1917,32 @@ label.Tab {
   left: 0;
   display: block;
   height: 0.25rem;
-  width: 50%;
   background: #C5D257;
 }
 
-.right.Line-bottom:after {
+.Line-bottom-two:after {
+  width: 50%;
+}
+
+.Line-bottom-three:after {
+  width: 33.33%;
+}
+
+.right.Line-bottom-two:after {
   left: 50%;
 }
 
+.center.Line-bottom-three:after {
+  left: 33.33%;
+}
+
+.right.Line-bottom-three:after {
+  left: 66.66%;
+}
+
 #EditProduct {
+  margin-top: 40px;
+  padding: 0 40px;
   width: 100%;
 }
 
@@ -1932,39 +1960,10 @@ label.Tab {
   left: 0;
 }
 
-#EditProduct .Product-item {
-  padding: 1.875rem 0.9375rem;
-}
-
-#EditProduct .Item-image {
-  height: 15.90625rem;
-  overflow: hidden;
-}
-
-#EditProduct .Item-info {
-  background: #EEE;
-  padding: 1.25rem 1rem;
-}
-
-#EditProduct .Item-info h4 {
-  font-size: 1rem;
-  line-height: 2rem;
-  color: #27383F;
-  font-weight: 500;
-  text-transform: capitalize;
-}
-
-#EditProduct .Item-info h5 {
-  font-size: .8rem;
-  color: #7E7E7E;
-  font-weight: 400;
-}
-
 #EditProduct .Item-actions {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-top: 1.25rem;
 }
 
 #EditProduct .Item-actions [class^='icon-'] {
@@ -1973,7 +1972,10 @@ label.Tab {
   height: 1.5625rem;
   display: block;
   overflow: hidden;
-  margin-right: 1.25rem;
+}
+
+#EditProduct .Item-actions .icon-update {
+  margin-right: 0.9375rem;
 }
 
 .MessagePlatform-confirm {
@@ -1992,4 +1994,11 @@ label.Tab {
 .MessagePlatform-confirm .Button:hover {
   box-shadow: none;
   opacity: 1;
+}
+
+.Wizard-line.vertical {
+  width: 4px;
+  height: 33.33%;
+  top: 0;
+  right: 0;
 }

@@ -28,6 +28,8 @@ $(document).ready(function () {
         $(this).datetimepicker('show');
     });
 
+    var categoryId = $('#categoryId').val(),
+        subcategoryId = $('#subcategoryId').val();
 
     var $categories = $('#categories'),
         $subcategories = $('#subcategories'),
@@ -37,17 +39,16 @@ $(document).ready(function () {
         $subcategoriesList = $('#subcategoriesList'),
         inputsForm = new Array;
 
-    for (var i = 0; i < optionsNumber; i += 1) {
-        $('<li />', {
-            html: $options.eq(i).text() + '<svg width="7px" height="12px"><use xlink:href="#arrow" /></svg>',
-            'data-id': $options.eq(i).val()
-        }).appendTo($categoriesList);
-    }
+        for (var i = 0; i < optionsNumber; i++) {
+            $('<li />', {
+                html: $options.eq(i).text() + '<svg width="7px" height="12px"><use xlink:href="#arrow" /></svg>',
+                'data-id': $options.eq(i).val()
+            }).appendTo($categoriesList);
+        }
 
-    $('#categoriesList li').on('click', function () {
-
-        $('#stepOneButton').addClass('invalid')
-        $('#categoriesList li').removeClass('selected');
+    $categoriesList.on('click', 'li', function () {
+        $('#stepOneButton').addClass('invalid');
+        $categoriesList.children('li').removeClass('selected');
         $('.Wizard li:gt(0)').removeClass('current');
         $(this).addClass('selected');
 
@@ -63,27 +64,30 @@ $(document).ready(function () {
             $subcategories.html('');
             $subcategoriesList.html('');
 
-            for (var i in subcategories) {
-                $('<li />', {
-                    html: subcategories[i].name,
-                    'data-id': subcategories[i].id
+            for (var j in subcategories) {
+                var subcategory = $('<li />', {
+                    html: subcategories[j].name,
+                    'data-id': subcategories[j].id
                 }).appendTo($subcategoriesList);
-                $subcategories.append($("<option></option>").attr("value", subcategories[i].id).text(subcategories[i].name));
-            }
 
+                $subcategories.append($("<option></option>").attr("value", subcategories[j].id).text(subcategories[j].name));
+                if(subcategoryId == subcategory.attr('data-id')){
+                    $subcategoriesList.children('li').eq(j).click();
+                }
+            }
 
         }).fail(function () {
             button.removeClass('hidden');
             alert('Ocurrió un error :(');
         });
-
     });
-    $('#subcategoriesList').on('click', ' li', function () {
-        $('#subcategoriesList li').removeClass('selected');
-        $(this).addClass('selected')
+
+    $subcategoriesList.on('click', ' li', function () {
+        $subcategoriesList.children('li').removeClass('selected');
+        $(this).addClass('selected');
         inputsForm = [];
         $subcategories.val($(this).data('id'));
-        $.post($subcategories.data('route'), {id: $(this).data('id'), _token: $('#categories').data('token')},
+        $.post($subcategories.data('route'), {id: $(this).data('id'), _token: $categories.data('token')},
             function (response) {
                 $.each(response.features, function (arrayID, group) {
                     $('.' + group.name).css('display', 'block');
@@ -116,6 +120,7 @@ $(document).ready(function () {
         }
     });
 
+    $categoriesList.children('li:nth-child(' + categoryId +')').click();
 
 });
 function steps(from, to) {
@@ -129,7 +134,7 @@ function steps(from, to) {
         });
     }
     if (to == 3) {
-        var stringPrice = numeral($('#priceCurrent').val()).format('0,0');
+        var stringPrice = $('#priceCurrent').val();
         $('#priceForOffer').text(stringPrice)
 
     }
@@ -228,13 +233,13 @@ function DetailsProduct() {
 
 /********* Eliminar productos *********/
 
-var tab1 = $('[for="tab1"]');
-var tab2 = $('[id="tab2"]');
-var line = $('.Line-bottom');
-var deleteMessage = $('.DeleteMessage');
-var productUpdate = $('#ProductUpdate');
-var url = $('#deleteProductRoute').val();
-var productId;
+var tab1 = $('[for="tab1"]'),
+    tab2 = $('[id="tab2"]'),
+    line = $('.Line-bottom-two'),
+    deleteMessage = $('.DeleteMessage'),
+    productUpdate = $('#ProductUpdate'),
+    url = $('#deleteProductRoute').val(),
+    productId;
 
 if(tab2.is(':checked')){
     line.addClass('right');
