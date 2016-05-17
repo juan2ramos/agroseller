@@ -1,49 +1,37 @@
 @extends('layout')
 
 @section('content')
-    <figure class="Login-logo">
-        <img src="{{ url('images/agroseller-logo.png') }}" alt="">
-    </figure>
+    <header class="HeaderAuth">
+        <div class="HeaderAuth-content row middle ">
+            <figure class="col-8 ">
+                <a href="/"><img src="{{ url('images/logo-agrosellers.svg') }}" alt=""></a>
+            </figure>
+            <a class="col-2 end" href="{{route('login')}}">
+                <button class="Button">INICIAR SESIÓN</button>
+            </a>
+            <a class="col-2 end" href="{{route('register')}}">
+                <button class="Button">REGISTRATE</button>
+            </a>
+        </div>
+    </header>
 
-    <a href="{{route('login')}}">
-        <button class="Header-login">Inicia Sesión</button>
-    </a>
-    <main class="Login">
-        @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
-            </div>
-        @endif
-
-        @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        <h2 style="font-size: 2rem">¡Recuperar contraseña!</h2>
-        <hr class="Logo-hr">
-        <form class="form-horizontal" role="form" method="POST" action="/password/email">
+    <form class="row center middle FormAuth Forms Login" role="form" method="POST" action="/password/email"">
+        <div class="BackContainer FormAuth-container">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <h2>RESTAURAR PASSWORD</h2>
 
-            <div class="form-group">
+            <label for="email">
+                <input type="email" name="email" value="{{ old('email') }}">
+                <span>E-mail</span>
+            </label>
 
-                <div class="col-md-6">
-                    <input type="email" placeholder="E-mail" name="email" value="{{ old('email') }}">
-                </div>
-            </div>
 
-            <div class="form-group">
-                <div class="col-md-6 col-md-offset-4">
-                    <button type="submit" class="Login-submit">
-                       Recuperar Contraseña
-                    </button>
-                </div>
-            </div>
-        </form>
-    </main>
+            <button  type="submit" class="Button submit"> RESTAURAR</button>
+        </div>
+    </form>
+
+
+@endsection
+@section('scripts')
+    <script src="{{asset('js/forms.js')}}"></script>
 @endsection
