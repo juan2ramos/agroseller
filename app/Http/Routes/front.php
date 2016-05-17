@@ -29,6 +29,11 @@ Route::get('producto/{slug}-{id}', [
     'as' => 'productDetail'
 ]);
 
+Route::post('checkout',[
+    'uses' => 'OrderController@add',
+    'as' => 'newOrder'
+]);
+
 Route::get('precios', [
     'uses' => 'HomeController@pricing',
     'as' => 'pricing'

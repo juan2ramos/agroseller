@@ -60,9 +60,9 @@
         <section class="col-8">
             <h2>2. Detalle de facturación</h2>
             @if(Auth::check())
-                @if(auth()->user()->role_id == 5)
+                @if(auth()->user()->role_id == 4)
                     <h3>Completa los campos requeridos para realizar tu solicitud</h3>
-                    <form action="" class="Checkout-form">
+                    <form action="{{route('newOrder')}}" class="Checkout-form">
                         <label for="name">
                             <input type="text" id="name"
                                    value="{{auth()->user()->name .' '. auth()->user()->last_name}}">
@@ -77,7 +77,7 @@
                             <span>Dirección</span>
                         </label>
                         <label for="loca">
-                            <input type="text" placeholder="" value="{{ (auth()->user()->role_id == 5)?'':'' }}">
+                            <input type="text" placeholder="" value="{{ (auth()->user()->role_id == 4)?'':'' }}">
                             <span>Localidad</span>
                         </label>
                         <label for="">

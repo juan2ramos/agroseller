@@ -37,7 +37,7 @@
                         @else
                             <p>${{number_format($product->price, 0, " ", ".")}}</p>
                         @endif
-                        <a href="" class="Button">COMPRAR</a>
+                        <a href="{{route('productDetail',[$product->slug, $product->id])}}" class="Button">COMPRAR</a>
                     </div>
                 </article>
             @endforeach

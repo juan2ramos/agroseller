@@ -477,6 +477,7 @@
                 @foreach(Session::get('cart') as $product)
                     <li class="row middle">
                         <figure class="col-5">
+                            <a href="{{route('productDetail',[$product->slug, $product->id])}}"></a>
                             <img src="{{ url('uploads/products/'.$product->productFiles()->first()->name )}}" alt="">
                         </figure>
                         <div class="CartDetail-content col-7">
