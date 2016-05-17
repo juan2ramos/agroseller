@@ -1,60 +1,68 @@
 $(document).ready(function () {
-    $('#Menu').on('click', function(){
+    $('#Menu').on('click', function () {
         $('#MenuContainer').addClass('Show');
-        $('body').scrollTop( 0 );
+        $('body').scrollTop(0);
         $('body').css('overflow', 'hidden')
     });
 
-    $('#CartButton').on('click', function(){
+    $('#CartButton').on('click', function () {
         $('#CartContainer').addClass('Show');
-        $('body').scrollTop( 0 );
+        $('body').scrollTop(0);
         $('body').css('overflow-y', 'hidden')
     });
 
 
-    $('.LightBoxContent-close').on('click', function(){
+    $('.LightBoxContent-close').on('click', function () {
         $('.LightBoxContent').removeClass('Show');
         $('body').css('overflow-y', 'scroll')
     });
 
+
     var $name = $('.Checkout-form input, .Form-Control input, .Form-Control textarea');
 
-    $name.focus(function() {
+    $name.focus(function () {
         $(this).parent('label').addClass('open');
-    }).blur(function() {
-        if( $.trim($(this).val()) == ""){
+    }).blur(function () {
+        if ($.trim($(this).val()) == "") {
             $(this).parent('label').removeClass('open');
         }
     });
+    $name.each(function () {
+        if ($(this).val()) {
+            $(this).parent('label').addClass('open');
+        }
+    });
 
+
+    $name.autocomplete()
     var $message = $("[class*='-message']");
-    $message.on('click', function(){
+    $message.on('click', function () {
         $(this).addClass('hidden').slideUp(600);
     });
 
     var $question = $('.container_questions_item .question span');
-    $question.on('click', function(){
+    $question.on('click', function () {
         $(this).siblings().slideToggle();
     });
 });
 
 /************************* Buscador Front ****************************/
-function autoSearch(){
+function autoSearch() {
     var param = {
-        'search' : $('#template-icon-left').val(),
-        '_token' : $('#principalToken').val()
+        'search': $('#template-icon-left').val(),
+        '_token': $('#principalToken').val()
     };
 
     $.ajax({
-        url     :   $('#searchRoute').val(),
-        type    :  'POST',
-        dataType:  'json',
-        data    :   param,
-        success :   function (datos) {
+        url: $('#searchRoute').val(),
+        type: 'POST',
+        dataType: 'json',
+        data: param,
+        success: function (datos) {
             console.log(datos.products);
             var products = datos.products;
             var data = [];
-            for(var i = 0; i < products.length; i++){
+            for (var i = 0; i < products.length; i++) {
                 data.push({name: products[i]['name'], type: "air", icon: "http://lorempixel.com/100/50/transport/2"});
             }
             var xdatos = {name: products[0]['name'], type: "air", icon: "http://lorempixel.com/100/50/transport/2"};

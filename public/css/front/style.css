@@ -1346,9 +1346,9 @@ body {
   width: 18rem;
   position: absolute;
   right: -18rem;
-  top: 11.875rem;
+  top: 0;
   box-shadow: -0.0625rem 0 0.5rem 0 rgba(0, 0, 0, 0.5);
-  height: calc(100vh - 11.875rem);
+  height: 100vh;
   transition: all 0.5s;
 }
 
@@ -1365,7 +1365,7 @@ body {
 }
 
 .CartDetail figure {
-  padding: 1rem;
+  padding: 1.8rem;
 }
 
 .CartDetail h3 {
@@ -1448,12 +1448,7 @@ body {
 }
 
 .Checkout ul {
-  margin-top: 1.625rem;
   width: 21rem;
-}
-
-.Checkout ul {
-  border-bottom: .0625rem solid #D9D9D9;
 }
 
 .Checkout ul h3 {
@@ -1490,12 +1485,14 @@ body {
 }
 
 .Checkout li {
+  margin-top: 1.625rem;
   box-shadow: 0 2px 4px rgba(187, 187, 187, 0.5);
+  border-bottom: .0625rem solid #D9D9D9;
 }
 
 .Checkout-form,
 .Form-Control {
-  margin-top: 1.625rem;
+  margin: 1.625rem 0;
   background: #F8F8F8;
   box-shadow: 0 2px 4px rgba(187, 187, 187, 0.5);
   padding: 1.5rem 2rem;
@@ -1694,6 +1691,11 @@ body {
 
 .UserFront a:hover {
   text-decoration: underline;
+}
+
+.Total {
+  font-weight: 400;
+  padding: 1.25rem 2.875rem;
 }
 
 .container {

@@ -1133,7 +1133,8 @@ label.file.withFiles:before {
   transition: all 0.2s;
 }
 
-.Forms input[type="checkbox"] {
+.Forms input[type="checkbox"],
+.Forms input[type="radio"] {
   width: 0.625rem;
   margin: 0 0.25rem;
   height: 0.625rem;
@@ -1141,11 +1142,13 @@ label.file.withFiles:before {
   opacity: 0;
 }
 
-.Forms input[type="checkbox"]:checked + sub {
+.Forms input[type="checkbox"]:checked + sub,
+.Forms input[type="radio"]:checked + sub {
   background: #C5D257;
 }
 
-.Forms input[type="checkbox"]:checked + sub:before {
+.Forms input[type="checkbox"]:checked + sub:before,
+.Forms input[type="radio"]:checked + sub:before {
   border-color: white;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
@@ -1276,6 +1279,28 @@ label.file.withFiles:before {
   top: -0.3125rem;
   width: calc(100% + 5px);
   height: 11.53125rem;
+}
+
+.Forms input[type="radio"] {
+  display: inline-block;
+  width: 1.5625rem;
+  height: auto;
+  margin: 0.625rem 0;
+  padding: 0 0.5rem;
+}
+
+.Check-agent {
+  padding: 0 0.75rem 2rem;
+  color: #494F58;
+}
+
+.Check-agent sub {
+  top: 0.625rem;
+}
+
+.Check-agent p {
+  margin: 0;
+  font-weight: 400;
 }
 
 body {

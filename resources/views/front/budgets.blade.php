@@ -2,16 +2,19 @@
 
 @section('content')
     <div class="row Checkout">
-        <section class="col-4">
-            <h2>1. Resumen de la compra</h2>
-            <h3>Verifica tu compra y método ed envío</h3>
-            <ul>
+        <section class="col-12">
+            <h2 style="text-align: justify ; font-size: 1.2rem">1. Deseas guardar estos productos en un presupuesto,
+                puedes comprar luego, crear tus cotizaciones o comparar precios</h2>
+            <h3>Los productos guardados están sujetos a cambios de precios por parte de los proveedores</h3>
+            <ul class="row " style="width: 100%">
                 @if(Session::has('cart'))
                     @foreach(Session::get('cart') as $product)
-                        <li class="row middle">
+                        <li style="margin: 3rem 1rem 0" class="row col-4 middle">
                             <figure class="col-5">
+                                <a href="{{route('productDetail',[$product->slug, $product->id])}}">
                                 <img src="{{ url('uploads/products/'.$product->productFiles()->first()->name )}}"
                                      alt="">
+                                    </a>
                             </figure>
                             <div class="CartDetail-content col-7">
                                 <div class="CartDetail-hGroup">
@@ -50,52 +53,25 @@
                                 </div>
                             </div>
                         </li>
-
                     @endforeach
                 @endif
 
             </ul>
-            <div class="col-12 Total AlignRight">Subtotal: ${{number_format(session('valueTotal'), 0, " ", ".")}}</div>
+            <div class="col-12 Total AlignRight" style="font-size: 1.5rem; padding: 1.25rem 0">Total:
+                ${{number_format(session('valueTotal'), 0, " ", ".")}}</div>
         </section>
-        <section class="col-8">
-            <h2>2. Detalle de facturación</h2>
+        <section class="col-12">
             @if(Auth::check())
-                @if(auth()->user()->role_id == 4)
-                    <h3>Completa los campos requeridos para realizar tu solicitud</h3>
-                    <form action="{{route('newOrder')}}" class="Checkout-form">
-                        <label for="name">
-                            <input type="text" id="name"
-                                   value="{{auth()->user()->name .' '. auth()->user()->last_name}}">
-                            <span>Nombre y apellidos completos</span>
-                        </label>
-                        <label for="identification">
-                            <input type="text" id="identification" value="{{auth()->user()->identification}}">
-                            <span>Cédula de ciudadania o NIT </span>
-                        </label>
-                        <label for="address">
-                            <input type="text" id="address" value="{{auth()->user()->identification}}">
-                            <span>Dirección</span>
-                        </label>
-                        <label for="loca">
-                            <input type="text" placeholder="" value="{{ (auth()->user()->role_id == 4)?'':'' }}">
-                            <span>Localidad</span>
-                        </label>
-                        <label for="">
-                            <input type="text" placeholder="" value="{{auth()->user()->mobile_phone}} ">
-                            <span>Teléfono</span>
-                        </label>
-                        <button class="Button">FINALIZAR COMPRA</button>
-                    </form>
-                @else
-                    <p>Para realizar compras debes tener una cuenta cliente </p>
-                @endif
+                <div class="row center">
+                    <a class="Button col-4" style="margin: 2rem 0" href="{{route('addBudget')}}">CREAR TU PRESUPUESTO</a>
+                </div>
             @else
                 <h3>
-                    Para poder comprar debes tener una cuenta cliente con nosotros, da clic en registrarse y empieza a
-                    comprar.
-                    Si ya tienes una cuenta inicia sesión y realiza tu compra.
+                    Para crear un presupuesto debes tener una cuenta cliente con nosotros, da clic en registrarse y
+                    empieza.
+                    Si ya tienes una cuenta inicia sesión y crea tu presupuesto.
                 </h3>
-                <div class="row middle arrow" style="margin-top: 3rem">
+                <div class="row middle arrow" style="margin: 3rem 0">
                     <a href="{{route('register')}}" class="col-3 offset-3 Button">REGISTRATE</a>
                     <a href="{{route('login')}}" class="col-3 offset-1 Button">INICIA SESIÓN</a>
                 </div>

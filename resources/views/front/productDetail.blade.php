@@ -105,8 +105,8 @@
             <div class="ProductDetail-quantity">
                 <h4>Cantidad</h4>
                 <div class="row bottom">
-                    <input type="number" class="col-4" value="1" maxlength="3">
-                    <span class="col-8 AlignRight"><a href="{{route('shopping',['id' => $product->id])}}" class="Button">COMPRAR</a></span>
+                    <input type="number" id="quantity" class="col-4" value="1" maxlength="3">
+                    <span class="col-8 AlignRight"><a href="#" data-url="{{url('/')}}" id="buy" class="Button">COMPRAR</a></span>
                 </div>
             </div>
             <nav class="ProductDetail-network row between">
@@ -328,6 +328,12 @@
         });
     </script>
     @endif
+    <script>
+        $('#buy').on('click',function(e){
+            e.preventDefault();
+            window.location.href = $(this).data('url') + '/compras/{{ $product->id }}/'+$('#quantity').val()
+        });
+    </script>
 @endsection
 
 @section('styles')

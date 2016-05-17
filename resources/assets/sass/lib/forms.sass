@@ -117,7 +117,7 @@ label.file
       top: rem(3)
       left: rem(6)
       @include transition(all .2s)
-  & input[type="checkbox"]
+  & input[type="checkbox"],   input[type="radio"]
     width: rem(10)
     margin: 0 rem(4)
     height: rem(10)
@@ -215,3 +215,21 @@ label.file
     top: -0.3125rem
     width: calc(100% + 5px)
     height: 11.53125rem
+
+.Forms input[type="radio"]
+  display: inline-block
+  width: rem(25)
+  height: auto
+  margin: rem(10) 0
+  padding: 0 rem(8)
+
+
+
+.Check-agent
+  padding: 0 rem(12) rem(32)
+  color: #494F58
+  & sub
+    top: rem(10)
+  p
+    margin: 0
+    font-weight: 400

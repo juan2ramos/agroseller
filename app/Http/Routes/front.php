@@ -4,15 +4,34 @@ Route::get('/', [
     'uses' => 'HomeController@index',
     'as' => 'home'
 ]);
-Route::get('compras/{product}', [
-    'uses' => 'ShoppingController@index',
+Route::get('compras/{product}/{quantity}', [
+    'uses' => 'ShoppingController@add',
     'as' => 'shopping'
 ]);
 
+Route::get('eliminar-compra/{p}',[
+    'uses'  => 'ShoppingController@delete',
+    'as'    => 'cartDelete'
+]);
+
+
+Route::get('presupuestar',[
+    'uses'  => 'BudgetController@show',
+    'as'    => 'budget'
+]);
+Route::get('presupuesto-nuevo',[
+    'uses'  => 'BudgetController@add',
+    'as'    => 'addBudget'
+])->middleware('auth');
 
 Route::get('producto/{slug}_{id}', [
     'uses' => 'ProductController@productDetailFront',
     'as' => 'productDetail'
+]);
+
+Route::post('checkout',[
+    'uses' => 'OrderController@add',
+    'as' => 'newOrder'
 ]);
 
 Route::get('precios', [

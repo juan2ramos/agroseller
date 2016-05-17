@@ -38,6 +38,14 @@ Route::group(['namespace' => 'admin'], function () {
         'uses' => 'UserController@agentsGet',
         'as' => 'agentsGet',
     ]);
+    Route::get('user/{id}', [
+        'uses' => 'UserController@user',
+        'as' => 'user',
+    ]);
+    Route::post('newUserAdmin', [
+        'uses' => 'UserController@newUserAdmin',
+        'as' => 'newUserAdmin',
+    ]);
 });
 
 Route::get('proveedores', [
