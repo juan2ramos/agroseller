@@ -2,7 +2,7 @@
 @section('content')
     <section class="BackContainer row" style="position: relative">
             <input id="ps-description" type="hidden" value="{{ $productEdit->description }}">
-            <input id="ps-offerDescription" type="hidden" value="{{ $productEdit->description }}">
+            <input id="ps-offerDescription" type="hidden" value="">
             <input id="ps-taxes" type="hidden" value="{{ $productEdit->taxes }}">
             <input id="ps-importantOffer" type="hidden" value="{{ $productEdit->important_offer }}">
             @foreach($productEdit->productFiles as $file)

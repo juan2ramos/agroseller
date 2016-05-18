@@ -5,7 +5,7 @@
     <article>
         <p>1. Valor de la oferta - valor actual es de $<span id="priceForOffer"></span></p>
         <label for="offer-price">
-            @if(isset($productEdit))
+            @if(isset($productEdit) && $productEdit->offer_price > 0)
                 <input type="number" name="offer_price" id="offer-price" value="{{ $productEdit->offer_price }}">
             @else
                 <input type="number" name="offer_price" id="offer-price" value="{{ old('offer-price') }}">
@@ -18,10 +18,11 @@
         <p>2. Fechas de inicio y limite de la oferta</p>
         <div class="row middle  ">
             <label for="offer-on" class="col-4 ">
-                @if(!isset($productEdit) || strtotime($productEdit->offer_off) > 0)
+
+                @if(!isset($productEdit) || strtotime($productEdit->offer_off) < 1)
                 <input type="text" class="datetimepicker_mask" id="offer-on" name="offer_on" value="{{ old('offer-on') }}">
                 @else
-                <input type="text" class="datetimepicker_mask" id="offer-on" name="offer_on" value="{{ $productEdit->offer_on }}">
+                <input type="text" class="datetimepicker_mask" id="offer-on" name="offer_on" value="{{ $productEdit->offer_off }}">
                 @endif
                 <span>Fecha inicio</span>
                 <em>
@@ -39,7 +40,7 @@
                 </em>
             </label>
             <label for="offer-off" class="col-4 ">
-                @if(!isset($productEdit) || strtotime($productEdit->offer_off) > 0)
+                @if(!isset($productEdit) || strtotime($productEdit->offer_off) < 1)
                     <input type="text" class="datetimepicker_mask" id="offer-off" name="offer_off">
                 @else
                     <input type="text" class="datetimepicker_mask" id="offer-off" name="offer_off" value="{{ $productEdit->offer_off }}">

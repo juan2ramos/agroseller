@@ -6,7 +6,8 @@ var currentStep = 1,
     };
 $(document).ready(function () {
     jQuery.datetimepicker.setLocale('es');
-    $('.datetimepicker_mask').datetimepicker({
+    var dateTimePicker = $('.datetimepicker_mask');
+    dateTimePicker.datetimepicker({
         i18n: {
             es: {
                 months: [
@@ -22,23 +23,26 @@ $(document).ready(function () {
         },
     });
 
-    $('.datetimepicker_mask').datetimepicker({defaultDate: new Date()});
+    dateTimePicker.datetimepicker({defaultDate: new Date()});
 
-    $('.datetimepicker_mask').click(function () {
+    dateTimePicker.click(function () {
         $(this).datetimepicker('show');
     });
 
     var categoryId = $('#categoryId').val(),
         subcategoryId = $('#subcategoryId').val(),
-        compositionFile = $('#composition');
+        compositionFile = $('#composition'),
 
-    var $categories = $('#categories'),
+        $categories = $('#categories'),
         $subcategories = $('#subcategories'),
         $options = $('#categories').children('option'),
         optionsNumber = $options.length,
         $categoriesList = $('#categoriesList'),
         $subcategoriesList = $('#subcategoriesList'),
-        inputsForm = new Array;
+        inputsForm = new Array,
+
+        $stepOneButton = $('#stepOneButton'),
+        $wizard = $('.Wizard');
 
         for (var i = 0; i < optionsNumber; i++) {
             $('<li />', {
@@ -48,9 +52,9 @@ $(document).ready(function () {
         }
 
     $categoriesList.on('click', 'li', function () {
-        $('#stepOneButton').addClass('invalid');
+        $stepOneButton.addClass('invalid');
         $categoriesList.children('li').removeClass('selected');
-        $('.Wizard li:gt(0)').removeClass('current');
+        $wizard.children('li:gt(0)').removeClass('current');
         $(this).addClass('selected');
 
         $('.DataForm').css('display', 'none');
@@ -62,6 +66,7 @@ $(document).ready(function () {
             _token: $categories.data('token')
         }, function (response) {
             var subcategories = response.subcategories;
+            $subcategories.html('');
             $subcategories.html('');
             $subcategoriesList.html('');
 
@@ -94,13 +99,13 @@ $(document).ready(function () {
                     $('.' + group.name).css('display', 'block');
                     inputsForm.push(group.name)
                 });
-                $('#stepOneButton').removeClass('invalid')
+                $stepOneButton.removeClass('invalid')
             }).fail(function () {
             button.removeClass('hidden');
             alert('Ocurrió un error :(');
         });
     });
-    $('#stepOneButton').on('click', function () {
+    $stepOneButton.on('click', function () {
         if (!$(this).hasClass('invalid')) {
             steps(1, 2)
         }
@@ -114,19 +119,20 @@ $(document).ready(function () {
     $('#stepThreeButton, #omitir').on('click', function () {
         steps(3, 4)
     });
-    $('.Wizard li').on('click', function () {
+    $wizard.children('li').on('click', function () {
         var index = $(this).data('id');
         if ($(this).hasClass('current')) {
             steps(currentStep, index)
         }
     });
 
-    $categoriesList.children('li:nth-child(' + categoryId +')').click();
-
     compositionFile.on('change', function(){
         var file = $(this).val();
-        $(this).siblings('.file').text(file);
+        $('#compositionText').text(file);
     });
+
+    $categoriesList.children('li:nth-child(' + categoryId +')').click();
+
 });
 
 function steps(from, to) {
@@ -141,7 +147,7 @@ function steps(from, to) {
     }
     if (to == 3) {
         var stringPrice = parseInt($('#priceCurrent').val()).toLocaleString('de-DE');
-        $('#priceForOffer').text(stringPrice)
+        $('#priceForOffer').text(stringPrice);
 
     }
     if (to == 4) {
@@ -180,7 +186,7 @@ function DetailsProduct() {
 
                 var coordinates = ValueProduct.split(";");
                 nameProduct = arrayInput[nameProduct];
-                html = ""
+                html = "";
                 for (var j = 0; j < coordinates.length - 1; j++) {
 
                     coord = String(coordinates[j]).split("&");
