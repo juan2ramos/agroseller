@@ -2027,3 +2027,7 @@ label.Tab {
   top: 0;
   right: 0;
 }
+
+.no-data {
+  height: 100px;
+}

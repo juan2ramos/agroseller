@@ -13,6 +13,7 @@
         <article class="TabContainer" id="EditProduct">
             <input id="deleteProductRoute" type="hidden" value="{{route('deleteProduct')}}">
             <section class="Products row">
+                @if(count($products) > 0)
                 <table class="Table">
                     <thead>
                         <tr>
@@ -45,6 +46,11 @@
                     </tbody>
                 </table>
                 {!! $products->render() !!}
+                @else
+                <div class="no-data">
+                    <h2>No tiene producctos creados</h2>
+                </div>
+                @endif
             </section>
 
             <div class="DeleteMessage MessagePlatform row middle center" style="display: none">

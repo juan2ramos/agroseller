@@ -29,7 +29,8 @@ $(document).ready(function () {
     });
 
     var categoryId = $('#categoryId').val(),
-        subcategoryId = $('#subcategoryId').val();
+        subcategoryId = $('#subcategoryId').val(),
+        compositionFile = $('#composition');
 
     var $categories = $('#categories'),
         $subcategories = $('#subcategories'),
@@ -122,7 +123,12 @@ $(document).ready(function () {
 
     $categoriesList.children('li:nth-child(' + categoryId +')').click();
 
+    compositionFile.on('change', function(){
+        var file = $(this).val();
+        $(this).siblings('.file').text(file);
+    });
 });
+
 function steps(from, to) {
     currentStep = to;
     if (to == 2) {
@@ -134,7 +140,7 @@ function steps(from, to) {
         });
     }
     if (to == 3) {
-        var stringPrice = $('#priceCurrent').val();
+        var stringPrice = parseInt($('#priceCurrent').val()).toLocaleString('de-DE');
         $('#priceForOffer').text(stringPrice)
 
     }
@@ -287,3 +293,4 @@ deleteMessage.on('click', '#Cancel, #Accept', function(){
     else
         deleteMessage.hide();
 });
+
