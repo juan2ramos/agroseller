@@ -12,9 +12,9 @@
                         <li style="margin: 3rem 1rem 0" class="row col-4 middle">
                             <figure class="col-5">
                                 <a href="{{route('productDetail',[$product->slug, $product->id])}}">
-                                <img src="{{ url('uploads/products/'.$product->productFiles()->first()->name )}}"
-                                     alt="">
-                                    </a>
+                                    <img src="{{ url('uploads/products/'.$product->productFiles()->first()->name )}}"
+                                         alt="">
+                                </a>
                             </figure>
                             <div class="CartDetail-content col-7">
                                 <div class="CartDetail-hGroup">
@@ -62,14 +62,31 @@
         </section>
         <section class="col-12">
             @if(Auth::check())
-                <div class="row center">
-                    <a class="Button col-4" style="margin: 2rem 0" href="{{route('addBudget')}}">CREAR TU PRESUPUESTO</a>
-                </div>
+                @if(auth()->user()->role_id == 4)
+                    <div class="row center">
+                        <a class="Button col-4" style="margin: 2rem 0" href="{{route('addBudget')}}">CREAR TU
+                            PRESUPUESTO</a>
+                    </div>
+                @else
+                    @include('messages',[
+                    'type' => 'warning',
+                    'title' => '¡Lo sentimos!',
+                    'message' => '<p> Para realizar compras debes tener o crear  una cuenta como cliente, da clic
+                     <a href="'. route('login') .'">aqui</a> si ya posees una cuenta o
+                     <a href="'. route('register') .'">aqui</a> si te quieres registrar </p>'
+                     ])
+                @endif
             @else
+                @include('messages',[
+                                   'type' => 'warning',
+                                   'title' => '¡Lo sentimos!',
+                                   'message' => '<p> Para poder comprar debes tener una cuenta cliente con nosotros,
+                                   da clic en registrarse y empieza a comprar.</p>' .
+                                   '<p>Si ya tienes una cuenta inicia sesión y realiza tu compra.</p>'
+                                    ])
                 <h3>
-                    Para crear un presupuesto debes tener una cuenta cliente con nosotros, da clic en registrarse y
-                    empieza.
-                    Si ya tienes una cuenta inicia sesión y crea tu presupuesto.
+
+
                 </h3>
                 <div class="row middle arrow" style="margin: 3rem 0">
                     <a href="{{route('register')}}" class="col-3 offset-3 Button">REGISTRATE</a>

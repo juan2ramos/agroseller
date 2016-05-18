@@ -8,7 +8,8 @@ use Agrosellers\Http\Requests;
 
 class OrderController extends Controller
 {
-    Public function add(Request $request){
-
+    Public function add(Request $request)
+    {
+        dd($request);
     }
 }
