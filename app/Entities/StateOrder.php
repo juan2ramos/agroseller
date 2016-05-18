@@ -1,10 +1,10 @@
 <?php
 
-namespace Agrosellers;
+namespace Agrosellers\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class OrderState extends Model
+class StateOrder extends Model
 {
     protected $fillable = ['name'];
 }

@@ -17,6 +17,7 @@
     <script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
 </head>
 <body>
+
 <svg viewBox="0 0 7 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
      style="display:none">
     <g id="arrow" transform="translate(-239.000000, -220.000000)" fill="#818181">
@@ -468,6 +469,7 @@
         </div>
     </nav>
 </div>
+
 <div class="LightBoxContent {{(Session::has('buy')?'Show':'')}}" id="CartContainer">
     <div class="LightBoxContent-close"></div>
     <section class="CartDetail">
@@ -530,6 +532,7 @@
         </section>
     </section>
 </div>
+
 <script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
 <script src="{{asset('js/front/main.js')}}"></script>
 <script src="{{asset('js/owl.carousel.js')}}"></script>
