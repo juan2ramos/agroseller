@@ -1,7 +1,7 @@
 @extends('layoutBack')
 
 @section('content')
-    <section class="BackContainer row">
+    <section class="BackContainer row" style="position: relative;">
         <article class="QuestionList col-12">
             <h2>Ultimas preguntas</h2>
             <section class="QuestionList-questions">
@@ -80,7 +80,6 @@
     <script>
         $('.QuestionHead-close').on('click', function(){
             $('.QuestionList').addClass('col-12').removeClass('col-6');
-            $('.Question').hide();
         });
 
         $('.QuestionList-item').on('click', function() {
