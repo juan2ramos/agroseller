@@ -178,7 +178,7 @@
 
                 <input type="hidden" id="Location" name="location" value="">
                 <input type="hidden" id="Description" name="description" value="">
-                <input type="hidden" id="DescriptionOffer" name="DescriptionOffer" value="">
+                <input type="hidden" id="DescriptionOffer" name="offer_description" value="">
             </form>
         </article>
     </section>

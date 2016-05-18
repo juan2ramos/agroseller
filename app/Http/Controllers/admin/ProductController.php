@@ -2,6 +2,7 @@
 
 namespace Agrosellers\Http\Controllers\admin;
 
+use Agrosellers\Entities\Offer;
 use Validator;
 use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
@@ -91,7 +92,9 @@ class ProductController extends Controller
             $inputs['taxes'] = implode(';', $inputs['taxes']);
         $inputs['user_id'] = Auth::user()->id;
         $inputs['slug'] = str_slug($inputs['name']);
-        $this->product = Product::create($inputs);
+
+
+        $this->product = Product::create($inputs)->offers()->create($inputs);
 
         $this->createFile($request);
         return redirect()->back()->with('messageSuccess', 1);

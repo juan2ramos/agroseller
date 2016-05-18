@@ -13,7 +13,10 @@ class AddColumnOffersTable extends Migration
     public function up()
     {
        Schema::table('offers',function(Blueprint $table){
-           $table->text('description');
+           $table->text('offer_description');
+           $table->integer('offer_price');
+           $table->dateTime('offer_on')->nullable();
+           $table->dateTime('offer_off')->nullable();
        });
     }
 
