@@ -1,6 +1,6 @@
 var $name = $('.Forms input , .Forms textarea');
 
-$name.focus(function() {
+$name.on('focus', function() {
     $(this).parent('label').addClass('open');
 }).blur(function() {
     if( $.trim($(this).val()) == ""){
