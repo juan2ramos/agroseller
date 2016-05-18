@@ -39,10 +39,7 @@ $(document).ready(function () {
         optionsNumber = $options.length,
         $categoriesList = $('#categoriesList'),
         $subcategoriesList = $('#subcategoriesList'),
-        inputsForm = new Array,
-
-        $stepOneButton = $('#stepOneButton'),
-        $wizard = $('.Wizard');
+        inputsForm = new Array;
 
         for (var i = 0; i < optionsNumber; i++) {
             $('<li />', {
@@ -52,9 +49,9 @@ $(document).ready(function () {
         }
 
     $categoriesList.on('click', 'li', function () {
-        $stepOneButton.addClass('invalid');
+        $('#stepOneButton').addClass('invalid');
         $categoriesList.children('li').removeClass('selected');
-        $wizard.children('li:gt(0)').removeClass('current');
+        $('.Wizard li:gt(0)').removeClass('current');
         $(this).addClass('selected');
 
         $('.DataForm').css('display', 'none');
@@ -99,13 +96,13 @@ $(document).ready(function () {
                     $('.' + group.name).css('display', 'block');
                     inputsForm.push(group.name)
                 });
-                $stepOneButton.removeClass('invalid')
+                $('#stepOneButton').removeClass('invalid')
             }).fail(function () {
             button.removeClass('hidden');
             alert('Ocurrió un error :(');
         });
     });
-    $stepOneButton.on('click', function () {
+    $('#stepOneButton').on('click', function () {
         if (!$(this).hasClass('invalid')) {
             steps(1, 2)
         }
@@ -119,7 +116,7 @@ $(document).ready(function () {
     $('#stepThreeButton, #omitir').on('click', function () {
         steps(3, 4)
     });
-    $wizard.children('li').on('click', function () {
+    $('.Wizard li').on('click', function () {
         var index = $(this).data('id');
         if ($(this).hasClass('current')) {
             steps(currentStep, index)
@@ -158,7 +155,6 @@ function steps(from, to) {
     $('.Wizard-line').css('width', widthLine + '%');
     $('.Step-' + from).hide('slow');
     $('.Step-' + to).show('slow');
-
 }
 function DetailsProduct() {
     var $DetailsProduct = $("#detailsProduct");
