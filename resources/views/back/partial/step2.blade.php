@@ -158,9 +158,10 @@
 
 
     <select class="presentation DataForm" name="presentation">
-        <option value="">Selecione la presentación</option>
-        @if(isset($productEdit))
+        @if(isset($productEdit) && $productEdit->presentation)
         <option value="{{ $productEdit->presentation }}">{{  $productEdit->presentation }}</option>
+        @else
+        <option value="">Selecione la presentación</option>
         @endif
         <option value="Bolsa">Bolsa</option>
         <option value="Caja">Caja</option>
@@ -196,7 +197,7 @@
     </label>
     <label for="composition" class="DataForm composition">
         <input type="file" id="composition" name="composition" placeholder="sds">
-        <div class="file">Composición , propiedades(Ficha tecnica)</div>
+        <div class="file" id="compositionText">Composición , propiedades(Ficha tecnica)</div>
         <em>PDF</em>
     </label>
 

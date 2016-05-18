@@ -2,9 +2,15 @@
 @section('content')
     <section class="BackContainer row" style="position: relative">
             <input id="ps-description" type="hidden" value="{{ $productEdit->description }}">
-            <input id="ps-offerDescription" type="hidden" value="{{ $productEdit->description }}">
+            <input id="ps-offerDescription" type="hidden" value="">
             <input id="ps-taxes" type="hidden" value="{{ $productEdit->taxes }}">
             <input id="ps-importantOffer" type="hidden" value="{{ $productEdit->important_offer }}">
+            @foreach($productEdit->productFiles as $file)
+                @if($file->extension == 'pdf')
+                    <input id="ps-composition" type="hidden" value="{{ $file->name }}">
+                    @break
+                @endif
+            @endforeach
 
             <article id="editable" class="col-12">
                 <form id="Product-form" role="form" method="POST" action="{{ route('updateProduct', [$productEdit->id]) }}"
@@ -172,10 +178,12 @@
         <script>
             var productDescription = $('#ps-description').val(),
                 productOfferDescription = $('#ps-offerDescription').val(),
-                productTaxes = $('#ps-taxes').val().split(';');
+                productTaxes = $('#ps-taxes').val().split(';'),
+                productComposition = $('#ps-composition').val().split('**')[1];
 
             $('#ql-editor-1').html(productDescription);
             $('#ql-editor-2').html(productOfferDescription);
+            $('#composition').siblings('.file').text(productComposition);
 
             if($.inArray('iva', productTaxes) >= 0) $('#iva').attr('checked', true);
             if($.inArray('retefuente', productTaxes) >= 0) $('#rete').attr('checked', true);
@@ -185,7 +193,6 @@
                 window.location.replace("/admin/productos");
             });
         </script>
-
 @endsection
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/jquery.datetimepicker.css') }}">
