@@ -1,4 +1,8 @@
 $(document).ready(function () {
+
+    $('.MessagePlatform-close').on('click', function () {
+        $('.MessagePlatform').hide();
+    });
     $('#Menu').on('click', function () {
         $('#MenuContainer').addClass('Show');
         $('body').scrollTop(0);
@@ -85,3 +89,4 @@ function autoSearch() {
         }
     });
 }
+

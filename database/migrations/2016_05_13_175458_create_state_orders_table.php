@@ -15,8 +15,7 @@ class CreateStateOrdersTable extends Migration
         Schema::create('state_orders',function(Blueprint $table){
             $table->increments('id');
             $table->string('name');
-            $table->timestamp();
-
+            $table->timestamps();
         });
     }
 

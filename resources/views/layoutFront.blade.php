@@ -478,7 +478,7 @@
                     <li class="row middle">
                         <figure class="col-5">
                             <a href="{{route('productDetail',[$product->slug, $product->id])}}">
-                                <img src="{{ url('uploads/products/'.$product->productFiles()->first()->name )}}"   alt="">
+                                <img src="{{ url('uploads/products/'.$product->productFiles()->first()->name )}}" alt="">
                             </a>
                         </figure>
                         <div class="CartDetail-content col-7">

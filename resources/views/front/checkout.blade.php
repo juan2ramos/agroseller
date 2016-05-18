@@ -87,13 +87,25 @@
                         <button class="Button">FINALIZAR COMPRA</button>
                     </form>
                 @else
-                    <p>Para realizar compras debes tener una cuenta cliente </p>
+                    @include('messages',[
+                    'type' => 'warning',
+                    'title' => '¡Lo sentimos!',
+                    'message' => '<p> Para realizar compras debes tener o crear  una cuenta como cliente, da clic
+                     <a href="'. route('login') .'">aqui</a> si ya posees una cuenta o
+                     <a href="'. route('register') .'">aqui</a> si te quieres registrar </p>'
+                     ])
                 @endif
             @else
+                @include('messages',[
+                                   'type' => 'warning',
+                                   'title' => '¡Lo sentimos!',
+                                   'message' => '<p> Para poder comprar debes tener una cuenta cliente con nosotros,
+                                   da clic en registrarse y empieza a comprar.</p>' .
+                                   '<p>Si ya tienes una cuenta inicia sesión y realiza tu compra.</p>'
+                                    ])
                 <h3>
-                    Para poder comprar debes tener una cuenta cliente con nosotros, da clic en registrarse y empieza a
-                    comprar.
-                    Si ya tienes una cuenta inicia sesión y realiza tu compra.
+
+
                 </h3>
                 <div class="row middle arrow" style="margin-top: 3rem">
                     <a href="{{route('register')}}" class="col-3 offset-3 Button">REGISTRATE</a>
