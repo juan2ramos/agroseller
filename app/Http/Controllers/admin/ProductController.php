@@ -67,9 +67,22 @@ class ProductController extends Controller
         if ($request->has('taxes'))
             $inputs['taxes'] = implode(';', $inputs['taxes']);
         $inputs['user_id'] = Auth::user()->id;
-        $inputs['slug'] = str_slug($inputs['name']);
 
         $this->product = Product::find($id);
+
+        if ($request->has('deleteImages')){
+            $deleteImages = explode(';', $inputs['deleteImages']);
+            $files = $this->product->productFiles()->get();
+            foreach($deleteImages as $imageName){
+                foreach($files as $file){
+                    if($file->name == $imageName){
+                        unlink('uploads/products/' . $imageName);
+                        $file->delete();
+                    }
+                }
+            }
+        }
+
         $this->product->fill($inputs);
         $this->createFile($request);
         $this->product->save();
