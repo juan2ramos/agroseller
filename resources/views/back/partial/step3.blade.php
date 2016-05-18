@@ -5,7 +5,11 @@
     <article>
         <p>1. Valor de la oferta - valor actual es de $<span id="priceForOffer"></span></p>
         <label for="offer-price">
-            <input type="number" name="offer_price" id="offer-price" value="{{ old('offer-price') }}">
+            @if(isset($productEdit))
+                <input type="number" name="offer_price" id="offer-price" value="{{ $productEdit->offer_price }}">
+            @else
+                <input type="number" name="offer_price" id="offer-price" value="{{ old('offer-price') }}">
+            @endif
             <span>Valor oferta</span>
             <em>$</em>
         </label>
@@ -14,8 +18,11 @@
         <p>2. Fechas de inicio y limite de la oferta</p>
         <div class="row middle  ">
             <label for="offer-on" class="col-4 ">
-                <input type="text" class="datetimepicker_mask" id="offer-on" name="offer_on"
-                       value="{{ old('offer-on') }}">
+                @if(isset($productEdit))
+                <input type="text" class="datetimepicker_mask" id="offer-on" name="offer_on" value="{{ $productEdit->offer_on }}">
+                @else
+                <input type="text" class="datetimepicker_mask" id="offer-on" name="offer_on" value="{{ old('offer-on') }}">
+                @endif
                 <span>Fecha inicio</span>
                 <em>
                     <svg width="18px" height="20px" viewBox="0 0 18 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
@@ -32,8 +39,11 @@
                 </em>
             </label>
             <label for="offer-off" class="col-4 ">
-                <input type="text" class="datetimepicker_mask" id="offer-off" name="offer_off"
-                       value="{{ old('offer-off') }}">
+                @if(isset($productEdit))
+                <input type="text" class="datetimepicker_mask" id="offer-off" name="offer_off" value="{{ $productEdit->offer_off }}">
+                @else
+                <input type="text" class="datetimepicker_mask" id="offer-off" name="offer_off" value="{{ old('offer-off') }}">
+                @endif
                 <span>Fecha cierre</span>
                 <em>
                     <svg width="18px" height="20px" viewBox="0 0 18 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">

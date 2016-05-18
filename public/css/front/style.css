@@ -60,8 +60,9 @@ main {
 }
 
 .pagination {
+  width: 100%;
   text-align: center;
-  margin: 2rem 0 0;
+  margin: 2rem 0 3.75rem 0;
 }
 
 .pagination li {
@@ -175,6 +176,7 @@ main {
 
 .MessagePlatform-close {
   position: absolute;
+  z-index: 1;
   top: 0;
   right: 0;
   background: #7F7F7F;
@@ -1942,11 +1944,6 @@ body {
 
 .Comments-user {
   word-wrap: break-word;
-}
-
-.paginator {
-  width: 100%;
-  margin-bottom: 3.75rem;
 }
 
 .autocomplete {

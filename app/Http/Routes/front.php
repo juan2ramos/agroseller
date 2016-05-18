@@ -24,7 +24,7 @@ Route::get('presupuesto-nuevo',[
     'as'    => 'addBudget'
 ])->middleware('auth');
 
-Route::get('producto/{slug}-{id}', [
+Route::get('producto/{slug}_{id}', [
     'uses' => 'ProductController@productDetailFront',
     'as' => 'productDetail'
 ]);

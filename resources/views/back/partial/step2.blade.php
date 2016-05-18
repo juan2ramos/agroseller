@@ -22,15 +22,24 @@
         </p>
         <span class="Marker Button" id="addMaker">AÑADE UNA UBICACIÓN</span>
         <span class="Marker Button" id="removeMaker">ELIMINAR TODAS LAS UBICACIONES</span>
-        <div id="Map" class="Map"></div>
+        @if(isset($productEdit))
+            <div id="Map" class="Map Editable"></div>
+        @else
+            <div id="Map" class="Map"></div>
+        @endif
     </article>
     <article>
+
         <p>2. Ingresa el nombre de tu producto
                     <span>El nombre del producto debe iniciar con el nombre seguido por la marca luego la referencia o
                         especificación ejemplo.</span>
         </p>
         <label for="nameProduct">
+            @if(isset($productEdit))
+            <input type="text" id="nameProduct" name="name" value="{{ $productEdit->name }}">
+            @else
             <input type="text" id="nameProduct" name="name" value="{{ old('name') }}">
+            @endif
             <span>Nombre del producto</span>
         </label>
     </article>
@@ -147,25 +156,41 @@
     </article>
     <h4>DETALLES</h4>
 
+
     <select class="presentation DataForm" name="presentation">
         <option value="">Selecione la presentación</option>
+        @if(isset($productEdit))
+        <option value="{{ $productEdit->presentation }}">{{  $productEdit->presentation }}</option>
+        @endif
         <option value="Bolsa">Bolsa</option>
         <option value="Caja">Caja</option>
         <option value="Botella">Botella</option>
     </select>
 
     <label for="size" class="DataForm size" >
+        @if(isset($productEdit))
+        <input type="number" id="size" name="size" value="{{ $productEdit->size }}">
+        @else
         <input type="number" id="size" name="size" value="{{ old('size') }}">
+        @endif
         <span>Tamaño del producto</span>
         <em>Kg</em>
     </label>
     <label for="weight" class="DataForm weight">
+        @if(isset($productEdit))
+        <input type="number" id="weight" name="weight" value="{{ $productEdit->weight }}">
+        @else
         <input type="number" id="weight" name="weight" value="{{ old('weight') }}">
+        @endif
         <span>Peso del producto</span>
         <em>Mt</em>
     </label>
     <label for="measure"   class="DataForm measure">
-        <input type="number" id="measure" name="measure" value="{{ old('measure') }}">
+        @if(isset($productEdit))
+            <input type="number" id="measure" name="measure" value="{{ $productEdit->measure }}">
+        @else
+            <input type="number" id="measure" name="measure" value="{{ old('measure') }}">
+        @endif
         <span>Medida</span>
         <em>Mt</em>
     </label>
@@ -176,7 +201,11 @@
     </label>
 
     <label for="priceCurrent" >
+        @if(isset($productEdit))
+        <input type="number" id="priceCurrent" name="price" value="{{ $productEdit->price }}">
+        @else
         <input type="number" id="priceCurrent" name="price" value="{{ old('price') }}">
+        @endif
         <span>Precio</span>
         <em>$</em>
     </label>
@@ -194,7 +223,11 @@
         </label>
     </div>
     <label for="available_quantity">
+        @if(isset($productEdit))
+        <input type="number" id="available_quantity" name="available_quantity" value="{{ $productEdit->available_quantity }}">
+        @else
         <input type="number" id="available_quantity" name="available_quantity" value="{{ old('available_quantity') }}">
+        @endif
         <span>Cantidad disponible</span>
         <em></em>
     </label>
@@ -209,43 +242,72 @@
     </h4>
 
     <div class="row Step-2Images">
-        <label for="image1" class="col-3 ">
-            <input type="file" class="StepImages" name="image1" id="image1">
-            <figure class=" row middle center">
-                <svg width="81px" height="47px">
-                    <use xlink:href="#imageTemp"></use>
-                </svg>
-            </figure>
-            <output class="result" />
-        </label>
-        <label for="image2"  class="col-3 ">
-            <input type="file"  class="StepImages" name="image2" id="image2">
-            <figure class=" row middle center">
-                <svg width="81px" height="47px">
-                    <use xlink:href="#imageTemp"></use>
-                </svg>
-            </figure>
-            <output class="result" />
-        </label>
-        <label for="image3" class="col-3 ">
-            <input type="file"  class="StepImages" name="image3" id="image3">
-            <figure class=" row middle center">
-                <svg width="81px" height="47px">
-                    <use xlink:href="#imageTemp"></use>
-                </svg>
-            </figure>
-            <output class="result" />
-        </label>
-        <label for="image4" class="col-3 ">
-            <input type="file" class="StepImages"  name="image4" id="image4">
-            <figure class=" row middle center">
-                <svg width="81px" height="47px">
-                    <use xlink:href="#imageTemp"></use>
-                </svg>
-            </figure>
-            <output class="result" />
-        </label>
+        @if(isset($productEdit))
+            <?php $i = 1 ?>
+            @foreach($productEdit->productFiles()->get() as $image)
+                @if($image->extension != 'pdf')
+                    <label for="image{{$i}}" class="col-3 ">
+                        <input type="file" class="StepImages" name="image{{$i}}" id="image{{$i}}">
+                        <figure class=" row middle center">
+                            <svg width="81px" height="47px">
+                                <use xlink:href="#imageTemp"></use>
+                            </svg>
+                        </figure>
+                        <output class="result" />
+                    </label>
+                    <?php $i++ ?>
+                @endif
+            @endforeach
+            @for(; $i <= 4; $i++)
+                <label for="image{{$i}}" class="col-3 ">
+                    <input type="file" class="StepImages" name="image{{$i}}" id="image{{$i}}">
+                    <figure class=" row middle center">
+                        <svg width="81px" height="47px">
+                            <use xlink:href="#imageTemp"></use>
+                        </svg>
+                    </figure>
+                    <output class="result" />
+                </label>
+            @endfor
 
+        @else
+            <label for="image1" class="col-3 ">
+                <input type="file" class="StepImages" name="image1" id="image1">
+                <figure class=" row middle center">
+                    <svg width="81px" height="47px">
+                        <use xlink:href="#imageTemp"></use>
+                    </svg>
+                </figure>
+                <output class="result" />
+            </label>
+            <label for="image2"  class="col-3 ">
+                <input type="file"  class="StepImages" name="image2" id="image2">
+                <figure class=" row middle center">
+                    <svg width="81px" height="47px">
+                        <use xlink:href="#imageTemp"></use>
+                    </svg>
+                </figure>
+                <output class="result" />
+            </label>
+            <label for="image3" class="col-3 ">
+                <input type="file"  class="StepImages" name="image3" id="image3">
+                <figure class=" row middle center">
+                    <svg width="81px" height="47px">
+                        <use xlink:href="#imageTemp"></use>
+                    </svg>
+                </figure>
+                <output class="result" />
+            </label>
+            <label for="image4" class="col-3 ">
+                <input type="file" class="StepImages"  name="image4" id="image4">
+                <figure class=" row middle center">
+                    <svg width="81px" height="47px">
+                        <use xlink:href="#imageTemp"></use>
+                    </svg>
+                </figure>
+                <output class="result" />
+            </label>
+        @endif
 
     </div>
     <div class="Button  Next" id="stepTwoButton">SIGUIENTE</div>

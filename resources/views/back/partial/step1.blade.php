@@ -4,11 +4,15 @@
         <label for="subcategory_id">SUBCATEGORÍAS</label>
     </article>
     <article class="row center stretch">
+        @if(isset($productEdit))
+            <input type="hidden" id="categoryId" value="{{$productEdit->subcategory->categories_id}}">
+            <input type="hidden" id="subcategoryId" value="{{$productEdit->subcategory->id}}">
+        @endif
 
         <select data-token="{{ csrf_token() }}" data-route="{{route('subcategoriesQuery')}}" id="categories">
-            @foreach( $categories as $category)
+        @foreach( $categories as $category)
             <option value="{{$category->id}}">{{$category->name}}</option>
-            @endforeach
+        @endforeach
         </select>
         <select name="subcategory_id" class="Product-select" data-route="{{route('featuresQuery')}}"
                 id="subcategories"></select>
