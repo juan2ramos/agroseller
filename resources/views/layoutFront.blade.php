@@ -475,16 +475,12 @@
     <section class="CartDetail">
         <h2>TUS COMPRAS</h2>
         <ul>
-            @if(Session::has('cart')) <!-- ERROR EN CARRITO, CUANDO SE AÑADE UN PRODUCTO AL CARRITO DE COMPRAS Y LUEGO SE ELIMINA EL PRODUCTO, SE GENERA UN ERROR EN EL HOME. CUANDO SE ELIMINE EL PRODUCTO, TAMBIEN DEBE ELIMINARSE DE TODOS LOS CARRITOS QUE LO TENGAN EN STOCK -->
+            @if(Session::has('cart'))
                 @foreach(Session::get('cart') as $product)
                     <li class="row middle">
                         <figure class="col-5">
                             <a href="{{route('productDetail',[$product->slug, $product->id])}}">
-                                @foreach($product->productFiles() as $file)
-                                    @if($file->extension != 'pdf')
-                                        <img src="{{url('uploads/products/' . $file->name )}}" alt="">
-                                    @endif
-                                @endforeach
+                                <img src="{{ url('uploads/products/'.$product->productFiles()->first()->name )}}" alt="">
                             </a>
                         </figure>
                         <div class="CartDetail-content col-7">
