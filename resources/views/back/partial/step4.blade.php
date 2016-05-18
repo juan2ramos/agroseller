@@ -3,7 +3,7 @@
     <section class="" id="detailsProduct">
     </section>
     @if(isset($productEdit))
-    <button class="Button Step-finish">ACTULIZAR PRODUCTO</button>
+    <button class="Button Step-finish">ACTUALIZAR PRODUCTO</button>
     @else
     <button class="Button Step-finish">INGRESAR PRODUCTO</button>
     @endif

@@ -8,7 +8,8 @@
             @foreach($productEdit->productFiles as $file)
                 @if($file->extension == 'pdf')
                     <input id="ps-composition" type="hidden" value="{{ $file->name }}">
-                    @break
+                @else
+                    <input class="ps-images" type="hidden" value="{{ $file->name }}">
                 @endif
             @endforeach
 
@@ -16,7 +17,7 @@
                 <form id="Product-form" role="form" method="POST" action="{{ route('updateProduct', [$productEdit->id]) }}"
                       enctype="multipart/form-data">
                     <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
-
+                    <input type="hidden" id="deleteImages" name="deleteImages" value="">
                     <section class="Wizard">
                         <ul class=" row middle center">
                             <li class="col-3 current" data-id="1">
@@ -179,19 +180,37 @@
             var productDescription = $('#ps-description').val(),
                 productOfferDescription = $('#ps-offerDescription').val(),
                 productTaxes = $('#ps-taxes').val().split(';'),
-                productComposition = $('#ps-composition').val().split('**')[1];
+                productComposition = $('#ps-composition').val();
 
+            if(productComposition)
+                $('#composition').siblings('.file').text(productComposition.split('**')[1]);
             $('#ql-editor-1').html(productDescription);
             $('#ql-editor-2').html(productOfferDescription);
-            $('#composition').siblings('.file').text(productComposition);
 
             if($.inArray('iva', productTaxes) >= 0) $('#iva').attr('checked', true);
             if($.inArray('retefuente', productTaxes) >= 0) $('#rete').attr('checked', true);
             if($('#ps-importantOffer').val() == 1) $('#important_offer').attr('checked', true);
 
+            for(var i = 0; i < $('.ps-images').length; i++){
+                var image = $('.ps-images').eq(i).val();
+                $('.StepImages')
+                        .eq(i)
+                        .siblings('.result')
+                        .append('<figure><img src="/uploads/products/' + image + '"></figure>')
+                        .parent().prepend('<input class="imageName" type="hidden" value="' + image + '">');
+            }
+
+            var imagesList = "";
+
+            $('.StepImages').on('change', function(){
+                imagesList += $(this).siblings('.imageName').val() + ";";
+                $('#deleteImages').val(imagesList);
+            });
+
             $('.MessagePlatform-close').on('click', function(){
                 window.location.replace("/admin/productos");
             });
+
         </script>
 @endsection
 @section('styles')
