@@ -93,6 +93,13 @@
                     <a href="{{route('login')}}" class="col-3 offset-1 Button">INICIA SESIÓN</a>
                 </div>
             @endif
+            @if(true)
+                @include('messages',[
+                       'type' => 'ok',
+                       'title' => '¡Enhorabuena!',
+                       'message' => '<p> Tu presupuesto ha sido creado con éxito,  ve al panel administrativo, y visulaiza todos tus presupuestos,</p>'
+                        ])
+            @endif
         </section>
     </div>
 @endsection

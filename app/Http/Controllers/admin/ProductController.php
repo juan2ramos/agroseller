@@ -106,7 +106,6 @@ class ProductController extends Controller
         $inputs['user_id'] = Auth::user()->id;
         $inputs['slug'] = str_slug($inputs['name']);
 
-
         $this->product = Product::create($inputs)->offers()->create($inputs);
 
         $this->createFile($request);

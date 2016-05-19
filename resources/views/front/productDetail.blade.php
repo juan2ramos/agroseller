@@ -1,5 +1,4 @@
 @extends('layoutFront')
-<?php $hasOffer = strtotime($product->offer_on) < strtotime('now') && strtotime($product->offer_off) - strtotime('now') > 0;?>
 @section('openGraph')
     <meta property="og:url"           content="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}" />
     <meta property="og:type"          content="{{route('home')}}" />
@@ -63,8 +62,8 @@
                             </g>
                         </g>
                     </svg>
-                    @if($hasOffer)
-                    <b>${{number_format($product->offer_price, 0, " ", ".")}}
+                    @if($offer)
+                    <b>${{number_format($offer, 0, " ", ".")}}
                         <del>${{number_format($product->price, 0, " ", ".")}}</del>
                     </b>
                     @else
@@ -80,7 +79,7 @@
                 </div>
             </div>
 
-            @if($hasOffer)
+            @if($offer)
             <time class="ProductDetail-offer">
                 <h3>¡ Oferta por tiempo limitado !</h3>
                 <svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -306,7 +305,7 @@
     <script src="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.js"></script>
     <script src="{{asset('js/comments.js')}}"></script>
     <script src="{{asset('js/front/product.js')}}"></script>
-    @if($hasOffer)
+    @if($offer)
         <?php
             $fecha = explode('-', $product->offer_off);
             $day = explode(' ', $fecha[2]);

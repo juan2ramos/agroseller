@@ -29,7 +29,7 @@ Route::get('producto/{slug}/{id}', [
     'as' => 'productDetail'
 ]);
 
-Route::post('checkout',[
+Route::post('finalizar-compra',[
     'uses' => 'OrderController@add',
     'as' => 'newOrder'
 ]);

@@ -3,6 +3,7 @@
 namespace Agrosellers\Http\Controllers;
 
 use Agrosellers\Entities\Subcategory;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
 use Agrosellers\Entities\Product;
@@ -49,9 +50,12 @@ class ProductController extends Controller
     function productDetailFront($slug, $id)
     {
         $product = Product::find($id);
+        $offer = ($offer = $product->offers()->first()) ?
+            (Carbon::now()->between(new Carbon($offer->offer_on), new Carbon($offer->offer_off)))
+                ? $offer->offer_price : null : null;
         $questions = $this->reloadQuestions($id);
         $featuresTranslate = $this->setFeaturesTranslate($product);
-        return view('front.productDetail', compact('questions', 'product', 'featuresTranslate'));
+        return view('front.productDetail', compact('questions', 'product', 'featuresTranslate','offer'));
     }
 
     private function reloadQuestions($id){

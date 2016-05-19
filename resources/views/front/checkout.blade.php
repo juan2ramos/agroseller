@@ -62,26 +62,23 @@
             @if(Auth::check())
                 @if(auth()->user()->role_id == 4)
                     <h3>Completa los campos requeridos para realizar tu solicitud</h3>
-                    <form action="{{route('newOrder')}}" class="Checkout-form">
+                    <form action="{{route('newOrder')}}"  method="POST" class="Checkout-form">
+                        <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
                         <label for="name">
-                            <input type="text" id="name"
+                            <input type="text" id="name" name="name_client"
                                    value="{{auth()->user()->name .' '. auth()->user()->last_name}}">
                             <span>Nombre y apellidos completos</span>
                         </label>
                         <label for="identification">
-                            <input type="text" id="identification" value="{{auth()->user()->identification}}">
+                            <input type="text" name="identification_client" id="identification" value="{{auth()->user()->identification}}">
                             <span>Cédula de ciudadania o NIT </span>
                         </label>
                         <label for="address">
-                            <input type="text" id="address" value="{{auth()->user()->identification}}">
+                            <input type="text" id="address" value="{{auth()->user()->identification}}" name="address_client">
                             <span>Dirección</span>
                         </label>
-                        <label for="loca">
-                            <input type="text" placeholder="" value="{{ (auth()->user()->role_id == 4)?'':'' }}">
-                            <span>Localidad</span>
-                        </label>
-                        <label for="">
-                            <input type="text" placeholder="" value="{{auth()->user()->mobile_phone}} ">
+                        <label for="mobile">
+                            <input type="text" id="mobile" name="phone_client"  value="{{auth()->user()->mobile_phone}}">
                             <span>Teléfono</span>
                         </label>
                         <button class="Button">FINALIZAR COMPRA</button>
@@ -103,10 +100,14 @@
                                    da clic en registrarse y empieza a comprar.</p>' .
                                    '<p>Si ya tienes una cuenta inicia sesión y realiza tu compra.</p>'
                                     ])
-                <h3>
-
-
-                </h3>
+               @if($success)
+                    @include('messages',[
+                     'type' => 'ok',
+                     'title' => '¡Enhorabuena!',
+                     'message' => '<p>  Tu  compra se ha realizado con exito, puedes revisar el estado en compras en el
+                     administrador</p>'
+                      ])
+                @endif
                 <div class="row middle arrow" style="margin-top: 3rem">
                     <a href="{{route('register')}}" class="col-3 offset-3 Button">REGISTRATE</a>
                     <a href="{{route('login')}}" class="col-3 offset-1 Button">INICIA SESIÓN</a>

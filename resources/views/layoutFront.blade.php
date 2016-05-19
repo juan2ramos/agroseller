@@ -516,7 +516,9 @@
                                 <span>{{$product->quantity}}</span>
                                 <small></small>
                                 <val>
-                                    ${{number_format(($product->offer_price)?$product->offer_price:$product->price, 0, " ", ".")}}</val>
+                                    ${{number_format($product->offer_price, 0, " ", ".")}}
+
+                                </val>
                             </div>
                         </div>
                     </li>

@@ -1392,6 +1392,10 @@ body {
 .CartDetail h3 {
   font-size: 1.115rem;
   font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 6.25rem;
 }
 
 .CartDetail h4 {
@@ -1428,6 +1432,13 @@ body {
 
 .CartDetail-hGroup {
   margin-bottom: 1.25rem;
+}
+
+.CartDetail-hGroup h3 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 9.375rem;
 }
 
 .CartDetail-close {
