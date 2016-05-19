@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
 use Agrosellers\Entities\Provider;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -51,6 +52,11 @@ class UserController extends Controller
         $provider = Provider::where('user_id', $id)->first();
         $provider->validate = 1;
         $provider->save();
+
+        Mail::send('emails.validateProvider', ['user' => $provider->user], function ($m) use ($provider) {
+            $m->to($provider->user->email, $provider->user->name)->subject('Ya eres un proveedor!');
+        });
+
         return redirect()->route('providers');
     }
 

@@ -2,7 +2,7 @@
 
 <!doctype html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 
@@ -144,23 +144,8 @@
 
     <table border="0" cellpadding="0" cellspacing="0" width="600" align="center" style="width:600px;"><tr><td>
 
-    <![endif]--><div style="margin:0 auto;max-width:600px;background-color:#ffffff;"><table class="" cellpadding="0" cellspacing="0" style="width:100%;font-size:0px;background-color:#ffffff;" align="center"><tbody><tr><td style="text-align:center;vertical-align:top;font-size:0;padding-top:10px;padding-bottom:0px;"><!--[if mso]>
 
-                    <table border="0" cellpadding="0" cellspacing="0"><tr><td style="width:600px;">
-
-                    <![endif]--><div style="vertical-align:top;display:inline-block;font-size:13px;text-align:left;min-width:100%;" class="mj-column-per-100" aria-labelledby="mj-column-per-100"><table width="100%"><tbody><tr><td style="font-size:0;padding:20px 70px ;" align="center"><table cellpadding="0" cellspacing="0" style="border:none;border-radius:3px;" align="center"><tbody><tr><td style="background:#C5D257;border-radius:3px;color:#253A1B;cursor:auto;" align="center" valign="middle" bgcolor="#C5D257"><a class="mj-content" href="{{ url('password/reset/'.$token) }}" style="display:inline-block;text-decoration:none;background:#C5D257;border:1px solid #C5D257;border-radius:3px;color:#253A1B;font-family:trebuchet MS;font-size:13px;font-weight:bold;padding:20px 50px ;" target="_blank">!CAMBIAR CONTRASEÑA!</a></td></tr></tbody></table></td></tr></tbody></table></div><!--[if mso]>
-
-                    </td></tr></table>
-
-                    <![endif]--></td></tr></tbody></table></div><!--[if mso]>
-
-    </td></tr></table>
-
-    <![endif]-->
-
-    <!--[if mso]>
-
-    <table border="0" cellpadding="0" cellspacing="0" width="600" align="center" style="width:600px;"><tr><td>
+        <table border="0" cellpadding="0" cellspacing="0" width="600" align="center" style="width:600px;"><tr><td>
 
     <![endif]--><div style="margin:0 auto;width:100%;max-width:600px;background-color:#ffffff;"><table class="" cellpadding="0" cellspacing="0" style="width:100%;font-size:0px;background-color:#ffffff;" align="center"><tbody><tr><td style="text-align:center;vertical-align:top;font-size:0;padding-top:0px;padding-bottom:0px;"><!--[if mso]>
 
@@ -184,7 +169,7 @@
 
                     <table border="0" cellpadding="0" cellspacing="0"><tr><td style="width:600px;">
 
-                    <![endif]--><div style="vertical-align:top;display:inline-block;font-size:13px;text-align:left;" class="mj-column-per-100" aria-labelledby="mj-column-per-100"><table width="100%"><tbody><tr><td style="font-size:0;padding-top:10px;padding-bottom:10px;padding-right:25px;padding-left:25px;" align="left"><div class="mj-content" style="cursor:auto;color:#848484;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;">Haz Clic en el boton para reiniciar la contraseña. </br></br></div></td></tr><tr><td style="font-size:0;padding-top:10px;padding-bottom:10px;padding-right:25px;padding-left:25px;" align="left"><div class="mj-content" style="cursor:auto;color:#27383F;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;     font-weight: bolder;">¡Te tendremos en cuenta para que seas parte de la  red de compras de productos agrícolas más grande en Latinoamérica.!</div></td></tr></tbody></table></div><!--[if mso]>
+                    <![endif]--><div style="vertical-align:top;display:inline-block;font-size:13px;text-align:left;" class="mj-column-per-100" aria-labelledby="mj-column-per-100"><table width="100%"><tbody><tr><td style="font-size:0;padding-top:10px;padding-bottom:10px;padding-right:25px;padding-left:25px;" align="left"><div class="mj-content" style="cursor:auto;color:#848484;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;">Se han verificado tus datos y has sido aceptado como proveedor. Se te ha asignado un agente comercial que te orientará cada ve que necesites.</div></td></tr><tr><td style="font-size:0;padding-top:10px;padding-bottom:10px;padding-right:25px;padding-left:25px;" align="left"><div class="mj-content" style="cursor:auto;color:#27383F;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;     font-weight: bolder;"></br>¡Te tendremos en cuenta para que seas parte de la  red de compras de productos agrícolas más grande en Latinoamérica.!</div></td></tr></tbody></table></div><!--[if mso]>
 
                     </td></tr></table>
 

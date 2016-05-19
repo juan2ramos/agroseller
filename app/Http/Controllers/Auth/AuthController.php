@@ -119,10 +119,11 @@ class AuthController extends Controller
             $provider->user_id = $user->id;
             $provider->save();
         }
-
-        Mail::send('emails.welcome', ['user' => $user], function ($m) use ($user) {
-            $m->to($user->email, $user->name)->subject('Bienvenido!');
-        });
+        else {
+            Mail::send('emails.welcome', ['user' => $user], function ($m) use ($user) {
+                $m->to($user->email, $user->name)->subject('Bienvenido!');
+            });
+        }
 
         auth()->loginUsingId($user->id);
         return redirect($this->redirectPath());

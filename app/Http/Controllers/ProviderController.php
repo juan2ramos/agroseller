@@ -5,6 +5,7 @@ use Agrosellers\Entities\Category;
 use Agrosellers\Entities\Provider;
 use Agrosellers\Entities\Role;
 use Agrosellers\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
 use Agrosellers\Http\Controllers\Controller;
@@ -90,6 +91,11 @@ class ProviderController extends Controller
             $provider[$key] = $fileName;
         }
         $provider->save();
+
+        Mail::send('emails.registerProvider', ['user' => $user], function ($m) use ($user) {
+            $m->to($user->email, $user->name)->subject('Casi finaliza tu registro!');
+        });
+
         return redirect()->route('admin');
     }
     function updateProvider($id, Request $request)
@@ -97,6 +103,7 @@ class ProviderController extends Controller
         $userProvider = User::find($id);
         $userProvider->validate = ($userProvider->validate) ? 0 : 1;
         $userProvider->save();
+
         if ($request->ajax()) {
             return response()->json(['name' => $userProvider->validate]);
         }

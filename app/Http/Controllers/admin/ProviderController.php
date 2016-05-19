@@ -6,7 +6,7 @@ use Agrosellers\Entities\Category;
 use Agrosellers\Entities\Provider;
 use Agrosellers\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
 use Agrosellers\Http\Requests;
 use Agrosellers\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -89,6 +89,7 @@ class ProviderController extends Controller
         }
 
         $provider->save();
+
         return redirect()->route('admin');
     }
 
