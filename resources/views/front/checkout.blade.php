@@ -100,18 +100,19 @@
                                    da clic en registrarse y empieza a comprar.</p>' .
                                    '<p>Si ya tienes una cuenta inicia sesión y realiza tu compra.</p>'
                                     ])
-               @if($success)
-                    @include('messages',[
-                     'type' => 'ok',
-                     'title' => '¡Enhorabuena!',
-                     'message' => '<p>  Tu  compra se ha realizado con exito, puedes revisar el estado en compras en el
-                     administrador</p>'
-                      ])
-                @endif
+
                 <div class="row middle arrow" style="margin-top: 3rem">
                     <a href="{{route('register')}}" class="col-3 offset-3 Button">REGISTRATE</a>
                     <a href="{{route('login')}}" class="col-3 offset-1 Button">INICIA SESIÓN</a>
                 </div>
+            @endif
+            @if(!empty($success))
+                @include('messages',[
+                 'type' => 'ok',
+                 'title' => '¡Enhorabuena!',
+                 'message' => '<p>  Tu  compra se ha realizado con exito, puedes revisar el estado en compras en el
+                 administrador</p>'
+                  ])
             @endif
         </section>
     </div>

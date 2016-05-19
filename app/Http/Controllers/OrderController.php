@@ -19,12 +19,16 @@ class OrderController extends Controller
         foreach($cart as $item){
             $data[$item->id] = [ 'quantity' => $item->quantity];
         }
-        $data = $request->all();
-        $data->state_order_id = 2; /*TEMPORAL*/
-        $order = new Order($request->all());
-        auth()->user()->$order()->save($order);
+        $r = $request->all();
+        $r['state_order_id'] = 2; /*TEMPORAL*/
+        $order = new Order($r);
+        auth()->user()->order()->save($order);
         $order->products()->attach($data);
+
         Session::forget('cart');
-        return view('front.checkout' , ['success' => 'ok']);
+        Session::forget('valueTotal');
+
+
+        return view('front.checkout' , ['success' => true]);
     }
 }

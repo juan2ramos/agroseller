@@ -67,6 +67,7 @@ class ShoppingController extends Controller
     public function trash()
     {
         Session::forget('cart');
+        Session::forget('valueTotal');
     }
 
 
