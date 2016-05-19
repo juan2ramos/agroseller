@@ -81,5 +81,5 @@ Route::get('productos/{name?}',[
 ]);
 
 Route::get('mail', function(){
-    return view('emails.registerProvider');
+    return view('emails.welcome');
 });

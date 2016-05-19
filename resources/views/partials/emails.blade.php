@@ -144,8 +144,30 @@
 
     <table border="0" cellpadding="0" cellspacing="0" width="600" align="center" style="width:600px;"><tr><td>
 
+    <![endif]--><div style="margin:0 auto;max-width:600px;background-color:#ffffff;"><table class="" cellpadding="0" cellspacing="0" style="width:100%;font-size:0px;background-color:#ffffff;" align="center"><tbody><tr><td style="text-align:center;vertical-align:top;font-size:0;padding-top:10px;padding-bottom:0px;"><!--[if mso]>
 
-        <table border="0" cellpadding="0" cellspacing="0" width="600" align="center" style="width:600px;"><tr><td>
+                    <table border="0" cellpadding="0" cellspacing="0"><tr><td style="width:600px;">
+
+                    <![endif]-->
+                    <div style="vertical-align:top;display:inline-block;font-size:13px;text-align:left;min-width:100%;" class="mj-column-per-100" aria-labelledby="mj-column-per-100">
+                        <table width="100%">
+                            <tbody>
+                                @yield('emailButtonMessage')
+                            </tbody>
+                        </table>
+                    </div><!--[if mso]>
+
+                    </td></tr></table>
+
+                    <![endif]--></td></tr></tbody></table></div><!--[if mso]>
+
+    </td></tr></table>
+
+    <![endif]-->
+
+    <!--[if mso]>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="600" align="center" style="width:600px;"><tr><td>
 
     <![endif]--><div style="margin:0 auto;width:100%;max-width:600px;background-color:#ffffff;"><table class="" cellpadding="0" cellspacing="0" style="width:100%;font-size:0px;background-color:#ffffff;" align="center"><tbody><tr><td style="text-align:center;vertical-align:top;font-size:0;padding-top:0px;padding-bottom:0px;"><!--[if mso]>
 
@@ -169,7 +191,14 @@
 
                     <table border="0" cellpadding="0" cellspacing="0"><tr><td style="width:600px;">
 
-                    <![endif]--><div style="vertical-align:top;display:inline-block;font-size:13px;text-align:left;" class="mj-column-per-100" aria-labelledby="mj-column-per-100"><table width="100%"><tbody><tr><td style="font-size:0;padding-top:10px;padding-bottom:10px;padding-right:25px;padding-left:25px;" align="left"><div class="mj-content" style="cursor:auto;color:#848484;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;">Estás a un paso de ser parte del grupo de proveedorees de Agroseller. Uno de nuestros asesores estará verificando tus datos muy pronto ¡Pendiente!</div></td></tr><tr><td style="font-size:0;padding-top:10px;padding-bottom:10px;padding-right:25px;padding-left:25px;" align="left"><div class="mj-content" style="cursor:auto;color:#27383F;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;     font-weight: bolder;"></br>¡Te tendremos en cuenta para que seas parte de la  red de compras de productos agrícolas más grande en Latinoamérica.!</div></td></tr></tbody></table></div><!--[if mso]>
+                    <![endif]-->
+                    <div style="vertical-align:top;display:inline-block;font-size:13px;text-align:left;" class="mj-column-per-100" aria-labelledby="mj-column-per-100">
+                        <table width="100%">
+                            <tbody>
+                                @yield('emailMessage')
+                            </tbody>
+                        </table>
+                    </div><!--[if mso]>
 
                     </td></tr></table>
 
