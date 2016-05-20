@@ -55,7 +55,7 @@ class RoutePolicy
                 ],
             '4' =>
                 [
-                    'admin', 'products', 'bills', 'orders', 'reports', 'questions', 'questionDetail', 'questionNew'
+                    'admin', 'products', 'bills', 'orders', 'reports', 'questions', 'questionDetail', 'questionNew', 'clientInformationIndex', 'clientInformationStore'
                 ],
             '5' =>
                 [
