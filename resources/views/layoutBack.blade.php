@@ -65,7 +65,7 @@
             </svg>
         </div>
         <ul class="HeaderBack-profileNav">
-            <li><a href="">Perfil</a></li>
+            <li><a href="{{route('indexProfile')}}">Perfil</a></li>
             <li><a href="{{ url('logout') }}">Cerrar Sesión</a></li>
         </ul>
     </div>

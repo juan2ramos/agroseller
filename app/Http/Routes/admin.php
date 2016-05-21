@@ -189,3 +189,13 @@ route::post('preguntas/new', [
     'as' => 'questionNew',
     'middleware' => 'VerifyProvider',
 ]);
+
+Route::get('perfil', [
+    'uses' => 'UserController@indexProfile',
+    'as' => 'indexProfile'
+]);
+
+Route::post('perfil', [
+    'uses' => 'UserController@userUpdate',
+    'as' => 'userUpdate'
+]);

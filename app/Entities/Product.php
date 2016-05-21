@@ -36,5 +36,8 @@ class Product extends Model
     public function questions(){
         return $this->hasMany(Question::class);
     }
+    public function provider(){
+        return $this->belongsTo(Provider::class);
+    }
 }
 
