@@ -42,16 +42,21 @@ class RoutePolicy
                 [
                     'admin', 'users', 'providers', 'category', 'farmIndex', 'products', 'questions', 'clients',
                     'bills', 'orders', 'reports', 'subcategoriesQuery','featuresQuery', 'showUser', 'validateProvider',
+<<<<<<< HEAD
                     'newProduct','agentsGet', 'editProduct', 'deleteProduct', 'updateProduct','newUserAdmin','user',
                     'budgetShow'
+=======
+                    'newProduct','agentsGet', 'editProduct', 'deleteProduct', 'updateProduct','newUserAdmin','user', 'indexProfile', 'userUpdate'
+>>>>>>> fe32bc3968cb7f115eca53060bce25cac19dc0ab
                 ],
             '2' =>
                 [
                     'admin', 'users', 'providers', 'category', 'farmIndex', 'products', 'clients', 'bills',
-                    'orders', 'subcategoriesQuery','featuresQuery','agentsGet','newUserAdmin','user'
+                    'orders', 'subcategoriesQuery','featuresQuery','agentsGet','newUserAdmin','user', 'indexProfile', 'userUpdate'
                 ],
             '3' =>
                 [
+<<<<<<< HEAD
                     'admin', 'products', 'questions', 'orders', 'registerProvider', 'isValidateProviders', 'questions',
                     'subcategoriesQuery','featuresQuery', 'newProduct', 'insertProvider', 'questionDetail', 'questionNew',
                     'editProduct', 'deleteProduct', 'updateProduct'
@@ -60,14 +65,21 @@ class RoutePolicy
                 [
                     'admin', 'products', 'bills', 'orders', 'reports', 'questions', 'questionDetail', 'questionNew',
                     'budgetShow','downloadBudget'
+=======
+                    'admin', 'products', 'questions', 'orders', 'registerProvider', 'isValidateProviders', 'questions', 'subcategoriesQuery','featuresQuery', 'newProduct', 'insertProvider', 'questionDetail', 'questionNew', 'editProduct', 'deleteProduct', 'updateProduct', 'indexProfile', 'userUpdate'
+                ],
+            '4' =>
+                [
+                    'admin', 'products', 'bills', 'orders', 'reports', 'questions', 'questionDetail', 'questionNew', 'clientInformationIndex', 'clientInformationStore', 'indexProfile', 'userUpdate'
+>>>>>>> fe32bc3968cb7f115eca53060bce25cac19dc0ab
                 ],
             '5' =>
                 [
-                    'admin', 'providers', 'clients', 'reports', 'showUser', 'validateProvider'
+                    'admin', 'providers', 'clients', 'reports', 'showUser', 'validateProvider', 'indexProfile', 'userUpdate'
                 ],
             '6' =>
                 [
-                    'admin', 'reports'
+                    'admin', 'reports', 'indexProfile', 'userUpdate'
                 ],
         ];
     }

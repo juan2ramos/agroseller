@@ -97,6 +97,8 @@ class AuthController extends Controller
      */
     public function redirectPath()
     {
+        if(!auth()->user()->client)
+            return route('clientInformationIndex');
         return route('admin');
     }
 

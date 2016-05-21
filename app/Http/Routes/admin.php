@@ -189,6 +189,7 @@ route::post('preguntas/new', [
     'as' => 'questionNew',
     'middleware' => 'VerifyProvider',
 ]);
+<<<<<<< HEAD
 route::post('download-pdf', [
     'uses' => 'BudgetController@download',
     'as' => 'downloadBudget',
@@ -198,3 +199,15 @@ Route::get('mis-presupuestos', [
     'uses' => 'BudgetController@showBack',
     'as' => 'budgetShow',
 ]);
+=======
+
+Route::get('perfil', [
+    'uses' => 'UserController@indexProfile',
+    'as' => 'indexProfile'
+]);
+
+Route::post('perfil', [
+    'uses' => 'UserController@userUpdate',
+    'as' => 'userUpdate'
+]);
+>>>>>>> fe32bc3968cb7f115eca53060bce25cac19dc0ab

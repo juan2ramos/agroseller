@@ -19,6 +19,9 @@ class ClientController extends Controller
      */
     public function index()
     {
+        if(auth()->user()->client)
+            return redirect()->route('admin');
+
         $farms = Farm::all();
         return view('back.registerClientInformation', compact('farms'));
     }
@@ -31,21 +34,15 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::find(Auth::user()->id);
-        $client = new Client();
-        $client->user_id = $user->id;
-        $client->location = $request->location;
-        $client->save();
+        $client = Client::create([
+                    'user_id' => auth()->user()->id,
+                    'location' => $request->location
+                  ]);
 
-        $farms = Farm::all();
-
-        foreach($request->all() as $data){
-            foreach($farms as $farm){
-                if($data == $farm->id){
-                    $getClient = Client::find($client->id);
-                    $getFarm = Farm::find($farm->id);
-                    $getFarm->clients()->save($getClient);
-                }
+        foreach($request->all() as $key => $data){
+            if(strstr($key, 'farm')){
+                $farm = Farm::find($data);
+                $client->farms()->save($farm);
             }
         }
 

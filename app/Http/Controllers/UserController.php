@@ -26,6 +26,31 @@ class UserController extends Controller
         return view('back.users', compact('users','roles'));
 
     }
+
+    function indexProfile(){
+        $user = auth()->user();
+        return view('back.profile', compact('user'));
+    }
+
+    function userUpdate(Request $request){
+        $user = auth()->user();
+        $files = $request->file();
+        $inputs = $request->all();
+        $user->phone = $inputs['phone'];
+        $user->second_name = $inputs['second_name'];
+        $user->second_last_name = $inputs['second_last_name'];
+        $user->update($inputs);
+
+        foreach ($files as $key => $file) {
+            $fileName = str_random(40) . '**' . $request->file($key)->getClientOriginalName();
+            $request->file($key)->move(base_path() . '/public/uploads/users/', $fileName);
+            $user[$key] = $fileName;
+        }
+        $user->save();
+
+        return redirect()->route('admin');
+    }
+
     function showUser($id){
         $user = User::find($id);
         return view('back.user',compact('user'));

@@ -37,10 +37,15 @@ class Product extends Model
     public function questions(){
         return $this->hasMany(Question::class);
     }
+<<<<<<< HEAD
 
     public function getCreatedProductAttribute()
     {
         return Carbon::now()->diffInDays($this->created_at);
+=======
+    public function provider(){
+        return $this->belongsTo(Provider::class);
+>>>>>>> fe32bc3968cb7f115eca53060bce25cac19dc0ab
     }
 }
 

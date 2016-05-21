@@ -171,7 +171,7 @@
     </section>
     <section class="Provider-detail row middle">
         <div class="col-8 row middle">
-            <figure><img src="{{url('images/bayer_logo.jpg')}}" alt=""></figure>
+            <figure><img src='{{url("images/")}}' alt=''></figure>
             <h4>Bayer Colombia</h4>
             <div class="Provider-star col-2">
                 @for($i = 0; $i < 5; $i++)
@@ -235,7 +235,7 @@
                 <input id="token" type="hidden" name="_token" value="{{ csrf_token() }}">
                 <figure>
                     @if(Auth::user()->photo)
-                        <img src="{{url('images/' . Auth::user()->photo)}}" alt="">
+                        <img src="{{url('uploads/users/' . Auth::user()->photo)}}" alt="">
                     @else
                         <img src="{{url('images/user.png')}}" alt="">
                     @endif
@@ -254,7 +254,7 @@
                 <li class="row">
                     <figure>
                         @if($question->texts->first()->user->photo)
-                            <img src="{{url('images/' . $question->texts->first()->user->photo)}}">
+                            <img src="{{url('uploads/users/' . $question->texts->first()->user->photo)}}">
                         @else
                             <img src="{{url('images/user.png')}}">
                         @endif

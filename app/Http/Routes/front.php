@@ -79,7 +79,3 @@ Route::get('productos/{name?}',[
     'uses' => 'ProductController@productFront',
     'as' => 'product'
 ]);
-
-Route::get('mail', function(){
-    return view('emails.welcome');
-});

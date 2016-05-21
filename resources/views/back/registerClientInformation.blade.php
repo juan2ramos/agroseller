@@ -7,9 +7,9 @@
             <input type="hidden" id="Location" name="location" value="">
             <h2>COMPLETA TUS DATOS</h2>
 
-            <a class="Marker " id="addMaker">Agregar ubicacion</a>
+            <button class="Marker Button" id="addMaker" onclick="return false">Agregar ubicacion</button>
 
-            <div id="map" class="Map"></div>
+            <div id="Map" class="Map"></div>
 
             <p>Selecciona tus cultivos</p>
 
