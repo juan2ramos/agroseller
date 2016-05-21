@@ -179,6 +179,6 @@ return [
         'Date' => Jenssegers\Date\Date::class,
         'Table'      => 'Gbrock\Table\Facades\Table',
         'Date' => Jenssegers\Date\Date::class,
-        'PDF' => 'Barryvdh\DomPDF\Facade'
+        'PDF' => 'Barryvdh\DomPDF\Facade',
     ],
 ];

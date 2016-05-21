@@ -20,7 +20,7 @@
                         <button class="iconPlus"></button>@endif</td>
                 <td> {{$budget->created_budget}}</td>
                 <td> {{$budget->number_products}}</td>
-                <td>{{$budget->total_value}}</td>
+                <td> ${{$budget->total_value}}</td>
                 <td>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20px" viewBox="0 0 106.254 127.08375000000001">
                         <path d="M7.3 7.276H39.12v-8.28H66.31v8.28h31.823v12.53H7.3zM15.608 25.12H91.36l-9.003 78.535H24.612m54.96-69.806h-7.538l-4.41 63.76h5.747zm-22.712.054h-7.54l.99 63.75h5.747zm-22.713.504h-7.54l6.39 63.63h5.747z"/>
@@ -38,7 +38,6 @@
                             <th>Cantidad</th>
                             <th>Valor Unidad</th>
                             <th>Valor Total</th>
-                            <th>Valor Total</th>
                         </tr>
                         </thead>
 
@@ -46,9 +45,9 @@
                         @foreach($budget->Products_array as $products)
                             <tr>
                                 <td>{{$products['name']}}</td>
-                                <td>{{$products['price']}}</td>
+                                <td>${{$products['price']}}</td>
                                 <td>{{$products['quantity']}}</td>
-                                <td>{{$products['total']}}</td>
+                                <td>${{$products['total']}}</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -70,7 +69,7 @@
 
         </tbody>
     </table>
-    <form id="download" method="post" action="{{route('downloadBudget')}}">
+    <form id="download" target="_blank" method="post" action="{{route('downloadBudget')}}">
         <input type="hidden" name="budget_id" id="budget">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
     </form>

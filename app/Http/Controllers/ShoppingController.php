@@ -2,11 +2,14 @@
 
 namespace Agrosellers\Http\Controllers;
 
+use Agrosellers\Entities\Order;
 use Agrosellers\Entities\Product;
+use Agrosellers\Entities\StateOrder;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use Agrosellers\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class ShoppingController extends Controller
@@ -34,6 +37,8 @@ class ShoppingController extends Controller
 
         Session::put('cart', $cart);
         return back();
+
+
     }
 
     public function delete($id)
@@ -61,13 +66,26 @@ class ShoppingController extends Controller
             $product->offer_price = $price;
             $valueTotal += $product->quantity * $price;
         }
-        Session::put('valueTotal', $valueTotal);
+        Session::put('valueTotal', number_format($valueTotal, 0, " ", "."));
 
     }
     public function trash()
     {
         Session::forget('cart');
         Session::forget('valueTotal');
+    }
+
+    public function showBack(){
+        $orders = Auth::user()->orders()->has('products')->get();
+        return view('back.orders', compact('orders'));
+    }
+    public function showBackProvider(){
+
+        $orders = Order::with(['products' => function ($query) {
+            $query->where('user_id', Auth::user()->id);
+        }])->get();
+        $states = StateOrder::lists('id','name');
+        return view('back.ordersProvider', compact('orders','states'));
     }
 
 

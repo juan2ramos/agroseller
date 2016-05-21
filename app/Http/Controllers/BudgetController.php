@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Jenssegers\Date\Date;
 
 class BudgetController extends Controller
 {
@@ -38,13 +39,16 @@ class BudgetController extends Controller
     }
     public function download(Request $request){
 
+        $user = Auth::user();
+        $budget = Budget::find($request->input('budget_id'));
+        $date = new Date();
+        $date = $date->format('l j F Y');
 
-        $data = 'asdasdas';
-        $date = date('Y-m-d');
-        $view =  \View::make('pdf.invoice', compact('data', 'date', 'invoice'))->render();
+
+        $view =  view('pdf.invoice', compact('budget','user', 'date'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        return $pdf->stream('invoice');
+        return $pdf->stream('nombre',array('Attachment'=>0));
 
     }
 }

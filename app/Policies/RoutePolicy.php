@@ -42,12 +42,10 @@ class RoutePolicy
                 [
                     'admin', 'users', 'providers', 'category', 'farmIndex', 'products', 'questions', 'clients',
                     'bills', 'orders', 'reports', 'subcategoriesQuery','featuresQuery', 'showUser', 'validateProvider',
-<<<<<<< HEAD
+
                     'newProduct','agentsGet', 'editProduct', 'deleteProduct', 'updateProduct','newUserAdmin','user',
-                    'budgetShow'
-=======
-                    'newProduct','agentsGet', 'editProduct', 'deleteProduct', 'updateProduct','newUserAdmin','user', 'indexProfile', 'userUpdate'
->>>>>>> fe32bc3968cb7f115eca53060bce25cac19dc0ab
+                    'budgetShow', 'indexProfile', 'userUpdate'
+
                 ],
             '2' =>
                 [
@@ -56,22 +54,17 @@ class RoutePolicy
                 ],
             '3' =>
                 [
-<<<<<<< HEAD
                     'admin', 'products', 'questions', 'orders', 'registerProvider', 'isValidateProviders', 'questions',
                     'subcategoriesQuery','featuresQuery', 'newProduct', 'insertProvider', 'questionDetail', 'questionNew',
-                    'editProduct', 'deleteProduct', 'updateProduct'
+                    'editProduct', 'deleteProduct', 'updateProduct', 'indexProfile', 'userUpdate','orderShowProvider'
                 ],
+
             '4' =>
                 [
                     'admin', 'products', 'bills', 'orders', 'reports', 'questions', 'questionDetail', 'questionNew',
-                    'budgetShow','downloadBudget'
-=======
-                    'admin', 'products', 'questions', 'orders', 'registerProvider', 'isValidateProviders', 'questions', 'subcategoriesQuery','featuresQuery', 'newProduct', 'insertProvider', 'questionDetail', 'questionNew', 'editProduct', 'deleteProduct', 'updateProduct', 'indexProfile', 'userUpdate'
-                ],
-            '4' =>
-                [
-                    'admin', 'products', 'bills', 'orders', 'reports', 'questions', 'questionDetail', 'questionNew', 'clientInformationIndex', 'clientInformationStore', 'indexProfile', 'userUpdate'
->>>>>>> fe32bc3968cb7f115eca53060bce25cac19dc0ab
+                    'clientInformationIndex', 'clientInformationStore', 'indexProfile', 'userUpdate','budgetShow','downloadBudget',
+                    'orderShow'
+
                 ],
             '5' =>
                 [

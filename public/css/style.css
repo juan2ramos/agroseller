@@ -2136,3 +2136,27 @@ label.Tab {
 .no-data {
   height: 100px;
 }
+
+.Order-userData {
+  text-align: left;
+  margin: 1.25rem 0;
+}
+
+.Order-userData ul {
+  text-align: left;
+}
+
+.Order-userData li {
+  margin: 0.25rem 0;
+}
+
+.Order-formUpdate {
+  margin: 1.5rem 0 0;
+}
+
+.Order-formUpdate select {
+  border: 0.0625rem solid #E4E4E4;
+  background: white;
+  width: 12.5rem;
+  height: 2.875rem;
+}

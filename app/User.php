@@ -3,6 +3,7 @@
 namespace Agrosellers;
 use Agrosellers\Entities\Budget;
 use Agrosellers\Entities\Order;
+use Agrosellers\Entities\Product;
 use Gbrock\Table\Traits\Sortable;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -84,12 +85,15 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany(Text::class);
     }
 
-    public function order(){
+    public function orders(){
         return $this->hasOne(Order::class);
     }
 
     public function budgets(){
         return $this->hasMany(Budget::class);
+    }
+    public function products(){
+        return $this->hasMany(Product::class);
     }
 
     public function fullName(){

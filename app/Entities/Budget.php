@@ -18,7 +18,7 @@ class Budget extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class)->withPivot('quantity');;
+        return $this->belongsToMany(Product::class)->withPivot('quantity');
     }
 
 
@@ -57,9 +57,9 @@ class Budget extends Model
             $quantity = $product->pivot->quantity;
             $products[] = [
                 'name' => $product->name,
-                'price' => $price,
+                'price' => number_format($price, 0, " ", "."),
                 'quantity' => $quantity,
-                'total' => $quantity * $price
+                'total' => number_format($quantity * $price, 0, " ", "."),
             ];
         }
 

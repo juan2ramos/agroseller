@@ -181,7 +181,7 @@
                             </g>
                         </svg>
                         <span id="CartValue">
-                            ${{number_format(session('valueTotal'), 0, " ", ".")}}
+                            ${{(session('valueTotal')? session('valueTotal'): '')}}
                         </span>
                     </div>
                 </div>
@@ -480,7 +480,8 @@
                     <li class="row middle">
                         <figure class="col-5">
                             <a href="{{route('productDetail',[$product->slug, $product->id])}}">
-                                <img src="{{ url('uploads/products/'.$product->productFiles()->first()->name )}}" alt="">
+                                <img src="{{ url('uploads/products/'.$product->productFiles()->first()->name )}}"
+                                     alt="">
                             </a>
                         </figure>
                         <div class="CartDetail-content col-7">
@@ -516,7 +517,9 @@
                                 <span>{{$product->quantity}}</span>
                                 <small></small>
                                 <val>
-                                    ${{number_format($product->offer_price, 0, " ", ".")}}
+                                    @if($product->offer_price)
+                                        ${{number_format($product->offer_price, 0, " ", ".")}}
+                                    @endif
 
                                 </val>
                             </div>
@@ -528,7 +531,7 @@
 
         <section class="CartDetail-footer row">
             <span class="col-6">Subtotal</span>
-            <span class="col-6 AlignRight">${{number_format(session('valueTotal'), 0, " ", ".")}}</span>
+            <span class="col-6 AlignRight">${{(session('valueTotal')? session('valueTotal'): '')}}</span>
             <a class="Button" href="{{route('checkout')}}">REALIZAR COMPRA</a>
             <a class="Button" href="{{route('budget')}}">PRESUPUESTO</a>
         </section>

@@ -83,9 +83,14 @@ class Menu
                 'roles' => [1, 2, 4],
                 'class' => 'budgets'
             ],
+            'Compras' => [
+                'route' => 'orderShow',
+                'roles' => [1, 2, 4, 5],
+                'class' => 'order'
+            ],
             'Ordenes' => [
-                'route' => 'orders',
-                'roles' => [1, 2, 3, 4, 5],
+                'route' => 'orderShowProvider',
+                'roles' => [ 3, 5],
                 'class' => 'order'
             ],
             'Reportes' => [
