@@ -88,8 +88,8 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasOne(Order::class);
     }
 
-    public function budget(){
-        return $this->hasOne(Budget::class);
+    public function budgets(){
+        return $this->hasMany(Budget::class);
     }
 
     public function fullName(){

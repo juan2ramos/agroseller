@@ -124,9 +124,12 @@ return [
         Agrosellers\Providers\AuthServiceProvider::class,
         Agrosellers\Providers\EventServiceProvider::class,
         Agrosellers\Providers\RouteServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         'Jenssegers\Date\DateServiceProvider',
         'Gbrock\Table\Providers\TableServiceProvider',
+        Barryvdh\DomPDF\ServiceProvider::class,
+
     ],
     /*
     |--------------------------------------------------------------------------
@@ -175,5 +178,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Date' => Jenssegers\Date\Date::class,
         'Table'      => 'Gbrock\Table\Facades\Table',
+        'Date' => Jenssegers\Date\Date::class,
+        'PDF' => 'Barryvdh\DomPDF\Facade'
     ],
 ];

@@ -2,6 +2,7 @@
 
 namespace Agrosellers\Entities;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -26,7 +27,7 @@ class Product extends Model
         return $this->belongsToMany(Order::class);
     }
     public function budgets(){
-        return $this->belongsToMany(Budget::class);
+        return $this->belongsToMany(Budget::class)->withPivot('quantity');
     }
 
     public function productFiles(){
@@ -36,5 +37,11 @@ class Product extends Model
     public function questions(){
         return $this->hasMany(Question::class);
     }
+
+    public function getCreatedProductAttribute()
+    {
+        return Carbon::now()->diffInDays($this->created_at);
+    }
 }
+
 

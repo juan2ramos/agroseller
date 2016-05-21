@@ -189,3 +189,12 @@ route::post('preguntas/new', [
     'as' => 'questionNew',
     'middleware' => 'VerifyProvider',
 ]);
+route::post('download-pdf', [
+    'uses' => 'BudgetController@download',
+    'as' => 'downloadBudget',
+]);
+
+Route::get('mis-presupuestos', [
+    'uses' => 'BudgetController@showBack',
+    'as' => 'budgetShow',
+]);

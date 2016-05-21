@@ -42,7 +42,8 @@ class RoutePolicy
                 [
                     'admin', 'users', 'providers', 'category', 'farmIndex', 'products', 'questions', 'clients',
                     'bills', 'orders', 'reports', 'subcategoriesQuery','featuresQuery', 'showUser', 'validateProvider',
-                    'newProduct','agentsGet', 'editProduct', 'deleteProduct', 'updateProduct','newUserAdmin','user'
+                    'newProduct','agentsGet', 'editProduct', 'deleteProduct', 'updateProduct','newUserAdmin','user',
+                    'budgetShow'
                 ],
             '2' =>
                 [
@@ -51,11 +52,14 @@ class RoutePolicy
                 ],
             '3' =>
                 [
-                    'admin', 'products', 'questions', 'orders', 'registerProvider', 'isValidateProviders', 'questions', 'subcategoriesQuery','featuresQuery', 'newProduct', 'insertProvider', 'questionDetail', 'questionNew', 'editProduct', 'deleteProduct', 'updateProduct'
+                    'admin', 'products', 'questions', 'orders', 'registerProvider', 'isValidateProviders', 'questions',
+                    'subcategoriesQuery','featuresQuery', 'newProduct', 'insertProvider', 'questionDetail', 'questionNew',
+                    'editProduct', 'deleteProduct', 'updateProduct'
                 ],
             '4' =>
                 [
-                    'admin', 'products', 'bills', 'orders', 'reports', 'questions', 'questionDetail', 'questionNew'
+                    'admin', 'products', 'bills', 'orders', 'reports', 'questions', 'questionDetail', 'questionNew',
+                    'budgetShow','downloadBudget'
                 ],
             '5' =>
                 [

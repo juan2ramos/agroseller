@@ -430,6 +430,8 @@ tr.SubTable .Table {
 
 tr.SubTable .Table.open {
   display: table;
+  -webkit-animation: anim .6s ease-in-out;
+  animation: anim .6s ease-in-out;
 }
 
 tr.SubTable .Table thead {
@@ -476,6 +478,83 @@ tr.SubTable .iconPlus {
 .iconPlus.open:after {
   -webkit-transform: rotateZ(-90deg);
   transform: rotateZ(-90deg);
+}
+
+@-webkit-keyframes anim {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+
+  1% {
+    display: block;
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes anim {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+
+  1% {
+    display: block;
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+tr.SubTable2 {
+  display: none;
+}
+
+tr.SubTable2.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+tr.SubTable2 thead {
+  background: #9D9D9D;
+}
+
+.SubTable2 td {
+  padding: 1.25rem;
+}
+
+.SubTable2 .Table {
+  margin: 0;
+}
+
+.SubTable2 .Table-pdf {
+  width: 100%;
+  text-align: right;
+  margin: 1.25rem 0 0;
+}
+
+.SubTable2 .Table-pdf a {
+  margin: 0;
+  width: 8.75rem;
+  text-align: center;
+}
+
+.SubTable2 .Table-pdf a:hover {
+  color: #C5D257;
 }
 
 .row {

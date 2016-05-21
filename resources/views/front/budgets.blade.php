@@ -93,11 +93,12 @@
                     <a href="{{route('login')}}" class="col-3 offset-1 Button">INICIA SESIÓN</a>
                 </div>
             @endif
-            @if(true)
+
+            @if(isset($budgetCreate) )
                 @include('messages',[
                        'type' => 'ok',
                        'title' => '¡Enhorabuena!',
-                       'message' => '<p> Tu presupuesto ha sido creado con éxito,  ve al panel administrativo, y visulaiza todos tus presupuestos,</p>'
+                       'message' => '<p> Tu presupuesto ha sido creado con éxito,  ve al panel administrativo, y visualiza todos tus presupuestos,</p>'
                         ])
             @endif
         </section>

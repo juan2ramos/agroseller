@@ -79,7 +79,7 @@ class Menu
                 'class' => 'client'
             ],
             'Presupuestos' => [
-                'route' => 'bills',
+                'route' => 'budgetShow',
                 'roles' => [1, 2, 4],
                 'class' => 'budgets'
             ],
