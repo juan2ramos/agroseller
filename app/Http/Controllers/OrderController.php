@@ -23,7 +23,6 @@ class OrderController extends Controller
         $r['state_order_id'] = 2; /*TEMPORAL*/
         $order = new Order($r);
         auth()->user()->orders()->save($order);
-        dd($order);
         $order->products()->attach($data);
 
         Session::forget('cart');
