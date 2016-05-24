@@ -81,9 +81,18 @@ class ShoppingController extends Controller
     }
     public function showBackProvider(){
 
-        $orders = Order::with(['products' => function ($query) {
+        $orders = Order::whereHas('products', function ($query) {
             $query->where('user_id', Auth::user()->id);
-        }])->get();
+        })->with('products')->get()->take(1);
+
+        $array = [100, '200', 300, '400', 500];
+
+        $array = array_where($array, function ($key, $value) {
+            return is_string($value);
+        });
+
+        print_r($array);
+
         $states = StateOrder::lists('id','name');
         return view('back.ordersProvider', compact('orders','states'));
     }
