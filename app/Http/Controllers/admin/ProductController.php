@@ -57,8 +57,9 @@ class ProductController extends Controller
     }
     function editProduct($id){
         $productEdit = Product::find($id);
+        $offerEdit = $productEdit->offers()->first();
         $categories = Category::all();
-        return view('back.productEdit', compact('productEdit', 'categories'));
+        return view('back.productEdit', compact('productEdit', 'offerEdit', 'categories'));
     }
 
     function updateProduct(Request $request, $id){
@@ -84,9 +85,9 @@ class ProductController extends Controller
             }
         }
 
-        $this->product->fill($inputs);
+        $this->product->update($inputs);
+        $this->product->offers()->first()->update($inputs);
         $this->createFile($request);
-        $this->product->save();
 
         return redirect()->back()->with('messageSuccess', 1);
     }
@@ -100,7 +101,7 @@ class ProductController extends Controller
     {
         $inputs = $request->all();
         $this->validator($request->file());
-        
+
         if ($request->has('taxes'))
             $inputs['taxes'] = implode(';', $inputs['taxes']);
         $inputs['user_id'] = Auth::user()->id;

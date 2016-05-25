@@ -102,6 +102,7 @@ class ShoppingController extends Controller
                 $product->total = $product->priceFinish * $product->pivot->quantity;
                 $order->totalValueProducts += $product->total;
             }
+
         }
         $states = StateOrder::lists('id', 'name');
         return view('back.ordersProvider', compact('orders', 'states'));

@@ -307,7 +307,7 @@
     <script src="{{asset('js/front/product.js')}}"></script>
     @if($offer)
         <?php
-            $fecha = explode('-', $product->offer_off);
+            $fecha = explode('-', $product->offers->offer_off);
             $day = explode(' ', $fecha[2]);
             $time = explode(':', $day[1]);
 

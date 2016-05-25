@@ -90,6 +90,7 @@ class ProviderController extends Controller
             $request->file($key)->move(base_path() . '/public/uploads/providers/', $fileName);
             $provider[$key] = $fileName;
         }
+        $user['photo'] = $provider['logo'];
         $provider->save();
 
         Mail::send('emails.registerProvider', ['user' => $user], function ($m) use ($user) {
