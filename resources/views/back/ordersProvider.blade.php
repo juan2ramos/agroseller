@@ -18,13 +18,13 @@
         @foreach($orders as $order)
 
             <tr>
-                <td>@if($order->number_products)
+                <td>@if($order->quantityProducts)
                         <button class="iconPlus"></button>@endif</td>
                 <td> {{$order->created_budget}}</td>
                 <td> {{$order->updated_budget}}</td>
-                <td> {{$order->number_products_provider}}</td>
-                <td> ${{$order->total_value_provider}}</td>
-                <td> {{$order->stateOrder()->first()->name}} </td>
+                <td> {{$order->quantityProducts}}</td>
+                <td> ${{$order->totalValueProducts}}</td>
+                <td> {{--{{$order->stateOrder()->first()->name}}--}} </td>
             </tr>
             <tr class="SubTable2">
                 <td colspan="6">
@@ -49,12 +49,15 @@
                         </thead>
 
                         <tbody>
-                        @foreach($order->Products_array_provider as $products)
+                        @foreach($order->products as $products)
                             <tr>
-                                <td>{{$products['name']}}</td>
-                                <td>${{$products['price']}}</td>
-                                <td>{{$products['quantity']}}</td>
-                                <td>${{$products['total']}}</td>
+                                <td>{{$products->name}}</td>
+                                <td>${{$products->priceFinish}}</td>
+                                <td>{{$products->pivot->quantity}}</td>
+                                <td>${{$products->total}}</td>
+
+
+
                             </tr>
                         @endforeach
                         </tbody>
@@ -79,4 +82,6 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
     </form>
 @endsection
-
+@section('scripts')
+    <script src="{{asset('js/tables2.js')}}"></script>
+@endsection

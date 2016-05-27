@@ -2,14 +2,17 @@
 
 namespace Agrosellers\Http\Controllers;
 
+use Agrosellers\Entities\Budget;
 use Agrosellers\Entities\Order;
 use Agrosellers\Entities\Product;
 use Agrosellers\Entities\StateOrder;
+use Agrosellers\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use Agrosellers\Http\Requests;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class ShoppingController extends Controller
@@ -69,33 +72,40 @@ class ShoppingController extends Controller
         Session::put('valueTotal', number_format($valueTotal, 0, " ", "."));
 
     }
+
     public function trash()
     {
         Session::forget('cart');
         Session::forget('valueTotal');
     }
 
-    public function showBack(){
+    public function showBack()
+    {
         $orders = Auth::user()->orders()->has('products')->get();
         return view('back.orders', compact('orders'));
     }
-    public function showBackProvider(){
 
+    public function showBackProvider()
+    {
         $orders = Order::whereHas('products', function ($query) {
-            $query->where('user_id', Auth::user()->id);
-        })->with('products')->get()->take(1);
+            $query->where('products.user_id', 13);
+        })->with(['products' => function ($q) {
+            $q->where('products.user_id', 13)->with('offers');
+        }])->get();
 
-        $array = [100, '200', 300, '400', 500];
+        foreach ($orders as $order) {
+            $order->quantityProducts = count($order->products);
+            $order->totalValueProducts = 0;
+            foreach ($order->products as $product) {
+                $product->priceFinish = ($product->offers->offer_price > 0) ?
+                    $product->offers->offer_price : $product->price;
+                $product->total = $product->priceFinish * $product->pivot->quantity;
+                $order->totalValueProducts += $product->total;
+            }
 
-        $array = array_where($array, function ($key, $value) {
-            return is_string($value);
-        });
-
-        print_r($array);
-
-        $states = StateOrder::lists('id','name');
-        return view('back.ordersProvider', compact('orders','states'));
+        }
+        $states = StateOrder::lists('id', 'name');
+        return view('back.ordersProvider', compact('orders', 'states'));
     }
-
 
 }

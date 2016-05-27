@@ -46,6 +46,7 @@
                                     <span>{{$product->quantity}}</span>
                                     <small></small>
                                     <val>
+
                                         ${{number_format(($product->offer_price)?$product->offer_price:$product->price, 0, " ", ".")}}</val>
                                 </div>
                             </div>
@@ -55,7 +56,7 @@
                 @endif
 
             </ul>
-            <div class="col-12 Total AlignRight">Subtotal: ${{number_format(session('valueTotal'), 0, " ", ".")}}</div>
+            <div class="col-12 Total AlignRight">Subtotal: ${{session('valueTotal')}}</div>
         </section>
         <section class="col-8">
             <h2>2. Detalle de facturación</h2>

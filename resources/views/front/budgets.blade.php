@@ -58,7 +58,7 @@
 
             </ul>
             <div class="col-12 Total AlignRight" style="font-size: 1.5rem; padding: 1.25rem 0">Total:
-                ${{number_format(session('valueTotal'), 0, " ", ".")}}</div>
+                ${{session('valueTotal')}}</div>
         </section>
         <section class="col-12">
             @if(Auth::check())
