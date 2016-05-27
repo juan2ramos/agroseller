@@ -20,7 +20,13 @@
                         <figure class=" row middle center">
                             <!--<span>Svg para logo</span>-->
                         </figure>
-                        <output class="result" />
+                        <output class="result">
+                        @if(auth()->user()->photo)
+                            <figure>
+                                <img src='{{url("uploads/users/" . auth()->user()->photo)}}' alt="">
+                            </figure>
+                        </output>    
+                        @endif
                     </label>
                 </div>
             </div>

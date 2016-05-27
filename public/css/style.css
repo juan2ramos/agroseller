@@ -2137,6 +2137,19 @@ label.Tab {
   height: 100px;
 }
 
+.Logo .result figure {
+  background: white;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .Order-userData {
   text-align: left;
   margin: 1.25rem 0;

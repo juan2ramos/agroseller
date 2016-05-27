@@ -44,7 +44,14 @@
             Bienvenido(a) a Agroseller
         </h1>
         <div class="col-6 HeaderBack-profile row end middle ">
-            <figure><img src="{{url('images/user.png')}}" alt=""><span>2</span></figure>
+            <figure>
+                @if(auth()->user()->photo)
+                    <img src="{{url('uploads/users/' . auth()->user()->photo)}}" alt="">
+                @else
+                    <img src="{{url('images/user.png')}}" alt="">
+                @endif
+                <span>2</span>
+            </figure>
             <h3>{{ auth()->user()->fullName()   }}
                 <span>{{--{{ auth()->user()->role()->first()->name}}--}}</span></h3>
             <svg id="Profile-arrow" width="13px" height="8px" viewBox="0 0 13 8" version="1.1"

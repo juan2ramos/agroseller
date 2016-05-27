@@ -6,6 +6,12 @@ Route::group(['namespace' => 'admin'], function () {
         'as' => 'products',
         'middleware' => 'VerifyProvider',
     ]);
+
+    Route::post('productos/delete', [
+        'uses' => 'ProductController@delete',
+        'as' => 'deleteProduct'
+    ]);
+
     Route::post('productos', [
         'uses' => 'ProductController@newProduct',
         'as' => 'newProduct',
@@ -19,11 +25,6 @@ Route::group(['namespace' => 'admin'], function () {
     Route::post('producto/update/{id}', [
         'uses' => 'ProductController@updateProduct',
         'as' => 'updateProduct'
-    ]);
-
-    Route::post('productos/delete', [
-        'uses' => 'ProductController@delete',
-        'as' => 'deleteProduct'
     ]);
 
     Route::post('subcategoriesQuery', [
