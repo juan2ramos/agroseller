@@ -1832,8 +1832,15 @@ body {
   border-radius: 5px;
   opacity: .3;
   padding: 10px 10px 0;
-  height: 155px;
   width: 100%;
+}
+
+.NavFooter .copy {
+  opacity: .5;
+  color: white;
+  padding: 10px;
+  font-size: .7rem;
+  display: block;
 }
 
 .NavFooter-TitleUL a {

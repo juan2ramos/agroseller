@@ -210,17 +210,22 @@
 <footer class="Footer">
     <div class="Footer-content row middle">
         <nav class="NavFooter col-12 row center">
-            <ul class="center col-4">
-                <li class="NavFooter-TitleUL"><a href="#">Acerca de</a>
+            <ul class="center col-2">
+                <li class="NavFooter-TitleUL"><a href="#">Nosotros</a>
                     <ul>
-                        <li><a href="#"> AgroSeller</a></li>
-                        <li><a href="#"> Pauta con nosotros</a></li>
+                        <li><a href="#"> Sobre AgroSeller</a></li>
                         <li><a href="{{route('contactForm')}}"> Contáctanos</a></li>
-                        <li><a href="#"> Mapa del Sitio</a></li>
                     </ul>
                 </li>
             </ul>
-
+            <ul class="center col-2">
+                <li class="NavFooter-TitleUL"><a href="#">Opciones Publicitarias</a>
+                    <ul>
+                        <li><a href="#"> Publica con nosotros</a></li>
+                        <li><a href="#"> Vender en AgroSeller</a></li>
+                    </ul>
+                </li>
+            </ul>
             <ul class="center col-4">
                 <li class="NavFooter-TitleUL">
                     <figure class="Footer-logo">
@@ -330,19 +335,26 @@
                 </li>
             </ul>
 
-
-            <ul class="center col-4">
-                <li class="NavFooter-TitleUL"><a href="#">Mi cuenta</a>
+            <ul class="center col-2">
+                <li class="NavFooter-TitleUL"><a href="#">Seguridad y Privacidad</a>
                     <ul>
-                        <li><a href="#"> Resumen </a></li>
-                        <li><a href="#"> Favoritos</a></li>
-                        <li><a href="#"> Vender</a></li>
+                        <li><a href="#"> Seguridad </a></li>
+                            <li><a href="#"> Privacidad </a></li>
+                        <li><a href="#"> Condiciones de Uso </a></li>
                     </ul>
                 </li>
             </ul>
+            <ul class="center col-2">
+                <li class="NavFooter-TitleUL"><a href="#"> Ayuda </a>
+                    <ul>
+                        <li><a href="#"> ¿Cómo vender? </a></li>
+                        <li><a href="#"> ¿Cómo comprar?</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <span class="copy">Todos los derechos reservados &copy; Agrosellers</span>
         </nav>
     </div>
-
 </footer>
 <div class="LightBoxContent" id="MenuContainer">
     <div class="LightBoxContent-close"></div>
