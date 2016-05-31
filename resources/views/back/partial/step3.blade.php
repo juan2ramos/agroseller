@@ -1,5 +1,5 @@
 <section class="Step Step-3 Forms">
-    <p>Si no deseas publicar una oferta para tu producto, puedes omitir este paso</p>
+    <p>Si no deseas publicar una oferta para tu producto, haz clic sobre la opción OMITR</p>
     <div class="Button" id="omitir">OMITIR</div>
 
     <article>

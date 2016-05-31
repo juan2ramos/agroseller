@@ -13,12 +13,16 @@
 <section class="Step Step-2 Forms">
 
     <article class="Step-location">
-        <p>1. Añade los lugares donde te encuentras
-                    <span>Muevete por el mapa y coloca en el centro el lugar que deseas añadir,
-                        luego oprime el botón “AÑADE UNA UBICACIÓN”, se inserta un marcador de
-                        ubicación el cual puedes mover, para ubicarlo con mayor exactitud; para
-                        eliminar da doble clic, si deseas eliminar  todos tu marcadores para
-                        empezar de nuevo oprime “ELIMINAR TODAS LAS UBICACIONES”.</span>
+        <p>1. Añadir los lugares donde está ubicado tu producto
+                    <span>Navega por el mapa y ubica el lugar que
+                        deseas añadir, da un clic sobre el botón
+                        “AÑADE UNA UBICACIÓN”, después de que el
+                        marcador esta sobre el mapa puedes desplazarlo
+                        a una ubicación más exacta; si deseas eliminar
+                        da doble clic sobre el marcador, si deseas
+                        eliminar todas tus ubicaciones para empezar
+                        de nuevo oprime “ELIMINAR TODAS LAS UBICACIONES.
+                    </span>
         </p>
         <span class="Marker Button" id="addMaker">AÑADE UNA UBICACIÓN</span>
         <span class="Marker Button" id="removeMaker">ELIMINAR TODAS LAS UBICACIONES</span>
@@ -31,8 +35,8 @@
     <article>
 
         <p>2. Ingresa el nombre de tu producto
-                    <span>El nombre del producto debe iniciar con el nombre seguido por la marca luego la referencia o
-                        especificación ejemplo.</span>
+                    <span>Escribe el nombre del producto
+                        con la especificación deseada.</span>
         </p>
         <label for="nameProduct">
             @if(isset($productEdit))
@@ -167,16 +171,16 @@
         <option value="Caja">Caja</option>
         <option value="Botella">Botella</option>
     </select>
-
+        <!--
     <label for="size" class="DataForm size" >
-        @if(isset($productEdit))
+        if(isset($productEdit))
         <input type="number" id="size" name="size" value="{{ $productEdit->size }}">
-        @else
+        else
         <input type="number" id="size" name="size" value="{{ old('size') }}">
-        @endif
+        endif
         <span>Tamaño del producto</span>
         <em>Kg</em>
-    </label>
+    </label>-->
     <label for="weight" class="DataForm weight">
         @if(isset($productEdit))
         <input type="number" id="weight" name="weight" value="{{ $productEdit->weight }}">
@@ -235,10 +239,10 @@
 
     <h4>IMAGENES
         <ul>
-            <li><span>Has clic o arrastra las imágenes que deseas agregar</span></li>
-            <li><span>Las imágenes deben tener un dimensión de 640x640 </span></li>
-            <li><span>Deben ser en fondo blanco</span></li>
-            <li><span>no deben pesar mas de 2Mb </span></li>
+            <li><span>Dimensión 640 x 640.</span></li>
+            <li><span>Fondo blanco.</span></li>
+            <li><span>Peso máximo 2 MB.</span></li>
+            <li><span>Para cargar una imagen haz clic sobre el recuadro y busca la ubicación de tu imagen o solo arrástrala hasta el recuadro.</span></li>
         </ul>
     </h4>
 

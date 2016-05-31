@@ -18,7 +18,7 @@
                     <label for="image">
                         <input type="file" class="StepImages" name="logo" id="image">
                         <figure class=" row middle center">
-                            <span>Svg para logo</span>
+                            <!--<span>Svg para logo</span>-->
                         </figure>
                         <output class="result" />
                     </label>
@@ -31,7 +31,7 @@
             </div>
             <div class="FormGroup">
                 <input type="text" class="form-control" placeholder="URL sitio web" name="web-site" value="{{ old('web-site')}}">
-                <input type="number" class="form-control" placeholder="Tiempo promedio de despacho" name="dispatch-time" value="{{ old('dispatch-time')}}">
+                <input type="number" class="form-control" placeholder="Tiempo promedio de despacho (Días)" name="dispatch-time" value="{{ old('dispatch-time')}}">
             </div>
             <div class="FormGroup">
                 <input type="text" class="form-control" placeholder="Contacto" name="contact" value="{{ old('contact')}}">

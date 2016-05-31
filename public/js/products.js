@@ -249,50 +249,51 @@ var tab1 = $('[for="tab1"]'),
     url = $('#deleteProductRoute').val(),
     productId;
 
-if(tab2.is(':checked')){
-    line.addClass('right');
-}
-
-tab2.on('click', function(){
-    line.addClass('right');
-});
-
-tab1.on('click', function(){
-    line.removeClass('right');
-});
-
-$('#ProductUpdate-close').on('click', function(){
-    productUpdate.removeClass('left');
-});
-
-$('.Item-actions').on('click', '.icon-update, .icon-remove', function(){
-    productId = $(this).siblings('.ProductId').val();
-
-    if($(this).hasClass('icon-update'))
-        productUpdate.addClass('left');
-    else
-        deleteMessage.show();
-});
-
-deleteMessage.on('click', '#Cancel, #Accept', function(){
-    if($(this).attr('id') == 'Accept'){
-        deleteMessage.hide();
-
-        param = {
-            '_token' : $('#token').val(),
-            'id'     : productId
-        };
-
-        $.ajax({
-            type : 'POST',
-            url  : url,
-            data : param,
-            success : function(data){
-                location.reload();
-            }
-        });
+if(tab2.is(':checked')) {
+    if (tab2.is(':checked')) {
+        line.addClass('right');
     }
-    else
-        deleteMessage.hide();
-});
 
+    tab2.on('click', function () {
+        line.addClass('right');
+    });
+
+    tab1.on('click', function () {
+        line.removeClass('right');
+    });
+
+    $('#ProductUpdate-close').on('click', function () {
+        productUpdate.removeClass('left');
+    });
+
+    $('.Item-actions').on('click', '.icon-update, .icon-remove', function () {
+        productId = $(this).siblings('.ProductId').val();
+
+        if ($(this).hasClass('icon-update'))
+            productUpdate.addClass('left');
+        else
+            deleteMessage.show();
+    });
+
+    deleteMessage.on('click', '#Cancel, #Accept', function () {
+        if ($(this).attr('id') == 'Accept') {
+            deleteMessage.hide();
+
+            param = {
+                '_token': $('#token').val(),
+                'id': productId
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: param,
+                success: function (data) {
+                    location.reload();
+                }
+            });
+        }
+        else
+            deleteMessage.hide();
+    });
+}

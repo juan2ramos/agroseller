@@ -78,7 +78,7 @@ class Menu
                 'roles' => [1, 2, 5],
                 'class' => 'client'
             ],
-            'Presupuestos' => [
+            'Cotizaciones' => [
                 'route' => 'budgetShow',
                 'roles' => [1, 2, 4],
                 'class' => 'budgets'
@@ -88,7 +88,7 @@ class Menu
                 'roles' => [1, 2, 4, 5],
                 'class' => 'order'
             ],
-            'Ordenes' => [
+            'Pedidos' => [
                 'route' => 'orderShowProvider',
                 'roles' => [ 3, 5],
                 'class' => 'order'
