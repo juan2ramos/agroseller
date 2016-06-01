@@ -21,7 +21,7 @@
                         a una ubicación más exacta; si deseas eliminar
                         da doble clic sobre el marcador, si deseas
                         eliminar todas tus ubicaciones para empezar
-                        de nuevo oprime “ELIMINAR TODAS LAS UBICACIONES.
+                        de nuevo oprime “ELIMINAR TODAS LAS UBICACIONES".
                     </span>
         </p>
         <span class="Marker Button" id="addMaker">AÑADE UNA UBICACIÓN</span>
