@@ -1643,8 +1643,8 @@ body {
 }
 
 .Step-2 h4 li {
-  font-size: 0.75rem;
-  font-weight: 100;
+  font-size: 0.875rem;
+  font-weight: 400;
   margin: 0.25rem 0.875rem;
   list-style: disc;
   color: #C5D257;
