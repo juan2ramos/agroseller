@@ -183,21 +183,21 @@
     </label>-->
     <label for="weight" class="DataForm weight">
         @if(isset($productEdit))
-        <input type="number" id="weight" name="weight" value="{{ $productEdit->weight }}">
+        <input type="text" id="weight" name="weight" value="{{ $productEdit->weight }}">
         @else
-        <input type="number" id="weight" name="weight" value="{{ old('weight') }}">
+        <input type="text" id="weight" name="weight" value="{{ old('weight') }}">
         @endif
         <span>Peso del producto</span>
-        <em>Mt</em>
+
     </label>
     <label for="measure"   class="DataForm measure">
         @if(isset($productEdit))
-            <input type="number" id="measure" name="measure" value="{{ $productEdit->measure }}">
+            <input type="text" id="measure" name="measure" value="{{ $productEdit->measure }}">
         @else
-            <input type="number" id="measure" name="measure" value="{{ old('measure') }}">
+            <input type="text" id="measure" name="measure" value="{{ old('measure') }}">
         @endif
         <span>Medida</span>
-        <em>Mt</em>
+
     </label>
     <label for="composition" class="DataForm composition">
         <input type="file" id="composition" name="composition" placeholder="sds">
@@ -207,9 +207,9 @@
 
     <label for="priceCurrent" >
         @if(isset($productEdit))
-        <input type="number" id="priceCurrent" name="price" value="{{ $productEdit->price }}">
+        <input type="text" id="priceCurrent" name="price" value="{{ $productEdit->price }}">
         @else
-        <input type="number" id="priceCurrent" name="price" value="{{ old('price') }}">
+        <input type="text" id="priceCurrent" name="price" value="{{ old('price') }}">
         @endif
         <span>Precio</span>
         <em>$</em>
