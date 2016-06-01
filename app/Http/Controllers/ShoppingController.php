@@ -87,10 +87,11 @@ class ShoppingController extends Controller
 
     public function showBackProvider()
     {
-        $orders = Order::whereHas('products', function ($query) {
-            $query->where('products.user_id', 13);
-        })->with(['products' => function ($q) {
-            $q->where('products.user_id', 13)->with('offers');
+        $user = Auth::user();
+        $orders = Order::whereHas('products', function ($query) use($user) {
+            $query->where('products.user_id', $user->id);
+        })->with(['products' => function ($q) use($user) {
+            $q->where('products.user_id', $user->id)->with('offers');
         }])->get();
 
         foreach ($orders as $order) {
