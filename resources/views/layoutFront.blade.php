@@ -149,7 +149,11 @@
             <div class="col-4 row">
                 <button id="Menu"><span></span><span></span><span></span></button>
             </div>
-            <div class="BarNav-a col-4  center"><a href="{{route('pricing')}}">Ver Planes</a></div>
+            <div class="BarNav-a col-4  center">
+                <a href="{{route('pricing')}}">Ver Planes</a>
+                <a href="{{route('pricing')}}">¿Cómo comprar?</a>
+                <a href="{{route('pricing')}}">¿Cómo vender?</a>
+            </div>
 
             <div class="Cart AlignRight col-4">
                 <div class="Cart-content">

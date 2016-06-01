@@ -165,7 +165,7 @@
         </article>
         <article class="col-6 ProductDetail-data row middle">
             <p>
-                <b>SKU:</b> {{$product->id}} <br>
+                <b>Código de producto:</b> {{$product->id}} <br>
                 <b>Subcategoría:</b> {{$product->subcategory->name}}
         </article>
     </section>
