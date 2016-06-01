@@ -81,7 +81,8 @@ class ShoppingController extends Controller
 
     public function showBack()
     {
-        $orders = Auth::user()->orders()->has('products')->get();
+        $orders = Auth::user()->orders()->with('products')->get();
+
         return view('back.orders', compact('orders'));
     }
 

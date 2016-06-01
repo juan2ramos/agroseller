@@ -11,20 +11,18 @@
             <th>Fecha de actualización</th>
             <th>Productos</th>
             <th>Valor total</th>
-            <th>Estado</th>
         </tr>
         </thead>
         <tbody>
         @foreach($orders as $order)
 
             <tr>
-                <td>@if($order->number_products)
+                <td>@if($order->products->count())
                         <button class="iconPlus"></button>@endif</td>
                 <td> {{$order->created_budget}}</td>
                 <td> {{$order->updated_budget}}</td>
-                <td> {{$order->number_products}}</td>
+                <td> {{$order->products->count()}}</td>
                 <td> ${{$order->total_value}}</td>
-                <td> {{$order->stateOrder()->first()->name}} </td>
             </tr>
             <tr class="SubTable2">
                 <td colspan="6">
@@ -36,16 +34,19 @@
                             <th>Cantidad</th>
                             <th>Valor Unidad</th>
                             <th>Valor Total</th>
+                            <th>Estado</th>
                         </tr>
                         </thead>
 
                         <tbody>
-                        @foreach($order->Products_array as $products)
+                        @foreach($order->products as $products)
+
                             <tr>
-                                <td>{{$products['name']}}</td>
-                                <td>${{$products['price']}}</td>
-                                <td>{{$products['quantity']}}</td>
-                                <td>${{$products['total']}}</td>
+                                <td>{{$products->name}}</td>
+                                <td>{{$products->pivot->quantity}}</td>
+                                <td>$</td>
+                                <td>$</td>
+                                <td>Compra confirmada</td>
                             </tr>
                         @endforeach
                         </tbody>

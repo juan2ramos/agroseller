@@ -56,8 +56,6 @@
                                 <td>{{$products->pivot->quantity}}</td>
                                 <td>${{$products->total}}</td>
 
-
-
                             </tr>
                         @endforeach
                         </tbody>
