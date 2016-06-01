@@ -12,11 +12,15 @@ class Order extends Model
     protected $fillable = ['description', 'name_client', 'identification_client', 'address_client', 'phone_client', 'user_id', 'state_order_id'];
 
     public function products(){
-        return $this->belongsToMany(Product::class)->withPivot('quantity');
+        return $this->belongsToMany(Product::class)->withPivot('quantity','state_order_id');
     }
 
     public function stateOrder(){
         return $this->belongsTo(StateOrder::class);
+    }
+    public function setCreatedAtAttribute($value)
+    {
+        $this->attributes['first_name'] = strtolower($value);
     }
 
     public function getNumberProductsAttribute()
@@ -37,8 +41,9 @@ class Order extends Model
     public function getTotalValueAttribute()
     {
         $valueTotal = 0;
-        foreach ($this->products()->get() as $product) {
-            $price = ($offer = $product->offers()->first()) ?
+        foreach ($this->with('products.offers')->get() as $product) {
+            dd($product->products);
+            $price = ($offer = $product->offers) ?
                 (Carbon::now()->between(new Carbon($offer->offer_on), new Carbon($offer->offer_off)))
                     ? $offer->offer_price : $product->price : $product->price;
             $product->offer_price = $price;

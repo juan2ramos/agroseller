@@ -17,10 +17,10 @@ class OrderController extends Controller
         }
         $data = [];
         foreach($cart as $item){
-            $data[$item->id] = [ 'quantity' => $item->quantity];
+            /* Temporal  state_order_id Zona Pagos*/
+            $data[$item->id] = [ 'quantity' => $item->quantity, 'state_order_id' => 2];
         }
         $r = $request->all();
-        $r['state_order_id'] = 2; /*TEMPORAL*/
         $order = new Order($r);
         auth()->user()->orders()->save($order);
         $order->products()->attach($data);
