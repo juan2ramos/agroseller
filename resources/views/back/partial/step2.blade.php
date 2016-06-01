@@ -40,7 +40,7 @@
         </p>
         <label for="nameProduct">
             @if(isset($productEdit))
-            <input type="text" id="nameProduct" name="name" value="{{ $productEdit->name }}">
+            <input type="text" id="nameProduct" name="name" value="{ $productEdit->name }}">
             @else
             <input type="text" id="nameProduct" name="name" value="{{ old('name') }}">
             @endif
@@ -163,7 +163,7 @@
 
     <select class="presentation DataForm" name="presentation">
         @if(isset($productEdit) && $productEdit->presentation)
-        <option value="{{ $productEdit->presentation }}">{{  $productEdit->presentation }}</option>
+        <option value="{ $productEdit->presentation }}">{{  $productEdit->presentation }}</option>
         @else
         <option value="">Selecione la presentación</option>
         @endif
@@ -174,9 +174,9 @@
         <!--
     <label for="size" class="DataForm size" >
         if(isset($productEdit))
-        <input type="number" id="size" name="size" value="{{ $productEdit->size }}">
+        <input type="number" id="size" name="size" value="{ $productEdit->size }}">
         else
-        <input type="number" id="size" name="size" value="{{ old('size') }}">
+        <input type="number" id="size" name="size" value="{ old('size') }}">
         endif
         <span>Tamaño del producto</span>
         <em>Kg</em>
