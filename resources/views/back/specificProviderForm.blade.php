@@ -80,7 +80,7 @@
             <p>Para que empieces a vender es necesario que completes el registro.</p>
             <p>Si tienes alguna duda, no olvides contactar con nosotros.</p>
             <p>Gracias por elegirnos.</p>
-            <p class="MessagePlatform-last">Centro de notificaciones <span>Agroseller</span></p>
+            <p class="MessagePlatform-last">Centro de notificaciones <span>Agrosellers</span></p>
         </div>
     </div>
 @endsection

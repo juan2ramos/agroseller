@@ -232,7 +232,7 @@
             <ul class="center col-2">
                 <li class="NavFooter-TitleUL"><a href="#">Nosotros</a>
                     <ul>
-                        <li><a href="#"> Sobre AgroSeller</a></li>
+                        <li><a href="#"> Sobre AgroSellers</a></li>
                         <li><a href="{{route('contactForm')}}"> Contáctanos</a></li>
                     </ul>
                 </li>
@@ -241,7 +241,7 @@
                 <li class="NavFooter-TitleUL"><a href="#">Opciones Publicitarias</a>
                     <ul>
                         <li><a href="#"> Publica con nosotros</a></li>
-                        <li><a href="#"> Vender en AgroSeller</a></li>
+                        <li><a href="#"> Vender en AgroSellers</a></li>
                     </ul>
                 </li>
             </ul>

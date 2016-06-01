@@ -20,7 +20,7 @@
         <div class="BackContainer FormAuth-container">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-            <h2>¡HAZ PARTE DE AGROSELLER!</h2>
+            <h2>¡HAZ PARTE DE AGROSELLERS!</h2>
             <label>
                 <input type="text"name="name" value="{{ old('name') }}">
                 <span>Nombre</span>

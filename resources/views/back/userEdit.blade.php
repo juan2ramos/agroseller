@@ -83,7 +83,7 @@
                 <p>Si por alguna razón tu producto no es publicado, se te notificará por los mismos medios las razones y
                     los pasos que debes serguir para mejorar la publicación de tu producto.</p>
                 <p>Gracias por elegirnos.</p>
-                <p class="MessagePlatform-last">Centro de notificaciones <span>Agroseller</span></p>
+                <p class="MessagePlatform-last">Centro de notificaciones <span>Agrosellers</span></p>
             </div>
         </div>
     @endif

@@ -5,6 +5,6 @@
     @if(isset($productEdit))
     <button class="Button Step-finish">ACTUALIZAR PRODUCTO</button>
     @else
-    <button class="Button Step-finish">INGRESAR PRODUCTO</button>
+    <button class="Button Step-finish">GUARDAR PRODUCTO</button>
     @endif
 </section>

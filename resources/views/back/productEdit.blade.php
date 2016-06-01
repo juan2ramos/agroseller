@@ -136,7 +136,7 @@
             <div class="MessagePlatform-content">
                 <span class="MessagePlatform-close">X</span>
                 <h2>!El archivo se ha editado correctamente!</h2>
-                <p class="MessagePlatform-last">Centro de notificaciones <span>Agroseller</span></p>
+                <p class="MessagePlatform-last">Centro de notificaciones <span>Agrosellers</span></p>
             </div>
         </div>
         @endif

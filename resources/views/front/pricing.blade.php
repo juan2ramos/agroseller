@@ -4,7 +4,7 @@
     <section class="Platform row middle">
         <figure class="col-4"><img src="{{url('images/Platform.jpg')}}" alt=""></figure>
         <div class="Platform-info col-8">
-            <p> Obten gratis TODOS los servicios que  te ofrece agroseller. ¡Suscribite AHORA!</p>
+            <p> Obten gratis TODOS los servicios que  te ofrece agrosellers. ¡Suscribite AHORA!</p>
             <a href="" class="Button">¡OBTENLO AHORA!</a>
         </div>
     </section>

@@ -4,6 +4,6 @@
         <h2>{{$title}}</h2>
         {!! $message !!}
         <p>Gracias por elegirnos.</p>
-        <p class="MessagePlatform-last">Centro de notificaciones <span>Agroseller</span></p>
+        <p class="MessagePlatform-last">Centro de notificaciones <span>Agrosellers</span></p>
     </div>
 </div>
