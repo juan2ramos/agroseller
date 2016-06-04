@@ -2037,10 +2037,3 @@ body {
   font-size: .85rem;
   text-transform: capitalize;
 }
-
-.password_validator {
-  top: 0;
-  left: 105%;
-  position: absolute;
-  display: block;
-}
