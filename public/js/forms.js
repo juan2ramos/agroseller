@@ -1,4 +1,10 @@
 var $name = $('.Forms input , .Forms textarea');
+
+for(var i = 0; i < $name.length; i++){
+    if($name.eq(i).val())
+        $name.eq(i).parent('label').addClass('open');
+}
+
 $name.on('focus', function() {
     $(this).parent('label').addClass('open');
     $(this).siblings('.password-validator').show();
