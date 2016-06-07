@@ -20,7 +20,7 @@
             <h2>INICIO DE SESIÓN</h2>
             @if (!empty($errorArray["email"])) <span class="Login-error">{{ $errorArray["email"][0] }} </span>@endif
             <label for="email">
-                <input type="email" name="email" value="{ old('email') }}">
+                <input type="email" name="email" value="{{ old('email') }}">
                 <span>E-mail</span>
             </label>
 
