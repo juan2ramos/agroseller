@@ -44,7 +44,7 @@ class Order extends Model
         foreach ($this->with('products.offers')->get() as $product) {
             dd($product->products);
             $price = ($offer = $product->offers) ?
-                (Carbon::now()->between(new Carbon($offer->offer_on), new Carbon($offer->offer_off)))
+                (Carbon::now()->between(new Carbon($offer->offer_on), new Cavhrbon($offer->offer_off)))
                     ? $offer->offer_price : $product->price : $product->price;
             $product->offer_price = $price;
             $valueTotal += $product->pivot->quantity * $price;
@@ -109,7 +109,6 @@ class Order extends Model
         return count($this->products()->where('user_id',Auth::user()->id)->get());
     }
 }
-
 
 
 
