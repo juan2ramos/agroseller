@@ -1,6 +1,6 @@
 <section class="Step Step-4">
     <h4>Previsualización y detalle del producto </h4>
-    <section class="" id="detailsProduct">
+    <section class="row" id="detailsProduct">
     </section>
     @if(isset($productEdit))
     <button class="Button Step-finish">ACTUALIZAR PRODUCTO</button>

@@ -55,4 +55,38 @@ class QuestionController extends Controller
 
         return ['text'  =>  $texts];
     }
+    
+    public function prueba()
+    {
+        $questions = Question::all();
+        echo "<h3>Notificaciones:</h3><br>";
+        $table = "<table border='1'>
+                    <thead>
+                        <tr>
+                            <th>id pregunta</th>
+                            <th>id usuario</th>
+                            <th>fecha creacion</th>
+                            <th>texto</th>
+                        </tr>
+                    </thead>
+                    <tbody>";
+        foreach ($questions as $question){
+            $table .= "<tr>
+                          <th>{$question->id}</th>
+                          <th>{$question->user_id}</th>
+                          <th>{$question->texts()->first()->created_at}</th>
+                          <th>{$question->texts()->first()->description}</th>
+                       </tr>";
+        }
+        $table .= "</tbody>
+                 </table>";
+
+        echo $table;
+    }
+
+    public function pruebaCreate(){
+        $question = Question::create(['user_id' => '1', 'product_id' => '1']);
+        $text = Text::create(['description' => 'mensaje' . $question->id, 'question_id' => $question->id, 'user_id' => '1']);
+        echo "<h3>El mensaje ha sido credo:</h3><br><p>ID Pregunta : {$question->id}</p><p>User_id : {$question->user_id}</p><p>Texto : {$text->description}</p>";
+    }
 }
