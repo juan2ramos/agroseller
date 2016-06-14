@@ -18,11 +18,16 @@ class OrderController extends Controller
         $data = [];
         foreach($cart as $item){
             /* Temporal  state_order_id Zona Pagos*/
-            $data[$item->id] = [ 'quantity' => $item->quantity, 'state_order_id' => 2];
+
+            $value = ($item->offers)?$item->offers->offer_price:$item->price;
+            $data[$item->id] = [ 'quantity' => $item->quantity, 'state_order_id' => 2,'value' => $value];
+
         }
         $r = $request->all();
         $order = new Order($r);
+
         auth()->user()->orders()->save($order);
+        dd($r);
         $order->products()->attach($data);
 
         Session::forget('cart');

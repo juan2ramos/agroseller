@@ -13,7 +13,7 @@ use Agrosellers\Entities\Product;
 class HomeController extends Controller
 {
     function index(){
-        $products = Product::paginate(8);
+        $products = Product::with(['offers','productFiles','subcategory'])->paginate(8);
         return view('front.home',compact('products'));
     }
     function pricing(){

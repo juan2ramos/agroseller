@@ -81,17 +81,29 @@ class ShoppingController extends Controller
 
     public function showBack()
     {
-        $orders = Auth::user()->orders()->with('products')->get();
 
+        $orders = Auth::user()->orders()->with('products')->get();
+        $value = 0;
+        foreach ($orders as $order) {
+
+            foreach ($order->products as $product) {
+
+                $product->value;
+
+                dd();
+            }
+        }
+
+        return;
         return view('back.orders', compact('orders'));
     }
 
     public function showBackProvider()
     {
         $user = Auth::user();
-        $orders = Order::whereHas('products', function ($query) use($user) {
+        $orders = Order::whereHas('products', function ($query) use ($user) {
             $query->where('products.user_id', $user->id);
-        })->with(['products' => function ($q) use($user) {
+        })->with(['products' => function ($q) use ($user) {
             $q->where('products.user_id', $user->id)->with('offers');
         }])->get();
 

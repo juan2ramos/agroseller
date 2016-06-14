@@ -18,10 +18,6 @@ class Order extends Model
     public function stateOrder(){
         return $this->belongsTo(StateOrder::class);
     }
-    public function setCreatedAtAttribute($value)
-    {
-        $this->attributes['first_name'] = strtolower($value);
-    }
 
     public function getNumberProductsAttribute()
     {

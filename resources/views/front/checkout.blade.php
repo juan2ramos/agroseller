@@ -6,7 +6,7 @@
             <h2>1. Resumen de la compra</h2>
             <h3>Verifica tu compra y método ed envío</h3>
             <ul>
-                @if(Session::has('cart'))
+                @if(Session::has('cart') &&  Session::get('cart'))
                     @foreach(Session::get('cart') as $product)
                         <li class="row middle">
                             <figure class="col-5">
@@ -56,64 +56,77 @@
                 @endif
 
             </ul>
-            <div class="col-12 Total AlignRight">Subtotal: ${{session('valueTotal')}}</div>
+            <div class="col-12 Total AlignRight">Subtotal: ${{( !empty(session('valueTotal')))? session('valueTotal') : '' }}</div>
         </section>
         <section class="col-8">
             <h2>2. Detalle de facturación</h2>
-            @if(Auth::check())
-                @if(auth()->user()->role_id == 4)
-                    <h3>Completa los campos requeridos para realizar tu solicitud</h3>
-                    <form action="{{route('newOrder')}}"  method="POST" class="Checkout-form">
-                        <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
-                        <label for="name">
-                            <input type="text" id="name" name="name_client"
-                                   value="{{auth()->user()->name .' '. auth()->user()->last_name}}">
-                            <span>Nombre y apellidos completos</span>
-                        </label>
-                        <label for="identification">
-                            <input type="text" name="identification_client" id="identification" value="{{auth()->user()->identification}}">
-                            <span>Cédula de ciudadania o NIT </span>
-                        </label>
-                        <label for="address">
-                            <input type="text" id="address" value="{{auth()->user()->identification}}" name="address_client">
-                            <span>Dirección</span>
-                        </label>
-                        <label for="mobile">
-                            <input type="text" id="mobile" name="phone_client"  value="{{auth()->user()->mobile_phone}}">
-                            <span>Teléfono</span>
-                        </label>
-                        <button class="Button">FINALIZAR COMPRA</button>
-                    </form>
-                @else
-                    @include('messages',[
+            @if(!  Session::get('cart'))
+                @include('messages',[
                     'type' => 'warning',
                     'title' => '¡Lo sentimos!',
-                    'message' => '<p> Para realizar compras debes tener o crear  una cuenta como cliente, da clic
-                     <a href="'. route('login') .'">aqui</a> si ya posees una cuenta o
-                     <a href="'. route('register') .'">aqui</a> si te quieres registrar </p>'
+                    'message' => '<p> tu carrito esta vacio, vuelve a
+                     <a href="'. route('home') .'">Inicio</a> Busca tu producto en la barra  de arriba. </p>'
                      ])
-                @endif
             @else
-                @include('messages',[
-                                   'type' => 'warning',
-                                   'title' => '¡Lo sentimos!',
-                                   'message' => '<p> Para poder comprar debes tener una cuenta cliente con nosotros,
-                                   da clic en registrarse y empieza a comprar.</p>' .
-                                   '<p>Si ya tienes una cuenta inicia sesión y realiza tu compra.</p>'
-                                    ])
 
-                <div class="row middle arrow" style="margin-top: 3rem">
-                    <a href="{{route('register')}}" class="col-3 offset-3 Button">REGISTRATE</a>
-                    <a href="{{route('login')}}" class="col-3 offset-1 Button">INICIA SESIÓN</a>
-                </div>
-            @endif
-            @if(!empty($success))
-                @include('messages',[
-                 'type' => 'ok',
-                 'title' => '¡Enhorabuena!',
-                 'message' => '<p>  Tu  compra se ha realizado con exito, puedes revisar el estado en compras en el
-                 administrador</p>'
-                  ])
+                @if(Auth::check())
+                    @if(auth()->user()->role_id == 4)
+                        <h3>Completa los campos requeridos para realizar tu solicitud</h3>
+                        <form action="{{route('newOrder')}}" method="POST" class="Checkout-form">
+                            <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
+                            <label for="name">
+                                <input type="text" id="name" name="name_client"
+                                       value="{{auth()->user()->name .' '. auth()->user()->last_name}}">
+                                <span>Nombre y apellidos completos</span>
+                            </label>
+                            <label for="identification">
+                                <input type="text" name="identification_client" id="identification"
+                                       value="{{auth()->user()->identification}}">
+                                <span>Cédula de ciudadania o NIT </span>
+                            </label>
+                            <label for="address">
+                                <input type="text" id="address" value="{{auth()->user()->identification}}"
+                                       name="address_client">
+                                <span>Dirección</span>
+                            </label>
+                            <label for="mobile">
+                                <input type="text" id="mobile" name="phone_client"
+                                       value="{{auth()->user()->mobile_phone}}">
+                                <span>Teléfono</span>
+                            </label>
+                            <button class="Button">FINALIZAR COMPRA</button>
+                        </form>
+                    @else
+                        @include('messages',[
+                        'type' => 'warning',
+                        'title' => '¡Lo sentimos!',
+                        'message' => '<p> Para realizar compras debes tener o crear  una cuenta como cliente, da clic
+                         <a href="'. route('login') .'">aqui</a> si ya posees una cuenta o
+                         <a href="'. route('register') .'">aqui</a> si te quieres registrar </p>'
+                         ])
+                    @endif
+                @else
+                    @include('messages',[
+                                       'type' => 'warning',
+                                       'title' => '¡Lo sentimos!',
+                                       'message' => '<p> Para poder comprar debes tener una cuenta cliente con nosotros,
+                                       da clic en registrarse y empieza a comprar.</p>' .
+                                       '<p>Si ya tienes una cuenta inicia sesión y realiza tu compra.</p>'
+                                        ])
+
+                    <div class="row middle arrow" style="margin-top: 3rem">
+                        <a href="{{route('register')}}" class="col-3 offset-3 Button">REGISTRATE</a>
+                        <a href="{{route('login')}}" class="col-3 offset-1 Button">INICIA SESIÓN</a>
+                    </div>
+                @endif
+                @if(!empty($success))
+                    @include('messages',[
+                     'type' => 'ok',
+                     'title' => '¡Enhorabuena!',
+                     'message' => '<p>  Tu  compra se ha realizado con exito, puedes revisar el estado en compras en el
+                     administrador</p>'
+                      ])
+                @endif
             @endif
         </section>
     </div>
