@@ -84,13 +84,14 @@ class ShoppingController extends Controller
 
         $orders = Auth::user()->orders()->with('products')->get();
         $value = 0;
+        dd($orders);
         foreach ($orders as $order) {
 
             foreach ($order->products as $product) {
 
                 $product->value;
 
-                dd();
+                dd($product );
             }
         }
 

@@ -14,11 +14,9 @@ class Order extends Model
     public function products(){
         return $this->belongsToMany(Product::class)->withPivot('quantity','state_order_id');
     }
-
     public function stateOrder(){
         return $this->belongsTo(StateOrder::class);
     }
-
     public function getNumberProductsAttribute()
     {
         return count($this->products()->get());
@@ -33,7 +31,6 @@ class Order extends Model
         $date = new Date($this->updated_at);
         return $date->format('l j F Y');
     }
-
     public function getTotalValueAttribute()
     {
         $valueTotal = 0;

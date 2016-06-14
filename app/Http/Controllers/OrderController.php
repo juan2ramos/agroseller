@@ -27,7 +27,6 @@ class OrderController extends Controller
         $order = new Order($r);
 
         auth()->user()->orders()->save($order);
-        dd($r);
         $order->products()->attach($data);
 
         Session::forget('cart');
