@@ -188,7 +188,7 @@ function DetailsProduct() {
                     coord = String(coordinates[j]).split("&");
                     $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + coord[0] + ',' + coord[1], function (data) {
 
-                        html = '<p>' + '<span>' + nameProduct + ': </span></p> <div class="ItemProduct">' + data.results[0].formatted_address + '<br>' + '</div>'
+                        html = '<article class="col-4">' + '<span>' + nameProduct + ': </span><div class="ItemProduct">' + data.results[0].formatted_address + '<br>' + '</div></article>';
                         $DetailsProduct.append(html);
 
                     });
@@ -222,13 +222,13 @@ function DetailsProduct() {
                 }
             }
             if ($(this).hasClass('StepImages')) {
-                nameProduct = "Imagen "
+                nameProduct = "Imagen ";
                 ValueProduct = $(this).val().replace(/C:\\fakepath\\/i, '');
 
             }
 
             if (ValueProduct != "") {
-                html = '<p>' + '<span>' + nameProduct + ': </span></p><div class="ItemProduct">' + ValueProduct + '</div>'
+                html = '<article class="col-4">' + '<span>' + nameProduct + ': </span><div class="ItemProduct">' + ValueProduct + '</div></article>';
                 $DetailsProduct.append(html);
             }
 

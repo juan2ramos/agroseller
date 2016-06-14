@@ -12,6 +12,8 @@ $name.on('focus', function() {
     if( $.trim($(this).val()) == "")
         $(this).parent('label').removeClass('open');
     $(this).siblings('.password-validator').hide();
+}).on('change', function(){
+    $(this).parent('label').addClass('open');
 });
 
 var $password = $('.Forms .password input');

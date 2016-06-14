@@ -17,4 +17,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
 });
 
 
+Route::get('prueba', [
+    'uses' => 'QuestionController@prueba',
+    'as' => 'prueba'
+]);
+
+Route::get('prueba/create', [
+    'uses' => 'QuestionController@pruebaCreate',
+    'as' => 'pruebaCreate'
+]);
 
