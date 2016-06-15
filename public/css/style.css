@@ -2090,13 +2090,13 @@ label.Tab {
   left: 0;
 }
 
-#EditProduct .Item-actions {
+.Item-actions {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-#EditProduct .Item-actions [class^='icon-'] {
+.Item-actions [class^='icon-'] {
   cursor: pointer;
   width: 1.5625rem;
   height: 1.5625rem;
@@ -2104,7 +2104,7 @@ label.Tab {
   overflow: hidden;
 }
 
-#EditProduct .Item-actions .icon-update {
+.Item-actions .icon-update {
   margin-right: 0.9375rem;
 }
 
@@ -2135,6 +2135,16 @@ label.Tab {
 
 .no-data {
   height: 100px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.no-data h2 {
+  margin: 0;
 }
 
 .Logo .result figure {

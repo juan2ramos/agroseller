@@ -25,12 +25,11 @@ class ProviderController extends Controller
         $user = Auth::user();
         $agent = $user->agent;
 
-        if(Auth::user()->role_id == 5){
+        if(Auth::user()->role_id == 5)
             $providers = Provider::where('agent_id', '=', $agent->id)->paginate(10);
-        }
-        else{
+        else
             $users = User::where('role_id', '=', 3)->with('provider')->paginate(10);
-        }
+
         $roleName = $this->roleName;
         $routeSearch = 'searchProvider';
         return view('back.provider', compact('providers', 'users', 'roleName', 'routeSearch'));
@@ -39,11 +38,11 @@ class ProviderController extends Controller
     function searchProviders(Request $request)
     {
         $search = $request->input('search');
-        $users = User::where('role_id', '=', 2)
+        $users = User::where('role_id', 2)
             ->where(function ($query) use ($search) {
                 $query->Where('name', 'like', '%' . $search . '%')
                     ->orWhere('last_name', 'like', '%' . $search . '%')
-                    ->orWhere('email', '=', $search)
+                    ->orWhere('email', $search)
                     ->orWhere('second_name', 'like', '%' . $search . '%')
                     ->orWhere('second_last_name', 'like', '%' . $search . '%')
                     ->orWhere('identification', 'like', '%' . $search . '%');

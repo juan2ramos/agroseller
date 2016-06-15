@@ -249,7 +249,7 @@ var tab1 = $('[for="tab1"]'),
     url = $('#deleteProductRoute').val(),
     productId;
 
-if(tab2.is(':checked')) {
+
     if (tab2.is(':checked')) {
         line.addClass('right');
     }
@@ -266,7 +266,7 @@ if(tab2.is(':checked')) {
         productUpdate.removeClass('left');
     });
 
-    $('.Item-actions').on('click', '.icon-update, .icon-remove', function () {
+    $('.Item-actions').on('click', '.icon-remove',function () {
         productId = $(this).siblings('.ProductId').val();
 
         if ($(this).hasClass('icon-update'))
@@ -276,24 +276,12 @@ if(tab2.is(':checked')) {
     });
 
     deleteMessage.on('click', '#Cancel, #Accept', function () {
-        if ($(this).attr('id') == 'Accept') {
-            deleteMessage.hide();
-
-            param = {
-                '_token': $('#token').val(),
-                'id': productId
-            };
-
-            $.ajax({
-                type: 'POST',
-                url: url,
-                data: param,
-                success: function (data) {
-                    location.reload();
-                }
-            });
+        if($(this).attr('id') == "Accept"){
+            var deleteForm = $('#DeleteForm');
+            var url = deleteForm.attr('action') + '/' + productId;
+            deleteForm.attr('action', url);
+            deleteForm.children('.submit').trigger('click');
         }
-        else
-            deleteMessage.hide();
+
+        deleteMessage.hide();
     });
-}

@@ -105,4 +105,8 @@ class ProviderController extends Controller
         }
         return response()->json(['name' => $userProvider->validate]);
     }
+
+    function productDetailPreview($array){
+        return view('back.prueba', compact('array'));
+    }
 }

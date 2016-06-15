@@ -2,14 +2,14 @@
 
 namespace Agrosellers\Http\Controllers\admin;
 
-use Agrosellers\Entities\Offer;
 use Validator;
 use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 use Agrosellers\Http\Controllers\Controller;
 use Agrosellers\Entities\Category;
-use Illuminate\Support\Facades\Auth;
 use Agrosellers\Entities\ProductFile;
+use Agrosellers\Entities\Provider;
 
 use Agrosellers\Entities\Product;
 class ProductController extends Controller
@@ -92,9 +92,28 @@ class ProductController extends Controller
         return redirect()->back()->with('messageSuccess', 1);
     }
 
-    function delete(Request $request){
-        $product = Product::find($request->id);
-        $product->delete();
+    function lockProduct($id){
+        $product = Product::find($id);
+        if($product->isActive)
+            $product->update(['isActive' => 0]);
+        else
+            $product->update(['isActive' => 1]);
+        return redirect()->route('newProduct');
+    }
+
+    function productPreview($id){
+        $product = Product::find($id);
+        return view('back.productPreview', compact('product'));
+    }
+
+    function validateProduct($id){
+        $product = Product::find($id);
+        if($product->isValidate)
+            $product->update(['isValidate' => 0]);
+        else
+            $product->update(['isValidate' => 1, 'isActive' => 1]);
+
+        return redirect()->route('showUser', $product->user()->first()->id);
     }
 
     function newProduct(Request $request)
