@@ -23,10 +23,10 @@
                 <td> {{$order->created_budget}}</td>
                 <td> {{$order->updated_budget}}</td>
                 <td> {{$order->quantityProducts}}</td>
-                <td> ${{$order->totalValueProducts}}</td>
-                <td> {{--{{$order->stateOrder()->first()->name}}--}} </td>
+                <td> {{$order->products->count()}}</td>
+                <td> ${{$order->total}}</td>
             </tr>
-            <tr class="SubTable2">
+            <tr class="SubTable2"  data-order="{{$order->id}}">
                 <td colspan="6">
                     <div class="Order-userData">
                         <h2>Datos del comprador</h2>
@@ -36,6 +36,7 @@
                             <li>Identificación : {{$order->identification_client}}</li>
                             <li>Dirección : {{$order->address_client}}</li>
                             <li>Teléfono : {{$order->phone_client}}</li>
+                            <li>Email : {{$order->user->email}}</li>
                         </ul>
                     </div>
                     <table class="Table">
@@ -48,38 +49,38 @@
                         </tr>
                         </thead>
 
-                        <tbody>
+                        <tbody >
                         @foreach($order->products as $products)
-                            <tr>
-                                <td>{{$products->name}}</td>
-                                <td>${{$products->priceFinish}}</td>
+                            <tr data-products="{{$products->id}}">
+                                <td><a href="{{url('producto/' . $products->slug . '/' . $products->id) }}">{{$products->name}}</a></td>
                                 <td>{{$products->pivot->quantity}}</td>
-                                <td>${{$products->total}}</td>
+                                <td>${{$products->pivot->value}}</td>
+                                <td>${{$products->totalValue}}</td>
 
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
 
-                    <form action="" method="post" class="Order-formUpdate">
-                        <select name="stateOrder" id="">
+                    <div class="Order-formUpdate">
+                        <select name="stateOrder" class="stateOrderSelect">
                             @foreach($states as $key => $state)
-                                <option value="{{$state}}">{{$key}}</option>
+                                <option {{($state == $order->products->first()->pivot->state_order_id)?'selected':''}} value="{{$state}}">{{$key}}</option>
                             @endforeach
                         </select>
-                        <button class="Button"> Actualizar Pedido</button>
-                    </form>
+                        <button class="Button stateOrder"> Actualizar Pedido</button>
+                    </div>
+                    <p class="successStateOrder "></p>
                 </td>
             </tr>
         @endforeach
 
         </tbody>
     </table>
-    <form id="download" method="post" action="{{route('downloadBudget')}}">
-        <input type="hidden" name="budget_id" id="budget">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-    </form>
+    <input type="hidden" id="updateStateOrder" value="{{route('updateStateOrder')}}">
+    <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
 @endsection
 @section('scripts')
     <script src="{{asset('js/tables2.js')}}"></script>
+    <script src="{{asset('js/orders.js')}}"></script>
 @endsection

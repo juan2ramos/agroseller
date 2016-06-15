@@ -83,20 +83,16 @@ class ShoppingController extends Controller
     {
 
         $orders = Auth::user()->orders()->with('products')->get();
-        $value = 0;
-        dd($orders);
+
         foreach ($orders as $order) {
-
+            $value = 0;
             foreach ($order->products as $product) {
-
-                $product->value;
-
-                dd($product );
+                $value += $product->totalValue = $product->pivot->value * $product->pivot->quantity;
             }
+            $order->total = $value;
         }
-
-        return;
-        return view('back.orders', compact('orders'));
+        $states = StateOrder::lists('id', 'name');
+        return view('back.orders', compact('orders','states'));
     }
 
     public function showBackProvider()
@@ -106,16 +102,17 @@ class ShoppingController extends Controller
             $query->where('products.user_id', $user->id);
         })->with(['products' => function ($q) use ($user) {
             $q->where('products.user_id', $user->id)->with('offers');
-        }])->get();
+        },'user'])->get();
 
         foreach ($orders as $order) {
             $order->quantityProducts = count($order->products);
             $order->totalValueProducts = 0;
             foreach ($order->products as $product) {
-                $product->priceFinish = ($product->offers->offer_price > 0) ?
-                    $product->offers->offer_price : $product->price;
-                $product->total = $product->priceFinish * $product->pivot->quantity;
-                $order->totalValueProducts += $product->total;
+                $value = 0;
+                foreach ($order->products as $product) {
+                    $value += $product->totalValue = $product->pivot->value * $product->pivot->quantity;
+                }
+                $order->total = $value;
             }
 
         }

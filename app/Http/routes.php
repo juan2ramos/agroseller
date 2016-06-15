@@ -27,3 +27,6 @@ Route::get('prueba/create', [
     'as' => 'pruebaCreate'
 ]);
 
+Route::get('a', function(){
+    return ['name' => 'Abigail', 'state' => 'CA'];
+});
