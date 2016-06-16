@@ -119,10 +119,28 @@
 
 .Step-2Images
   margin: rem(24) 0
+  & .image
+    position: relative
+  & .delete
+    content: "x"
+    cursor: pointer
+    background: rgba(230, 225, 225, .7)
+    width: 35px
+    height: 35px
+    position: absolute
+    z-index: 15
+    top: 0
+    right: 0
+    font-size: 1.2rem
+    display: flex
+    justify-content: center
+    align-items: center
+
   & label
     cursor: pointer
     position: relative
     padding: rem(6)
+
   & input
     opacity: 0
     cursor: pointer

@@ -197,7 +197,8 @@
                         .eq(i)
                         .siblings('.result')
                         .append('<figure><img src="/uploads/products/' + image + '"></figure>')
-                        .parent().prepend('<input class="imageName" type="hidden" value="' + image + '">');
+                        .parent().prepend('<input class="imageName" type="hidden" value="' + image + '">')
+                        .parent().prepend('<div class="delete">x</div>');
             }
 
             var imagesList = "";
@@ -205,6 +206,13 @@
             $('.StepImages').on('change', function(){
                 imagesList += $(this).siblings('.imageName').val() + ";";
                 $('#deleteImages').val(imagesList);
+            });
+
+            $('.delete').on('click', function(){
+                imagesList += $(this).siblings('label').children('.imageName').val() + ";";
+                $('#deleteImages').val(imagesList);
+                $(this).siblings('label').children('.result').html('');
+                $(this).remove();
             });
 
             $('.MessagePlatform-close').on('click', function(){

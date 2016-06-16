@@ -1658,6 +1658,32 @@ body {
   margin: 1.5rem 0;
 }
 
+.Step-2Images .image {
+  position: relative;
+}
+
+.Step-2Images .delete {
+  content: "x";
+  cursor: pointer;
+  background: rgba(230, 225, 225, 0.7);
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  z-index: 15;
+  top: 0;
+  right: 0;
+  font-size: 1.2rem;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .Step-2Images label {
   cursor: pointer;
   position: relative;
