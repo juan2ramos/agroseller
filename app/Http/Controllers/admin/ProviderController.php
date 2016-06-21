@@ -78,7 +78,7 @@ class ProviderController extends Controller
         );
 
         $user = Auth::user();
-        $provider = Provider::where('user_id', '=', $user->id)->first();
+        $provider = Provider::where('user_id', $user->id)->first();
         $files = $request->file();
         $provider->update($request->all());
 

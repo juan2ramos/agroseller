@@ -27,7 +27,14 @@
             <div class="col-9">
                 <input type="text" class="form-control" placeholder="Nombre de la empresa" name="company-name" value="{{ old('company-name')}}">
                 <input type="number" class="form-control" placeholder="NIT" name="NIT" value="{{old('NIT')}}">
-                <input type="text" class="form-control" placeholder="Tipo de contribuyente" name="taxpayer" value="{{ old('taxpayer')}}">
+                <select style="margin: 1.25rem 10px 0 0; height: 48px" id="" class="form-control" name="taxpayer">
+                    <option value="" disabled selected>Seleccione una opción</option>
+                    <option value="Régimen Común">Régimen Común</option>
+                    <option value="Régimen Simplificado">Régimen Simplificado</option>
+                    <option value="Persona Natural">Persona Natural</option>
+                    <option value="Persona Juridica">Persona Juridica</option>
+                </select>
+                <!--<input   placeholder="Tipo de contribuyente"  value="{ old('taxpayer')}}">-->
             </div>
             <div class="FormGroup">
                 <input type="text" class="form-control" placeholder="URL sitio web" name="web-site" value="{{ old('web-site')}}">
@@ -60,13 +67,17 @@
                 <h2>Datos bancarios <span>(Opcional)</span></h2>
                 <hr class="Logo-hr">
             </div>
-            <input type="text" class="form-control" placeholder="Nombre del titular" name="titular-name" value="{{ old('titular-name')}}">
-            <input type="text" class="form-control" placeholder="Nombre del banco" name="bank-name" value="{{ old('bank-name')}}">
             <div class="FormGroup">
-                <input type="text" class="form-control" placeholder="Pais" name="bank-country" value="{{ old('bank-country')}}">
-                <input type="number" class="form-control" placeholder="Numero de cuenta" name="count-number" value="{{ old('count-number')}}">
+                <select style="width: 50%; margin: 1.25rem 10px 0 0; height: 48px" name="country" id="countries">
+                    <!-- OPTIONS LLAMADOS POR JAVASCRIPT -->
+                </select>
+                <label style="height:48px; width: calc(50% - 10px)" textFile="Certificado bancario" for="count-number" class="file">
+                    <span>Sin archivos adjuntos</span>
+                    <input id="count-number" type="file" class="form-control col-4" name="count-number">
+                </label>
             </div>
-
+            <input type="text" class="form-control" placeholder="Nombre del titular" name="titular-name" value="{{ old('titular-name')}}">
+            <!--<input type="text" class="form-control" placeholder="Nombre del banco" name="bank-name" value="{ old('bank-name')}}">-->
             <div class="FormGroup">
                 <button class="Button">Enviar</button>
             </div>
@@ -90,11 +101,17 @@
             async defer></script>
     <script src="{{asset('js/maps.js')}}"></script>
     <script>
-        $('#legal-agent, #licence').on('change', function(){
+        $('#legal-agent, #licence, #count-number').on('change', function(){
             $(this).parent().addClass('withFiles');
             file = $(this).val();
             $(this).siblings().text(file);
+        });
 
+        $.getJSON("{{asset('js/countries.json')}}", function(data) {
+            $.each( data, function( key, val ) {
+                if(val == 'Colombia') $('#countries').append('<option value="' + val +'" selected>' + val + '</option>');
+                else $('#countries').append('<option value="' + val +'">' + val + '</option>');
+            });
         });
     </script>
 @endsection

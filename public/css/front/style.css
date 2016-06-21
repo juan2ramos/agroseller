@@ -2037,3 +2037,12 @@ body {
   font-size: .85rem;
   text-transform: capitalize;
 }
+
+.autocomplete.light li {
+  height: auto;
+}
+
+.autocomplete.light li span {
+  padding: 7px 0;
+  display: block;
+}

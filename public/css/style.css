@@ -2301,6 +2301,73 @@ label.Tab {
   font-weight: 800;
 }
 
+.autocomplete {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  max-height: 400px;
+  cursor: pointer;
+}
+
+.autocomplete .result.open {
+  display: block;
+}
+
+.autocomplete .result {
+  position: relative;
+  left: 50%;
+  min-height: 79px;
+  font-weight: 300;
+  display: none;
+  width: 98%;
+  background: #fff;
+  border-radius: 0 0 3px 3px;
+  padding: 14px 0;
+}
+
+.autocomplete .result li {
+  height: 50px;
+  padding: 6px 12px;
+}
+
+.autocomplete .result li:hover {
+  background: #d7d7d7;
+}
+
+.autocomplete .result li a {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.autocomplete .result li a .no-data {
+  padding-left: 16px;
+}
+
+.autocomplete-result-image {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  margin-right: 12px;
+}
+
+.autocomplete-result-text {
+  font-size: .85rem;
+  text-transform: capitalize;
+}
+
+.autocomplete.light li {
+  height: auto;
+}
+
+.autocomplete.light li span {
+  padding: 7px 0;
+  display: block;
+}
+
 .Order-userData {
   text-align: left;
   margin: 1.25rem 0;
