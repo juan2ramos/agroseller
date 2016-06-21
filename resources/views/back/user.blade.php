@@ -21,7 +21,7 @@
         <article class="TabContainer" id="EditProduct">
             <section class="UserValidate row">
                 <section class="BackContainer col-12 row">
-                    @if({{$user->provider['count-number']}})
+                    @if($user->provider['count-number'])
                         <article class="item col-4 row">
                             <a class="Button col-12" href="/uploads/providers/{{$user->provider['count-number']}}" target="_blank">Certificado bancario </a>
                         </article>
@@ -34,11 +34,11 @@
                             <a class="Button col-12" href="/uploads/providers/{{$user->provider['licence']}}" target="_blank">Licencia </a>
                         </article>
                     @else
-                        <article class="item col-4 row">
+                        <article class="item col-6 row">
                             <a class="Button col-12" href="/uploads/providers/{{$user->provider['legal-agent']}}" target="_blank">Cedula representante legal </a>
                         </article>
 
-                        <article class="item col-4 row">
+                        <article class="item col-6 row">
                             <a class="Button col-12" href="/uploads/providers/{{$user->provider['licence']}}" target="_blank">Licencia </a>
                         </article>
                     @endif
