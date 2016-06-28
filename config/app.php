@@ -129,6 +129,7 @@ return [
         'Jenssegers\Date\DateServiceProvider',
         'Gbrock\Table\Providers\TableServiceProvider',
         Barryvdh\DomPDF\ServiceProvider::class,
+        Agrosellers\Providers\ViewComposerServiceProvider::class,
 
     ],
     /*
