@@ -23,6 +23,7 @@
         </g>
     </g>
 </svg>
+{{dd($notify)}}
 <header class="row middle HeaderBack">
     <figure class="col-2 HeaderBack-figure">
         <a href="{{url('/')}}"> <img src="{{ url('images/logo-agrosellers.svg') }}" alt=""></a>
