@@ -2,6 +2,7 @@
 
 namespace Agrosellers\Http\Controllers\admin;
 
+use Agrosellers\Entities\Notification;
 use Validator;
 use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
@@ -131,8 +132,15 @@ class ProductController extends Controller
         $inputs['slug'] = str_slug($inputs['name']);
 
         $this->product = Product::create($inputs)->offers()->create($inputs);
-
         $this->createFile($request);
+        $provider = Provider::where('user_id', auth()->user()->id)->first();
+
+        Notification::create([
+            'user_id' => $provider->agent()->first()->user_id,
+            'text' => 'El proveedor ' . $provider['company-name'] . ' ha creado un producto',
+            'url' => route('productAgentPreview', $this->product->id)
+        ]);
+
         return redirect()->back()->with('messageSuccess', 1);
     }
 }
