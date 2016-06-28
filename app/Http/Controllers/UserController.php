@@ -78,7 +78,10 @@ class UserController extends Controller
 
     function validateProvider($id){
         $provider = Provider::where('user_id', $id)->first();
-        $provider->validate = 1;
+        if($provider->validate)
+            $provider->validate = 0;
+        else
+            $provider->validate = 1;
         $provider->save();
 
         Mail::send('emails.validateProvider', ['user' => $provider->user], function ($m) use ($provider) {

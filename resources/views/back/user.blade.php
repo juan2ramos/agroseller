@@ -88,9 +88,13 @@
                         <span>{{$user->provider->description}}</span>
                     </article>
                     <div class="item col-12">
+                        <a class="Button" href="{{route('validateProvider', $user->id)}}">
                         @if($user->provider->validate == 0)
-                            <a class="Button" href="{{route('validateProvider', $user->id)}}">Aprobar</a>
+                            Aprobar
+                        @else
+                            Desaprobar
                         @endif
+                        </a>
                     </div>
                 </section>
             </section>
