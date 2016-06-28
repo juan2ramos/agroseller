@@ -149,9 +149,4 @@ class ProductController extends Controller
 
         return array_values($featuresTranslate);
     }
-
-    function prueba2(){
-        return view('test');
-    }
-    
 }

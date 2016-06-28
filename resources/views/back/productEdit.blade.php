@@ -145,10 +145,10 @@
                 <!--<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
         <script src="{{asset('js/maps.js')}}"></script>
         <script>getPosition('{!!$productEdit->location!!}')</script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap"
-                async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap" async defer></script>
         <script src="{{asset('js/jquery.datetimepicker.full.min.js')}}"></script>
         <script src="{{asset('js/products.js')}}"></script>
+        <script>setPreview('{{route('productProviderPreview')}}')</script>
         <script src="{{asset('js/forms.js')}}"></script>
         <script src="{{asset('js/images.js')}}"></script>
         <script src="http://cdn.quilljs.com/latest/quill.js"></script>

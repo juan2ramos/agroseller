@@ -27,3 +27,7 @@
         });
     </script>
 @endsection
+@section('style')
+    <link href="{{asset('css/owl.carousel.css')}}" rel="stylesheet">
+    <link href="{{asset('css/owl.transitions.css')}}" rel="stylesheet">
+@endsection

@@ -101,9 +101,13 @@ class ProductController extends Controller
         return redirect()->route('newProduct');
     }
 
-    function productPreview($id){
+    function productAgentPreview($id){
         $product = Product::find($id);
-        return view('back.productPreview', compact('product'));
+        return view('back.productAgentPreview', compact('product'));
+    }
+
+    function productProviderPreview(){
+        return view('back.productProviderPreview');
     }
 
     function validateProduct($id){

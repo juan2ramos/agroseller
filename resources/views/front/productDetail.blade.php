@@ -327,15 +327,19 @@
 
 @endsection
 @section('scripts')
+        <!-- ******* Slider ******* -->
+    <script src="{{asset('js/owl.carousel.js')}}"></script>
+    <script src="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.js"></script>
+    <script src="{{asset('js/front/slide.js')}}"></script>
+
+        <!-- ******* Maps ******* -->
     <script src="{{asset('js/maps.js')}}"></script>
     <script>getPosition('{!!$product->location!!}')</script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap" async defer></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap"
-            async defer></script>
-    <script src="{{asset('js/front/slide.js')}}"></script>
-    <script src="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.js"></script>
+        <!-- ******* Comments ******* -->
     <script src="{{asset('js/comments.js')}}"></script>
-    <script src="{{asset('js/front/product.js')}}"></script>
+
     @if($offer)
         <?php
         $fecha = explode('-', $product->offers->offer_off);
@@ -348,6 +352,9 @@
         $hour = $time[0];
         $minute = $time[1];
         ?>
+
+            <!-- ******* Timer ******* -->
+        <script src="{{asset('js/front/product.js')}}"></script>
         <script>
             countDown({
                 'year': {!! $year !!},

@@ -8,13 +8,13 @@
     <title>Agroseller</title>
     <link rel="stylesheet" href="{{ asset('css/normalize.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/front/style.css') }}">
-    <link href="{{asset('css/owl.carousel.css')}}" rel="stylesheet">
-    <link href="{{asset('css/owl.transitions.css')}}" rel="stylesheet">
+    <!-- ********************** Borrar *********************
+    <link href="{asset('css/owl.carousel.css')}}" rel="stylesheet">
+    <link href="{asset('css/owl.transitions.css')}}" rel="stylesheet">
+     ********************** Borrar ********************* -->
     @yield('styles')
-            <!-- Fonts -->
+    <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
-
-    <script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
 </head>
 <body>
 
@@ -571,7 +571,6 @@
 
 <script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
 <script src="{{asset('js/front/main.js')}}"></script>
-<script src="{{asset('js/owl.carousel.js')}}"></script>
 <script src="{{asset('js/search.js')}}"></script>
 
 @yield('scripts')

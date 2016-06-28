@@ -50,8 +50,13 @@ Route::group(['namespace' => 'admin'], function () {
     ]);
 
     Route::get('proveedor/producto/{id}', [
-        'uses' => 'ProductController@productPreview',
-        'as' => 'productPreview'
+        'uses' => 'ProductController@productAgentPreview',
+        'as' => 'productAgentPreview'
+    ]);
+
+    Route::get('productProviderPreview', [
+        'uses' => 'ProductController@productProviderPreview',
+        'as' => 'productProviderPreview'
     ]);
 
     Route::post('proveedor/producto/{id}', [

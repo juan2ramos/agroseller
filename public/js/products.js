@@ -156,6 +156,7 @@ function steps(from, to) {
     $('.Step-' + from).hide('slow');
     $('.Step-' + to).show('slow');
 }
+
 function DetailsProduct() {
     var $DetailsProduct = $("#detailsProduct");
     $DetailsProduct.html('');

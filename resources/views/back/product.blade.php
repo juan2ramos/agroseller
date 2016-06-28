@@ -3,7 +3,7 @@
     <section class="BackContainer row" style="position: relative">
 
         <input class="Tab" id="tab1" type="radio" name="tabs" checked>
-        <label class="Tab col-6" for="tab1">Ver Edit->os</label>
+        <label class="Tab col-6" for="tab1">Ver Productos</label>
 
         <input class="Tab" id="tab2" type="radio" name="tabs">
         <label class="Tab col-6" for="tab2">Nuevo Producto</label>

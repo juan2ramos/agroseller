@@ -15,18 +15,3 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
     require __DIR__ . '/Routes/admin.php';
 });
-
-
-Route::get('prueba', [
-    'uses' => 'QuestionController@prueba',
-    'as' => 'prueba'
-]);
-
-Route::get('prueba/create', [
-    'uses' => 'QuestionController@pruebaCreate',
-    'as' => 'pruebaCreate'
-]);
-
-Route::get('a', function(){
-    return ['name' => 'Abigail', 'state' => 'CA'];
-});
