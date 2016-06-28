@@ -23,7 +23,7 @@
         </g>
     </g>
 </svg>
-{{dd($notify)}}
+
 <header class="row middle HeaderBack">
     <figure class="col-2 HeaderBack-figure">
         <a href="{{url('/')}}"> <img src="{{ url('images/logo-agrosellers.svg') }}" alt=""></a>
@@ -51,7 +51,7 @@
                 @else
                     <img src="{{url('images/user.png')}}" alt="">
                 @endif
-                <span>2</span>
+                <span>{{$notify->count()}}</span>
             </figure>
             <h3>{{ auth()->user()->fullName()   }}
                 <span>{{--{{ auth()->user()->role()->first()->name}}--}}</span></h3>

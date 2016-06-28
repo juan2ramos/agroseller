@@ -12,7 +12,7 @@ class ViewComposerServiceProvider extends ServiceProvider
 
     public function boot(Factory $factory)
     {
-        $factory->composer('*', NotifyComposer::class);
+        $factory->composer('layoutBack', NotifyComposer::class);
     }
 
     /**
