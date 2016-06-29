@@ -149,6 +149,8 @@ function steps(from, to) {
     }
     if (to == 4) {
         DetailsProduct();
+        $('.Step-4').css('width', '10px');
+        $('.Step-4').css('width', '100%');
     }
     widthLine = 25 * to;
     $('.Wizard li:nth-child(' + to + ')').addClass('current');
