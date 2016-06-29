@@ -1,13 +1,13 @@
 <section class="Step Step-4">
     <div class="row">
-        <div class="col-6">
-            <a class="Button">PREVISUALIZACIÓN DEL PRODUCTO</a>
-        </div>
         @if(isset($productEdit))
-        <button class="Button Step-finish col-6">ACTUALIZAR PRODUCTO</button>
+        <button class="Button Step-finish col-12">ACTUALIZAR PRODUCTO</button>
         @else
-        <button class="Button Step-finish col-6">GUARDAR PRODUCTO</button>
+        <button class="Button Step-finish col-12">GUARDAR PRODUCTO</button>
         @endif
     </div>
-    <section id="detailsProduct" class="row"></section>
+    <!-- id="detailsProduct" -->
+    <section>
+        @include('back.partial.productPreview')
+    </section>
 </section>
