@@ -243,4 +243,15 @@ Route::post('updateStateOrder', [
     'as' => 'updateStateOrder'
 ]);
 
+Route::post('NotifyIsActive', [
+    'uses' => 'NotificationController@isActive',
+    'as' => 'NotifyIsActive'
+]);
+
+
+Route::get('notificaciones', [
+    'uses' => 'NotificationController@index',
+    'as' => 'NotifyAll'
+]);
+
 

@@ -24,3 +24,46 @@
     background: white
     width: rem(200)
     height: rem(46)
+
+#Notify
+  position: relative
+  cursor: pointer
+#NotifyList
+  opacity: 0
+  visibility: hidden
+  color: #27383f
+  font-size: rem(14)
+  position: absolute
+  background: white
+  top: rem(65)
+  width: rem(300)
+  left: rem(-163)
+  text-align: left
+  box-shadow: 0 5px 20px 0 rgba(50, 50, 50, 0.12)
+  @include transition(.3s all)
+  &.open
+    opacity: 1
+    visibility: visible
+    top: rem(50)
+  .title
+    padding: rem(8) rem(16)
+    font-size: rem(12)
+  .all
+    text-align: center
+    font-size: rem(12)
+    a
+      padding: rem(8)
+      color: $greenLight
+  li
+    border-bottom: #f0f0f0 rem(1) solid
+    &:first-child
+      border-top: #f0f0f0 rem(1) solid
+    &.isOpen
+      background: #fbffdd
+      color: white
+  a
+    padding: 1rem
+    display: block
+    color: $greenDark
+    &:hover
+      background: #f6f6f6

@@ -45,13 +45,23 @@
             Bienvenido(a) a Agrosellers
         </h1>
         <div class="col-6 HeaderBack-profile row end middle ">
-            <figure>
+            <figure id="Notify">
                 @if(auth()->user()->photo)
                     <img src="{{url('uploads/users/' . auth()->user()->photo)}}" alt="">
                 @else
                     <img src="{{url('images/user.png')}}" alt="">
                 @endif
-                <span>{{$notify->count()}}</span>
+                <span>{{$notify['count']}}</span>
+                <div id="NotifyList" data-route="{{route('NotifyIsActive')}}">
+                    <input type="hidden" id="tokenNotify" name="_token" value="{{ csrf_token() }}">
+                    <div class="title">Notificiones</div>
+                    <ul>
+                        @foreach($notify['notifications'] as $noti)
+                            <li  class="{{($noti->isOpen)?'':'isOpen'}}"><a data-id="{{$noti->id}}" href="{{$noti->url}}">{{$noti->text}}</a></li>
+                        @endforeach
+                    </ul>
+                    <div class="all"><a href="">Ver todas</a></div>
+                </div>
             </figure>
             <h3>{{ auth()->user()->fullName()   }}
                 <span>{{--{{ auth()->user()->role()->first()->name}}--}}</span></h3>
