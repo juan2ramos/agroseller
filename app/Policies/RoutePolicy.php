@@ -63,13 +63,13 @@ class RoutePolicy
                 [
                     'admin', 'products', 'bills', 'orders', 'reports', 'questions', 'questionDetail', 'questionNew',
                     'clientInformationIndex', 'clientInformationStore', 'indexProfile', 'userUpdate','budgetShow','downloadBudget',
-                    'orderShow'
+                    'orderShow','NotifyAll'
 
                 ],
             '5' =>
                 [
                     'admin', 'providers', 'clients', 'reports', 'showUser', 'validateProvider', 'indexProfile', 'userUpdate',
-                    'productAgentPreview', 'productProviderPreview' , 'validateProduct'
+                    'productAgentPreview', 'productProviderPreview' , 'validateProduct', 'NotifyIsActive'
                 ],
             '6' =>
                 [
