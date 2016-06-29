@@ -7,13 +7,14 @@
         <thead>
         <tr>
             <th>Mensaje</th>
+            <th>Fecha</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($orders as $order)
+        @foreach($notifications as $notifications)
             <tr>
-                <td></td>
-                <td></td>
+                <td class=""><a href="{{$notifications->url}}">{{$notifications->text}}</a></td>
+                <td>{{$notifications->created_at}}</td>
 
             </tr>
         @endforeach

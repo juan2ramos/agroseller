@@ -17,7 +17,7 @@ class NotificationController extends Controller
         return ['success' => true];
     }
     function index(){
-        $notifications = Notification::where(Auth::user()->id);
+        $notifications = Notification::where('user_id',Auth::user()->id)->paginate(8);
         return view('back.notification', compact('notifications'));
 
     }

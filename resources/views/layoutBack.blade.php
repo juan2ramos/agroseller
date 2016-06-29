@@ -60,7 +60,7 @@
                             <li  class="{{($noti->isOpen)?'':'isOpen'}}"><a data-id="{{$noti->id}}" href="{{$noti->url}}">{{$noti->text}}</a></li>
                         @endforeach
                     </ul>
-                    <div class="all"><a href="">Ver todas</a></div>
+                    <div class="all"><a href="{{route('NotifyAll')}}">Ver todas</a></div>
                 </div>
             </figure>
             <h3>{{ auth()->user()->fullName()   }}
