@@ -11,7 +11,7 @@
         <span class="Line-bottom-two col-12"></span>
 
         <article class="TabContainer" id="EditProduct">
-            <input id="deleteProductRoute" type="hidden" value="{{route('deleteProduct')}}">
+            <!--<input id="deleteProductRoute" type="hidden" value="{route('deleteProduct')}}">-->
             <section class="Products row">
                 @if(count($products) > 0)
                 <table class="Table">
@@ -19,6 +19,7 @@
                         <tr>
                             <th>Nombre</th>
                             <th>Subcategoria</th>
+                            <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -27,15 +28,37 @@
                             <tr>
                                 <td>{{$product->name}}</td>
                                 <td>{{$product->subcategory->name}}</td>
+                                @if($product->isValidate && $product->isActive)
+                                <td>Activo</td>
+                                @else
+                                    @if($product->isValidate)
+                                    <td>Desactivado</td>
+                                    @else
+                                    <td>Por aprobar</td>
+                                    @endif
+                                @endif
                                 <td>
                                     <div class="Item-actions row center">
                                         <input class="ProductId" type="hidden" value="{{$product->id}}">
                                         <a href="{{route('editProduct', [$product->id])}}" class="icon-update">
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><path d="M50,5C25.1,5,5,25.1,5,50c0,24.9,20.1,45,45,45s45-20.1,45-45C95,25.1,74.9,5,50,5z M25.6,73.7l7.6-16.4l8.8,8.8L25.6,73.7z   M43,65.2l-8.8-8.8l23.2-23.2l8.8,8.8L43,65.2z M67.1,41l-8.8-8.8l9.4-9.4l8.8,8.8L67.1,41z"/></svg>
                                         </a>
-                                        <span class="icon-remove" onclick="return false;">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 106.254 127.08375000000001"><path d="M7.3 7.276H39.12v-8.28H66.31v8.28h31.823v12.53H7.3m56.288-17.9h-21.3V7.35h21.3zM15.608 25.12H91.36l-9.003 78.535H24.612m54.96-69.806h-7.538l-4.41 63.76h5.747zm-22.712.054h-7.54l.99 63.75h5.747zm-22.713.504h-7.54l6.39 63.63h5.747z"/></svg>
+                                        @if($product->isValidate)
+                                        <form method="POST" action="{{route('deleteProduct', $product->id)}}">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <button class="icon-remove">
+                                                @if($product->isActive)
+                                                    <svg width="100%" height="100%" viewBox="0 0 500 500"><g><path d="M400,0h-66.667c-55.141,0-100,44.859-100,100v100H25c-13.75,0-25,11.25-25,25v250c0,13.75,11.25,25,25,25h283.333 c13.751,0,25-11.25,25-25V225c0-13.75-11.249-25-25-25H300V100c0-18.38,14.953-33.333,33.333-33.333H400 c18.38,0,33.333,14.953,33.333,33.333v100H500V100C500,44.859,455.141,0,400,0z M200,433.333h-66.667l14.5-72.5 c-8.754-6.007-14.5-16.08-14.5-27.5c0-18.409,14.924-33.333,33.333-33.333S200,314.924,200,333.333c0,11.42-5.746,21.493-14.5,27.5L200,433.333z"/></g></svg>
+                                                @else
+                                                    <svg viewBox="0 0 489.4 489.4"><g><g><path d="M99,147v51.1h-3.4c-21.4,0-38.8,17.4-38.8,38.8v213.7c0,21.4,17.4,38.8,38.8,38.8h298.2c21.4,0,38.8-17.4,38.8-38.8V236.8 c0-21.4-17.4-38.8-38.8-38.8h-1v-51.1C392.8,65.9,326.9,0,245.9,0C164.9,0.1,99,66,99,147z M267.7,353.2c-3,2.2-3.8,4.3-3.8,7.8 c0.1,15.7,0.1,31.3,0.1,47l0,0c0.3,6.5-3,12.9-8.8,15.8c-13.7,7-27.4-2.8-27.4-15.8v-0.1c0-15.7,0-31.4,0.1-47.1 c0-3.2-0.7-5.3-3.5-7.4c-14.2-10.5-18.9-28.4-11.8-44.1c6.9-15.3,23.8-24.3,39.7-21.1c17.7,3.6,30,17.8,30.2,35.5 C282.5,336,277.6,346,267.7,353.2z M163.3,147c0-45.6,37.1-82.6,82.6-82.6c45.6,0,82.6,37.1,82.6,82.6v51.1H163.3V147z"/></g></g></svg>
+                                                @endif
+                                            </button>
+                                        </form>
+                                        @else
+                                        <span style="cursor: inherit" class="icon-" onclick="return false;">
+                                            <svg viewBox="0 0 489.4 489.4"><g><g><path style="fill:#d3d3d3" d="M99,147v51.1h-3.4c-21.4,0-38.8,17.4-38.8,38.8v213.7c0,21.4,17.4,38.8,38.8,38.8h298.2c21.4,0,38.8-17.4,38.8-38.8V236.8 c0-21.4-17.4-38.8-38.8-38.8h-1v-51.1C392.8,65.9,326.9,0,245.9,0C164.9,0.1,99,66,99,147z M267.7,353.2c-3,2.2-3.8,4.3-3.8,7.8 c0.1,15.7,0.1,31.3,0.1,47l0,0c0.3,6.5-3,12.9-8.8,15.8c-13.7,7-27.4-2.8-27.4-15.8v-0.1c0-15.7,0-31.4,0.1-47.1 c0-3.2-0.7-5.3-3.5-7.4c-14.2-10.5-18.9-28.4-11.8-44.1c6.9-15.3,23.8-24.3,39.7-21.1c17.7,3.6,30,17.8,30.2,35.5 C282.5,336,277.6,346,267.7,353.2z M163.3,147c0-45.6,37.1-82.6,82.6-82.6c45.6,0,82.6,37.1,82.6,82.6v51.1H163.3V147z"/></g></g></svg>
                                         </span>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>
@@ -50,16 +73,20 @@
                 @endif
             </section>
 
-            <div class="DeleteMessage MessagePlatform row middle center" style="display: none">
+            <!--<div class="DeleteMessage MessagePlatform row middle center" style="display: none">
                 <div class="MessagePlatform-content" style="text-align: center;">
-                    <h2>!Eliminar el producto!</h2>
-                    <p>¿Esta seguro que desea eliminar el producto?</p><div class="Message"></div>
+                    <h2>!Desactivar el producto!</h2>
+                    <p>¿Esta seguro que desea desactivar el producto?</p><div class="Message"></div>
                     <div class="MessagePlatform-confirm">
-                        <span class="Button" id="Accept" onclick="return false">Eliminar</span>
-                        <span class="Button" id="Cancel">Cancelar</span>
+                        <form style="opacity:0;" id="DeleteForm" action="{{url('admin/productos/delete')}}" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="submit" class="submit">
+                        </form>
+                        <button class="Button" id="Accept" onclick="return false">Desactivar</button>
+                        <button class="Button" id="Cancel">Cancelar</button>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </article>
 
         <article class="TabContainer col-12" id="NewProduct">
@@ -229,8 +256,36 @@
             $('#DescriptionOffer').val(editorOffer.getHTML());
         });
     </script>
+        <!-- ******* Slider ******* -->
+        <script src="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.js"></script>
+        <script src="{{asset('js/front/slide.js')}}"></script>
+
+        if($offer)
+        ?php
+        $fecha = explode('-', $product->offers->offer_off);
+        $day = explode(' ', $fecha[2]);
+        $time = explode(':', $day[1]);
+
+        $year = $fecha[0];
+        $month = $fecha[1];
+        $day = $day[0];
+        $hour = $time[0];
+        $minute = $time[1];
+        ?>
+
+        <!-- ******* Timer ******* -->
+        <script src="{{asset('js/front/product.js')}}"></script>
+        <script>
+            countDown({
+                'year': 2016,
+                'month': 6,
+                'day': 29,
+                'hour': 12,
+                'minute': 10
+            });
+        </script>
 @endsection
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/jquery.datetimepicker.css') }}">
-    <link rel="stylesheet" href="//cdn.quilljs.com/0.20.1/quill.snow.css"/>
+    <link href="{{ asset('css/jquery.datetimepicker.css') }}" rel="stylesheet">
+    <link href="//cdn.quilljs.com/0.20.1/quill.snow.css" rel="stylesheet">
 @endsection

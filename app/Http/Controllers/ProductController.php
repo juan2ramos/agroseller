@@ -20,10 +20,8 @@ class ProductController extends Controller
     function productFront(Request $request, $subcategoriesName = null)
     {
         if ($subcategoriesName) {
-
-            $products = Subcategory::where('slug', $subcategoriesName)->firstOrFail()->products()->paginate(8);
+            $products = Subcategory::where('slug', $subcategoriesName)->firstOrFail()->products()->whereRaw('isValidate = 1 and isActive = 1')->paginate(8);
             return view('front.home', compact('products'));
-
         }
         return redirect()->route('home');
     }
@@ -50,12 +48,15 @@ class ProductController extends Controller
     function productDetailFront($slug, $id)
     {
         $product = Product::find($id);
-        $offer = ($offer = $product->offers()->first()) ?
-            (Carbon::now()->between(new Carbon($offer->offer_on), new Carbon($offer->offer_off)))
-                ? $offer->offer_price : null : null;
-        $questions = $this->reloadQuestions($id);
-        $featuresTranslate = $this->setFeaturesTranslate($product);
-        return view('front.productDetail', compact('questions', 'product', 'featuresTranslate','offer'));
+        if($product->isActive && $product->isValidate){
+            $offer = ($offer = $product->offers()->first()) ?
+                (Carbon::now()->between(new Carbon($offer->offer_on), new Carbon($offer->offer_off)))
+                    ? $offer->offer_price : null : null;
+            $questions = $this->reloadQuestions($id);
+            $featuresTranslate = $this->setFeaturesTranslate($product);
+            return view('front.productDetail', compact('questions', 'product', 'featuresTranslate','offer'));
+        }
+        return redirect()->route('home');
     }
 
     private function reloadQuestions($id){

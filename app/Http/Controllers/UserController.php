@@ -2,15 +2,16 @@
 
 namespace Agrosellers\Http\Controllers;
 
-use Agrosellers\Entities\Role;
 use DB;
-use Agrosellers\User;
 use Gbrock\Table\Facades\Table;
 use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
-use Agrosellers\Entities\Provider;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Mail;
+use Agrosellers\User;
+use Agrosellers\Entities\Provider;
+use Agrosellers\Entities\Role;
+use Agrosellers\Entities\Product;
 
 class UserController extends Controller
 {
@@ -53,7 +54,9 @@ class UserController extends Controller
 
     function showUser($id){
         $user = User::find($id);
-        return view('back.user',compact('user'));
+        $products = Product::where('user_id', $id)->get();
+        $provider = Provider::where('user_id', $id)->first();
+        return view('back.user',compact('user', 'products', 'provider'));
     }
 
 
@@ -75,7 +78,10 @@ class UserController extends Controller
 
     function validateProvider($id){
         $provider = Provider::where('user_id', $id)->first();
-        $provider->validate = 1;
+        if($provider->validate)
+            $provider->validate = 0;
+        else
+            $provider->validate = 1;
         $provider->save();
 
         Mail::send('emails.validateProvider', ['user' => $provider->user], function ($m) use ($provider) {
@@ -84,6 +90,8 @@ class UserController extends Controller
 
         return redirect()->route('providers');
     }
+
+
 
     private function trash(){
         return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 106.254 127.08375000000001">

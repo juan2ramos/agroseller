@@ -22,7 +22,7 @@
                 <td> {{$order->created_budget}}</td>
                 <td> {{$order->updated_budget}}</td>
                 <td> {{$order->products->count()}}</td>
-                <td> ${{$order->total_value}}</td>
+                <td> ${{$order->total}}</td>
             </tr>
             <tr class="SubTable2">
                 <td colspan="6">
@@ -42,11 +42,11 @@
                         @foreach($order->products as $products)
 
                             <tr>
-                                <td>{{$products->name}}</td>
+                                <td><a href="{{url('producto/' . $products->slug . '/' . $products->id) }}">{{$products->name}}</a></td>
                                 <td>{{$products->pivot->quantity}}</td>
-                                <td>$</td>
-                                <td>$</td>
-                                <td>Compra confirmada</td>
+                                <td>${{$products->pivot->value}}</td>
+                                <td>${{$products->totalValue}}</td>
+                                <td>{{$states->search($products->pivot->state_order_id) }}</td>
                             </tr>
                         @endforeach
                         </tbody>

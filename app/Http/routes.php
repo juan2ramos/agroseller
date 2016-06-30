@@ -15,6 +15,3 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
     require __DIR__ . '/Routes/admin.php';
 });
-
-
-

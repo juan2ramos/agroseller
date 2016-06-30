@@ -2,6 +2,7 @@
 namespace Agrosellers\Http\Controllers;
 
 use Agrosellers\Entities\Category;
+use Agrosellers\Entities\Notification;
 use Agrosellers\Entities\Provider;
 use Agrosellers\Entities\Role;
 use Agrosellers\User;
@@ -25,12 +26,11 @@ class ProviderController extends Controller
         $user = Auth::user();
         $agent = $user->agent;
 
-        if(Auth::user()->role_id == 5){
+        if(Auth::user()->role_id == 5)
             $providers = Provider::where('agent_id', '=', $agent->id)->paginate(10);
-        }
-        else{
+        else
             $users = User::where('role_id', '=', 3)->with('provider')->paginate(10);
-        }
+
         $roleName = $this->roleName;
         $routeSearch = 'searchProvider';
         return view('back.provider', compact('providers', 'users', 'roleName', 'routeSearch'));
@@ -39,11 +39,11 @@ class ProviderController extends Controller
     function searchProviders(Request $request)
     {
         $search = $request->input('search');
-        $users = User::where('role_id', '=', 2)
+        $users = User::where('role_id', 2)
             ->where(function ($query) use ($search) {
                 $query->Where('name', 'like', '%' . $search . '%')
                     ->orWhere('last_name', 'like', '%' . $search . '%')
-                    ->orWhere('email', '=', $search)
+                    ->orWhere('email', $search)
                     ->orWhere('second_name', 'like', '%' . $search . '%')
                     ->orWhere('second_last_name', 'like', '%' . $search . '%')
                     ->orWhere('identification', 'like', '%' . $search . '%');
@@ -82,7 +82,7 @@ class ProviderController extends Controller
             ]
         );
         $user = Auth::user();
-        $provider = Provider::where('user_id', '=', $user->id)->first();
+        $provider = Provider::where('user_id', $user->id)->first();
         $files = $request->file();
         $provider->update($request->all());
         foreach ($files as $key => $file) {
@@ -92,6 +92,12 @@ class ProviderController extends Controller
         }
         $user['photo'] = $provider['logo'];
         $provider->save();
+
+        Notification::create([
+            'user_id' => $provider->agent()->first()->user_id,
+            'text' => 'El proveedor ' . $provider['company-name'] . ' ha completado el segundo formulario',
+            'url' => route('showUser', $user->id)
+        ]);
 
         Mail::send('emails.registerProvider', ['user' => $user], function ($m) use ($user) {
             $m->to($user->email, $user->name)->subject('Casi finaliza tu registro!');

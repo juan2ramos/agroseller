@@ -7,19 +7,19 @@
                 puedes comprar luego, crear tus cotizaciones o comparar precios</h2>
             <h3>Los productos guardados están sujetos a cambios de precios por parte de los proveedores</h3>
             <ul class="row " style="width: 100%">
-                @if(Session::has('cart'))
-                    @foreach(Session::get('cart') as $product)
-                        <li style="margin: 3rem 1rem 0" class="row col-4 middle">
-                            <figure class="col-5">
-                                <a href="{{route('productDetail',[$product->slug, $product->id])}}">
-                                    <img src="{{ url('uploads/products/'.$product->productFiles()->first()->name )}}"
-                                         alt="">
-                                </a>
-                            </figure>
-                            <div class="CartDetail-content col-7">
-                                <div class="CartDetail-hGroup">
-                                    <h3>{{$product->name}}</h3>
-                                    <h4>{{$product->subcategory->first()->name}}</h4>
+                @if(Session::has('cart') &&  Session::get('cart')))
+                @foreach(Session::get('cart') as $product)
+                    <li style="margin: 3rem 1rem 0" class="row col-4 middle">
+                        <figure class="col-5">
+                            <a href="{{route('productDetail',[$product->slug, $product->id])}}">
+                                <img src="{{ url('uploads/products/'.$product->productFiles()->first()->name )}}"
+                                     alt="">
+                            </a>
+                        </figure>
+                        <div class="CartDetail-content col-7">
+                            <div class="CartDetail-hGroup">
+                                <h3>{{$product->name}}</h3>
+                                <h4>{{$product->subcategory->first()->name}}</h4>
                         <span class="CartDetail-close">
                         <a href="{{route('cartDelete',['id' => $product->id])}}">
                             <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1"
@@ -43,17 +43,17 @@
                             </svg>
                         </a>
                     </span>
-                                </div>
-                                <div>
-                                    <small>Q:</small>
-                                    <span>{{$product->quantity}}</span>
-                                    <small></small>
-                                    <val>
-                                        ${{number_format(($product->offer_price)?$product->offer_price:$product->price, 0, " ", ".")}}</val>
-                                </div>
                             </div>
-                        </li>
-                    @endforeach
+                            <div>
+                                <small>Q:</small>
+                                <span>{{$product->quantity}}</span>
+                                <small></small>
+                                <val>
+                                    ${{number_format(($product->offer_price)?$product->offer_price:$product->price, 0, " ", ".")}}</val>
+                            </div>
+                        </div>
+                    </li>
+                @endforeach
                 @endif
 
             </ul>
@@ -61,45 +61,55 @@
                 ${{session('valueTotal')}}</div>
         </section>
         <section class="col-12">
-            @if(Auth::check())
-                @if(auth()->user()->role_id == 4)
-                    <div class="row center">
-                        <a class="Button col-4" style="margin: 2rem 0" href="{{route('addBudget')}}">CREAR TU
-                            PRESUPUESTO</a>
-                    </div>
-                @else
-                    @include('messages',[
+            @if(!  Session::get('cart'))
+                @include('messages',[
                     'type' => 'warning',
                     'title' => '¡Lo sentimos!',
-                    'message' => '<p> Para realizar compras debes tener o crear  una cuenta como cliente, da clic
-                     <a href="'. route('login') .'">aqui</a> si ya posees una cuenta o
-                     <a href="'. route('register') .'">aqui</a> si te quieres registrar </p>'
+                    'message' => '<p> tu carrito esta vacio, vuelve a
+                     <a href="'. route('home') .'">Inicio</a> Busca tu producto en la barra  de arriba. </p>'
                      ])
-                @endif
             @else
-                @include('messages',[
-                                   'type' => 'warning',
-                                   'title' => '¡Lo sentimos!',
-                                   'message' => '<p> Para poder comprar debes tener una cuenta cliente con nosotros,
-                                   da clic en registrarse y empieza a comprar.</p>' .
-                                   '<p>Si ya tienes una cuenta inicia sesión y realiza tu compra.</p>'
-                                    ])
-                <h3>
+
+                @if(Auth::check())
+                    @if(auth()->user()->role_id == 4)
+                        <div class="row center">
+                            <a class="Button col-4" style="margin: 2rem 0" href="{{route('addBudget')}}">CREAR TU
+                                PRESUPUESTO</a>
+                        </div>
+                    @else
+                        @include('messages',[
+                        'type' => 'warning',
+                        'title' => '¡Lo sentimos!',
+                        'message' => '<p> Para realizar compras debes tener o crear  una cuenta como cliente, da clic
+                         <a href="'. route('login') .'">aqui</a> si ya posees una cuenta o
+                         <a href="'. route('register') .'">aqui</a> si te quieres registrar </p>'
+                         ])
+                    @endif
+                @else
+                    @include('messages',[
+                                       'type' => 'warning',
+                                       'title' => '¡Lo sentimos!',
+                                       'message' => '<p> Para poder comprar debes tener una cuenta cliente con nosotros,
+                                       da clic en registrarse y empieza a comprar.</p>' .
+                                       '<p>Si ya tienes una cuenta inicia sesión y realiza tu compra.</p>'
+                                        ])
+                    <h3>
 
 
-                </h3>
-                <div class="row middle arrow" style="margin: 3rem 0">
-                    <a href="{{route('register')}}" class="col-3 offset-3 Button">REGISTRATE</a>
-                    <a href="{{route('login')}}" class="col-3 offset-1 Button">INICIA SESIÓN</a>
-                </div>
-            @endif
+                    </h3>
+                    <div class="row middle arrow" style="margin: 3rem 0">
+                        <a href="{{route('register')}}" class="col-3 offset-3 Button">REGISTRATE</a>
+                        <a href="{{route('login')}}" class="col-3 offset-1 Button">INICIA SESIÓN</a>
+                    </div>
+                @endif
 
-            @if(isset($budgetCreate) )
-                @include('messages',[
-                       'type' => 'ok',
-                       'title' => '¡Enhorabuena!',
-                       'message' => '<p> Tu presupuesto ha sido creado con éxito,  ve al panel administrativo, y visualiza todos tus presupuestos,</p>'
-                        ])
+                @if(isset($budgetCreate) )
+                    @include('messages',[
+                           'type' => 'ok',
+                           'title' => '¡Enhorabuena!',
+                           'message' => '<p> Tu presupuesto ha sido creado con éxito,  ve al panel administrativo, y visualiza todos tus presupuestos,</p>'
+                            ])
+                @endif
             @endif
         </section>
     </div>

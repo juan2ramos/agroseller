@@ -45,4 +45,21 @@ $(document).ready(function () {
     $('.MessagePlatform-close').on('click', function (){
         $('.MessagePlatform').hide();
     });
+
+    $('#Notify img,#Notify span').on('click',function(){
+        $('#NotifyList').toggleClass('open');
+    });
+    $('#NotifyList li a ').on('click',function(event){
+        event.stopPropagation();
+        console.log($('#NotifyList').data('route'))
+        $target = $(this);
+        console.log($target.attr('href'))
+        $.post( $('#NotifyList').data('route'), { id: $(this).data('id'), _token: $('#tokenNotify').val() }, function(response){
+            if(response.success){
+                $(window).attr('location', $target.attr('href'));
+            }
+        });
+        return false;
+    });
+
 });

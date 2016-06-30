@@ -149,6 +149,8 @@ function steps(from, to) {
     }
     if (to == 4) {
         DetailsProduct();
+        $('.Step-4').css('width', '10px');
+        $('.Step-4').css('width', '100%');
     }
     widthLine = 25 * to;
     $('.Wizard li:nth-child(' + to + ')').addClass('current');
@@ -156,6 +158,7 @@ function steps(from, to) {
     $('.Step-' + from).hide('slow');
     $('.Step-' + to).show('slow');
 }
+
 function DetailsProduct() {
     var $DetailsProduct = $("#detailsProduct");
     $DetailsProduct.html('');
@@ -188,7 +191,7 @@ function DetailsProduct() {
                     coord = String(coordinates[j]).split("&");
                     $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + coord[0] + ',' + coord[1], function (data) {
 
-                        html = '<p>' + '<span>' + nameProduct + ': </span></p> <div class="ItemProduct">' + data.results[0].formatted_address + '<br>' + '</div>'
+                        html = '<article class="col-4">' + '<span>' + nameProduct + ': </span><div class="ItemProduct">' + data.results[0].formatted_address + '<br>' + '</div></article>';
                         $DetailsProduct.append(html);
 
                     });
@@ -222,13 +225,13 @@ function DetailsProduct() {
                 }
             }
             if ($(this).hasClass('StepImages')) {
-                nameProduct = "Imagen "
+                nameProduct = "Imagen ";
                 ValueProduct = $(this).val().replace(/C:\\fakepath\\/i, '');
 
             }
 
             if (ValueProduct != "") {
-                html = '<p>' + '<span>' + nameProduct + ': </span></p><div class="ItemProduct">' + ValueProduct + '</div>'
+                html = '<article class="col-4">' + '<span>' + nameProduct + ': </span><div class="ItemProduct">' + ValueProduct + '</div></article>';
                 $DetailsProduct.append(html);
             }
 
@@ -249,7 +252,7 @@ var tab1 = $('[for="tab1"]'),
     url = $('#deleteProductRoute').val(),
     productId;
 
-if(tab2.is(':checked')) {
+
     if (tab2.is(':checked')) {
         line.addClass('right');
     }
@@ -266,7 +269,7 @@ if(tab2.is(':checked')) {
         productUpdate.removeClass('left');
     });
 
-    $('.Item-actions').on('click', '.icon-update, .icon-remove', function () {
+    $('.Item-actions').on('click', '.icon-remove',function () {
         productId = $(this).siblings('.ProductId').val();
 
         if ($(this).hasClass('icon-update'))
@@ -276,24 +279,12 @@ if(tab2.is(':checked')) {
     });
 
     deleteMessage.on('click', '#Cancel, #Accept', function () {
-        if ($(this).attr('id') == 'Accept') {
-            deleteMessage.hide();
-
-            param = {
-                '_token': $('#token').val(),
-                'id': productId
-            };
-
-            $.ajax({
-                type: 'POST',
-                url: url,
-                data: param,
-                success: function (data) {
-                    location.reload();
-                }
-            });
+        if($(this).attr('id') == "Accept"){
+            var deleteForm = $('#DeleteForm');
+            var url = deleteForm.attr('action') + '/' + productId;
+            deleteForm.attr('action', url);
+            deleteForm.children('.submit').trigger('click');
         }
-        else
-            deleteMessage.hide();
+
+        deleteMessage.hide();
     });
-}

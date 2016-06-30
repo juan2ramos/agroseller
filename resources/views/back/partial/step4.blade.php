@@ -1,10 +1,13 @@
 <section class="Step Step-4">
-    <h4>Previsualización y detalle del producto </h4>
-    <section class="" id="detailsProduct">
+    <div class="row">
+        @if(isset($productEdit))
+        <button class="Button Step-finish col-12">ACTUALIZAR PRODUCTO</button>
+        @else
+        <button class="Button Step-finish col-12">GUARDAR PRODUCTO</button>
+        @endif
+    </div>
+    <!-- id="detailsProduct" -->
+    <section>
+        @include('back.partial.productPreview')
     </section>
-    @if(isset($productEdit))
-    <button class="Button Step-finish">ACTUALIZAR PRODUCTO</button>
-    @else
-    <button class="Button Step-finish">GUARDAR PRODUCTO</button>
-    @endif
 </section>

@@ -13,7 +13,9 @@ use Agrosellers\Entities\Product;
 class HomeController extends Controller
 {
     function index(){
-        $products = Product::paginate(8);
+        $products = Product::whereRaw('isValidate = 1 and isActive = 1')
+                            ->with(['offers','productFiles','subcategory'])
+                            ->paginate(8);
         return view('front.home',compact('products'));
     }
     function pricing(){
@@ -50,7 +52,7 @@ class HomeController extends Controller
 
     function searchBar(Request $request){
 
-        return ['products' => Product::with(['productFiles' => function($file){
+        return ['products' => Product::whereRaw('isValidate = 1 and isActive = 1')->with(['productFiles' => function($file){
             $file->whereRaw('extension = "jpeg" or extension = "jpg" or extension = "png" or extension = "svg"')->get();
         }])->where("name", "like", "%{$request->value}%")->limit(10)->get(['slug', 'name', 'id'])];
 

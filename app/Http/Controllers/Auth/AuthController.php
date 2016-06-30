@@ -2,6 +2,7 @@
 
 namespace Agrosellers\Http\Controllers\Auth;
 
+use Agrosellers\Entities\Notification;
 use Agrosellers\User;
 use Agrosellers\Entities\Provider;
 use Agrosellers\Entities\Agent;
@@ -117,9 +118,15 @@ class AuthController extends Controller
         if($user->role_id == 3){
             $agent = Agent::with('providers')->get()->sortBy(function($agent){return $agent->providers()->count();})->first();
             $provider = new Provider;
-            $provider->agent_id = $agent->id;
-            $provider->user_id = $user->id;
+            $provider->agent_id  = $agent->id;
+            $provider->user_id   = $user->id;
             $provider->save();
+
+            Notification::create([
+                'user_id' => $agent->user_id,
+                'text' => 'Se ha registrado un proveedor',
+                'url' => route('searchProvider')
+            ]);
         }
         else {
             Mail::send('emails.welcome', ['user' => $user], function ($m) use ($user) {

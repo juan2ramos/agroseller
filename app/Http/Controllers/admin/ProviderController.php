@@ -78,7 +78,7 @@ class ProviderController extends Controller
         );
 
         $user = Auth::user();
-        $provider = Provider::where('user_id', '=', $user->id)->first();
+        $provider = Provider::where('user_id', $user->id)->first();
         $files = $request->file();
         $provider->update($request->all());
 
@@ -104,5 +104,9 @@ class ProviderController extends Controller
             return response()->json(['name' => $userProvider->validate]);
         }
         return response()->json(['name' => $userProvider->validate]);
+    }
+
+    function productDetailPreview($array){
+        return view('back.prueba', compact('array'));
     }
 }

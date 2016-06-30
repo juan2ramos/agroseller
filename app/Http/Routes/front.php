@@ -79,3 +79,7 @@ Route::get('productos/{name?}',[
     'uses' => 'ProductController@productFront',
     'as' => 'product'
 ]);
+
+Route::get('prueba', function(){
+    return view('back.productProviderPreview');
+});

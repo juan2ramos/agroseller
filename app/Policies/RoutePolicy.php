@@ -44,7 +44,7 @@ class RoutePolicy
                     'bills', 'orders', 'reports', 'subcategoriesQuery','featuresQuery', 'showUser', 'validateProvider',
 
                     'newProduct','agentsGet', 'editProduct', 'deleteProduct', 'updateProduct','newUserAdmin','user',
-                    'budgetShow', 'indexProfile', 'userUpdate'
+                    'budgetShow', 'indexProfile', 'userUpdate', 'productAgentPreview', 'productProviderPreview','validateProduct'
 
                 ],
             '2' =>
@@ -56,7 +56,7 @@ class RoutePolicy
                 [
                     'admin', 'products', 'questions', 'orders', 'registerProvider', 'isValidateProviders', 'questions',
                     'subcategoriesQuery','featuresQuery', 'newProduct', 'insertProvider', 'questionDetail', 'questionNew',
-                    'editProduct', 'deleteProduct', 'updateProduct', 'indexProfile', 'userUpdate','orderShowProvider'
+                    'editProduct', 'deleteProduct', 'updateProduct', 'indexProfile', 'userUpdate','orderShowProvider','updateStateOrder'
                 ],
 
             '4' =>
@@ -68,7 +68,8 @@ class RoutePolicy
                 ],
             '5' =>
                 [
-                    'admin', 'providers', 'clients', 'reports', 'showUser', 'validateProvider', 'indexProfile', 'userUpdate'
+                    'admin', 'providers', 'clients', 'reports', 'showUser', 'validateProvider', 'indexProfile', 'userUpdate',
+                    'productAgentPreview', 'productProviderPreview' , 'validateProduct', 'NotifyIsActive','NotifyAll'
                 ],
             '6' =>
                 [

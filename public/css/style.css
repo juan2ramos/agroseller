@@ -1658,6 +1658,32 @@ body {
   margin: 1.5rem 0;
 }
 
+.Step-2Images .image {
+  position: relative;
+}
+
+.Step-2Images .delete {
+  content: "x";
+  cursor: pointer;
+  background: rgba(230, 225, 225, 0.7);
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  z-index: 15;
+  top: 0;
+  right: 0;
+  font-size: 1.2rem;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .Step-2Images label {
   cursor: pointer;
   position: relative;
@@ -2090,13 +2116,13 @@ label.Tab {
   left: 0;
 }
 
-#EditProduct .Item-actions {
+.Item-actions {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-#EditProduct .Item-actions [class^='icon-'] {
+.Item-actions [class^='icon-'] {
   cursor: pointer;
   width: 1.5625rem;
   height: 1.5625rem;
@@ -2104,7 +2130,7 @@ label.Tab {
   overflow: hidden;
 }
 
-#EditProduct .Item-actions .icon-update {
+.Item-actions .icon-update {
   margin-right: 0.9375rem;
 }
 
@@ -2135,6 +2161,16 @@ label.Tab {
 
 .no-data {
   height: 100px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.no-data h2 {
+  margin: 0;
 }
 
 .Logo .result figure {
@@ -2254,6 +2290,84 @@ label.Tab {
   opacity: 1;
 }
 
+#detailsProduct article {
+  text-align: center;
+  margin: 10px 0;
+  border-bottom: 1px dotted #818181;
+  word-break: break-all;
+}
+
+#detailsProduct article span {
+  font-weight: 800;
+}
+
+.autocomplete {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  max-height: 400px;
+  cursor: pointer;
+}
+
+.autocomplete .result.open {
+  display: block;
+}
+
+.autocomplete .result {
+  position: relative;
+  left: 50%;
+  min-height: 79px;
+  font-weight: 300;
+  display: none;
+  width: 98%;
+  background: #fff;
+  border-radius: 0 0 3px 3px;
+  padding: 14px 0;
+}
+
+.autocomplete .result li {
+  height: 50px;
+  padding: 6px 12px;
+}
+
+.autocomplete .result li:hover {
+  background: #d7d7d7;
+}
+
+.autocomplete .result li a {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.autocomplete .result li a .no-data {
+  padding-left: 16px;
+}
+
+.autocomplete-result-image {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  margin-right: 12px;
+}
+
+.autocomplete-result-text {
+  font-size: .85rem;
+  text-transform: capitalize;
+}
+
+.autocomplete.light li {
+  height: auto;
+}
+
+.autocomplete.light li span {
+  padding: 7px 0;
+  display: block;
+}
+
 .Order-userData {
   text-align: left;
   margin: 1.25rem 0;
@@ -2276,4 +2390,68 @@ label.Tab {
   background: white;
   width: 12.5rem;
   height: 2.875rem;
+}
+
+#Notify {
+  position: relative;
+  cursor: pointer;
+}
+
+#NotifyList {
+  opacity: 0;
+  visibility: hidden;
+  color: #27383f;
+  font-size: 0.875rem;
+  position: absolute;
+  background: white;
+  top: 4.0625rem;
+  width: 18.75rem;
+  left: -10.1875rem;
+  text-align: left;
+  box-shadow: 0 5px 20px 0 rgba(50, 50, 50, 0.12);
+  transition: 0.3s all;
+}
+
+#NotifyList.open {
+  opacity: 1;
+  visibility: visible;
+  top: 3.125rem;
+}
+
+#NotifyList .title {
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+}
+
+#NotifyList .all {
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+#NotifyList .all a {
+  padding: 0.5rem;
+  color: #C5D257;
+}
+
+#NotifyList li {
+  border-bottom: #f0f0f0 0.0625rem solid;
+}
+
+#NotifyList li:first-child {
+  border-top: #f0f0f0 0.0625rem solid;
+}
+
+#NotifyList li.isOpen {
+  background: #fbffdd;
+  color: white;
+}
+
+#NotifyList a {
+  padding: 1rem;
+  display: block;
+  color: #27383F;
+}
+
+#NotifyList a:hover {
+  background: #f6f6f6;
 }

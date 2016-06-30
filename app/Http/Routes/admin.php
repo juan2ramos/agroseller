@@ -1,14 +1,15 @@
 <?php
 
 Route::group(['namespace' => 'admin'], function () {
+
     Route::get('productos', [
         'uses' => 'ProductController@index',
         'as' => 'products',
         'middleware' => 'VerifyProvider',
     ]);
 
-    Route::post('productos/delete', [
-        'uses' => 'ProductController@delete',
+    Route::post('productos/delete/{id}', [
+        'uses' => 'ProductController@lockProduct',
         'as' => 'deleteProduct'
     ]);
 
@@ -47,6 +48,21 @@ Route::group(['namespace' => 'admin'], function () {
         'uses' => 'UserController@newUserAdmin',
         'as' => 'newUserAdmin',
     ]);
+
+    Route::get('proveedor/producto/{id}', [
+        'uses' => 'ProductController@productAgentPreview',
+        'as' => 'productAgentPreview'
+    ]);
+
+    Route::get('productProviderPreview', [
+        'uses' => 'ProductController@productProviderPreview',
+        'as' => 'productProviderPreview'
+    ]);
+
+    Route::post('proveedor/producto/{id}', [
+        'uses' => 'ProductController@validateProduct',
+        'as' => 'validateProduct'
+    ]);
 });
 
 Route::get('proveedores', [
@@ -80,12 +96,12 @@ Route::get('usuarios', [
     'as' => 'users'
 ]);
 
-Route::get('usuario/{id}', [
+Route::get('proveedor/{id}', [
     'uses' => 'UserController@showUser',
     'as' => 'showUser'
 ]);
 
-Route::get('usuario/{id}/update', [
+Route::get('proveedor/{id}/update', [
     'uses' => 'UserController@validateProvider',
     'as' => 'validateProvider'
 ]);
@@ -94,6 +110,7 @@ Route::get('categorias', [
     'uses' => 'CategoryController@index',
     'as' => 'category'
 ]);
+
 Route::post('categorias', [
     'uses' => 'CategoryController@newCategory',
     'as' => 'category'
@@ -221,4 +238,20 @@ Route::post('perfil', [
     'uses' => 'UserController@userUpdate',
     'as' => 'userUpdate'
 ]);
+Route::post('updateStateOrder', [
+    'uses' => 'OrderController@updateStateOrder',
+    'as' => 'updateStateOrder'
+]);
+
+Route::post('NotifyIsActive', [
+    'uses' => 'NotificationController@isActive',
+    'as' => 'NotifyIsActive'
+]);
+
+
+Route::get('notificaciones', [
+    'uses' => 'NotificationController@index',
+    'as' => 'NotifyAll'
+]);
+
 

@@ -2,14 +2,15 @@
 
 namespace Agrosellers\Http\Controllers\admin;
 
-use Agrosellers\Entities\Offer;
+use Agrosellers\Entities\Notification;
 use Validator;
 use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 use Agrosellers\Http\Controllers\Controller;
 use Agrosellers\Entities\Category;
-use Illuminate\Support\Facades\Auth;
 use Agrosellers\Entities\ProductFile;
+use Agrosellers\Entities\Provider;
 
 use Agrosellers\Entities\Product;
 class ProductController extends Controller
@@ -92,9 +93,32 @@ class ProductController extends Controller
         return redirect()->back()->with('messageSuccess', 1);
     }
 
-    function delete(Request $request){
-        $product = Product::find($request->id);
-        $product->delete();
+    function lockProduct($id){
+        $product = Product::find($id);
+        if($product->isActive)
+            $product->update(['isActive' => 0]);
+        else
+            $product->update(['isActive' => 1]);
+        return redirect()->route('newProduct');
+    }
+
+    function productAgentPreview($id){
+        $product = Product::find($id);
+        return view('back.productAgentPreview', compact('product'));
+    }
+
+    function productProviderPreview(){
+        return view('back.productProviderPreview');
+    }
+
+    function validateProduct($id){
+        $product = Product::find($id);
+        if($product->isValidate)
+            $product->update(['isValidate' => 0]);
+        else
+            $product->update(['isValidate' => 1, 'isActive' => 1]);
+
+        return redirect()->route('showUser', $product->user()->first()->id);
     }
 
     function newProduct(Request $request)
@@ -108,8 +132,15 @@ class ProductController extends Controller
         $inputs['slug'] = str_slug($inputs['name']);
 
         $this->product = Product::create($inputs)->offers()->create($inputs);
-
         $this->createFile($request);
+        $provider = Provider::where('user_id', auth()->user()->id)->first();
+
+        Notification::create([
+            'user_id' => $provider->agent()->first()->user_id,
+            'text' => 'El proveedor ' . $provider['company-name'] . ' ha creado un producto',
+            'url' => route('productAgentPreview', $this->product->id)
+        ]);
+
         return redirect()->back()->with('messageSuccess', 1);
     }
 }

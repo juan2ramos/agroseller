@@ -81,30 +81,44 @@ class ShoppingController extends Controller
 
     public function showBack()
     {
+
         $orders = Auth::user()->orders()->with('products')->get();
         foreach($orders as $order){
 
+<<<<<<< HEAD
         }
         return view('back.orders', compact('orders'));
+=======
+        foreach ($orders as $order) {
+            $value = 0;
+            foreach ($order->products as $product) {
+                $value += $product->totalValue = $product->pivot->value * $product->pivot->quantity;
+            }
+            $order->total = $value;
+        }
+        $states = StateOrder::lists('id', 'name');
+        return view('back.orders', compact('orders','states'));
+>>>>>>> 05ded31f072b399b2ed0536784852c117e7ba13c
     }
 
     public function showBackProvider()
     {
         $user = Auth::user();
-        $orders = Order::whereHas('products', function ($query) use($user) {
+        $orders = Order::whereHas('products', function ($query) use ($user) {
             $query->where('products.user_id', $user->id);
-        })->with(['products' => function ($q) use($user) {
+        })->with(['products' => function ($q) use ($user) {
             $q->where('products.user_id', $user->id)->with('offers');
-        }])->get();
+        },'user'])->get();
 
         foreach ($orders as $order) {
             $order->quantityProducts = count($order->products);
             $order->totalValueProducts = 0;
             foreach ($order->products as $product) {
-                $product->priceFinish = ($product->offers->offer_price > 0) ?
-                    $product->offers->offer_price : $product->price;
-                $product->total = $product->priceFinish * $product->pivot->quantity;
-                $order->totalValueProducts += $product->total;
+                $value = 0;
+                foreach ($order->products as $product) {
+                    $value += $product->totalValue = $product->pivot->value * $product->pivot->quantity;
+                }
+                $order->total = $value;
             }
 
         }

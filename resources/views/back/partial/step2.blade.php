@@ -40,7 +40,7 @@
         </p>
         <label for="nameProduct">
             @if(isset($productEdit))
-            <input type="text" id="nameProduct" name="name" value="{ $productEdit->name }}">
+            <input type="text" id="nameProduct" name="name" value="{{ $productEdit->name }}">
             @else
             <input type="text" id="nameProduct" name="name" value="{{ old('name') }}">
             @endif
@@ -163,7 +163,7 @@
 
     <select class="presentation DataForm" name="presentation">
         @if(isset($productEdit) && $productEdit->presentation)
-        <option value="{ $productEdit->presentation }}">{{  $productEdit->presentation }}</option>
+        <option value="{{ $productEdit->presentation }}">{{  $productEdit->presentation }}</option>
         @else
         <option value="">Selecione la presentación</option>
         @endif
@@ -251,7 +251,23 @@
             <?php $i = 1 ?>
             @foreach($productEdit->productFiles()->get() as $image)
                 @if($image->extension != 'pdf')
-                    <label for="image{{$i}}" class="col-3 ">
+                    <div class="image col-3">
+                        <label for="image{{$i}}">
+                            <input type="file" class="StepImages" name="image{{$i}}" id="image{{$i}}">
+                            <figure class=" row middle center">
+                                <svg width="81px" height="47px">
+                                    <use xlink:href="#imageTemp"></use>
+                                </svg>
+                            </figure>
+                            <output class="result" />
+                        </label>
+                    </div>
+                    <?php $i++ ?>
+                @endif
+            @endforeach
+            @for(; $i <= 4; $i++)
+                <div class="image col-3">
+                    <label for="image{{$i}}">
                         <input type="file" class="StepImages" name="image{{$i}}" id="image{{$i}}">
                         <figure class=" row middle center">
                             <svg width="81px" height="47px">
@@ -260,19 +276,7 @@
                         </figure>
                         <output class="result" />
                     </label>
-                    <?php $i++ ?>
-                @endif
-            @endforeach
-            @for(; $i <= 4; $i++)
-                <label for="image{{$i}}" class="col-3 ">
-                    <input type="file" class="StepImages" name="image{{$i}}" id="image{{$i}}">
-                    <figure class=" row middle center">
-                        <svg width="81px" height="47px">
-                            <use xlink:href="#imageTemp"></use>
-                        </svg>
-                    </figure>
-                    <output class="result" />
-                </label>
+                </div>
             @endfor
 
         @else

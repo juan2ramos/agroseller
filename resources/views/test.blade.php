@@ -1,9 +1,16 @@
 @extends('layoutBack')
 
 @section('content')
-{!! $table->render() !!}
+    <div class="BackContainer">
+        <div id="preview"></div>
+    </div>
+
 @endsection
 
 @section('scripts')
-    <script src="{{asset('js/forms.js')}}"></script>
+    <script>
+        $('#preview').load('{{route('productPreview')}}', function(response, data, xhr){
+            $('.prouductName').html('<h1>bienvenido</h1>');
+        });
+    </script>
 @endsection
