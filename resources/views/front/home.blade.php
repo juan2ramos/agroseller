@@ -2,15 +2,43 @@
 
 @section('content')
 
-    <section class="BannerTop">
-        <img src="{{url('images/image-banner.jpg')}}" alt="">
-        <div class="BannerTop-info row middle">
-            <div class="col-6 ">
-                <h2>TRACTOR VALTRA A850</h2>
-                <h3>ENTREGA INMENDIATA</h3>
-                <p class="BannerTop-infoPrice"><span>$80.000.000</span> Ahora $50.000.000</p>
+    <section class="BannerTop row">
+        <div class="col-3">
+            <ul class="Nav-categories">
+
+                @inject('menu', 'Agrosellers\Services\MenuFront')
+                @foreach($menu->getCategory() as $key => $category)
+                    <li>
+                        <div>{{$category->name}}
+                            <svg width="7px" height="12px">
+                                <use xlink:href="#arrow"/>
+                            </svg>
+                        </div>
+                        <ul>
+                            @foreach($category->subcategories as $subcategory)
+                                <li>
+                                    <div>
+                                        <a href="{{route('product',['name' => $subcategory->slug])}}">{{$subcategory->name}}</a>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+
+                @endforeach
+
+            </ul>
+        </div>
+        <div class="col-9">
+            <img src="{{url('images/image-banner.jpg')}}" alt="">
+            <div class="BannerTop-info row middle">
+                <div class="col-6 ">
+                    <h2>TRACTOR VALTRA A850</h2>
+                    <h3>ENTREGA INMENDIATA</h3>
+                    <p class="BannerTop-infoPrice"><span>$80.000.000</span> Ahora $50.000.000</p>
+                </div>
+                <div class="col-6 AlignRight"><a class="Button" href="">VER OFERTA</a></div>
             </div>
-            <div class="col-6 AlignRight"><a class="Button" href="">VER OFERTA</a></div>
         </div>
     </section>
     <section class="Products">
@@ -29,11 +57,13 @@
                         </a>
                     </figure>
                     <div class="Product-info">
-                        <a href="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}"><h4>{{$product->name}}</h4></a>
+                        <a href="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}">
+                            <h4>{{$product->name}}</h4></a>
                         <h5>{{$product->subcategory->name}}</h5>
                         <?php $hasOffer = strtotime($product->offers->offer_on) < strtotime('now') && strtotime($product->offers->offer_off) - strtotime('now') > 0 ?>
                         @if($hasOffer)
-                            <p>${{number_format($product->offers->offer_price, 0, " ", ".")}} <span>${{number_format($product->price, 0, " ", ".")}}</span></p>
+                            <p>${{number_format($product->offers->offer_price, 0, " ", ".")}}
+                                <span>${{number_format($product->price, 0, " ", ".")}}</span></p>
                         @else
                             <p>${{number_format($product->price, 0, " ", ".")}}</p>
                         @endif

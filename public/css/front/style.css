@@ -888,11 +888,12 @@ body {
 .BannerTop {
   margin: 2.5rem auto;
   position: relative;
+  height: 23rem;
 }
 
 .BannerTop-info {
-  position: absolute;
-  bottom: .25rem;
+  position: relative;
+  bottom: 7.5rem;
   width: 100%;
   background: rgba(0, 0, 0, 0.7);
   height: 7.5rem;
@@ -1730,6 +1731,46 @@ body {
 .Total {
   font-weight: 400;
   padding: 1.25rem 2.875rem;
+}
+
+.Nav-categories ul {
+  display: none;
+}
+
+.Nav-categories a {
+  color: #27383F;
+  display: block;
+}
+
+.Nav-categories li {
+  border-bottom: 0.0625rem dashed;
+  padding: 1rem;
+  max-width: 92%;
+  position: relative;
+  transition: 0.5s;
+}
+
+.Nav-categories li:hover ul {
+  display: block;
+}
+
+.Nav-categories li ul {
+  position: absolute;
+  left: 100%;
+  background: white;
+  top: 0;
+  z-index: 10;
+  padding: 1rem 2rem;
+  width: 20rem;
+  box-shadow: 0 0 1rem 0 rgba(228, 228, 228, 0.5);
+}
+
+.Nav-categories li ul li {
+  max-width: 100%;
+}
+
+.Nav-categories li ul li:last-child {
+  border: none;
 }
 
 .container {

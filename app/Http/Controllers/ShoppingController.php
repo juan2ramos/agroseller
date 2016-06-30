@@ -82,7 +82,9 @@ class ShoppingController extends Controller
     public function showBack()
     {
         $orders = Auth::user()->orders()->with('products')->get();
+        foreach($orders as $order){
 
+        }
         return view('back.orders', compact('orders'));
     }
 
