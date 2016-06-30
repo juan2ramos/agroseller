@@ -83,7 +83,12 @@ class ShoppingController extends Controller
     {
 
         $orders = Auth::user()->orders()->with('products')->get();
+        foreach($orders as $order){
 
+<<<<<<< HEAD
+        }
+        return view('back.orders', compact('orders'));
+=======
         foreach ($orders as $order) {
             $value = 0;
             foreach ($order->products as $product) {
@@ -93,6 +98,7 @@ class ShoppingController extends Controller
         }
         $states = StateOrder::lists('id', 'name');
         return view('back.orders', compact('orders','states'));
+>>>>>>> 05ded31f072b399b2ed0536784852c117e7ba13c
     }
 
     public function showBackProvider()

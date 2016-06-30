@@ -67,7 +67,7 @@
 @section('scripts')
     <script src="{{asset('js/tables2.js')}}"></script>
     <script>
-        function submitform(idBudget){
+        function submitform(idBudget) {
             $("#budget").val(idBudget);
 
             $('#download').attr('target', '_blank').submit()
