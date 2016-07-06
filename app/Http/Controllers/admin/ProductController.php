@@ -110,7 +110,7 @@ class ProductController extends Controller
 
     function productDetailPreview(Request $request){
         $input = $request->all();
-        if($input['subcategoryId'])
+        if(isset($input['subcategoryId']))
             $id = $input['subcategoryId'];
         else
             $id = $input['subcategoriesId'];
