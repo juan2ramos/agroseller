@@ -90,9 +90,10 @@
                         </a>
                     </td>
                 </tr>
-                @endforeach
-                @endif
-                </div>
+            @endforeach
+        @endif
+        {!! $users->render()  !!}
+        </div>
     </section>
 
     <form role="form" method="post" id="FormUpdateProvider" action="{{ route('updateProvider',':id') }}">
