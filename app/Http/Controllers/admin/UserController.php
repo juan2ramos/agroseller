@@ -22,8 +22,9 @@ class UserController extends Controller
     }
     function user( $id){
 
-        $user = User::findOrFail($id)->get();
-        return view('back.userEdit',compact('user'));
+        $user = User::findOrFail($id);
+        $roles = Role::all();
+        return view('back.userEdit',compact('user', 'roles'));
     }
     function newUserAdmin(Request $request){
         $inputs = $request->all();
