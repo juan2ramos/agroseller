@@ -110,7 +110,11 @@ class ProductController extends Controller
 
     function productDetailPreview(Request $request){
         $input = $request->all();
-        $subcategory = Subcategory::find(intval($input['subcategoryId']));
+        if($input['subcategoryId'])
+            $id = $input['subcategoryId'];
+        else
+            $id = $input['subcategoriesId'];
+        $subcategory = Subcategory::find(intval($id));
         return view('front.productDetailSession', compact('input', 'subcategory'));
     }
 
