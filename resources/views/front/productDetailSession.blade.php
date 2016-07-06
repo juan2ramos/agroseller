@@ -245,6 +245,9 @@
                     <span id="secNumber"></span>
                 </span>
                     </time>
+                    <div class="Offer-description">
+                        {!! $input['DescriptionOffer'] !!}
+                    </div>
                 @endif
 
                 <div class="ProductDetail-quantity">
