@@ -49,12 +49,13 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         if($product->isActive && $product->isValidate){
-            $offer = ($offer = $product->offers()->first()) ?
-                (Carbon::now()->between(new Carbon($offer->offer_on), new Carbon($offer->offer_off)))
-                    ? $offer->offer_price : null : null;
+            $offer = ($offerModel = $product->offers()->first()) ?
+                (Carbon::now()->between(new Carbon($offerModel->offer_on), new Carbon($offerModel->offer_off)))
+                    ? $offerModel->offer_price : null : null;
+            $description = $offerModel->offer_description;
             $questions = $this->reloadQuestions($id);
             $featuresTranslate = $this->setFeaturesTranslate($product);
-            return view('front.productDetail', compact('questions', 'product', 'featuresTranslate','offer'));
+            return view('front.productDetail', compact('questions', 'product', 'featuresTranslate','offer','description'));
         }
         return redirect()->route('home');
     }

@@ -3,14 +3,14 @@
 
     <h2>Notificaciones</h2>
     <hr>
-    <table class="Table Table-first BackContainer capitalize">
+    <table class="Table Table-first ">
         <thead>
         <tr>
             <th>Mensaje</th>
             <th>Fecha</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody class="Table-notification">
         @foreach($notifications as $notifications)
             <tr>
                 <td class=""><a href="{{$notifications->url}}">{{$notifications->text}}</a></td>

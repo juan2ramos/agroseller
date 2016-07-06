@@ -109,6 +109,9 @@
                     <span id="secNumber"></span>
                 </span>
                 </time>
+                <div class="Offer-description">
+                    {!! $description !!}
+                </div>
             @endif
 
             <div class="ProductDetail-quantity">
@@ -325,45 +328,46 @@
         </ul>
     </aside>
 
-@endsection
-@section('scripts')
-        <!-- ******* Slider ******* -->
+    @endsection
+    @section('scripts')
+            <!-- ******* Slider ******* -->
     <script src="{{asset('js/owl.carousel.js')}}"></script>
     <script src="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.js"></script>
     <script src="{{asset('js/front/slide.js')}}"></script>
 
-        <!-- ******* Maps ******* -->
+    <!-- ******* Maps ******* -->
     <script src="{{asset('js/maps.js')}}"></script>
     <script>getPosition('{!!$product->location!!}')</script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap"
+            async defer></script>
 
-        <!-- ******* Comments ******* -->
+    <!-- ******* Comments ******* -->
     <script src="{{asset('js/comments.js')}}"></script>
 
     @if($offer)
-        <?php
-        $fecha = explode('-', $product->offers->offer_off);
-        $day = explode(' ', $fecha[2]);
-        $time = explode(':', $day[1]);
+    <?php
+    $fecha = explode('-', $product->offers->offer_off);
+    $day = explode(' ', $fecha[2]);
+    $time = explode(':', $day[1]);
 
-        $year = $fecha[0];
-        $month = $fecha[1];
-        $day = $day[0];
-        $hour = $time[0];
-        $minute = $time[1];
-        ?>
+    $year = $fecha[0];
+    $month = $fecha[1];
+    $day = $day[0];
+    $hour = $time[0];
+    $minute = $time[1];
+    ?>
 
             <!-- ******* Timer ******* -->
-        <script src="{{asset('js/front/product.js')}}"></script>
-        <script>
-            countDown({
-                'year': {!! $year !!},
-                'month': {!! $month !!},
-                'day': {!! $day !!},
-                'hour': {!! $hour !!},
-                'minute': {!! $minute !!}
-            });
-        </script>
+    <script src="{{asset('js/front/product.js')}}"></script>
+    <script>
+        countDown({
+            'year': {!! $year !!},
+            'month': {!! $month !!},
+            'day': {!! $day !!},
+            'hour': {!! $hour !!},
+            'minute': {!! $minute !!}
+        });
+    </script>
     @endif
     <script>
         $('#buy').on('click', function (e) {
