@@ -128,6 +128,7 @@
                     <input type="hidden" id="Description" name="description" value="">
                     <input type="hidden" id="DescriptionOffer" name="offer_description" value="">
                 </form>
+                <form style="display:none" class="formProductPreview" action="{{route('productDetailPreview')}}" method="post" target="_blank"></form>
             </article>
     </section>
 
@@ -148,7 +149,6 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap" async defer></script>
         <script src="{{asset('js/jquery.datetimepicker.full.min.js')}}"></script>
         <script src="{{asset('js/products.js')}}"></script>
-        <script>setPreview('{{route('productProviderPreview')}}')</script>
         <script src="{{asset('js/forms.js')}}"></script>
         <script src="{{asset('js/images.js')}}"></script>
         <script src="http://cdn.quilljs.com/latest/quill.js"></script>
@@ -218,7 +218,6 @@
             $('.MessagePlatform-close').on('click', function(){
                 window.location.replace("/admin/productos");
             });
-
         </script>
 @endsection
 @section('styles')

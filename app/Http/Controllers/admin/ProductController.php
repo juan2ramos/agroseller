@@ -4,6 +4,7 @@ namespace Agrosellers\Http\Controllers\admin;
 
 use Agrosellers\Entities\Notification;
 use Validator;
+use Session;
 use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +12,7 @@ use Agrosellers\Http\Controllers\Controller;
 use Agrosellers\Entities\Category;
 use Agrosellers\Entities\ProductFile;
 use Agrosellers\Entities\Provider;
-
+use Agrosellers\Entities\Subcategory;
 use Agrosellers\Entities\Product;
 class ProductController extends Controller
 {
@@ -107,8 +108,10 @@ class ProductController extends Controller
         return view('back.productAgentPreview', compact('product'));
     }
 
-    function productProviderPreview(){
-        return view('back.productProviderPreview');
+    function productDetailPreview(Request $request){
+        $input = $request->all();
+        $subcategory = Subcategory::find(intval($input['subcategoryId']));
+        return view('front.productDetailSession', compact('input', 'subcategory'));
     }
 
     function validateProduct($id){

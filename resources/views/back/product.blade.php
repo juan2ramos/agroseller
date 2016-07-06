@@ -204,6 +204,7 @@
                 <input type="hidden" id="Description" name="description" value="">
                 <input type="hidden" id="DescriptionOffer" name="offer_description" value="">
             </form>
+            <form style="display:none" class="formProductPreview" action="{{route('productDetailPreview')}}" method="post" target="_blank"></form>
         </article>
     </section>
 
@@ -256,34 +257,6 @@
             $('#DescriptionOffer').val(editorOffer.getHTML());
         });
     </script>
-        <!-- ******* Slider ******* -->
-        <script src="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.js"></script>
-        <script src="{{asset('js/front/slide.js')}}"></script>
-
-        if($offer)
-        ?php
-        $fecha = explode('-', $product->offers->offer_off);
-        $day = explode(' ', $fecha[2]);
-        $time = explode(':', $day[1]);
-
-        $year = $fecha[0];
-        $month = $fecha[1];
-        $day = $day[0];
-        $hour = $time[0];
-        $minute = $time[1];
-        ?>
-
-        <!-- ******* Timer ******* -->
-        <script src="{{asset('js/front/product.js')}}"></script>
-        <script>
-            countDown({
-                'year': 2016,
-                'month': 6,
-                'day': 29,
-                'hour': 12,
-                'minute': 10
-            });
-        </script>
 @endsection
 @section('styles')
     <link href="{{ asset('css/jquery.datetimepicker.css') }}" rel="stylesheet">

@@ -130,6 +130,77 @@ $(document).ready(function () {
 
     $categoriesList.children('li:nth-child(' + categoryId +')').click();
 
+    $('.productDetailAction').on('click', function(){
+        var $form = $('.formProductPreview');
+        $form.html('<input style="display:none" type="submit" class="productDetailSession">');
+
+        var input = $('input[type="text"], input[type="hidden"], input[type="number"]'),
+            checkbox = $('input[type="checkbox"]'),
+            images = $('.result figure img'),
+            categories = $('#categoriesList').children(),
+            subcategories = $('#subcategoriesList').children();
+
+        var searchData = function(object, attr, type, name){
+            var elements = "";
+
+            for(var i = 0; i < object.length; i++){
+                var flag = false,
+                    item = object.eq(i),
+                    idItem = item.attr('id'),
+                    valueItem = item.attr(attr),
+                    finalValue = "",
+                    finalName = "";
+
+                if(!valueItem) valueItem = item.val();
+
+                if(type == 'select'){
+                    if(item.hasClass('selected')){
+                        flag = true;
+                        finalValue = valueItem;
+                        finalName  = name + '';
+                    }
+                }
+                else if(type == 'image'){
+                    if(valueItem){
+                        flag = true;
+                        finalValue = valueItem;
+                        finalName  = name + i;
+                    }
+                }
+
+                else if(type == 'checkbox'){
+                    if(item.attr('checked') == 'checked'){
+                        flag = true;
+                        finalValue = valueItem;
+                        finalName  = idItem;
+                    }
+                }
+
+                else if(type == 'text'){
+                    if(valueItem && idItem){
+                        if(idItem == 'token')
+                            idItem = '_token';
+                        flag = true;
+                        finalValue = valueItem;
+                        finalName  = idItem;
+                    }
+                }
+
+                if(flag)
+                    elements += "<input type='text' value='" + finalValue + "' name='" + finalName +"'>";
+            }
+            return elements;
+        };
+
+        $form.append(searchData(subcategories, 'data-id', 'select', 'subcategoriesId'));
+        $form.append(searchData(categories, 'data-id', 'select', 'categoriesId'));
+        $form.append(searchData(images, 'src', 'image', 'image'));
+        $form.append(searchData(input, 'value', 'text', 'auto'));
+        $form.append(searchData(checkbox, 'value', 'checkbox', 'auto'));
+
+        $('.productDetailSession').trigger('click');
+    });
+
 });
 
 function steps(from, to) {
@@ -149,8 +220,6 @@ function steps(from, to) {
     }
     if (to == 4) {
         DetailsProduct();
-        $('.Step-4').css('width', '10px');
-        $('.Step-4').css('width', '100%');
     }
     widthLine = 25 * to;
     $('.Wizard li:nth-child(' + to + ')').addClass('current');
@@ -160,6 +229,23 @@ function steps(from, to) {
 }
 
 function DetailsProduct() {
+    /*$('.owl-wrapper').html('');
+    var count = 0;
+
+    for(i = 0; i < 4; i++){
+        var $result = $('.result').eq(i);
+        if($result.children().length > 0){
+            var image = $result.children('figure').children('img').attr('src');
+            $('#sync1 .owl-wrapper').append('<div style="width: 379px;" class="owl-item"><figure class="item"><img src="'+ image + '" alt=""></figure></div>');
+            $('#sync2 .owl-wrapper').append('<div style="width: 95px;" class="owl-item"><figure class="item"><img src="'+ image + '" alt=""></figure></div>');
+            count += 1;
+        }
+        else
+            break;
+    }
+    $('#sync1 .owl-wrapper').css('width', (379 * count) + 'px');
+    $('#sync2 .owl-wrapper').css('width', (95 * count) + 'px');*/
+
     var $DetailsProduct = $("#detailsProduct");
     $DetailsProduct.html('');
     var pos = '';
@@ -226,8 +312,8 @@ function DetailsProduct() {
             }
             if ($(this).hasClass('StepImages')) {
                 nameProduct = "Imagen ";
-                ValueProduct = $(this).val().replace(/C:\\fakepath\\/i, '');
-
+                ValueProduct = $(this).val();//.replace(/C:\\fakepath\\/i, '');
+                $('#sync1 .owl-wrapper').html('<div style="width: 379px;" class="owl-item"><figure class="item"><img src="' + ValueProduct + '" alt=""></figure></div>');
             }
 
             if (ValueProduct != "") {
