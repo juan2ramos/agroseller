@@ -257,6 +257,78 @@
             $('#DescriptionOffer').val(editorOffer.getHTML());
         });
     </script>
+        <script>
+            $('.productDetailAction').on('click', function(){
+                var $form = $('.formProductPreview');
+                $form.html('<input style="display:none" type="submit" class="productDetailSession">');
+
+                var input = $('input[type="text"], input[type="hidden"], input[type="number"]'),
+                        checkbox = $('input[type="checkbox"]'),
+                        images = $('.result figure img'),
+                        categories = $('#categoriesList').children(),
+                        subcategories = $('#subcategoriesList').children();
+
+                var searchData = function(object, attr, type, name){
+                    var elements = "";
+
+                    for(var i = 0; i < object.length; i++){
+                        var flag = false,
+                                item = object.eq(i),
+                                idItem = item.attr('id'),
+                                valueItem = item.attr(attr),
+                                finalValue = "",
+                                finalName = "";
+
+                        if(!valueItem) valueItem = item.val();
+
+                        if(type == 'select'){
+                            if(item.hasClass('selected')){
+                                flag = true;
+                                finalValue = valueItem;
+                                finalName  = name + '';
+                            }
+                        }
+                        else if(type == 'image'){
+                            if(valueItem){
+                                flag = true;
+                                finalValue = valueItem;
+                                finalName  = name + i;
+                            }
+                        }
+
+                        else if(type == 'checkbox'){
+                            if(item.attr('checked') == 'checked'){
+                                flag = true;
+                                finalValue = valueItem;
+                                finalName  = idItem;
+                            }
+                        }
+
+                        else if(type == 'text'){
+                            if(valueItem && idItem){
+                                if(idItem == 'token')
+                                    idItem = '_token';
+                                flag = true;
+                                finalValue = valueItem;
+                                finalName  = idItem;
+                            }
+                        }
+
+                        if(flag)
+                            elements += "<input type='text' value='" + finalValue + "' name='" + finalName +"'>";
+                    }
+                    return elements;
+                };
+
+                $form.append(searchData(subcategories, 'data-id', 'select', 'subcategoriesId'));
+                $form.append(searchData(categories, 'data-id', 'select', 'categoriesId'));
+                $form.append(searchData(images, 'src', 'image', 'image'));
+                $form.append(searchData(input, 'value', 'text', 'auto'));
+                $form.append(searchData(checkbox, 'value', 'checkbox', 'auto'));
+
+                $('.productDetailSession').trigger('click');
+            });
+        </script>
 @endsection
 @section('styles')
     <link href="{{ asset('css/jquery.datetimepicker.css') }}" rel="stylesheet">
