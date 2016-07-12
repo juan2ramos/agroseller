@@ -3,8 +3,8 @@
 @section('emailMessage')
     <tr>
         <td style="font-size:0;padding-top:10px;padding-bottom:10px;padding-right:25px;padding-left:25px;" align="left">
-            <div class="mj-content"
-                 style="cursor:auto;color:#848484;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;">
+          <div class="mj-content"
+               style="cursor:auto;color:#27383F;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;     font-weight: bolder;">
                 De parte del proyecto Agrosellers ‘’ tienda en línea para el agro’’ les hacemos la invitación para que
                 sean partícipes del FOCUS GROUP el cual se va a realizar el día 16 de julio de 2016.
             </div>
@@ -13,8 +13,8 @@
 
     <tr>
         <td style="font-size:0;padding-top:10px;padding-bottom:10px;padding-right:25px;padding-left:25px;" align="left">
-            <div class="mj-content"
-                 style="cursor:auto;color:#848484;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;">
+          <div class="mj-content"
+               style="cursor:auto;color:#27383F;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;     font-weight: bolder;">
                 <b>Lugar:</b> Edificio Navarra- Carrera 21 – #108ª-10, apartamento 302 <br>
                 <b>Hora:</b> 3:00 p:m
 

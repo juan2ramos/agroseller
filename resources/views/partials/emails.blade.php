@@ -124,7 +124,7 @@
 
                     <table border="0" cellpadding="0" cellspacing="0"><tr><td style="width:300px;">
 
-                    <![endif]--><div style="vertical-align:top;display:inline-block;font-size:13px;text-align:left;" class="mj-column-per-50" aria-labelledby="mj-column-per-50"><table width="100%"><tbody><tr><td style="font-size:0;padding-top:0px;padding-bottom:0px;padding-right:0px;padding-left:22px;" align="left"><table cellpadding="0" cellspacing="0" style="border-collapse:collapse;border-spacing:0px;" align="left"><tbody><tr><td><img alt="" src="https://gallery.mailchimp.com/7fa5c97c25cc95de21dbf7485/images/85336a26-b5fa-4923-a856-770c3159b1f1.png" style="border:none;display:block;outline:none;text-decoration:none;max-width:150px;height:auto;" width="150" height="auto"></td></tr></tbody></table></td></tr></tbody></table></div><!--[if mso]>
+                    <![endif]--><div style="vertical-align:top;display:inline-block;font-size:13px;text-align:left;" class="mj-column-per-50" aria-labelledby="mj-column-per-50"><table width="100%"><tbody><tr><td style="font-size:0;padding-top:0px;padding-bottom:0px;padding-right:0px;padding-left:22px;" align="left"><table cellpadding="0" cellspacing="0" style="border-collapse:collapse;border-spacing:0px;" align="left"><tbody><tr><td><img alt="" src="http://104.236.200.214/images/logo-agrosellers.svg" style="border:none;display:block;outline:none;text-decoration:none;max-width:150px;height:auto;" width="150" height="auto"></td></tr></tbody></table></td></tr></tbody></table></div><!--[if mso]>
 
                     </td><td style="width:300px;">
 
@@ -215,4 +215,3 @@
     <![endif]--><div style="margin:0 auto;max-width:600px;background-color:#27383F;"><table class="" cellpadding="0" cellspacing="0" style="width:100%;font-size:0px;background-color:#27383F;" align="center"><tbody><tr><td style="text-align:center;vertical-align:top;font-size:0;padding-top:0px;padding-bottom:0px;"><!--[if mso]>
 
       <table border="0" cellpadding="0" cellspacing="0...
-
