@@ -87,12 +87,12 @@
             <label for="policy" class="Forms-checkout" >
                 <input type="checkbox" name="policy" id="policy">
                 <sub></sub>
-                Acepto las politicas de uso del sitio Agrosellers. <a href="">Ver</a>
+                Acepto las politicas de uso del sitio Agrosellers. <a href="{{url('pdf/politicas_de_uso_del_sitio.pdf')}}">Ver</a>
             </label>
             <label for="terms" class="Forms-checkout">
                 <input type="checkbox" name="terms" id="terms" >
                 <sub></sub>
-                Acepto las politicas de privacidad. <a href="">Ver</a>
+                Acepto las politicas de privacidad. <a href="{{url('pdf/politicas_privacidad.pdf')}}">Ver</a>
             </label>
 
             <button type="submit" class="Button submit"> REGISTRATE</button>

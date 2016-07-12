@@ -16,14 +16,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () {
     require __DIR__ . '/Routes/admin.php';
 });
 
-/*Route::get('mailjk',[function(){
+Route::get('mailjk',[function(){
     $user = [];
     $m = Mailgun::send('emails.focusGroup', $user, function($message)
     {
-        $message->to('focusgroup@mailgun.agrosellers.com')->subject('Estás invitado a el Focus Group agrosellers');
-        $message->tag('testTag');
-        $message->from('info@agrosellers.com', 'Agrosellers - una compra inteligente');
+        $message->to('grupoagrosellers@mailgun.agrosellers.com')->subject('Invitacion focus group Agrosellers');
+        $message->tag('testGroupAgro');
+        $message->from('info@agrosellers.com', 'Agrosellers');
         $message->trackOpens(true);
     });
     dd($m);
-},'as'=>'sesiones']);*/
+},'as'=>'sesiones']);
