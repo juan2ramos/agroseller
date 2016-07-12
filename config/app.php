@@ -130,6 +130,7 @@ return [
         'Gbrock\Table\Providers\TableServiceProvider',
         Barryvdh\DomPDF\ServiceProvider::class,
         Agrosellers\Providers\ViewComposerServiceProvider::class,
+        Bogardo\Mailgun\MailgunServiceProvider::class,
 
     ],
     /*
@@ -181,5 +182,6 @@ return [
         'Table'      => 'Gbrock\Table\Facades\Table',
         'Date' => Jenssegers\Date\Date::class,
         'PDF' => 'Barryvdh\DomPDF\Facade',
+        'Mailgun' => Bogardo\Mailgun\Facades\Mailgun::class
     ],
 ];

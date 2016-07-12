@@ -5,14 +5,15 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=5.5.9",
+        "php": "^5.5|^7.0",
         "laravel/framework": "5.2.*",
         "barryvdh/laravel-debugbar": "^2.0",
-        "guzzlehttp/guzzle": "^6.1",
+        "guzzlehttp/guzzle": " ~5.0 ",
         "nesbot/carbon": "^1.21",
         "jenssegers/date": "^3.2",
         "gbrock/laravel-table": "dev-master",
-        "barryvdh/laravel-dompdf": "0.6.*"
+        "barryvdh/laravel-dompdf": "0.6.*",
+        "bogardo/mailgun": "4.0.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
