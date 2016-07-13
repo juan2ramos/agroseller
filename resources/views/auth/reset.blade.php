@@ -26,27 +26,27 @@
     @endif
 
     <form class="row center middle FormAuth Forms Login" role="form" method="POST" action="/password/reset">
-    <div class="BackContainer FormAuth-container">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" name="token" value="{{ $token }}">
-        <h2>TU NUEVA CONTRASEÑA</h2>
+        <div class="BackContainer FormAuth-container">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="token" value="{{ $token }}">
+            <h2>TU NUEVA CONTRASEÑA</h2>
 
-        <label for="email">
-            <input type="email" name="email" value="{{ old('email') }}">
-            <span>E-mail</span>
-        </label>
-        <label for="email">
-            <input type="email" name="email" value="{{ old('password') }}">
-            <span>Contraseña</span>
-        </label>
-        <label for="email">
-            <input type="email" name="email" value="{{ old('password_confirmation') }}">
-            <span>Confirmar Contraseña</span>
-        </label>
+            <label for="email">
+                <input type="email" name="email" value="{{ old('email') }}">
+                <span>E-mail</span>
+            </label>
+            <label for="password">
+                <input type="password" name="password" id="password">
+                <span>Contraseña</span>
+            </label>
+            <label for="password_confirmation">
+                <input type="password_confirmation" id="password_confirmation" name="password_confirmation">
+                <span>Confirmar Contraseña</span>
+            </label>
 
 
-        <button type="submit" class="Button submit"> RESTAURAR</button>
-    </div>
+            <button type="submit" class="Button submit"> RESTAURAR</button>
+        </div>
     </form>
 
 
