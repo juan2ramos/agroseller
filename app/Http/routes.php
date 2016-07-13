@@ -2,10 +2,10 @@
 Route::bind('product',function($id){
     return \Agrosellers\Entities\Product::find($id);
 });
-require __DIR__ . '/Routes/auth.php';
+
 Route::group(['middleware' => ['web']], function () {
     require __DIR__ . '/Routes/front.php';
-
+    require __DIR__ . '/Routes/auth.php';
 
     Route::get('sesiones',[function(){
         dd(Session::get('cart'));
