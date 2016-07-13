@@ -63,6 +63,11 @@ Route::group(['namespace' => 'admin'], function () {
         'uses' => 'ProductController@validateProduct',
         'as' => 'validateProduct'
     ]);
+
+    Route::get('clientes', [
+        'uses' => 'ClientController@showClients',
+        'as' => 'clients'
+    ]);
 });
 
 Route::get('proveedores', [
@@ -70,10 +75,6 @@ Route::get('proveedores', [
     'as' => 'providers'
 ]);
 
-Route::get('clientes', [
-    'uses' => 'HomeAdminController@showUser',
-    'as' => 'clients'
-]);
 Route::get('ofertas', [
     'uses' => 'HomeAdminController@showUser',
     'as' => 'offers'

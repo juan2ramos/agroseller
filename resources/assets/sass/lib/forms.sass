@@ -53,6 +53,20 @@ label.file
     color: gray
     border: 1px solid #C5C5C5
     border-radius: 0
+    &.error
+      border-color: #d36464
+  p.error
+    position: relative
+    text-align: left
+    margin: 0
+    font-size: 15px
+    top: -18px
+    height: 0
+    color: #d36464
+  .Terms p.error
+    height: auto
+    top: 0
+    font-weight: 400
   & textarea
     padding: 2rem 1.5rem 0
     resize: vertical
@@ -215,6 +229,7 @@ label.file
     top: -0.3125rem
     width: calc(100% + 5px)
     height: 11.53125rem
+
 
 .Forms input[type="radio"]
   display: inline-block

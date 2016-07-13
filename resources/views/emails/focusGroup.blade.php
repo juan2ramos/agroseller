@@ -31,7 +31,7 @@
                 de las empresas del agro, poder cotizar y comprar con mayor facilidad todos los productos como;
                 fertilizantes, herramientas, maquinaria, logística, servicios especiales, insumos pecuarios y tecnología
                 agrícola.
-                Esperamos poder contar con su asistencia,<br>
+                Esperamos poder contar con su asistencia,<br><br>
                 Muchas gracias <br>
                 <b>Atte: Equipo Agrosellers.</b>
             </div>

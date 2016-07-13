@@ -1,40 +1,57 @@
 @extends('layout')
 
 @section('content')
-    <figure class="Login-logo">
-        <a href="/"><img src="{{ url('logo-agrosellers.svg') }}" alt=""></a>
-    </figure>
-    <a href="{{route('register')}}">
-        <button class="Header-login">Registrate</button>
-    </a>
-    <main class="Login">
+    <header class="HeaderAuth">
+        <div class="HeaderAuth-content row middle ">
+            <figure class="col-8 ">
+                <a href="/"><img src="{{ url('images/logo-agrosellers.svg') }}" alt=""></a>
+            </figure>
+            <a class="col-2 end" href="{{route('login')}}">
+                <button class="Button">INICIAR SESIÓN</button>
+            </a>
+            <a class="col-2 end" href="{{route('register')}}">
+                <button class="Button">REGISTRATE</button>
+            </a>
+        </div>
+    </header>
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form class="row center middle FormAuth Forms Login" role="form" method="POST" action="/password/reset">
+    <div class="BackContainer FormAuth-container">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="token" value="{{ $token }}">
+        <h2>TU NUEVA CONTRASEÑA</h2>
+
+        <label for="email">
+            <input type="email" name="email" value="{{ old('email') }}">
+            <span>E-mail</span>
+        </label>
+        <label for="email">
+            <input type="email" name="email" value="{{ old('password') }}">
+            <span>Contraseña</span>
+        </label>
+        <label for="email">
+            <input type="email" name="email" value="{{ old('password_confirmation') }}">
+            <span>Confirmar Contraseña</span>
+        </label>
 
 
-        @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        <button type="submit" class="Button submit"> RESTAURAR</button>
+    </div>
+    </form>
 
-        <form class="form-horizontal" role="form" method="POST" action="/password/reset">
-            <h2>Tu nueva contraseña</h2>
-            <hr class="Logo-hr">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <input type="hidden" name="token" value="{{ $token }}">
-
-
-                    <input type="email" placeholder="E-mail" class="form-control" name="email" value="{{ old('email') }}">
-                    <input type="password" placeholder="Contraseña"  class="form-control" name="password">
-                    <input type="password" placeholder="Confirmar Contraseña" class="form-control" name="password_confirmation">
-
-            <button type="submit" class="Login-submit"> Restablecer Contraseña</button>
-
-        </form>
-    </main>
 
 @endsection
+
+
+
+

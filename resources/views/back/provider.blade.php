@@ -23,9 +23,8 @@
             <tr>
                 <th>Nombre proveedor</th>
                 <th>Email</th>
-                <th>Contacto</th>
-                <th>Teléfono</th>
                 <th>Estado</th>
+                <th>Agente </th>
                 <th>Acciones</th>
             </tr>
             </thead>
@@ -36,8 +35,8 @@
                     <tr>
                         <td> {{ $provider->user->name }}</td>
                         <td> {{ $provider->user->email }}</td>
-                        <td>{{$provider->contact}}</td>
-                        <td>{{$provider['contact-phone']}}</td>
+
+
                         <td>
                             @if(!$provider->NIT)
                                 Sin registro
@@ -67,8 +66,7 @@
                 <tr>
                     <td> {{ $user->name }}</td>
                     <td> {{ $user->email }}</td>
-                    <td>@if( $user->provider) {{$user->provider->contact}} @endif</td>
-                    <td>@if( $user->provider) {{$user->provider['contact-phone']}} @endif</td>
+
                     <td>
                         @if(!$user->provider->NIT)
                             Sin registro
@@ -78,6 +76,7 @@
                             Activo
                         @endif
                     </td>
+                    <td>{{$user->provider->agent->user->name}} </td>
                     <td>
                         @if($user->provider->NIT)
                             <a href="{{ route('showUser',$user->id) }}" class="icon-binoculars">

@@ -57,11 +57,18 @@ class AuthController extends Controller
                 confirmed',
                 'role_id' => 'required|numeric|between:3,4',
                 'mobile_phone' => 'required|numeric',
+                'policy' => 'required',
+                'terms' => 'required',
             ],
             [
-                'between' => 'Debes escoger que tipo de cliente eres',
+                'name.required' => 'El nombre es obligatorio',
+                'email.unique' => 'Este usuario ya existe',
+                'email.required' => 'El email es obligatorio',
+                'role_id.between' => 'Debes escoger que tipo de cliente eres',
                 'password.regex' => 'Tu contraseña es muy débil, revisa las recomendaciones ',
                 'mobile_phone.required' => 'EL campo teléfono es obligatorio ',
+                'policy.required' => 'Debes aceptar las politicas de uso',
+                'terms.required' => 'Debes aceptar las politicas de privacidad',
             ]);
     }
 
@@ -98,7 +105,7 @@ class AuthController extends Controller
      */
     public function redirectPath()
     {
-        if(!auth()->user()->client)
+        if (!auth()->user()->client)
             return route('clientInformationIndex');
         return route('admin');
     }
@@ -115,11 +122,13 @@ class AuthController extends Controller
 
         $user = $this->create($request->all());
 
-        if($user->role_id == 3){
-            $agent = Agent::with('providers')->get()->sortBy(function($agent){return $agent->providers()->count();})->first();
+        if ($user->role_id == 3) {
+            $agent = Agent::with('providers')->get()->sortBy(function ($agent) {
+                return $agent->providers()->count();
+            })->first();
             $provider = new Provider;
-            $provider->agent_id  = $agent->id;
-            $provider->user_id   = $user->id;
+            $provider->agent_id = $agent->id;
+            $provider->user_id = $user->id;
             $provider->save();
 
             Notification::create([
@@ -127,8 +136,7 @@ class AuthController extends Controller
                 'text' => 'Se ha registrado un proveedor',
                 'url' => route('searchProvider')
             ]);
-        }
-        else {
+        } else {
             Mail::send('emails.welcome', ['user' => $user], function ($m) use ($user) {
                 $m->to($user->email, $user->name)->subject('Bienvenido!');
             });

@@ -124,7 +124,7 @@
 
                     <table border="0" cellpadding="0" cellspacing="0"><tr><td style="width:300px;">
 
-                    <![endif]--><div style="vertical-align:top;display:inline-block;font-size:13px;text-align:left;" class="mj-column-per-50" aria-labelledby="mj-column-per-50"><table width="100%"><tbody><tr><td style="font-size:0;padding-top:0px;padding-bottom:0px;padding-right:0px;padding-left:22px;" align="left"><table cellpadding="0" cellspacing="0" style="border-collapse:collapse;border-spacing:0px;" align="left"><tbody><tr><td><img alt="" src="http://104.236.200.214/images/logo-agrosellers.svg" style="border:none;display:block;outline:none;text-decoration:none;max-width:150px;height:auto;" width="150" height="auto"></td></tr></tbody></table></td></tr></tbody></table></div><!--[if mso]>
+                    <![endif]--><div style="vertical-align:top;display:inline-block;font-size:13px;text-align:left;" class="mj-column-per-50" aria-labelledby="mj-column-per-50"><table width="100%"><tbody><tr><td style="font-size:0;padding-top:0px;padding-bottom:0px;padding-right:0px;padding-left:22px;" align="left"><table cellpadding="0" cellspacing="0" style="border-collapse:collapse;border-spacing:0px;" align="left"><tbody><tr><td><img alt="" src="http://agrosellers.com/assets/images/1.png" style="border:none;display:block;outline:none;text-decoration:none;max-width:150px;height:auto;" width="150" height="auto"></td></tr></tbody></table></td></tr></tbody></table></div><!--[if mso]>
 
                     </td><td style="width:300px;">
 

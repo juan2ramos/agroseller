@@ -21,7 +21,7 @@ class ProviderController extends Controller
 
     function showProviders()
     {
-        $users = User::where('role_id', '=', 3)->with('provider')->paginate(10);
+        $users = User::where('role_id', '=', 3)->with('provider.agent')->paginate(10);
         $roleName = $this->roleName;
         $routeSearch = 'searchProvider';
         return view('back.provider', compact('users', 'roleName', 'routeSearch'));

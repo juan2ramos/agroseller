@@ -280,7 +280,7 @@ h2 {
   box-shadow: 0 0 1.875rem 0 rgba(0, 0, 0, 0.1); }
   .Table thead {
     color: white;
-    background: #4F4F4F; }
+    background: #27383F; }
     .Table thead a {
       width: auto; }
   .Table tbody tr:nth-child(even) {
@@ -762,6 +762,22 @@ label.file {
   color: gray;
   border: 1px solid #C5C5C5;
   border-radius: 0; }
+  .Forms input.error, .Forms textarea.error, .Forms select.error {
+    border-color: #d36464; }
+
+.Forms p.error {
+  position: relative;
+  text-align: left;
+  margin: 0;
+  font-size: 15px;
+  top: -18px;
+  height: 0;
+  color: #d36464; }
+
+.Forms .Terms p.error {
+  height: auto;
+  top: 0;
+  font-weight: 400; }
 
 .Forms textarea {
   padding: 2rem 1.5rem 0;

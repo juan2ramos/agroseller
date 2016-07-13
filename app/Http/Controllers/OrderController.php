@@ -40,7 +40,8 @@ class OrderController extends Controller
         Session::forget('valueTotal');
 
 
-        return view('front.checkout', ['success' => true]);
+        return redirect()->action('ShoppingController@showBack', ['open' => true]);
+
     }
 
     public function updateStateOrder(Request $request)

@@ -501,7 +501,7 @@ main {
   background: #E48D8D; }
 
 main {
-  max-width: 71.25rem;
+  max-width: 80rem;
   margin: auto; }
 
 body {
@@ -522,7 +522,7 @@ body {
     top: .125rem; }
 
 .BarInfo-content {
-  max-width: 71.25rem;
+  max-width: 80rem;
   margin: auto; }
 
 .Header {
@@ -530,7 +530,7 @@ body {
 
 .Header-container {
   margin: auto;
-  max-width: 71.25rem;
+  max-width: 80rem;
   height: 7.5rem; }
 
 .Header-search {
@@ -569,7 +569,7 @@ body {
 
 .BarNav-content {
   margin: auto;
-  max-width: 71.25rem;
+  max-width: 80rem;
   height: 2.5rem; }
   .BarNav-content button span {
     background: #253A1B;
@@ -855,7 +855,7 @@ body {
   box-shadow: 0 0 0.25rem 0 rgba(113, 113, 113, 0.5); }
   .Relate article {
     margin: auto;
-    max-width: 71.25rem; }
+    max-width: 80rem; }
   .Relate figure {
     max-width: 14.5rem;
     margin-right: 1rem;
@@ -1303,7 +1303,7 @@ body {
 
 .Footer-content {
   margin: auto;
-  max-width: 71.25rem;
+  max-width: 80rem;
   height: 100%; }
 
 .Footer-logo img {

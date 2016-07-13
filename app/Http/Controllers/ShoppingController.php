@@ -79,10 +79,12 @@ class ShoppingController extends Controller
         Session::forget('valueTotal');
     }
 
-    public function showBack()
+    public function showBack(Request $request)
     {
 
-        $orders = Auth::user()->orders()->with('products')->get();
+        $open = $request->get('open') ;
+
+        $orders = Auth::user()->orders()->with('products')->orderBy('created_at','DESC')->get();
 
         foreach ($orders as $order) {
             $value = 0;
@@ -92,7 +94,7 @@ class ShoppingController extends Controller
             $order->total = $value;
         }
         $states = StateOrder::lists('id', 'name');
-        return view('back.orders', compact('orders','states'));
+        return view('back.orders', compact('orders','states','open'));
     }
 
     public function showBackProvider()
