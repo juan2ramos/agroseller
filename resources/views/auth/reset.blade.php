@@ -40,7 +40,7 @@
                 <span>Contraseña</span>
             </label>
             <label for="password_confirmation">
-                <input type="password_confirmation" id="password_confirmation" name="password_confirmation">
+                <input type="password" id="password_confirmation" name="password_confirmation">
                 <span>Confirmar Contraseña</span>
             </label>
 
@@ -52,6 +52,10 @@
 
 @endsection
 
+@section('scripts')
+    <script src="{{asset('js/forms.js')}}"></script>
+    <script src="{{asset('js/password.js')}}"></script>
+@endsection
 
 
 
