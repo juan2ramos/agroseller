@@ -9,7 +9,7 @@ use Jenssegers\Date\Date;
 
 class Budget extends Model
 {
-    protected $fillable = [];
+    protected $fillable = ['created_at'];
 
     public function user()
     {
@@ -29,8 +29,9 @@ class Budget extends Model
 
     public function getCreatedBudgetAttribute()
     {
+
         $date = new Date($this->created_at);
-        return $date->format('l j F Y');
+        return $date->format('l j F Y H:i:s');
     }
 
     public function getTotalValueAttribute()

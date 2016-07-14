@@ -9,7 +9,7 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>asdasd</title>
+    <title>Agrosellers Nº {{$budget->id}} - cliente: {{$user->name}}</title>
     <style>
         * {
             margin: 0;
@@ -51,10 +51,11 @@
 
 </div>
 <div style="padding: 40px">
-    <p style="padding: 8px 0"><b>Cliente:</b> {{$user->name}}</p>
-    <p style="padding: 8px 0"><b>Email:</b> {{$user->email}}</p>
-    <p style="padding: 8px 0"><b>Fecha de creación:</b> {{$date}}</p>
-    <p style="padding: 8px 0"><b>Teléfono: </b>{{$user->phone}}</p>
+    <p style="padding: 5px 0"><b>Cliente:</b> {{$user->name}}</p>
+    <p style="padding: 5px 0"><b>Email:</b> {{$user->email}}</p>
+    <p style="padding: 5px 0"><b>Fecha creación:</b> {{$budget->createdBudget}} </p>
+    <p style="padding: 5px 0"><b>Fecha descarga:</b> {{$date}} </p>
+    <p style="padding: 5px 0"><b>Teléfono: </b>{{$user->phone}}</p>
 
     <table style="width: 100%;margin: 20px 0; " >
         <thead>

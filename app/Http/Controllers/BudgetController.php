@@ -42,13 +42,13 @@ class BudgetController extends Controller
         $user = Auth::user();
         $budget = Budget::find($request->input('budget_id'));
         $date = new Date();
-        $date = $date->format('l j F Y');
+        $date = $date->format('l j F Y H:i:s');
 
 
         $view =  view('pdf.invoice', compact('budget','user', 'date'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        return $pdf->stream('nombre',array('Attachment'=>0));
+        return $pdf->stream('Agrosellers Nº '. $budget->id .' - cliente: '. $user->name,array("Attachment"=>0));
 
     }
 }
