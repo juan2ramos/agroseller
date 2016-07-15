@@ -42,7 +42,7 @@
 <div style="width: 100%;background: #27383F; padding: 28px 40px ; ">
     <div style="display: inline-block; width: 48%">
         <img alt=""
-             src="{{ url('images/agrosellers-logo.png') }}"
+             src="http://agrosellers.com/assets/images/1.png"
              style="border:none;display:block;outline:none;text-decoration:none;max-width:150px;height:auto;"
              width="150" height="auto">
     </div>
