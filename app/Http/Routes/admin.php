@@ -8,6 +8,12 @@ Route::group(['namespace' => 'admin'], function () {
         'middleware' => 'VerifyProvider',
     ]);
 
+    Route::get('pagos', [
+        'uses' => 'PayController@index',
+        'as' => 'pay',
+        'middleware' => 'VerifyProvider',
+    ]);
+
     Route::post('productos/delete/{id}', [
         'uses' => 'ProductController@lockProduct',
         'as' => 'deleteProduct'

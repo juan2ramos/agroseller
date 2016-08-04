@@ -10,7 +10,6 @@ class Menu
 {
     private $menuUser = [];
     private $user;
-
     function __construct()
     {
         $this->menuUsers();
@@ -31,11 +30,10 @@ class Menu
 
         $this->menuUser = $menuUser;
     }
-
     function getMenu(){
         return $this->menuUser;
     }
-    
+
     private function menuConfig(){
         return [
             'Dashboard' => [
@@ -92,6 +90,11 @@ class Menu
                 'route' => 'orderShowProvider',
                 'roles' => [ 3, 5],
                 'class' => 'order'
+            ],
+            'Pagos' => [
+                'route' => 'pay',
+                'roles' => [3],
+                'class' => 'report'
             ],
             'Reportes' => [
                 'route' => 'reports',

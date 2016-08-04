@@ -16,4 +16,7 @@ class PlanController extends Controller
     function planDetail(){
         return view('front.planDetail');
     }
+    function history(){
+
+    }
 }
