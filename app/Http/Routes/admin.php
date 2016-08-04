@@ -14,6 +14,12 @@ Route::group(['namespace' => 'admin'], function () {
         'middleware' => 'VerifyProvider',
     ]);
 
+    Route::get('historial-de-pagos', [
+        'uses' => 'PayController@historyPay',
+        'as' => 'historyPay',
+        'middleware' => 'VerifyProvider',
+    ]);
+
     Route::post('productos/delete/{id}', [
         'uses' => 'ProductController@lockProduct',
         'as' => 'deleteProduct'
