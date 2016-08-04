@@ -33,11 +33,9 @@
 @section('scripts')
     <script src="{{asset('js/select2.js')}}"></script>
     <script>
-        $('#Pricing').text('$' + $('#period').children('option').eq(0).attr('price'));
-
-        $(".js-example-basic-single").select2({minimumResultsForSearch : -1, width: '176px'}).change(function(){
-            $('#Pricing').text('$' + $('#period').children('option:selected').attr('price'));
-        });
+        var event = function(){$('#Pricing').text('$' + thousand($('#period').children('option:selected').attr('price')))};
+        event();
+        $(".js-example-basic-single").select2({minimumResultsForSearch : -1, width: '176px'}).change(event);
     </script>
 @endsection
 
