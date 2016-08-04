@@ -34,12 +34,6 @@ Route::post('finalizar-compra',[
     'as' => 'newOrder'
 ]);
 
-Route::get('precios', [
-    'uses' => 'HomeController@pricing',
-    'as' => 'pricing'
-]);
-
-
 Route::get('finalizar-compra', [
     'uses' => 'ProductController@checkout',
     'as' => 'checkout'
@@ -80,6 +74,15 @@ Route::get('productos/{name?}',[
     'as' => 'product'
 ]);
 
-Route::get('prueba', function(){
-    return view('back.productProviderPreview');
-});
+/********** PLANS **********/
+
+Route::get('precios', [
+    'uses' => 'PlanController@pricing',
+    'as' => 'pricing'
+]);
+
+Route::get('detalle-de-plan', [
+    'as' => 'planDetail', 
+    'uses' => 'PlanController@planDetail'
+]);
+
