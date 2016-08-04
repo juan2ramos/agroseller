@@ -27,6 +27,9 @@ class VerifyProvider
             elseif(Gate::denies('isValidateProvider', $user)){
                 return redirect()->route('isValidateProviders');
             }
+
+            dd($user->provider->planProvider());
+            dd('paso');
         }
         return $next($request);
     }

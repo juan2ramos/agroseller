@@ -24,4 +24,8 @@ class UserPolicy
     public function isValidateProvider(){
         return $this->user->provider->validate == 1;
     }
+
+    public function isPlanPayed(){
+        return $this->user->provider->planProvider;
+    }
 }

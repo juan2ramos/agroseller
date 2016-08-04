@@ -10,9 +10,8 @@ use Agrosellers\Entities\Plan;
 
 class PayController extends Controller
 {
-    function index(){
-        dd();
-        //$plan = Plan::where('slug', $slug);
+    function index($slug){
+        $plan = Plan::where('slug', $slug);
         return view('back.payPlan', compact('plan'));
     }
 }

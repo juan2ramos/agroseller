@@ -9,8 +9,14 @@ Route::group(['namespace' => 'admin'], function () {
     ]);
 
     Route::get('pagos', [
-        'uses' => 'PayController@index',
+        'uses' => 'HomeController@index',
         'as' => 'pay',
+        'middleware' => 'VerifyProvider',
+    ]);
+
+    Route::get('pagar-plan/{slug}', [
+        'uses' => 'PayController@index',
+        'as' => 'payPlan',
         'middleware' => 'VerifyProvider',
     ]);
 
