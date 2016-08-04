@@ -18,10 +18,7 @@ class HomeController extends Controller
                             ->paginate(8);
         return view('front.home',compact('products'));
     }
-    function pricing(){
-
-        return view('front.pricing');
-    }
+    
 
     function indexContact(){
         return view('front.contactForm');
