@@ -749,7 +749,7 @@ main {
 }
 
 main {
-  max-width: 80rem;
+  max-width: 76rem;
   margin: auto;
 }
 
@@ -777,7 +777,7 @@ body {
 }
 
 .BarInfo-content {
-  max-width: 80rem;
+  max-width: 76rem;
   margin: auto;
 }
 
@@ -787,7 +787,7 @@ body {
 
 .Header-container {
   margin: auto;
-  max-width: 80rem;
+  max-width: 76rem;
   height: 7.5rem;
 }
 
@@ -836,7 +836,7 @@ body {
 
 .BarNav-content {
   margin: auto;
-  max-width: 80rem;
+  max-width: 76rem;
   height: 2.5rem;
 }
 
@@ -1219,7 +1219,7 @@ body {
 
 .Relate article {
   margin: auto;
-  max-width: 80rem;
+  max-width: 76rem;
 }
 
 .Relate figure {
@@ -1849,7 +1849,7 @@ body {
 
 .Footer-content {
   margin: auto;
-  max-width: 80rem;
+  max-width: 76rem;
   height: 100%;
 }
 

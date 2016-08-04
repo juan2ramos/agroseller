@@ -17,7 +17,7 @@
                 </div>
             </div>
             {!! $plan->features !!}
-            <a href="{{route('planDetail', $plan->slug)}}" class="Button">¡OBTENLO AHORA!</a>
+            <a href="{{route('payPlan', $plan->slug)}}" class="Button">¡OBTENLO AHORA!</a>
         </article>
         @endforeach
     </section>
