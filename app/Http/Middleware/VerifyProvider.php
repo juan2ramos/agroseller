@@ -28,8 +28,9 @@ class VerifyProvider
                 return redirect()->route('isValidateProviders');
             }
 
-            dd($user->provider->planProvider());
-            dd('paso');
+            elseif(Gate::denies('isPlanPayed', $user)){
+                return redirect()->route('pricing');
+            }
         }
         return $next($request);
     }

@@ -17,6 +17,11 @@ Route::group(['namespace' => 'admin'], function () {
     Route::get('pagar-plan/{slug}', [
         'uses' => 'PayController@index',
         'as' => 'payPlan',
+    ]);
+
+    Route::get('historial-de-pagos', [
+        'uses' => 'PayController@historyPay',
+        'as' => 'historyPay',
         'middleware' => 'VerifyProvider',
     ]);
 
