@@ -12,11 +12,4 @@ class PlanController extends Controller
         $plans = Plan::all();
         return view('front.pricing', compact('plans'));
     }
-
-    function planDetail(){
-        return view('front.planDetail');
-    }
-    function history(){
-
-    }
 }

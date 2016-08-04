@@ -978,23 +978,6 @@ body {
   display: block;
 }
 
-.Platform {
-  margin: 4rem 3rem;
-  text-align: center;
-}
-
-.Platform p {
-  font-size: 1.5rem;
-  font-weight: 400;
-  max-width: 31rem;
-  margin: 1rem auto;
-}
-
-.Platform .Button {
-  width: 17.75rem;
-  border-bottom: .375rem solid #A8B250;
-}
-
 .Pricing {
   text-align: center;
   margin: 2.5rem 3rem;
@@ -1047,7 +1030,6 @@ body {
 }
 
 .Pricing .Button {
-  border-bottom: .375rem solid #A8B250;
   width: 11rem;
   margin-top: 3rem;
 }

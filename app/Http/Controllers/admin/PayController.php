@@ -7,22 +7,22 @@ use Illuminate\Http\Request;
 
 use Agrosellers\Http\Requests;
 use Agrosellers\Http\Controllers\Controller;
+
+use Agrosellers\Entities\Plan;
 use Illuminate\Support\Facades\Auth;
 
 class PayController extends Controller
 {
+    function index(){
+        dd();
+        //$plan = Plan::where('slug', $slug);
+        return view('back.payPlan', compact('plan'));
 
-    function index()
-    {
-        dd('asdas');
-        return view();
     }
 
     function historyPay()
     {
-
-        $provider = Auth::user()->provider->with('planProvider')->first();
-        dd($provider);
-        return view('');
+        $planProvider = Auth::user()->provider->with('planProvider')->first();
+        return view('back.historyPlan',compact('planProvider'));
     }
 }
