@@ -1,22 +1,15 @@
 @extends('layoutFront')
 
 @section('content')
-    <section class="Platform row middle">
-        <figure class="col-4"><img src="{{url('images/Platform.jpg')}}" alt=""></figure>
-        <div class="Platform-info col-8">
-            <p> Obten gratis TODOS los servicios que  te ofrece agrosellers. ¡Suscribite AHORA!</p>
-            <a href="{{route('planDetail')}}" class="Button">¡OBTENLO AHORA!</a>
-        </div>
-    </section>
     <section class="Pricing row middle">
         @foreach($plans as $plan)
         <article class="col-4">
             <h2>{{$plan->name}}</h2>
             <h3>{{$plan->description}}</h3>
             <div class="Pricing-price">
-                <div id="Pricing"></div>
+                <div class="Price"></div>
                 <div class="row center" style="margin-top: 15px">
-                    <select class="js-example-basic-single" id="period" name="period">
+                    <select class="js-example-basic-single" id="select{{$plan->id}}" name="select">
                         @foreach($plan->planPrices()->get() as $planInfo)
                             <option value="{{$planInfo->id}}" price="{{$planInfo->price}}">{{$planInfo->period}} meses</option>
                         @endforeach
@@ -33,9 +26,11 @@
 @section('scripts')
     <script src="{{asset('js/select2.js')}}"></script>
     <script>
-        var event = function(){$('#Pricing').text('$' + thousand($('#period').children('option:selected').attr('price')))};
-        event();
-        $(".js-example-basic-single").select2({minimumResultsForSearch : -1, width: '176px'}).change(event);
+        for(var i = 1; i <= 3; i++){
+            var $select2 = $('#select' + i);
+            $select2.parent().siblings('.Price').text('$' + thousand($select2.children('option:selected').attr('price')));
+            $select2.select2({minimumResultsForSearch : -1, width: '176px'}).change(function(){$(this).parent().siblings('.Price').text('$' + thousand($(this).children('option:selected').attr('price')))});
+        }
     </script>
 @endsection
 

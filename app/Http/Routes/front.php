@@ -81,7 +81,7 @@ Route::get('precios', [
     'as' => 'pricing'
 ]);
 
-Route::get('detalle-de-plan', [
+Route::get('detalle-de-plan/{slug}', [
     'as' => 'planDetail', 
     'uses' => 'PlanController@planDetail'
 ]);
