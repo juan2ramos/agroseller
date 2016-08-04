@@ -90,3 +90,7 @@ function autoSearch() {
     });
 }
 
+function thousand(n) {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
