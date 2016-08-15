@@ -32,6 +32,7 @@ class VerifyProvider
                 return redirect()->route('pricing');
             }
         }
+
         return $next($request);
     }
 }

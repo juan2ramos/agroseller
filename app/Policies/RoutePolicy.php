@@ -44,13 +44,15 @@ class RoutePolicy
                     'bills', 'orders', 'reports', 'subcategoriesQuery','featuresQuery', 'showUser', 'validateProvider',
 
                     'newProduct','agentsGet', 'editProduct', 'deleteProduct', 'updateProduct','newUserAdmin','user',
-                    'budgetShow', 'indexProfile', 'userUpdate', 'productAgentPreview', 'productDetailPreview','validateProduct'
+                    'budgetShow', 'indexProfile', 'userUpdate', 'productAgentPreview', 'productDetailPreview','validateProduct',
+                    'payPlan'
 
                 ],
             '2' =>
                 [
                     'admin', 'users', 'providers', 'category', 'farmIndex', 'products', 'clients', 'bills',
-                    'orders', 'subcategoriesQuery','featuresQuery','agentsGet','newUserAdmin','user', 'indexProfile', 'userUpdate'
+                    'orders', 'subcategoriesQuery','featuresQuery','agentsGet','newUserAdmin','user', 'indexProfile',
+                    'userUpdate', 'payPlan'
                 ],
             '3' =>
                 [
@@ -64,17 +66,17 @@ class RoutePolicy
                 [
                     'admin', 'products', 'bills', 'orders', 'reports', 'questions', 'questionDetail', 'questionNew',
                     'clientInformationIndex', 'clientInformationStore', 'indexProfile', 'userUpdate','budgetShow','downloadBudget',
-                    'orderShow'
+                    'orderShow', 'payPlan'
 
                 ],
             '5' =>
                 [
                     'admin', 'providers', 'clients', 'reports', 'showUser', 'validateProvider', 'indexProfile', 'userUpdate',
-                    'productAgentPreview', 'productDetailPreview' , 'validateProduct', 'NotifyIsActive','NotifyAll'
+                    'productAgentPreview', 'productDetailPreview' , 'validateProduct', 'NotifyIsActive','NotifyAll', 'payPlan'
                 ],
             '6' =>
                 [
-                    'admin', 'reports', 'indexProfile', 'userUpdate'
+                    'admin', 'reports', 'indexProfile', 'userUpdate', 'payPlan'
                 ],
         ];
     }
