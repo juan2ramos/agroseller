@@ -76,6 +76,10 @@
             {!! $products->render() !!}
         </div>
     </section>
+    <div class="row around middle " style="padding: 20px 0 40px">
+       <figure class="col-2"> <img  src="{{asset('images/prueba 01.png')}}" alt=""></figure>
+        <figure class="col-2"> <img  src="{{asset('images/prueba 02.png')}}" alt=""></figure>
+    </div>
     <script>
         $(document).ready(function () {
             $("#owl-demo").owlCarousel({
