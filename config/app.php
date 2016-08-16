@@ -131,7 +131,7 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         Agrosellers\Providers\ViewComposerServiceProvider::class,
         Bogardo\Mailgun\MailgunServiceProvider::class,
-
+        Cviebrock\LaravelElasticsearch\ServiceProvider::class,
     ],
     /*
     |--------------------------------------------------------------------------
@@ -182,6 +182,7 @@ return [
         'Table'      => 'Gbrock\Table\Facades\Table',
         'Date' => Jenssegers\Date\Date::class,
         'PDF' => 'Barryvdh\DomPDF\Facade',
-        'Mailgun' => Bogardo\Mailgun\Facades\Mailgun::class
+        'Mailgun' => Bogardo\Mailgun\Facades\Mailgun::class,
+        'Elasticsearch' => Cviebrock\LaravelElasticsearch\Facade::class,
     ],
 ];

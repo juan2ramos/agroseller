@@ -13,7 +13,8 @@
         "jenssegers/date": "^3.2",
         "gbrock/laravel-table": "dev-master",
         "barryvdh/laravel-dompdf": "0.6.*",
-        "bogardo/mailgun": "4.0.*"
+        "bogardo/mailgun": "4.0.*",
+        "cviebrock/laravel-elasticsearch": "^1.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
