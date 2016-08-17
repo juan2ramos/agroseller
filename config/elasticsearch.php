@@ -148,7 +148,7 @@ return [
             /**
              * Connection Factory
              *
-             * @see https://www.elastic.co/guide/en/elasticsearch/client/php-api/2.0/_configuration.html#_setting_a_custom_connectionfactory
+             * @see https://www.elastic.co/guide/en/elasticsearch/client/php-api/2.0/_configuration.html#_setting_a_custom_connectionfactory2
              */
 
             'connectionFactory' => null,

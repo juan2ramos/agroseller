@@ -47,3 +47,23 @@ Route::post('prueba', [
         return redirect()->route('elasticIndex', compact('product'));
     }
 ]);
+
+Route::get('t', [
+    'as' => 'elasticSearcht',
+    'uses' => function(Request $request){
+
+
+        $client = Elasticsearch\ClientBuilder::create()->build();
+        $result = $client->search([
+            'index' => 'name',
+            'body' =>[
+                'query' => [
+                     'match'=>[
+                         '_all' =>'design'
+                     ]
+                ]
+            ]
+        ]);
+        dd($result);
+    }
+]);
