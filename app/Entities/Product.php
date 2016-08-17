@@ -3,17 +3,27 @@
 namespace Agrosellers\Entities;
 
 use Agrosellers\User;
+use Elasticquent\ElasticquentTrait;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 
 class Product extends Model
 {
+    use ElasticquentTrait;
+
     protected $fillable =
         [
             'location','presentation','size','weight','measure','material','description','user_id','subcategory_id',
             'forms_employment', 'price','taxes','available_quantity','image_scale',
             'image_scale','name','slug','composition', 'isActive', 'isValidate'];
+
+    protected $mappingProperties = [
+        'name' => [
+            'type' => 'string',
+            "analyzer" => "standard",
+        ]
+    ];
 
     public function subcategory()
     {

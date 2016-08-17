@@ -14,7 +14,7 @@
         "gbrock/laravel-table": "dev-master",
         "barryvdh/laravel-dompdf": "0.6.*",
         "bogardo/mailgun": "4.0.*",
-        "cviebrock/laravel-elasticsearch": "^1.2"
+        "elasticquent/elasticquent": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -27,3 +27,23 @@ Route::get('mailjk',[function(){
     });
     dd($m);
 },'as'=>'sesiones']);
+
+use Agrosellers\User;
+
+Route::get('prueba', [
+    'as' => 'elasticIndex' ,
+    'uses' => function() {
+        return view('prueba');
+    }
+]);
+
+use Illuminate\Http\Request;
+use Agrosellers\Entities\Product;
+
+Route::post('prueba', [
+    'as' => 'elasticSearch',
+    'uses' => function(Request $request){
+        $product = Product::search($request->name);
+        return redirect()->route('elasticIndex', compact('product'));
+    }
+]);
