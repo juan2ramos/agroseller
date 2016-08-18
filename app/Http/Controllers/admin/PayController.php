@@ -25,8 +25,7 @@ class PayController extends Controller
 
     function historyPay()
     {
-        $planProvider = Auth::user()->provider->with('planProvider')->first();
-
-        return view('back.historyPlan',compact('planProvider'));
+        $provider = Auth::user()->provider->with('planProvider')->first();
+        return view('back.historyPlan',compact('provider'));
     }
 }

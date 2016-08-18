@@ -92,7 +92,7 @@ class Menu
                 'class' => 'order'
             ],
             'Pagos' => [
-                'route' => 'pay',
+                'route' => 'historyPay',
                 'roles' => [3],
                 'class' => 'report'
             ],
