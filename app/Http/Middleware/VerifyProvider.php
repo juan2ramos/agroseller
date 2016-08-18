@@ -32,7 +32,7 @@ class VerifyProvider
             if(!$plan)
                 return redirect()->route('pricing')->with(['message' => 'Adquiera uno de nuestros planes']);
             else
-                if($plan->isActive)
+                if(!$plan->isActive)
                     return redirect()->route('inactivePlan');
         }
 
