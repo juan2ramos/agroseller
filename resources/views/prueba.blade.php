@@ -17,8 +17,5 @@
     -->
     <br>
 
-    @if(isset($product))
-        <h1>{{$product}}</h1>
-    @endif
 </body>
 </html>

@@ -24,7 +24,7 @@ class Product extends Model
             "analyzer" => "standard",
         ]
     ];
-
+    
     public function subcategory()
     {
         return $this->belongsTo(Subcategory::class);

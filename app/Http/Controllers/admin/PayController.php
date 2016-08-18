@@ -2,6 +2,7 @@
 
 namespace Agrosellers\Http\Controllers\admin;
 
+use Agrosellers\Entities\PlanProvider;
 use Agrosellers\Entities\Provider;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,16 @@ class PayController extends Controller
 {
     function index($slug){
         if(auth()->user()->role_id == 3){
-            $plan = Plan::where('slug', $slug);
-            return view('back.payPlan', compact('plan'));
+            $plan = Plan::where('slug', $slug)->first();
+
+            PlanProvider::create([
+                'provider_id' => auth()->user()->provider->id,
+                'name' => $plan->name,
+                'description' => $plan->features,
+            ]);
+
+            return redirect()->route('admin')->with(['message' => 'Estamos en proceso de aprobar su pedido. Pronto su asesor se comunicará con usted']);
+            //return view('back.payPlan', compact('plan'));
         }
         else{
             return redirect()->route('admin')->with('messageError', 1);

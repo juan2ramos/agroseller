@@ -43,7 +43,32 @@ use Agrosellers\Entities\Product;
 Route::post('prueba', [
     'as' => 'elasticSearch',
     'uses' => function(Request $request){
-        $product = Product::search($request->name);
-        return redirect()->route('elasticIndex', compact('product'));
+        Product::addAllToIndex();
+        $products = Product::search($request->name)->getDictionary();
+        echo '<table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Precio</th>
+                    </tr>       
+                </thead>
+                <tbody>
+             ';
+
+        foreach ($products as $product){
+            echo "<tr>
+                    <td>
+                        {$product->name}
+                    </td>
+                    <td>
+                        {$product->description}
+                    </td>
+                    <td>
+                        {$product->price}
+                    </td>
+                  </tr>";
+        }
+        echo '</tbody></table>';
     }
 ]);

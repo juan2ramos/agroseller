@@ -34,7 +34,7 @@ return [
              */
 
             'hosts' => [
-                'localhost:9200',
+                'agroseller.app:9200',
             ],
 
             /**

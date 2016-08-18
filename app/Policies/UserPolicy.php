@@ -28,4 +28,8 @@ class UserPolicy
     public function isPlanPayed(){
         return $this->user->provider->planProvider;
     }
+
+    public function isPlanActive(){
+        return $this->user->provider->planProvider->isActive;
+    }
 }

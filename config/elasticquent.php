@@ -14,7 +14,7 @@ return array(
     */
 
     'config' => [
-        'hosts'     => ['localhost:9200'],
+        'hosts'     => ['agroseller.app:9200'],
         'retries'   => 1,
     ],
 
@@ -27,5 +27,5 @@ return array(
     | Elasticquent models.
     */
 
-    'default_index' => 'elasticquent_index',
+    'default_index' => 'elasticsearch',
 );
