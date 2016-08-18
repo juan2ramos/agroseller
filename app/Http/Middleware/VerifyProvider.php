@@ -5,7 +5,7 @@ namespace Agrosellers\Http\Middleware;
 use Illuminate\Support\Facades\Gate;
 use Closure;
 use Illuminate\Support\Facades\Auth;
-use Agrosellers\Entities\Provider;
+use Agrosellers\Entities\PlanProvider;
 
 class VerifyProvider
 {
@@ -28,13 +28,12 @@ class VerifyProvider
                 return redirect()->route('isValidateProviders');
             }
 
-            elseif(Gate::denies('isPlanPayed', $user)){
+            $plan = PlanProvider::where('provider_id', $user->provider->id)->orderBy('created_at', 'DESC')->first();
+            if(!$plan)
                 return redirect()->route('pricing')->with(['message' => 'Adquiera uno de nuestros planes']);
-            }
-
-            elseif(Gate::denies('isPlanActive', $user)){
-                return redirect()->route('inactivePlan');
-            }
+            else
+                if($plan->isActive)
+                    return redirect()->route('inactivePlan');
         }
 
         return $next($request);

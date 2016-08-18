@@ -29,10 +29,4 @@ class UserPolicy
     public function isPlanPayed(){
         return $this->user->provider->planProvider;
     }
-
-    public function isPlanActive(){
-        $plan = PlanProvider::where('provider_id', $this->user->provider->id)->orderBy('created_at', 'DESC')->first();
-        if($plan)
-            return $plan->isActive;
-    }
 }
