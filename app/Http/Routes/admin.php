@@ -14,7 +14,7 @@ Route::group(['namespace' => 'admin'], function () {
         'middleware' => 'VerifyProvider',
     ]);
 
-    Route::get('pagar-plan/{slug}', [
+    Route::post('pagar-plan/{id}', [
         'uses' => 'PayController@index',
         'as' => 'payPlan',
     ]);

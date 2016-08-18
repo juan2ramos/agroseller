@@ -14,14 +14,17 @@ use Illuminate\Support\Facades\Auth;
 
 class PayController extends Controller
 {
-    function index($slug){
+    function index(Request $request, $id){
         if(auth()->user()->role_id == 3){
-            $plan = Plan::where('slug', $slug)->first();
 
+            // 2592000 1 mes
+            
             PlanProvider::create([
                 'provider_id' => auth()->user()->provider->id,
-                'name' => $plan->name,
-                'description' => $plan->features,
+                'name' => $request->name,
+                'description' => $request->description,
+                'period' => $request->period,
+                'price' => $request->price
             ]);
 
             return redirect()->route('admin')->with(['message' => 'Estamos en proceso de aprobar su pedido. Pronto su asesor se comunicará con usted']);
