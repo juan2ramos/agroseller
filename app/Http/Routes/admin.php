@@ -19,6 +19,21 @@ Route::group(['namespace' => 'admin'], function () {
         'as' => 'payPlan',
     ]);
 
+    Route::get('pendiente-activacion-plan', [
+        'as' => 'inactivePlan',
+        'uses' => function(){
+            return view('back.isPlanActive');
+        }
+    ]);
+
+    Route::post('activar-plan/{id}', [
+        'as' => 'planActive',
+        'uses' => function($id){
+            //\Agrosellers\Entities\PlanProvider::where('provider_id', );
+            return redirect()->route('admin')->with(['message' => 'El usuario ha sido activado']);
+        }
+    ]);
+
     Route::get('historial-de-pagos', [
         'uses' => 'PayController@historyPay',
         'as' => 'historyPay',

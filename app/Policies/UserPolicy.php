@@ -2,6 +2,7 @@
 
 namespace Agrosellers\Policies;
 
+use Agrosellers\Entities\PlanProvider;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Agrosellers\User;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +31,8 @@ class UserPolicy
     }
 
     public function isPlanActive(){
-        return $this->user->provider->planProvider->isActive;
+        $plan = PlanProvider::where('provider_id', $this->user->provider->id)->orderBy('created_at', 'DESC')->first();
+        if($plan)
+            return $plan->isActive;
     }
 }

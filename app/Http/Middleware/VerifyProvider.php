@@ -32,9 +32,9 @@ class VerifyProvider
                 return redirect()->route('pricing')->with(['message' => 'Adquiera uno de nuestros planes']);
             }
 
-            /*elseif(Gate::denies('isPlanActive', $user)){
-                //return redirect()->route('admin')->with(['message' => 'Por favor espera a que su proveedor apruebe el pago']);
-            }*/
+            elseif(Gate::denies('isPlanActive', $user)){
+                return redirect()->route('inactivePlan');
+            }
         }
 
         return $next($request);
