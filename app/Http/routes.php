@@ -43,7 +43,10 @@ use Agrosellers\Entities\Product;
 Route::post('prueba', [
     'as' => 'elasticSearch',
     'uses' => function(Request $request){
+        Product::reindex();
+
         $product = Product::search($request->name);
+        dd($product);
         return redirect()->route('elasticIndex', compact('product'));
     }
 ]);
@@ -52,18 +55,5 @@ Route::get('t', [
     'as' => 'elasticSearcht',
     'uses' => function(Request $request){
 
-
-        $client = Elasticsearch\ClientBuilder::create()->build();
-        $result = $client->search([
-            'index' => 'name',
-            'body' =>[
-                'query' => [
-                     'match'=>[
-                         '_all' =>'design'
-                     ]
-                ]
-            ]
-        ]);
-        dd($result);
     }
 ]);
