@@ -20,12 +20,10 @@ class PayController extends Controller
         if(auth()->user()->role_id == 3){
 
             $plan = PlanProvider::where('provider_id', auth()->user()->provider->id)->orderBy('created_at', 'DESC')->first();
+            $finalPlan = new Date();
             if($plan){
                 $date = new Date($plan->created_at);
                 $finalPlan = $date->addMonths($plan->period);
-            }
-            else{
-                $finalPlan = new Date();
             }
 
             if(new Date() >= $finalPlan){
@@ -38,7 +36,7 @@ class PayController extends Controller
                     'price' => $request->price
                 ]);
 
-                return redirect()->route('admin')->with(['message' => 'Estamos en proceso de aprobar su pedido. Pronto su asesor se comunicará con usted']);
+                return redirect()->route('inactivePlan');
             }
             return redirect()->route('admin')->with(['message' => "Usted ya ha comprado un plan. Este finaliza el día {$finalPlan}"]);
         }
