@@ -32,6 +32,6 @@ class Provider extends Model
         return $this->hasMany(Product::class);
     }
     public function planProvider(){
-        return $this->hasOne(PlanProvider::class);
+        return $this->hasMany(PlanProvider::class);
     }
 }
