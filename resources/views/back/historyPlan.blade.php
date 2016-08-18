@@ -14,7 +14,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($budgets as $budget)
+        @foreach($planProvider as $plan)
             <tr>
                 <td>@if($budget->number_products)
                         <button class="iconPlus"></button>@endif</td>

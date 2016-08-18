@@ -70,5 +70,19 @@ Route::post('prueba', [
                   </tr>";
         }
         echo '</tbody></table>';
+
+        Product::reindex();
+
+        $product = Product::search($request->name);
+        dd($product);
+        return redirect()->route('elasticIndex', compact('product'));
+
+    }
+]);
+
+Route::get('t', [
+    'as' => 'elasticSearcht',
+    'uses' => function(Request $request){
+
     }
 ]);
