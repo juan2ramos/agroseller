@@ -62,17 +62,26 @@ class ProductController extends Controller
     function editProduct($id){
         $productEdit = Product::find($id);
         $offerEdit = $productEdit->offers()->first();
+        $farms = Farm::all();
         $categories = Category::all();
-        return view('back.productEdit', compact('productEdit', 'offerEdit', 'categories'));
+        return view('back.productEdit', compact('productEdit', 'offerEdit', 'categories', 'farms'));
     }
 
     function updateProduct(Request $request, $id){
         $inputs = $request->all();
         $this->validator($request->file());
+        $farms = "";
+
+        foreach($request->all() as $key => $data){
+            if(strstr($key, 'farm')){
+                $farms .= $data . ',';
+            }
+        }
 
         if ($request->has('taxes'))
             $inputs['taxes'] = implode(';', $inputs['taxes']);
         $inputs['user_id'] = Auth::user()->id;
+        $inputs['farms'] = $farms;
 
         $this->product = Product::find($id);
 

@@ -40,7 +40,19 @@
         </p>
         <div class="row">
             @if(isset($productEdit))
-                <input type="text" id="nameProduct" name="name" value="{{ $productEdit->name }}">
+                <label for="farm-all" class="Forms-checkout capitalize col-6">
+                    <input type="checkbox" id="farm-all" value="">
+                    <sub></sub>
+                    Todos
+                </label>
+                <?php $farmsProduct = explode(',' , $productEdit['farms']); ?>
+                @foreach($farms as $farm)
+                    <label for="farm-{{$farm->id}}" class="Forms-checkout capitalize col-6">
+                        <input type="checkbox" name="farm-{{$farm->id}}" id="farm-{{$farm->id}}" value="{{$farm->name}}" @if(in_array($farm->name, $farmsProduct, false))checked='checked'@endif >
+                        <sub></sub>
+                        {{$farm->name}}
+                    </label>
+                @endforeach
             @else
                 @if(isset($farms))
                     <label for="farm-all" class="Forms-checkout capitalize col-6">
