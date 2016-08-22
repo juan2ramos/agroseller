@@ -151,28 +151,46 @@
         <script src="{{asset('js/products.js')}}"></script>
         <script src="{{asset('js/forms.js')}}"></script>
         <script src="{{asset('js/images.js')}}"></script>
-        <script src="http://cdn.quilljs.com/latest/quill.js"></script>
+        <script src="https://cdn.quilljs.com/1.0.0-rc.0/quill.js"></script>
 
         <script>
+            var toolbarOptions = [
+                ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                ['blockquote', 'code-block'],
+
+                [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+                [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+                [{ 'direction': 'rtl' }],                         // text direction
+
+                [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+                [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                [{ 'font': [] }],
+                [{ 'align': [] }],
+
+                ['clean']                                         // remove formatting button
+            ];
             var editor = new Quill('#editor', {
-                theme: 'snow',
                 modules: {
-                    'toolbar': {container: '#toolbar'},
-                    'link-tooltip': true
-                }
+                    toolbar: toolbarOptions
+                },
+                theme: 'snow'
             });
+
             editor.on('text-change', function (delta, source) {
-                $('#Description').val(editor.getHTML());
+                $('#Description').val(editor.getText());
             });
             var editorOffer = new Quill('#editorOffer', {
                 theme: 'snow',
                 modules: {
-                    'toolbar': {container: '#toolbarOffer'},
-                    'link-tooltip': true
+                    toolbar: toolbarOptions
                 }
             });
             editorOffer.on('text-change', function (delta, source) {
-                $('#DescriptionOffer').val(editorOffer.getHTML());
+                $('#DescriptionOffer').val(editorOffer.getText());
             });
         </script>
 
@@ -229,5 +247,5 @@
 @endsection
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/jquery.datetimepicker.css') }}">
-    <link rel="stylesheet" href="//cdn.quilljs.com/0.20.1/quill.snow.css"/>
+    <link href="https://cdn.quilljs.com/1.0.0-rc.0/quill.snow.css" rel="stylesheet">
 @endsection
