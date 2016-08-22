@@ -2,6 +2,7 @@
 
 namespace Agrosellers\Http\Controllers\admin;
 
+use Agrosellers\Entities\Farm;
 use Agrosellers\Entities\Notification;
 use Validator;
 use Session;
@@ -55,7 +56,8 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $products = Product::where('user_id', auth()->user()->id)->orderBy('id', 'DESC')->paginate(10);
-        return view('back.product', compact('categories', 'products'));
+        $farms = Farm::all();
+        return view('back.product', compact('categories', 'products', 'farms'));
     }
     function editProduct($id){
         $productEdit = Product::find($id);
@@ -132,11 +134,19 @@ class ProductController extends Controller
     {
         $inputs = $request->all();
         $this->validator($request->file());
+        $farms = "";
+
+        foreach($request->all() as $key => $data){
+            if(strstr($key, 'farm')){
+                $farms .= $data . ',';
+            }
+        }
 
         if ($request->has('taxes'))
             $inputs['taxes'] = implode(';', $inputs['taxes']);
         $inputs['user_id'] = Auth::user()->id;
         $inputs['slug'] = str_slug($inputs['name']);
+        $inputs['farms'] = $farms;
 
         $this->product = Product::create($inputs)->offers()->create($inputs);
         $this->createFile($request);

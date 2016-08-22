@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Gate;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use Agrosellers\Entities\PlanProvider;
+use Jenssegers\Date\Date;
 
 class VerifyProvider
 {
@@ -29,13 +30,18 @@ class VerifyProvider
             }
 
             $plan = PlanProvider::where('provider_id', $user->provider->id)->orderBy('created_at', 'DESC')->first();
-            if(!$plan)
-                return redirect()->route('pricing')->with(['message' => 'Adquiera uno de nuestros planes']);
+            if(!$plan || new Date() > $this->getFinalPlan($plan))
+                return redirect()->route('pricing')->with(['message' => 'No ha comprado un plan o su plan ha vencido. Adquiera uno de nuestros planes']);
             else
                 if(!$plan->isActive)
                     return redirect()->route('inactivePlan');
         }
 
         return $next($request);
+    }
+
+    function getFinalPlan($plan){
+        $date = new Date($plan->created_at);
+        return $date->addMonths($plan->period);
     }
 }

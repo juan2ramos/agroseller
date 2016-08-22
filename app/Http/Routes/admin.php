@@ -26,7 +26,7 @@ Route::group(['namespace' => 'admin'], function () {
         }
     ]);
 
-    Route::post('activar-plan/{id}', [
+    Route::post('plan/{id}', [
         'as' => 'planActive',
         'uses' => function($id){
             //\Agrosellers\Entities\PlanProvider::where('provider_id', );

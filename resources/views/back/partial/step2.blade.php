@@ -32,9 +32,37 @@
             <div id="Map" class="Map"></div>
         @endif
     </article>
+
     <article>
 
-        <p>2. Ingresa el nombre de tu producto
+        <p>2. Seleccionar cultivos
+            <span>Seleccione los cultivos en los que su producto puede ser usado.</span>
+        </p>
+        <div class="row">
+            @if(isset($productEdit))
+                <input type="text" id="nameProduct" name="name" value="{{ $productEdit->name }}">
+            @else
+                @if(isset($farms))
+                    <label for="farm-all" class="Forms-checkout capitalize col-6">
+                        <input type="checkbox" id="farm-all" value="">
+                        <sub></sub>
+                        Todos
+                    </label>
+                    @foreach($farms as $farm)
+                        <label for="farm-{{$farm->id}}" class="Forms-checkout capitalize col-6">
+                            <input type="checkbox" name="farm-{{$farm->id}}" id="farm-{{$farm->id}}" value="{{$farm->name}}">
+                            <sub></sub>
+                            {{$farm->name}}
+                        </label>
+                    @endforeach
+                @endif
+            @endif
+        </div>
+    </article>
+
+    <article>
+
+        <p>3. Ingresa el nombre de tu producto
                     <span>Escribe el nombre del producto
                         con la especificación deseada.</span>
         </p>
@@ -48,7 +76,7 @@
         </label>
     </article>
     <article>
-        <p>3. Información del producto</p>
+        <p>4. Información del producto</p>
 
         <div id="toolbar" class="border--top">
             <div class="ql-format-group">

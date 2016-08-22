@@ -219,6 +219,13 @@
                 window.location.replace("/admin/productos");
             });
         </script>
+
+        <script>
+            $('#farm-all').on('change click', function(){
+                var isChecked = $(this).is(':checked');
+                $('[id*="farm"]').prop('checked', isChecked);
+            });
+        </script>
 @endsection
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/jquery.datetimepicker.css') }}">

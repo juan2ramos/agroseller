@@ -13,6 +13,30 @@
 
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
+    <style>
+        header.Header::before {
+            content: 'Previsualización de producto';
+            background: #27383F;
+            width: 100%;
+            height: 40px;
+            position: absolute;
+            top: 150px;
+            left: 0;
+            z-index: 50;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            font-size: 1.6rem;
+            color: white;
+            padding-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
 
@@ -337,7 +361,9 @@
         <div id="Map" class="col-12 Limited"></div>
         <section class="ProductInfo">
             <h2>Descripción</h2>
-            {!!$input['Description']!!}
+            @if(isset($input['Description']))
+                {!!$input['Description']!!}
+            @endif
             <!--<h2 style="visibility: hidden">Características </h2>-->
             <article class="row bottom">
                 <!--php $j = 0 ?>
