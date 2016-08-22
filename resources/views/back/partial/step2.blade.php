@@ -91,8 +91,7 @@
         <p>4. Información del producto</p>
 
         <div id="toolbar" class="border--top">
-            {{ old('description') }}
-
+                {{ old('description') }}
         </div>
 
         <div id="editor" ql-container></div>

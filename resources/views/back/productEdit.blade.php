@@ -198,12 +198,13 @@
             var productDescription = $('#ps-description').val(),
                 productOfferDescription = $('#ps-offerDescription').val(),
                 productTaxes = $('#ps-taxes').val().split(';'),
-                productComposition = $('#ps-composition').val();
+                productComposition = $('#ps-composition').val(),
+                qlEditor = $('.ql-editor');
 
             if(productComposition)
                 $('#composition').siblings('.file').text(productComposition.split('**')[1]);
-            $('#ql-editor-1').html(productDescription);
-            $('#ql-editor-2').html(productOfferDescription);
+            qlEditor.eq(0).html(productDescription);
+            qlEditor.eq(1).html(productOfferDescription);
 
             if($.inArray('iva', productTaxes) >= 0) $('#iva').attr('checked', true);
             if($.inArray('retefuente', productTaxes) >= 0) $('#rete').attr('checked', true);
