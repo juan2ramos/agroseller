@@ -211,22 +211,44 @@ h2 {
 }
 
 .HeaderBack-figure {
-  padding: 0.875rem 2.9375rem;
   background: #27383F;
   height: 4.25rem;
+  padding: 0.5rem 0.875rem;
+  min-width: 9.375rem;
+}
+
+@media (min-width: 45rem) {
+  .HeaderBack-figure {
+    padding: 0.75rem 2.25rem;
+  }
 }
 
 .HeaderBack-right {
   background: #FFFFFF;
   box-shadow: 0 1px 10px 0 rgba(50, 50, 50, 0.12);
   height: 4.25rem;
-  padding: 0 3rem;
+  padding: 0 0.25rem;
+  max-width: calc(100vw - 150px) !important;
+}
+
+@media (min-width: 45rem) {
+  .HeaderBack-right {
+    padding: 0 3rem;
+    max-width: inherit;
+  }
 }
 
 .HeaderBack-right h1 {
+  display: none;
   color: #27383F;
   font-size: 1.0625rem;
   font-weight: 400;
+}
+
+@media (min-width: 45rem) {
+  .HeaderBack-right h1 {
+    display: block;
+  }
 }
 
 .HeaderBack-right svg {
@@ -238,12 +260,18 @@ h2 {
   background: #FFFFFF;
   box-shadow: 0.3125rem 0.3125rem 0 0 rgba(212, 212, 212, 0.25);
   top: -1.25rem;
-  right: 3.375rem;
+  right: 0rem;
   text-align: center;
   width: 9.375rem;
   padding: 1.125rem 0;
   z-index: 2;
   transition: all 0.5s;
+}
+
+@media (min-width: 45rem) {
+  .HeaderBack-profileNav {
+    right: 3.375rem;
+  }
 }
 
 .HeaderBack-profileNav a {
@@ -318,11 +346,29 @@ h2 {
   transform: rotateX(180deg);
 }
 
+.openNav {
+  -webkit-transform: translateX(0) !important;
+  transform: translateX(0) !important;
+}
+
 .Nav {
   background: #FFFFFF;
   box-shadow: 0 0.0625rem 0.625rem 0 rgba(50, 50, 50, 0.12);
   min-height: calc(100vh - 68px);
   z-index: 1;
+  position: fixed;
+  min-width: 9.375rem;
+  -webkit-transform: translateX(-200px);
+  transform: translateX(-200px);
+  transition: all 0.4s;
+}
+
+@media (min-width: 45rem) {
+  .Nav {
+    position: static;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
 }
 
 .Nav img {
@@ -356,8 +402,40 @@ h2 {
 }
 
 .MainBack-container {
-  padding: 3rem;
+  padding: 2.5rem 1.25rem;
   box-shadow: 0 0.0625rem 0.625rem 0 rgba(50, 50, 50, 0.02);
+}
+
+@media (min-width: 45rem) {
+  .MainBack-container {
+    padding: 3rem;
+  }
+}
+
+.Menu-smallOpen {
+  -webkit-transform: translateX(200px) !important;
+  transform: translateX(200px) !important;
+}
+
+.Menu-small {
+  transition: all 0.4s;
+  position: fixed;
+  top: 5.25rem;
+  left: 1.25rem;
+  background: white;
+  box-shadow: 0 0.0625rem 0.625rem 0 rgba(49, 49, 49, 0.1);
+  height: 1.875rem;
+  width: 2.125rem;
+  padding: 0.3125rem 0;
+  cursor: pointer;
+}
+
+.Menu-small span {
+  display: block;
+  max-width: 80%;
+  height: 0.1875rem;
+  background: #27383F;
+  margin: 0.1875rem auto;
 }
 
 .capitalize {
@@ -2428,7 +2506,7 @@ label.Tab {
   background: white;
   top: 4.0625rem;
   width: 18.75rem;
-  left: -10.1875rem;
+  left: -11rem;
   text-align: left;
   box-shadow: 0 5px 20px 0 rgba(50, 50, 50, 0.12);
   transition: 0.3s all;

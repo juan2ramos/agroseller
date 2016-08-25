@@ -44,7 +44,7 @@
             </svg>
             Bienvenido(a) a Agrosellers
         </h1>
-        <div class="small-6 HeaderBack-profile row end middle ">
+        <div class="small-12 medium-6 HeaderBack-profile row end middle ">
             <figure id="Notify">
                 @if(auth()->user()->photo)
                     <img src="{{url('uploads/users/' . auth()->user()->photo)}}" alt="">
@@ -89,8 +89,13 @@
     </div>
 </header>
 <main class="MainBack row">
+    <div class="Menu-small ">
+        <span class="small-12"></span>
+        <span class="small-12"></span>
+        <span class="small-12"></span>
+    </div>
     @include('back.partial.menu')
-    <div class="small-10 MainBack-container">
+    <div class="small-12 medium-10 MainBack-container">
         @yield('content')
     </div>
 </main>
