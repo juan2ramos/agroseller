@@ -13,14 +13,14 @@
                 @endif
             @endforeach
 
-            <article id="editable" class="col-12">
+            <article id="editable" class="small-12">
                 <form id="Product-form" role="form" method="POST" action="{{ route('updateProduct', [$productEdit->id]) }}"
                       enctype="multipart/form-data">
                     <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" id="deleteImages" name="deleteImages" value="">
                     <section class="Wizard">
                         <ul class=" row middle center">
-                            <li class="col-3 current" data-id="1">
+                            <li class="small-3 current" data-id="1">
                                 <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                      xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -38,7 +38,7 @@
                                 </svg>
                                 Categorías
                             </li>
-                            <li class="col-3" data-id="2">
+                            <li class="small-3" data-id="2">
                                 <svg width="16px" height="15px" viewBox="0 0 16 15" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                      xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -64,7 +64,7 @@
                                 </svg>
                                 Producto
                             </li>
-                            <li class="col-3" data-id="3">
+                            <li class="small-3" data-id="3">
                                 <svg width="17px" height="16px" viewBox="0 0 17 16" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                      xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
@@ -91,7 +91,7 @@
                                 </svg>
                                 Oferta
                             </li>
-                            <li class="col-3" data-id="4">
+                            <li class="small-3" data-id="4">
                                 <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                      xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->

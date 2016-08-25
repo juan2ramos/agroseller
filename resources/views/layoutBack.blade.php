@@ -25,11 +25,11 @@
 </svg>
 
 <header class="row middle HeaderBack">
-    <figure class="col-2 HeaderBack-figure">
+    <figure class="small-2 HeaderBack-figure">
         <a href="{{url('/')}}"> <img src="{{ url('images/logo-agrosellers.svg') }}" alt=""></a>
     </figure>
-    <div class="row middle col-10 HeaderBack-right">
-        <h1 class="col-6">
+    <div class="row middle small-10 HeaderBack-right">
+        <h1 class="small-6">
             <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -44,7 +44,7 @@
             </svg>
             Bienvenido(a) a Agrosellers
         </h1>
-        <div class="col-6 HeaderBack-profile row end middle ">
+        <div class="small-6 HeaderBack-profile row end middle ">
             <figure id="Notify">
                 @if(auth()->user()->photo)
                     <img src="{{url('uploads/users/' . auth()->user()->photo)}}" alt="">
@@ -90,7 +90,7 @@
 </header>
 <main class="MainBack row">
     @include('back.partial.menu')
-    <div class="col-10 MainBack-container">
+    <div class="small-10 MainBack-container">
         @yield('content')
     </div>
 </main>

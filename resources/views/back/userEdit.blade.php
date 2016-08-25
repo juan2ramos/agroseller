@@ -3,8 +3,8 @@
 @section('content')
     <form class="Forms row columns" method="POST" action="{{ route('newUserAdmin') }}"  enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <!--<div class=" col-6 center row middle">
-            <label for="photo" class="col-9 Form-image">
+        <!--<div class=" small-6 center row middle">
+            <label for="photo" class="small-9 Form-image">
                 <input type="file" class="StepImages" name="photo" id="photo">
                 <figure class=" row middle center ">
                     <svg width="81px" height="47px">
@@ -14,43 +14,43 @@
                 <output class="result"/>
             </label>
         </div>-->
-        <div class="col-6 ">
+        <div class="small-6 ">
             <label for="name" class="DataForm ">
                 <input type="text" id="name" name="name" value="{{ $user->name }}">
                 <span>Nombre</span>
             </label>
         </div>
-        <div class="col-6 ">
+        <div class="small-6 ">
             <label for="last_name" class="DataForm ">
                 <input type="text" id="last_name" name="last_name" value="{{ $user->last_name }}">
                 <span>Apellido</span>
             </label>
         </div>
-        <div class="col-6 ">
+        <div class="small-6 ">
             <label for="mobile_phone" class="DataForm ">
                 <input type="text" id="mobile_phone" name="mobile_phone" value="{{ $user->mobile_phone }}">
                 <span>Celular</span>
             </label>
         </div>
-        <div class="col-6 ">
+        <div class="small-6 ">
             <label for="phone" class="DataForm ">
                 <input type="text" id="phone" name="phone" value="{{ $user->phone }}">
                 <span>Teléfono</span>
             </label>
         </div>
-        <div class="col-6 ">
+        <div class="small-6 ">
             <label for="email" class="DataForm ">
                 <input disabled="true" type="email" id="email" name="email" value="{{ $user->email }}">
                 <span><!--Email--></span>
             </label>
         </div>
-        <div class="col-6 ">
+        <div class="small-6 ">
             <label for="password" class="DataForm ">
                 <input type="password" id="password" name="password" value="{{ $user->password }}">
                 <span>Password</span>
             </label>
         </div>
-        <div class="col-6 ">
+        <div class="small-6 ">
             <label for="role_id" class="DataForm ">
                 <select name="role_id" id="roles">
                     <option value="">Selecciona un rol</option>
@@ -64,10 +64,10 @@
                 </select>
             </label>
         </div>
-        <div class="col-6 offset-6 Check-agent" id="checkAgent" >
+        <div class="small-6 offset-6 Check-agent" id="checkAgent" >
         </div>
-        <div class="row center col-12">
-            <button class="Button col-6 "> ACTUALIZAR USUARIO</button>
+        <div class="row center small-12">
+            <button class="Button small-6 "> ACTUALIZAR USUARIO</button>
         </div>
     </form>
     @if (session('messageSuccess'))

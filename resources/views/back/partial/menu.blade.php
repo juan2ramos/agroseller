@@ -1,5 +1,5 @@
 @inject('menu', 'Agrosellers\Services\Menu')
-<nav class="Nav col-2">
+<nav class="Nav small-2">
     <ul>
         @foreach($menu->getMenu() as $key => $link)
             <li>

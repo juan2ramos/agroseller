@@ -3,7 +3,7 @@
 @section('content')
 
     <section class="BannerTop row">
-        <div class="col-3">
+        <div class="small-3">
             <ul class="Nav-categories">
 
                 @inject('menu', 'Agrosellers\Services\MenuFront')
@@ -29,15 +29,15 @@
 
             </ul>
         </div>
-        <div class="col-9">
+        <div class="small-9">
             <img src="{{url('images/image-banner.jpg')}}" alt="">
             <div class="BannerTop-info row middle">
-                <div class="col-6 ">
+                <div class="small-6 ">
                     <h2>TRACTOR VALTRA A850</h2>
                     <h3>ENTREGA INMENDIATA</h3>
                     <p class="BannerTop-infoPrice"><span>$80.000.000</span> Ahora $50.000.000</p>
                 </div>
-                <div class="col-6 AlignRight"><a class="Button" href="">VER OFERTA</a></div>
+                <div class="small-6 AlignRight"><a class="Button" href="">VER OFERTA</a></div>
             </div>
         </div>
     </section>
@@ -45,7 +45,7 @@
         <h2 class="Title">Lo Más Destacado</h2>
         <div class="Product-content row">
             @foreach($products as $product)
-                <article class="col-3">
+                <article class="small-3">
                     <figure class="Product-Image">
                         <a href="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}">
                             @foreach($product->productFiles as $file)
@@ -77,8 +77,8 @@
         </div>
     </section>
     <div class="row around middle " style="padding: 20px 0 40px">
-       <figure class="col-2"> <img  src="{{asset('images/prueba 01.png')}}" alt=""></figure>
-        <figure class="col-2"> <img  src="{{asset('images/prueba 02.png')}}" alt=""></figure>
+       <figure class="small-2"> <img  src="{{asset('images/prueba 01.png')}}" alt=""></figure>
+        <figure class="small-2"> <img  src="{{asset('images/prueba 02.png')}}" alt=""></figure>
     </div>
     <script>
         $(document).ready(function () {

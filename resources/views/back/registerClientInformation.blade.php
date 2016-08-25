@@ -16,7 +16,7 @@
             <div class="row">
                 @if(isset($farms))
                     @foreach($farms as $farm)
-                        <label for="farm-{{$farm->id}}" class="Forms-checkout capitalize col-6">
+                        <label for="farm-{{$farm->id}}" class="Forms-checkout capitalize small-6">
                             <input type="checkbox" name="farm-{{$farm->id}}" id="farm-{{$farm->id}}" value="{{$farm->id}}">
                             <sub></sub>
                             {{$farm->name}}

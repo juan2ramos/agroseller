@@ -91,11 +91,11 @@
 </div>
 <header class="Header">
     <div class="Header-container row middle">
-        <figure class="Header-logo col-3">
+        <figure class="Header-logo small-3">
             <a href="#" onclick="return false"><img src="{{url('images/logo-agrosellers.svg')}}"></a>
         </figure>
 
-        <form class="Header-search col-6">
+        <form class="Header-search small-6">
             <div>
                 <input type="text" name="headerSearch" placeholder="Busca tus productos y servicios" autocomplete="off">
                 <button onclick="return false">
@@ -121,27 +121,27 @@
             </div>
         </form>
 
-        <div class="Header-linksBack AlignRight col-3">
+        <div class="Header-linksBack AlignRight small-3">
             <a class="Header-login" href="#" onclick="return false">INICIAR SESIÓN</a>
             <a class="Button" href="#" onclick="return false">REGÍSTRATE</a>
         </div>
     </div>
     <div class="BarNav">
         <div class="BarNav-content row middle">
-            <div class="col-4 row">
+            <div class="small-4 row">
                 <button onclick="return false">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
             </div>
-            <div class="BarNav-a col-4  center">
+            <div class="BarNav-a small-4  center">
                 <a href="#" onclick="return false">Ver Planes</a>
                 <a href="#" onclick="return false">¿Cómo comprar?</a>
                 <a href="#" onclick="return false">¿Cómo vender?</a>
             </div>
 
-            <div class="Cart AlignRight col-4">
+            <div class="Cart AlignRight small-4">
                 <div class="Cart-content">
                     <div class="Cart-button">
                         <svg width="117px" height="29px" viewBox="0 0 117 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -207,7 +207,7 @@
             </g>
         </svg>
         <section class="ProductDetail row">
-            <article class="ProductDetail-slider col-6 ">
+            <article class="ProductDetail-slider small-6 ">
                 <div class="owl-carousel" id="sync1">
                     @for($i = 0; $i < 4; $i++)
                         <?php $key = 'image' . $i ?>
@@ -219,10 +219,10 @@
                     @endfor
                 </div>
             </article>
-            <article class="col-6">
+            <article class="small-6">
                 <h1 style="text-transform:uppercase">{{$input['nameProduct']}}</h1>
                 <div class="ProductDetail-price row middle">
-                    <div class="col-6">
+                    <div class="small-6">
                         <svg width="27px" height="36px" viewBox="0 0 27 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <defs></defs>
                             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -242,7 +242,7 @@
                             <b>${{number_format($input['priceCurrent'], 0, " ", ".")}}</b>
                         @endif
                     </div>
-                    <div class="col-6 AlignRight">
+                    <div class="small-6 AlignRight">
                         @for($i = 0; $i < 5; $i++)
                             <svg width="16px" height="26px" viewBox="0 0 16 26">
                                 <use xlink:href="#StarsSvg"/>
@@ -277,8 +277,8 @@
                 <div class="ProductDetail-quantity">
                     <h4>Cantidad</h4>
                     <div class="row bottom">
-                        <input type="number" id="quantity" class="col-4" value="1" maxlength="3">
-                    <span class="col-8 AlignRight">
+                        <input type="number" id="quantity" class="small-4" value="1" maxlength="3">
+                    <span class="small-8 AlignRight">
                         <a href="#" id="buy" onclick="return false" class="Button">COMPRAR</a>
                     </span>
                     </div>
@@ -318,7 +318,7 @@
                     </div>
                 </nav>
             </article>
-            <article class="col-6 ProductDetail-thumbnail">
+            <article class="small-6 ProductDetail-thumbnail">
                 <div class="row between owl-carousel" id="sync2">
                     @for($i = 0; $i < 4; $i++)
                         <?php $key = 'image' . $i ?>
@@ -330,14 +330,14 @@
                     @endfor
                 </div>
             </article>
-            <article class="col-6 ProductDetail-data row middle">
+            <article class="small-6 ProductDetail-data row middle">
                 <p>
                     <b>Código de producto:</b> 3321 <br>
                     <b>Subcategoría:</b> {{$subcategory->name}}
             </article>
         </section>
         <section class="Provider-detail row middle">
-            <div class="col-8 row middle">
+            <div class="small-8 row middle">
                 <figure>
                     @if(auth()->user()->photo)
                         <img src="{{url('uploads/providers/'.auth()->user()->photo)}}" alt="">
@@ -348,7 +348,7 @@
                     @endif
                 </figure>
                 <h4>{{auth()->user()->name}}</h4>
-                <div class="Provider-star col-2">
+                <div class="Provider-star small-2">
                     @for($i = 0; $i < 5; $i++)
                         <svg width="16px" height="26px" viewBox="0 0 16 26">
                             <use xlink:href="#StarsSvg"/>
@@ -356,9 +356,9 @@
                     @endfor
                 </div>
             </div>
-            <a href="" class="col-4">Mas Información</a>
+            <a href="" class="small-4">Mas Información</a>
         </section>
-        <div id="Map" class="col-12 Limited"></div>
+        <div id="Map" class="small-12 Limited"></div>
         <section class="ProductInfo">
             <h2>Descripción</h2>
             @if(isset($input['Description']))
@@ -368,14 +368,14 @@
             <article class="row bottom">
                 <!--php $j = 0 ?>
                 for($i = 0; $i < 2; $i++)-->
-                    <ul class="col-2 self-start" style="opacity:0">
+                    <ul class="small-2 self-start" style="opacity:0">
                         <li><b></b></li>
                     </ul>
-                    <ul class="col-2 self-start" style="opacity:0">
+                    <ul class="small-2 self-start" style="opacity:0">
                         <li><b></b></li>
                     </ul>
                 <!--endfor-->
-                <div class="col-8 AlignRight">
+                <div class="small-8 AlignRight">
                     <a href="#" onclick="return false" style="color : black" download>
                         Descarga Ficha Técnica
                         <svg width="32px" height="38px" viewBox="0 0 32 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -408,8 +408,8 @@
 </main>
 <footer class="Footer">
     <div class="Footer-content row middle">
-        <nav class="NavFooter col-12 row center">
-            <ul class="center col-2">
+        <nav class="NavFooter small-12 row center">
+            <ul class="center small-2">
                 <li class="NavFooter-TitleUL">
                     <a href="#" onclick="return false">Nosotros</a>
                     <ul>
@@ -418,7 +418,7 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="center col-2">
+            <ul class="center small-2">
                 <li class="NavFooter-TitleUL">
                     <a href="#" onclick="return false">Opciones Publicitarias</a>
                     <ul>
@@ -427,14 +427,14 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="center col-4">
+            <ul class="center small-4">
                 <li class="NavFooter-TitleUL">
                     <figure class="Footer-logo">
                         <img src="{{asset('images/logo-agrosellers.svg')}}">
                     </figure>
                 </li>
                 <li>
-                    <ul class="NavSocial col-12 row center">
+                    <ul class="NavSocial small-12 row center">
                         <li>
                             <a href="#" onclick="return false">
                                 <svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -515,7 +515,7 @@
                 </li>
             </ul>
 
-            <ul class="center col-2">
+            <ul class="center small-2">
                 <li class="NavFooter-TitleUL"><a href="#">Seguridad y Privacidad</a>
                     <ul>
                         <li><a href="#" onclick="return false"> Seguridad </a></li>
@@ -524,7 +524,7 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="center col-2">
+            <ul class="center small-2">
                 <li class="NavFooter-TitleUL"><a href="#"> Ayuda </a>
                     <ul>
                         <li><a href="#" onclick="return false"> ¿Cómo vender? </a></li>

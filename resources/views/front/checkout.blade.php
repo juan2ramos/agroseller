@@ -2,18 +2,18 @@
 
 @section('content')
     <div class="row Checkout">
-        <section class="col-4">
+        <section class="small-4">
             <h2>1. Resumen de la compra</h2>
             <h3>Verifica tu compra y método ed envío</h3>
             <ul>
                 @if(Session::has('cart') &&  Session::get('cart'))
                     @foreach(Session::get('cart') as $product)
                         <li class="row middle">
-                            <figure class="col-5">
+                            <figure class="small-5">
                                 <img src="{{ url('uploads/products/'.$product->productFiles()->first()->name )}}"
                                      alt="">
                             </figure>
-                            <div class="CartDetail-content col-7">
+                            <div class="CartDetail-content small-7">
                                 <div class="CartDetail-hGroup">
                                     <h3>{{$product->name}}</h3>
                                     <h4>{{$product->subcategory->first()->name}}</h4>
@@ -56,9 +56,9 @@
                 @endif
 
             </ul>
-            <div class="col-12 Total AlignRight">Subtotal: ${{( !empty(session('valueTotal')))? session('valueTotal') : '' }}</div>
+            <div class="small-12 Total AlignRight">Subtotal: ${{( !empty(session('valueTotal')))? session('valueTotal') : '' }}</div>
         </section>
-        <section class="col-8">
+        <section class="small-8">
             <h2>2. Detalle de facturación</h2>
             @if(!  Session::get('cart'))
                 @include('messages',[
@@ -115,8 +115,8 @@
                                         ])
 
                     <div class="row middle arrow" style="margin-top: 3rem">
-                        <a href="{{route('register')}}" class="col-3 offset-3 Button">REGISTRATE</a>
-                        <a href="{{route('login')}}" class="col-3 offset-1 Button">INICIA SESIÓN</a>
+                        <a href="{{route('register')}}" class="small-3 offset-3 Button">REGISTRATE</a>
+                        <a href="{{route('login')}}" class="small-3 offset-1 Button">INICIA SESIÓN</a>
                     </div>
                 @endif
                 @if(!empty($success))

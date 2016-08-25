@@ -1,0 +1,92 @@
+.Nav-categories
+  ul
+    display: none
+  a
+    color: $greenDark
+    display: block
+  & li
+    border-bottom: rem(1) dashed
+    padding: 1rem 0
+    max-width: 92%
+    position: relative
+    @include transition(.5s)
+    &:hover ul
+      display:  block
+
+    ul
+      position: absolute
+      left: 100%
+      background: white
+      top: 0
+      z-index: 10
+      padding: 1rem 2rem
+      width: 20rem
+      box-shadow: 0 0 1rem 0 rgba(228, 228, 228, 0.5)
+      li
+        max-width: 100%
+        &:last-child
+          border: none
+
+.Show
+  visibility: visible
+  opacity: 1
+
+.Show .NavCategories
+  left: 0
+
+.NavCategories-network
+  max-width: 10rem
+  margin: auto
+  padding-bottom: 1.5rem
+
+.NavCategories
+  top: 11.875rem
+  left: -20rem
+  background: white
+  position: absolute
+  @include transition(all .5s)
+  & hr
+    border: none
+    height: .0625rem
+    background: #D7D7D7
+    margin: 0 auto
+    width: 90%
+  & a
+    font-weight: 300
+    color: #818181
+  & ul
+    max-width: 17.75rem
+    padding: 1.5rem 0 1rem
+    color: #818181
+    & ul
+      position: absolute
+      left: 100%
+      background: white
+      box-shadow: -.0625rem 0 .375rem 0 rgba(0,0,0,0.24)
+      top: 0
+      display: none
+    &:nth-last-of-type(1)
+      padding-top: 1rem
+    & li
+      line-height: 2.375rem
+      width: 17.75rem
+      position: relative
+      cursor: pointer
+      font-weight: 300
+      & div
+        padding: 0 2.25rem
+      &:hover > div
+        background: #F5F5F5
+        color: $greenLight
+        & a
+          color: $greenLight
+      &:hover ul
+        display: block
+      &:hover > a
+        color: $greenLight
+      &:hover svg g
+        fill: $greenLight
+    & svg
+      position: absolute
+      right: 2.5rem
+      top: .9375rem

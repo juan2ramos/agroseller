@@ -2,92 +2,92 @@
 
 @section('content')
 
-    <div class="title col-12">
+    <div class="title small-12">
         <h2>Proveedor - {{$user->name}}</h2>
         <hr class="Logo-hr">
     </div>
     <section class="BackContainer row" style="position: relative">
 
         <input class="Tab" id="tab1" type="radio" name="tabs" checked>
-        <label class="Tab col-6" for="tab1">Datos generales</label>
+        <label class="Tab small-6" for="tab1">Datos generales</label>
 
         <input class="Tab" id="tab2" type="radio" name="tabs">
-        <label class="Tab col-6" for="tab2">Ver Productos</label>
+        <label class="Tab small-6" for="tab2">Ver Productos</label>
 
-        <span class="Line-bottom-two col-12"></span>
+        <span class="Line-bottom-two small-12"></span>
 
         <!--*********** Ver datos del proveedor ***************** -->
 
         <article class="TabContainer" id="EditProduct">
             <section class="UserValidate row">
-                <section class="BackContainer col-12 row">
+                <section class="BackContainer small-12 row">
                     @if($user->provider['count-number'])
-                        <article class="item col-4 row">
-                            <a class="Button col-12" href="/uploads/providers/{{$user->provider['count-number']}}" target="_blank">Certificado bancario </a>
+                        <article class="item small-4 row">
+                            <a class="Button small-12" href="/uploads/providers/{{$user->provider['count-number']}}" target="_blank">Certificado bancario </a>
                         </article>
 
-                        <article class="item col-4 row">
-                            <a class="Button col-12" href="/uploads/providers/{{$user->provider['legal-agent']}}" target="_blank">Cedula representante legal </a>
+                        <article class="item small-4 row">
+                            <a class="Button small-12" href="/uploads/providers/{{$user->provider['legal-agent']}}" target="_blank">Cedula representante legal </a>
                         </article>
 
-                        <article class="item col-4 row">
-                            <a class="Button col-12" href="/uploads/providers/{{$user->provider['licence']}}" target="_blank">Licencia </a>
+                        <article class="item small-4 row">
+                            <a class="Button small-12" href="/uploads/providers/{{$user->provider['licence']}}" target="_blank">Licencia </a>
                         </article>
                     @else
-                        <article class="item col-6 row">
-                            <a class="Button col-12" href="/uploads/providers/{{$user->provider['legal-agent']}}" target="_blank">Cedula representante legal </a>
+                        <article class="item small-6 row">
+                            <a class="Button small-12" href="/uploads/providers/{{$user->provider['legal-agent']}}" target="_blank">Cedula representante legal </a>
                         </article>
 
-                        <article class="item col-6 row">
-                            <a class="Button col-12" href="/uploads/providers/{{$user->provider['licence']}}" target="_blank">Licencia </a>
+                        <article class="item small-6 row">
+                            <a class="Button small-12" href="/uploads/providers/{{$user->provider['licence']}}" target="_blank">Licencia </a>
                         </article>
                     @endif
 
-                    <article class="item col-6">
+                    <article class="item small-6">
                         <h3>Nombre : </h3>
                         <span>{{$user->name}} {{$user->second_name}} {{$user->last_name}} {{$user->second_last_name}}</span>
                     </article>
-                    <article class="item col-6">
+                    <article class="item small-6">
                         <h3>Email : </h3>
                         <span>{{$user->email}}</span>
                     </article>
-                    <article class="item col-6">
+                    <article class="item small-6">
                         <h3>Empresa : </h3>
                         <span>{{$user->provider['company-name']}}</span>
                     </article>
-                    <article class="item col-6">
+                    <article class="item small-6">
                         <h3>NIT : </h3>
                         <span>{{$user->provider->NIT}}</span>
                     </article>
-                    <article class="item col-6">
+                    <article class="item small-6">
                         <h3>Tipo de contribuyente : </h3>
                         <span>{{$user->provider->taxpayer}}</span>
                     </article>
-                    <article class="item col-6">
+                    <article class="item small-6">
                         <h3>Dirección : </h3>
                         <span>{{$user->provider->address}}</span>
                     </article>
-                    <article class="item col-6">
+                    <article class="item small-6">
                         <h3>Sitio web : </h3>
                         <span>{{$user->provider['web-site']}}</span>
                     </article>
-                    <article class="item col-6">
+                    <article class="item small-6">
                         <h3>Tiempo promedio de despacho : </h3>
                         <span>{{$user->provider['dispatch-time']}}</span>
                     </article>
-                    <article class="item col-6">
+                    <article class="item small-6">
                         <h3>Contacto : </h3>
                         <span>{{$user->provider->contact}}</span>
                     </article>
-                    <article class="item col-6">
+                    <article class="item small-6">
                         <h3>Telefono contacto : </h3>
                         <span>{{$user->provider['contact-phone']}}</span>
                     </article>
-                    <article class="item col-12">
+                    <article class="item small-12">
                         <h3>Descripción de la empresa : </h3>
                         <span>{{$user->provider->description}}</span>
                     </article>
-                    <div class="item col-12">
+                    <div class="item small-12">
                         <a class="Button" href="{{route('validateProvider', $user->id)}}">
                         @if($user->provider->validate == 0)
                             Aprobar

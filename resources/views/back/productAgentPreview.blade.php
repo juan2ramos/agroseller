@@ -7,7 +7,7 @@
         <article>
             <form  class="row" action="{{route('validateProduct', $product->id)}}" method="POST">
                 <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
-                <button class="Button col-12">
+                <button class="Button small-12">
                     @if(!$product->isValidate)
                         Aprobar producto
                     @else

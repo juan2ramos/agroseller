@@ -15,7 +15,7 @@
 
     <section class="Pricing row middle">
         @foreach($plans as $plan)
-        <article class="col-4">
+        <article class="small-4">
             <form action="{{route('payPlan', $plan->id)}}" method="POST">
                 <h2>{{$plan->name}}</h2>
                 <h3>{{$plan->description}}</h3>

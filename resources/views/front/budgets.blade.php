@@ -2,21 +2,21 @@
 
 @section('content')
     <div class="row Checkout">
-        <section class="col-12">
+        <section class="small-12">
             <h2 style="text-align: justify ; font-size: 1.2rem">1. Deseas guardar estos productos en un presupuesto,
                 puedes comprar luego, crear tus cotizaciones o comparar precios</h2>
             <h3>Los productos guardados están sujetos a cambios de precios por parte de los proveedores</h3>
             <ul class="row " style="width: 100%">
                 @if(Session::has('cart') &&  Session::get('cart')))
                 @foreach(Session::get('cart') as $product)
-                    <li style="margin: 3rem 1rem 0" class="row col-4 middle">
-                        <figure class="col-5">
+                    <li style="margin: 3rem 1rem 0" class="row small-4 middle">
+                        <figure class="small-5">
                             <a href="{{route('productDetail',[$product->slug, $product->id])}}">
                                 <img src="{{ url('uploads/products/'.$product->productFiles()->first()->name )}}"
                                      alt="">
                             </a>
                         </figure>
-                        <div class="CartDetail-content col-7">
+                        <div class="CartDetail-content small-7">
                             <div class="CartDetail-hGroup">
                                 <h3>{{$product->name}}</h3>
                                 <h4>{{$product->subcategory->first()->name}}</h4>
@@ -57,10 +57,10 @@
                 @endif
 
             </ul>
-            <div class="col-12 Total AlignRight" style="font-size: 1.5rem; padding: 1.25rem 0">Total:
+            <div class="small-12 Total AlignRight" style="font-size: 1.5rem; padding: 1.25rem 0">Total:
                 ${{session('valueTotal')}}</div>
         </section>
-        <section class="col-12">
+        <section class="small-12">
             @if(!  Session::get('cart'))
                 @include('messages',[
                     'type' => 'warning',
@@ -73,7 +73,7 @@
                 @if(Auth::check())
                     @if(auth()->user()->role_id == 4)
                         <div class="row center">
-                            <a class="Button col-4" style="margin: 2rem 0" href="{{route('addBudget')}}">CREAR TU
+                            <a class="Button small-4" style="margin: 2rem 0" href="{{route('addBudget')}}">CREAR TU
                                 PRESUPUESTO</a>
                         </div>
                     @else
@@ -98,8 +98,8 @@
 
                     </h3>
                     <div class="row middle arrow" style="margin: 3rem 0">
-                        <a href="{{route('register')}}" class="col-3 offset-3 Button">REGISTRATE</a>
-                        <a href="{{route('login')}}" class="col-3 offset-1 Button">INICIA SESIÓN</a>
+                        <a href="{{route('register')}}" class="small-3 offset-3 Button">REGISTRATE</a>
+                        <a href="{{route('login')}}" class="small-3 offset-1 Button">INICIA SESIÓN</a>
                     </div>
                 @endif
 

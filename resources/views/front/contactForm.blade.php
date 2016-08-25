@@ -16,7 +16,7 @@
                 <p>{{$mensaje}}</p>
             </div>
         @endif
-        <section class="col-4 Contact_information">
+        <section class="small-4 Contact_information">
             <article>
                 <h3>Mas información</h3>
                 <p>Sigue nuestras redes sociales y recibe las ultimas actualizaciones</p>
@@ -90,7 +90,7 @@
                 </div>
             </article>
         </section>
-        <section class="col-8 Contact_form">
+        <section class="small-8 Contact_form">
             <h1>Contáctanos</h1>
             <form action="{{route('contactForm')}}" class="Form-Control" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
