@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="BackContainer row" style="position: relative;">
-        <article class="QuestionList small-12">
+        <article class="QuestionList col-12">
             <h2>Ultimas preguntas</h2>
             <section class="QuestionList-questions">
                 <input id="questionDetail" type="hidden" value="{{route('questions')}}">
@@ -25,7 +25,7 @@
                 @endforeach
             </section>
         </article>
-        <article class="Question small-6 column">
+        <article class="Question col-6 column">
             <div class="QuestionUser">
                 <div class="QuestionHead row between">
                     <div class="Identity">
@@ -49,7 +49,7 @@
                     <span class="QuestionHead-close">x</span>
                 </div>
                 <section class="QuestionContent row">
-                    <article class="QuestionContent-title row middle small-12">
+                    <article class="QuestionContent-title row middle col-12">
                         <figure class="stateIcon active">
                             <svg title="checkmark" viewBox="0 0 32 32" class="svgIcon detailsTitle-checkmarkSvg">
                                 <polygon points="30,5.077 26,2 11.5,22.5 4.5,15.5 1,19 12,30"></polygon>
@@ -57,7 +57,7 @@
                         </figure>
                         <h2 id="ProductName">Nombre del producto</h2>
                     </article>
-                    <article id="QuestionContentText" class="small-12">Texto de la pregunta</article>
+                    <article id="QuestionContentText" class="col-12">Texto de la pregunta</article>
                     <section class="QuestionContent-Answers" id="Answers"></section>
                 </section>
             </div>
@@ -79,12 +79,12 @@
 @section('scripts')
     <script>
         $('.QuestionHead-close').on('click', function(){
-            $('.QuestionList').addClass('small-12').removeClass('small-6');
+            $('.QuestionList').addClass('col-12').removeClass('col-6');
         });
 
         $('.QuestionList-item').on('click', function() {
             $('.Question').show();
-            $('.QuestionList').removeClass('small-12').addClass('small-6');
+            $('.QuestionList').removeClass('col-12').addClass('col-6');
             $(this).siblings().children().removeClass('active');
             $(this).children().addClass('active');
 
@@ -145,13 +145,13 @@
                     var html = '';
                     html += '<article class="QuestionContent-AnswersItem">' +
                                 '<div class="QuestionHead row">' +
-                                    '<div class="Identity small-6">' +
+                                    '<div class="Identity col-6">' +
                                         '<figure class="Identity-avatar">' +
                                             '<img src="/images/user.png">' +
                                         '</figure>' +
                                     '<span class="Identity-name">' + data.text[i].user.name + '</span>' +
                                 '</div>' +
-                                '<div class="QuestionHead-date small-6">' +
+                                '<div class="QuestionHead-date col-6">' +
                                     '<div class="QuestionHead-date-icon">' +
                                         '<svg width="23px" height="23px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">' +
                                             '<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">' +

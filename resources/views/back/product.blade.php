@@ -3,12 +3,12 @@
     <section class="BackContainer row" style="position: relative">
 
         <input class="Tab" id="tab1" type="radio" name="tabs" checked>
-        <label class="Tab small-6" for="tab1">Ver Productos</label>
+        <label class="Tab col-6" for="tab1">Ver Productos</label>
 
         <input class="Tab" id="tab2" type="radio" name="tabs">
-        <label class="Tab small-6" for="tab2">Nuevo Producto</label>
+        <label class="Tab col-6" for="tab2">Nuevo Producto</label>
 
-        <span class="Line-bottom-two small-12"></span>
+        <span class="Line-bottom-two col-12"></span>
 
         <article class="TabContainer" id="EditProduct">
             <!--<input id="deleteProductRoute" type="hidden" value="{route('deleteProduct')}}">-->
@@ -110,14 +110,14 @@
             </div>-->
         </article>
 
-        <article class="TabContainer small-12" id="NewProduct">
+        <article class="TabContainer col-12" id="NewProduct">
             <form id="Product-form" role="form" method="POST" action="{{ route('newProduct') }}"
                   enctype="multipart/form-data">
                 <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
 
                 <section class="Wizard">
                     <ul class=" row middle center">
-                        <li class="small-3 current" data-id="1">
+                        <li class="col-3 current" data-id="1">
                             <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -136,7 +136,7 @@
                             </svg>
                             Categorías
                         </li>
-                        <li class="small-3" data-id="2">
+                        <li class="col-3" data-id="2">
                             <svg width="16px" height="15px" viewBox="0 0 16 15" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -163,7 +163,7 @@
                             </svg>
                             Producto
                         </li>
-                        <li class="small-3" data-id="3">
+                        <li class="col-3" data-id="3">
                             <svg width="17px" height="16px" viewBox="0 0 17 16" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -191,7 +191,7 @@
                             </svg>
                             Oferta
                         </li>
-                        <li class="small-3" data-id="4">
+                        <li class="col-3" data-id="4">
                             <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink">

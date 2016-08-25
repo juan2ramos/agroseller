@@ -8,12 +8,12 @@
 
         <form id="Provider-form" class="Forms ProviderForm row" role="form" method="POST" action="{{ route('userUpdate')}}" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="title small-12">
+            <div class="title col-12">
                 <h2>Actualice sus datos</h2>
                 <hr class="Logo-hr">
             </div>
 
-            <div class="small-3">
+            <div class="col-3">
                 <div class="row Step-2Images Logo">
                     <label for="image">
                         <input type="file" class="StepImages" name="photo" id="image">
@@ -30,7 +30,7 @@
                     </label>
                 </div>
             </div>
-            <div class="small-4">
+            <div class="col-4">
                 <label class="" for="name">
                     <input name="name" value="{{ $user->name }}" type="text">
                     <span>Primer nombre</span>
@@ -40,7 +40,7 @@
                     <span>Primer apellido</span>
                 </label>
             </div>
-            <div class="small-4 offset-1">
+            <div class="col-4 offset-1">
                 <label class="" for="second_name">
                     <input name="second_name" value="{{ $user->second_name }}" type="text">
                     <span>Segundo nombre</span>
@@ -50,7 +50,7 @@
                     <span>Segundo apellido</span>
                 </label>
             </div>
-            <div class="small-7">
+            <div class="col-7">
                 <label class="" for="email">
                     <input value="{{ $user->email }}" type="text" disabled>
                     <!--<span>E-mail</span>-->
@@ -60,7 +60,7 @@
                     <span>Celular</span>
                 </label>
             </div>
-            <div class="small-4 offset-1">
+            <div class="col-4 offset-1">
                 <label class="" for="identification">
                     <input name="identification" value="{{ $user->identification }}" type="number">
                     <span>Identificacion</span>
