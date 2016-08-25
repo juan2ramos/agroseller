@@ -144,16 +144,16 @@
     </div>
     <div class="BarNav">
         <div class="BarNav-content row middle">
-            <div class="small-3 row">
+            <div class="small-6 medium-3 row">
                 <button id="Menu"><span></span><span></span><span></span></button>
             </div>
-            <div class="BarNav-a small-6  center">
+            <div class="BarNav-a medium-6  center">
                 <a href="{{route('pricing')}}">Ver Planes</a>
                 <a href="{{route('pricing')}}">¿Cómo comprar?</a>
                 <a href="{{route('pricing')}}">¿Cómo vender?</a>
             </div>
 
-            <div class="Cart AlignRight small-3">
+            <div class="Cart AlignRight small-6 medium-3">
                 <div class="Cart-content">
                     <div class="Cart-button" id="CartButton">
                         <svg width="117px" height="29px" viewBox="0 0 117 29" version="1.1"

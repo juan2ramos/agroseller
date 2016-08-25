@@ -37,11 +37,20 @@ body
   height: 23rem
 .BannerTop-info
   position: relative
-  bottom: rem(120 )
   width: 100%
+  padding: rem(10) 3.25rem
   background: rgba(0, 0, 0, 0.7)
-  height: 7.5rem
-  padding: 0 3.25rem
+  > div
+    text-align: center
+    justify-content: center
+  @include respond-to(medium)
+    height: 7.5rem
+    padding: 0 3.25rem
+    bottom: rem(120)
+    > div
+      text-align: left
+      justify-content: flex-end
+
 
   & h2
     color: white

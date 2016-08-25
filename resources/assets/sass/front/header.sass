@@ -116,8 +116,11 @@
       margin-bottom: 0
 .BarNav-a
   text-transform: uppercase
-  font-size: .9rem
   font-weight: 500
+  display: none
+  font-size: .9rem
+  @include respond-to(medium)
+    display: block
   & a
     color: $greenDark
     border-bottom: .0625rem solid $greenDark
