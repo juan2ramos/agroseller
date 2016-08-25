@@ -1,40 +1,40 @@
 .autocomplete
   position: relative
   z-index: 2
-  overflow: hidden
-  max-height: 400px
+  max-height: rem(400)
   cursor: pointer
 
   .result.open
     display: block
+    position: absolute
+    top: rem(45)
 
   .result
     position: relative
-    left: 50%
-    min-height: 79px
+    min-height: rem(79)
     font-weight: 300
     display: none
-    width: 98%
+    width: 100%
     background: #fff
-    border-radius: 0 0 3px 3px
-    padding: 14px 0
+    border-radius: 0 0 rem(3) rem(3)
+    padding: rem(14) 0
 
     li
-      height: 50px
-      padding: 6px 12px
+      height: rem(50)
+      padding: rem(6) rem(12)
       &:hover
         background: #d7d7d7
       a
         display: flex
         align-items: center
         .no-data
-          padding-left: 16px
+          padding-left: rem(16)
 
 .autocomplete-result-image
-  width: 40px
-  height: 40px
+  width: rem(40)
+  height: rem(40)
   overflow: hidden
-  margin-right: 12px
+  margin-right: rem(12)
 
 .autocomplete-result-text
   font-size: .85rem
@@ -43,5 +43,5 @@
 .autocomplete.light li
   height: auto
   span
-    padding: 7px 0
+    padding: rem(7) 0
     display: block

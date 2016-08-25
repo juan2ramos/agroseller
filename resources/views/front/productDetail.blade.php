@@ -44,7 +44,7 @@
         </g>
     </svg>
     <section class="ProductDetail row">
-        <article class="ProductDetail-slider small-6 ">
+        <article class="ProductDetail-slider col-6 ">
             <div class="owl-carousel" id="sync1">
                 @foreach($product->productFiles as $file)
                     @if($file->extension != 'pdf')
@@ -53,10 +53,10 @@
                 @endforeach
             </div>
         </article>
-        <article class="small-6">
+        <article class="col-6">
             <h1 style="text-transform:uppercase">{{$product->name}}</h1>
             <div class="ProductDetail-price row middle">
-                <div class="small-6">
+                <div class="col-6">
                     <svg width="27px" height="36px" viewBox="0 0 27 36" version="1.1" xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -80,7 +80,7 @@
                         <b>${{number_format($product->price, 0, " ", ".")}}</b>
                     @endif
                 </div>
-                <div class="small-6 AlignRight">
+                <div class="col-6 AlignRight">
                     @for($i = 0; $i < 5; $i++)
                         <svg width="16px" height="26px" viewBox="0 0 16 26">
                             <use xlink:href="#StarsSvg"/>
@@ -117,8 +117,8 @@
             <div class="ProductDetail-quantity">
                 <h4>Cantidad</h4>
                 <div class="row bottom">
-                    <input type="number" id="quantity" class="small-4" value="1" maxlength="3">
-                    <span class="small-8 AlignRight"><a href="#" data-url="{{url('/')}}" id="buy"
+                    <input type="number" id="quantity" class="col-4" value="1" maxlength="3">
+                    <span class="col-8 AlignRight"><a href="#" data-url="{{url('/')}}" id="buy"
                                                       class="Button">COMPRAR</a></span>
                 </div>
             </div>
@@ -173,24 +173,24 @@
                 </div>
             </nav>
         </article>
-        <article class="small-6 ProductDetail-thumbnail">
+        <article class="col-6 ProductDetail-thumbnail">
             <div class="row between owl-carousel" id="sync2">
                 @foreach($product->productFiles as $file)
                     @if($file->extension != 'pdf')
-                        <figure class="item" class="small-3"><img src="{{url('uploads/products/'. $file->name)}}" alt="">
+                        <figure class="item" class="col-3"><img src="{{url('uploads/products/'. $file->name)}}" alt="">
                         </figure>
                     @endif
                 @endforeach
             </div>
         </article>
-        <article class="small-6 ProductDetail-data row middle">
+        <article class="col-6 ProductDetail-data row middle">
             <p>
                 <b>Código de producto:</b> {{$product->id}} <br>
                 <b>Subcategoría:</b> {{$product->subcategory->name}}
         </article>
     </section>
     <section class="Provider-detail row middle">
-        <div class="small-8 row middle">
+        <div class="col-8 row middle">
             <figure>
                 @if($product->user->photo)
                     <img src="{{url('uploads/providers/'.$product->user->photo)}}" alt="">
@@ -202,7 +202,7 @@
                 @endif
             </figure>
             <h4>{{$product->user->name}}</h4>
-            <div class="Provider-star small-2">
+            <div class="Provider-star col-2">
                 @for($i = 0; $i < 5; $i++)
                     <svg width="16px" height="26px" viewBox="0 0 16 26">
                         <use xlink:href="#StarsSvg"/>
@@ -210,9 +210,9 @@
                 @endfor
             </div>
         </div>
-        <a href="" class="small-4">Mas Información</a>
+        <a href="" class="col-4">Mas Información</a>
     </section>
-    <div id="Map" class="small-12 Limited"></div>
+    <div id="Map" class="col-12 Limited"></div>
     <section class="ProductInfo">
         <h2>Descripción</h2>
         {!!$product->description!!}
@@ -220,7 +220,7 @@
         <article class="row bottom">
             <?php $j = 0 ?>
             @for($i = 0; $i < 2; $i++)
-                <ul class="small-2 self-start">
+                <ul class="col-2 self-start">
                     @while($j < count($featuresTranslate))
                         <li>{{$featuresTranslate[$j]['name']}}: <b>{{ $featuresTranslate[$j]['value'] }}</b></li>
                         <?php $j++ ?>
@@ -230,7 +230,7 @@
                     @endwhile
                 </ul>
             @endfor
-            <div class="small-8 AlignRight">
+            <div class="col-8 AlignRight">
                 @foreach($product->productFiles as $file)
                     @if($file->extension == 'pdf')
                         <a href="/uploads/products/{{$file->name}}" style="color : black" download>
@@ -302,7 +302,7 @@
                             </p>
                         </div>
                         @for($i = 1; $i < count($question->texts); $i++)
-                            <ul class="small-12" style="padding-left:3.8rem; margin-bottom: 5px">
+                            <ul class="col-12" style="padding-left:3.8rem; margin-bottom: 5px">
                                 <li class="row" style="margin-bottom: 0">
                                     <figure style="">
                                         @if($question->texts[$i]->user->photo)

@@ -75,12 +75,12 @@
     </div>
 </div>
 <header class="Header">
-    <div class="Header-container row middle">
-        <figure class="Header-logo small-3">
+    <div class="Header-container row middle between">
+        <figure class="Header-logo center row small-12 col-4 middle">
             <a href="{{route('home')}}"><img src="{{url('images/logo-agrosellers.svg')}}" alt="Logo Agrosellers"></a>
         </figure>
 
-        <form action="" class="Header-search small-6">
+        <form action="" class="Header-search small-12 col-4">
             <input id="principalToken" type="hidden" name="_token" value="{{ csrf_token() }}">
             <input id="searchRoute" type="hidden" value="{{route('searchBar')}}">
             <div>
@@ -99,8 +99,7 @@
                     </svg>
                     </a>
                 </div>
-                <input id="input-search" type="text" name="headerSearch" placeholder="Busca tus productos y servicios"
-                       autocomplete="off">
+                <input id="input-search" type="text" name="headerSearch" placeholder="Busca tus productos y servicios" autocomplete="off">
                 <button>
                     <svg width="28px" height="27px" viewBox="0 0 28 27" version="1.1" xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -130,7 +129,7 @@
             </div>
         </form>
 
-        <div class="Header-linksBack AlignRight small-3">
+        <div class="Header-linksBack AlignRight small-12 col-4 row center middle">
             @if(Auth::check())
                 <div class="UserFront">
                     <p><span>Bienvenido </span>{{ auth()->user()->fullName()}}</p>
@@ -145,16 +144,16 @@
     </div>
     <div class="BarNav">
         <div class="BarNav-content row middle">
-            <div class="small-3 row">
+            <div class="small-6 medium-3 row">
                 <button id="Menu"><span></span><span></span><span></span></button>
             </div>
-            <div class="BarNav-a small-6  center">
+            <div class="BarNav-a medium-6  center">
                 <a href="{{route('pricing')}}">Ver Planes</a>
                 <a href="{{route('pricing')}}">¿Cómo comprar?</a>
                 <a href="{{route('pricing')}}">¿Cómo vender?</a>
             </div>
 
-            <div class="Cart AlignRight small-3">
+            <div class="Cart AlignRight small-6 medium-3">
                 <div class="Cart-content">
                     <div class="Cart-button" id="CartButton">
                         <svg width="117px" height="29px" viewBox="0 0 117 29" version="1.1"
@@ -227,8 +226,8 @@
 @endif
 <footer class="Footer">
     <div class="Footer-content row middle">
-        <nav class="NavFooter small-12 row center">
-            <ul class="center small-2">
+        <nav class="NavFooter col-12 row center">
+            <ul class="center col-2">
                 <li class="NavFooter-TitleUL"><a href="#">Nosotros</a>
                     <ul>
                         <li><a href="#"> Sobre AgroSellers</a></li>
@@ -236,7 +235,7 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="center small-2">
+            <ul class="center col-2">
                 <li class="NavFooter-TitleUL"><a href="#">Opciones Publicitarias</a>
                     <ul>
                         <li><a href="#"> Publica con nosotros</a></li>
@@ -244,14 +243,14 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="center small-4">
+            <ul class="center col-4">
                 <li class="NavFooter-TitleUL">
                     <figure class="Footer-logo">
                         <img src="{{url('images/logo-agrosellers.svg')}}" alt="">
                     </figure>
                 </li>
                 <li>
-                    <ul class="NavSocial small-12 row center">
+                    <ul class="NavSocial col-12 row center">
                         <li>
                             <a href="#">
                                 <svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1"
@@ -353,7 +352,7 @@
                 </li>
             </ul>
 
-            <ul class="center small-2">
+            <ul class="center col-2">
                 <li class="NavFooter-TitleUL"><a href="#">Seguridad y Privacidad</a>
                     <ul>
                         <li><a href="#"> Seguridad </a></li>
@@ -362,7 +361,7 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="center small-2">
+            <ul class="center col-2">
                 <li class="NavFooter-TitleUL"><a href="#"> Ayuda </a>
                     <ul>
                         <li><a href="#"> ¿Cómo vender? </a></li>
@@ -414,7 +413,7 @@
             </li>
         </ul>
         <div class="NavCategories-network row">
-            <span class="small-3"><svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1"
+            <span class="col-3"><svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
                     <title>Facebook</title>
@@ -433,7 +432,7 @@
                         </g>
                     </g>
                 </svg></span>
-            <span class="small-3"><svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <span class="col-3"><svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <title>Twitter</title>
                     <desc>Created with Sketch.</desc>
                     <defs></defs>
@@ -450,7 +449,7 @@
                         </g>
                     </g>
                 </svg></span>
-            <span class="small-3"><svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1"
+            <span class="col-3"><svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
                     <title>Youtube</title>
@@ -506,13 +505,13 @@
             @if(Session::has('cart'))
                 @foreach(Session::get('cart') as $product)
                     <li class="row middle">
-                        <figure class="small-5">
+                        <figure class="col-5">
                             <a href="{{route('productDetail',[$product->slug, $product->id])}}">
                                 <img src="{{ url('uploads/products/'.$product->productFiles()->first()->name )}}"
                                      alt="">
                             </a>
                         </figure>
-                        <div class="CartDetail-content small-7">
+                        <div class="CartDetail-content col-7">
                             <div class="CartDetail-hGroup">
                                 <h3>{{$product->name}}</h3>
                                 <h4>{{$product->subcategory->first()->name}}</h4>
@@ -558,8 +557,8 @@
         </ul>
 
         <section class="CartDetail-footer row">
-            <span class="small-6">Subtotal</span>
-            <span class="small-6 AlignRight">${{(session('valueTotal')? session('valueTotal'): '')}}</span>
+            <span class="col-6">Subtotal</span>
+            <span class="col-6 AlignRight">${{(session('valueTotal')? session('valueTotal'): '')}}</span>
             <a class="Button" href="{{route('checkout')}}">REALIZAR COMPRA</a>
             <a class="Button" href="{{route('budget')}}">COTIZAR AHORA</a>
         </section>

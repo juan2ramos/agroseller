@@ -2404,30 +2404,30 @@ label.Tab {
 .autocomplete {
   position: relative;
   z-index: 2;
-  overflow: hidden;
-  max-height: 400px;
+  max-height: 25rem;
   cursor: pointer;
 }
 
 .autocomplete .result.open {
   display: block;
+  position: absolute;
+  top: 2.8125rem;
 }
 
 .autocomplete .result {
   position: relative;
-  left: 50%;
-  min-height: 79px;
+  min-height: 4.9375rem;
   font-weight: 300;
   display: none;
-  width: 98%;
+  width: 100%;
   background: #fff;
-  border-radius: 0 0 3px 3px;
-  padding: 14px 0;
+  border-radius: 0 0 0.1875rem 0.1875rem;
+  padding: 0.875rem 0;
 }
 
 .autocomplete .result li {
-  height: 50px;
-  padding: 6px 12px;
+  height: 3.125rem;
+  padding: 0.375rem 0.75rem;
 }
 
 .autocomplete .result li:hover {
@@ -2444,14 +2444,14 @@ label.Tab {
 }
 
 .autocomplete .result li a .no-data {
-  padding-left: 16px;
+  padding-left: 1rem;
 }
 
 .autocomplete-result-image {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   overflow: hidden;
-  margin-right: 12px;
+  margin-right: 0.75rem;
 }
 
 .autocomplete-result-text {
@@ -2464,7 +2464,7 @@ label.Tab {
 }
 
 .autocomplete.light li span {
-  padding: 7px 0;
+  padding: 0.4375rem 0;
   display: block;
 }
 

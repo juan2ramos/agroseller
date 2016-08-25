@@ -8,12 +8,12 @@
 
         <form id="Provider-form" class="Forms form-little ProviderForm row" role="form" method="POST" action="{{ route('insertProvider')}}" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="title small-12">
+            <div class="title col-12">
                 <h2>Complete sus datos</h2>
                 <hr class="Logo-hr">
             </div>
 
-            <div class="small-3">
+            <div class="col-3">
                 <div class="row Step-2Images Logo">
                     <label for="image">
                         <input type="file" class="StepImages" name="logo" id="image">
@@ -24,7 +24,7 @@
                     </label>
                 </div>
             </div>
-            <div class="small-9">
+            <div class="col-9">
                 <input type="text" class="form-control" placeholder="Nombre de la empresa" name="company-name" value="{{ old('company-name')}}">
                 <input type="number" class="form-control" placeholder="NIT" name="NIT" value="{{old('NIT')}}">
                 <select style="margin: 1.25rem 10px 0 0; height: 48px" id="" class="form-control" name="taxpayer">
@@ -57,13 +57,13 @@
             <textarea class="form-control" placeholder="Descripcion de la empresa" name="description" >{{ old('description')}}</textarea>
             <input type="text" class="form-control" placeholder="Direccion" name="address" value="{{ old('address')}}">
 
-            <article class="Step-location small-12">
+            <article class="Step-location col-12">
                 <span class="Marker Button" id="addMaker">AÑADE UNA UBICACIÓN</span>
                 <span class="Marker Button" id="removeMaker">ELIMINAR TODAS LAS UBICACIONES</span>
                 <div id="Map" class="Map"></div>
             </article>
             <input type="hidden" id="Location" name="location" value="">
-            <div class="title small-12">
+            <div class="title col-12">
                 <h2>Datos bancarios <span>(Opcional)</span></h2>
                 <hr class="Logo-hr">
             </div>
@@ -73,7 +73,7 @@
                 </select>
                 <label style="height:48px; width: calc(50% - 10px)" textFile="Certificado bancario" for="count-number" class="file">
                     <span>Sin archivos adjuntos</span>
-                    <input id="count-number" type="file" class="form-control small-4" name="count-number">
+                    <input id="count-number" type="file" class="form-control col-4" name="count-number">
                 </label>
             </div>
             <input type="text" class="form-control" placeholder="Nombre del titular" name="titular-name" value="{{ old('titular-name')}}">

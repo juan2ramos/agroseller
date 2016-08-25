@@ -21,22 +21,25 @@
 .Header-container
   margin: auto
   max-width: $widthContent
-  height: 7.5rem
-  padding: 0 rem(20)
+  padding: 0 rem(20) .7rem
+  height: rem(255)
+  @include respond-to(large)
+    height: 7.5rem
 
 .Header-search
-  height: 100%
   position: relative
+  @include respond-to(large)
+    height: 100%
   & >div
     position: relative
     top: 50%
-    left: 50%
-    margin-left: rem(-202)
+    margin: auto
     margin-top: rem(-22)
     max-width: 25.25rem
+    width: 100%
 
   & input
-    width: 200%
+    width: 100%
     max-width: 25.25rem
     max-height: 100%
     height: 2.75rem
@@ -49,12 +52,51 @@
     z-index: 3
 
 .Header-login
-  font-size: .8125rem
   font-weight: 400
-  line-height: 11rem
   border-bottom: .0625rem solid
   color: white
-  margin-right: 1rem
+  margin-right: 2rem
+  @include respond-to(large)
+    margin-right: 1rem
+    font-size: .8125rem
+
+.Header-search .help
+  z-index: 3
+  width: rem(22)
+  height: rem(22)
+  position: absolute
+  right: rem(-40)
+  top: 50%
+  margin-top: rem(-11)
+  svg g
+    fill: white
+
+.Header-logo
+  margin-left: rem(30)
+  max-height: rem(120)
+  height: 100%
+  @include respond-to(large)
+    margin-left: 0
+    justify-content: flex-start
+
+.Header-linksBack
+  a
+    font-size: .9rem
+    &:nth-child(2)
+      color: #C5D257
+      background: none
+      line-height: inherit
+      border-bottom: 1px solid
+      width: inherit
+
+  @include respond-to(large)
+    justify-content: flex-end
+    a:last-child
+      color: initial
+      background: #C5D257
+      line-height: 2.5rem
+      border: none
+      width: 8rem
 
 .BarNav
   background: $greenLight
@@ -74,10 +116,14 @@
       margin-bottom: 0
 .BarNav-a
   text-transform: uppercase
-  font-size: .9rem
   font-weight: 500
+  display: none
+  font-size: .9rem
+  @include respond-to(medium)
+    display: block
   & a
     color: $greenDark
     border-bottom: .0625rem solid $greenDark
     display: inline-block
     margin: 0 rem(7)
+

@@ -17,7 +17,7 @@
     <article class="Step-3Offers">
         <p>2. Fechas de inicio y limite de la oferta</p>
         <div class="row middle  ">
-            <label for="offer-on" class="small-4 ">
+            <label for="offer-on" class="col-4 ">
 
                 @if(!isset($productEdit) || strtotime($productEdit->offer_off) < 1)
                 <input type="text" class="datetimepicker_mask" id="offer-on" name="offer_on" value="{{ old('offer-on') }}">
@@ -39,7 +39,7 @@
                     </svg>
                 </em>
             </label>
-            <label for="offer-off" class="small-4 ">
+            <label for="offer-off" class="col-4 ">
                 @if(!isset($productEdit) || strtotime($productEdit->offer_off) < 1)
                     <input type="text" class="datetimepicker_mask" id="offer-off" name="offer_off">
                 @else
@@ -175,7 +175,7 @@
 
     </article>
     <article class="end importOffer">
-        <label for="important_offer" class=" offset-9 small-3">
+        <label for="important_offer" class=" offset-9 col-3">
             <input type="checkbox" name="important_offer" id="important_offer" value="1">
             <sub></sub>
            Oferta destacada

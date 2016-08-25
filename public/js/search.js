@@ -29,8 +29,8 @@ function searchInit(){
     search.wrap('<div class="autocomplete"></div>');
     $('<ul class="result"></ul>').appendTo('.autocomplete');
     result = $('.result');
-    marginSearch = -(result.width()/2);
-    result.css('margin-left', marginSearch + 'px');
+    //marginSearch = -(result.width()/2);
+    //result.css('margin-left', marginSearch + 'px');
 }
 
 function searchQuery(){

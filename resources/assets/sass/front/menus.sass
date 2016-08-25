@@ -1,4 +1,5 @@
 .Nav-categories
+  display: none
   ul
     display: none
   a
@@ -27,9 +28,8 @@
         &:last-child
           border: none
 
-.Show
-  visibility: visible
-  opacity: 1
+  @include respond-to(large)
+    display: block
 
 .Show .NavCategories
   left: 0
@@ -90,3 +90,27 @@
       position: absolute
       right: 2.5rem
       top: .9375rem
+
+.LightBoxContent
+  position: fixed
+  z-index: 2
+  background: rgba(0, 0, 0, 0.5)
+  top: 0
+  left: 0
+  height: 100vh
+  width: 100vw
+  visibility: hidden
+  opacity: 0
+  @include transition(all .2s linear)
+
+.LightBoxContent-close
+  position: absolute
+  top: 0
+  left: 0
+  height: 100vh
+  width: 100vw
+  cursor: e-resize
+
+.Show
+  visibility: visible !important
+  opacity: 1 !important

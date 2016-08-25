@@ -37,11 +37,20 @@ body
   height: 23rem
 .BannerTop-info
   position: relative
-  bottom: rem(120 )
   width: 100%
+  padding: rem(10) 3.25rem
   background: rgba(0, 0, 0, 0.7)
-  height: 7.5rem
-  padding: 0 3.25rem
+  > div
+    text-align: center
+    justify-content: center
+  @include respond-to(medium)
+    height: 7.5rem
+    padding: 0 3.25rem
+    bottom: rem(120)
+    > div
+      text-align: left
+      justify-content: flex-end
+
 
   & h2
     color: white
@@ -133,26 +142,6 @@ body
     text-align: center
     font-weight: 400
     font-size: 1.125rem
-
-.LightBoxContent
-  position: fixed
-  z-index: 2
-  background: rgba(0, 0, 0, 0.5)
-  top: 0
-  left: 0
-  height: 100vh
-  width: 100vw
-  visibility: hidden
-  opacity: 0
-  @include transition(all .2s linear)
-
-.LightBoxContent-close
-  position: absolute
-  top: 0
-  left: 0
-  height: 100vh
-  width: 100vw
-  cursor: e-resize
 
 .CartDetail
   background: white

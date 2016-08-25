@@ -17,7 +17,7 @@
         <h2>Usuarios internos</h2>
         <hr>
         <form action="{{ route('searchUser') }}" method="post" class="Forms">
-            <label for="Search" class="small-6 offset-6">
+            <label for="Search" class="col-6 offset-6">
                 <input type="text" name="search" id="Search">
                 <span>Buscar usuario</span>
                 <button>
@@ -58,8 +58,8 @@
     <hr>
     <form class="Forms row columns" method="POST" action="{{ route('newUserAdmin') }}"  enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <div class=" small-6 center row middle">
-            <label for="photo" class="small-9 Form-image">
+        <div class=" col-6 center row middle">
+            <label for="photo" class="col-9 Form-image">
                 <input type="file" class="StepImages" name="photo" id="photo">
                 <figure class=" row middle center ">
                     <svg width="81px" height="47px">
@@ -69,7 +69,7 @@
                 <output class="result"/>
             </label>
         </div>
-        <div class="small-6 ">
+        <div class="col-6 ">
             <label for="identification" class="DataForm ">
                 <input type="number" id="identification" name="identification" value="{{ old('identification') }}">
                 <span>Número de cédula</span>
@@ -79,37 +79,37 @@
                 <span>Nombre</span>
             </label>
         </div>
-        <div class="small-6 ">
+        <div class="col-6 ">
             <label for="last_name" class="DataForm ">
                 <input type="text" id="last_name" name="last_name" value="{{ old('last_name') }}">
                 <span>Apellido</span>
             </label>
         </div>
-        <div class="small-6 ">
+        <div class="col-6 ">
             <label for="mobile_phone" class="DataForm ">
                 <input type="text" id="mobile_phone" name="mobile_phone" value="{{ old('mobile_phone') }}">
                 <span>Celular</span>
             </label>
         </div>
-        <div class="small-6 ">
+        <div class="col-6 ">
             <label for="phone" class="DataForm ">
                 <input type="text" id="phone" name="phone" value="{{ old('phone') }}">
                 <span>Teléfono</span>
             </label>
         </div>
-        <div class="small-6 ">
+        <div class="col-6 ">
             <label for="email" class="DataForm ">
                 <input type="email" id="email" name="email" value="{{ old('email') }}">
                 <span>Email</span>
             </label>
         </div>
-        <div class="small-6 ">
+        <div class="col-6 ">
             <label for="password" class="DataForm ">
                 <input type="password" id="password" name="password" value="{{ old('password') }}">
                 <span>Password</span>
             </label>
         </div>
-        <div class="small-6 ">
+        <div class="col-6 ">
             <label for="role_id" class="DataForm ">
 
                 <select name="role_id" id="roles">
@@ -120,10 +120,10 @@
                 </select>
             </label>
         </div>
-        <div class="small-6 offset-6 Check-agent" id="checkAgent" >
+        <div class="col-6 offset-6 Check-agent" id="checkAgent" >
         </div>
-        <div class="row center small-12">
-            <button class="Button small-6 "> AGREGAR USUARIO</button>
+        <div class="row center col-12">
+            <button class="Button col-6 "> AGREGAR USUARIO</button>
         </div>
     </form>
     @if (session('messageSuccess'))

@@ -3,10 +3,10 @@
 @section('content')
     <header class="HeaderAuth">
         <div class="HeaderAuth-content row middle ">
-            <figure class="small-6">
+            <figure class="col-6">
                 <a href="/"><img src="{{ url('images/logo-agrosellers.svg') }}" alt=""></a>
             </figure>
-            <a class="small-6 end" href="{{route('register')}}">
+            <a class="col-6 end" href="{{route('register')}}">
                 <button class="Button">REGISTRATE</button>
             </a>
         </div>

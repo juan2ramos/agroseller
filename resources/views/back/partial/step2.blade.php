@@ -40,14 +40,14 @@
         </p>
         <div class="row">
             @if(isset($productEdit))
-                <label for="farm-all" class="Forms-checkout capitalize small-6">
+                <label for="farm-all" class="Forms-checkout capitalize col-6">
                     <input type="checkbox" id="farm-all" value="">
                     <sub></sub>
                     Todos
                 </label>
                 <?php $farmsProduct = explode(',' , $productEdit['farms']); ?>
                 @foreach($farms as $farm)
-                    <label for="farm-{{$farm->id}}" class="Forms-checkout capitalize small-6">
+                    <label for="farm-{{$farm->id}}" class="Forms-checkout capitalize col-6">
                         <input type="checkbox" name="farm-{{$farm->id}}" id="farm-{{$farm->id}}" value="{{$farm->name}}" @if(in_array($farm->name, $farmsProduct, false))checked='checked'@endif >
                         <sub></sub>
                         {{$farm->name}}
@@ -55,13 +55,13 @@
                 @endforeach
             @else
                 @if(isset($farms))
-                    <label for="farm-all" class="Forms-checkout capitalize small-6">
+                    <label for="farm-all" class="Forms-checkout capitalize col-6">
                         <input type="checkbox" id="farm-all" value="">
                         <sub></sub>
                         Todos
                     </label>
                     @foreach($farms as $farm)
-                        <label for="farm-{{$farm->id}}" class="Forms-checkout capitalize small-6">
+                        <label for="farm-{{$farm->id}}" class="Forms-checkout capitalize col-6">
                             <input type="checkbox" name="farm-{{$farm->id}}" id="farm-{{$farm->id}}" value="{{$farm->name}}">
                             <sub></sub>
                             {{$farm->name}}
@@ -154,12 +154,12 @@
     </label>
 
     <div class="row middle">
-        <label for="iva" class="small-6">
+        <label for="iva" class="col-6">
             <input type="checkbox" name="taxes[]" value="iva" id="iva">
             <sub></sub>
             Iva 16%
         </label>
-        <label for="rete" class="small-6">
+        <label for="rete" class="col-6">
             <input type="checkbox" name="taxes[]" value="retefuente" id="rete">
             <sub></sub>
             Retefuente 2.5%
@@ -189,7 +189,7 @@
             <?php $i = 1 ?>
             @foreach($productEdit->productFiles()->get() as $image)
                 @if($image->extension != 'pdf')
-                    <div class="image small-3">
+                    <div class="image col-3">
                         <label for="image{{$i}}">
                             <input type="file" class="StepImages" name="image{{$i}}" id="image{{$i}}">
                             <figure class=" row middle center">
@@ -204,7 +204,7 @@
                 @endif
             @endforeach
             @for(; $i <= 4; $i++)
-                <div class="image small-3">
+                <div class="image col-3">
                     <label for="image{{$i}}">
                         <input type="file" class="StepImages" name="image{{$i}}" id="image{{$i}}">
                         <figure class=" row middle center">
@@ -218,7 +218,7 @@
             @endfor
 
         @else
-            <label for="image1" class="small-3 ">
+            <label for="image1" class="col-3 ">
                 <input type="file" class="StepImages" name="image1" id="image1">
                 <figure class=" row middle center">
                     <svg width="81px" height="47px">
@@ -227,7 +227,7 @@
                 </figure>
                 <output class="result" />
             </label>
-            <label for="image2"  class="small-3 ">
+            <label for="image2"  class="col-3 ">
                 <input type="file"  class="StepImages" name="image2" id="image2">
                 <figure class=" row middle center">
                     <svg width="81px" height="47px">
@@ -236,7 +236,7 @@
                 </figure>
                 <output class="result" />
             </label>
-            <label for="image3" class="small-3 ">
+            <label for="image3" class="col-3 ">
                 <input type="file"  class="StepImages" name="image3" id="image3">
                 <figure class=" row middle center">
                     <svg width="81px" height="47px">
@@ -245,7 +245,7 @@
                 </figure>
                 <output class="result" />
             </label>
-            <label for="image4" class="small-3 ">
+            <label for="image4" class="col-3 ">
                 <input type="file" class="StepImages"  name="image4" id="image4">
                 <figure class=" row middle center">
                     <svg width="81px" height="47px">
