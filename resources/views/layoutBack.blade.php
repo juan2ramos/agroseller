@@ -44,11 +44,9 @@
             </svg>
             Bienvenido(a) a Agrosellers
         </h1>
-<<<<<<< HEAD
+
         <div class="small-12 medium-6 HeaderBack-profile row end middle ">
-=======
-        <div class="col-6 HeaderBack-profile row end middle ">
->>>>>>> b1bced072c14f595f8d47ff62ada8a55e8ffb15c
+
             <figure id="Notify">
                 @if(auth()->user()->photo)
                     <img src="{{url('uploads/users/' . auth()->user()->photo)}}" alt="">
