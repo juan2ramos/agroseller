@@ -99,11 +99,9 @@
         <span class="small-12"></span>
     </div>
     @include('back.partial.menu')
-<<<<<<< HEAD
+
     <div class="small-12 medium-10 MainBack-container">
-=======
-    <div class="col-10 MainBack-container">
->>>>>>> b1bced072c14f595f8d47ff62ada8a55e8ffb15c
+
         @yield('content')
     </div>
 </main>
