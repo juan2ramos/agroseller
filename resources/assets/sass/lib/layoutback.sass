@@ -8,18 +8,28 @@ h2
   margin: auto
   position: relative
 .HeaderBack-figure
-  padding: rem(14) rem(47)
   background: $greenDark
   height: rem(68)
+  padding: rem(8) rem(14)
+  min-width: rem(150)
+  @include respond-to(medium)
+    padding: rem(12) rem(36)
 .HeaderBack-right
   background: #FFFFFF
   box-shadow: 0 1px 10px 0 rgba(50,50,50,0.12)
   height: rem(68)
-  padding: 0 rem(48)
+  padding: 0 rem(4)
+  max-width: calc(100vw - 150px) !important
+  @include respond-to(medium)
+    padding: 0 rem(48)
+    max-width: inherit
   & h1
+    display: none
     color: $greenDark
     font-size: rem(17)
     font-weight: 400
+    @include respond-to(medium)
+      display: block
   & svg
     vertical-align: top
 .HeaderBack-profileNav
@@ -27,11 +37,13 @@ h2
   background: #FFFFFF
   box-shadow: rem(5) rem(5) 0 0 rgba(212,212,212,0.25)
   top: rem(-20)
-  right: rem(54)
+  right: rem(0)
   text-align: center
   width: rem(150)
   padding: rem(18) 0
   z-index: 2
+  @include respond-to(medium)
+    right: rem(54)
   @include transition(all .5s)
   & a
     font-size: rem(14)
@@ -83,12 +95,20 @@ h2
     top: rem(68)
   & svg
     @include transform(rotateX(180deg))
-
+.openNav
+  @include transform(translateX(0) !important )
 .Nav
   background: #FFFFFF
   box-shadow: 0 rem(1) rem(10) 0 rgba(50,50,50,0.12)
   min-height: calc(100vh - 68px)
   z-index: 1
+  position: fixed
+  min-width: rem(150)
+  @include transform(translateX(-200px))
+  @include transition(all .4s)
+  @include respond-to(medium)
+    position: static
+    @include transform(translateX(0))
   & img
     margin: auto
   & a
@@ -107,9 +127,31 @@ h2
       border: none
 .MainBack
   max-width: $widthContent
+
 .MainBack-container
-  padding: 3rem
+  padding: rem(40) rem(20)
   box-shadow: 0 rem(1) rem(10) 0 rgba(50,50,50,0.02)
+  @include respond-to(medium)
+    padding: 3rem
+.Menu-smallOpen
+  @include transform(translateX(200px) !important)
+.Menu-small
+  @include transition(all .4s)
+  position: fixed
+  top: 5.25rem
+  left: rem(20)
+  background: white
+  box-shadow: 0 0.0625rem 0.625rem 0 rgba(49, 49, 49, 0.1)
+  height: rem(30)
+  width: rem(34)
+  padding: 0.3125rem 0
+  cursor: pointer
+  span
+    display: block
+    max-width: 80%
+    height: rem(3)
+    background: #27383F
+    margin: rem(3) auto
 
 .capitalize
   text-transform: capitalize

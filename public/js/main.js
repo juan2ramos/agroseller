@@ -66,3 +66,7 @@ $(document).ready(function () {
         return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
 });
+$('.Menu-small').on('click',function(){
+    $('.Nav').toggleClass('openNav');
+    $(this).toggleClass('Menu-smallOpen');
+});
