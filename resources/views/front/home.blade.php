@@ -29,15 +29,15 @@
 
             </ul>
         </div>
-        <div class="small-12 col-9">
+        <div class="smaller-12 col-9">
             <img src="{{url('images/image-banner.jpg')}}" alt="">
             <div class="BannerTop-info row middle">
-                <div class="small-12 medium-6">
+                <div class="smaller-12 medium-6">
                     <h2>TRACTOR VALTRA A850</h2>
                     <h3>ENTREGA INMENDIATA</h3>
                     <p class="BannerTop-infoPrice"><span>$80.000.000</span> Ahora $50.000.000</p>
                 </div>
-                <div class="small-12 medium-6 row end" style="padding: 10px 0;"><a class="Button" href="#">VER OFERTA</a></div>
+                <div class="smaller-12 medium-6 row end" style="padding: 10px 0;"><a class="Button" href="#">VER OFERTA</a></div>
             </div>
         </div>
     </section>
@@ -45,7 +45,7 @@
         <h2 class="Title">Lo Más Destacado</h2>
         <div class="Product-content row">
             @foreach($products as $product)
-                <article class="col-3">
+                <article class="smaller-12 small-6 medium-4 col-3">
                     <figure class="Product-Image">
                         <a href="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}">
                             @foreach($product->productFiles as $file)

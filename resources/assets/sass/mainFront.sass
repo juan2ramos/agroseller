@@ -34,7 +34,9 @@ body
 .BannerTop
   margin: 2.5rem auto
   position: relative
-  height: 23rem
+
+  @include respond-to(medium)
+    height: 23rem
 .BannerTop-info
   position: relative
   width: 100%

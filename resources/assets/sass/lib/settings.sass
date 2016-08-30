@@ -4,8 +4,12 @@ $browser-context: 16
   @return #{$pixels/$context}rem
 
 @mixin respond-to($breakpoint)
-  @if $breakpoint == "small"
-    @media (min-width: 36rem)
+  @if $breakpoint == "smaller"
+    @media (min-width: rem(100))
+      @content
+
+  @elseif $breakpoint == "small"
+    @media (min-width: rem(500))
       @content
 
   @else if $breakpoint == "medium"

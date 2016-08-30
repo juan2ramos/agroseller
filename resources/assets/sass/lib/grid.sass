@@ -48,11 +48,19 @@ $totalContainer: 100%
   flex: 0 0 auto
 
 @for $i from 1 through $columns
-  .small-#{$i}
+  .smaller-#{$i}
     -ms-flex-preferred-size: ($i / $columns) * 100%
     -webkit-flex-basis: ($i / $columns) * 100%
     flex-basis: ($i / $columns) * 100%
     max-width: ($i / $columns) * 100%
+
+@include respond-to(small)
+  @for $i from 1 through $columns
+    .small-#{$i}
+      -ms-flex-preferred-size: ($i / $columns) * 100%
+      -webkit-flex-basis: ($i / $columns) * 100%
+      flex-basis: ($i / $columns) * 100%
+      max-width: ($i / $columns) * 100%
 
 @include respond-to(medium)
   @for $i from 1 through $columns
@@ -71,8 +79,13 @@ $totalContainer: 100%
       max-width: ($i / $columns) * 100%
 
 @for $i from 1 through $columns
-  .offset-small-#{$i}
+  .offset-smaller-#{$i}
     margin-left: ($totalContainer / $columns) * $i
+
+@include respond-to(small)
+  @for $i from 1 through $columns
+    .offset-small-#{$i}
+      margin-left: ($totalContainer / $columns) * $i
 
 @include respond-to(medium)
   @for $i from 1 through $columns

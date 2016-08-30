@@ -76,11 +76,11 @@
 </div>
 <header class="Header">
     <div class="Header-container row middle between">
-        <figure class="Header-logo center row small-12 col-4 middle">
+        <figure class="Header-logo center row smaller-12 col-4 middle">
             <a href="{{route('home')}}"><img src="{{url('images/logo-agrosellers.svg')}}" alt="Logo Agrosellers"></a>
         </figure>
 
-        <form action="" class="Header-search small-12 col-4">
+        <form action="" class="Header-search smaller-12 col-4">
             <input id="principalToken" type="hidden" name="_token" value="{{ csrf_token() }}">
             <input id="searchRoute" type="hidden" value="{{route('searchBar')}}">
             <div>
@@ -129,7 +129,7 @@
             </div>
         </form>
 
-        <div class="Header-linksBack AlignRight small-12 col-4 row center middle">
+        <div class="Header-linksBack AlignRight smaller-12 col-4 row center middle">
             @if(Auth::check())
                 <div class="UserFront">
                     <p><span>Bienvenido </span>{{ auth()->user()->fullName()}}</p>
@@ -144,7 +144,7 @@
     </div>
     <div class="BarNav">
         <div class="BarNav-content row middle">
-            <div class="small-6 medium-3 row">
+            <div class="smaller-6 medium-3 row">
                 <button id="Menu"><span></span><span></span><span></span></button>
             </div>
             <div class="BarNav-a medium-6  center">
@@ -153,7 +153,7 @@
                 <a href="{{route('pricing')}}">¿Cómo vender?</a>
             </div>
 
-            <div class="Cart AlignRight small-6 medium-3">
+            <div class="Cart AlignRight smaller-6 medium-3">
                 <div class="Cart-content">
                     <div class="Cart-button" id="CartButton">
                         <svg width="117px" height="29px" viewBox="0 0 117 29" version="1.1"
@@ -226,7 +226,7 @@
 @endif
 <footer class="Footer">
     <div class="Footer-content row middle">
-        <nav class="NavFooter col-12 row center">
+        <nav class="NavFooter smaller-12 row center">
             <ul class="center col-2">
                 <li class="NavFooter-TitleUL"><a href="#">Nosotros</a>
                     <ul>
@@ -244,7 +244,7 @@
                 </li>
             </ul>
             <ul class="center col-4">
-                <li class="NavFooter-TitleUL">
+                <li class="NavFooter-TitleUL" style="margin-left: 40px">
                     <figure class="Footer-logo">
                         <img src="{{url('images/logo-agrosellers.svg')}}" alt="">
                     </figure>
