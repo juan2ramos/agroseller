@@ -14,7 +14,8 @@
         "gbrock/laravel-table": "dev-master",
         "barryvdh/laravel-dompdf": "0.6.*",
         "bogardo/mailgun": "4.0.*",
-        "elasticquent/elasticquent": "dev-master"
+        "elasticquent/elasticquent": "dev-master",
+        "torann/geoip": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

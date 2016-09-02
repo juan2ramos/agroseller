@@ -13,9 +13,61 @@ use Agrosellers\Entities\Product;
 class HomeController extends Controller
 {
     function index(){
-        $products = Product::whereRaw('isValidate = 1 and isActive = 1')
-                            ->with(['offers','productFiles','subcategory'])
-                            ->paginate(8);
+
+
+        $d = Product::searchByQuery([
+            /*"bool" => [
+                "must" => [
+                    'match' => [
+                        'farms' => [
+                            "query" => 'cacao',
+                            "type" => "phrase"
+                        ]
+                    ]
+                ],
+                'must' => [
+                    'multi_match' => [
+                        'query' => 'Fertilizante',
+                        'fields' => ["name^2", "description"]
+                    ],
+                ],
+
+            ],*/
+
+
+            /*  ["_geo_distance" => [
+                  "location" => [
+                      "lat" => "40.715",
+                      "lon" => "-73.998"
+                  ]
+              ],
+                  "order" => "asc",
+                  "unit" => "km",
+                  "distance_type" => "plane"
+              ]*/
+
+            /* 'multi_match' => [
+                 'query' => 'Fertilizante',
+                 'fields' => ["name^5", "description"]
+             ]*/
+        ], [], [], [], [],
+            [
+                "_geo_distance" => [
+                    "location" => [
+                        "lat" => "3.4516467",
+                        "lon" => "-76.5319854"
+                    ],
+                    "order" => "asc",
+                    "unit" => "km",
+                    "distance_type" => "sloppy_arc"
+                ]
+            ]);
+        $products = $d->paginate(8);
+
+
+        /*$products = Product::whereRaw('isValidate = 1 and isActive = 1')
+            ->with(['offers', 'productFiles', 'subcategory'])
+            ->paginate(8);*/
         return view('front.home',compact('products'));
     }
     

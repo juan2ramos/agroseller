@@ -22,7 +22,22 @@ class Product extends Model
         'name' => [
             'type' => 'string',
             "analyzer" => "standard",
-        ]
+        ],
+        'description' => [
+            'type' => 'string',
+            "analyzer" => "standard",
+        ],
+        'farms' => [
+            'type' => 'string',
+            "analyzer" => "stop",
+            "stopwords" => [","]
+        ],
+        'location' => [
+            'type' => 'geo_point',
+            "analyzer" => "stop",
+            "stopwords" => [","]
+        ],
+
     ];
     
     public function subcategory()

@@ -132,6 +132,7 @@ return [
         Agrosellers\Providers\ViewComposerServiceProvider::class,
         Bogardo\Mailgun\MailgunServiceProvider::class,
         Elasticquent\ElasticquentServiceProvider::class,
+        'Torann\GeoIP\GeoIPServiceProvider',
     ],
     /*
     |--------------------------------------------------------------------------
@@ -184,5 +185,6 @@ return [
         'PDF' => 'Barryvdh\DomPDF\Facade',
         'Mailgun' => Bogardo\Mailgun\Facades\Mailgun::class,
         'Es' => Elasticquent\ElasticquentElasticsearchFacade::class,
+        'GeoIP' => 'Torann\GeoIP\GeoIPFacade',
     ],
 ];
