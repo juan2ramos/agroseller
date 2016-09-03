@@ -1043,14 +1043,14 @@ body {
 }
 
 .Header-logo {
-  padding-left: 2.8125rem;
+  margin-left: 1.875rem;
   max-height: 7.5rem;
   height: 100%;
 }
 
 @media (min-width: 65rem) {
   .Header-logo {
-    padding-left: 0;
+    margin-left: 0;
     -webkit-justify-content: flex-start;
     -ms-flex-pack: start;
     justify-content: flex-start;
