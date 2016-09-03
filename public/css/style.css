@@ -1684,10 +1684,6 @@ body {
   background: #F8F8F8;
 }
 
-main.Container {
-  padding: 0 1.875rem;
-}
-
 .HeaderAuth {
   background: #27383F;
 }
