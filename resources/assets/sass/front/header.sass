@@ -131,3 +131,40 @@
     display: inline-block
     margin: 0 rem(7)
 
+.BannerTop
+  margin: 2.5rem auto
+  position: relative
+
+  @include respond-to(medium)
+    height: 23rem
+.BannerTop-info
+  position: relative
+  width: 100%
+  padding: rem(10) 3.25rem
+  background: rgba(0, 0, 0, 0.7)
+  > div
+    text-align: center
+    justify-content: center
+  @include respond-to(medium)
+    height: 7.5rem
+    padding: 0 3.25rem
+    bottom: rem(120)
+    > div
+      text-align: left
+      justify-content: flex-end
+  & h2
+    color: white
+    font-size: 1.25rem
+    font-weight: 300
+  & h3
+    color: #CCCCCC
+    font-size: .875rem
+    font-weight: 300
+    margin: .25rem 0
+  & p
+    color: #C5D257
+    margin: 0
+    font-size: .875rem
+    & span
+      color: #CCCCCC
+      text-decoration: line-through
