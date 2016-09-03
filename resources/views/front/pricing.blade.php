@@ -13,9 +13,9 @@
         </div>
     @endif
 
-    <section class="Pricing row middle">
+    <section class="Pricing row middle center">
         @foreach($plans as $plan)
-        <article class="col-4">
+        <article class="smaller-12 col-4">
             <form action="{{route('payPlan', $plan->id)}}" method="POST">
                 <h2>{{$plan->name}}</h2>
                 <h3>{{$plan->description}}</h3>

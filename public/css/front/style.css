@@ -896,14 +896,14 @@ main {
   width: 100%;
   opacity: 1;
   overflow: hidden;
-  border-radius: 7px;
+  border-radius: 0.4375rem;
   margin-bottom: 3rem;
   padding: 1rem 2rem;
   position: relative;
   cursor: pointer;
   color: white;
   font-weight: 400;
-  letter-spacing: 1px;
+  letter-spacing: 0.0625rem;
 }
 
 [class*='-message'].hidden {
@@ -1043,14 +1043,14 @@ body {
 }
 
 .Header-logo {
-  margin-left: 1.875rem;
+  padding-left: 2.8125rem;
   max-height: 7.5rem;
   height: 100%;
 }
 
 @media (min-width: 65rem) {
   .Header-logo {
-    margin-left: 0;
+    padding-left: 0;
     -webkit-justify-content: flex-start;
     -ms-flex-pack: start;
     justify-content: flex-start;
@@ -1589,9 +1589,9 @@ body {
 .owl-buttons i {
   font-size: 1.25rem;
   font-style: inherit;
-  padding: 2px 8px;
+  padding: 0.125rem 0.5rem;
   background: rgba(208, 208, 208, 0.23);
-  border-radius: 3px;
+  border-radius: 0.1875rem;
   color: #253A1B;
   font-weight: 300;
 }
@@ -1677,7 +1677,7 @@ body {
 .container_icon {
   position: relative;
   left: 50%;
-  margin-left: -17px;
+  margin-left: -1.0625rem;
 }
 
 .container h1 {
@@ -1715,11 +1715,11 @@ body {
   padding: 1rem;
   color: #888;
   background: #F8F8F8;
-  box-shadow: 0 3px 5px -4px gray;
+  box-shadow: 0 0.1875rem 0.3125rem -0.25rem gray;
 }
 
 .container_questions_item ol li.open span {
-  box-shadow: 0 5px 5px -4px gray;
+  box-shadow: 0 0.3125rem 0.3125rem -0.25rem gray;
 }
 
 .container_questions_item ol li.open .text {
@@ -1747,7 +1747,7 @@ body {
 
 .Footer {
   background: #27383F;
-  padding-top: 30px;
+  padding-top: 1.875rem;
   overflow: hidden;
 }
 
@@ -1763,27 +1763,27 @@ body {
 
 .Footer-logo img {
   margin: auto;
-  padding-bottom: 10px;
+  padding-bottom: 0.625rem;
 }
 
 .NavFooter-TitleUL ul {
-  border-radius: 5px;
+  border-radius: 0.3125rem;
   opacity: .3;
-  padding: 10px 10px 0;
+  padding: 0.625rem 0.625rem 0;
   width: 100%;
 }
 
 .NavFooter .copy {
   opacity: .5;
   color: white;
-  padding: 10px;
+  padding: 0.625rem;
   font-size: .7rem;
   display: block;
 }
 
 .NavFooter-TitleUL a {
   display: block;
-  padding: 5px;
+  padding: 0.3125rem;
   width: 100%;
 }
 
@@ -1801,7 +1801,7 @@ body {
 
 .NavSocial a {
   display: block;
-  margin: 10px 0.5rem;
+  margin: 0.625rem 0.5rem;
 }
 
 .NavSocial a:hover svg ellipse {
@@ -1814,7 +1814,7 @@ body {
 
 .Contact {
   padding: 5rem 5rem 0;
-  margin-bottom: 60px;
+  margin-bottom: 3.75rem;
 }
 
 .Contact_information {
@@ -1834,8 +1834,8 @@ body {
 
 .Contact_information_data span {
   display: inline-block;
-  margin-right: 9px;
-  margin-bottom: 8px;
+  margin-right: 0.5625rem;
+  margin-bottom: 0.5rem;
 }
 
 .Contact h1,
@@ -1847,8 +1847,8 @@ body {
   position: relative;
   cursor: default;
   overflow: hidden;
-  width: 138px;
-  height: 32px;
+  width: 8.625rem;
+  height: 2rem;
 }
 
 .social-share .fb-share-button,
@@ -1973,17 +1973,40 @@ body {
 
 .Pricing {
   text-align: center;
-  margin: 2.5rem 3rem;
+  margin: 2.5rem 0;
   color: #454545;
 }
 
 .Pricing article {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+@media (min-width: 65rem) {
+  .Pricing article {
+    display: block;
+  }
+}
+
+.Pricing article form {
   padding: 2rem;
   background: #F5F5F5;
   border-top: .5rem solid #4A90E2;
+  max-width: 25rem;
+  width: 100%;
 }
 
-.Pricing article:nth-last-of-type(2) {
+@media (min-width: 65rem) {
+  .Pricing article form {
+    max-width: 100%;
+  }
+}
+
+.Pricing article:nth-last-of-type(2) form {
   border-top-color: #C5D257;
   border-bottom: .125rem solid #D4D4D4;
   border-left: .0625rem solid #D4D4D4;
@@ -2000,7 +2023,6 @@ body {
 
 .Pricing article:nth-last-of-type(2) .Button {
   margin-top: 4rem;
-  width: 16rem;
 }
 
 .Pricing article:nth-last-of-type(2) ul {
@@ -2231,7 +2253,7 @@ body {
 
 .Checkout li {
   margin-top: 1.625rem;
-  box-shadow: 0 2px 4px rgba(187, 187, 187, 0.5);
+  box-shadow: 0 0.125rem 0.25rem rgba(187, 187, 187, 0.5);
   border-bottom: .0625rem solid #D9D9D9;
 }
 
@@ -2239,7 +2261,7 @@ body {
 .Form-Control {
   margin: 1.625rem 0;
   background: #F8F8F8;
-  box-shadow: 0 2px 4px rgba(187, 187, 187, 0.5);
+  box-shadow: 0 0.125rem 0.25rem rgba(187, 187, 187, 0.5);
   padding: 1.5rem 2rem;
 }
 

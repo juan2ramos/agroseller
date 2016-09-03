@@ -13,24 +13,33 @@
 
 .Pricing
   text-align: center
-  margin: 2.5rem 3rem
+  margin: 2.5rem 0
   color: #454545
   & article
-    padding: 2rem
-    background: #F5F5F5
-    border-top: .5rem solid #4A90E2
+    display: flex
+    justify-content: center
+    @include respond-to(large)
+      display: block
+    form
+      padding: 2rem
+      background: #F5F5F5
+      border-top: .5rem solid #4A90E2
+      max-width: rem(400)
+      width: 100%
+      @include respond-to(large)
+        max-width: 100%
     &:nth-last-of-type(2)
-      border-top-color: $greenLight
-      border-bottom: .125rem solid #D4D4D4
-      border-left: .0625rem solid #D4D4D4
-      border-right: .0625rem solid #D4D4D4
+      form
+        border-top-color: $greenLight
+        border-bottom: .125rem solid #D4D4D4
+        border-left: .0625rem solid #D4D4D4
+        border-right: .0625rem solid #D4D4D4
       & .Pricing-price
         font-size: 3.5rem
       & li
         font-size: 1rem
       & .Button
         margin-top: 4rem
-        width: 16rem
       & ul
         padding: 0 1rem
   & h2, & h3
@@ -189,13 +198,13 @@
     bottom: 0
   & li
     margin-top: 1.625rem
-    box-shadow: 0 2px 4px rgba(187,187,187,.5)
+    box-shadow: 0 rem(2) rem(4) rgba(187,187,187,.5)
     border-bottom: .0625rem solid #D9D9D9
 
 .Checkout-form, .Form-Control
   margin: 1.625rem 0
   background: #F8F8F8
-  box-shadow: 0 2px 4px rgba(187,187,187,.5)
+  box-shadow: 0 rem(2) rem(4) rgba(187,187,187,.5)
   padding: 1.5rem 2rem
   & input, & textarea
     width: 100%
