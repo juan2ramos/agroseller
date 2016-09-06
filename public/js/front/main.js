@@ -43,11 +43,6 @@ $(document).ready(function () {
     $message.on('click', function () {
         $(this).addClass('hidden').slideUp(600);
     });
-
-    var $question = $('.container_questions_item .question span');
-    $question.on('click', function () {
-        $(this).siblings().slideToggle();
-    });
 });
 
 /************************* Buscador Front ****************************/
