@@ -12,6 +12,10 @@ use Agrosellers\Entities\Product;
 
 class HomeController extends Controller
 {
+    function landing(){
+
+        return view('landing');
+    }
     function index(){
 
 

@@ -1,0 +1,84 @@
+@import "lib/settings"
+@import "lib/general"
+@import "lib/grid"
+
+main
+  padding: 0 rem(20)
+  @include respond-to(medium)
+    padding: 0
+.Header
+
+  background: url("../images/agro_slider2.jpg") center
+  background-size: cover
+
+.Header-content
+  max-width: rem(1200)
+  margin: auto
+  padding: rem(32) rem(20)
+  color: white
+  @include respond-to(medium)
+    padding: rem(80) rem(20)
+  h1
+    font-weight: 200
+    max-width: 100%
+    font-size: rem(20)
+    margin-bottom: rem(20)
+    @include respond-to(medium)
+      font-size: rem(32)
+      margin-bottom: 0
+  input, select, textarea
+    display: block
+    margin: 0 0 1rem
+    width: 100%
+    height: rem(36)
+    border: rem(1) solid #898989
+    color: black
+    background:  rgba(255, 255, 255, 0.3)
+    padding: rem(10)
+    @include respond-to(medium)
+      max-width: rem(350)
+  form
+    width: 100%
+  label
+    display: block
+    margin: 0
+    font-weight: 200
+  textarea
+    height: rem(80)
+
+  button
+    border: none
+    background: #FF5722
+    padding: rem(10) rem(28)
+    box-shadow: 0 rem(2) rem(4) #2a0f06
+    font-weight: 200
+    margin: 1rem 0
+    width: 100%
+    @include respond-to(medium)
+      width: auto
+      padding: rem(5) rem(28)
+h2
+  text-align: center
+  font-weight: 300
+  margin: rem(40) 0 rem(20)
+  font-size: rem(32)
+h3
+  font-size: rem(20)
+  font-weight: 400
+section
+  max-width: rem(1200)
+  margin: rem(40) auto
+  text-align: center
+.padd
+  padding: 0 rem(20)
+  max-width: 100%
+article
+  max-width: 100%
+  padding: rem(16)
+  p
+    text-align: justify
+    max-width: 100%
+    @include respond-to(medium)
+      text-align: center
+
+

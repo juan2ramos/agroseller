@@ -1,9 +1,15 @@
 <?php
 
 Route::get('/', [
-    'uses' => 'HomeController@index',
+    'uses' => 'HomeController@landing',
     'as' => 'home'
 ]);
+
+Route::get('productos', [
+    'uses' => 'HomeController@index',
+    'as' => 'productos'
+]);
+
 Route::get('compras/{product}/{quantity}', [
     'uses' => 'ShoppingController@add',
     'as' => 'shopping'
