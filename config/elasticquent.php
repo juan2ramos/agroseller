@@ -14,7 +14,7 @@ return array(
     */
 
     'config' => [
-        'hosts'     => env('elasticHost', 'localhost:9200'),
+        'hosts'     => ['agrosellers.com:9200'],
         'retries'   => 1,
     ],
 
