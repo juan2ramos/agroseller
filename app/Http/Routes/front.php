@@ -8,7 +8,7 @@ Route::get('/', [
 Route::get('productos', [
     'uses' => 'HomeController@index',
     'as' => 'productos'
-]);
+]);A
 
 Route::get('compras/{product}/{quantity}', [
     'uses' => 'ShoppingController@add',

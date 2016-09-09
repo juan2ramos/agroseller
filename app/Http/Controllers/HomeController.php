@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
 use Agrosellers\Http\Controllers\Controller;
 use Agrosellers\Entities\Product;
+use Elasticsearch\ClientBuilder;
 
 class HomeController extends Controller
 {
@@ -18,6 +19,18 @@ class HomeController extends Controller
     }
     function index(){
 
+        dd("prueba");
+        $client = ClientBuilder::create()->build();
+
+        $params = [
+            'index' => 'my_index',
+            'type' => 'my_type',
+            'id' => 'my_id',
+            'body' => ['testField' => 'abc']
+        ];
+
+        $response = $client->index($params);
+        dd($response);
 
         $d = Product::searchByQuery([
             /*"bool" => [

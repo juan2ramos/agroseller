@@ -75,7 +75,6 @@ Route::post('prueba', [
         $product = Product::search($request->name);
         dd($product);
         return redirect()->route('elasticIndex', compact('product'));
-
     }
 ]);
 
