@@ -27,12 +27,12 @@ class Product extends Model
             'type' => 'string',
             "analyzer" => "standard",
         ],
-
-
+        'farms' => [
+            'type' => 'string'
+        ],
         'location' => [
             'type' => 'geo_point',
-            "analyzer" => "stop",
-            "stopwords" => [","]
+            "analyzer" => "stop"
         ],
 
     ];
