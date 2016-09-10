@@ -27,11 +27,8 @@ class Product extends Model
             'type' => 'string',
             "analyzer" => "standard",
         ],
-        'farms' => [
-            'type' => 'string',
-            "analyzer" => "stop",
-            "stopwords" => [ "and", "the" ]
-        ],
+
+
         'location' => [
             'type' => 'geo_point',
             "analyzer" => "stop",
