@@ -30,12 +30,12 @@ class Product extends Model
         'farms' => [
             'type' => 'string',
             "analyzer" => "stop",
-            "stopwords" => [","]
+            "stopwords" => [ "and", "the" ]
         ],
         'location' => [
             'type' => 'geo_point',
             "analyzer" => "stop",
-            "stopwords" => [ "and", "the" ]
+            "stopwords" => [","]
         ],
 
     ];
