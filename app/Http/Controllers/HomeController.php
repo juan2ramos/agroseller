@@ -20,7 +20,6 @@ class HomeController extends Controller
     function index(){
 
 
-        $client = ClientBuilder::create()->build();
 
         $params = [
             'index' => 'my_index',
@@ -29,11 +28,10 @@ class HomeController extends Controller
             'body' => ['testField' => 'abc']
         ];
 
-        $response = $client->index($params);
-        dd($response);
+
 
         $d = Product::searchByQuery([
-            /*"bool" => [
+            "bool" => [
                 "must" => [
                     'match' => [
                         'farms' => [
@@ -49,7 +47,7 @@ class HomeController extends Controller
                     ],
                 ],
 
-            ],*/
+            ],
 
 
             /*  ["_geo_distance" => [
