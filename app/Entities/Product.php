@@ -31,8 +31,7 @@ class Product extends Model
             'type' => 'string'
         ],
         'location' => [
-            'type' => 'geo_point',
-            "analyzer" => "stop"
+            'type' => 'geo_point'
         ],
 
     ];
