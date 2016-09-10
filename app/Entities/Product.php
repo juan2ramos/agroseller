@@ -35,7 +35,7 @@ class Product extends Model
         'location' => [
             'type' => 'geo_point',
             "analyzer" => "stop",
-            "stopwords" => [","]
+            "stopwords" => [ "and", "the" ]
         ],
 
     ];
