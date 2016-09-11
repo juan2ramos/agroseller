@@ -54,7 +54,6 @@
 
                     @endforeach
                 @endif
-
             </ul>
             <div class="col-12 Total AlignRight">Subtotal: ${{( !empty(session('valueTotal')))? session('valueTotal') : '' }}</div>
         </section>
@@ -72,25 +71,53 @@
                 @if(Auth::check())
                     @if(auth()->user()->role_id == 4)
                         <h3>Completa los campos requeridos para realizar tu solicitud</h3>
-                        <form action="{{route('newOrder')}}" method="POST" class="Checkout-form">
+                        <!-- GUARDAR ORDEN POR POST EN {{route('newOrder')}} -->
+                        <form action="https://www.zonapagosdemo.com/api_inicio_pago/api/inicio_pagoV2" method="POST" class="Checkout-form">
+
                             <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
+
+                            <input type="hidden" name="id_tienda" value="14992">
+                            <input type="hidden" name="clave" value="PYP1234">
+                            <input type="hidden" name="codigo_servicio_principal" value="2701">
+
+                            <input type="hidden" name="email" value="{{auth()->user()->email}}">
+                            <input type="hidden" name="total_con_iva" value="{{( !empty(session('valueTotal'))) ? (int)str_replace('.', '', session('valueTotal')) : '' }}">
+                            <input type="hidden" name="valor_iva" value="0">
+                            <input type="hidden" name="Id_pago" value="{{date_format(new \Jenssegers\Date\Date(), 'YmdHis') . rand(10, 99)}}">
+
+                            <input type="hidden" name="lista_codigos_servicio_multicredito" value="">
+                            <input type="hidden" name="lista_nit_codigos_servicio_multicredito" value="">
+                            <input type="hidden" name="lista_valores_con_iva" value="">
+                            <input type="hidden" name="lista_valores_iva" value="">
+                            <input type="hidden" name="total_codigos_servicio" value="0">
+
+                            <input type="hidden" name="descripcion_pago" value="orem ipsum dolor sit amet, consectetur adipisicing elit.">
+
                             <label for="name">
-                                <input type="text" id="name" name="name_client"
+                                <input type="text" id="name" name="nombre_cliente"
                                        value="{{auth()->user()->name .' '. auth()->user()->last_name}}">
                                 <span>Nombre y apellidos completos</span>
                             </label>
+                            <label for="document_type">
+                                <select name="tipo_id" id="document_type">
+                                    <option value="1">CC Cedula de Ciudadanía</option>
+                                    <option value="2">CE Cedula de Extranjería</option>
+                                    <option value="3">NIT</option>
+                                    <option value="6">PP Pasaporte</option>
+                                </select>
+                            </label>
                             <label for="identification">
-                                <input type="text" name="identification_client" id="identification"
+                                <input type="text" name="Id_cliente" id="identification"
                                        value="{{auth()->user()->identification}}">
-                                <span>Cédula de ciudadania o NIT </span>
+                                <span>Número de documento </span>
                             </label>
                             <label for="address">
-                                <input type="text" id="address" value="{{auth()->user()->identification}}"
+                                <input type="text" id="address" value="{{auth()->user()->address}}"
                                        name="address_client">
-                                <span>Dirección</span>
+                                <span>Dirección de envío</span>
                             </label>
                             <label for="mobile">
-                                <input type="text" id="mobile" name="phone_client"
+                                <input type="text" id="mobile" name="telefono_cliente"
                                        value="{{auth()->user()->mobile_phone}}">
                                 <span>Teléfono</span>
                             </label>
