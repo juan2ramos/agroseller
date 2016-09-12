@@ -60,20 +60,20 @@
                         <a href="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}">
                             <h4>{{$product->name}}</h4></a>
                         <h5>{{$product->subcategory->name}}</h5>
-                        <?php $hasOffer = strtotime($product->offers->offer_on) < strtotime('now') && strtotime($product->offers->offer_off) - strtotime('now') > 0 ?>
-                        @if($hasOffer)
+                       <?php /*$hasOffer = strtotime($product->offers->offer_on) < strtotime('now') && strtotime($product->offers->offer_off) - strtotime('now') > 0 */?>
+                        {{--@if($hasOffer)
                             <p>${{number_format($product->offers->offer_price, 0, " ", ".")}}
                                 <span>${{number_format($product->price, 0, " ", ".")}}</span></p>
                         @else
                             <p>${{number_format($product->price, 0, " ", ".")}}</p>
-                        @endif
+                        @endif--}}
                         <a href="{{route('productDetail',[$product->slug, $product->id])}}" class="Button">COMPRAR</a>
                     </div>
                 </article>
             @endforeach
         </div>
         <div class="paginator">
-            {!! $products->render() !!}
+
         </div>
     </section>
     <div class="row around middle " style="padding: 20px 0 40px">

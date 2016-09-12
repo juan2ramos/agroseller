@@ -17,7 +17,7 @@ class HomeController extends Controller
 
         return view('landing');
     }
-    function index(){
+    /*function index(){
 
 
 
@@ -27,8 +27,6 @@ class HomeController extends Controller
             'id' => 'my_id',
             'body' => ['testField' => 'abc']
         ];
-
-
 
         $d = Product::searchByQuery([
             "bool" => [
@@ -50,7 +48,7 @@ class HomeController extends Controller
             ],
 
 
-            /*  ["_geo_distance" => [
+              ["_geo_distance" => [
                   "location" => [
                       "lat" => "40.715",
                       "lon" => "-73.998"
@@ -59,12 +57,12 @@ class HomeController extends Controller
                   "order" => "asc",
                   "unit" => "km",
                   "distance_type" => "plane"
-              ]*/
+              ]
 
-            /* 'multi_match' => [
+            'multi_match' => [
                  'query' => 'Fertilizante',
                  'fields' => ["name^5", "description"]
-             ]*/
+             ]
         ], [], [], [], [],
             [
                 "_geo_distance" => [
@@ -78,14 +76,18 @@ class HomeController extends Controller
                 ]
             ]);
         $products = $d->paginate(8);
-
-
         /*$products = Product::whereRaw('isValidate = 1 and isActive = 1')
             ->with(['offers', 'productFiles', 'subcategory'])
-            ->paginate(8);*/
+            ->paginate(8);
+        return view('front.home',compact('products'));
+    }*/
+
+    function index(){
+        $p =  new PositionAlgorithmController;
+        $products = $p->index();
         return view('front.home',compact('products'));
     }
-    
+
 
     function indexContact(){
         return view('front.contactForm');

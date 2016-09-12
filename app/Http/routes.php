@@ -31,9 +31,7 @@ use Agrosellers\User;
 
 Route::get('prueba', [
     'as' => 'elasticIndex',
-    'uses' => function () {
-        return view('prueba');
-    }
+    'uses' => 'PositionAlgorithmController@index'
 ]);
 
 use Illuminate\Http\Request;

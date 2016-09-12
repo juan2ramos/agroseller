@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use ElasticquentTrait;
+   /* use ElasticquentTrait;*/
 
     protected $fillable =
         [
@@ -18,7 +18,7 @@ class Product extends Model
             'forms_employment', 'price','taxes','available_quantity','image_scale',
             'image_scale','name','slug','composition', 'isActive', 'isValidate', 'farms'];
 
-    protected $mappingProperties = [
+    /*protected $mappingProperties = [
         'name' => [
             'type' => 'string',
             "analyzer" => "standard",
@@ -35,7 +35,7 @@ class Product extends Model
         ],
 
     ];
-    
+    */
     public function subcategory()
     {
         return $this->belongsTo(Subcategory::class);

@@ -14,7 +14,7 @@ return array(
     */
 
     'config' => [
-        'hosts'     => ['agrosellers.com:9200'],
+        'hosts'     => ['localhost:9200'],
         'retries'   => 1,
     ],
 
