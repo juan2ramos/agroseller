@@ -97,3 +97,7 @@ Route::get('t', [
         dd(GeoIP::getLocation($the_ip ) );
     }
 ]);
+
+Route::get('pasarela', function(){
+    return view('pasarelaPrueba');
+});
