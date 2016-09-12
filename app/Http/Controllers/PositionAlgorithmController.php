@@ -18,8 +18,8 @@ class PositionAlgorithmController extends Controller
             ->with(['offers', 'productFiles', 'subcategory'])
             ->get();
 
-        $lat = '3.41667';
-        $lng = '-76.55';
+        $lat = '42.621535114613685';
+        $lng = '-5.595249100000046';
 
         foreach ($products as $product) {
             $product->location2 = explode(',', $product->location);
