@@ -18,14 +18,17 @@ class PositionAlgorithmController extends Controller
             ->with(['offers', 'productFiles', 'subcategory'])
             ->get();
 
-        $lat = '42.621535114613685';
-        $lng = '-5.595249100000046';
-
+        $lat = '-76.55';
+        $lng = '3.41667';
+        $i = 0;
         foreach ($products as $product) {
-            $product->location2 = explode(',', $product->location);
+            $i = $i + 1;
+            $product->location2 = explode(';', $product->location);
             $product->distance = $this->distance($lat,$lng,$product->location2);
+
             //$collection->push(['farms' => $product->farms, 'distance' => $distance, 'id' => $product->id]);
         }
+
         $sorted = $products->sortBy(function ($p, $key) {
             $m[-1][-1] = -1;
             $m[-1][0] = 0;
@@ -54,16 +57,28 @@ class PositionAlgorithmController extends Controller
     }
     private function distancePriority($distance)
     {
+
         return $distance < 100? -1 : ( $distance < 400 ? 0 : 1);
     }
-    private function distance($lat,$lng,$location)
+    private function distance($lat,$lng,$locations )
     {
-        return 6371 *
-        acos(
-            cos(deg2rad($lat)) *
-            cos(deg2rad($location[0])) *
-            cos(deg2rad($location[1]) - deg2rad($lng)) +
-            sin(deg2rad($lat)) * sin(deg2rad($location[0]))
-        );;
+        $dists = [];
+        foreach($locations as $location ){
+            $locationArray = explode('&', $location);
+            if(!is_numeric($locationArray[0]) || !is_numeric($locationArray[1]) || empty($locationArray) )  {
+                continue;
+            }
+
+            $dists[] = 6371 *
+             acos(
+                cos(deg2rad($lat)) *
+                cos(deg2rad($locationArray[1])) *
+                cos(deg2rad($locationArray[0]) - deg2rad($lng)) +
+                sin(deg2rad($lat)) * sin(deg2rad($locationArray[1]))
+            );
+
+        }
+
+        return min($dists);
     }
 }
