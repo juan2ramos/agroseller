@@ -18,8 +18,8 @@ class PositionAlgorithmController extends Controller
             ->with(['offers', 'productFiles', 'subcategory'])
             ->get();
 
-        $lat = '-76.55';
-        $lng = '3.41667';
+        $lat = '-75.47649811005863';
+        $lng = '6.223730438129726';
         $i = 0;
         foreach ($products as $product) {
             $i = $i + 1;
@@ -49,7 +49,7 @@ class PositionAlgorithmController extends Controller
 
     private function farms($farms)
     {
-        return -1;
+        return 0;
         if (!Auth::check() || empty($farms))
             return 1;
             $farmsArray = explode(',' , $farms);
@@ -57,7 +57,6 @@ class PositionAlgorithmController extends Controller
     }
     private function distancePriority($distance)
     {
-
         return $distance < 100? -1 : ( $distance < 400 ? 0 : 1);
     }
     private function distance($lat,$lng,$locations )
