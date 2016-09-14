@@ -20,16 +20,12 @@ class PositionAlgorithmController extends Controller
 
         $lat = '-75.47649811005863';
         $lng = '6.223730438129726';
-        $i = 0;
         foreach ($products as $product) {
-            $i = $i + 1;
             $product->location2 = explode(';', $product->location);
             $product->distance = $this->distance($lat, $lng, $product->location2);
-
-            //$collection->push(['farms' => $product->farms, 'distance' => $distance, 'id' => $product->id]);
         }
 
-        /*$sorted = $products->sortBy(function ($p, $key) {
+        $sorted = $products->sortBy(function ($p, $key) {
             $m[-1][-1] = -1;
             $m[-1][0] = 0;
             $m[-1][1] = 1;
@@ -41,10 +37,10 @@ class PositionAlgorithmController extends Controller
             $m[1][1] = 1;
             return $m[$this->distancePriority($p['distance'])][$this->farms($p['farms'])];
 
-        });*/
-        $sorted = $products->sortBy(function ($p, $key) {
-            return $this->distancePriority($p['distance']);
         });
+        /*$sorted = $products->sortBy(function ($p, $key) {
+            return $this->distancePriority($p['distance']);
+        });*/
      /*    foreach($sorted as $p){
 
              echo 'Producto: ';print_r($p->id);echo '<br>';
@@ -55,21 +51,24 @@ class PositionAlgorithmController extends Controller
          }
         dd();*/
 
-        return $sorted;
+
+        return $sorted->slice(1, 52);
     }
 
     private function farms($farms)
     {
-        return 0;
+        return -1;
         if (!Auth::check() || empty($farms))
-            return 1;
+            return -1;
+
         $farmsArray = explode(',', $farms);
+
         return $farms;
     }
 
     private function distancePriority($distance)
     {
-        return $distance < 10 ? -1 : ($distance < 50 ? 0 : 1);
+        return $distance < 20 ? -1 : ($distance < 50 ? 0 : 1);
     }
 
     private function distance($lat, $lng, $locations)
