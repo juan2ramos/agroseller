@@ -52,7 +52,7 @@ class ProductController extends Controller
             $offer = ($offerModel = $product->offers()->first()) ?
                 (Carbon::now()->between(new Carbon($offerModel->offer_on), new Carbon($offerModel->offer_off)))
                     ? $offerModel->offer_price : null : null;
-            $description = $offerModel->offer_description;
+            //$description = $offerModel->offer_description;
             $questions = $this->reloadQuestions($id);
             $featuresTranslate = $this->setFeaturesTranslate($product);
             return view('front.productDetail', compact('questions', 'product', 'featuresTranslate','offer','description'));

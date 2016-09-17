@@ -91,4 +91,9 @@
 
         });
     </script>
+
+@section('scripts')
+    <script src="{{asset('js/front/products.js')}}"></script>
+@endsection
+
 @endsection

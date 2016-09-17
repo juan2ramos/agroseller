@@ -18,14 +18,13 @@ class PositionAlgorithmController extends Controller
             ->with(['offers', 'productFiles', 'subcategory'])
             ->get();
 
-        $lat = '3.41667';
-        $lng = '-76.55';
-
+        $lat = '-75.145';
+        $lng = '4.45056';
         foreach ($products as $product) {
-            $product->location2 = explode(',', $product->location);
-            $product->distance = $this->distance($lat,$lng,$product->location2);
-            //$collection->push(['farms' => $product->farms, 'distance' => $distance, 'id' => $product->id]);
+            $product->location2 = explode(';', $product->location);
+            $product->distance = $this->distance($lat, $lng, $product->location2);
         }
+
         $sorted = $products->sortBy(function ($p, $key) {
             $m[-1][-1] = -1;
             $m[-1][0] = 0;
@@ -39,31 +38,58 @@ class PositionAlgorithmController extends Controller
             return $m[$this->distancePriority($p['distance'])][$this->farms($p['farms'])];
 
         });
+        /*$sorted = $products->sortBy(function ($p, $key) {
+            return $this->distancePriority($p['distance']);
+        });*/
+     /*    foreach($sorted as $p){
+
+             echo 'Producto: ';print_r($p->id);echo '<br>';
+             echo " &#31; &#31; &#31; &#31; nombre: ";print_r($p->name);echo '<br>';
+             echo " &#31; &#31; &#31; &#31; cordenadas: ";print_r($p->location);echo '<br>';
+             echo " &#31; &#31; &#31; &#31; cordenadas 2: ";print_r($p->location2);echo '<br>';
+             echo " &#31; &#31; &#31; &#31; distancia: ";print_r($p->distance );echo '<br>';
+         }
+        dd();*/
 
 
-        return $sorted;
+        return $sorted->slice(1, 52);
     }
 
     private function farms($farms)
     {
         return -1;
         if (!Auth::check() || empty($farms))
-            return 1;
-            $farmsArray = explode(',' , $farms);
+            return -1;
+
+        $farmsArray = explode(',', $farms);
+
         return $farms;
     }
+
     private function distancePriority($distance)
     {
-        return $distance < 100? -1 : ( $distance < 400 ? 0 : 1);
+        return $distance < 20 ? -1 : ($distance < 40 ? 0 : 1);
     }
-    private function distance($lat,$lng,$location)
+
+    private function distance($lat, $lng, $locations)
     {
-        return 6371 *
-        acos(
-            cos(deg2rad($lat)) *
-            cos(deg2rad($location[0])) *
-            cos(deg2rad($location[1]) - deg2rad($lng)) +
-            sin(deg2rad($lat)) * sin(deg2rad($location[0]))
-        );;
+        $dists = [];
+        foreach ($locations as $location) {
+            $locationArray = explode('&', $location);
+            if (!is_numeric($locationArray[0]) || !is_numeric($locationArray[1]) || empty($locationArray)) {
+                continue;
+            }
+
+            $dists[] = 6371 *
+                acos(
+                    cos(deg2rad($lat)) *
+                    cos(deg2rad($locationArray[1])) *
+                    cos(deg2rad($locationArray[0]) - deg2rad($lng)) +
+                    sin(deg2rad($lat)) * sin(deg2rad($locationArray[1]))
+                );
+
+        }
+
+        return min($dists);
     }
 }

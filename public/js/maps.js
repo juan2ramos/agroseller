@@ -72,13 +72,11 @@ function getPosition(position){
 }
 
 function showMarkers(isDraggable){
+    var coord = this.position.split(';');
+    for(var i = 0; i < coord.length; i++){
 
-    var coord = this.position.split(',');
-    console.log(coord)
-
-            console.log(coord[0 ])
-        var lat = parseFloat(coord[0]);
-        var lng = parseFloat(coord[1]);
+        var lat = parseFloat(coord[i].split('&')[0]);
+        var lng = parseFloat(coord[i].split('&')[1]);
 
         var marker = new google.maps.Marker({
             position: {lat: lat, lng: lng},
@@ -87,7 +85,7 @@ function showMarkers(isDraggable){
         });
 
         arrayMarkers.push(marker);
-
+    }
     setMapOnAll(map);
 }
 
