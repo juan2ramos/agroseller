@@ -10,7 +10,7 @@ use Jenssegers\Date\Date;
 
 class Order extends Model
 {
-    protected $fillable = ['description', 'name_client', 'identification_client', 'address_client', 'phone_client', 'user_id', 'state_order_id'];
+    protected $fillable = ['description', 'name_client', 'identification_client', 'address_client', 'phone_client', 'user_id', 'state_order_id', 'zp_buy_id', 'zp_buy_token', 'zp_state'];
 
     public function user(){
         return $this->belongsTo(User::class);

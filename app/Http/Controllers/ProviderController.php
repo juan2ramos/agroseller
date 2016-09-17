@@ -40,7 +40,7 @@ class ProviderController extends Controller
     {
         $search = $request->input('search');
         $users = User::where('role_id', 2)
-            ->where(function ($query) use ($search) {
+            >where(function ($query) use ($search) {
                 $query->Where('name', 'like', '%' . $search . '%')
                     ->orWhere('last_name', 'like', '%' . $search . '%')
                     ->orWhere('email', $search)

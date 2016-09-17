@@ -72,56 +72,58 @@
                     @if(auth()->user()->role_id == 4)
                         <h3>Completa los campos requeridos para realizar tu solicitud</h3>
                         <!-- GUARDAR ORDEN POR POST EN {{route('newOrder')}} -->
-                        <form action="https://www.zonapagosdemo.com/api_inicio_pago/api/inicio_pagoV2" method="POST" class="Checkout-form">
+                        <form action="{{route('newOrder')}}" method="POST" class="Checkout-form" id="newOrderForm">
 
                             <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
 
-                            <input type="hidden" name="id_tienda" value="14992">
-                            <input type="hidden" name="clave" value="PYP1234">
-                            <input type="hidden" name="codigo_servicio_principal" value="2701">
+                            <input type="hidden" id="email" name="email" value="{{auth()->user()->email}}">
+                            <input type="hidden" id="total_con_iva" name="total_con_iva" value="{{( !empty(session('valueTotal'))) ? (int)str_replace('.', '', session('valueTotal')) : '' }}">
+                            <input type="hidden" id="id_pago" name="id_pago" value="{{date_format(new \Jenssegers\Date\Date(), 'YmdHis') . rand(100, 999)}}">
 
-                            <input type="hidden" name="email" value="{{auth()->user()->email}}">
-                            <input type="hidden" name="total_con_iva" value="{{( !empty(session('valueTotal'))) ? (int)str_replace('.', '', session('valueTotal')) : '' }}">
-                            <input type="hidden" name="valor_iva" value="0">
-                            <input type="hidden" name="Id_pago" value="{{date_format(new \Jenssegers\Date\Date(), 'YmdHis') . rand(10, 99)}}">
-
-                            <input type="hidden" name="lista_codigos_servicio_multicredito" value="">
-                            <input type="hidden" name="lista_nit_codigos_servicio_multicredito" value="">
-                            <input type="hidden" name="lista_valores_con_iva" value="">
-                            <input type="hidden" name="lista_valores_iva" value="">
-                            <input type="hidden" name="total_codigos_servicio" value="0">
-
-                            <input type="hidden" name="descripcion_pago" value="orem ipsum dolor sit amet, consectetur adipisicing elit.">
+                            @if(Session::has('cart') &&  Session::get('cart'))
+                                <textarea id="descripcion_pago" name="descripcion_pago" style="display: none">@foreach(Session::get('cart') as $product){!!$product->name!!} , @endforeach</textarea>
+                            @endif
 
                             <label for="name">
                                 <input type="text" id="name" name="nombre_cliente"
-                                       value="{{auth()->user()->name .' '. auth()->user()->last_name}}">
-                                <span>Nombre y apellidos completos</span>
+                                       value="{{auth()->user()->name .' '. auth()->user()->second_name}}">
+                                <span>Nombre completos</span>
                             </label>
-                            <label for="document_type">
-                                <select name="tipo_id" id="document_type">
+
+                            <label for="last_name">
+                                <input type="text" id="last_name" name="apellido_cliente"
+                                       value="{{auth()->user()->last_name .' '. auth()->user()->second_last_name}}">
+                                <span>Nombre completos</span>
+                            </label>
+
+                            <label for="tipo_id">
+                                <select name="tipo_id" id="tipo_id">
                                     <option value="1">CC Cedula de Ciudadanía</option>
                                     <option value="2">CE Cedula de Extranjería</option>
                                     <option value="3">NIT</option>
                                     <option value="6">PP Pasaporte</option>
                                 </select>
                             </label>
-                            <label for="identification">
-                                <input type="text" name="Id_cliente" id="identification"
+
+                            <label for="id_cliente">
+                                <input type="text" name="id_cliente" id="id_cliente"
                                        value="{{auth()->user()->identification}}">
                                 <span>Número de documento </span>
                             </label>
+
                             <label for="address">
                                 <input type="text" id="address" value="{{auth()->user()->address}}"
-                                       name="address_client">
+                                       name="info_opcional1">
                                 <span>Dirección de envío</span>
                             </label>
-                            <label for="mobile">
-                                <input type="text" id="mobile" name="telefono_cliente"
+
+                            <label for="telefono_cliente">
+                                <input type="text" id="telefono_cliente" name="telefono_cliente"
                                        value="{{auth()->user()->mobile_phone}}">
                                 <span>Teléfono</span>
                             </label>
-                            <button class="Button">FINALIZAR COMPRA</button>
+
+                            <a href="#" id="finishBuy" class="Button">FINALIZAR COMPRA</a>
                         </form>
                     @else
                         @include('messages',[
@@ -157,4 +159,50 @@
             @endif
         </section>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        $('#finishBuy').on('click', function(){
+
+            var total = $('#total_con_iva').val();
+
+            var param = {
+                "id_tienda" : 14992,
+                "clave" : "pyp123",
+                "codigo_servicio_principal" : "2701",
+                "total_con_iva" : total,
+                "valor_iva" : parseInt(total) * 0.16,
+                "id_pago" : $('#id_pago').val(),
+                "descripcion_pago" : $('#descripcion_pago').val(),
+                "email" : $('#email').val(),
+                "id_cliente" : $('#id_cliente').val(),
+                "tipo_id" : $('#tipo_id').val(),
+                "nombre_cliente" : $('#name').val(),
+                "apellido_cliente" : $('#last_name').val(),
+                "telefono_cliente" : $('#telefono_cliente').val(),
+                "info_opcional1" : $('#address').val(),
+                "info_opcional2" : "'",
+                "info_opcional3" : "'",
+                "lista_codigos_servicio_multicredito" : "",
+                "lista_nit_codigos_servicio_multicredito" : "",
+                "lista_valores_con_iva" : "",
+                "lista_valores_iva" : "",
+                "total_codigos_servicio" : "0"
+            };
+
+            $.ajax({
+                url: "https://www.zonapagos.com/api_inicio_pago/api/inicio_pagoV2",
+                data: param,
+                type: "POST",
+                dataType: "xml"
+            }).then(function (xml) {
+                var str = xml.documentElement,
+                    re = /(?:[0-9]+){5}/g,
+                    token = re.exec(new XMLSerializer().serializeToString(str))[0];
+
+                $('#newOrderForm').prepend('<input type="submit" id="newOrderButton" style="display:none"><input type="hidden" name="buy_number" value="' + token + '">');
+                $('#newOrderButton').trigger('click');
+            })
+        });
+    </script>
 @endsection
