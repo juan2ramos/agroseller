@@ -5,20 +5,25 @@ namespace Agrosellers\Http\Controllers;
 use Agrosellers\Entities\Order;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Agrosellers\Services\ZonaPagos;
 
 use Agrosellers\Http\Requests;
 use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
 {
-    Public function add(Request $request)
+    public function add(Request $request)
     {
         if (empty($cart = Session::get('cart')))
             return back();
+
+        $inputs = $request->all();
+        $zp = ZonaPagos::create();
+        $id = $zp->invoiceRequest($inputs);
+
         $data = [];
-        
         foreach ($cart as $item) {
-            /* Temporal  state_order_id Zona Pagos*/
+            // Temporal  state_order_id Zona Pagos
             $value = (!$item->offers)
                 ? $item->price
                 : (Carbon::now()->between(new Carbon($item->offers->offer_on), new Carbon($item->offers->offer_off)))
@@ -26,19 +31,17 @@ class OrderController extends Controller
                     : $item->price;
 
             $data[$item->id] = ['quantity' => $item->quantity, 'state_order_id' => 2, 'value' => $value];
-
         }
-        $r = $request->all();
 
         $order = Order::create([
             'user_id' => auth()->user()->id,
-            'description' => $r['descripcion_pago'],
-            'name_client' => $r['nombre_cliente'] . ' ' . $r['apellido_cliente'],
-            'identification_client' => $r['id_cliente'],
-            'address_client' => $r['info_opcional1'],
-            'phone' => $r['telefono_cliente'],
-            'zp_buy_id' => $r['id_pago'],
-            'zp_buy_token' => $r['buy_number'],
+            'description' => $inputs['descripcion_pago'],
+            'name_client' => $inputs['nombre_cliente'] . ' ' . $inputs['apellido_cliente'],
+            'identification_client' => $inputs['id_cliente'],
+            'address_client' => $inputs['info_opcional1'],
+            'phone' => $inputs['telefono_cliente'],
+            'zp_buy_id' => $inputs['id_pago'],
+            'zp_buy_token' => $id,
             'zp_state' => '888'
         ]);
 
@@ -48,9 +51,7 @@ class OrderController extends Controller
         Session::forget('cart');
         Session::forget('valueTotal');
 
-        return redirect()->to('https://www.zonapagos.com/t_managementpas/pago.asp?estado_pago=iniciar_pago&identificador=' . $r['buy_number']);
-        //return redirect()->action('ShoppingController@showBack', ['open' => true]);
-
+        return redirect()->to("https://www.zonapagos.com/" . env('ZP_ROUTE_CODE') . "/pago.asp?estado_pago=iniciar_pago&identificador=" . $id);
     }
 
     public function updateStateOrder(Request $request)
