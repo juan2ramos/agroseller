@@ -9,8 +9,11 @@
                 @inject('menu', 'Agrosellers\Services\MenuFront')
                 @foreach($menu->getCategory() as $key => $category)
                     <li>
-                        <div>{{$category->name}}
-                            <svg width="7px" height="12px">
+                        <div class="row middle">
+                            {!!$category->image_icon!!}
+
+                            {{$category->name}}
+                            <svg width="7px" style="margin-left: 4px;" height="12px">
                                 <use xlink:href="#arrow"/>
                             </svg>
                         </div>
@@ -41,12 +44,12 @@
             </div>
         </div>
     </section>
-    <section class="Products">
+    <section class="Products" id="productsRecommended" data-routegetproducts="{{route('recommended')}}">
         <h2 class="Title">Lo Más Destacado</h2>
         <div class="Product-content row">
-            @foreach($products as $product)
+            {{--@foreach($products as $product)--}}
                 <article class="smaller-12 small-6 medium-4 col-3">
-                    <figure class="Product-Image">
+                    {{--<figure class="Product-Image">
                         <a href="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}">
                             @foreach($product->productFiles as $file)
                                 @if($file->extension != 'pdf')
@@ -59,7 +62,7 @@
                     <div class="Product-info">
                         <a href="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}">
                             <h4>{{$product->name}}</h4></a>
-                        <h5>{{$product->subcategory->name}}</h5>
+                        <h5>{{$product->subcategory->name}}</h5>--}}
                        <?php /*$hasOffer = strtotime($product->offers->offer_on) < strtotime('now') && strtotime($product->offers->offer_off) - strtotime('now') > 0 */?>
                         {{--@if($hasOffer)
                             <p>${{number_format($product->offers->offer_price, 0, " ", ".")}}
@@ -67,21 +70,17 @@
                         @else
                             <p>${{number_format($product->price, 0, " ", ".")}}</p>
                         @endif--}}
-                        <a href="{{route('productDetail',[$product->slug, $product->id])}}" class="Button">COMPRAR</a>
-                    </div>
+                       {{-- <a href="{{route('productDetail',[$product->slug, $product->id])}}" class="Button">COMPRAR</a>
+                    </div>--}}
                 </article>
-            @endforeach
+       {{--     @endforeach--}}
         </div>
         <div class="paginator">
 
         </div>
     </section>
-    <div class="row around middle " style="padding: 20px 0 40px">
-       <figure class="col-2"> <img  src="{{asset('images/prueba 01.png')}}" alt=""></figure>
-        <figure class="col-2"> <img  src="{{asset('images/prueba 02.png')}}" alt=""></figure>
-    </div>
     <script>
-        $(document).ready(function () {
+      /*  $(document).ready(function () {
             $("#owl-demo").owlCarousel({
                 autoPlay: 3000,
                 items: 4,
@@ -89,7 +88,7 @@
                 itemsDesktopSmall: [979, 3]
             });
 
-        });
+        });*/
     </script>
 
 @section('scripts')

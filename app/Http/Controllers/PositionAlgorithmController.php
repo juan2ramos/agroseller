@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Auth;
 class PositionAlgorithmController extends Controller
 {
 
-    function index()
+    function index($position = "eee")
     {
-
+        return $position;
         $products = Product::whereRaw('isValidate = 1 and isActive = 1')
             ->with(['offers', 'productFiles', 'subcategory'])
             ->get();

@@ -1,21 +1,19 @@
-$(function() {
-    alert('dasdas');
-    var x = document.getElementById("demo");
+$(function () {
 
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-    }
 
-    function showPosition(position) {
-        x.innerHTML = "Latitude: " + position.coords.latitude +
-            "<br>Longitude: " + position.coords.longitude;
-        cosole.log("Latitude: " + position.coords.latitude +
-            "<br>Longitude: " + position.coords.longitude);
-    }
+    if (navigator.geolocation)
+        navigator.geolocation.getCurrentPosition(mostrarLocalizacion);
+
 
 
 });
+function mostrarLocalizacion(position) {
+    var products = $('#productsRecommended').data('routegetproducts');
+    console.log(products)
+    $.getJSON(products, {position: 100})
+        .done(function (data) {
+            console.log("ff" +  data);
+        });
+
+
+}

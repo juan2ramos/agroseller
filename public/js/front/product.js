@@ -1,4 +1,4 @@
-$('.Shopping').on('click',function(){
+    $('.Shopping').on('click',function(){
     $('.YouCart').addClass('show');
     $('.YouCart-content').addClass('show');
 });
