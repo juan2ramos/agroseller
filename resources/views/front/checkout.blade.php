@@ -67,7 +67,6 @@
                      <a href="'. route('home') .'">Inicio</a> Busca tu producto en la barra  de arriba. </p>'
                      ])
             @else
-
                 @if(Auth::check())
                     @if(auth()->user()->role_id == 4)
                         <h3>Completa los campos requeridos para realizar tu solicitud</h3>
@@ -123,7 +122,8 @@
                                 <span>Teléfono</span>
                             </label>
 
-                            <a href="#" id="finishBuy" class="Button">FINALIZAR COMPRA</a>
+                            <button class="Button">FINALIZAR COMPRA</button>
+                            <!--<a href="#" id="finishBuy" class="Button">FINALIZAR COMPRA</a>-->
                         </form>
                     @else
                         @include('messages',[
@@ -159,50 +159,4 @@
             @endif
         </section>
     </div>
-@endsection
-@section('scripts')
-    <script>
-        $('#finishBuy').on('click', function(){
-
-            var total = $('#total_con_iva').val();
-
-            var param = {
-                "id_tienda" : 14992,
-                "clave" : "pyp123",
-                "codigo_servicio_principal" : "2701",
-                "total_con_iva" : total,
-                "valor_iva" : parseInt(total) * 0.16,
-                "id_pago" : $('#id_pago').val(),
-                "descripcion_pago" : $('#descripcion_pago').val(),
-                "email" : $('#email').val(),
-                "id_cliente" : $('#id_cliente').val(),
-                "tipo_id" : $('#tipo_id').val(),
-                "nombre_cliente" : $('#name').val(),
-                "apellido_cliente" : $('#last_name').val(),
-                "telefono_cliente" : $('#telefono_cliente').val(),
-                "info_opcional1" : $('#address').val(),
-                "info_opcional2" : "'",
-                "info_opcional3" : "'",
-                "lista_codigos_servicio_multicredito" : "",
-                "lista_nit_codigos_servicio_multicredito" : "",
-                "lista_valores_con_iva" : "",
-                "lista_valores_iva" : "",
-                "total_codigos_servicio" : "0"
-            };
-
-            $.ajax({
-                url: "https://www.zonapagos.com/api_inicio_pago/api/inicio_pagoV2",
-                data: param,
-                type: "POST",
-                dataType: "xml"
-            }).then(function (xml) {
-                var str = xml.documentElement,
-                    re = /(?:[0-9]+){5}/g,
-                    token = re.exec(new XMLSerializer().serializeToString(str))[0];
-
-                $('#newOrderForm').prepend('<input type="submit" id="newOrderButton" style="display:none"><input type="hidden" name="buy_number" value="' + token + '">');
-                $('#newOrderButton').trigger('click');
-            })
-        });
-    </script>
 @endsection

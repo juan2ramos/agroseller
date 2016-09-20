@@ -106,5 +106,5 @@ use Agrosellers\Services\ZonaPagos;
 
 Route::get('consulta', function(){
     $zp = ZonaPagos::create();
-    dd($zp->checkPay(20160917172314526));
+    dd($zp->checkPay(20160920111441484));
 });
