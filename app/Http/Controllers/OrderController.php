@@ -50,7 +50,6 @@ class OrderController extends Controller
 
         return redirect()->to('https://www.zonapagos.com/t_managementpas/pago.asp?estado_pago=iniciar_pago&identificador=' . $r['buy_number']);
         //return redirect()->action('ShoppingController@showBack', ['open' => true]);
-
     }
 
     public function updateStateOrder(Request $request)

@@ -101,3 +101,10 @@ Route::get('t', [
 Route::get('pasarela', function(){
     return view('pasarelaPrueba');
 });
+
+use Agrosellers\Services\ZonaPagos;
+
+Route::get('consulta', function(){
+    $zp = ZonaPagos::create();
+    dd($zp->checkPay(20160917172314526));
+});

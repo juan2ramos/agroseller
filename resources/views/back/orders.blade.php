@@ -8,9 +8,9 @@
         <tr>
             <th></th>
             <th>Fecha de orden</th>
-            <th>Fecha de actualización</th>
-            <th>Productos</th>
             <th>Valor total</th>
+            <th>Estado</th>
+            <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -20,9 +20,16 @@
                 <td>@if($order->products->count())
                         <button class="iconPlus {{($open && $key == 0)?'open':''}}"></button>@endif</td>
                 <td> {{$order->created_budget}}</td>
-                <td> {{$order->updated_budget}}</td>
-                <td> {{$order->products->count()}}</td>
                 <td> ${{$order->total}}</td>
+                @if($order->zp_state == 888)
+                    <td>Pendiente</td>
+                    <td>
+                        <a target="_blank" href="https://www.zonapagos.com/t_managementpas/pago.asp?estado_pago=iniciar_pago&identificador={{$order->zp_buy_token}}">Pagar</a>
+                    </td>
+                @else
+                    <td>Pago exitoso</td>
+                    <td><a href="">Ver detalles</a></td>
+                @endif
             </tr>
             <tr class="SubTable2" style="{{($open && $key == 0)?'display: table-row;':''}} ">
                 <td colspan="6">
@@ -62,6 +69,8 @@
         <input type="hidden" name="budget_id" id="budget">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
     </form>
+
+    <p id="demo"></p>
     @if($open)
         @include('messages',[
          'type' => 'ok',
@@ -78,8 +87,50 @@
             $("#budget").val(idBudget);
 
             $('#download').attr('target', '_blank').submit()
-
-
         }
+
+        $('.BuyDetail').on('click', function(){
+
+            var param = {
+                "int_id_tienda" : "14992",
+                "str_id_clave" : "pyp123",
+                "str_id_pago" : "20160917172314526" //$(this).attr('buy')
+            };
+
+            console.log(param);
+
+           /* var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("demo").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("POST", "https://www.zonapagos.com/api_verificar_pagoV3/api/verificar_pago_v3", true);
+            xhttp.setRequestHeader("Content-type", "text/xml, application/xml");
+            xhttp.send("int_id_tienda=14992&str_id_clave=pyp123&str_id_pago=20160917172314526");
+*/
+            /*$.ajax({
+                url : "https://www.zonapagos.com/api_verificar_pagoV3/api/verificar_pago_v3",
+                data: param,
+                type: "POST",
+                dataType: "xml",
+            }).then(function (xml) {
+                var str = xml.documentElement;
+                console.log(str);
+            });*/
+
+            $.ajax({
+                url : "https://www.zonapagos.com/api_verificar_pagoV3/api/verificar_pago_v3",
+                data: param,
+                type: "post",
+                dataType : "xml"
+            }).then(function (xml) {
+
+                console.log(xml);
+                var str = xml.documentElement;
+                console.log(str);
+            });
+        });
     </script>
 @endsection
+
