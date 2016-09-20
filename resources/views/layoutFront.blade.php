@@ -538,6 +538,17 @@
         </section>
     </section>
 </div>
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = 'c70da0713cbb146eebb42e25b0135c4f061612f9';
+    window.smartsupp||(function(d) {
+        var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+        s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+        c.type='text/javascript';c.charset='utf-8';c.async=true;
+        c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+</script>
 
 <script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
 <script src="{{asset('js/front/main.js')}}"></script>
