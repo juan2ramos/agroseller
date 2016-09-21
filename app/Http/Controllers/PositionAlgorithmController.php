@@ -11,15 +11,20 @@ use Illuminate\Support\Facades\Auth;
 class PositionAlgorithmController extends Controller
 {
 
-    function index($position = "eee")
+    function index(/*Request $request*/)
     {
-        return $position;
+
         $products = Product::whereRaw('isValidate = 1 and isActive = 1')
             ->with(['offers', 'productFiles', 'subcategory'])
             ->get();
-
         $lat = '-75.145';
         $lng = '4.45056';
+        /*$position = $request->get('position')['coords'];*/
+        /*  if($position){
+              $lat = $position['latitude'];
+              $lng = $position['longitude'];
+          }*/
+
         foreach ($products as $product) {
             $product->location2 = explode(';', $product->location);
             $product->distance = $this->distance($lat, $lng, $product->location2);
