@@ -40,7 +40,7 @@ class RoutePolicy
         $this->acl = [
             '1' =>
                 [
-                    'admin', 'users', 'providers', 'category', 'farmIndex', 'products', 'questions', 'clients',
+                    'admin', 'users', 'providers', 'category', 'farmIndex', 'products', 'questions', 'clients', 'category',
                     'bills', 'orders', 'reports', 'subcategoriesQuery','featuresQuery', 'showUser', 'validateProvider',
 
                     'newProduct','agentsGet', 'editProduct', 'deleteProduct', 'updateProduct','newUserAdmin','user',

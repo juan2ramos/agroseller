@@ -45,7 +45,7 @@ class ZonaPagos {
                 "codigo_servicio_principal" => $this->serviceCode,
                 "total_con_iva"  => $inputs["total_con_iva"],
                 "valor_iva" => $inputs['total_con_iva'] * 16 / 116,
-                "email" => $inputs['email'],
+                "email" => auth()->user()->email,
                 "id_pago" => $inputs["id_pago"],
                 "id_cliente" => $inputs["id_cliente"],
                 "tipo_id" => $inputs["tipo_id"],

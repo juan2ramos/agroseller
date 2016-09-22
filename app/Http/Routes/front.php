@@ -92,6 +92,7 @@ Route::get('detalle-de-plan/{slug}', [
     'as' => 'planDetail', 
     'uses' => 'PlanController@planDetail'
 ]);
+
 Route::get('productos-recomendados', [
     'as' => 'recommended',
     'uses' => 'PositionAlgorithmController@index'
