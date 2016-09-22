@@ -1,13 +1,9 @@
 var assets = $('.Product-content').data('urlpath'),
     subcategory = $('.Product-content').data('subcategory');
-$(function () {
 
+if (navigator.geolocation)
+    navigator.geolocation.getCurrentPosition(mostrarLocalizacion);
 
-    if (navigator.geolocation)
-        navigator.geolocation.getCurrentPosition(mostrarLocalizacion);
-
-
-});
 function mostrarLocalizacion(position) {
     var products = $('#productsRecommended').data('routegetproducts');
     console.log(products)
@@ -43,6 +39,7 @@ function mostrarLocalizacion(position) {
                     '</article>';
 
             });
+            $('#Preloader-products').hide();
             $('.Product-content').append(html);
 
         }

@@ -48,7 +48,19 @@
     <section class="Products" id="productsRecommended" data-routegetproducts="{{route('recommended')}}">
         <h2 class="Title">Lo Más Destacado</h2>
         <div class="Product-content row" data-urlpath="{{url('/')}}"
-             data-subcategory="{{(isset($subcategoryId))? $subcategoryId : 0 }}" >
+             data-subcategory="{{(isset($subcategoryId))? $subcategoryId : 0 }}">
+            <div class="col-12" id="Preloader-products">
+                <div class="cssload-loader">
+                    <div class="cssload-side"></div>
+                    <div class="cssload-side"></div>
+                    <div class="cssload-side"></div>
+                    <div class="cssload-side"></div>
+                    <div class="cssload-side"></div>
+                    <div class="cssload-side"></div>
+                    <div class="cssload-side"></div>
+                    <div class="cssload-side"></div>
+                </div>
+            </div>
             {{--@foreach($products as $product)--}}
             {{-- <article class="smaller-12 small-6 medium-4 col-3">
                  <figure class="Product-Image">
