@@ -24,11 +24,14 @@ class OrderController extends Controller
         $data = [];
         foreach ($cart as $item) {
             // Temporal  state_order_id Zona Pagos
-            $value = (!$item->offers)
-                ? $item->price
-                : (Carbon::now()->between(new Carbon($item->offers->offer_on), new Carbon($item->offers->offer_off)))
+            if(!$item->offers){
+                $value = $item->price;
+            }
+            else{
+                $value = (Carbon::now()->between(new Carbon($item->offers->offer_on), new Carbon($item->offers->offer_off)))
                     ? $item->offers->offer_price
                     : $item->price;
+            }
 
             $data[$item->id] = ['quantity' => $item->quantity, 'state_order_id' => 2, 'value' => $value];
         }
