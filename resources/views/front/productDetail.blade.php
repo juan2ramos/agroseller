@@ -331,7 +331,6 @@
     @section('scripts')
             <!-- ******* Slider ******* -->
     <script src="{{asset('js/owl.carousel.js')}}"></script>
-    <script src="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.js"></script>
     <script src="{{asset('js/front/slide.js')}}"></script>
 
     <!-- ******* Maps ******* -->
@@ -377,5 +376,6 @@
 @endsection
 
 @section('styles')
-    <link href="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="{{asset('css/owl.carousel.css')}}" rel="stylesheet">
+    <link href="{{asset('css/owl.transitions.css')}}" rel="stylesheet">
 @endsection
