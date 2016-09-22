@@ -37,8 +37,8 @@
             <div class="BannerTop-info row middle">
                 <div class="smaller-12 medium-6">
                     <h2>TRACTOR VALTRA A850</h2>
-                    <h3>ENTREGA INMENDIATA</h3>
-                    <p class="BannerTop-infoPrice"><span>$80.000.000</span> Ahora $50.000.000</p>
+                    <h3>INGENIERÍA AGRÍCOLA</h3>
+                    <!--<p class="BannerTop-infoPrice"><span>$80.000.000</span> Ahora $50.000.000</p>-->
                 </div>
                 <div class="smaller-12 medium-6 row end" style="padding: 10px 0;"><a class="Button" href="#">VER
                         OFERTA</a></div>
