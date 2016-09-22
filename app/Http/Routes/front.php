@@ -1,7 +1,8 @@
 <?php
 
 Route::get('/', [
-    'uses' => 'HomeController@landing',
+    /*'uses' => 'HomeController@landing',*/
+    'uses' => 'HomeController@index',
     'as' => 'home'
 ]);
 
