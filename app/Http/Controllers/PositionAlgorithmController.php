@@ -11,19 +11,19 @@ use Illuminate\Support\Facades\Auth;
 class PositionAlgorithmController extends Controller
 {
 
-    function index(/*Request $request*/)
+    function index(Request $request)
     {
-
-        $products = Product::whereRaw('isValidate = 1 and isActive = 1')
+        $sqlAdd = ($request->get('subcategory'))?' and subcategory_id = ' .$request->get('subcategory'):'';
+        $products = Product::whereRaw('isValidate = 1 and isActive = 1' . $sqlAdd)
             ->with(['offers', 'productFiles', 'subcategory'])
             ->get();
-        $lat = '-75.145';
-        $lng = '4.45056';
-        /*$position = $request->get('position')['coords'];*/
-        /*  if($position){
-              $lat = $position['latitude'];
-              $lng = $position['longitude'];
-          }*/
+        $lat = '-75.58121155000003';
+        $lng = '6.244207994244943';
+        $position = $request->get('position')['coords'];
+          if($position){
+              $lat = $position['longitude'];
+              $lng = $position['latitude'];
+          }
 
         foreach ($products as $product) {
             $product->location2 = explode(';', $product->location);
