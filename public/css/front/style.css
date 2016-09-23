@@ -2720,3 +2720,13 @@ body {
   right: 11rem;
   z-index: 10;
 }
+
+.owl-next,
+.owl-prev {
+  color: white;
+  font-size: 1.25rem;
+  background: rgba(197, 210, 87, 0.36);
+  padding: 0.1875rem 0.625rem 0.25rem;
+  position: absolute;
+  top: 50%;
+}

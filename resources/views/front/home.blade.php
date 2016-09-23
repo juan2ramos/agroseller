@@ -32,17 +32,48 @@
 
             </ul>
         </div>
-        <div class="smaller-12 col-9">
-            <img src="{{url('images/image-banner.jpg')}}" alt="">
-            <div class="BannerTop-info row middle">
-                <div class="smaller-12 medium-6">
-                    <h2>INGENIERÍA AGRÍCOLA</h2>
-                    <h3>CON LA MEJOR TECNOLOGÍA</h3>
-                    <!--<p class="BannerTop-infoPrice"><span>$80.000.000</span> Ahora $50.000.000</p>-->
+        <div class="smaller-12 col-9" id="Banner">
+            <div>
+                <img src="{{url('images/2.jpg')}}" alt="">
+                <div class="BannerTop-info row middle">
+                    <div class="smaller-12 medium-6">
+                        <h2>DISEÑO LOGÍSTICA DE COSECHA </h2>
+                        <h3>DISEÑO DE PLANTACIONES AGRÍCOLAS</h3>
+                        <!--<p class="BannerTop-infoPrice"><span>$80.000.000</span> Ahora $50.000.000</p>-->
+                    </div>
+                    <div class="smaller-12 medium-6 row end" style="padding: 10px 0;"><a class="Button" href="#">VER
+                            OFERTA</a></div>
                 </div>
-                <div class="smaller-12 medium-6 row end" style="padding: 10px 0;"><a class="Button" href="#">VER
-                        OFERTA</a></div>
+
             </div>
+            <div>
+                <img src="{{url('images/1G.jpg')}}" alt="">
+                <div class="BannerTop-info row middle">
+                    <div class="smaller-12 medium-6">
+                        <h2>DISEÑO DE VÍAS Y SISTEMAS DE TRASPORTES</h2>
+                        <h3>DISEÑO DE PLANTACIONES AGRÍCOLAS</h3>
+                        <!--<p class="BannerTop-infoPrice"><span>$80.000.000</span> Ahora $50.000.000</p>-->
+                    </div>
+                    <div class="smaller-12 medium-6 row end" style="padding: 10px 0;"><a class="Button" href="#">VER
+                            OFERTA</a></div>
+                </div>
+
+            </div>
+
+<div>
+                <img src="{{url('images/3.jpg')}}" alt="">
+                <div class="BannerTop-info row middle">
+                    <div class="smaller-12 medium-6">
+                        <h2>GEORREFERENCIACIÓN Y ESTUDIOS TOPOGRÁFICOS</h2>
+                        <h3>SERVICIOS DE TOPOGRAFÍA</h3>
+                        <!--<p class="BannerTop-infoPrice"><span>$80.000.000</span> Ahora $50.000.000</p>-->
+                    </div>
+                    <div class="smaller-12 medium-6 row end" style="padding: 10px 0;"><a class="Button" href="#">VER
+                            OFERTA</a></div>
+                </div>
+
+            </div>
+
         </div>
     </section>
     <section class="Products" id="productsRecommended" data-routegetproducts="{{route('recommended')}}">
@@ -105,8 +136,28 @@
          });*/
     </script>
 
-@section('scripts')
-    <script src="{{asset('js/front/products.js')}}"></script>
 @endsection
 
+@section('scripts')
+
+    <script src="{{asset('js/owl.carousel.js')}}"></script>
+
+    <script>
+        $("#Banner").owlCarousel({
+
+            items: 1,
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
+            nav: true,
+            navText:	["<",">"],
+
+        });
+    </script>
+@endsection
+
+@section('styles')
+    <link href="{{asset('css/owl.carousel.css')}}" rel="stylesheet">
+    <link href="{{asset('css/owl.transitions.css')}}" rel="stylesheet">
 @endsection
