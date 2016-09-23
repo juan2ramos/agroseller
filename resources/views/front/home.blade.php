@@ -139,7 +139,7 @@
 @endsection
 
 @section('scripts')
-
+    <script src="{{asset('js/front/products.js')}}"></script>
     <script src="{{asset('js/owl.carousel.js')}}"></script>
 
     <script>
