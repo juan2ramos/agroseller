@@ -57,7 +57,7 @@ class PositionAlgorithmController extends Controller
         dd();*/
 
 
-        return $sorted->slice(1, 52);
+        return $sorted->slice(1, 36);
     }
 
     private function farms($farms)
