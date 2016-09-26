@@ -111,6 +111,6 @@ Route::get('acerca-agrosellers',function(){
 
 Route::get('finalizar-pago', [
     'as' => 'finalPay',
-    'uses' => 'PayController@finalPay'
+    'uses' => 'ShoppingController@finalPay'
 ]);
 
