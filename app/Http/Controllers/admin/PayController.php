@@ -45,6 +45,10 @@ class PayController extends Controller
         }
     }
 
+    public function finalPay(Request $request){
+        dd($request->all());
+    }
+
     function historyPay()
     {
         $provider = Auth::user()->provider->with('planProvider')->first();
