@@ -887,7 +887,7 @@ body {
 
 .LightBoxContent {
   position: fixed;
-  z-index: 2;
+  z-index: 10000000;
   background: rgba(0, 0, 0, 0.5);
   top: 0;
   left: 0;
@@ -1850,4 +1850,19 @@ body {
   position: fixed;
   bottom: 1.875rem;
   right: 11rem;
+<<<<<<< HEAD
   z-index: 10; }
+=======
+  z-index: 10;
+}
+
+.owl-next,
+.owl-prev {
+  color: white;
+  font-size: 1.25rem;
+  background: rgba(197, 210, 87, 0.36);
+  padding: 0.1875rem 0.625rem 0.25rem;
+  position: absolute;
+  top: 50%;
+}
+>>>>>>> 3f7d465933e228f5f526d62845aaf0cbb4164cd0

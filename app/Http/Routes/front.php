@@ -98,3 +98,14 @@ Route::get('productos-recomendados', [
     'uses' => 'PositionAlgorithmController@index'
 ]);
 
+Route::get('como-comprar',function(){
+    return view('front.howBuy');
+});
+Route::get('como-vender',function(){
+    return view('front.howSell');
+});
+
+Route::get('acerca-agrosellers',function(){
+    return view('front.about');
+});
+
