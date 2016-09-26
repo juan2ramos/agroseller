@@ -273,7 +273,7 @@
                     @endif
                 </figure>
                 <div class="commentBox">
-                    <textarea name="comment" id="commentBox" style="width:100%"></textarea>
+                    <textarea name="comment" id="commentBox"></textarea>
                     <button class="commentButton" id="commentButton"
                             onClick="addComment($('#commentBox').val(), '{{$product->id}}', '{{Auth::user()->id}}','{{route("addQuestion")}}', '{{url("/")}}'); return false;">
                         Enviar

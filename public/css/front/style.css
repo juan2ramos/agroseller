@@ -1365,7 +1365,7 @@ body {
   margin: 4rem 0 2rem; }
 
 .Comments textarea {
-  width: calc(100% - 5rem);
+  width: calc(100% - 35px);
   max-height: 4rem;
   border: .125rem solid #C1C1C1;
   margin-left: 1rem;
@@ -1373,7 +1373,8 @@ body {
   font-size: .875rem;
   font-weight: 300;
   color: #454545;
-  border-radius: .25rem; }
+  border-radius: .25rem;
+  margin-left: 71px; }
 
 .Comments figure {
   width: 3rem;
