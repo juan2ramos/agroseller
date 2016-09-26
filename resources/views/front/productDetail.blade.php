@@ -55,7 +55,7 @@
                 @endforeach
             </div>
         </article>
-        <article class="smaller-12 col-6">
+        <article class="smaller-12 col-6" style="padding: 0 15px">
             <h1 class="from-large" style="text-transform:uppercase">{{$product->name}}</h1>
             <div class="ProductDetail-price row middle">
                 <div class="smaller-12 col-6">
@@ -77,7 +77,7 @@
                         <b>${{number_format($product->price, 0, " ", ".")}}</b>
                     @endif
                 </div>
-                <div class="smaller-12 col-6 AlignRight">
+                <div class="smaller-12 col-6 AlignRight calification">
                     @for($i = 0; $i < 5; $i++)
                         <svg width="16px" height="26px" viewBox="0 0 16 26">
                             <use xlink:href="#StarsSvg"/>
@@ -172,7 +172,7 @@
                 </div>
             </nav>
         </article>
-        <article class="smaller-6 col-6 ProductDetail-thumbnail">
+        <article class="smaller-6 col-6 ProductDetail-thumbnail from-large">
             <div class="row between owl-carousel" id="sync2">
                 @foreach($product->productFiles as $file)
                     @if($file->extension != 'pdf')
@@ -183,14 +183,14 @@
                 @endforeach
             </div>
         </article>
-        <article class="smaller-6 col-6 ProductDetail-data row middle">
+        <article class="smaller-12 small-6 col-6 ProductDetail-data row middle">
             <p>
                 <b>Código de producto:</b> {{$product->id}} <br>
                 <b>Subcategoría:</b> {{$product->subcategory->name}}
         </article>
     </section>
     <section class="Provider-detail row middle">
-        <div class="smaller-8 col-8 row middle">
+        <div class="smaller-6 col-8 row middle">
             <figure>
                 @if($product->user->photo)
                     <img src="{{url('uploads/providers/'.$product->user->photo)}}" alt="">
@@ -201,7 +201,7 @@
                 @endif
             </figure>
             <h4>{{$product->user->name}}</h4>
-            <div class="Provider-star smaller-2 col-2">
+            <div class="Provider-star smaller-12 small-5 col-2">
                 @for($i = 0; $i < 5; $i++)
                     <svg width="16px" height="26px" viewBox="0 0 16 26">
                         <use xlink:href="#StarsSvg"/>
@@ -209,9 +209,11 @@
                 @endfor
             </div>
         </div>
-        <a href="" class="smaller-4 col-4">Mas Información</a>
+        <a href="" class="smaller-6 col-4">Mas Información</a>
     </section>
-    <div id="Map" class="smaller-12 Limited"></div>
+    <section class="Map-Container">
+        <div id="Map" class="smaller-12 Limited"></div>
+    </section>
     <section class="ProductInfo">
         <h2>Descripción</h2>
         {!!$product->description!!}
@@ -219,7 +221,7 @@
         <article class="row bottom">
             <?php $j = 0 ?>
             @for($i = 0; $i < 2; $i++)
-                <ul class="smaller-2 col-2 self-start">
+                <ul class="smaller-12 medium-3 col-2 self-start">
                     @while($j < count($featuresTranslate))
                         <li>{{$featuresTranslate[$j]['name']}}: <b>{{ $featuresTranslate[$j]['value'] }}</b></li>
                         <?php $j++ ?>
@@ -229,7 +231,7 @@
                     @endwhile
                 </ul>
             @endfor
-            <div class="smaller-8 col-8 AlignRight">
+            <div class="smaller-12 medium-6 col-8 AlignRight DownloadPDF">
                 @foreach($product->productFiles as $file)
                     @if($file->extension == 'pdf')
                         <a href="/uploads/products/{{$file->name}}" style="color : black" download>
@@ -271,7 +273,7 @@
                     @endif
                 </figure>
                 <div class="commentBox">
-                    <textarea name="comment" id="commentBox"></textarea>
+                    <textarea name="comment" id="commentBox" style="width:100%"></textarea>
                     <button class="commentButton" id="commentButton"
                             onClick="addComment($('#commentBox').val(), '{{$product->id}}', '{{Auth::user()->id}}','{{route("addQuestion")}}', '{{url("/")}}'); return false;">
                         Enviar
