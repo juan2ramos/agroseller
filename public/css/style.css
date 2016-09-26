@@ -431,6 +431,12 @@ h2 {
   cursor: pointer;
 }
 
+@media (min-width: 45rem) {
+  .Menu-small {
+    left: -6.25rem;
+  }
+}
+
 .Menu-small span {
   display: block;
   max-width: 80%;
