@@ -373,6 +373,7 @@ h2 {
 
 .Nav img {
   margin: auto;
+  max-width: 20px;
 }
 
 .Nav a {

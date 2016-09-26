@@ -179,8 +179,8 @@
             </div>
             <div class="BarNav-a medium-6  center">
                 <a href="{{route('pricing')}}">Ver Planes</a>
-                <a href="{{route('pricing')}}">¿Cómo comprar?</a>
-                <a href="{{route('pricing')}}">¿Cómo vender?</a>
+                <a href="{{url('como-comprar')}}">¿Cómo comprar?</a>
+                <a href="{{url('como-vender')}}">¿Cómo vender?</a>
             </div>
 
             <div class="Cart AlignRight smaller-6 medium-3">
@@ -299,7 +299,7 @@
             <ul class="center col-2 from-large">
                 <li class="NavFooter-TitleUL"><a href="#">Nosotros</a>
                     <ul>
-                        <li><a href="#"> Sobre AgroSellers</a></li>
+                        <li><a href="{{url('acerca-agrosellers')}}"> Sobre AgroSellers</a></li>
                         <li><a href="{{route('contactForm')}}"> Contáctanos</a></li>
                     </ul>
                 </li>
@@ -433,8 +433,8 @@
             <ul class="center col-2 from-large">
                 <li class="NavFooter-TitleUL"><a href="#"> Ayuda </a>
                     <ul>
-                        <li><a href="#"> ¿Cómo vender? </a></li>
-                        <li><a href="#"> ¿Cómo comprar?</a></li>
+                        <li><a href="{{url('como-vender')}}"> ¿Cómo vender? </a></li>
+                        <li><a href="{{url('como-comprar')}}"> ¿Cómo comprar?</a></li>
                     </ul>
                 </li>
             </ul>
