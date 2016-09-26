@@ -40,11 +40,6 @@ Route::group(['namespace' => 'admin'], function () {
         'middleware' => 'VerifyProvider',
     ]);
 
-    Route::get('finalizar-pago', [
-        'as' => 'finalPay',
-        'uses' => 'PayController@finalPay'
-    ]);
-
     Route::post('productos/delete/{id}', [
         'uses' => 'ProductController@lockProduct',
         'as' => 'deleteProduct'
