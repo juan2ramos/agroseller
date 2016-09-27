@@ -2,6 +2,7 @@
 
 namespace Agrosellers\Services;
 use GuzzleHttp\Client;
+use Agrosellers\Entities\Order;
 
 class ZonaPagos {
 
@@ -66,6 +67,19 @@ class ZonaPagos {
 
         $response = $this->client->post($url, $data);
         return str_replace('"', '',$response->getBody()->getContents());
+    }
+
+    public function insertPayResult($inputs){
+        $order = Order::where('zp_buy_id', $inputs['id_pago'])->first();
+        //dd($inputs['ticketID']);
+        //dd($inputs['id_clave']);
+        //dd($inputs['id_cliente']);
+        $order->update([
+            'zp_buy_id' => $inputs['zp_state'],
+            'zp_pay_form' => $inputs['id_forma_pago'],
+            'zp_pay_value' => $inputs['valor_pagado'],
+            'zp_pay_credit' => $inputs['franquicia'],
+        ]);
     }
 
     /** Retorna la instancia de zona pagos **/

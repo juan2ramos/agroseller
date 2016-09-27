@@ -286,5 +286,3 @@ Route::get('notificaciones', [
     'uses' => 'NotificationController@index',
     'as' => 'NotifyAll'
 ]);
-
-
