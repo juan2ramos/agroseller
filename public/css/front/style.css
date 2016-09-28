@@ -618,7 +618,7 @@ body {
   .BarInfo a {
     color: #27383F;
     display: inline-block;
-    margin-left: 0.875rem; }
+    margin-left: 1.25rem; }
   .BarInfo svg {
     position: relative;
     top: .125rem; }
@@ -690,6 +690,11 @@ body {
   margin-left: 1.875rem;
   max-height: 7.5rem;
   height: 100%; }
+  .Header-logo img {
+    max-width: 12.5rem; }
+    @media (min-width: 65rem) {
+      .Header-logo img {
+        max-width: 15.625rem; } }
   @media (min-width: 65rem) {
     .Header-logo {
       margin-left: 0;
@@ -719,6 +724,20 @@ body {
       width: 8rem; }
       .Header-linksBack a:last-child:hover {
         box-shadow: inset 0 -.375rem 0 #B1BD4E; } }
+
+.UserFront {
+  color: white;
+  margin-top: 0.625rem; }
+  .UserFront a {
+    background: none !important;
+    display: block  !important;
+    width: auto !important;
+    line-height: inherit !important;
+    margin: 0.375rem !important;
+    color: #C5D257 !important;
+    border-bottom: none !important; }
+    .UserFront a:hover {
+      box-shadow: none !important; }
 
 .BarNav {
   background: #C5D257 !important; }
@@ -1368,7 +1387,6 @@ body {
   width: calc(100% - 35px);
   max-height: 4rem;
   border: .125rem solid #C1C1C1;
-  margin-left: 1rem;
   padding: .5rem;
   font-size: .875rem;
   font-weight: 300;
@@ -1850,19 +1868,12 @@ body {
   position: fixed;
   bottom: 1.875rem;
   right: 11rem;
-<<<<<<< HEAD
   z-index: 10; }
-=======
-  z-index: 10;
-}
 
-.owl-next,
-.owl-prev {
+.owl-next, .owl-prev {
   color: white;
   font-size: 1.25rem;
   background: rgba(197, 210, 87, 0.36);
   padding: 0.1875rem 0.625rem 0.25rem;
   position: absolute;
-  top: 50%;
-}
->>>>>>> 3f7d465933e228f5f526d62845aaf0cbb4164cd0
+  top: 50%; }
