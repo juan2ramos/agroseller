@@ -55,7 +55,7 @@
                     $priceInput = $('#price' + i),
                     price = $select2.children('option:selected').attr('price');
             if (price == 0) {
-                price = "(57) 3178704270";
+                price = "(57) 3178704270  (57) 1 7678401";
                 $priceInput.val(price);
                 $select2.parent().siblings('.Price').text(price);
                 $select2.css('display', 'none');
