@@ -81,6 +81,7 @@
         </figure>
 
         <form action="" class="Header-search smaller-12 col-4">
+
             <input id="principalToken" type="hidden" name="_token" value="{{ csrf_token() }}">
             <input id="searchRoute" type="hidden" value="{{route('searchBar')}}">
             <div>

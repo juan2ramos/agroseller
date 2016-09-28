@@ -26,7 +26,7 @@ class PositionAlgorithmController extends Controller
         }
 
         $sorted = $products->sortBy(function ($p, $key) {
-            $m[-1][-1] = -1;
+            $m[-1][-1] = -1;layo
             $m[-1][0] = 0;
             $m[-1][1] = 1;
             $m[0][-1] = 0;
