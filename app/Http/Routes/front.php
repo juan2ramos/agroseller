@@ -1,7 +1,8 @@
 <?php
 
 Route::get('/', [
-    'uses' => 'HomeController@landing',
+    /*'uses' => 'HomeController@landing',*/
+    'uses' => 'HomeController@index',
     'as' => 'home'
 ]);
 
@@ -90,5 +91,26 @@ Route::get('precios', [
 Route::get('detalle-de-plan/{slug}', [
     'as' => 'planDetail', 
     'uses' => 'PlanController@planDetail'
+]);
+
+Route::get('productos-recomendados', [
+    'as' => 'recommended',
+    'uses' => 'PositionAlgorithmController@index'
+]);
+
+Route::get('como-comprar',function(){
+    return view('front.howBuy');
+});
+Route::get('como-vender',function(){
+    return view('front.howSell');
+});
+
+Route::get('acerca-agrosellers',function(){
+    return view('front.about');
+});
+
+Route::get('finalizar-pago', [
+    'as' => 'finalPay',
+    'uses' => 'ShoppingController@finalPay'
 ]);
 

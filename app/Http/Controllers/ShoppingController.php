@@ -6,6 +6,7 @@ use Agrosellers\Entities\Budget;
 use Agrosellers\Entities\Order;
 use Agrosellers\Entities\Product;
 use Agrosellers\Entities\StateOrder;
+use Agrosellers\Services\ZonaPagos;
 use Agrosellers\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -120,6 +121,12 @@ class ShoppingController extends Controller
         }
         $states = StateOrder::lists('id', 'name');
         return view('back.ordersProvider', compact('orders', 'states'));
+    }
+
+    public function finalPay(Request $request){
+        $zp = ZonaPagos::create();
+        $zp->insertPayResult($request->all());
+        //return redirect()->route('historyPay');
     }
 
 }

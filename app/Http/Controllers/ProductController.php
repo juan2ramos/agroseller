@@ -19,11 +19,14 @@ class ProductController extends Controller
 {
     function productFront(Request $request, $subcategoriesName = null)
     {
-        if ($subcategoriesName) {
+        /*if ($subcategoriesName) {
             $products = Subcategory::where('slug', $subcategoriesName)->firstOrFail()->products()->whereRaw('isValidate = 1 and isActive = 1')->paginate(8);
             return view('front.home', compact('products'));
         }
-        return redirect()->route('home');
+        return redirect()->route('home');*/
+        $subcategory = Subcategory::where('slug',$subcategoriesName)->first();
+        $subcategoryId = $subcategory->id;
+        return view('front.home',compact('subcategoryId'));
     }
 
     function checkout(Request $request)

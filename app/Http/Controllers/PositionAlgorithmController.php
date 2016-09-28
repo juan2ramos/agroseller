@@ -11,15 +11,20 @@ use Illuminate\Support\Facades\Auth;
 class PositionAlgorithmController extends Controller
 {
 
-    function index()
+    function index(Request $request)
     {
-
-        $products = Product::whereRaw('isValidate = 1 and isActive = 1')
+        $sqlAdd = ($request->get('subcategory'))?' and subcategory_id = ' .$request->get('subcategory'):'';
+        $products = Product::whereRaw('isValidate = 1 and isActive = 1' . $sqlAdd)
             ->with(['offers', 'productFiles', 'subcategory'])
             ->get();
+        $lat = '-75.58121155000003';
+        $lng = '6.244207994244943';
+        $position = $request->get('position')['coords'];
+          if($position){
+              $lat = $position['longitude'];
+              $lng = $position['latitude'];
+          }
 
-        $lat = '-75.145';
-        $lng = '4.45056';
         foreach ($products as $product) {
             $product->location2 = explode(';', $product->location);
             $product->distance = $this->distance($lat, $lng, $product->location2);
@@ -52,7 +57,7 @@ class PositionAlgorithmController extends Controller
         dd();*/
 
 
-        return $sorted->slice(1, 52);
+        return $sorted->slice(1, 36);
     }
 
     private function farms($farms)

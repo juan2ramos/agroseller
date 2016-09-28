@@ -8,10 +8,15 @@
   overflow: hidden
   margin: auto
 
-.ProductDetail-slider .owl-carousel
-  background: #FFFFFF
-  box-shadow: 0 0 1rem 0 rgba(228, 228, 228, 0.5)
-  max-width: 31rem
+.ProductDetail-slider
+  display: flex
+  justify-content: center
+  @include respond-to(large)
+    justify-content: flex-start
+  .owl-carousel
+    background: #FFFFFF
+    box-shadow: 0 0 1rem 0 rgba(228, 228, 228, 0.5)
+    max-width: 31rem
 
 .Product-info
   width: 100%
@@ -44,9 +49,14 @@
 
 .ProductDetail-network
   width: rem(284)
+  margin: auto
+  @include respond-to(large)
+    margin: 0
 
 .ProductInfo
   word-wrap: break-word
+  & ul
+    margin-top: rem(6)
   & h2
     font-weight: 400
     margin: 4rem 0 2rem
@@ -76,10 +86,12 @@
     color: #454545
 
 .ProductDetail-data
-  margin: 2.5rem 0
+  margin: 2.5rem auto
+  min-width: 285px !important
   border-top: .0625rem solid #D9D9D9
   border-bottom: .0625rem solid #D9D9D9
   height: 7rem
+  padding: 0 15px
   & p
     margin: 0
     color: #979797
@@ -96,17 +108,30 @@
     font-size: 1.75rem
     border-bottom: .0625rem solid #D9D9D9
     padding: 0 0 1rem
-
+    text-align: center
+    @include respond-to(large)
+      text-align: left
+      
+  
 .ProductDetail-price
   font-size: 1.5rem
   font-weight: 200
   margin: 2rem 0
+  & div
+    display: flex
+    justify-content: center
+    @include respond-to(large)
+      justify-content: flex-start
+      &:last-child
+        justify-content: flex-end
   & b
     vertical-align: super
     font-weight: 400
   & del
     color: #CCCCCC
     font-weight: 100
+  & .calification svg
+    margin: rem(10) rem(5)
 
 .ProductDetail-offer
   font-size: 1.5rem
@@ -122,8 +147,10 @@
 .ProductDetail-quantity
   border: solid .25rem #F5F5F5
   padding: 1rem 1.25rem
-  margin: 2.75rem 0
+  margin: 2.75rem auto
   max-width: 17.75rem
+  @include respond-to(large)
+    margin: 2.75rem 0
   & h4
     font-size: 1.25rem
     font-weight: 400
@@ -140,6 +167,8 @@
 
 .ProductDetail-thumbnail
   margin: 2.5rem 0
+  .owl-item
+    width: 25% !important
   & div
     max-width: 31rem
     padding: .0625rem 0
@@ -148,10 +177,12 @@
     max-width: 6.625rem
     box-shadow:  0 0 .0625rem 0 rgba(0,0,0,0.50)
 
-#Map
+.Map-Container
   height: 28rem
-  border-bottom: .375rem solid #C1C1C1
-  border-top: .375rem solid #C1C1C1
+  #Map
+    height: 100%
+    border-bottom: .375rem solid #C1C1C1
+    border-top: .375rem solid #C1C1C1
 
 .owl-buttons
   position: absolute
@@ -167,6 +198,7 @@
     font-weight: 300
 .ProductDetail-thumbnail .owl-wrapper
   left: .625rem !important
+  width: 100% !important
 .owl-next
   position: absolute
   right: .5rem
@@ -176,6 +208,8 @@
   position: absolute
 .owl-item
   cursor: pointer
+  .item img
+    margin: auto
 
 .Provider-detail
   padding: 1rem 2rem
@@ -210,3 +244,21 @@
 .Offer-description
   font-size: rem(12)
   color: #787878
+
+.Provider-detail,
+.Map-Container
+  width: 100vw
+  margin-left: -50vw
+  left: 50%
+  position: relative
+  @include respond-to(medium)
+    width: 100%
+    margin-left: 0
+    position: inherit
+.DownloadPDF
+  display: flex
+  justify-content: center
+  margin-top: rem(40)
+  @include respond-to(medium)
+    margin-top: 0
+    justify-content: flex-end

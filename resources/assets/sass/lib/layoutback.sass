@@ -111,6 +111,7 @@ h2
     @include transform(translateX(0))
   & img
     margin: auto
+    max-width: 20px
   & a
     height: rem(64)
     color: $greenDark
@@ -140,6 +141,8 @@ h2
   position: fixed
   top: 5.25rem
   left: rem(20)
+  @include respond-to(medium)
+    left: rem(-100)
   background: white
   box-shadow: 0 0.0625rem 0.625rem 0 rgba(49, 49, 49, 0.1)
   height: rem(30)
@@ -155,7 +158,6 @@ h2
 
 .capitalize
   text-transform: capitalize
-  //--
 
 
 
