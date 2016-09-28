@@ -104,7 +104,7 @@
 <header class="Header">
     <div class="Header-container row middle between">
         <figure class="Header-logo center row smaller-12 col-4 middle">
-            <a href="{{route('home')}}"><img src="{{url('images/logo-agrosellers.svg')}}" alt="Logo Agrosellers"></a>
+            <a href="{{route('home')}}"><img style="max-width:250px" src="{{url('images/logo-agrosellers.svg')}}" alt="Logo Agrosellers"></a>
         </figure>
 
         <form action="" class="Header-search smaller-12 col-4">
