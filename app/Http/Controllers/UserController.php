@@ -27,7 +27,26 @@ class UserController extends Controller
         return view('back.users', compact('users','roles'));
 
     }
+    function searchUsers(Request $request){
+        $search = $request->input('search');
 
+        $rows = User::with('role')->where(function ($query) use ($search) {
+            $query->Where('name', 'like', '%' . $search . '%')
+                ->orWhere('last_name', 'like', '%' . $search . '%')
+                ->orWhere('email', '=',  $search )
+                ->orWhere('second_name', 'like', '%' . $search . '%')
+                ->orWhere('second_last_name', 'like', '%' . $search . '%')
+                ->orWhere('identification', '=',   $search );
+        })->sorted()->paginate(10);
+        $users = Table::create($rows,['name' => 'Nombre', 'email' => 'Email',]);
+        $users->addColumn('role_id', 'Rol', function($model) {return $model->role()->first()->name;});
+        $users->addColumn('id', 'Acciones', function($model) {$id = $model->id;return '<a href="'.route('user', ['id' => $id ]) .'"> ver </a>';});
+
+        $roleName = $this->roleName;
+        $routeSearch = 'searchUser';
+        $roles = Role::whereRaw('id in (1,2,4,5)')->get();
+        return view('back.users', compact('users','roleName','routeSearch','search','roles'));
+    }
     function indexProfile(){
         $user = auth()->user();
         return view('back.profile', compact('user'));
@@ -60,21 +79,7 @@ class UserController extends Controller
     }
 
 
-    function searchUsers(Request $request){
-        $search = $request->input('search');
 
-        $users = User::where(function ($query) use ($search) {
-            $query->Where('name', 'like', '%' . $search . '%')
-                ->orWhere('last_name', 'like', '%' . $search . '%')
-                ->orWhere('email', '=',  $search )
-                ->orWhere('second_name', 'like', '%' . $search . '%')
-                ->orWhere('second_last_name', 'like', '%' . $search . '%')
-                ->orWhere('identification', '=',   $search );
-        })->paginate(50);
-        $roleName = $this->roleName;
-        $routeSearch = 'searchUser';
-        return view('back.users', compact('users','roleName','routeSearch','search'));
-    }
 
     function validateProvider($id){
         $provider = Provider::where('user_id', $id)->first();

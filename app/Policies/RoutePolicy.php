@@ -45,14 +45,14 @@ class RoutePolicy
 
                     'newProduct','agentsGet', 'editProduct', 'deleteProduct', 'updateProduct','newUserAdmin','user',
                     'budgetShow', 'indexProfile', 'userUpdate', 'productAgentPreview', 'productDetailPreview','validateProduct',
-                    'payPlan'
+                    'payPlan','searchUser'
 
                 ],
             '2' =>
                 [
                     'admin', 'users', 'providers', 'category', 'farmIndex', 'products', 'clients', 'bills',
                     'orders', 'subcategoriesQuery','featuresQuery','agentsGet','newUserAdmin','user', 'indexProfile',
-                    'userUpdate', 'payPlan'
+                    'userUpdate', 'payPlan','searchUser'
                 ],
             '3' =>
                 [
