@@ -48,10 +48,10 @@ class ProductController extends Controller
         return ['questions' => $questions];
     }
 
-    function productDetailFront($slug, $id)
+    function productDetailFront(Request $request, $slug, $id)
     {
         $product = Product::find($id);
-        if($product->isActive && $product->isValidate){
+        if(($product->isActive && $product->isValidate) || $request->ajax()){
             $offer = ($offerModel = $product->offers()->first()) ?
                 (Carbon::now()->between(new Carbon($offerModel->offer_on), new Carbon($offerModel->offer_off)))
                     ? $offerModel->offer_price : null : null;
