@@ -8,6 +8,7 @@ use Validator;
 use Session;
 use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
+use Agrosellers\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Auth;
 use Agrosellers\Http\Controllers\Controller;
 use Agrosellers\Entities\Category;
@@ -59,6 +60,7 @@ class ProductController extends Controller
         $farms = Farm::all();
         return view('back.product', compact('categories', 'products', 'farms'));
     }
+    
     function editProduct($id){
         $productEdit = Product::find($id);
         $offerEdit = $productEdit->offers()->first();
@@ -139,7 +141,7 @@ class ProductController extends Controller
         return redirect()->route('showUser', $product->user()->first()->id);
     }
 
-    function newProduct(Request $request)
+    function newProduct(ProductRequest $request)
     {
         $inputs = $request->all();
         $this->validator($request->file());
