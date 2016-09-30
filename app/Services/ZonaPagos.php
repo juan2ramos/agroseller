@@ -75,7 +75,7 @@ class ZonaPagos {
         //dd($inputs['id_clave']);
         //dd($inputs['id_cliente']);
         $order->update([
-            'zp_buy_id' => $inputs['zp_state'],
+            'zp_buy_id' => $inputs['estado_pago'],
             'zp_pay_form' => $inputs['id_forma_pago'],
             'zp_pay_value' => $inputs['valor_pagado'],
             'zp_pay_credit' => $inputs['franquicia'],
