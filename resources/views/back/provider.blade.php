@@ -46,6 +46,7 @@
                                 Activo
                             @endif
                         </td>
+                        <td>{{$provider->agent->user->name}} </td>
                         <td>
                             @if($provider->NIT)
                                 <a href="{{ route('showUser',$provider->user->id) }}" class="icon-binoculars">
@@ -59,8 +60,6 @@
                         </td>
                     </tr>
                 @endforeach
-            </tbody>
-        </table>
         @else
             @foreach($users as $user)
                 <tr>
@@ -91,7 +90,13 @@
                 </tr>
             @endforeach
         @endif
+            </tbody>
+        </table>
+        @if(Auth::user()->role_id == 5)
+             {!! $providers->render()  !!}
+        @else
         {!! $users->render()  !!}
+                @endif
         </div>
     </section>
 
