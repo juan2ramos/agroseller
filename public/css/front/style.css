@@ -950,6 +950,9 @@ body {
   background: #FFFFFF;
   box-shadow: 0 0 1rem 0 rgba(228, 228, 228, 0.5);
   max-width: 31rem; }
+  .ProductDetail-slider .owl-carousel .owl-next,
+  .ProductDetail-slider .owl-carousel .owl-prev {
+    display: block !important; }
 
 .Product-info {
   width: 100%;

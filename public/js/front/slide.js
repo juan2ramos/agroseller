@@ -9,24 +9,22 @@ sync1.owlCarousel({
     pagination:false,
     afterAction : syncPosition,
     responsiveRefreshRate : 200,
-    navigationText: [
-        "<i class='icon-chevron-left icon-white'><</i>",
-        "<i class='icon-chevron-right icon-white'>></i>"
-    ],
+    navText:	["<",">"]
 });
 
-sync2.owlCarousel({
+var owl2 = sync2.owlCarousel({
     items : 4,
     itemsDesktop      : [1199,10],
     itemsDesktopSmall     : [979,10],
     itemsTablet       : [768,8],
     itemsMobile       : [479,4],
-    pagination:false,
+    pagination: false,
     responsiveRefreshRate : 100,
     afterInit : function(el){
         el.find(".owl-item").eq(0).addClass("synced");
     }
 });
+
 
 function syncPosition(el){
     var current = this.currentItem;
@@ -40,6 +38,14 @@ function syncPosition(el){
     }
 }
 
+sync2.on("click", ".owl-item", function(e){
+    e.preventDefault();
+    var number = $(this).index();
+    var element = sync1.find('.owl-dots').children().eq(number);
+    element.trigger("click");
+});
+
+/*
 $("#sync2").on("click", ".owl-item", function(e){
     e.preventDefault();
     var number = $(this).data("owlItem");
@@ -71,4 +77,4 @@ function center(number){
         sync2.trigger("owl.goTo", num-1)
     }
 
-}
+}*/
