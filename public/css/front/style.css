@@ -1106,6 +1106,8 @@ body {
 
 .ProductDetail-thumbnail {
   margin: 2.5rem 0; }
+  .ProductDetail-thumbnail .owl-stage {
+    width: 100% !important; }
   .ProductDetail-thumbnail .owl-item {
     width: 25% !important; }
   .ProductDetail-thumbnail div {
