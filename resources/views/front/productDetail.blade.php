@@ -48,18 +48,12 @@
         </article>
         <article class="ProductDetail-slider smaller-12 col-6 ">
             <div class="owl-carousel" id="sync1">
-                <figure class="item"><img src="{{url('uploads/products/yEeDxSzONER8eTZ815suavvudUzdWLM9tDHIqewV**herramientas agricolas.jpg')}}" alt=""></figure>
-                <figure class="item"><img src="{{url('uploads/products/yEeDxSzONER8eTZ815suavvudUzdWLM9tDHIqewV**herramientas agricolas.jpg')}}" alt=""></figure>
-                <figure class="item"><img src="{{url('uploads/products/yEeDxSzONER8eTZ815suavvudUzdWLM9tDHIqewV**herramientas agricolas.jpg')}}" alt=""></figure>
-                <figure class="item"><img src="{{url('uploads/products/yEeDxSzONER8eTZ815suavvudUzdWLM9tDHIqewV**herramientas agricolas.jpg')}}" alt=""></figure>
-            </div>
-            <!--<div class="owl-carousel" id="sync1">
                 @foreach($product->productFiles as $file)
                     @if($file->extension != 'pdf')
                         <figure class="item"><img src="{{url('uploads/products/'. $file->name)}}" alt=""></figure>
                     @endif
                 @endforeach
-            </div>-->
+            </div>
         </article>
         <article class="smaller-12 col-6" style="padding: 0 15px">
             <h1 class="from-large" style="text-transform:uppercase">{{$product->name}}</h1>

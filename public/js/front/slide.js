@@ -2,6 +2,7 @@ var sync1 = $("#sync1");
 var sync2 = $("#sync2");
 
 sync1.owlCarousel({
+    items : 1,
     singleItem : true,
     slideSpeed : 1000,
     navigation: true,
