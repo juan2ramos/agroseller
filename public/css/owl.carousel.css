@@ -214,24 +214,3 @@
 	position: relative;
 	z-index: 1;
 }
-
-
-
-
-figure {
-	position: relative;
-	margin: 0;
-	padding: 0;
-figcaption {
-	position: absolute;
-	bottom: 0;
-&.active {
-	 background-color: red;
- }
-}
-}
-
-img {
-	width: 100%;
-	height: auto;
-}

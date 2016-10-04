@@ -43,14 +43,14 @@ class RoutePolicy
                     'admin', 'users', 'providers', 'category', 'farmIndex', 'products', 'questions', 'clients', 'category',
                     'bills', 'orders', 'reports', 'subcategoriesQuery','featuresQuery', 'showUser', 'validateProvider',
 
-                    'newProduct','agentsGet', 'editProduct', 'deleteProduct', 'updateProduct','newUserAdmin','user',
+                    'agentsGet', 'editProduct', 'deleteProduct', 'updateProduct','newUserAdmin','user',
                     'budgetShow', 'indexProfile', 'userUpdate', 'productAgentPreview', 'productDetailPreview','validateProduct',
                     'payPlan','searchUser'
 
                 ],
             '2' =>
                 [
-                    'admin', 'users', 'providers', 'category', 'farmIndex', 'products', 'clients', 'bills',
+                    'admin', 'users', 'providers', 'category', 'farmIndex', 'clients', 'bills',
                     'orders', 'subcategoriesQuery','featuresQuery','agentsGet','newUserAdmin','user', 'indexProfile',
                     'userUpdate', 'payPlan','searchUser'
                 ],
@@ -64,7 +64,7 @@ class RoutePolicy
 
             '4' =>
                 [
-                    'admin', 'products', 'bills', 'orders', 'reports', 'questions', 'questionDetail', 'questionNew',
+                    'admin', 'bills', 'orders', 'reports', 'questions', 'questionDetail', 'questionNew',
                     'clientInformationIndex', 'clientInformationStore', 'indexProfile', 'userUpdate','budgetShow','downloadBudget',
                     'orderShow', 'payPlan'
 

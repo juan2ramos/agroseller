@@ -946,19 +946,10 @@ body {
   overflow: hidden;
   margin: auto; }
 
-.ProductDetail-slider {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-  justify-content: center; }
-  @media (min-width: 65rem) {
-    .ProductDetail-slider {
-      -ms-flex-pack: start;
-      justify-content: flex-start; } }
-  .ProductDetail-slider .owl-carousel {
-    background: #FFFFFF;
-    box-shadow: 0 0 1rem 0 rgba(228, 228, 228, 0.5);
-    max-width: 31rem; }
+.ProductDetail-slider .owl-carousel {
+  background: #FFFFFF;
+  box-shadow: 0 0 1rem 0 rgba(228, 228, 228, 0.5);
+  max-width: 31rem; }
 
 .Product-info {
   width: 100%;
