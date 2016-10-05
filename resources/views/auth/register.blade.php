@@ -3,10 +3,10 @@
 @section('content')
     <header class="HeaderAuth">
         <div class="HeaderAuth-content row middle ">
-            <figure class="smaller-6">
+            <figure class="smaller-6 col-3">
                 <a href="/"><img src="{{ url('images/logo-agrosellers.svg') }}" alt=""></a>
             </figure>
-            <div class="Header-linksBack smaller-6 row end">
+            <div class="Header-linksBack smaller-6 row col-9 end">
                 <a class="Register Button" href="{{route('login')}}">INICIO SESIÓN</a>
             </div>
         </div>
@@ -101,18 +101,18 @@
                                         </svg></span>
                                     <span class="error_message">Contiene números</span>
                                 </li>
-                                <li>
-                                    <span class="icon_valid"><svg>
-                                            <path fill="rgb(79, 176, 127)"
-                                                  d="M8.7,12.9c-0.1,0-0.2,0-0.3-0.1l-2.4-2.5c-0.1-0.1-0.1-0.4,0-0.5c0.1-0.2,0.4-0.2,0.5,0L8.7,12l4.6-5 c0.1-0.1,0.4-0.1,0.5,0c0.1,0.2,0.1,0.4,0,0.5L9,12.8C9,12.8,8.9,12.9,8.7,12.9C8.8,12.9,8.8,12.9,8.7,12.9z"></path>
-                                        </svg></span>
-                                    <span class="icon_invalid visible"><svg>
-                                            <path fill="#CC6B6B"
-                                                  d="M10,0.982c4.973,0,9.018,4.046,9.018,9.018S14.973,19.018,10,19.018S0.982,14.973,0.982,10 S5.027,0.982,10,0.982 M10,0C4.477,0,0,4.477,0,10c0,5.523,4.477,10,10,10s10-4.477,10-10C20,4.477,15.523,0,10,0L10,0z M9,5.703 V5.441h2.5v0.262l-0.66,5.779H9.66L9,5.703z M9.44,12.951h1.621v1.491H9.44V12.951z"
-                                                  data-reactid=".0.0.0.0.2.2.4.0.1.0.1.1.0"></path>
-                                        </svg></span>
-                                    <span class="error_message">Especiales "- * ! @ # $"</span>
-                                </li>
+                                    {{--<li>
+                                        <span class="icon_valid"><svg>
+                                                <path fill="rgb(79, 176, 127)"
+                                                      d="M8.7,12.9c-0.1,0-0.2,0-0.3-0.1l-2.4-2.5c-0.1-0.1-0.1-0.4,0-0.5c0.1-0.2,0.4-0.2,0.5,0L8.7,12l4.6-5 c0.1-0.1,0.4-0.1,0.5,0c0.1,0.2,0.1,0.4,0,0.5L9,12.8C9,12.8,8.9,12.9,8.7,12.9C8.8,12.9,8.8,12.9,8.7,12.9z"></path>
+                                            </svg></span>
+                                        <span class="icon_invalid visible"><svg>
+                                                <path fill="#CC6B6B"
+                                                      d="M10,0.982c4.973,0,9.018,4.046,9.018,9.018S14.973,19.018,10,19.018S0.982,14.973,0.982,10 S5.027,0.982,10,0.982 M10,0C4.477,0,0,4.477,0,10c0,5.523,4.477,10,10,10s10-4.477,10-10C20,4.477,15.523,0,10,0L10,0z M9,5.703 V5.441h2.5v0.262l-0.66,5.779H9.66L9,5.703z M9.44,12.951h1.621v1.491H9.44V12.951z"
+                                                      data-reactid=".0.0.0.0.2.2.4.0.1.0.1.1.0"></path>
+                                            </svg></span>
+                                        <span class="error_message">Especiales "- * ! @ # $"</span>
+                                    </li>--}}
                             </ul>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                 {!!  $errors->first('terms', '<p class="error">:message</p>')  !!}
             </label>
 
-            <button type="submit" class="Button submit"> REGISTRATE</button>
+            <button type="submit" class="Button submit"> REGÍSTRATE</button>
         </div>
 
     </form>

@@ -1,7 +1,7 @@
 var $pass = $('.Errors-password');
 $('#password').keyup(function(e) {
-    var strongRegex = /^.*(?=.{10,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%·?¿()&*]).*$/;
-    var mediumRegex = /^.*(?=.{6,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%·?¿()&*]).*$/;
+    var strongRegex = /^.*(?=.{10,})(?=.*[a-zA-Z])(?=.*[0-9]).*$/;
+    var mediumRegex = /^.*(?=.{6,})(?=.*[a-zA-Z])(?=.*[0-9]).*$/;
     var enoughRegex = new RegExp("(?=.{6,}).*", "g");
 
     if (false == enoughRegex.test($(this).val())) {

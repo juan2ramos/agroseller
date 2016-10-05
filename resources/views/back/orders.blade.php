@@ -3,68 +3,75 @@
 
     <h2>Mis Compras</h2>
     <hr>
-    <table class="Table Table-first BackContainer capitalize">
-        <thead>
-        <tr>
-            <th></th>
-            <th>Fecha de orden</th>
-            <th>Valor total</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($orders as $key => $order)
-
+    @if(!$orders->isEmpty())
+        <table class="Table Table-first BackContainer capitalize">
+            <thead>
             <tr>
-                <td>@if($order->products->count())
-                        <button class="iconPlus {{($open && $key == 0)?'open':''}}"></button>@endif</td>
-                <td> {{$order->created_budget}}</td>
-                <td> ${{$order->total}}</td>
-                @if($order->zp_state == 888)
-                    <td>Pendiente</td>
-                    <td>
-                        <a target="_blank" href="https://www.zonapagos.com/t_managementpas/pago.asp?estado_pago=iniciar_pago&identificador={{$order->zp_buy_token}}">Pagar</a>
-                    </td>
-                @else
-                    <td>Pago exitoso</td>
-                    <td><a href="">Ver detalles</a></td>
-                @endif
+                <th></th>
+                <th>Fecha de orden</th>
+                <th>Valor total</th>
+                <th>Estado</th>
+                <th>Acciones</th>
             </tr>
-            <tr class="SubTable2" style="{{($open && $key == 0)?'display: table-row;':''}} ">
-                <td colspan="6">
+            </thead>
+            <tbody>
+            @foreach($orders as $key => $order)
 
-                    <table class="Table">
-                        <thead>
-                        <tr>
-                            <th colspan="3" >Producto</th>
-                            <th>Cantidad</th>
-                            <th>Valor Unidad</th>
-                            <th>Valor Total</th>
-                            <th>Estado</th>
-                        </tr>
-                        </thead>
+                <tr>
+                    <td>@if($order->products->count())
+                            <button class="iconPlus {{($open && $key == 0)?'open':''}}"></button>@endif</td>
+                    <td> {{$order->created_budget}}</td>
+                    <td> ${{$order->total}}</td>
+                    @if($order->zp_state == 888)
+                        <td>Pendiente</td>
+                        <td>
+                            <a target="_blank"
+                               href="https://www.zonapagos.com/t_managementpas/pago.asp?estado_pago=iniciar_pago&identificador={{$order->zp_buy_token}}">Pagar</a>
+                        </td>
+                    @else
+                        <td>Pago exitoso</td>
+                        <td><a href="">Ver detalles</a></td>
+                    @endif
+                </tr>
+                <tr class="SubTable2" style="{{($open && $key == 0)?'display: table-row;':''}} ">
+                    <td colspan="6">
 
-                        <tbody>
-                        @foreach($order->products as $products)
-
+                        <table class="Table">
+                            <thead>
                             <tr>
-                                <td  colspan="3" ><a href="{{url('producto/' . $products->slug . '/' . $products->id) }}">{{$products->name}}</a></td>
-                                <td>{{$products->pivot->quantity}}</td>
-                                <td>${{$products->pivot->value}}</td>
-                                <td>${{$products->totalValue}}</td>
-                                <td>{{$states->search($products->pivot->state_order_id) }}</td>
+                                <th colspan="3">Producto</th>
+                                <th>Cantidad</th>
+                                <th>Valor Unidad</th>
+                                <th>Valor Total</th>
+                                <th>Estado</th>
                             </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
 
-                </td>
-            </tr>
-        @endforeach
+                            <tbody>
+                            @foreach($order->products as $products)
 
-        </tbody>
-    </table>
+                                <tr>
+                                    <td colspan="3"><a
+                                                href="{{url('producto/' . $products->slug . '/' . $products->id) }}">{{$products->name}}</a>
+                                    </td>
+                                    <td>{{$products->pivot->quantity}}</td>
+                                    <td>${{$products->pivot->value}}</td>
+                                    <td>${{$products->totalValue}}</td>
+                                    <td>{{$states->search($products->pivot->state_order_id) }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+
+                    </td>
+                </tr>
+            @endforeach
+
+            </tbody>
+        </table>
+    @else
+        <p>No tienes compras</p>
+    @endif
     <form id="download" method="post" action="{{route('downloadBudget')}}">
         <input type="hidden" name="budget_id" id="budget">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -89,41 +96,41 @@
             $('#download').attr('target', '_blank').submit()
         }
 
-        $('.BuyDetail').on('click', function(){
+        $('.BuyDetail').on('click', function () {
 
             var param = {
-                "int_id_tienda" : "14992",
-                "str_id_clave" : "pyp123",
-                "str_id_pago" : "20160917172314526" //$(this).attr('buy')
+                "int_id_tienda": "14992",
+                "str_id_clave": "pyp123",
+                "str_id_pago": "20160917172314526" //$(this).attr('buy')
             };
 
             console.log(param);
 
-           /* var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("demo").innerHTML = this.responseText;
-                }
-            };
-            xhttp.open("POST", "https://www.zonapagos.com/api_verificar_pagoV3/api/verificar_pago_v3", true);
-            xhttp.setRequestHeader("Content-type", "text/xml, application/xml");
-            xhttp.send("int_id_tienda=14992&str_id_clave=pyp123&str_id_pago=20160917172314526");
-*/
+            /* var xhttp = new XMLHttpRequest();
+             xhttp.onreadystatechange = function() {
+             if (this.readyState == 4 && this.status == 200) {
+             document.getElementById("demo").innerHTML = this.responseText;
+             }
+             };
+             xhttp.open("POST", "https://www.zonapagos.com/api_verificar_pagoV3/api/verificar_pago_v3", true);
+             xhttp.setRequestHeader("Content-type", "text/xml, application/xml");
+             xhttp.send("int_id_tienda=14992&str_id_clave=pyp123&str_id_pago=20160917172314526");
+             */
             /*$.ajax({
-                url : "https://www.zonapagos.com/api_verificar_pagoV3/api/verificar_pago_v3",
-                data: param,
-                type: "POST",
-                dataType: "xml",
-            }).then(function (xml) {
-                var str = xml.documentElement;
-                console.log(str);
-            });*/
+             url : "https://www.zonapagos.com/api_verificar_pagoV3/api/verificar_pago_v3",
+             data: param,
+             type: "POST",
+             dataType: "xml",
+             }).then(function (xml) {
+             var str = xml.documentElement;
+             console.log(str);
+             });*/
 
             $.ajax({
-                url : "https://www.zonapagos.com/api_verificar_pagoV3/api/verificar_pago_v3",
+                url: "https://www.zonapagos.com/api_verificar_pagoV3/api/verificar_pago_v3",
                 data: param,
                 type: "post",
-                dataType : "xml"
+                dataType: "xml"
             }).then(function (xml) {
 
                 console.log(xml);

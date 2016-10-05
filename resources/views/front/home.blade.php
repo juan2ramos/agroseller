@@ -8,7 +8,7 @@
 
                 @inject('menu', 'Agrosellers\Services\MenuFront')
                 @foreach($menu->getCategory() as $key => $category)
-                    <li>
+                    <li>º
                         <div class="row middle">
                             {!!$category->image_icon!!}
 

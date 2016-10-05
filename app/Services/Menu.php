@@ -38,7 +38,7 @@ class Menu
         return [
             'Dashboard' => [
                 'route' => 'admin',
-                'roles' => [1, 2, 3, 4, 5, 6],
+                'roles' => [],
                 'class' => 'home'
             ],
             'Usuarios' => [
@@ -76,17 +76,17 @@ class Menu
                 'roles' => [1, 2, 5],
                 'class' => 'client'
             ],
-            'Cotizaciones' => [
+            'Mis cotizaciones' => [
                 'route' => 'budgetShow',
                 'roles' => [1, 2, 4],
                 'class' => 'budgets'
             ],
-            'Compras' => [
+            'Mis compras' => [
                 'route' => 'orderShow',
                 'roles' => [1, 2, 4, 5],
                 'class' => 'order'
             ],
-            'Pedidos' => [
+            'Mis pedidos' => [
                 'route' => 'orderShowProvider',
                 'roles' => [ 3, 5],
                 'class' => 'order'

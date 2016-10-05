@@ -1,6 +1,6 @@
 @extends('layoutBack')
 @section('content')
-    <form id="Client-form" class="row center middle FormAuth Forms" role="form" method="POST" action="{{ route('clientInformationStore') }}">
+    <form id="Client-form" class="row center middle  Forms" role="form" method="POST" action="{{ route('clientInformationStore') }}">
         <div class="BackContainer FormAuth-container">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -11,9 +11,9 @@
 
             <div id="Map" class="Map"></div>
 
-            <p>Selecciona tus cultivos</p>
+            <p>Selecciona tu actividad agrícola y/o pecuaría</p>
 
-            <div class="row">
+            <div class="row" style="margin:  2rem 0">
                 @if(isset($farms))
                     @foreach($farms as $farm)
                         <label for="farm-{{$farm->id}}" class="Forms-checkout capitalize col-6">
