@@ -757,4 +757,3 @@
 @yield('socialScripts')
 </body>
 </html>
-juan
