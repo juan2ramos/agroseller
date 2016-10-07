@@ -87,10 +87,11 @@ class ProviderController extends Controller
         $provider->update($request->all());
         foreach ($files as $key => $file) {
             $fileName = str_random(40) . '**' . $request->file($key)->getClientOriginalName();
-            $request->file($key)->move(base_path() . '/public/uploads/providers/', $fileName);
+            $request->file($key)->move(base_path() . '/public/uploads/users/', $fileName);
             $provider[$key] = $fileName;
         }
         $user['photo'] = $provider['logo'];
+        $user->save();
         $provider->save();
 
         Notification::create([
