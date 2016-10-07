@@ -3,10 +3,22 @@
             $('.MessagePlatform-close').on('click', function () {
                 $('.MessagePlatform').hide();
             });
+
             $('#Menu').on('click', function () {
                 $('#MenuContainer').addClass('Show');
                 $('body').scrollTop(0);
                 $('body').css('overflow', 'hidden')
+            });
+
+            $('.NavCategories >ul >li').on('click', function(){
+
+                if($(this).hasClass('Active'))
+                    $(this).removeClass('Active');
+                else
+                    $(this).addClass('Active');
+
+                $(this).children('ul').slideToggle()
+                       .parent().siblings().removeClass('Active').children('ul').slideUp();
             });
 
             $('#CartButton').on('click', function () {

@@ -860,58 +860,6 @@ body {
   margin: auto;
   padding-bottom: 1.5rem; }
 
-.NavCategories {
-  top: 11.875rem;
-  left: -20rem;
-  background: white;
-  position: absolute;
-  transition: all 0.5s; }
-  .NavCategories hr {
-    border: none;
-    height: .0625rem;
-    background: #D7D7D7;
-    margin: 0 auto;
-    width: 90%; }
-  .NavCategories a {
-    font-weight: 300;
-    color: #818181; }
-  .NavCategories ul {
-    max-width: 17.75rem;
-    padding: 1.5rem 0 1rem;
-    color: #818181; }
-    .NavCategories ul ul {
-      position: absolute;
-      left: 100%;
-      background: white;
-      box-shadow: -0.0625rem 0 0.375rem 0 rgba(0, 0, 0, 0.24);
-      top: 0;
-      display: none; }
-    .NavCategories ul:nth-last-of-type(1) {
-      padding-top: 1rem; }
-    .NavCategories ul li {
-      line-height: 2.375rem;
-      width: 17.75rem;
-      position: relative;
-      cursor: pointer;
-      font-weight: 300; }
-      .NavCategories ul li div {
-        padding: 0 2.25rem; }
-      .NavCategories ul li:hover > div {
-        background: #F5F5F5;
-        color: #C5D257; }
-        .NavCategories ul li:hover > div a {
-          color: #C5D257; }
-      .NavCategories ul li:hover ul {
-        display: block; }
-      .NavCategories ul li:hover > a {
-        color: #C5D257; }
-      .NavCategories ul li:hover svg g {
-        fill: #C5D257; }
-    .NavCategories ul svg {
-      position: absolute;
-      right: 2.5rem;
-      top: .9375rem; }
-
 .LightBoxContent {
   position: fixed;
   z-index: 10000000;
@@ -935,6 +883,44 @@ body {
 .Show {
   visibility: visible !important;
   opacity: 1 !important; }
+
+.NavCategories {
+  position: relative;
+  padding: 1.875rem 0;
+  height: 100vh;
+  width: 100%;
+  max-width: 20rem;
+  background: #fff;
+  overflow-y: scroll; }
+  .NavCategories a {
+    color: #27383F;
+    cursor: pointer; }
+  .NavCategories > ul > li {
+    padding: 0.9375rem 1.875rem; }
+    .NavCategories > ul > li.Active {
+      color: #C5D257;
+      background: #eee; }
+      .NavCategories > ul > li.Active svg {
+        transform: rotate(90deg); }
+  .NavCategories > ul ul {
+    padding: 1.25rem 0;
+    display: none; }
+    .NavCategories > ul ul li {
+      line-height: 2rem;
+      padding: 0 1.25rem; }
+      .NavCategories > ul ul li:hover {
+        background: #ccc; }
+  .NavCategories > ul li:hover {
+    cursor: pointer;
+    color: #C5D257;
+    background: #eee; }
+  .NavCategories ul.no-padding li {
+    padding: 0.625rem 1.875rem; }
+    .NavCategories ul.no-padding li:hover a {
+      color: #C5D257; }
+  .NavCategories .NavCategories-network {
+    width: 100%;
+    margin-top: 1.875rem; }
 
 .Products article {
   margin-bottom: 2.5rem;

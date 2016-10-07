@@ -8,10 +8,6 @@
     <title>Agroseller</title>
     <link rel="stylesheet" href="{{ asset('css/normalize.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/front/style.css') }}">
-    <!-- ********************** Borrar *********************
-    <link href="{asset('css/owl.carousel.css')}}" rel="stylesheet">
-    <link href="{asset('css/owl.transitions.css')}}" rel="stylesheet">
-     ********************** Borrar ********************* -->
     @yield('styles')
             <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
@@ -34,7 +30,6 @@
 
         <svg width="23px" height="23px" viewBox="660 325 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg"
              xmlns:xlink="http://www.w3.org/1999/xlink">
-            <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
             <desc>Created with Sketch.</desc>
             <defs></defs>
             <g id="iconos-terminados-14" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
@@ -178,7 +173,11 @@
     <div class="BarNav">
         <div class="BarNav-content row middle">
             <div class="smaller-6 medium-3 row">
-                <button id="Menu"><span></span><span></span><span></span></button>
+                <button id="Menu" class="to-large">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
             <div class="BarNav-a medium-6  center">
                 <a href="{{route('pricing')}}">Ver Planes</a>
@@ -458,11 +457,10 @@
     <div class="LightBoxContent-close"></div>
     <nav class="NavCategories">
         <ul>
-
             @inject('menu', 'Agrosellers\Services\MenuFront')
             @foreach($menu->getCategory() as $key => $category)
                 <li>
-                    <div class="row">
+                    <div class="row between">
                         {{--{!!$category->image_icon!!}--}}
                         {{$category->name}}
                         <svg width="7px" height="12px">
@@ -482,7 +480,7 @@
             @endforeach
         </ul>
         <hr>
-        <ul>
+        <ul class="no-padding">
             <li>
                 <div><a href="">Directorio Agrario</a></div>
             </li>
@@ -720,7 +718,6 @@
         s.parentNode.insertBefore(c, s);
     })(document);
 </script>
-
 <script src="{{asset('js/jquery-1.11.2.min.js')}}"></script>
 <script src="{{asset('js/front/main.js')}}"></script>
 <script src="{{asset('js/search.js')}}"></script>

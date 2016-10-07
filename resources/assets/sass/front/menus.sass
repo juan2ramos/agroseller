@@ -39,58 +39,6 @@
   margin: auto
   padding-bottom: 1.5rem
 
-.NavCategories
-  top: 11.875rem
-  left: -20rem
-  background: white
-  position: absolute
-  @include transition(all .5s)
-  & hr
-    border: none
-    height: .0625rem
-    background: #D7D7D7
-    margin: 0 auto
-    width: 90%
-  & a
-    font-weight: 300
-    color: #818181
-  & ul
-    max-width: 17.75rem
-    padding: 1.5rem 0 1rem
-    color: #818181
-    & ul
-      position: absolute
-      left: 100%
-      background: white
-      box-shadow: -.0625rem 0 .375rem 0 rgba(0,0,0,0.24)
-      top: 0
-      display: none
-    &:nth-last-of-type(1)
-      padding-top: 1rem
-    & li
-      line-height: 2.375rem
-      width: 17.75rem
-      position: relative
-      cursor: pointer
-      font-weight: 300
-      & div
-        padding: 0 2.25rem
-      &:hover > div
-        background: #F5F5F5
-        color: $greenLight
-        & a
-          color: $greenLight
-      &:hover ul
-        display: block
-      &:hover > a
-        color: $greenLight
-      &:hover svg g
-        fill: $greenLight
-    & svg
-      position: absolute
-      right: 2.5rem
-      top: .9375rem
-
 .LightBoxContent
   position: fixed
   z-index:  10000000
@@ -114,3 +62,46 @@
 .Show
   visibility: visible !important
   opacity: 1 !important
+
+.NavCategories
+  position: relative
+  padding: rem(30) 0
+  height: 100vh
+  width: 100%
+  max-width: rem(320)
+  background: #fff
+  overflow-y: scroll
+  a
+    color: $greenDark
+    cursor: pointer
+
+  > ul
+    > li
+      padding: rem(15) rem(30)
+      &.Active
+        color: $greenLight
+        background: #eee
+        svg
+          transform: rotate(90deg)
+    ul
+      padding: rem(20) 0
+      display: none
+      li
+        line-height: 2rem
+        padding: 0 rem(20)
+        &:hover
+          background: #ccc
+
+    li:hover
+      cursor: pointer
+      color: $greenLight
+      background: #eee
+
+  ul.no-padding li
+    padding: rem(10) rem(30)
+    &:hover a
+      color: $greenLight
+
+  .NavCategories-network
+    width: 100%
+    margin-top: rem(30)
