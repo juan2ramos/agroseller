@@ -116,7 +116,7 @@
                     <input type="number" id="quantity" class="smaller-4 col-4" value="1" maxlength="3">
                     <span class="smaller-8 col-8 AlignRight">
                         <a href="#" data-url="{{url('/')}}" id="buy" class="Button">
-                            COMPRAR
+                            AÑADIR
                         </a>
                     </span>
                 </div>
