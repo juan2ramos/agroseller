@@ -33,6 +33,11 @@
             </ul>
         </div>
         <div class="smaller-12 col-9" id="Banner">
+          <div>
+              <img src="{{url('images/agrosellers-banner.jpg')}}" alt="">
+            
+
+          </div>
             <div>
                 <img src="{{url('images/2.jpg')}}" alt="">
                 <div class="BannerTop-info row middle">
@@ -47,7 +52,7 @@
 
             </div>
             <div>
-                <img src="{{url('images/1G.jpg')}}" alt="">
+                <img src="{{url('images/1g.jpg')}}" alt="">
                 <div class="BannerTop-info row middle">
                     <div class="smaller-12 medium-6">
                         <h2>DISEÑO DE VÍAS Y SISTEMAS DE TRASPORTES</h2>

@@ -472,8 +472,9 @@
             <ul class="center col-2 from-large">
                 <li class="NavFooter-TitleUL"><a href="#"> Ayuda </a>
                     <ul>
-                        <li><a href="{{url('como-vender')}}"> ¿Cómo vender? </a></li>
+                        <li><a href="{{url('como-cotizar')}}"> ¿Cómo cotizar?</a></li>
                         <li><a href="{{url('como-comprar')}}"> ¿Cómo comprar?</a></li>
+                        <li><a href="{{url('como-vender')}}"> ¿Cómo vender? </a></li>
                     </ul>
                 </li>
             </ul>
