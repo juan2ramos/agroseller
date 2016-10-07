@@ -13,6 +13,7 @@ class PositionAlgorithmController extends Controller
 
     function index(Request $request)
     {
+        return Product::with(['offers', 'productFiles', 'subcategory'])->where('id','>' ,0)->get();
         $sqlAdd = ($request->get('subcategory'))?' and subcategory_id = ' .$request->get('subcategory'):'';
         $products = Product::whereRaw('isValidate = 1 and isActive = 1' . $sqlAdd)
             ->with(['offers', 'productFiles', 'subcategory'])

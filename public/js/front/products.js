@@ -6,7 +6,7 @@ if (navigator.geolocation)
 
 function mostrarLocalizacion(position) {
     var products = $('#productsRecommended').data('routegetproducts');
-    console.log(products)
+
 
     $.ajax({
         url: products,

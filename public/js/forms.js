@@ -22,7 +22,7 @@ $password.keyup(function(e){
         numbers = new RegExp('[0-9]'),
         lower = new RegExp('[a-z]'),
         upper = new RegExp('[A-Z]'),
-        chars = new RegExp('[-*?!@#$/(){}=.,;:]'),
+      /*  chars = new RegExp('[-*?!@#$/(){}=.,;:]'),*/
         size = value.length >= 6,
         list = $('.password .rules-list li'),
         changeState = function(bool, pos){
@@ -35,5 +35,5 @@ $password.keyup(function(e){
     changeState(upper.test(value), 1);
     changeState(lower.test(value), 2);
     changeState(numbers.test(value), 3);
-    changeState(chars.test(value), 4);
+       /* changeState(chars.test(value), 4);*/
 });

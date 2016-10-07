@@ -4,6 +4,7 @@
     <section class="BackContainer row" style="position: relative;">
         <article class="QuestionList col-12">
             <h2>Ultimas preguntas</h2>
+            @if(!$questions->isEmpty())
             <section class="QuestionList-questions">
                 <input id="questionDetail" type="hidden" value="{{route('questions')}}">
 
@@ -22,8 +23,12 @@
                         <input class="ClientName" type="hidden" value="{{$question->user->name}}">
                         <input class="QuestionId" type="hidden" value="{{$question->id}}">
                     </article>
+
                 @endforeach
             </section>
+                @else
+                <p>No tienes preguntas asociadas a un producto y/o servicio</p>
+            @endif
         </article>
         <article class="Question col-6 column">
             <div class="QuestionUser">

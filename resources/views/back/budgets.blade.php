@@ -1,8 +1,9 @@
 @extends('layoutBack')
 @section('content')
 
-    <h2>Mis presupuestos</h2>
+    <h2>Mis cotizaciones</h2>
     <hr>
+    @if(!$budgets->isEmpty())
     <table class="Table Table-first BackContainer capitalize">
         <thead>
         <tr>
@@ -69,6 +70,9 @@
 
         </tbody>
     </table>
+    @else
+        <p> No has realizado cotizaciones de productos </p>
+    @endif
     <form id="download" target="_blank" method="post" action="{{route('downloadBudget')}}">
         <input type="hidden" name="budget_id" id="budget">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">

@@ -200,7 +200,7 @@ h2 {
   text-align: center;
   width: 9.375rem;
   padding: 1.125rem 0;
-  z-index: 2;
+  z-index: 4;
   transition: all 0.5s; }
   @media (min-width: 45rem) {
     .HeaderBack-profileNav {
@@ -216,7 +216,7 @@ h2 {
 .HeaderBack-profile {
   position: relative;
   background: white;
-  z-index: 3;
+  z-index: 5;
   height: 4.25rem; }
   .HeaderBack-profile svg {
     cursor: pointer;
@@ -253,7 +253,7 @@ h2 {
 .HeaderBack-profileOpen + .HeaderBack-profileNav {
   top: 4.25rem; }
 
-.HeaderBack-profileOpen svg {
+.HeaderBack-profileOpen svg.flip {
   transform: rotateX(180deg); }
 
 .openNav {

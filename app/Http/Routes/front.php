@@ -104,6 +104,9 @@ Route::get('como-comprar',function(){
 Route::get('como-vender',function(){
     return view('front.howSell');
 });
+Route::get('como-cotizar',function(){
+    return view('front.howBudget');
+});
 
 Route::get('acerca-agrosellers',function(){
     return view('front.about');

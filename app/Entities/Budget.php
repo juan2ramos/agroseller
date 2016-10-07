@@ -45,7 +45,7 @@ class Budget extends Model
             $valueTotal += $product->pivot->quantity * $price;
         }
 
-        return number_format($valueTotal, 0, " ", ".");
+        return $valueTotal;
     }
 
     public function getProductsArrayAttribute()
@@ -57,6 +57,7 @@ class Budget extends Model
                     ? $offer->offer_price : $product->price : $product->price;
             $quantity = $product->pivot->quantity;
             $products[] = [
+                'id' => $product->id,
                 'name' => $product->name,
                 'price' => number_format($price, 0, " ", "."),
                 'quantity' => $quantity,

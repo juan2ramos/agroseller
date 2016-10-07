@@ -17,8 +17,7 @@ class BudgetController extends Controller
     }
     public function showBack(){
 
-        $budgets = Auth::user()->budgets()->has('products')->get();
-
+        $budgets = Auth::user()->budgets()->with('products')->get();
         return view('back.budgets', compact('budgets'));
     }
     public function add(){

@@ -106,8 +106,9 @@
                 @if(isset($budgetCreate) )
                     @include('messages',[
                            'type' => 'ok',
-                           'title' => '¡Enhorabuena!',
-                           'message' => '<p> Tu presupuesto ha sido creado con éxito,  ve al panel administrativo, y visualiza todos tus presupuestos,</p>'
+                           'title' => '¡Gracias por utilizar la plataforma agrosellers!',
+                           'message' => '<p> Tu cotización ha sido creado con éxito,  ve al panel administrativo, o haz clic
+                           <a href="admin/mis-presupuestos">aquí</a> para comparar tus productos</p>'
                             ])
                 @endif
             @endif

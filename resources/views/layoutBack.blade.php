@@ -45,10 +45,25 @@
                 </g>
             </svg>
             <span style="line-height: 27px;">Bienvenido(a) a Agrosellers</span>
+
         </h1>
 
         <div class="small-12 medium-6 HeaderBack-profile row end middle ">
+            <a href="/" style="margin: 0 20px;color :#7B7F2A ; text-decoration: underline">
+            <span>Sigue buscando tus productos</span>
 
+            <svg width="23px" height="23px" viewBox="5 5 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                <defs></defs>
+                <g id="noun_561776_cc" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(5.000000, 5.000000)">
+                    <polygon id="Shape" fill="#7B7F2A" points="12.8719121 6.25979121 8.69071429 4.58736264 7.04052747 5.24728571 11.220967 6.91996703"></polygon>
+                    <polygon id="Shape" fill="#7B7F2A" points="5.99743956 5.66431868 4.50901099 6.25979121 8.69071429 7.93247253 10.1783846 7.337"></polygon>
+                    <polygon id="Shape" fill="#7B7F2A" points="4.34523077 11.1052088 8.56889011 12.7943187 8.56889011 8.14579121 4.34523077 6.45617582"></polygon>
+                    <polygon id="Shape" fill="#7B7F2A" points="11.3847473 8.42861538 11.2106044 8.32423077 11.036967 8.56712088 10.8630769 8.46273626 10.6891868 8.70638462 10.5155495 8.60225275 10.3416593 8.84564835 10.3416593 7.53389011 8.81228571 8.14579121 8.81228571 12.7943187 13.0356923 11.1052088 13.0356923 6.45617582 11.3847473 7.1166044"></polygon>
+                    <path d="M22.3034286,19.499956 L15.687011,13.8295714 C16.7465275,12.3896703 17.3806703,10.6158901 17.3806703,8.69096703 C17.3806703,3.89079121 13.4896264,0.000252747253 8.69020879,0.000252747253 C3.89079121,0.000252747253 0,3.89079121 0,8.69096703 C0,13.4898791 3.89079121,17.3814286 8.69071429,17.3814286 C10.6161429,17.3814286 12.3891648,16.7472857 13.8298242,15.6877692 L19.5007143,22.3036813 C19.9834615,22.8670549 20.8003407,22.8986484 21.3247912,22.3736923 L22.3736923,21.3242857 C22.8983956,20.7995824 22.8668022,19.982956 22.3034286,19.499956 L22.3034286,19.499956 Z M8.69071429,15.6432857 C4.85704396,15.6432857 1.73814286,12.5243846 1.73814286,8.69096703 C1.73814286,4.8572967 4.85704396,1.7383956 8.69071429,1.7383956 C12.5241319,1.7383956 15.6432857,4.8572967 15.6432857,8.69096703 C15.6432857,12.5243846 12.5241319,15.6432857 8.69071429,15.6432857 L8.69071429,15.6432857 Z" id="Shape" fill="#7B7F2A"></path>
+                </g>
+            </svg>
+            </a>
             <figure id="Notify">
                 @if(auth()->user()->photo)
                     <img src="{{url('uploads/users/' . auth()->user()->photo)}}" alt="">
@@ -69,7 +84,7 @@
             </figure>
             <h3>{{ auth()->user()->fullName()   }}
                 <span>{{--{{ auth()->user()->role()->first()->name}}--}}</span></h3>
-            <svg id="Profile-arrow" width="13px" height="8px" viewBox="0 0 13 8" version="1.1"
+            <svg class="flip" id="Profile-arrow" width="13px" height="8px" viewBox="0 0 13 8" version="1.1"
                  xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink">
 
