@@ -6,7 +6,7 @@
             <h2 style="text-align: justify ; font-size: 1.2rem">1. ¡Si desea comparar estos productos en una cotización, haga clic en la opción cotizar!</h2>
             <h3>Los productos guardados están sujetos a cambios de precios por parte de los proveedores</h3>
             <ul class="row " style="width: 100%">
-                @if(Session::has('cart') &&  Session::get('cart'))
+                @if(Session::has('cart') &&  Session::get('cart') )
                 @foreach(Session::get('cart') as $product)
                     <li style="margin: 3rem 1rem 0" class="row col-4 middle">
                         <figure class="col-5">
@@ -72,8 +72,7 @@
                 @if(Auth::check())
                     @if(auth()->user()->role_id == 4)
                         <div class="row center">
-                            <a class="Button col-4" style="margin: 2rem 0" href="{{route('addBudget')}}">CREAR TU
-                                PRESUPUESTO</a>
+                            <a class="Button col-4" style="margin: 2rem 0" href="{{route('addBudget')}}">Cotizar</a>
                         </div>
                     @else
                         @include('messages',[
