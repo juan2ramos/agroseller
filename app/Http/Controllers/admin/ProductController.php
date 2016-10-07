@@ -101,7 +101,7 @@ class ProductController extends Controller
         }
 
         $this->product->update($inputs);
-        $this->product->offers()->first()->update($inputs);
+        //$this->product->offers()->first()->update($inputs);
         $this->createFile($request);
 
         return redirect()->back()->with('messageSuccess', 1);
