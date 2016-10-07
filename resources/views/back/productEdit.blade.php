@@ -2,9 +2,9 @@
 @section('content')
     <section class="BackContainer row" style="position: relative">
             <input id="ps-description" type="hidden" value="{{ $productEdit->description }}">
-            <input id="ps-offerDescription" type="hidden" value="{{ $offerEdit->offer_description }}">
+            <!--<input id="ps-offerDescription" type="hidden" value="{ $offerEdit->offer_description }}">-->
             <input id="ps-taxes" type="hidden" value="{{ $productEdit->taxes }}">
-            <input id="ps-importantOffer" type="hidden" value="{{ $offerEdit->important_offer }}">
+            <!--<input id="ps-importantOffer" type="hidden" value="{ $offerEdit->important_offer }}"> -->
             @foreach($productEdit->productFiles as $file)
                 @if($file->extension == 'pdf')
                     <input id="ps-composition" type="hidden" value="{{ $file->name }}">
@@ -126,7 +126,7 @@
 
                     <input type="hidden" id="Location" name="location" value="">
                     <input type="hidden" id="Description" name="description" value="">
-                    <input type="hidden" id="DescriptionOffer" name="offer_description" value="">
+                    <!--<input type="hidden" id="DescriptionOffer" name="offer_description" value="">-->
                 </form>
                 <form style="display:none" class="formProductPreview" action="{{route('productDetailPreview')}}" method="post" target="_blank"></form>
             </article>

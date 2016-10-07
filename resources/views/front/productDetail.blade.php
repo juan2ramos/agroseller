@@ -116,7 +116,7 @@
                     <input type="number" id="quantity" class="smaller-4 col-4" value="1" maxlength="3">
                     <span class="smaller-8 col-8 AlignRight">
                         <a href="#" data-url="{{url('/')}}" id="buy" class="Button">
-                            COMPRAR
+                            AÑADIR
                         </a>
                     </span>
                 </div>
@@ -193,7 +193,7 @@
         <div class="smaller-6 col-8 row middle">
             <figure>
                 @if($product->user->photo)
-                    <img src="{{url('uploads/providers/'.$product->user->photo)}}" alt="">
+                    <img src="{{url('uploads/users/'.$product->user->photo)}}" alt="">
                 @else
                     <svg width="30px" xmlns="http://www.w3.org/2000/svg" viewBox="-255 347 100 100">
                         <path style="fill: #27383F" d="M-227 383.6c-2-7 .1-8 1.9-7.9-1.3-3.7-1.3-7.3-.5-10.6.9-3.9 3-7.1 5.4-9.5 1.5-1.6 3.2-3 5-4.2 1.5-1 3.1-1.9 4.9-2.5 1.4-.5 2.9-.8 4.4-.8 4.8-.4 8.5.8 11.1 2.4 3.9 2.2 5.4 5 5.4 5s9.9.7 5.6 21.4c1.3.5 2.3 2.3.7 7.7-1.9 6.7-3.6 7.1-4.7 6.4-1.3 7.2-5.2 16.5-17.7 17-12.7-1-16.8-10.5-17.9-17.9-.8.1-2.2-1.4-3.6-6.5zm56.7 30.7c-10.7-2.7-19.4-8.9-19.4-8.9l-6.8 21.5-1.3 4v-.1l-1.1 3.4-3.6-10.2c9.1-12.6-2.4-12.2-2.4-12.2s-11.5-.5-2.4 12.2l-3.6 10.3-1.1-3.5-8.1-25.5s-8.7 6.1-19.4 8.9c-5.3 1.4-7.3 5.9-7.9 10.2 9.6 13.2 25.1 21.5 42.4 21.5 4 0 7.9-.5 11.8-1.3 12.5-2.9 23.4-10.1 30.8-20.4-.7-4.2-2.7-8.6-7.9-9.9z"/>
