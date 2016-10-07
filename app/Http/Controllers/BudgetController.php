@@ -47,7 +47,7 @@ class BudgetController extends Controller
         $view =  view('pdf.invoice', compact('budget','user', 'date'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        return $pdf->stream('Agrosellers Nº '. $budget->id .' - cliente: '. $user->name,array("Attachment"=>0));
+        return $pdf->stream('Agrosellers Nº '. $budget->id .' - cliente: '. $user->name.'.pdf',array("Attachment"=>0));
 
     }
 }
