@@ -19,9 +19,9 @@ class PositionAlgorithmController extends Controller
         return Product::with(['offers', 'productFiles', 'subcategory'])->where('id','>' ,0)->get();
 
         }
-        $sqlAdd = ($request->get('subcategory'))?' and subcategory_id = ' .$request->get('subcategory'):'';
+        $sqlAdd = ($request->get('subcategory'))?' subcategory_id = ' .$request->get('subcategory'):'';
         return Product::with(['offers', 'productFiles', 'subcategory'])->
-        whereRaw('isValidate = 1 and isActive = 1' . $sqlAdd)->get();
+        whereRaw($sqlAdd)->get();
 
   /* Esto es temoporal focus group */
 
