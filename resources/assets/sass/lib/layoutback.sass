@@ -102,9 +102,10 @@ h2
   background: #FFFFFF
   box-shadow: 0 rem(1) rem(10) 0 rgba(50,50,50,0.12)
   min-height: calc(100vh - 68px)
-  z-index: 1
+  z-index: 1000
   position: fixed
   min-width: rem(150)
+
   @include transform(translateX(-200px))
   @include transition(all .4s)
   @include respond-to(medium)
@@ -136,11 +137,12 @@ h2
   @include respond-to(medium)
     padding: 3rem
 .Menu-smallOpen
-  @include transform(translateX(200px) !important)
+  @include transform(translateX(142px) !important)
+  z-index: 1000
 .Menu-small
   @include transition(all .4s)
   position: fixed
-  top: 5.25rem
+  top: rem(72)
   left: rem(20)
   @include respond-to(medium)
     left: rem(-100)
@@ -159,7 +161,3 @@ h2
 
 .capitalize
   text-transform: capitalize
-
-
-
-
