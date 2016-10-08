@@ -579,13 +579,13 @@
             @if(Session::has('cart'))
                 @foreach(Session::get('cart') as $product)
                     <li class="row middle">
-                        <figure class="col-5">
+                        <figure class="smaller-5">
                             <a href="{{route('productDetail',[$product->slug, $product->id])}}">
                                 <img src="{{ url('uploads/products/'.$product->productFiles()->first()->name )}}"
                                      alt="">
                             </a>
                         </figure>
-                        <div class="CartDetail-content col-7">
+                        <div class="CartDetail-content smaller-7">
                             <div class="CartDetail-hGroup">
                                 <h3>{{$product->name}}</h3>
                                 <h4>{{$product->subcategory->first()->name}}</h4>
