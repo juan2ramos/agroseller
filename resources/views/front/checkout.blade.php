@@ -2,18 +2,18 @@
 
 @section('content')
     <div class="row Checkout">
-        <section class="col-4">
+        <section class="smaller-12 medium-4">
             <h2>1. Resumen de la compra</h2>
             <h3>Verifica tu compra y método ed envío</h3>
             <ul>
                 @if(Session::has('cart') &&  Session::get('cart'))
                     @foreach(Session::get('cart') as $product)
                         <li class="row middle">
-                            <figure class="col-5">
+                            <figure class="smaller-12 small-6 medium-5">
                                 <img src="{{ url('uploads/products/'.$product->productFiles()->first()->name )}}"
                                      alt="">
                             </figure>
-                            <div class="CartDetail-content col-7">
+                            <div class="CartDetail-content smaller-12 small-6 medium-7">
                                 <div class="CartDetail-hGroup">
                                     <h3>{{$product->name}}</h3>
                                     <h4>{{$product->subcategory->first()->name}}</h4>
@@ -55,9 +55,9 @@
                     @endforeach
                 @endif
             </ul>
-            <div class="col-12 Total AlignRight">Subtotal: ${{( !empty(session('valueTotal')))? session('valueTotal') : '' }}</div>
+            <div class="smaller-12 Total AlignRight">Subtotal: ${{( !empty(session('valueTotal')))? session('valueTotal') : '' }}</div>
         </section>
-        <section class="col-8">
+        <section class="smaller-8">
             <h2>2. Detalle de facturación</h2>
             @if(!  Session::get('cart'))
                 @include('messages',[
