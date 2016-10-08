@@ -25,10 +25,10 @@
 </svg>
 
 <header class="row middle HeaderBack">
-    <figure class="col-2 HeaderBack-figure">
+    <figure class="col-2 smaller-6 HeaderBack-figure">
         <a href="{{url('/')}}"> <img src="{{ url('images/logo-agrosellers.svg') }}" alt=""></a>
     </figure>
-    <div class="row middle col-10 HeaderBack-right">
+    <div class="row middle col-10 small-6  HeaderBack-right">
         <h1 class="col-6">
 
             <svg width="25px" height="26px" viewBox="1 0 25 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -48,8 +48,8 @@
 
         </h1>
 
-        <div class="small-12 medium-6 HeaderBack-profile row end middle ">
-            <a href="/" style="margin: 0 20px;color :#7B7F2A ; text-decoration: underline">
+        <div class="small-12 medium-12 HeaderBack-profile row end middle ">
+            <a class="View-products" href="/" style="margin: 0 20px;color :#7B7F2A ; text-decoration: underline">
             <span>Sigue buscando tus productos</span>
 
             <svg width="23px" height="23px" viewBox="5 5 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
