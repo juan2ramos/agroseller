@@ -138,7 +138,7 @@ class AuthController extends Controller
             ]);
         } else {
             Mail::send('emails.welcome', ['user' => $user], function ($m) use ($user) {
-                $m->to($user->email, $user->name)->subject('Bienvenido!');
+                $m->to($user->email, $user->name)->subject('Bienvenido a Agrosellers!');
             });
         }
 

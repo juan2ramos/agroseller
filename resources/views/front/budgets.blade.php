@@ -3,7 +3,7 @@
 @section('content')
     <div class="row Checkout">
         <section class="col-12">
-            <h2 style="text-align: justify ; font-size: 1.2rem">1. ¡Si desea comparar estos productos en una cotización, haga clic en la opción cotizar!</h2>
+            <h2 style="text-align: justify ; font-size: 1.2rem">¡Si desea comparar estos productos en una cotización, haga clic en la opción cotizar!</h2>
             <h3>Los productos guardados están sujetos a cambios de precios por parte de los proveedores</h3>
             <ul class="row " style="width: 100%">
                 @if(Session::has('cart') &&  Session::get('cart') )
@@ -88,7 +88,7 @@
                                        'type' => 'warning',
                                        'title' => '¡Lo sentimos!',
                                        'message' => '<p> Para poder comprar debes tener una cuenta cliente con nosotros,
-                                       da clic en registrarse y empieza a comprar.</p>' .
+                                       da clic en <a href="'. url('registro') .'">registrarse</a> y empieza a comprar.</p>' .
                                        '<p>Si ya tienes una cuenta inicia sesión y realiza tu compra.</p>'
                                         ])
                     <h3>
