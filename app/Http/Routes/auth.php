@@ -22,6 +22,11 @@ Route::get('registro', [
         'as' => 'register'
     ]
 );
+Route::get('registro-proveedor', [
+        'uses' => 'Auth\AuthController@getRegisterProvider',
+        'as' => 'registerProvider'
+    ]
+);
 Route::post('registro', [
         'uses' => 'Auth\AuthController@postRegister',
         'as' => 'register'

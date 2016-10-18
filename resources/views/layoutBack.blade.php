@@ -48,7 +48,7 @@
 
         </h1>
 
-        <div class="small-12 medium-12 HeaderBack-profile row end middle ">
+        <div class="small-12 medium-12 col-6 HeaderBack-profile row end middle ">
             <a class="View-products" href="/" style="margin: 0 20px;color :#7B7F2A ; text-decoration: underline">
             <span>Sigue buscando tus productos</span>
 

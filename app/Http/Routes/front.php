@@ -111,9 +111,3 @@ Route::get('como-cotizar',function(){
 Route::get('acerca-agrosellers',function(){
     return view('front.about');
 });
-
-Route::get('finalizar-pago', [
-    'as' => 'finalPay',
-    'uses' => 'ShoppingController@finalPay'
-]);
-

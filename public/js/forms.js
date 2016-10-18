@@ -37,3 +37,8 @@ $password.keyup(function(e){
     changeState(numbers.test(value), 3);
        /* changeState(chars.test(value), 4);*/
 });
+
+$('.FormAuth input').on('click',function(){
+    $(this).removeClass('error');
+    $(this).siblings('.error').remove()
+});

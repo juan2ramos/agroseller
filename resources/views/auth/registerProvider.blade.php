@@ -17,16 +17,13 @@
         <div class="BackContainer FormAuth-container" style="overflow: inherit;">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-            <h2>¡HAZ PARTE DE AGROSELLERS Y EMPIEZA A COMPRAR YA!</h2>
+            <h2>¡REGISTRO COMO PROVEEDOR!</h2>
             <label>
                 <input class="{{($errors->has('name'))?'error':''}}" type="text" name="name" value="{{ old('name') }}">
-                <span>Nombre o razón social</span>
+                <span>Razón social</span>
                 {!!  $errors->first('name', '<p class="error">:message</p>')  !!}
             </label>
-            <label>
-                <input  type="text" name="last_name" value="{{ old('last_name') }}">
-                <span>Apellido </span>
-            </label>
+
             <label>
                 <input class="{{($errors->has('email'))?'error':''}}" type="email" name="email"
                        value="{{ old('email') }}">
@@ -41,7 +38,7 @@
                 </select>
                 {!!  $errors->first('role_id', '<p class="error">:message</p>')  !!}
             </label>--}}
-            <input type="hidden" name="role_id" value="4">
+            <input type="hidden" name="role_id" value="3">
             <label>
                 <input class="{{($errors->has('mobile_phone'))?'error':''}}" type="number" name="mobile_phone"
                        value="{{ old('mobile_phone') }}">
