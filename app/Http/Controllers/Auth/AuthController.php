@@ -52,23 +52,25 @@ class AuthController extends Controller
         return Validator::make($data,
             [
                 'name' => 'required|max:255',
+                /*'last_name' => 'required|max:255',*/
                 'email' => 'required|email|max:255|unique:users',
                 'password' => 'required|confirmed|min:6|regex:/^.*(?=.{6,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X]).*$/|
                 confirmed',
                 'role_id' => 'required|numeric|between:3,4',
                 'mobile_phone' => 'required|numeric',
                 'policy' => 'required',
-                'terms' => 'required',
+               /* 'terms' => 'required',*/
             ],
             [
                 'name.required' => 'El nombre es obligatorio',
+                'last_name.required' => 'El apellido es obligatorio',
                 'email.unique' => 'Este usuario ya existe',
                 'email.required' => 'El email es obligatorio',
                 'role_id.between' => 'Debes escoger que tipo de cliente eres',
                 'password.regex' => 'Tu contraseña es muy débil, revisa las recomendaciones ',
                 'mobile_phone.required' => 'EL campo teléfono es obligatorio ',
-                'policy.required' => 'Debes aceptar las politicas de uso',
-                'terms.required' => 'Debes aceptar las politicas de privacidad',
+                'policy.required' => 'Debes aceptar las politicas.',
+              /*  'terms.required' => 'Debes aceptar las politicas de privacidad',*/
             ]);
     }
 
@@ -144,5 +146,9 @@ class AuthController extends Controller
 
         auth()->loginUsingId($user->id);
         return redirect($this->redirectPath());
+    }
+
+    function getRegisterProvider(){
+        return view('auth.registerProvider');
     }
 }
