@@ -311,14 +311,14 @@
                 <li class="NavFooter-TitleUL"><a href="#">Opciones Publicitarias</a>
                     <ul>
                         <li><a href="#"> Publica con nosotros</a></li>
-                        <li><a href="{{url('register')}}"> Vender en AgroSellers</a></li>
+                        <li><a href="{{route('registerProvider')}}"> Vender en AgroSellers</a></li>
                     </ul>
                 </li>
             </ul>
             <ul class="center smaller-12 col-4">
                 <li class="NavFooter-TitleUL" style="margin-left: 40px">
                     <figure class="Footer-logo">
-                        <img src="{{route('images/logo-agrosellers.svg')}}" alt="">
+                        <img src="{{url('images/logo-agrosellers.svg')}}" alt="">
                     </figure>
                 </li>
                 <li>
