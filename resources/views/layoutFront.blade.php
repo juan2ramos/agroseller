@@ -318,7 +318,7 @@
             <ul class="center smaller-12 col-4">
                 <li class="NavFooter-TitleUL" style="margin-left: 40px">
                     <figure class="Footer-logo">
-                        <img src="{{url('images/logo-agrosellers.svg')}}" alt="">
+                        <img src="{{route('images/logo-agrosellers.svg')}}" alt="">
                     </figure>
                 </li>
                 <li>
