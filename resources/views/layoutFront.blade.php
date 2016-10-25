@@ -311,7 +311,7 @@
                 <li class="NavFooter-TitleUL"><a href="#">Opciones Publicitarias</a>
                     <ul>
                         <li><a href="#"> Publica con nosotros</a></li>
-                        <li><a href="#"> Vender en AgroSellers</a></li>
+                        <li><a href="{{url('register')}}"> Vender en AgroSellers</a></li>
                     </ul>
                 </li>
             </ul>
