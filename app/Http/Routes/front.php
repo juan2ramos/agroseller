@@ -112,7 +112,9 @@ Route::get('acerca-agrosellers',function(){
     return view('front.about');
 });
 
-Route::get('finalizar-pago', [
+/*** Ruta para recibir datos de zona pagos ***/
+
+Route::post('zonapagos', [
     'as' => 'finalPay',
     'uses' => 'ShoppingController@finalPay'
 ]);

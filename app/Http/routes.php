@@ -104,7 +104,7 @@ Route::get('pasarela', function(){
 
 use Agrosellers\Services\ZonaPagos;
 
-Route::get('consulta', function(){
+Route::get('consulta/{id}', function($id){
     $zp = ZonaPagos::create();
-    dd($zp->checkPay(20160920111441484));
+    dd($zp->checkPay($id));
 });
