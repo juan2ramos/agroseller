@@ -24,7 +24,7 @@ Route::get('registro', [
 );
 Route::get('registro-proveedor', [
         'uses' => 'Auth\AuthController@getRegisterProvider',
-        'as' => 'registerProvider'
+        'as' => 'registerProviderFront'
     ]
 );
 Route::post('registro', [
