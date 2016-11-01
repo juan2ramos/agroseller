@@ -105,7 +105,7 @@ class ZonaPagos {
             'zp_buy_token' => $inputs['ticketID'],
             'zp_state' => $inputs['estado_pago']
         ]);
-        
+
         $user->orders()->save($order);
         $order->products()->attach($data);
 
@@ -113,27 +113,6 @@ class ZonaPagos {
             Session::forget('cart');
             Session::forget('valueTotal');
         }
-
-
-        /*
-         * "id_pago" => "20161025173142548"
-            "estado_pago" => "1"
-            "id_forma_pago" => "4"
-            "valor_pagado" => "70000"
-            "id_clave" => "pyp123"
-            "ticketID" => "102517314254800050"
-            "id_cliente" => "1031146949"
-            "codigo_servicio" => "2701"
-            "codigo_banco" => "1022"
-            "nombre_banco" => "Banco Union Colombiano"
-            "codigo_trnsaccion" => "1195055"
-            "ciclo_transaccion" => "2"
-            "campo1" => "cr 45b 68c 33 sur"
-            "campo2" => "."
-            "campo3" => "."
-            "idcomercio" => "14992"
-            "detalle_estado" => "Aprobada"
-         * */
     }
 
     /** Retorna la instancia de zona pagos **/
