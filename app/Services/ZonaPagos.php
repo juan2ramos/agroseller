@@ -45,7 +45,7 @@ class ZonaPagos {
         $user = auth()->user();
         $user->identification = $inputs['id_cliente'];
         $user->save();
-        dd(auth()->user());
+
         $data = [
             'body' => [
                 "id_tienda" => $this->shop,
