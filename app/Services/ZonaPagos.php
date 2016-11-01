@@ -13,6 +13,7 @@ class ZonaPagos {
     private $shop;
     private $serviceCode;
     private $routeCode;
+    private $data;
 
     public function __construct(){
         $this->key = env('ZP_KEY');
@@ -41,7 +42,7 @@ class ZonaPagos {
 
     public function invoiceRequest($inputs){
         $url = 'https://www.zonapagos.com/api_inicio_pago/api/inicio_pagoV2';
-        $data = [
+        $this->data = [
             'body' => [
                 "id_tienda" => $this->shop,
                 "clave" => $this->key,
@@ -67,7 +68,7 @@ class ZonaPagos {
             ]
         ];
 
-        $response = $this->client->post($url, $data);
+        $response = $this->client->post($url, $this->data);
         return str_replace('"', '',$response->getBody()->getContents());
     }
 
@@ -86,7 +87,7 @@ class ZonaPagos {
             $data[$item->id] = ['quantity' => $item->quantity, 'state_order_id' => 2, 'value' => $value];
         }
 
-        dd($inputs);
+        dd($this->data);
 
         $order = Order::create([
             'user_id' => auth()->user()->id,
