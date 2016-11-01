@@ -3,7 +3,7 @@
 namespace Agrosellers\Services;
 use GuzzleHttp\Client;
 use Agrosellers\Entities\Order;
-use Illuminate\Foundation\Auth\User;
+use Agrosellers\User;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 
