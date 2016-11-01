@@ -83,8 +83,7 @@ class ShoppingController extends Controller
     {
 
         $open = $request->get('open') ;
-
-        $orders = Auth::user()->orders()->with('products')->orderBy('created_at','DESC')->get();
+        $orders = Auth::user()->orders()->where('zp_state', 1)->with('products')->orderBy('created_at','DESC')->get();
 
         foreach ($orders as $order) {
             $value = 0;
