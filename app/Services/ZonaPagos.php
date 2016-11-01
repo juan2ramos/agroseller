@@ -86,15 +86,13 @@ class ZonaPagos {
             $data[$item->id] = ['quantity' => $item->quantity, 'state_order_id' => 2, 'value' => $value];
         }
 
-        dd($inputs);
-
         $order = Order::create([
             'user_id' => auth()->user()->id,
             //'description' => $inputs['descripcion_pago'],
-            'name_client' => $inputs['nombre_cliente'] . ' ' . $inputs['apellido_cliente'],
+            //'name_client' => $inputs['nombre_cliente'] . ' ' . $inputs['apellido_cliente'],
             'identification_client' => $inputs['id_cliente'],
-            'address_client' => $inputs['info_opcional1'],
-            'phone' => $inputs['telefono_cliente'],
+            'address_client' => $inputs['campo1'],
+            //'phone' => $inputs['telefono_cliente'],
             'zp_buy_id' => $inputs['id_pago'],
             'zp_buy_token' => $inputs['ticketID'],
             'zp_state' => $inputs['estado_pago']
