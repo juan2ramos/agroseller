@@ -3,6 +3,8 @@
 namespace Agrosellers\Services;
 use GuzzleHttp\Client;
 use Agrosellers\Entities\Order;
+use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 
 class ZonaPagos {
 
@@ -70,16 +72,60 @@ class ZonaPagos {
     }
 
     public function insertPayResult($inputs){
-        $order = Order::where('zp_buy_id', $inputs['id_pago'])->first();
-        //dd($inputs['ticketID']);
-        //dd($inputs['id_clave']);
-        //dd($inputs['id_cliente']);
-        $order->update([
-            'zp_state' => $inputs['estado_pago'],
-            'zp_pay_form' => $inputs['id_forma_pago'],
-            'zp_pay_value' => $inputs['valor_pagado'],
-            'zp_pay_credit' => $inputs['nombre_banco'],
+
+        $data = [];
+        foreach (Session::get('cart') as $item) {
+
+            if(!$item->offers)
+                $value = $item->price;
+            else
+                $value = (Carbon::now()->between(new Carbon($item->offers->offer_on), new Carbon($item->offers->offer_off)))
+                    ? $item->offers->offer_price
+                    : $item->price;
+
+            $data[$item->id] = ['quantity' => $item->quantity, 'state_order_id' => 2, 'value' => $value];
+        }
+
+        $order = Order::create([
+            'user_id' => auth()->user()->id,
+            'description' => $inputs['descripcion_pago'],
+            'name_client' => $inputs['nombre_cliente'] . ' ' . $inputs['apellido_cliente'],
+            'identification_client' => $inputs['id_cliente'],
+            'address_client' => $inputs['info_opcional1'],
+            'phone' => $inputs['telefono_cliente'],
+            'zp_buy_id' => $inputs['id_pago'],
+            'zp_buy_token' => $inputs['ticketID'],
+            'zp_state' => $inputs['estado_pago']
         ]);
+
+        auth()->user()->orders()->save($order);
+        $order->products()->attach($data);
+
+        if($inputs['estado_pago']) {
+            Session::forget('cart');
+            Session::forget('valueTotal');
+        }
+
+
+        /*
+         * "id_pago" => "20161025173142548"
+            "estado_pago" => "1"
+            "id_forma_pago" => "4"
+            "valor_pagado" => "70000"
+            "id_clave" => "pyp123"
+            "ticketID" => "102517314254800050"
+            "id_cliente" => "1031146949"
+            "codigo_servicio" => "2701"
+            "codigo_banco" => "1022"
+            "nombre_banco" => "Banco Union Colombiano"
+            "codigo_trnsaccion" => "1195055"
+            "ciclo_transaccion" => "2"
+            "campo1" => "cr 45b 68c 33 sur"
+            "campo2" => "."
+            "campo3" => "."
+            "idcomercio" => "14992"
+            "detalle_estado" => "Aprobada"
+         * */
     }
 
     /** Retorna la instancia de zona pagos **/

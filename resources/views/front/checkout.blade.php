@@ -71,7 +71,7 @@
                     @if(auth()->user()->role_id == 4)
                         <h3>Completa los campos requeridos para realizar tu solicitud</h3>
                         <!-- GUARDAR ORDEN POR POST EN {{route('newOrder')}} -->
-                        <form action="{{route('newOrder')}}" method="POST" class="Checkout-form" id="newOrderForm">
+                        <form action="{{route('newOrder')}}" method="POST" class="Checkout-form" id="newOrderForm" target="_blank">
 
                             <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
 
