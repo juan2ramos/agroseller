@@ -3,6 +3,7 @@
 namespace Agrosellers\Services;
 use GuzzleHttp\Client;
 use Agrosellers\Entities\Order;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 
@@ -41,6 +42,8 @@ class ZonaPagos {
 
     public function invoiceRequest($inputs){
         $url = 'https://www.zonapagos.com/api_inicio_pago/api/inicio_pagoV2';
+        auth()->user()->update(['identification', $inputs['id_cliente']]);
+        dd(auth()->user());
         $data = [
             'body' => [
                 "id_tienda" => $this->shop,
@@ -86,21 +89,19 @@ class ZonaPagos {
             $data[$item->id] = ['quantity' => $item->quantity, 'state_order_id' => 2, 'value' => $value];
         }
 
-        dd(Session::get('user_id'));
+        $user = User::where('identification', $inputs['identification_client'])->first();
 
         $order = Order::create([
-            'user_id' => Session::get('user_id'),
+            //'phone' => $inputs['telefono_cliente'],
             //'description' => $inputs['descripcion_pago'],
             //'name_client' => $inputs['nombre_cliente'] . ' ' . $inputs['apellido_cliente'],
+            'user_id' => $user->id,
             'identification_client' => $inputs['id_cliente'],
             'address_client' => $inputs['campo1'],
-            //'phone' => $inputs['telefono_cliente'],
             'zp_buy_id' => $inputs['id_pago'],
             'zp_buy_token' => $inputs['ticketID'],
             'zp_state' => $inputs['estado_pago']
         ]);
-
-        dd($order);
 
         auth()->user()->orders()->save($order);
         $order->products()->attach($data);
