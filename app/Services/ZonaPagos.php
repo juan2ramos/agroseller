@@ -3,6 +3,7 @@
 namespace Agrosellers\Services;
 use GuzzleHttp\Client;
 use Agrosellers\Entities\Order;
+use Agrosellers\User;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 
@@ -41,6 +42,10 @@ class ZonaPagos {
 
     public function invoiceRequest($inputs){
         $url = 'https://www.zonapagos.com/api_inicio_pago/api/inicio_pagoV2';
+        $user = auth()->user();
+        $user->identification = $inputs['id_cliente'];
+        $user->save();
+
         $data = [
             'body' => [
                 "id_tienda" => $this->shop,
@@ -49,7 +54,7 @@ class ZonaPagos {
                 "total_con_iva"  => $inputs["total_con_iva"],
                 "valor_iva" => $inputs['total_con_iva'] * 16 / 116,
                 "email" => auth()->user()->email,
-                "id_pago" => $inputs["id_pago"],
+                "id_pago" => date_format(new \Jenssegers\Date\Date(), 'YmdHis') . rand(100, 999),
                 "id_cliente" => $inputs["id_cliente"],
                 "tipo_id" => $inputs["tipo_id"],
                 "nombre_cliente" => $inputs["nombre_cliente"],
@@ -86,46 +91,28 @@ class ZonaPagos {
             $data[$item->id] = ['quantity' => $item->quantity, 'state_order_id' => 2, 'value' => $value];
         }
 
+
+        $user = User::where('identification', $inputs['id_cliente'])->first();
+
         $order = Order::create([
-            'user_id' => auth()->user()->id,
-            'description' => $inputs['descripcion_pago'],
-            'name_client' => $inputs['nombre_cliente'] . ' ' . $inputs['apellido_cliente'],
+            //'phone' => $inputs['telefono_cliente'],
+            //'description' => $inputs['descripcion_pago'],
+            //'name_client' => $inputs['nombre_cliente'] . ' ' . $inputs['apellido_cliente'],
             'identification_client' => $inputs['id_cliente'],
-            'address_client' => $inputs['info_opcional1'],
-            'phone' => $inputs['telefono_cliente'],
+            'user_id' => $user->id,
+            'address_client' => $inputs['campo1'],
             'zp_buy_id' => $inputs['id_pago'],
             'zp_buy_token' => $inputs['ticketID'],
             'zp_state' => $inputs['estado_pago']
         ]);
 
-        auth()->user()->orders()->save($order);
+        $user->orders()->save($order);
         $order->products()->attach($data);
 
         if($inputs['estado_pago']) {
             Session::forget('cart');
             Session::forget('valueTotal');
         }
-
-
-        /*
-         * "id_pago" => "20161025173142548"
-            "estado_pago" => "1"
-            "id_forma_pago" => "4"
-            "valor_pagado" => "70000"
-            "id_clave" => "pyp123"
-            "ticketID" => "102517314254800050"
-            "id_cliente" => "1031146949"
-            "codigo_servicio" => "2701"
-            "codigo_banco" => "1022"
-            "nombre_banco" => "Banco Union Colombiano"
-            "codigo_trnsaccion" => "1195055"
-            "ciclo_transaccion" => "2"
-            "campo1" => "cr 45b 68c 33 sur"
-            "campo2" => "."
-            "campo3" => "."
-            "idcomercio" => "14992"
-            "detalle_estado" => "Aprobada"
-         * */
     }
 
     /** Retorna la instancia de zona pagos **/

@@ -31,7 +31,6 @@ class ShoppingController extends Controller
      */
     public function add(Product $product, $quantity)
     {
-
         $cart = Session::get('cart');
         $product->quantity = $quantity;
         Session::flash('buy', 1);
@@ -84,8 +83,7 @@ class ShoppingController extends Controller
     {
 
         $open = $request->get('open') ;
-
-        $orders = Auth::user()->orders()->with('products')->orderBy('created_at','DESC')->get();
+        $orders = Auth::user()->orders()->where('zp_state', 1)->with('products')->orderBy('created_at','DESC')->get();
 
         foreach ($orders as $order) {
             $value = 0;
@@ -125,8 +123,7 @@ class ShoppingController extends Controller
 
     public function finalPay(Request $request){
         $zp = ZonaPagos::create();
-        $zp->insertPayResult($request->all()); 
-        return redirect()->route('historyPay');
+        $zp->insertPayResult($request->all());
     }
 
 }
