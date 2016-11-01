@@ -2922,6 +2922,7 @@ body {
 .Header-productInfoContent .Button {
   height: 2.375rem;
   line-height: inherit;
+  padding-top: 0.75rem;
 }
 
 .Header-productInfoContent p {
