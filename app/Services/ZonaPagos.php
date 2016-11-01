@@ -105,8 +105,7 @@ class ZonaPagos {
             'zp_buy_token' => $inputs['ticketID'],
             'zp_state' => $inputs['estado_pago']
         ]);
-
-        dd($user->orders());
+        
         $user->orders()->save($order);
         $order->products()->attach($data);
 
