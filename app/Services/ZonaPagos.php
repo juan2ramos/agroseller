@@ -49,7 +49,7 @@ class ZonaPagos {
                 "total_con_iva"  => $inputs["total_con_iva"],
                 "valor_iva" => $inputs['total_con_iva'] * 16 / 116,
                 "email" => auth()->user()->email,
-                "id_pago" => $inputs["id_pago"],
+                "id_pago" => date_format(new \Jenssegers\Date\Date(), 'YmdHis') . rand(100, 999),
                 "id_cliente" => $inputs["id_cliente"],
                 "tipo_id" => $inputs["tipo_id"],
                 "nombre_cliente" => $inputs["nombre_cliente"],
