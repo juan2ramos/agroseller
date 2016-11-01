@@ -42,7 +42,8 @@ class ZonaPagos {
 
     public function invoiceRequest($inputs){
         $url = 'https://www.zonapagos.com/api_inicio_pago/api/inicio_pagoV2';
-        auth()->user()->update(['identification', $inputs['id_cliente']]);
+        $user = auth()->user();
+        $user->update(['identification', $inputs['id_cliente']]);
         dd(auth()->user());
         $data = [
             'body' => [
