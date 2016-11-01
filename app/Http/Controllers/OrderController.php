@@ -16,8 +16,7 @@ class OrderController extends Controller
         if (empty(Session::get('cart')))
             return back();
 
-        Session::flash('prueba', 'es una sesion');
-        dd(Session::get('prueba'));
+        Session::flash('user_id', auth()->user()->id);
         $inputs = $request->all();
         $zp = ZonaPagos::create();
         $id = $zp->invoiceRequest($inputs);

@@ -86,6 +86,8 @@ class ZonaPagos {
             $data[$item->id] = ['quantity' => $item->quantity, 'state_order_id' => 2, 'value' => $value];
         }
 
+        dd(Session::get('user_id'));
+
         $order = Order::create([
             'user_id' => Session::get('user_id'),
             //'description' => $inputs['descripcion_pago'],
