@@ -124,8 +124,9 @@ class ShoppingController extends Controller
     }
 
     public function finalPay(Request $request){
+        dd(Auth::user());
         $zp = ZonaPagos::create();
-        $zp->insertPayResult($request->all()); 
+        $zp->insertPayResult($request->all(), Auth::user());
         return redirect()->route('historyPay');
     }
 
