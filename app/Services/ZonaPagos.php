@@ -71,7 +71,7 @@ class ZonaPagos {
         return str_replace('"', '',$response->getBody()->getContents());
     }
 
-    public function insertPayResult($inputs, $user){
+    public function insertPayResult($inputs){
 
         $data = [];
         foreach (Session::get('cart') as $item) {
@@ -87,7 +87,7 @@ class ZonaPagos {
         }
 
         $order = Order::create([
-            'user_id' => $user->id,
+            'user_id' => Session::get('user_id'),
             //'description' => $inputs['descripcion_pago'],
             //'name_client' => $inputs['nombre_cliente'] . ' ' . $inputs['apellido_cliente'],
             'identification_client' => $inputs['id_cliente'],
