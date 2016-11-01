@@ -106,7 +106,7 @@ class ZonaPagos {
             'zp_state' => $inputs['estado_pago']
         ]);
 
-        auth()->user()->orders()->save($order);
+        $user->orders()->save($order);
         $order->products()->attach($data);
 
         if($inputs['estado_pago']) {
