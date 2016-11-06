@@ -8,7 +8,10 @@ use Jenssegers\Date\Date;
 
 class PlanProvider extends Model
 {
-    protected $fillable = ['provider_id', 'name', 'description', 'period', 'price', 'isActive'];
+    protected $fillable = [
+        'provider_id', 'name', 'description',
+        'period', 'price', 'isActive'
+    ];
 
     function providers(){
         return $this->hasMany(Provider::class);

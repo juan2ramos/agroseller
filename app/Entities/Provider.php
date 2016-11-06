@@ -9,10 +9,10 @@ class Provider extends Model
 {
     protected $fillable = [
         'company-name', 'location', 'address', 'contact', 'contact-phone',
-        'description', 'NIT', 'url-video','user_id', 'sales-manager-name',
-        'licence', 'dispatch-time', 'legal-agent', 'logo', 'taxpayer',
-        'web-site', 'titular-name', 'bank-name','bank-country', 'count-number',
-        'nick-name'
+        'description', 'NIT', 'url-video', 'sales-manager-name', 'licence',
+        'dispatch-time', 'legal-agent', 'user_id', 'agent_id', 'logo',
+        'nick-name', 'taxpayer', 'web-site', 'titular-name', 'bank-name',
+        'bank-country', 'count-number', 'validate'
     ];
 
     public function agent(){

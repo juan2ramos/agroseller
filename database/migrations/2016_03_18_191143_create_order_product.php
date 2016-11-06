@@ -12,7 +12,7 @@ class CreateOrderProduct extends Migration
      */
     public function up()
     {
-        Schema::create('order_product', function(BLueprint $table){
+        Schema::create('order_product', function(Blueprint $table){
             $table->increments('id');
             $table->integer('quantity');
             $table->integer('state');
@@ -33,6 +33,6 @@ class CreateOrderProduct extends Migration
      */
     public function down()
     {
-        Schema::drop('order_product');
+        Schema::dropIfExists('order_product');
     }
 }

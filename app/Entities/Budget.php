@@ -9,7 +9,7 @@ use Jenssegers\Date\Date;
 
 class Budget extends Model
 {
-    protected $fillable = ['created_at'];
+    protected $fillable = ['user_id', 'description'];
 
     public function user()
     {
