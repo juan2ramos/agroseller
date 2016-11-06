@@ -55,6 +55,7 @@
                     @endforeach
                 @endif
             </ul>
+
             <div class="smaller-12 Total AlignRight">Subtotal: ${{( !empty(session('valueTotal')))? session('valueTotal') : '' }}</div>
         </section>
         <section class="smaller-8">

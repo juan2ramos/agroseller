@@ -40,8 +40,6 @@ class ShoppingController extends Controller
 
         Session::put('cart', $cart);
         return back();
-
-
     }
 
     public function delete($id)
@@ -69,6 +67,7 @@ class ShoppingController extends Controller
             $product->offer_price = $price;
             $valueTotal += $product->quantity * $price;
         }
+
         Session::put('valueTotal', number_format($valueTotal, 0, " ", "."));
 
     }
