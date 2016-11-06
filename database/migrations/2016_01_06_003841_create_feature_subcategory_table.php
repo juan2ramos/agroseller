@@ -15,10 +15,11 @@ class CreateFeatureSubcategoryTable extends Migration
         Schema::create('feature_subcategory', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('feature_id')->unsigned();
-            $table->foreign('feature_id')->references('id')->on('features')->onDelete('cascade');
             $table->integer('subcategory_id')->unsigned();
-            $table->foreign('subcategory_id')->references('id')->on('subcategories') ;
             $table->timestamps();
+
+            $table->foreign('feature_id')->references('id')->on('features')->onDelete('cascade');
+            $table->foreign('subcategory_id')->references('id')->on('subcategories') ;
         });
     }
 

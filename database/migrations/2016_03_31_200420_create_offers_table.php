@@ -14,9 +14,15 @@ class CreateOffersTable extends Migration
     {
         Schema::create('offers', function(Blueprint $table){
             $table->increments('id');
-            $table->integer('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->text('offer_description');
+            $table->integer('offer_price');
+            $table->dateTime('offer_on')->nullable();
+            $table->dateTime('offer_off')->nullable();
+            $table->boolean('important_offer');
+            $table->integer('product_provider_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('product_provider_id')->references('id')->on('product_provider');
         });
     }
 

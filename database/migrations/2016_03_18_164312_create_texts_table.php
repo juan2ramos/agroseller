@@ -15,9 +15,12 @@ class CreateTextsTable extends Migration
         Schema::create('texts', function(Blueprint $table){
             $table->increments('id');
             $table->text('description');
+            $table->integer('user_id')->unsigned()->nullable();
             $table->integer('question_id')->unsigned();
-            $table->foreign('question_id')->references('id')->on('questions');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
         });
     }
 

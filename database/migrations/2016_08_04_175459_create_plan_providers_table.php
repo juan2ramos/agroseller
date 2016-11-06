@@ -14,11 +14,12 @@ class CreatePlanProvidersTable extends Migration
     {
         Schema::create('plan_providers', function(Blueprint $table){
             $table->increments('id');
-            $table->integer('provider_id')->unsigned();
             $table->string('name');
             $table->string('description');
             $table->integer('period');
             $table->integer('price');
+            $table->boolean('isActive');
+            $table->integer('provider_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('provider_id')->references('id')->on('providers');

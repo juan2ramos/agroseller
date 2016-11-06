@@ -12,14 +12,15 @@ class CreateProductFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_files', function(Blueprint $table){
+        Schema::create('product_provider_files', function(Blueprint $table){
             $table->increments('id');
             $table->string('name');
             $table->string('extension');
             $table->string('url_file');
-            $table->integer('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->integer('product_provider_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('product_provider_id')->references('id')->on('product_provider')->onDelete('cascade');
         });
     }
 
@@ -30,6 +31,6 @@ class CreateProductFilesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('product_files');
+        Schema::drop('product_provider_files');
     }
 }

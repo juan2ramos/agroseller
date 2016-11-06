@@ -15,10 +15,11 @@ class CreateCategoryProviderTable extends Migration
         Schema::create('category_provider', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('categories');
             $table->integer('provider_id')->unsigned();
-            $table->foreign('provider_id')->references('id')->on('providers') ;
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('provider_id')->references('id')->on('providers') ;
         });
     }
 

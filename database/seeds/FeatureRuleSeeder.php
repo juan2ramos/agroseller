@@ -11,7 +11,7 @@ class FeatureRuleSeeder extends Seeder
      * @return void
      */
     public function run() {
-        $this->setRules('presentation', 'required');
+        /*$this->setRules('presentation', 'required');
         $this->setRules('size', 'required|numeric');
         $this->setRules('weight', 'required|numeric');
         $this->setRules('measure', 'required|numeric');
@@ -23,7 +23,7 @@ class FeatureRuleSeeder extends Seeder
         $this->setRules('available-quantity', 'required|numeric');
         $this->setRules('image-scale', 'required');
         $this->setRules('location', 'required');
-        $this->setRules('description-use', 'required');
+        $this->setRules('description-use', 'required');*/
     }
 
     private function setRules($name, $rules){

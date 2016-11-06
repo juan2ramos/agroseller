@@ -15,10 +15,11 @@ class CreateClientFarmTable extends Migration
         Schema::create('client_farm', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('client_id')->unsigned();
-            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->integer('farm_id')->unsigned();
-            $table->foreign('farm_id')->references('id')->on('farms') ;
             $table->timestamps();
+
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->foreign('farm_id')->references('id')->on('farms') ;
         });
     }
 

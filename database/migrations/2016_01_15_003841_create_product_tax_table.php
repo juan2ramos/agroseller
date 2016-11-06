@@ -12,13 +12,14 @@ class CreateProductTaxTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_tax', function (Blueprint $table) {
+        Schema::create('product_provider_tax', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->integer('product_provider_id')->unsigned();
             $table->integer('tax_id')->unsigned();
-            $table->foreign('tax_id')->references('id')->on('taxes') ;
             $table->timestamps();
+
+            $table->foreign('product_provider_id')->references('id')->on('product_provider')->onDelete('cascade');
+            $table->foreign('tax_id')->references('id')->on('taxes') ;
         });
     }
 
@@ -29,6 +30,6 @@ class CreateProductTaxTable extends Migration
      */
     public function down()
     {
-        Schema::drop('product_tax');
+        Schema::drop('product_provider_tax');
     }
 }

@@ -24,12 +24,12 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('email')->unique();
             $table->string('password', 60);
-            $table->string('photo', 60);
+            $table->string('photo', 250);
             $table->integer('role_id')->unsigned();
-            $table->foreign('role_id')->references('id')->on('roles') ;
             $table->rememberToken();
             $table->timestamps();
-        });
+
+            $table->foreign('role_id')->references('id')->on('roles') ;        });
     }
 
     /**
