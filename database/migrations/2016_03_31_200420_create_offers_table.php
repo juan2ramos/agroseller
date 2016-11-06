@@ -19,10 +19,10 @@ class CreateOffersTable extends Migration
             $table->dateTime('offer_on')->nullable();
             $table->dateTime('offer_off')->nullable();
             $table->boolean('important_offer');
-            $table->integer('product_provider_id')->unsigned();
+            $table->integer('product_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('product_provider_id')->references('id')->on('product_provider');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 

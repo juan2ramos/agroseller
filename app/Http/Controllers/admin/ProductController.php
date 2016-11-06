@@ -44,12 +44,11 @@ class ProductController extends Controller
             $fileName = str_random(40) . '**' . $request->file($key)->getClientOriginalName();
             $Extension = $request->file($key)->getClientOriginalExtension();
             $request->file($key)->move(base_path() . '/public/uploads/products/', $fileName);
-            ProductFile::create(
-                [
-                    'product_id' => $this->product->id,
-                    'name' => $fileName,
-                    'extension' => $Extension
-                ]);
+            ProductFile::create([
+                'product_id' => $this->product->id,
+                'name' => $fileName,
+                'extension' => $Extension
+            ]);
         }
     }
 

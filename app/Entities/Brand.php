@@ -10,4 +10,8 @@ class Brand extends Model
         'product_provider_id', 'name',
         'logo', 'description'
     ];
+
+    public function productProvider(){
+        $this->hasOne(ProductProvider::class);
+    }
 }

@@ -12,14 +12,14 @@ class CreateBudgetProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_provider_budget', function (Blueprint $table) {
+        Schema::create('budget_product', function (Blueprint $table) {
             $table->increments('id');
             $table->string('quantity');
-            $table->integer('product_provider_id')->unsigned();
+            $table->integer('product_id')->unsigned();
             $table->integer('budget_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('product_provider_id')->references('id')->on('product_provider')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('budget_id')->references('id')->on('budgets') ;
         });
     }

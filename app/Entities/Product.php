@@ -33,39 +33,29 @@ class Product extends Model
 
     ];
     */
-    public function subcategory()
-    {
-        return $this->belongsTo(Subcategory::class);
-    }
-
-    public function offers(){
-        return $this->hasOne(Offer::class);
-    }
-
-    public function orders(){
-        return $this->belongsToMany(Order::class);
-    }
-    public function budgets(){
-        return $this->belongsToMany(Budget::class)->withPivot('quantity');
-    }
-
-    public function productFiles(){
-        return $this->hasMany(ProductFile::class);
-    }
 
     public function questions(){
         return $this->hasMany(Question::class);
     }
 
-    public function getCreatedProductAttribute()
-    {
+    public function getCreatedProductAttribute(){
         return Carbon::now()->diffInDays($this->created_at);
     }
-    public function provider(){
-        return $this->belongsTo(Provider::class);
+
+    public function productProviders(){
+        return $this->hasMany(ProductProvider::class);
     }
-    public function user(){
-        return $this->belongsTo(User::class);
+
+    public function offers(){
+        return $this->hasMany(Offer::class);
+    }
+
+    public function orders(){
+        return $this->belongsToMany(Order::class);
+    }
+
+    public function budgets(){
+        return $this->belongsToMany(Budget::class)->withPivot('quantity');
     }
 }
 

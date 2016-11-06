@@ -11,31 +11,24 @@ class Budget extends Model
 {
     protected $fillable = ['user_id', 'description'];
 
-    public function user()
-    {
+    public function user(){
         return $this->belongsTo(User::class);
     }
 
-    public function products()
-    {
+    public function products(){
         return $this->belongsToMany(Product::class)->withPivot('quantity');
     }
 
-
-    public function getNumberProductsAttribute()
-    {
+    public function getNumberProductsAttribute(){
         return count($this->products()->get());
     }
 
-    public function getCreatedBudgetAttribute()
-    {
-
+    public function getCreatedBudgetAttribute(){
         $date = new Date($this->created_at);
         return $date->format('l j F Y H:i:s');
     }
 
-    public function getTotalValueAttribute()
-    {
+    public function getTotalValueAttribute(){
         $valueTotal = 0;
         foreach ($this->products()->get() as $product) {
             $price = ($offer = $product->offers()->first()) ?
@@ -48,8 +41,7 @@ class Budget extends Model
         return $valueTotal;
     }
 
-    public function getProductsArrayAttribute()
-    {
+    public function getProductsArrayAttribute(){
         $products = [];
         foreach ($this->products()->get() as $product) {
             $price = ($offer = $product->offers()->first()) ?

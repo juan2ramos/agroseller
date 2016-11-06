@@ -19,28 +19,30 @@ class Order extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
     public function products(){
         return $this->belongsToMany(Product::class)->withPivot('quantity','state_order_id','value');
     }
+
     public function stateOrder(){
         return $this->belongsTo(StateOrder::class);
     }
-    public function getNumberProductsAttribute()
-    {
+
+    public function getNumberProductsAttribute(){
         return count($this->products()->get());
     }
-    public function getCreatedBudgetAttribute()
-    {
+
+    public function getCreatedBudgetAttribute(){
         $date = new Date($this->created_at);
         return $date->format('l j F Y');
     }
-    public function getUpdatedBudgetAttribute()
-    {
+
+    public function getUpdatedBudgetAttribute(){
         $date = new Date($this->updated_at);
         return $date->format('l j F Y');
     }
-    public function getTotalValueAttribute()
-    {
+
+    public function getTotalValueAttribute(){
         $valueTotal = 0;
         foreach ($this->with('products.offers')->get() as $product) {
             dd($product->products);
@@ -54,8 +56,7 @@ class Order extends Model
         return number_format($valueTotal, 0, " ", ".");
     }
 
-    public function getProductsArrayAttribute()
-    {
+    public function getProductsArrayAttribute(){
         $products = [];
         foreach ($this->products()->get() as $product) {
             $price = ($offer = $product->offers()->first()) ?
@@ -72,8 +73,8 @@ class Order extends Model
 
         return $products;
     }
-    public function getProductsArrayProviderAttribute()
-    {
+
+    public function getProductsArrayProviderAttribute(){
         $products = [];
         $productsProvider = $this->products()->where('user_id',Auth::user()->id)->get();
         foreach ($productsProvider as $product) {
@@ -91,8 +92,8 @@ class Order extends Model
 
         return $products;
     }
-    public function getTotalValueProviderAttribute()
-    {
+
+    public function getTotalValueProviderAttribute(){
         $valueTotal = 0;
         $productsProvider = $this->products()->where('user_id',Auth::user()->id)->get();
         foreach ($productsProvider as $product) {
@@ -105,8 +106,8 @@ class Order extends Model
 
         return number_format($valueTotal, 0, " ", ".");
     }
-    public function getNumberProductsProviderAttribute()
-    {
+
+    public function getNumberProductsProviderAttribute(){
         return count($this->products()->where('user_id',Auth::user()->id)->get());
     }
 }

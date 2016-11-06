@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    protected $fillable = ['user_id', 'product_provider_id', 'isResponded'];
+    protected $fillable = ['user_id', 'product_id', 'isResponded'];
 
     public function user(){
         return $this->belongsTo(User::class);

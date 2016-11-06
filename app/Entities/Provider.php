@@ -19,8 +19,7 @@ class Provider extends Model
         return $this->belongsTo(Agent::class);
     }
 
-    public function categories()
-    {
+    public function categories() {
         return $this->belongsToMany(Category::class)->withTimestamps();
     }
 
@@ -28,9 +27,10 @@ class Provider extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function products(){
-        return $this->hasMany(Product::class);
+    public function productProviders(){
+        return $this->hasMany(ProductProvider::class);
     }
+    
     public function planProvider(){
         return $this->hasMany(PlanProvider::class);
     }

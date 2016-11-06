@@ -9,13 +9,11 @@ class Category extends Model
 {
     protected $fillable = ['name','url_image', 'image_icon'];
 
-    public function subcategories()
-    {
+    public function subcategories(){
         return $this->hasMany(Subcategory::class,'categories_id');
     }
 
-    public function getRouteKeyName()
-    {
+    public function getRouteKeyName(){
         return 'name'; //Nombre de la columna que deseamos buscar
     }
 

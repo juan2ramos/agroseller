@@ -18,11 +18,11 @@ class CreateOrderProduct extends Migration
             $table->integer('state');
             $table->integer('value');
             $table->integer('order_id')->unsigned();
-            $table->integer('product_provider_id')->unsigned();
+            $table->integer('product_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('order_id')->references('id')->on('orders');
-            $table->foreign('product_provider_id')->references('id')->on('product_provider');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
