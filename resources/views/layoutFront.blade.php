@@ -181,6 +181,8 @@
             </div>
             <div class="BarNav-a medium-6  center">
                {{-- <a href="{{route('pricing')}}">Ver Planes</a>--}}
+
+                <a href="{{url('/')}}">Inicio</a>
                 <a href="{{url('como-cotizar')}}">¿Cómo cotizar?</a>
                 <a href="{{url('como-comprar')}}">¿Cómo comprar?</a>
                 <a href="{{url('como-vender')}}">¿Cómo vender?</a>
