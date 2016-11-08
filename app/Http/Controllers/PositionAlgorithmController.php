@@ -3,6 +3,7 @@
 namespace Agrosellers\Http\Controllers;
 
 use Agrosellers\Entities\Product;
+use Agrosellers\Entities\ProductProvider;
 use Illuminate\Http\Request;
 
 use Agrosellers\Http\Requests;
@@ -20,8 +21,7 @@ class PositionAlgorithmController extends Controller
 
         }
         $sqlAdd = ($request->get('subcategory'))?' subcategory_id = ' .$request->get('subcategory'):'';
-        return Product::with(['offers', 'productFiles', 'subcategory'])->
-        whereRaw($sqlAdd)->get();
+        return ProductProvider::with(['offers', 'productFiles', 'product'])->whereRaw($sqlAdd)->get();
 
   /* Esto es temoporal focus group */
 
