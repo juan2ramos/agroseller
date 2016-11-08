@@ -17,11 +17,13 @@ class PositionAlgorithmController extends Controller
 
       /* Esto es temoporal focus group */
       if( empty($request->get('subcategory') ) ){
-        return Product::with(['offers', 'productFiles', 'subcategory'])->where('id','>' ,0)->get();
+            return ProductProvider::all();
+            return ProductProvider::with(['offers', 'product'])->where('id','>' ,0)->get();
 
         }
+        return ProductProvider::all();
         $sqlAdd = ($request->get('subcategory'))?' subcategory_id = ' .$request->get('subcategory'):'';
-        return ProductProvider::with(['offers', 'productFiles', 'product'])->whereRaw($sqlAdd)->get();
+        return ProductProvider::with(['offers', 'product'])->whereRaw($sqlAdd)->get();
 
   /* Esto es temoporal focus group */
 
