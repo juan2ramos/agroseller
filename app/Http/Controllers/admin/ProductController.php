@@ -61,8 +61,8 @@ class ProductController extends Controller
         $farms = Farm::all();
         $user = auth()->user();
         $products = ($user->role_id == 1)
-                  ? ProductProvider::orderBy('id', 'DESC')->paginate(10)
-                  : ProductProvider::where('provider_id', auth()->user()->provider->id)->orderBy('id', 'DESC')->paginate(10);
+                  ? Product::orderBy('id', 'DESC')->paginate(10)
+                  : Product::where('provider_id', auth()->user()->provider->id)->orderBy('id', 'DESC')->paginate(10);
 
         return view('back.productList', compact('categories', 'products', 'farms', 'brands'));
     }
@@ -150,7 +150,6 @@ class ProductController extends Controller
     function newProduct(ProductRequest $request)
     {
         $inputs = $request->all();
-        dd($inputs);
         $this->validator($request->file());
         $farms = "";
 
@@ -165,16 +164,17 @@ class ProductController extends Controller
         $inputs['user_id'] = Auth::user()->id;
         $inputs['slug'] = str_slug($inputs['name']);
         $inputs['farms'] = $farms;
+        $inputs['brand_id'] = $inputs['brand'];
 
-        $this->product = Product::create($inputs)->offers()->create($inputs);
+        $this->product = Product::create($inputs);
         $this->createFile($request);
-        $provider = Provider::where('user_id', auth()->user()->id)->first();
+        //$provider = Provider::where('user_id', auth()->user()->id)->first();
 
-        Notification::create([
+        /*Notification::create([
             'user_id' => $provider->agent()->first()->user_id,
             'text' => 'El proveedor ' . $provider['company-name'] . ' ha creado un producto',
             'url' => route('productAgentPreview', $this->product->id)
-        ]);
+        ]);*/
 
         return redirect()->back()->with('messageSuccess', 1);
     }

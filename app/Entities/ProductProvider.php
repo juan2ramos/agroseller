@@ -15,27 +15,11 @@ class ProductProvider extends Model
         'image_scale', 'farms'
     ];
 
-    public function subcategory() {
-        return $this->belongsTo(Subcategory::class);
-    }
-
-    public function brand(){
-        return $this->belongsTo(Brand::class);
-    }
-
     public function provider(){
         return $this->belongsTo(Provider::class);
     }
 
     public function product(){
         return $this->belongsTo(Product::class);
-    }
-
-    public function files(){
-        return $this->belongsToMany(File::class);
-    }
-
-    public function taxes(){
-        return $this->belongsToMany(Tax::class);
     }
 }

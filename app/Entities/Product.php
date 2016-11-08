@@ -11,8 +11,9 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-        'price', 'location', 'available_quantity', 'available',
-        'isValidate', 'isActive'
+        'name', 'slug', 'presentation', 'size', 'subcategory_id',
+        'brand_id', 'weight', 'measure', 'material', 'description',
+        'composition', 'forms_employment', 'taxes', 'image_scale', 'farms'
     ];
 
     /*protected $mappingProperties = [
@@ -56,6 +57,22 @@ class Product extends Model
 
     public function budgets(){
         return $this->belongsToMany(Budget::class)->withPivot('quantity');
+    }
+
+    public function subcategory() {
+        return $this->belongsTo(Subcategory::class);
+    }
+
+    public function brand(){
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function files(){
+        return $this->belongsToMany(File::class);
+    }
+
+    public function taxes(){
+        return $this->belongsToMany(Tax::class);
     }
 }
 

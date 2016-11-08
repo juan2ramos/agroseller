@@ -12,7 +12,7 @@ class CreateFileProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_file', function(Blueprint $table){
+        /*Schema::create('product_file', function(Blueprint $table){
             $table->increments('id');
             $table->integer('file_id')->unsigned();
             $table->integer('product_id')->unsigned();
@@ -20,7 +20,7 @@ class CreateFileProductTable extends Migration
 
             $table->foreign('file_id')->references('id')->on('files');
             $table->foreign('product_id')->references('id')->on('products');
-        });
+        });*/
     }
 
     /**
@@ -30,6 +30,6 @@ class CreateFileProductTable extends Migration
      */
     public function down()
     {
-        Schema::drop('product_provider_file');
+        /*Schema::drop('product_provider_file');*/
     }
 }

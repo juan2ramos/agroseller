@@ -117,13 +117,13 @@
         </label>
     </div>
     <label for="available_quantity">
-        @if(isset($productEdit))
+    <!--    @if(isset($productEdit))
         <input type="number" id="available_quantity" name="available_quantity" value="{{ $productEdit->available_quantity }}">
         @else
         <input type="number" id="available_quantity" name="available_quantity" value="{{ old('available_quantity') }}">
         @endif
         <span>Cantidad disponible</span>
-        <em></em>
+        <em></em>-->
     </label>
 
     <h4>IMAGENES
