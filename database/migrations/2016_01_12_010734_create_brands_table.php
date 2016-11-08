@@ -17,10 +17,7 @@ class CreateBrandsTable extends Migration
             $table->string('name');
             $table->string('logo');
             $table->string('description');
-            $table->integer('product_provider_id')->unsigned();
             $table->timestamps();
-
-            $table->foreign('product_provider_id')->references('id')->on('product_provider');
         });
     }
 

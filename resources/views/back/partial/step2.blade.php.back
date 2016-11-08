@@ -12,23 +12,71 @@
 </svg>
 <section class="Step Step-2 Forms">
 
-    <article class="row">
-        <span class="smaller-12">1. Seleccione o cree la marca del producto.</span>
-        <select name="brand" id="brand" class="smaller-9">
-            <option value=""></option>
-            @foreach($brands as $brand)
-                <option value="{{$brand->id}}">{{$brand->name}}</option>
-            @endforeach
-        </select>
-        <div class="smaller-3 row middle end">
-            <div class="Button" id="createBrand">CREAR MARCA</div>
+    <article class="Step-location">
+        <p>1. Añadir los lugares donde está ubicado tu producto
+                    <span>Navega por el mapa y ubica el lugar que
+                        deseas añadir, da un clic sobre el botón
+                        “AÑADE UNA UBICACIÓN”, después de que el
+                        marcador esta sobre el mapa puedes desplazarlo
+                        a una ubicación más exacta; si deseas eliminar
+                        da doble clic sobre el marcador, si deseas
+                        eliminar todas tus ubicaciones para empezar
+                        de nuevo oprime “ELIMINAR TODAS LAS UBICACIONES".
+                    </span>
+        </p>
+        <span class="Marker Button" id="addMaker">AÑADE UNA UBICACIÓN</span>
+        <span class="Marker Button" id="removeMaker">ELIMINAR TODAS LAS UBICACIONES</span>
+        @if(isset($productEdit))
+            <div id="Map" class="Map Editable"></div>
+        @else
+            <div id="Map" class="Map"></div>
+        @endif
+    </article>
+
+    <article>
+
+        <p>2. Seleccionar cultivos
+            <span>Seleccione los cultivos en los que su producto puede ser usado.</span>
+        </p>
+        <div class="row">
+            @if(isset($productEdit))
+                <label for="farm-all" class="Forms-checkout capitalize col-6">
+                    <input type="checkbox" id="farm-all" value="">
+                    <sub></sub>
+                    Todos
+                </label>
+                <?php $farmsProduct = explode(',' , $productEdit['farms']); ?>
+                @foreach($farms as $farm)
+                    <label for="farm-{{$farm->id}}" class="Forms-checkout capitalize col-6">
+                        <input type="checkbox" name="farm-{{$farm->id}}" id="farm-{{$farm->id}}" value="{{$farm->name}}" @if(in_array($farm->name, $farmsProduct, false))checked='checked'@endif >
+                        <sub></sub>
+                        {{$farm->name}}
+                    </label>
+                @endforeach
+            @else
+                @if(isset($farms))
+                    <label for="farm-all" class="Forms-checkout capitalize col-6">
+                        <input type="checkbox" id="farm-all" value="">
+                        <sub></sub>
+                        Todos
+                    </label>
+                    @foreach($farms as $farm)
+                        <label for="farm-{{$farm->id}}" class="Forms-checkout capitalize col-6">
+                            <input type="checkbox" name="farm-{{$farm->id}}" id="farm-{{$farm->id}}" value="{{$farm->name}}">
+                            <sub></sub>
+                            {{$farm->name}}
+                        </label>
+                    @endforeach
+                @endif
+            @endif
         </div>
     </article>
 
     <article>
 
-        <p>2. Ingresa el nombre de tu producto
-            <span>Escribe el nombre del producto con la especificación deseada.</span>
+        <p>3. Ingresa el nombre de tu producto
+                    <span>Escribe el nombre del producto
+                        con la especificación deseada.</span>
         </p>
         <label for="nameProduct">
             @if(isset($productEdit))
@@ -40,7 +88,7 @@
         </label>
     </article>
     <article>
-        <p>3. Información del producto</p>
+        <p>4. Información del producto</p>
 
         <div id="toolbar" class="border--top">
                 {{ old('description') }}
@@ -78,6 +126,7 @@
         <input type="text" id="weight" name="weight" value="{{ old('weight') }}">
         @endif
         <span>Peso del producto</span>
+
     </label>
     <label for="measure"   class="DataForm measure">
         @if(isset($productEdit))
@@ -94,7 +143,7 @@
         <em>PDF</em>
     </label>
 
-    <!-- <label for="priceCurrent" >
+    <label for="priceCurrent" >
         @if(isset($productEdit))
         <input type="text" id="priceCurrent" name="price" value="{{ $productEdit->price }}">
         @else
@@ -102,7 +151,7 @@
         @endif
         <span>Precio</span>
         <em>$</em>
-    </label> -->
+    </label>
 
     <div class="row middle">
         <label for="iva" class="col-6">

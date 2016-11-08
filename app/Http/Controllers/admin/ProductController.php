@@ -2,8 +2,10 @@
 
 namespace Agrosellers\Http\Controllers\admin;
 
+use Agrosellers\Entities\Brand;
 use Agrosellers\Entities\Farm;
 use Agrosellers\Entities\Notification;
+use Agrosellers\Entities\ProductProvider;
 use Validator;
 use Session;
 use Illuminate\Http\Request;
@@ -55,9 +57,14 @@ class ProductController extends Controller
     function index()
     {
         $categories = Category::all();
-        $products = Product::where('user_id', auth()->user()->id)->orderBy('id', 'DESC')->paginate(10);
+        $brands = Brand::all();
         $farms = Farm::all();
-        return view('back.product', compact('categories', 'products', 'farms'));
+        $user = auth()->user();
+        $products = ($user->role_id == 1)
+                  ? ProductProvider::orderBy('id', 'DESC')->paginate(10)
+                  : ProductProvider::where('provider_id', auth()->user()->provider->id)->orderBy('id', 'DESC')->paginate(10);
+
+        return view('back.productList', compact('categories', 'products', 'farms', 'brands'));
     }
     
     function editProduct($id){
@@ -143,6 +150,7 @@ class ProductController extends Controller
     function newProduct(ProductRequest $request)
     {
         $inputs = $request->all();
+        dd($inputs);
         $this->validator($request->file());
         $farms = "";
 

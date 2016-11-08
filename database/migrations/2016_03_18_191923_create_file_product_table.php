@@ -12,14 +12,14 @@ class CreateFileProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_provider_file', function(Blueprint $table){
+        Schema::create('product_file', function(Blueprint $table){
             $table->increments('id');
             $table->integer('file_id')->unsigned();
-            $table->integer('product_provider_id')->unsigned();
+            $table->integer('product_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('file_id')->references('id')->on('files');
-            $table->foreign('product_provider_id')->references('id')->on('product_provider');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 

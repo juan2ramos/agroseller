@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Agrosellers\Entities\Product;
+use Agrosellers\Entities\Brand;
 
 
 class ProductTableSeeder extends Seeder
@@ -13,6 +13,10 @@ class ProductTableSeeder extends Seeder
      */
     public function run()
     {
-
+        Brand::create([
+            'name' => 'Marca prueba',
+            'logo' => 'logo.png',
+            'description' => 'description'
+        ]);
     }
 }

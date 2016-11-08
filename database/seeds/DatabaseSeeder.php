@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(Feature_SubcategoryTableSeeder::class);
         $this->call(FarmTableSeeder::class);
         $this->call(StateOrdersSeeder::class);
-        //$this->call(ProductTableSeeder::class);
+        $this->call(ProductTableSeeder::class);
         Model::reguard();
     }
 }

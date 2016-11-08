@@ -51,6 +51,7 @@ class Menu
                 'roles' => [1, 2, 5],
                 'class' => 'provider'
             ],
+
             'Categorias' => [
                 'route' => 'category',
                 'roles' => [1, 2],
@@ -63,7 +64,7 @@ class Menu
             ],
             'Productos' => [
                 'route' => 'products',
-                'roles' => [3],
+                'roles' => [1, 3],
                 'class' => 'product'
             ],
             'Preguntas' => [

@@ -41,11 +41,11 @@ class RoutePolicy
             '1' =>
                 [
                     'admin', 'users', 'providers', 'category', 'farmIndex', 'products', 'questions', 'clients', 'category',
-                    'bills', 'orders', 'reports', 'subcategoriesQuery','featuresQuery', 'showUser', 'validateProvider',
+                    'bills', 'orders', 'reports', 'subcategoriesQuery','featuresQuery', 'showUser', 'validateProvider', 'newProduct',
 
                     'agentsGet', 'editProduct', 'deleteProduct', 'updateProduct','newUserAdmin','user',
                     'budgetShow', 'indexProfile', 'userUpdate', 'productAgentPreview', 'productDetailPreview','validateProduct',
-                    'payPlan', 'searchUser', 'category'
+                    'payPlan', 'searchUser', 'category', 'products', 'products'
 
                 ],
             '2' =>

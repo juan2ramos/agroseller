@@ -31,6 +31,6 @@ class CreateBudgetProductTable extends Migration
      */
     public function down()
     {
-        Schema::drop('product_provider_budget');
+        Schema::drop('budget_product');
     }
 }
