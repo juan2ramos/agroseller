@@ -17,6 +17,13 @@ use Jenssegers\Date\Date;
 
 class ProductController extends Controller
 {
+
+    public function callProducts(Request $request){
+        if($request->ajax())
+            $products = Product::where('subcategory_id', $request->get('subcategory_id'))->get();
+            return ['products' => $products];
+    }
+
     function productFront(Request $request, $subcategoriesName = null)
     {
         /*if ($subcategoriesName) {

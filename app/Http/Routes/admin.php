@@ -50,6 +50,11 @@ Route::group(['namespace' => 'admin'], function () {
         'as' => 'newProduct',
     ]);
 
+    Route::post('productosProveedor', [
+        'uses' => 'ProductController@newProductProvider',
+        'as' => 'newProductProvider',
+    ]);
+
     Route::get('producto/edit/{id}', [
         'uses' => 'ProductController@editProduct',
         'as' => 'editProduct'
@@ -286,3 +291,9 @@ Route::get('notificaciones', [
     'uses' => 'NotificationController@index',
     'as' => 'NotifyAll'
 ]);
+
+Route::post('callProducts', [
+    'uses' => 'ProductController@callProducts',
+    'as' => 'callProducts'
+]);
+

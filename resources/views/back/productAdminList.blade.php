@@ -33,10 +33,7 @@
                                     <div class="Item-actions row center">
                                         <input class="ProductId" type="hidden" value="{{$product->id}}">
                                         <a href="{{route('editProduct', [$product->id])}}" class="icon-update">
-                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px"
-                                                 y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100"
-                                                 xml:space="preserve"><path
-                                                        d="M50,5C25.1,5,5,25.1,5,50c0,24.9,20.1,45,45,45s45-20.1,45-45C95,25.1,74.9,5,50,5z M25.6,73.7l7.6-16.4l8.8,8.8L25.6,73.7z   M43,65.2l-8.8-8.8l23.2-23.2l8.8,8.8L43,65.2z M67.1,41l-8.8-8.8l9.4-9.4l8.8,8.8L67.1,41z"/></svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><path d="M50,5C25.1,5,5,25.1,5,50c0,24.9,20.1,45,45,45s45-20.1,45-45C95,25.1,74.9,5,50,5z M25.6,73.7l7.6-16.4l8.8,8.8L25.6,73.7z   M43,65.2l-8.8-8.8l23.2-23.2l8.8,8.8L43,65.2z M67.1,41l-8.8-8.8l9.4-9.4l8.8,8.8L67.1,41z"/></svg>
                                         </a>
                                         @if(false)
                                             <form method="POST" action="{{route('deleteProduct', $product->id)}}">

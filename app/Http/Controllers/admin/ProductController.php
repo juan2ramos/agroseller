@@ -56,15 +56,19 @@ class ProductController extends Controller
 
     function index()
     {
-        $categories = Category::all();
         $brands = Brand::all();
         $farms = Farm::all();
         $user = auth()->user();
-        $products = ($user->role_id == 1)
-                  ? Product::orderBy('id', 'DESC')->paginate(10)
-                  : Product::where('provider_id', auth()->user()->provider->id)->orderBy('id', 'DESC')->paginate(10);
+        if($user->role_id == 1){
+            $categories = Category::all();
+            $products = Product::orderBy('id', 'DESC')->paginate(10);
+            return view('back.productAdminList', compact('categories', 'products', 'farms', 'brands'));
+        } else {
+            $categories = Category::all();
+            $products = ProductProvider::where('provider_id', auth()->user()->provider->id)->orderBy('id', 'DESC')->paginate(10);
+            return view('back.productProviderList', compact('categories', 'products', 'farms', 'brands'));
+        }
 
-        return view('back.productList', compact('categories', 'products', 'farms', 'brands'));
     }
     
     function editProduct($id){
@@ -176,6 +180,13 @@ class ProductController extends Controller
             'url' => route('productAgentPreview', $this->product->id)
         ]);*/
 
+        return redirect()->back()->with('messageSuccess', 1);
+    }
+
+    function newProductProvider(Request $request){
+        $inputs = $request->all();
+        $inputs['provider_id'] = auth()->user()->provider->id;
+        ProductProvider::create($inputs);
         return redirect()->back()->with('messageSuccess', 1);
     }
 }

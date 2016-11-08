@@ -6,4 +6,7 @@
         <button class="Button Step-finish col-12">GUARDAR PRODUCTO</button>
         @endif
     </div>
+    <div class="row">
+        <div class="productDetailAction Button col-12">PREVISUALIZAR PRODUCTO</div>
+    </div>
 </section>
