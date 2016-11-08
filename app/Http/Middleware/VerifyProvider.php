@@ -29,12 +29,13 @@ class VerifyProvider
                 return redirect()->route('isValidateProviders');
             }
 
-            $plan = PlanProvider::where('provider_id', $user->provider->id)->orderBy('created_at', 'DESC')->first();
+            /*$plan = PlanProvider::where('provider_id', $user->provider->id)->orderBy('created_at', 'DESC')->first();
             if(!$plan || new Date() > $this->getFinalPlan($plan))
                 return redirect()->route('pricing')->with(['message' => 'No ha comprado un plan o su plan ha vencido. Adquiera uno de nuestros planes']);
             else
                 if(!$plan->isActive)
                     return redirect()->route('inactivePlan');
+            */
         }
 
         return $next($request);
