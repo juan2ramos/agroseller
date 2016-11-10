@@ -13,7 +13,7 @@ class PositionAlgorithmController extends Controller
 {
     function products()
     {
-        return Product::with(['subcategory','files'])->get();
+        return Product::has('subcategory')->with(['subcategory','files'])->get();
 
     }
 
