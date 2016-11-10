@@ -61,12 +61,15 @@ class ProductController extends Controller
     {
 
 
-        $product = ProductProvider::with(['product.subcategory','product.files','provider'])->find($id);
-        Provider::ProductProvider('user');
+
+        $product = Product::with(['subcategory','files','providers.user'] )->find($id);
+
         $questions = $this->reloadQuestions($id);
-        $featuresTranslate = $this->setFeaturesTranslate($product->product);
+        $featuresTranslate = $this->setFeaturesTranslate($product);
         $offer = false;
-        return view('front.productDetail', compact('questions', 'product', 'featuresTranslate','offer','description'));
+        return view('front.productDetail', compact('questions', 'product', 'featuresTranslate','offer','description','providers'));
+
+
         /* Versión anterior al cambio de productos con muchos proveedores*/
         $product = Product::find($id);
         if(($product->isActive && $product->isValidate) || $request->ajax()){

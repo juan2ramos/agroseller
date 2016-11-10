@@ -47,6 +47,10 @@ class Product extends Model
         return $this->hasMany(ProductProvider::class);
     }
 
+    public function providers(){
+        return $this->belongsToMany(Provider::class, 'product_providers')->withPivot('price', 'location','available_quantity','min_quantity');
+    }
+
     public function offers(){
         return $this->hasMany(Offer::class);
     }
