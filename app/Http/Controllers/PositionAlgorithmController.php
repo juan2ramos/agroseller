@@ -11,33 +11,38 @@ use Illuminate\Support\Facades\Auth;
 
 class PositionAlgorithmController extends Controller
 {
+    function products()
+    {
+        return ProductProvider::with(['product.subcategory','product.files'])->get();
+
+    }
 
     function index(Request $request)
     {
-
-      /* Esto es temoporal focus group */
-      if( empty($request->get('subcategory') ) ){
+        return Product::with(['subcategory','files'])->get();
+        /* Esto es temoporal focus group */
+        if (empty($request->get('subcategory'))) {
             return ProductProvider::all();
-            return ProductProvider::with(['offers', 'product'])->where('id','>' ,0)->get();
+            return ProductProvider::with(['offers', 'product'])->where('id', '>', 0)->get();
 
         }
         return ProductProvider::all();
-        $sqlAdd = ($request->get('subcategory'))?' subcategory_id = ' .$request->get('subcategory'):'';
+        $sqlAdd = ($request->get('subcategory')) ? ' subcategory_id = ' . $request->get('subcategory') : '';
         return ProductProvider::with(['offers', 'product'])->whereRaw($sqlAdd)->get();
 
-  /* Esto es temoporal focus group */
+        /* Esto es temoporal focus group */
 
-        $sqlAdd = ($request->get('subcategory'))?' and subcategory_id = ' .$request->get('subcategory'):'';
+        $sqlAdd = ($request->get('subcategory')) ? ' and subcategory_id = ' . $request->get('subcategory') : '';
         $products = Product::whereRaw('isValidate = 1 and isActive = 1' . $sqlAdd)
             ->with(['offers', 'productFiles', 'subcategory'])
             ->get();
         $lat = '-75.58121155000003';
         $lng = '6.244207994244943';
         $position = $request->get('position')['coords'];
-          if($position){
-              $lat = $position['longitude'];
-              $lng = $position['latitude'];
-          }
+        if ($position) {
+            $lat = $position['longitude'];
+            $lng = $position['latitude'];
+        }
 
         foreach ($products as $product) {
             $product->location2 = explode(';', $product->location);
@@ -60,15 +65,15 @@ class PositionAlgorithmController extends Controller
         /*$sorted = $products->sortBy(function ($p, $key) {
             return $this->distancePriority($p['distance']);
         });*/
-     /*    foreach($sorted as $p){
+        /*    foreach($sorted as $p){
 
-             echo 'Producto: ';print_r($p->id);echo '<br>';
-             echo " &#31; &#31; &#31; &#31; nombre: ";print_r($p->name);echo '<br>';
-             echo " &#31; &#31; &#31; &#31; cordenadas: ";print_r($p->location);echo '<br>';
-             echo " &#31; &#31; &#31; &#31; cordenadas 2: ";print_r($p->location2);echo '<br>';
-             echo " &#31; &#31; &#31; &#31; distancia: ";print_r($p->distance );echo '<br>';
-         }
-        dd();*/
+                echo 'Producto: ';print_r($p->id);echo '<br>';
+                echo " &#31; &#31; &#31; &#31; nombre: ";print_r($p->name);echo '<br>';
+                echo " &#31; &#31; &#31; &#31; cordenadas: ";print_r($p->location);echo '<br>';
+                echo " &#31; &#31; &#31; &#31; cordenadas 2: ";print_r($p->location2);echo '<br>';
+                echo " &#31; &#31; &#31; &#31; distancia: ";print_r($p->distance );echo '<br>';
+            }
+           dd();*/
 
 
         return $sorted->slice(1, 36);

@@ -2,6 +2,8 @@
 
 namespace Agrosellers\Http\Controllers;
 
+use Agrosellers\Entities\ProductProvider;
+use Agrosellers\Entities\Provider;
 use Agrosellers\Entities\Subcategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -57,6 +59,15 @@ class ProductController extends Controller
 
     function productDetailFront(Request $request, $slug, $id)
     {
+
+
+        $product = ProductProvider::with(['product.subcategory','product.files','provider'])->find($id);
+        Provider::ProductProvider('user');
+        $questions = $this->reloadQuestions($id);
+        $featuresTranslate = $this->setFeaturesTranslate($product->product);
+        $offer = false;
+        return view('front.productDetail', compact('questions', 'product', 'featuresTranslate','offer','description'));
+        /* Versión anterior al cambio de productos con muchos proveedores*/
         $product = Product::find($id);
         if(($product->isActive && $product->isValidate) || $request->ajax()){
             $offer = ($offerModel = $product->offers()->first()) ?

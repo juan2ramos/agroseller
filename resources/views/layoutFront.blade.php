@@ -583,7 +583,7 @@
                     <li class="row middle">
                         <figure class="smaller-5">
                             <a href="{{route('productDetail',[$product->slug, $product->id])}}">
-                                <img src="{{ url('uploads/products/'.$product->productFiles()->first()->name )}}"
+                                <img src="{{ url('uploads/products/'.$product->files()->first()->name )}}"
                                      alt="">
                             </a>
                         </figure>
@@ -690,21 +690,7 @@
         </g>
     </svg>
 </div>
-<script type="text/javascript">
-    window.smartlook || (function (d) {
-        var o = smartlook = function () {
-            o.api.push(arguments)
-        }, h = d.getElementsByTagName('head')[0];
-        var c = d.createElement('script');
-        o.api = new Array();
-        c.async = true;
-        c.type = 'text/javascript';
-        c.charset = 'utf-8';
-        c.src = '//rec.getsmartlook.com/recorder.js';
-        h.appendChild(c);
-    })(document);
-    smartlook('init', '4dd5bc038ed65dcdf97edd76ccccbd7995a1df6c');
-</script>
+
 <!-- Smartsupp Live Chat script -->
 <script type="text/javascript">
     var _smartsupp = _smartsupp || {};

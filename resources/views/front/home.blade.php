@@ -78,7 +78,7 @@
     </section>
     <figure class="offset-3 col-9" ><img style="margin: auto" src="{{asset('images/zona-pagos.jpg')}}" alt=""></figure>
 
-    <section class="Products" id="productsRecommended" data-routegetproducts="{{route('recommended')}}">
+    <section class="Products" id="productsRecommended" data-routegetproductsrecommended="{{route('recommended')}}" data-routegetproducts="{{route('allProduct')}}">
         <h2 class="Title">Lo Más Destacado</h2>
         <div class="Product-content row" data-urlpath="{{url('/')}}"
              data-subcategory="{{(isset($subcategoryId))? $subcategoryId : 0 }}">

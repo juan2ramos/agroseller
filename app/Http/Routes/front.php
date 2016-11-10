@@ -97,7 +97,10 @@ Route::get('productos-recomendados', [
     'as' => 'recommended',
     'uses' => 'PositionAlgorithmController@index'
 ]);
-
+Route::get('productos-agrosellers', [
+    'as' => 'allProduct',
+    'uses' => 'PositionAlgorithmController@products'
+]);
 Route::get('como-comprar',function(){
     return view('front.howBuy');
 });

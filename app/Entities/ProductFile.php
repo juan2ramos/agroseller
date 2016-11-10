@@ -9,4 +9,5 @@ class ProductFile extends Model{
     protected $fillable = [
         'name', 'extension', 'url_file', 'product_id'
     ];
+
 }

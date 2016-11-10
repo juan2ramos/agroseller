@@ -1,10 +1,14 @@
 @extends('layoutFront')
 @section('openGraph')
-    <meta property="og:url" content="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}"/>
+
+    <meta property="og:url" content="{{route('productDetail', ['slug' => $product->product->slug, 'id' => $product->product->id])}}"/>
+
     <meta property="og:type" content="{{route('home')}}"/>
-    <meta property="og:title" content="{{$product->name}}"/>
-    <meta property="og:description" content="{{$product->description}}"/>
-    @foreach($product->productFiles as $file)
+    <meta property="og:title" content="{{$product->product->name}}"/>
+    <meta property="og:description" content="{{$product->product->description}}"/>
+
+
+    @foreach($product->product->files as $file)
         @if($file->extension != 'pdf')
             <meta property="og:image" content="{{url('uploads/products/' . $file->name)}}"/>
             @break
@@ -14,10 +18,9 @@
 @section('content')
 
     <section class="row Header-product">
-
         <article class="ProductDetail-slider smaller-12 col-3 ">
             <div class="owl-carousel" id="sync1">
-                @foreach($product->productFiles as $file)
+                @foreach($product->product->files as $file)
                     @if($file->extension != 'pdf')
                         <figure class="item"><img src="{{url('uploads/products/'. $file->name)}}" alt=""></figure>
                     @endif
@@ -25,7 +28,7 @@
             </div>
         </article>
         <div class="col-6 row">
-            <h1 class="col-12">{{$product->name}}</h1>
+            <h1 class="col-12">{{$product->product->name}}</h1>
             <div class="col-6 small-12">
                 <span>Valor unidad</span>
                 <h4>${{number_format($product->price, 0, " ", ".")}}</h4>
@@ -35,7 +38,7 @@
                 <input type="number" id="Value" value="1">
             </div>
             <div class="col-12 Header-productDescription">
-                {!!$product->description!!}
+                {!!$product->product->description!!}
             </div>
             <div class="col-12 row bottom">
                 <div class="col-8">
@@ -111,7 +114,7 @@
                     <li>Calificación: <b>★★★★★</b></li>
                 </ul>
                 <div class="col-12 row end" style="margin: 10px 0">
-                    <p>Total ${{number_format($product->price, 0, " ", ".")}}</p>
+                    <p>Total ${{number_format($product->product->price, 0, " ", ".")}}</p>
                     <span class="col-12" style="font-size: 12px">IVA incluido</span>
                 </div>
                 <div class="row col-12 center">
@@ -191,7 +194,7 @@
                 </ul>
             @endfor
             <div class="smaller-12 medium-6 col-8 AlignRight DownloadPDF">
-                @foreach($product->productFiles as $file)
+                @foreach($product->product->files as $file)
                     @if($file->extension == 'pdf')
                         <a href="/uploads/products/{{$file->name}}" style="color : black" download>
                             Descarga Ficha Técnica
@@ -234,7 +237,7 @@
                 <div class="commentBox">
                     <textarea name="comment" id="commentBox"></textarea>
                     <button class="commentButton" id="commentButton"
-                            onClick="addComment($('#commentBox').val(), '{{$product->id}}', '{{Auth::user()->id}}','{{route("addQuestion")}}', '{{url("/")}}'); return false;">
+                            onClick="addComment($('#commentBox').val(), '{{$product->product->id}}', '{{Auth::user()->id}}','{{route("addQuestion")}}', '{{url("/")}}'); return false;">
                         Enviar
                     </button>
                 </div>
@@ -296,7 +299,7 @@
 
     <!-- ******* Maps ******* -->
     <script src="{{asset('js/maps.js')}}"></script>
-    <script>getPosition('{!!$product->location!!}')</script>
+    <script>getPosition('{!!$product->product->location!!}')</script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap"
             async defer></script>
 
@@ -305,7 +308,7 @@
 
     @if($offer)
     <?php
-    $fecha = explode('-', $product->offers->offer_off);
+    $fecha = explode('-', $product->product->offers->offer_off);
     $day = explode(' ', $fecha[2]);
     $time = explode(':', $day[1]);
 
@@ -331,7 +334,7 @@
     <script>
         $('#buy').on('click', function (e) {
             e.preventDefault();
-            window.location.href = $(this).data('url') + '/compras/{{ $product->id }}/' + $('#quantity').val()
+            window.location.href = $(this).data('url') + '/compras/{{ $product->product->id }}/' + $('#quantity').val()
         });
     </script>
 @endsection
