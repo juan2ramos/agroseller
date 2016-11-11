@@ -13,13 +13,15 @@ class PositionAlgorithmController extends Controller
 {
     function products()
     {
-        return Product::has('subcategory')->with(['subcategory','files'])->get();
+
+
 
     }
 
     function index(Request $request)
     {
-        return Product::with(['subcategory','files'])->get();
+
+        return Product::has('providers')->with(['subcategory','files'])->get();
         /* Esto es temoporal focus group */
         if (empty($request->get('subcategory'))) {
             return ProductProvider::all();
