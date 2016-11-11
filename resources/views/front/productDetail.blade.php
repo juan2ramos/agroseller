@@ -30,18 +30,22 @@
             <h1 class="col-12">{{$product->name}}</h1>
             <div class="col-6 small-12">
                 <span>Valor unidad</span>
-                <h4>${{number_format($product->providers->first()->pivot->price, 0, " ", ".")}}</h4>
+                <h4 id="priceUnit" data-price="{{$product->providers->first()->pivot->price}}">$
+                    <val>{{number_format($product->providers->first()->pivot->price, 0, " ", ".")}}</val>
+                </h4>
             </div>
             <div class="col-6 small-12">
                 <span>Cantidad</span>
-                <input type="number" id="Value" value="1">
+                <input onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" type="text"
+                       min="{{$product->providers->first()->pivot->min_quantity}}"
+                       max="{{$product->providers->first()->pivot->available_quantity}}" id="quantity" value="1"/>
             </div>
             <div class="col-12 Header-productDescription">
                 {!!$product->description!!}
             </div>
             <div class="col-12 row bottom">
                 <div class="col-8">
-                    <button class="Button">MÁS INFO</button>
+                    <button id="moreInfo" class="Button">MÁS INFO</button>
                     <a href="" target="_blank" class="Button">FICHA TECNICA</a>
                 </div>
                 <div class="col-4">
@@ -107,14 +111,22 @@
             <div class="Header-productInfoContent row middle">
                 <h3>Información de pedido</h3>
                 <ul>
-                    <li>Unidad de lotes: 45 g / envases</li>
-                    <li>Formato: envases 45 g</li>
-                    <li> Distribuidor: Alejandra</li>
-                    <li>Calificación: <b>★★★★★</b></li>
+                    @foreach($featuresTranslate as $key => $f)
+                        <li>{{$f['name']}}: {{$f['value']}}</li>
+                        @if($key == 2) @break @endif
+                    @endforeach
+                    <li id="distributor"> Distribuidor: <val>{{$product->providers->first()->user->name}}</val></li>
+                        <li>Calificación: <b>★★★★★</b></li>
+                    {{--<li>Presentación: </li>
+                <li>Formato: envases 45 g</li>
+                <li> Distribuidor: Alejandra</li>
+                <li>Calificación: <b>★★★★★</b></li>--}}
                 </ul>
                 <div class="col-12 row end" style="margin: 10px 0">
 
-                    <p>Total ${{number_format($product->providers->first()->pivot->price, 0, " ", ".")}}</p>
+                    <p>Total $
+                        <data id="total">{{number_format($product->providers->first()->pivot->price, 0, " ", ".")}}</data>
+                    </p>
                     <span class="col-12" style="font-size: 12px">IVA incluido</span>
                 </div>
                 <div class="row col-12 center">
@@ -135,17 +147,17 @@
                 <th>Cantidad disponible</th>
             </tr>
             </thead>
-            <tbody>
-                @foreach($product->providers as $key =>  $provider)
+            <tbody id="ProductInfo-body">
+            @foreach($product->providers as $key =>  $provider)
                 <tr>
                     <td class="center">
-                        <input type="radio" @if($key == 0) checked @endif name="provider">
+                        <input type="radio" class="ope" @if($key == 0) checked @endif name="provider">
                     </td>
-                    <td>
+                    <td class="name-provider" data-nameprovider="{{$provider->user->name}}">
                         <p>{{$provider->user->name}}</p>
                         <b class="ranking">★★★★★</b>
                     </td>
-                    <td>
+                    <td class="price-provider" data-price="{{$provider->pivot->price}}">
                         ${{number_format($provider->pivot->price, 0, " ", ".")}}
                     </td>
                     <td>
@@ -155,14 +167,14 @@
                         {{$provider->pivot->available_quantity}}
                     </td>
                 </tr>
-                @endforeach
+            @endforeach
 
             </tbody>
         </table>
     </section>
 
     <section class="ProductInfo">
-        <h2>Descripción</h2>
+        <h2 id="description">Descripción</h2>
         {!!$product->description!!}
         <h2>Características </h2>
         <article class="row bottom">
@@ -287,40 +299,40 @@
     <script>getPosition('{!!$product->location!!}')</script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap"
             async defer></script>
-
+    <script src="{{asset('js/front/product.js')}}"></script>
     <!-- ******* Comments ******* -->
     <script src="{{asset('js/comments.js')}}"></script>
 
-   {{-- @if($offer)
-    <?php
-    $fecha = explode('-', $product->offers->offer_off);
-    $day = explode(' ', $fecha[2]);
-    $time = explode(':', $day[1]);
+    {{-- @if($offer)
+     <?php
+     $fecha = explode('-', $product->offers->offer_off);
+     $day = explode(' ', $fecha[2]);
+     $time = explode(':', $day[1]);
 
-    $year = $fecha[0];
-    $month = $fecha[1];
-    $day = $day[0];
-    $hour = $time[0];
-    $minute = $time[1];
-    ?>
+     $year = $fecha[0];
+     $month = $fecha[1];
+     $day = $day[0];
+     $hour = $time[0];
+     $minute = $time[1];
+     ?>
 
-            <!-- ******* Timer ******* -->
-    <script src="{{asset('js/front/product.js')}}"></script>
+             <!-- ******* Timer ******* -->
+     <script src="{{asset('js/front/product.js')}}"></script>
+     <script>
+         countDown({
+             'year': {!! $year !!},
+             'month': {!! $month !!},
+             'day': {!! $day !!},
+             'hour': {!! $hour !!},
+             'minute': {!! $minute !!}
+         });
+     </script>
+     @endif--}}
     <script>
-        countDown({
-            'year': {!! $year !!},
-            'month': {!! $month !!},
-            'day': {!! $day !!},
-            'hour': {!! $hour !!},
-            'minute': {!! $minute !!}
-        });
-    </script>
-    @endif--}}
-    <script>
-        $('#buy').on('click', function (e) {
-            e.preventDefault();
-            window.location.href = $(this).data('url') + '/compras/{{ $product->id }}/' + $('#quantity').val()
-        });
+        /* $('#buy').on('click', function (e) {
+         e.preventDefault();
+         window.location.href = $(this).data('url') + '/compras/{{ $product->id }}/' + $('#quantity').val()
+         });*/
     </script>
 @endsection
 
