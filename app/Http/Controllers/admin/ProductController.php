@@ -75,15 +75,14 @@ class ProductController extends Controller
         $farms = Farm::all();
         $categories = Category::all();
         $user = auth()->user();
-
-        $productEdit = Product::find($id);
-        $offerEdit = $productEdit->offers()->first();
-        $farms = Farm::all();
-        $categories = Category::all();
+        //$offerEdit = $productEdit->offers()->first();
         if($user->role_id == 1){
+            $productEdit = Product::find($id);
             return view('back.productAdminEdit', compact('productEdit', 'offerEdit', 'categories', 'farms', 'brands'));
+        }else{
+            $productEdit = ProductProvider::find($id);
+            return view('back.productProviderEdit', compact('productEdit', 'offerEdit', 'categories', 'farms', 'brands'));
         }
-        return view('back.productEdit', compact('productEdit', 'offerEdit', 'categories', 'farms', 'brands'));
     }
 
     function updateProduct(Request $request, $id){

@@ -5,13 +5,13 @@
             <!--<input id="ps-offerDescription" type="hidden" value="{ $offerEdit->offer_description }}">-->
             <input id="ps-taxes" type="hidden" value="{{ $productEdit->taxes }}">
             <!--<input id="ps-importantOffer" type="hidden" value="{ $offerEdit->important_offer }}"> -->
-            @foreach($productEdit->productFiles as $file)
-                @if($file->extension == 'pdf')
-                    <input id="ps-composition" type="hidden" value="{{ $file->name }}">
-                @else
-                    <input class="ps-images" type="hidden" value="{{ $file->name }}">
-                @endif
-            @endforeach
+            <!--foreach($productEdit->productFiles as $file)
+                if($file->extension == 'pdf')
+                    <input id="ps-composition" type="hidden" value="{ $file->name }}">
+                else
+                    <input class="ps-images" type="hidden" value="{ $file->name }}">
+                endif
+            endforeach-->
 
             <article id="editable" class="col-12">
                 <form id="Product-form" role="form" method="POST" action="{{ route('updateProduct', [$productEdit->id]) }}"
@@ -119,10 +119,10 @@
                         <span class="Wizard-line"></span>
                     </section>
 
-                    @include('back.partial.step1')
-                    @include('back.partial.step2')
-                    @include('back.partial.step3')
-                    @include('back.partial.step4')
+                    @include('back.partial.providerStep1')
+                    @include('back.partial.providerStep2')
+                    @include('back.partial.providerStep3')
+                    @include('back.partial.providerStep4')
 
                     <input type="hidden" id="Location" name="location" value="">
                     <input type="hidden" id="Description" name="description" value="">
@@ -154,6 +154,33 @@
         <script src="https://cdn.quilljs.com/1.0.0-rc.0/quill.js"></script>
 
         <script>
+
+            var subcategories = $('#subcategoriesList'),
+                productTable = $('#productTable');
+                subcategories.on('click', 'li', function(){
+                var params = {
+                    subcategory_id : $(this).data('id'),
+                    _token : $('#token').val()
+                };
+
+                $.post('callProducts', params, function (data) {
+                    var products = data.products,
+                        html = "";
+
+                    $.each(products, function(i, product){
+                        html += "<tr>" +
+                                    "<td>" + product.name + "</td>" +
+                                    "<td><input style='opacity:1' value='" + product.id + "' name='product_id' type='radio' class='productSelected'></td>" +
+                                "</tr>";
+                    });
+
+                    productTable.append(html);
+                    $('.productSelected').eq(0).attr('checked', 'checked');
+
+                }, 'json');
+            });
+
+
             var toolbarOptions = [
                 ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
                 ['blockquote', 'code-block'],

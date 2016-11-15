@@ -33,23 +33,22 @@
         @endif
     </article>
 
-
     <article>
 
         <label for="priceCurrent" >
-            <input type="text" id="priceCurrent" name="price" value="">
+            <input type="text" id="priceCurrent" name="price" @if(isset($productEdit)) value="{{$productEdit->price}}" @endif>
             <span>Precio</span>
             <em>$</em>
         </label>
 
         <label for="available_quantity">
-            <input type="number" id="available_quantity" name="available_quantity" value="">
+            <input type="number" id="available_quantity" name="available_quantity" @if(isset($productEdit)) value="{{$productEdit->available_quantity}}" @endif>
             <span>Cantidad disponible</span>
             <em></em>
         </label>
 
         <label for="min_quantity">
-            <input type="number" id="min_quantity" name="min_quantity" value="">
+            <input type="number" id="min_quantity" name="min_quantity" @if(isset($productEdit)) value="{{$productEdit->min_quantity}}" @endif>
             <span>Cantidad mínima para despacho</span>
             <em></em>
         </label>

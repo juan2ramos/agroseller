@@ -4,9 +4,10 @@
         <label for="subcategory_id">SUBCATEGORÍAS</label>
     </article>
     <article class="row center stretch">
+    
         @if(isset($productEdit))
-            <input type="hidden" id="categoryId" value="{{$productEdit->subcategory->categories_id}}">
-            <input type="hidden" id="subcategoryId" value="{{$productEdit->subcategory->id}}">
+            <input type="hidden" id="categoryId" value="{{$productEdit->product->subcategory->categories_id}}">
+            <input type="hidden" id="subcategoryId" value="{{$productEdit->product->subcategory->id}}">
         @endif
 
         <select data-token="{{ csrf_token() }}" data-route="{{route('subcategoriesQuery')}}" id="categories">
