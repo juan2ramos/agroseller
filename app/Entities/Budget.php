@@ -16,9 +16,12 @@ class Budget extends Model
     }
 
     public function products(){
-        return $this->belongsToMany(Product::class)->withPivot('quantity');
+        return $this->belongsToMany(Product::class)->withPivot('quantity','provider_id');
     }
 
+    public function providers(){
+        return $this->belongsToMany(Provider::class,'budget_product');
+    }
     public function getNumberProductsAttribute(){
         return count($this->products()->get());
     }

@@ -1290,10 +1290,10 @@ body {
   border-right: none !important; }
 
 /* Step 2 */
-.Step-3 input[type='file'] {
+.Step-2 input[type='file'] {
   opacity: 0; }
 
-.Step-3 .file {
+.Step-2 .file {
   position: absolute;
   top: 0;
   height: 4rem;
@@ -1304,37 +1304,37 @@ body {
   color: #A1A1A1;
   border: 1px solid #C5C5C5; }
 
-.Step-3 article {
+.Step-2 article {
   margin: 2.125rem 0; }
 
-.Step-3 p {
+.Step-2 p {
   color: #818181;
   font-weight: 400;
   margin: 0; }
-  .Step-3 p span {
+  .Step-2 p span {
     display: block;
     font-size: 0.875rem;
     font-weight: 300;
     text-align: justify;
     margin: 0.25rem 1.0625rem; }
 
-.Step-3 h4 {
+.Step-2 h4 {
   font-weight: 400;
   font-size: 1.125rem; }
-  .Step-3 h4 li {
+  .Step-2 h4 li {
     font-size: 0.875rem;
     font-weight: 400;
     margin: 0.25rem 0.875rem;
     list-style: disc;
     color: #C5D257; }
-    .Step-3 h4 li span {
+    .Step-2 h4 li span {
       color: gray; }
 
-.Step-3Images {
+.Step-2Images {
   margin: 1.5rem 0; }
-  .Step-3Images .image {
+  .Step-2Images .image {
     position: relative; }
-  .Step-3Images .delete {
+  .Step-2Images .delete {
     content: "x";
     cursor: pointer;
     background: rgba(230, 225, 225, 0.7);
@@ -1351,11 +1351,11 @@ body {
     justify-content: center;
     -ms-flex-align: center;
     align-items: center; }
-  .Step-3Images label {
+  .Step-2Images label {
     cursor: pointer;
     position: relative;
     padding: 0.375rem; }
-  .Step-3Images input {
+  .Step-2Images input {
     opacity: 0;
     cursor: pointer;
     z-index: 10;
@@ -1365,7 +1365,7 @@ body {
     top: -0.3125rem;
     width: calc(100% + 5px);
     height: 11.53125rem; }
-  .Step-3Images figure {
+  .Step-2Images figure {
     position: absolute;
     border: 0.0625rem dashed #979797;
     border-radius: 0.125rem;
@@ -1374,36 +1374,36 @@ body {
     height: 11.53125rem;
     overflow: hidden; }
 
-.Step-3 .DataForm {
+.Step-2 .DataForm {
   display: none; }
 
 /* Step 3 */
-.Step-2 article {
+.Step-3 article {
   margin: 2.125rem 0; }
 
-.Step-2 p {
+.Step-3 p {
   color: #818181;
   font-weight: 400;
   margin: 0; }
 
-.Step-2 .Button {
+.Step-3 .Button {
   width: 10rem;
   margin: 1rem 0; }
 
-.Step-2Offers {
+.Step-3Offers {
   margin-bottom: -1.375rem !important; }
-  .Step-2Offers label {
+  .Step-3Offers label {
     margin-right: 1rem; }
-    .Step-2Offers label em {
+    .Step-3Offers label em {
       top: 2.625rem;
       right: 1rem; }
-    .Step-2Offers label span {
+    .Step-3Offers label span {
       top: 2.75rem; }
-    .Step-2Offers label input {
+    .Step-3Offers label input {
       padding: 1rem 1.125rem 0; }
-    .Step-2Offers label.open span {
+    .Step-3Offers label.open span {
       top: 2.25rem; }
-  .Step-2Offers input {
+  .Step-3Offers input {
     height: 3rem; }
 
 /* Step 4 */

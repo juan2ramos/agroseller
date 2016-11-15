@@ -11,7 +11,7 @@ Route::get('productos', [
     'as' => 'productos'
 ]);
 
-Route::get('compras/{product}/{quantity}', [
+Route::get('compras/{product}/{quantity}/{provider}', [
     'uses' => 'ShoppingController@add',
     'as' => 'shopping'
 ]);

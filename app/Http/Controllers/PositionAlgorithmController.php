@@ -21,7 +21,7 @@ class PositionAlgorithmController extends Controller
     function index(Request $request)
     {
 
-        return Product::has('providers')->with(['subcategory','files'])->get();
+        return Product::has('providers')->with(['subcategory','files'])->where('active',1)->get();
         /* Esto es temoporal focus group */
         if (empty($request->get('subcategory'))) {
             return ProductProvider::all();

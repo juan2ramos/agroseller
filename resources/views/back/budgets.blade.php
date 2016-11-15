@@ -46,8 +46,8 @@
                         @foreach($budget->Products_array as $products)
                             <tr>
                                 <td>{{$products['name']}}</td>
-                                <td>${{$products['price']}}</td>
                                 <td>{{$products['quantity']}}</td>
+                                <td>${{$products['price']}}</td>
                                 <td>${{$products['total']}}</td>
                             </tr>
                         @endforeach

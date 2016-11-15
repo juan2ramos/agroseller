@@ -29,11 +29,16 @@ class ShoppingController extends Controller
      * @param $quantity
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function add(Product $product, $quantity)
+    public function add($product, $quantity, $provider)
     {
+        $product = $product->with(['providers' => function($query) use ($provider){
+            $query->where('provider_id', $provider)->first();
+        }])->first();
+
         $cart = Session::get('cart');
         $product->quantity = $quantity;
         Session::flash('buy', 1);
+
         $cart[$product->id] = $product;
 
         $this->valueTotal($cart);
@@ -61,11 +66,13 @@ class ShoppingController extends Controller
     {
         $valueTotal = 0;
         foreach ($cart as $product) {
-            $price = ($offer = $product->offers()->first()) ?
+            /*$price = ($offer = $product->offers()->first()) ?
                 (Carbon::now()->between(new Carbon($offer->offer_on), new Carbon($offer->offer_off)))
                     ? $offer->offer_price : $product->price : $product->price;
             $product->offer_price = $price;
-            $valueTotal += $product->quantity * $price;
+            $valueTotal += $product->quantity * $price;*/
+
+            $valueTotal += $product->providers->first()->pivot->price * $product->quantity;
         }
 
         Session::put('valueTotal', number_format($valueTotal, 0, " ", "."));

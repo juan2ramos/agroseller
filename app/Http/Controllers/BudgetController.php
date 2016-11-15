@@ -12,21 +12,27 @@ use Jenssegers\Date\Date;
 
 class BudgetController extends Controller
 {
-    public function show(){
+    public function show()
+    {
         return view('front.budgets');
     }
-    public function showBack(){
 
-        $budgets = Auth::user()->budgets()->with('products')->get();
+    public function showBack()
+    {
+
+        $budgets = Auth::user()->budgets()->with(['products'])->get();
+
         return view('back.budgets', compact('budgets'));
     }
-    public function add(){
-        if(empty($cart = Session::get('cart')) ){
+
+    public function add()
+    {
+        if (empty($cart = Session::get('cart'))) {
             return back();
         }
         $data = [];
-        foreach($cart as $item){
-            $data[$item->id] = [ 'quantity' => $item->quantity];
+        foreach ($cart as $item) {
+            $data[$item->id] = ['quantity' => $item->quantity];
         }
         $budget = new Budget();
 
@@ -34,9 +40,11 @@ class BudgetController extends Controller
 
         $budget->products()->attach($data);
 
-        return view('front.budgets',['budgetCreate' => true]);
+        return view('front.budgets', ['budgetCreate' => true]);
     }
-    public function download(Request $request){
+
+    public function download(Request $request)
+    {
 
         $user = Auth::user();
         $budget = Budget::find($request->input('budget_id'));
@@ -44,10 +52,10 @@ class BudgetController extends Controller
         $date = $date->format('l j F Y H:i:s');
 
 
-        $view =  view('pdf.invoice', compact('budget','user', 'date'))->render();
+        $view = view('pdf.invoice', compact('budget', 'user', 'date'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        return $pdf->stream('Agrosellers Nº '. $budget->id .' - cliente: '. $user->name.'.pdf',array("Attachment"=>0));
+        return $pdf->stream('Agrosellers Nº ' . $budget->id . ' - cliente: ' . $user->name . '.pdf', array("Attachment" => 0));
 
     }
 }

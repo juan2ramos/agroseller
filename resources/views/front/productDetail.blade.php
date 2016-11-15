@@ -115,7 +115,7 @@
                         <li>{{$f['name']}}: {{$f['value']}}</li>
                         @if($key == 2) @break @endif
                     @endforeach
-                    <li id="distributor"> Distribuidor: <val>{{$product->providers->first()->user->name}}</val></li>
+                    <li id="distributor" data-distributor="{{$product->providers->first()->id}}"> Distribuidor: <val>{{$product->providers->first()->user->name}}</val></li>
                         <li>Calificación: <b>★★★★★</b></li>
                     {{--<li>Presentación: </li>
                 <li>Formato: envases 45 g</li>
@@ -150,7 +150,7 @@
             <tbody id="ProductInfo-body">
             @foreach($product->providers as $key =>  $provider)
                 <tr>
-                    <td class="center">
+                    <td data-idprovider="{{$provider->id}}" class=" idprovider center">
                         <input type="radio" class="ope" @if($key == 0) checked @endif name="provider">
                     </td>
                     <td class="name-provider" data-nameprovider="{{$provider->user->name}}">
@@ -303,7 +303,7 @@
     <!-- ******* Comments ******* -->
     <script src="{{asset('js/comments.js')}}"></script>
 
-    {{-- @if($offer)
+    @if($offer)
      <?php
      $fecha = explode('-', $product->offers->offer_off);
      $day = explode(' ', $fecha[2]);
@@ -327,12 +327,12 @@
              'minute': {!! $minute !!}
          });
      </script>
-     @endif--}}
+     @endif
     <script>
-        /* $('#buy').on('click', function (e) {
+         $('#buy').on('click', function (e) {
          e.preventDefault();
-         window.location.href = $(this).data('url') + '/compras/{{ $product->id }}/' + $('#quantity').val()
-         });*/
+         window.location.href = $(this).data('url') + '/compras/{{ $product->id }}/' + $('#quantity').val() + '/' + $("#distributor").data('distributor')
+         });
     </script>
 @endsection
 

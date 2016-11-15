@@ -11,7 +11,7 @@
                     <li style="margin: 3rem 1rem 0" class="row col-4 middle">
                         <figure class="col-5">
                             <a href="{{route('productDetail',[$product->slug, $product->id])}}">
-                                <img src="{{ url('uploads/products/'.$product->productFiles()->first()->name )}}"
+                                <img src="{{ url('uploads/products/'.$product->files()->first()->name )}}"
                                      alt="">
                             </a>
                         </figure>
@@ -43,12 +43,14 @@
                         </a>
                     </span>
                             </div>
+
                             <div>
-                                <small>Q:</small>
+                                <small>Cantidad:</small>
                                 <span>{{$product->quantity}}</span>
                                 <small></small>
                                 <val>
-                                    ${{number_format(($product->offer_price)?$product->offer_price:$product->price, 0, " ", ".")}}</val>
+                                    {{$product->providers->first()->pivot->price}}
+                                    ${{number_format($product->price, 0, " ", ".")}}</val>
                             </div>
                         </div>
                     </li>
