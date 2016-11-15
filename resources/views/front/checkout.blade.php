@@ -10,7 +10,7 @@
                     @foreach(Session::get('cart') as $product)
                         <li class="row middle">
                             <figure class="smaller-12 small-6 medium-5">
-                                <img src="{{ url('uploads/products/'.$product->productFiles()->first()->name )}}"
+                                <img src="{{ url('uploads/products/'.$product->files()->first()->name )}}"
                                      alt="">
                             </figure>
                             <div class="CartDetail-content smaller-12 small-6 medium-7">

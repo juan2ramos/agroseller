@@ -77,7 +77,9 @@ $('#ProductInfo-body tr').on('click', function () {
     var value = $(this).find('.price-provider').data('price');
     $('#priceUnit').data('price', value);
     $('#priceUnit val').html(value).prettynumber();
-    $('#distributor val').html($(this).find('.name-provider').data('nameprovider'))
+    $('#distributor val').html($(this).find('.name-provider').data('nameprovider'));
+    $('#distributor').data('distributor',$(this).find('.idprovider').data('idprovider'));
+    console.log( )
     changeTotal($('#quantity').val())
 });
 

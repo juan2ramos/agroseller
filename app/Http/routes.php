@@ -1,6 +1,6 @@
 <?php
 Route::bind('product', function ($id) {
-    return \Agrosellers\Entities\Product::find($id);
+    return \Agrosellers\Entities\Product::with(['subcategory','files'])->find($id);
 });
 
 Route::group(['middleware' => ['web']], function () {
