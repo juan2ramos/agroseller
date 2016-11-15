@@ -20,4 +20,7 @@ class ProductProvider extends Model
     public function product(){
         return $this->belongsTo(Product::class);
     }
+    public function files(){
+        return $this->belongsToMany(File::class);
+    }
 }

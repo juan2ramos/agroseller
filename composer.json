@@ -15,7 +15,9 @@
         "barryvdh/laravel-dompdf": "0.6.*",
         "bogardo/mailgun": "4.0.*",
         "elasticquent/elasticquent": "dev-master",
-        "torann/geoip": "dev-master"
+        "torann/geoip": "dev-master",
+        "ip2location/ip2location-php": "8.*"
+
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

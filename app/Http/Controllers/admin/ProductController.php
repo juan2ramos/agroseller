@@ -86,14 +86,6 @@ class ProductController extends Controller
         return view('back.productEdit', compact('productEdit', 'offerEdit', 'categories', 'farms', 'brands'));
     }
 
-    function adminEditProduct($id){
-        $productEdit = Product::find($id);
-        $offerEdit = $productEdit->offers()->first();
-        $farms = Farm::all();
-        $categories = Category::all();
-        
-    }
-
     function updateProduct(Request $request, $id){
         $inputs = $request->all();
         $this->validator($request->file());

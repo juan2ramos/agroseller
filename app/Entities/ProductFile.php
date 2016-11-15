@@ -13,4 +13,5 @@ class ProductFile extends Model{
     public function product(){
     	return $this->belongsTo(Product::class);
     }
+
 }
