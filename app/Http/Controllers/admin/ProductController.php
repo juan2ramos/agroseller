@@ -58,13 +58,12 @@ class ProductController extends Controller
     {
         $brands = Brand::all();
         $farms = Farm::all();
+        $categories = Category::all();
         $user = auth()->user();
         if($user->role_id == 1){
-            $categories = Category::all();
             $products = Product::orderBy('id', 'DESC')->paginate(10);
             return view('back.productAdminList', compact('categories', 'products', 'farms', 'brands'));
         } else {
-            $categories = Category::all();
             $products = ProductProvider::where('provider_id', auth()->user()->provider->id)->orderBy('id', 'DESC')->paginate(10);
             return view('back.productProviderList', compact('categories', 'products', 'farms', 'brands'));
         }
@@ -72,11 +71,27 @@ class ProductController extends Controller
     }
     
     function editProduct($id){
+        $brands = Brand::all();
+        $farms = Farm::all();
+        $categories = Category::all();
+        $user = auth()->user();
+
         $productEdit = Product::find($id);
         $offerEdit = $productEdit->offers()->first();
         $farms = Farm::all();
         $categories = Category::all();
-        return view('back.productEdit', compact('productEdit', 'offerEdit', 'categories', 'farms'));
+        if($user->role_id == 1){
+            return view('back.productAdminEdit', compact('productEdit', 'offerEdit', 'categories', 'farms', 'brands'));
+        }
+        return view('back.productEdit', compact('productEdit', 'offerEdit', 'categories', 'farms', 'brands'));
+    }
+
+    function adminEditProduct($id){
+        $productEdit = Product::find($id);
+        $offerEdit = $productEdit->offers()->first();
+        $farms = Farm::all();
+        $categories = Category::all();
+        
     }
 
     function updateProduct(Request $request, $id){

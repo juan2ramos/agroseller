@@ -16,9 +16,15 @@
         <span class="smaller-12">1. Seleccione o cree la marca del producto.</span>
         <select name="brand" id="brand" class="smaller-9">
             <option value=""></option>
-            @foreach($brands as $brand)
-                <option value="{{$brand->id}}">{{$brand->name}}</option>
-            @endforeach
+            @if(isset($productEdit)) 
+                @foreach($brands as $brand)
+                    <option value="{{$brand->id}}" @if($productEdit->brand_id == $brand->id) selected @endif >{{$brand->name}}</option>
+                @endforeach
+            @else
+                @foreach($brands as $brand)
+                    <option value="{{$brand->id}}" >{{$brand->name}}</option>
+                @endforeach
+            @endif
         </select>
         <div class="smaller-3 row middle end">
             <div class="Button" id="createBrand">CREAR MARCA</div>
@@ -138,7 +144,7 @@
     <div class="row Step-2Images">
         @if(isset($productEdit))
             <?php $i = 1 ?>
-            @foreach($productEdit->productFiles()->get() as $image)
+            @foreach($productEdit->productFiles as $image)
                 @if($image->extension != 'pdf')
                     <div class="image col-3">
                         <label for="image{{$i}}">
@@ -148,7 +154,11 @@
                                     <use xlink:href="#imageTemp"></use>
                                 </svg>
                             </figure>
-                            <output class="result" />
+                            <output class="result">
+                                <figure>
+                                    <img class="thumbnail" src="{{asset('uploads/products/' . $image->name)}}" title="">
+                                </figure>
+                            </output>
                         </label>
                     </div>
                     <?php $i++ ?>

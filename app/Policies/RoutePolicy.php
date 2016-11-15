@@ -45,7 +45,7 @@ class RoutePolicy
 
                     'agentsGet', 'editProduct', 'deleteProduct', 'updateProduct','newUserAdmin','user',
                     'budgetShow', 'indexProfile', 'userUpdate', 'productAgentPreview', 'productDetailPreview','validateProduct',
-                    'payPlan', 'searchUser', 'category', 'products', 'products'
+                    'payPlan', 'searchUser', 'category', 'products', 'products', 'adminEditProduct'
 
                 ],
             '2' =>

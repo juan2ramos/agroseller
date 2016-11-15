@@ -111,8 +111,7 @@
         </article>
 
         <article class="TabContainer col-12" id="NewProduct">
-            <form id="Product-form" role="form" method="POST" action="{{ route('newProduct') }}"
-                  enctype="multipart/form-data">
+            <form id="Product-form" role="form" method="POST" action="{{ route('newProduct') }}" enctype="multipart/form-data">
                 <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
 
                 <section class="Wizard">

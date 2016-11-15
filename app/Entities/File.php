@@ -8,7 +8,7 @@ class File extends Model
 {
     protected $fillable = ['description'];
 
-    public function productProviders(){
-        return $this->belongsToMany(ProductProvider::class);
+    public function product(){
+        return $this->belongsTo(Product::class);
     }
 }

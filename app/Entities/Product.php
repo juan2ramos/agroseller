@@ -68,7 +68,11 @@ class Product extends Model
     }
 
     public function files(){
-        return $this->belongsToMany(File::class);
+        return $this->hasMany(File::class);
+    }
+
+    public function productFiles(){
+        return $this->hasMany(ProductFile::class);
     }
 
     public function taxes(){

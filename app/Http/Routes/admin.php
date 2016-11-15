@@ -1,7 +1,7 @@
 <?php
 
 Route::group(['namespace' => 'admin'], function () {
-
+//
     Route::get('productos', [
         'uses' => 'ProductController@index',
         'as' => 'products',
@@ -59,6 +59,14 @@ Route::group(['namespace' => 'admin'], function () {
         'uses' => 'ProductController@editProduct',
         'as' => 'editProduct'
     ]);
+
+/****************** borrar ***********************/
+    Route::get('producto/admin-edit/{id}', [
+        'uses' => 'ProductController@adminEditProduct',
+        'as' => 'adminEditProduct'
+    ]);
+
+/****************** borrar ***********************/
 
     Route::post('producto/update/{id}', [
         'uses' => 'ProductController@updateProduct',
