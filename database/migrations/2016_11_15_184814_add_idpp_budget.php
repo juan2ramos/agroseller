@@ -13,7 +13,7 @@ class AddIdppBudget extends Migration
     public function up()
     {
         Schema::table('budgets',function($table){
-            $table->integer('product_provider_id')->unsiged();
+            $table->integer('product_provider_id')->unsigned();
             $table->foreign('product_provider_id')->references('id')->on('product_providers');
         });
     }
