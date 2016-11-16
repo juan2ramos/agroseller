@@ -72,7 +72,7 @@ class Product extends Model
     }
 
     public function files(){
-        return $this->hasMany(File::class);
+        return $this->hasMany(ProductFile::class);
     }
 
     public function productFiles(){

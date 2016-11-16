@@ -5,6 +5,7 @@ namespace Agrosellers\Http\Controllers;
 use Agrosellers\Entities\Budget;
 use Agrosellers\Entities\Order;
 use Agrosellers\Entities\Product;
+use Agrosellers\Entities\Provider;
 use Agrosellers\Entities\StateOrder;
 use Agrosellers\Services\ZonaPagos;
 use Agrosellers\User;
@@ -31,11 +32,13 @@ class ShoppingController extends Controller
      */
     public function add($product, $quantity, $provider)
     {
-        $product = $product->with(['providers' => function($query) use ($provider){
-            $query->where('provider_id', $provider)->first();
-        }])->first();
+
+        $product = Product::with(['providers' => function($query) use ($provider){
+            $query->where('providers.id', $provider);
+        }])->find($product);
 
         $cart = Session::get('cart');
+
         $product->quantity = $quantity;
         Session::flash('buy', 1);
 
