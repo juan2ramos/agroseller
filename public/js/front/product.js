@@ -70,17 +70,57 @@ $('#quantity').on('change keyup', function () {
 
     changeTotal($(this).val())
 });
+$('#quantity').on('keyup', function () {
+    if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g, '');
 
+
+});
+$('#quantity').on('focusout', function () {
+
+    var min = $(this).data('min'),
+        max = $(this).data('max');
+    if (this.value < min) {this.value = min}
+    if (this.value > max) {this.value = max}
+
+    changeTotal($('#quantity').val())
+
+});
 $('#ProductInfo-body tr').on('click', function () {
 
     $(this).find('input').prop('checked', 'checked')
     var value = $(this).find('.price-provider').data('price');
+    var min = $(this).find('.min-provider').data('min');
+    var max = $(this).find('.max-provider').data('max');
+    var $quantity = $('#quantity');
+
     $('#priceUnit').data('price', value);
     $('#priceUnit val').html(value).prettynumber();
     $('#distributor val').html($(this).find('.name-provider').data('nameprovider'));
-    $('#distributor').data('distributor',$(this).find('.idprovider').data('idprovider'));
-    console.log( )
-    changeTotal($('#quantity').val())
+    $('#distributor').data('distributor', $(this).find('.idprovider').data('idprovider'));
+    $('#distributor').data('product_provider', $(this).find('.idprovider').data('product_provider'))
+
+    $(this).find('.idprovider').data('product_provider');
+
+    $quantity.data('min',min);
+    $quantity.data('max',max);
+
+
+    if($quantity.val() < $quantity.data('min') ){
+        $quantity.val(min)
+
+    } else{
+
+        if($quantity.val() > $quantity.data('max')) {
+
+            console.log('val' + $quantity.val());
+            console.log('min' + $quantity.data('min'));
+            console.log('max' + $quantity.data('max'));
+            $quantity.val(max);
+        };
+    }
+
+
+    changeTotal($quantity.val())
 });
 
 function changeTotal(quantity) {
@@ -89,7 +129,7 @@ function changeTotal(quantity) {
     $('#total').html(total).prettynumber();
 }
 
-$("#moreInfo").click(function() {
+$("#moreInfo").click(function () {
     $('html, body').animate({
         scrollTop: $("#description").offset().top
     }, 400);

@@ -3,22 +3,23 @@
 @section('content')
     <div class="row Checkout">
         <section class="col-12">
-            <h2 style="text-align: justify ; font-size: 1.2rem">¡Si desea comparar estos productos en una cotización, haga clic en la opción cotizar!</h2>
+            <h2 style="text-align: justify ; font-size: 1.2rem">¡Si desea comparar estos productos en una cotización,
+                haga clic en la opción cotizar!</h2>
             <h3>Los productos guardados están sujetos a cambios de precios por parte de los proveedores</h3>
             <ul class="row " style="width: 100%">
                 @if(Session::has('cart') &&  Session::get('cart') )
-                @foreach(Session::get('cart') as $product)
-                    <li style="margin: 3rem 1rem 0" class="row col-4 middle">
-                        <figure class="col-5">
-                            <a href="{{route('productDetail',[$product->slug, $product->id])}}">
-                                <img src="{{ url('uploads/products/'.$product->files()->first()->name )}}"
-                                     alt="">
-                            </a>
-                        </figure>
-                        <div class="CartDetail-content col-7">
-                            <div class="CartDetail-hGroup">
-                                <h3>{{$product->name}}</h3>
-                                <h4>{{$product->subcategory->first()->name}}</h4>
+                    @foreach(Session::get('cart') as $product)
+                        <li style="margin: 3rem 1rem 0" class="row col-4 middle">
+                            <figure class="col-5">
+                                <a href="{{route('productDetail',[$product->product->slug, $product->product->id])}}">
+                                    <img src="{{ url('uploads/products/'.$product->product->files->first()->name )}}"
+                                         alt="">
+                                </a>
+                            </figure>
+                            <div class="CartDetail-content col-7">
+                                <div class="CartDetail-hGroup">
+                                    <h3>{{$product->product->name}}</h3>
+                                    <h4>{{$product->provider->user->name}}</h4>
                         <span class="CartDetail-close">
                         <a href="{{route('cartDelete',['id' => $product->id])}}">
                             <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1"
@@ -42,19 +43,17 @@
                             </svg>
                         </a>
                     </span>
-                            </div>
+                                </div>
 
-                            <div>
-                                <small>Cantidad:</small>
-                                <span>{{$product->quantity}}</span>
-                                <small></small>
-                                <val>
-                                    {{$product->providers->first()->pivot->price}}
-                                    ${{number_format($product->price, 0, " ", ".")}}</val>
+                                <div>
+                                    <small>Cantidad:</small>
+                                    <span>{{$product->quantity}}</span>
+                                    <small></small>
+                                    <val>${{number_format($product->price, 0, " ", ".")}}</val>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                @endforeach
+                        </li>
+                    @endforeach
                 @endif
 
             </ul>
@@ -62,56 +61,85 @@
                 ${{session('valueTotal')}}</div>
         </section>
         <section class="col-12">
-            @if(!  Session::get('cart'))
-                @include('messages',[
-                    'type' => 'warning',
-                    'title' => '¡Lo sentimos!',
-                    'message' => '<p> tu carrito esta vacio, vuelve a
-                     <a href="'. route('home') .'">Inicio</a> Busca tu producto en la barra  de arriba. </p>'
-                     ])
-            @else
+            @if(Session::get('budget'))
+                <form id="download" target="_blank" method="post" action="{{route('downloadBudget')}}">
+                    <input type="hidden" name="budget_id" id="budget">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                </form>
+                <div class="MessagePlatform row middle center ">
+                    <div class="MessagePlatform-content MessagePlatform-ok">
+                        <span class="MessagePlatform-close">X</span>
+                        <h2>¡Gracias por utilizar la plataforma agrosellers!</h2>
+                        <p> Tu cotización ha sido creado con éxito, para descargar el
+                            <a href="javascript: submitform({{Session::get('idBudget')}})"> PDF   haz clic aquí </a> o
+                            <a href="admin/mis-presupuestos">aquí</a> para comparar tus productos</p>
+                        <p>Gracias por elegirnos.</p>
+                        <p class="MessagePlatform-last">Centro de notificaciones <span>Agrosellers</span></p>
+                    </div>
+                </div>
 
-                @if(Auth::check())
-                    @if(auth()->user()->role_id == 4)
-                        <div class="row center">
-                            <a class="Button col-4" style="margin: 2rem 0" href="{{route('addBudget')}}">Cotizar</a>
-                        </div>
-                    @else
-                        @include('messages',[
+            @else
+                @if(!  Session::get('cart'))
+                    @include('messages',[
                         'type' => 'warning',
                         'title' => '¡Lo sentimos!',
-                        'message' => '<p> Para realizar compras debes tener o crear  una cuenta como cliente, da clic
-                         <a href="'. route('login') .'">aqui</a> si ya posees una cuenta o
-                         <a href="'. route('register') .'">aqui</a> si te quieres registrar </p>'
+                        'message' => '<p> tu carrito esta vacio, vuelve a
+                         <a href="'. route('home') .'">Inicio</a> Busca tu producto en la barra  de arriba. </p>'
                          ])
-                    @endif
                 @else
-                    @include('messages',[
-                                       'type' => 'warning',
-                                       'title' => '¡Lo sentimos!',
-                                       'message' => '<p> Para poder comprar debes tener una cuenta cliente con nosotros,
-                                       da clic en <a href="'. url('registro') .'">registrarse</a> y empieza a comprar.</p>' .
-                                       '<p>Si ya tienes una cuenta inicia sesión y realiza tu compra.</p>'
-                                        ])
-                    <h3>
+
+                    @if(Auth::check())
+                        @if(auth()->user()->role_id == 4)
+                            <div class="row center">
+                                <a class="Button col-4" style="margin: 2rem 0" href="{{route('addBudget')}}">Cotizar</a>
+                            </div>
+                        @else
+                            @include('messages',[
+                            'type' => 'warning',
+                            'title' => '¡Lo sentimos!',
+                            'message' => '<p> Para realizar compras debes tener o crear  una cuenta como cliente, da clic
+                             <a href="'. route('login') .'">aqui</a> si ya posees una cuenta o
+                             <a href="'. route('register') .'">aqui</a> si te quieres registrar </p>'
+                             ])
+                        @endif
+                    @else
+                        @include('messages',[
+                                           'type' => 'warning',
+                                           'title' => '¡Lo sentimos!',
+                                           'message' => '<p> Para poder comprar debes tener una cuenta cliente con nosotros,
+                                           da clic en <a href="'. url('registro') .'">registrarse</a> y empieza a comprar.</p>' .
+                                           '<p>Si ya tienes una cuenta inicia sesión y realiza tu compra.</p>'
+                                            ])
+                        <h3>
 
 
-                    </h3>
-                    <div class="row middle arrow" style="margin: 3rem 0">
-                        <a href="{{route('register')}}" class="col-3 offset-3 Button">REGISTRATE</a>
-                        <a href="{{route('login')}}" class="col-3 offset-1 Button">INICIA SESIÓN</a>
-                    </div>
-                @endif
+                        </h3>
+                        <div class="row middle arrow" style="margin: 3rem 0">
+                            <a href="{{route('register')}}" class="col-3 offset-3 Button">REGISTRATE</a>
+                            <a href="{{route('login')}}" class="col-3 offset-1 Button">INICIA SESIÓN</a>
+                        </div>
+                    @endif
 
-                @if(isset($budgetCreate) )
-                    @include('messages',[
-                           'type' => 'ok',
-                           'title' => '¡Gracias por utilizar la plataforma agrosellers!',
-                           'message' => '<p> Tu cotización ha sido creado con éxito,  ve al panel administrativo, o haz clic
-                           <a href="admin/mis-presupuestos">aquí</a> para comparar tus productos</p>'
-                            ])
+                    @if(isset($budgetCreate) )
+                        @include('messages',[
+                               'type' => 'ok',
+                               'title' => '¡Gracias por utilizar la plataforma agrosellers!',
+                               'message' => '<p> Tu cotización ha sido creado con éxito,  ve al panel administrativo, o haz clic
+                               <a href="admin/mis-presupuestos">aquí</a> para comparar tus productos</p>'
+                                ])
+                    @endif
                 @endif
             @endif
         </section>
     </div>
+@endsection
+
+@section('scripts')
+
+    <script>
+        function submitform(idBudget) {
+            $("#budget").val(idBudget);
+            $("#download").submit();
+        }
+    </script>
 @endsection

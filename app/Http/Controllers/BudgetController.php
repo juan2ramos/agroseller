@@ -20,19 +20,18 @@ class BudgetController extends Controller
     public function showBack()
     {
 
-
-
-        $budgets = Auth::user()->budgets()->with(['products'])->get();
-
-        dd($budgets);
+        $budgets = Auth::user()->budgets()->with(['productProviders'])->get();
         return view('back.budgets', compact('budgets'));
     }
 
     public function add()
     {
+
         if (empty($cart = Session::get('cart'))) {
             return back();
         }
+
+
         $data = [];
         foreach ($cart as $item) {
             $data[$item->id] = ['quantity' => $item->quantity];
@@ -41,7 +40,11 @@ class BudgetController extends Controller
 
         auth()->user()->budgets()->save($budget);
 
-        $budget->products()->attach($data);
+        $budget->productProviders()->attach($data);
+        Session::flash('budget', 1);
+        Session::flash('idBudget', $budget->id);
+        Session::forget('cart');
+        Session::forget('valueTotal');
 
         return view('front.budgets', ['budgetCreate' => true]);
     }
@@ -50,7 +53,8 @@ class BudgetController extends Controller
     {
 
         $user = Auth::user();
-        $budget = Budget::find($request->input('budget_id'));
+
+        $budget = Budget::with(['productProviders'])->find($request->input('budget_id'));
         $date = new Date();
         $date = $date->format('l j F Y H:i:s');
 

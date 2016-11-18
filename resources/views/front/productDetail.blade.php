@@ -36,9 +36,10 @@
             </div>
             <div class="col-6 small-12">
                 <span>Cantidad</span>
-                <input onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" type="text"
-                       min="{{$product->providers->first()->pivot->min_quantity}}"
-                       max="{{$product->providers->first()->pivot->available_quantity}}" id="quantity" value="1"/>
+                <input type="text" id="quantity"
+                       data-min="{{$product->providers->first()->pivot->min_quantity}}"
+                       data-max="{{$product->providers->first()->pivot->available_quantity}}"
+                       value="{{$product->providers->first()->pivot->min_quantity}}"/>
             </div>
             <div class="col-12 Header-productDescription">
                 {!!$product->description!!}
@@ -111,12 +112,12 @@
             <div class="Header-productInfoContent row middle">
                 <h3>Información de pedido</h3>
                 <ul>
-                    @foreach($featuresTranslate as $key => $f)
-                        <li>{{$f['name']}}: {{$f['value']}}</li>
-                        @if($key == 2) @break @endif
-                    @endforeach
-                    <li id="distributor" data-distributor="{{$product->providers->first()->id}}"> Distribuidor: <val>{{$product->providers->first()->user->name}}</val></li>
-                        <li>Calificación: <b>★★★★★</b></li>
+
+                    <li id="distributor" data-product_provider="{{$product->providers->first()->pivot->id}}"
+                        data-distributor="{{$product->providers->first()->id}}"> Distribuidor:
+                        <val>{{$product->providers->first()->user->name}}</val>
+                    </li>
+                    <li>Calificación: <b>★★★★★</b></li>
                     {{--<li>Presentación: </li>
                 <li>Formato: envases 45 g</li>
                 <li> Distribuidor: Alejandra</li>
@@ -125,7 +126,9 @@
                 <div class="col-12 row end" style="margin: 10px 0">
 
                     <p>Total $
-                        <data id="total">{{number_format($product->providers->first()->pivot->price, 0, " ", ".")}}</data>
+                        <data id="total">
+                            {{number_format(($product->providers->first()->pivot->price * $product->providers->first()->pivot->min_quantity), 0, " ", ".")}}
+                        </data>
                     </p>
                     <span class="col-12" style="font-size: 12px">IVA incluido</span>
                 </div>
@@ -150,7 +153,9 @@
             <tbody id="ProductInfo-body">
             @foreach($product->providers as $key =>  $provider)
                 <tr>
-                    <td data-idprovider="{{$provider->id}}" class=" idprovider center">
+                    <td data-product_provider="{{$provider->pivot->id}}" data-idprovider="{{$provider->id}}"
+                        class=" idprovider center">
+
                         <input type="radio" class="ope" @if($key == 0) checked @endif name="provider">
                     </td>
                     <td class="name-provider" data-nameprovider="{{$provider->user->name}}">
@@ -160,10 +165,10 @@
                     <td class="price-provider" data-price="{{$provider->pivot->price}}">
                         ${{number_format($provider->pivot->price, 0, " ", ".")}}
                     </td>
-                    <td>
+                    <td data-min="{{$provider->pivot->min_quantity}}" class="min-provider">
                         {{$provider->pivot->min_quantity}}
                     </td>
-                    <td>
+                    <td data-max="{{$provider->pivot->available_quantity}}" class="max-provider">
                         {{$provider->pivot->available_quantity}}
                     </td>
                 </tr>
@@ -304,35 +309,35 @@
     <script src="{{asset('js/comments.js')}}"></script>
 
     @if($offer)
-     <?php
-     $fecha = explode('-', $product->offers->offer_off);
-     $day = explode(' ', $fecha[2]);
-     $time = explode(':', $day[1]);
+    <?php
+    $fecha = explode('-', $product->offers->offer_off);
+    $day = explode(' ', $fecha[2]);
+    $time = explode(':', $day[1]);
 
-     $year = $fecha[0];
-     $month = $fecha[1];
-     $day = $day[0];
-     $hour = $time[0];
-     $minute = $time[1];
-     ?>
+    $year = $fecha[0];
+    $month = $fecha[1];
+    $day = $day[0];
+    $hour = $time[0];
+    $minute = $time[1];
+    ?>
 
-             <!-- ******* Timer ******* -->
-     <script src="{{asset('js/front/product.js')}}"></script>
-     <script>
-         countDown({
-             'year': {!! $year !!},
-             'month': {!! $month !!},
-             'day': {!! $day !!},
-             'hour': {!! $hour !!},
-             'minute': {!! $minute !!}
-         });
-     </script>
-     @endif
+            <!-- ******* Timer ******* -->
+    <script src="{{asset('js/front/product.js')}}"></script>
     <script>
-         $('#buy').on('click', function (e) {
-         e.preventDefault();
-         window.location.href = $(this).data('url') + '/compras/{{ $product->id }}/' + $('#quantity').val() + '/' + $("#distributor").data('distributor')
-         });
+        countDown({
+            'year': {!! $year !!},
+            'month': {!! $month !!},
+            'day': {!! $day !!},
+            'hour': {!! $hour !!},
+            'minute': {!! $minute !!}
+        });
+    </script>
+    @endif
+    <script>
+        $('#buy').on('click', function (e) {
+            e.preventDefault();
+            window.location.href = $(this).data('url') + '/compras/' + $('#distributor').data('product_provider') + '/' + $('#quantity').val() + '/' + $("#distributor").data('distributor')
+        });
     </script>
 @endsection
 

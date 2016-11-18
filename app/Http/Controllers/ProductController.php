@@ -67,7 +67,7 @@ class ProductController extends Controller
         $questions = $this->reloadQuestions($id);
         $featuresTranslate = $this->setFeaturesTranslate($product);
         $offer = false;
-        return view('front.productDetail', compact('questions', 'product', 'featuresTranslate','offer','description','providers'));
+        return view('front.productDetail', compact('questions', 'product', 'featuresTranslate','offer'));
 
 
         /* Versión anterior al cambio de productos con muchos proveedores*/

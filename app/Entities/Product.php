@@ -48,7 +48,7 @@ class Product extends Model
     }
 
     public function providers(){
-        return $this->belongsToMany(Provider::class, 'product_providers')->withPivot('price', 'location','available_quantity','min_quantity');
+        return $this->belongsToMany(Provider::class, 'product_providers')->withPivot('price', 'location','available_quantity','min_quantity','id');
     }
 
     public function offers(){

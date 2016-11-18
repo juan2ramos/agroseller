@@ -5,6 +5,7 @@ namespace Agrosellers\Http\Controllers;
 use Agrosellers\Entities\Budget;
 use Agrosellers\Entities\Order;
 use Agrosellers\Entities\Product;
+use Agrosellers\Entities\ProductProvider;
 use Agrosellers\Entities\Provider;
 use Agrosellers\Entities\StateOrder;
 use Agrosellers\Services\ZonaPagos;
@@ -33,9 +34,9 @@ class ShoppingController extends Controller
     public function add($product, $quantity, $provider)
     {
 
-        $product = Product::with(['providers' => function($query) use ($provider){
-            $query->where('providers.id', $provider);
-        }])->find($product);
+
+        $product = ProductProvider::with('product','provider')->find($product);
+
 
         $cart = Session::get('cart');
 
@@ -43,7 +44,6 @@ class ShoppingController extends Controller
         Session::flash('buy', 1);
 
         $cart[$product->id] = $product;
-
         $this->valueTotal($cart);
 
         Session::put('cart', $cart);
@@ -75,7 +75,8 @@ class ShoppingController extends Controller
             $product->offer_price = $price;
             $valueTotal += $product->quantity * $price;*/
 
-            $valueTotal += $product->providers->first()->pivot->price * $product->quantity;
+            $valueTotal += $product
+                    ->price * $product->quantity;
         }
 
         Session::put('valueTotal', number_format($valueTotal, 0, " ", "."));

@@ -23,4 +23,7 @@ class ProductProvider extends Model
     public function files(){
         return $this->belongsToMany(File::class);
     }
+    public function getTotalValueAttribute(){
+        return $this->pivot->quantity * $this->price;
+    }
 }

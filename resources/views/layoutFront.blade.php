@@ -582,15 +582,15 @@
                 @foreach(Session::get('cart') as $product)
                     <li class="row middle">
                         <figure class="smaller-5 col-3">
-                            <a href="{{route('productDetail',[$product->slug, $product->id])}}">
-                                <img src="{{ url('uploads/products/'.$product->files()->first()->name )}}"
+                            <a href="{{route('productDetail',[$product->product->slug, $product->id])}}">
+                                <img src="{{ url('uploads/products/'.$product->product->files()->first()->name )}}"
                                      alt="">
                             </a>
                         </figure>
                         <div class="CartDetail-content col-9 smaller-7">
                             <div class="CartDetail-hGroup">
-                                <h3>{{$product->name}}</h3>
-                                <h4>{{$product->providers->first()->user->name}}</h4>
+                                <h3>{{$product->product->name}}</h3>
+                                <h4>{{$product->provider->user->name}}</h4>
                         <span class="CartDetail-close">
                         <a href="{{route('cartDelete',['id' => $product->id])}}">
                             <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1"

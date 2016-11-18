@@ -15,25 +15,30 @@
             margin: 0;
             padding: 0
         }
-        table{
+
+        table {
             border-collapse: collapse;
             box-shadow: 0 0 1.875rem 0 rgba(0, 0, 0, 0.1);
         }
-        table tr:nth-child(2n + 1){
+
+        table tr:nth-child(2n + 1) {
             background: #aeaeae;
         }
-        td{
 
-            padding-top:20px;
-            padding-bottom:20px;
-            padding-right:20px;
+        td {
+
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-right: 20px;
         }
-        thead{
+
+        thead {
             color: white;
             background: #27383F;
 
         }
-        tr{
+
+        tr {
             border-bottom: 1px solid red;
         }
     </style>
@@ -61,9 +66,9 @@
     <p style="padding: 5px 0"><b>Email:</b> {{$user->email}}</p>
     <p style="padding: 5px 0"><b>Fecha creación:</b> {{$budget->createdBudget}} </p>
     <p style="padding: 5px 0"><b>Fecha descarga:</b> {{$date}} </p>
-  {{--  <p style="padding: 5px 0"><b>Teléfono: </b>{{$user->phone}}</p>--}}
+    {{--  <p style="padding: 5px 0"><b>Teléfono: </b>{{$user->phone}}</p>--}}
 
-    <table border="1" style="width: 100%;margin: 20px 0; " >
+    <table border="1" style="width: 100%;margin: 20px 0; ">
         <thead>
         <tr>
             <th style="padding: 10px;">Id</th>
@@ -74,13 +79,15 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($budget->Products_array as $product)
+        <?php  $i = 0 ?>
+        @foreach($budget->productProviders as $product)
             <tr>
-                <td  style="padding: 10px;boder:1px solid black ;" >{{$product['id']}}</td>
-                <td colspan="2" style="padding: 10px;boder:1px solid black ;" >{{$product['name']}}</td>
-                <td style="boder:1px solid black ;padding: 10px;text-align: center">{{$product['quantity']}}</td>
-                <td style="boder:1px solid black ;padding: 10px;text-align: center">${{$product['price']}}</td>
-                <td style="boder:1px solid black ;padding: 10px;text-align: center">${{$product['total']}}</td>
+                <td style="padding: 10px;boder:1px solid black ;">{{$product->id}}</td>
+                <td colspan="2" style="padding: 10px;boder:1px solid black ;">{{$product->product->name}}</td>
+                <td style="boder:1px solid black ;padding: 10px;text-align: center">{{$product->pivot->quantity}}</td>
+                <td style="boder:1px solid black ;padding: 10px;text-align: center">${{number_format( $product->price, 0, " ", ".")}}</td>
+                <td style="boder:1px solid black ;padding: 10px;text-align: center">${{number_format( $product->total_value, 0, " ", ".")}}</td>
+                <?php  $i += $product->total_value  ?>
             </tr>
         @endforeach
 
@@ -88,27 +95,28 @@
     </table>
     <p style="text-align: right; margin: 20px 0 0">
         <span style="border: 1px solid ; display: inline-block; padding: 10px ;border-bottom: none;">
-            <b > Subtotal: ${{ number_format($budget->total_value - ($budget->total_value * 0.16), 0, " ", ".")   }}
+            <b> Subtotal: ${{ number_format($i - ($i * 0.16), 0, " ", ".")   }}
             </b>
         </span>
     </p>
 
     <p style="text-align: right; margin: 0 0  ">
-        <span style="border: 1px solid ; display: inline-block; padding: 10px;border-bottom: none; " >
-            <b > IVA:  ${{number_format( ($budget->total_value * 0.16), 0, " ", ".")}}</b>
+        <span style="border: 1px solid ; display: inline-block; padding: 10px;border-bottom: none; ">
+            <b> IVA: ${{number_format( ($i * 0.16), 0, " ", ".")}}</b>
         </span>
     </p>
 
     <p style="text-align: right; margin: 0 0 60px; ">
-        <span style="border: 1px solid ; display: inline-block; padding: 10px " >
-            <b > Valor total: ${{$budget->total_value}}</b>
+        <span style="border: 1px solid ; display: inline-block; padding: 10px ">
+            <b> Valor total: ${{number_format( $i, 0, " ", ".")}}</b>
         </span>
     </p>
     <div>
         <h3 style="font-size: 18px; padding-bottom: 4px ">Condiciones comerciales</h3>
         <hr style="margin-bottom: 10px">
 
-        <p style="font-size: 14px ; padding-bottom: 4px"> - El precio del producto puede variar en el momento de la compra de acuerdo a cambios por parte del proveedor</p>
+        <p style="font-size: 14px ; padding-bottom: 4px"> - El precio del producto puede variar en el momento de la
+            compra de acuerdo a cambios por parte del proveedor</p>
 
     </div>
 

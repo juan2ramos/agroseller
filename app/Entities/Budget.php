@@ -19,6 +19,10 @@ class Budget extends Model
         return $this->belongsToMany(Product::class)->withPivot('quantity','provider_id');
     }
 
+    public function productProviders(){
+        return $this->belongsToMany(ProductProvider::class,'budget_product_provider')->withPivot('quantity');
+    }
+
     public function providers(){
         return $this->belongsToMany(Provider::class,'budget_product');
     }
@@ -30,8 +34,21 @@ class Budget extends Model
         $date = new Date($this->created_at);
         return $date->format('l j F Y H:i:s');
     }
-
     public function getTotalValueAttribute(){
+
+        return $this;
+        $valueTotal = 0;
+        foreach ($this->products()->get() as $product) {
+            $price = ($offer = $product->offers()->first()) ?
+                (Carbon::now()->between(new Carbon($offer->offer_on), new Carbon($offer->offer_off)))
+                    ? $offer->offer_price : $product->price : $product->price;
+            $product->offer_price = $price;
+            $valueTotal += $product->pivot->quantity * $price;
+        }
+
+        return $valueTotal;
+    }
+    public function getTotalValueAntAttribute(){
         $valueTotal = 0;
         foreach ($this->products()->get() as $product) {
             $price = ($offer = $product->offers()->first()) ?

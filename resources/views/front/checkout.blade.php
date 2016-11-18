@@ -10,14 +10,14 @@
                     @foreach(Session::get('cart') as $product)
                         <li class="row middle">
                             <figure class="smaller-12 small-6 medium-5">
-                                <img src="{{ url('uploads/products/'.$product->files()->first()->name )}}"
+                                <img src="{{ url('uploads/products/'.$product->product->files()->first()->name )}}"
                                      alt="">
                             </figure>
-                            <div class="CartDetail-content smaller-12 small-6 medium-7">
+                            <div class="CartDetail-content smaller-12 small-6 medium-7" style="    height: 80px;">
                                 <div class="CartDetail-hGroup">
                                     <h3>{{$product->name}}</h3>
-                                    <h4>{{$product->subcategory->first()->name}}</h4>
-                        <span class="CartDetail-close">
+                                    <h4>{{$product->provider->user->name}}</h4>
+                        <span class="CartDetail-close" >
                         <a href="{{route('cartDelete',['id' => $product->id])}}">
                             <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -42,12 +42,10 @@
                     </span>
                                 </div>
                                 <div>
-                                    <small>Q:</small>
+                                    <small>Cantidad:</small>
                                     <span>{{$product->quantity}}</span>
                                     <small></small>
-                                    <val>
-
-                                        ${{number_format(($product->offer_price)?$product->offer_price:$product->price, 0, " ", ".")}}</val>
+                                    <val> ${{number_format($product->price, 0, " ", ".")}}</val>
                                 </div>
                             </div>
                         </li>
@@ -122,8 +120,8 @@
                                        value="{{auth()->user()->mobile_phone}}">
                                 <span>Teléfono</span>
                             </label>
-
-                            <button class="Button">FINALIZAR COMPRA</button>
+                            <p class="Button">NO DISPONIBLE </p>
+                            {{--<button class="Button">FINALIZAR COMPRA</button>--}}
                             <!--<a href="#" id="finishBuy" class="Button">FINALIZAR COMPRA</a>-->
                         </form>
                     @else
