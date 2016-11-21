@@ -50,9 +50,12 @@ function searchQuery(){
         data     :  input,
         success  :  function(json) {
             result.empty();
-            if(json.products.length > 0){
-                for(var i = 0; i < json.products.length; i++) {
-                    var product = json.products[i];
+            var productProviders = json.products;
+            console.log(productProviders[0].product.product_files);
+            if(productProviders.length > 0){
+                for(var i = 0; i < productProviders.length; i++) {
+                    var productProvider = productProviders[i];
+                    var product = productProvider.product;
                     var nameItem = String(product.name.toLowerCase()).replace(value, '<b>' + value + '</b>');
                     var slugItem = '/producto/' + product.slug + '/' + product.id;
                     var imageItem = '/uploads/products/' + product.product_files[0].name;
