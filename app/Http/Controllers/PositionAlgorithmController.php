@@ -15,7 +15,7 @@ class PositionAlgorithmController extends Controller
     function index($name)
     {
         if (!$name) {
-            return Product::has('providers')->with(['subcategory','files'])->whereRaw('active = 1')->get();
+            return Product::has('providers')->with(['subcategory','files'])->whereRaw('active = 1 ')->get();
         }
 
         return Product::where('active',1)->has('providers')->with(['files','subcategory' => function($sql) use ($name){
