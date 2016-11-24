@@ -198,8 +198,18 @@ Route::post('categorias', [
 Route::get('cultivos', [
     'uses' => 'FarmController@index',
     'as' => 'farmIndex',
-
 ]);
+
+Route::post('categorias-cultivos/create', [
+    'uses' => 'FarmController@create',
+    'as' => 'farmCategories.create'
+]);
+
+Route::post('cultivos/create', [
+    'as' => 'farms.create',
+    'uses' => 'FarmController@farmCreate'
+]);
+
 Route::get('/', [
     'uses' => 'HomeAdminController@index',
     'as' => 'admin',
