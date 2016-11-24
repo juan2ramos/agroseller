@@ -82,11 +82,10 @@ class HomeController extends Controller
         return view('front.home',compact('products'));
     }*/
 
-    function index(){
-        /*$p =  new PositionAlgorithmController;
-        $products = $p->index();*/
-
-        return view('front.home'/*,compact('products')*/);
+    function index($name = false){
+        $p =  new PositionAlgorithmController;
+        $products = $p->index($name);
+        return view('front.home',compact('products'));
     }
 
 

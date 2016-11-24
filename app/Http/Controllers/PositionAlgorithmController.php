@@ -11,17 +11,23 @@ use Illuminate\Support\Facades\Auth;
 
 class PositionAlgorithmController extends Controller
 {
-    function products()
+
+    function index($name)
     {
+        if (!$name) {
+            return Product::has('providers')->with(['subcategory','files'])->whereRaw('active = 1')->get();
+        }
+
+        return Product::where('active',1)->has('providers')->with(['files','subcategory' => function($sql) use ($name){
+           $sql->where('slug', $name);
+        }])->whereHas(
+            'subcategory' ,  function($sql) use ($name){
+                $sql->where('slug', $name);
+            }
+        )->get();
 
 
 
-    }
-
-    function index(Request $request)
-    {
-
-        return Product::has('providers')->with(['subcategory','files'])->where('active',1)->get();
         /* Esto es temoporal focus group */
         if (empty($request->get('subcategory'))) {
             return ProductProvider::all();

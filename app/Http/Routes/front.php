@@ -6,11 +6,6 @@ Route::get('/', [
     'as' => 'home'
 ]);
 
-Route::get('productos', [
-    'uses' => 'HomeController@index',
-    'as' => 'productos'
-]);
-
 Route::get('compras/{product}/{quantity}/{provider}', [
     'uses' => 'ShoppingController@add',
     'as' => 'shopping'
@@ -77,10 +72,15 @@ Route::post('searchBar', [
  * */
 
 Route::get('productos/{name?}',[
-    'uses' => 'ProductController@productFront',
+    'uses' => 'HomeController@index',
     'as' => 'product'
 ]);
 
+
+/*Route::get('productos', [
+    'uses' => 'HomeController@index',
+    'as' => 'productos'
+]);*/
 /********** PLANS **********/
 
 Route::get('precios', [
