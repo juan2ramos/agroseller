@@ -2,6 +2,7 @@
 
 namespace Agrosellers\Http\Controllers;
 use Agrosellers\Entities\ProductFile;
+use Agrosellers\Entities\ProductProvider;
 use Agrosellers\Entities\Subcategory;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
@@ -118,6 +119,16 @@ class HomeController extends Controller
 
     function searchBar(Request $request){
 
+        $value = $request->value;
+        return ['products' => ProductProvider::whereRaw('isValidate = 1 and isActive = 1')->whereHas('product', function($product) use ($value) {
+            $product->where("name", "like", "%{$value}%");
+        })->with(['product' => function($product) use ($value) {
+            $product->with(['productFiles' => function($file) { //use ($value){
+                $file->whereRaw('extension = "jpeg" or extension = "jpg" or extension = "png" or extension = "svg"');
+            }]);//->where("name", "like", "%{$value}%");
+        }])->limit(10)->get()];
+
+        return ['products' => ProductProvider::whereRaw('isValidate = 1 and isActive = 1')->limit(10)->get(['slug', 'name', 'id'])];
         return ['products' => Product::whereRaw('isValidate = 1 and isActive = 1')->with(['productFiles' => function($file){
             $file->whereRaw('extension = "jpeg" or extension = "jpg" or extension = "png" or extension = "svg"')->get();
         }])->where("name", "like", "%{$request->value}%")->limit(10)->get(['slug', 'name', 'id'])];
