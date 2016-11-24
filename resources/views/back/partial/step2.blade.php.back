@@ -105,9 +105,13 @@
         @else
         <option value="">Selecione la presentación</option>
         @endif
-        <option value="Bolsa">Bolsa</option>
-        <option value="Caja">Caja</option>
-        <option value="Botella">Botella</option>
+                <option value="Bolsa">Bolsa</option>
+                <option value="Bulto">Bulto</option>
+                <option value="envase-plastico">Caja</option>
+                <option value="envase-vidrio">vidrio</option>
+                <option value="Caja">Caja</option>
+                <option value="sobre">Sobre</option>
+
     </select>
         <!--
     <label for="size" class="DataForm size" >
