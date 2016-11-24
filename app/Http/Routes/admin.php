@@ -73,6 +73,11 @@ Route::group(['namespace' => 'admin'], function () {
         'as' => 'updateProduct'
     ]);
 
+    Route::post('producto/updateProductProvider/{id}', [
+        'uses' => 'ProductController@updateProductProvider',
+        'as' => 'updateProductProvider'
+    ]);
+
     Route::post('subcategoriesQuery', [
         'uses' => 'CategoryController@subcategoriesQuery',
         'as' => 'subcategoriesQuery',

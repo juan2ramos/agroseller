@@ -112,7 +112,7 @@
     </label> -->
 
     <div class="row middle">
-        <label for="iva" class="col-6">
+        <!--<label for="iva" class="col-6">
             <input type="checkbox" name="taxes[]" value="iva" id="iva">
             <sub></sub>
             Iva 16%
@@ -121,7 +121,7 @@
             <input type="checkbox" name="taxes[]" value="retefuente" id="rete">
             <sub></sub>
             Retefuente 2.5%
-        </label>
+        </label>-->
     </div>
     <label for="available_quantity">
     <!--    @if(isset($productEdit))

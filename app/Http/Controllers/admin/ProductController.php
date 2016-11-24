@@ -85,6 +85,15 @@ class ProductController extends Controller
         }
     }
 
+    function updateProductProvider(Request $request, $id){
+        $inputs = $request->all();
+        if($request->has('taxes'))
+            $inputs['taxes'] = implode(';', $inputs['taxes']);
+        $product = ProductProvider::find($id);
+        $product->update($inputs);
+        return redirect()->back()->with('messageSuccess', 1);
+    }
+
     function updateProduct(Request $request, $id){
         $inputs = $request->all();
         $this->validator($request->file());

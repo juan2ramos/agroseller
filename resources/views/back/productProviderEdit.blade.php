@@ -14,8 +14,7 @@
             endforeach-->
 
             <article id="editable" class="col-12">
-                <form id="Product-form" role="form" method="POST" action="{{ route('updateProduct', [$productEdit->id]) }}"
-                      enctype="multipart/form-data">
+                <form id="Product-form" role="form" method="POST" action="{{ route('updateProductProvider', [$productEdit->id]) }}" enctype="multipart/form-data">
                     <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" id="deleteImages" name="deleteImages" value="">
                     <section class="Wizard">

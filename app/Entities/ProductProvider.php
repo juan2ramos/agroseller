@@ -10,7 +10,7 @@ class ProductProvider extends Model
 {
     protected $fillable = [
         'product_id', 'provider_id', 'price', 'location', 'available_quantity',
-        'min_quantity', 'available', 'isValidate', 'isActive'
+        'min_quantity', 'available', 'isValidate', 'isActive', 'taxes'
     ];
 
     public function provider(){
