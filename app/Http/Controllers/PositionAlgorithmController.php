@@ -12,6 +12,21 @@ use Illuminate\Support\Facades\Auth;
 class PositionAlgorithmController extends Controller
 {
 
+    function closeToMe($lat, $lng){
+        $products = Product::has('providers')->with(['subcategory','files'])->whereRaw('active = 1 ')->get();
+
+        foreach ($products as $product) {
+            $providers = $product->providers;
+            foreach ($providers as $provider){
+                $provider->distance = $this->distance($lat, $lng, explode(';', $provider->location));
+            }
+            $product->distance = $providers->sortBy('distance')->first()->distance;
+        }
+        return  $products->sortBy('distance');
+
+
+    }
+
     function index($name)
     {
         if (!$name) {

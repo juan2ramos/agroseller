@@ -1,6 +1,7 @@
 <?php
 
 namespace Agrosellers\Http\Controllers;
+
 use Agrosellers\Entities\ProductFile;
 use Agrosellers\Entities\ProductProvider;
 use Agrosellers\Entities\Subcategory;
@@ -14,10 +15,28 @@ use Elasticsearch\ClientBuilder;
 
 class HomeController extends Controller
 {
-    function landing(){
+    function landing()
+    {
 
         return view('landing');
     }
+
+    function closeToMe(Request $request)
+    {
+        $lat = $request->get('lat');
+        $lng = $request->get('lng');
+
+        if (!(preg_match('(\-?\d+(\.\d+)?)', $lat) && preg_match('(\-?\d+(\.\d+)?)', $lng))){
+            $lat = 3.41667 ;
+            $lng = -76.55;
+        }
+
+        $p = new PositionAlgorithmController;
+        $products = $p->closeToMe($lat, $lng);
+        return view('front.home', compact('products'));
+
+    }
+
     /*function index(){
 
 
@@ -83,18 +102,21 @@ class HomeController extends Controller
         return view('front.home',compact('products'));
     }*/
 
-    function index($name = false){
-        $p =  new PositionAlgorithmController;
+    function index($name = false)
+    {
+        $p = new PositionAlgorithmController;
         $products = $p->index($name);
-        return view('front.home',compact('products'));
+        return view('front.home', compact('products'));
     }
 
 
-    function indexContact(){
+    function indexContact()
+    {
         return view('front.contactForm');
     }
 
-    function postContact(Request $request){
+    function postContact(Request $request)
+    {
         $this->validate($request, [
             'name' => 'required|max:200',
             'email' => 'required|email|max:200',
@@ -104,7 +126,7 @@ class HomeController extends Controller
 
         $data = $request->all();
 
-        Mail::send('emails.contact',$data, function($msg) use($data){
+        Mail::send('emails.contact', $data, function ($msg) use ($data) {
             $msg->from('luza.231@hotmail.com');
             $msg->to($data['email'], $data['name'])->subject($data['subject']);
         });
@@ -113,16 +135,18 @@ class HomeController extends Controller
         return view('front.contactForm', ['mensaje' => $answer]);
     }
 
-    public function indexFaqs(){
+    public function indexFaqs()
+    {
         return view('front.faqs');
     }
 
-    function searchBar(Request $request){
+    function searchBar(Request $request)
+    {
         $value = $request->value;
         return ['products' => Product::has('providers')
-                                ->with(['files'])
-                                ->where("name", "like", "%{$value}%")
-                                ->where("active", 1)->limit(10)->get()];
+            ->with(['files'])
+            ->where("name", "like", "%{$value}%")
+            ->where("active", 1)->limit(10)->get()];
 
     }
 }

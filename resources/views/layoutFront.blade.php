@@ -179,7 +179,7 @@
                {{-- <a href="{{route('pricing')}}">Ver Planes</a>--}}
 
                 <a href="{{url('/')}}">Inicio</a>
-                <a href="{{url('como-vender')}}">Productos Cercanos</a>
+                <a id="CloseToMe" data-url="{{route('closeToMe')}}" href="#">Productos Cercanos</a>
                 <a href="{{url('como-cotizar')}}">¿Cómo cotizar?</a>
                 <a href="{{url('como-comprar')}}">¿Cómo comprar?</a>
                 <a href="{{url('como-vender')}}">¿Cómo vender?</a>

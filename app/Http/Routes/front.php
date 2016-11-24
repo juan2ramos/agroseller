@@ -76,11 +76,12 @@ Route::get('productos/{name?}',[
     'as' => 'product'
 ]);
 
+Route::get('productos-cercanos/',[
+    'uses' => 'HomeController@CloseToMe',
+    'as' => 'closeToMe'
+]);
 
-/*Route::get('productos', [
-    'uses' => 'HomeController@index',
-    'as' => 'productos'
-]);*/
+
 /********** PLANS **********/
 
 Route::get('precios', [
