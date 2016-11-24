@@ -12,21 +12,24 @@ class FarmTableSeeder extends Seeder
      */
     public function run()
     {
-        Farm::create(['name' => 'caña panelera', 'description' => '']);
+        Farm::create(['name' => 'papa', 'farm_category_id' => 1]);
+        Farm::create(['name' => 'yuca', 'farm_category_id' => 1]);
+
+        Farm::create(['name' => 'piña', 'farm_category_id' => 2]);
+        Farm::create(['name' => 'papaya', 'farm_category_id' => 2]);
+        Farm::create(['name' => 'banano', 'farm_category_id' => 2]);
+
+        /*Farm::create(['name' => 'caña panelera', 'farm_category_id' => '']);
         Farm::create(['name' => 'caña de azucar', 'description' => '']);
         Farm::create(['name' => 'café', 'description' => '']);
         Farm::create(['name' => 'palma de aceite', 'description' => '']);
         Farm::create(['name' => 'cacao', 'description' => '']);
-        Farm::create(['name' => 'papa', 'description' => '']);
         Farm::create(['name' => 'platano', 'description' => '']);
-        Farm::create(['name' => 'yuca', 'description' => '']);
         Farm::create(['name' => 'arroz', 'description' => '']);
         Farm::create(['name' => 'maiz blanco', 'description' => '']);
         Farm::create(['name' => 'maiz amarillo', 'description' => '']);
-        Farm::create(['name' => 'piña', 'description' => '']);
+
         Farm::create(['name' => 'aguacate', 'description' => '']);
-        Farm::create(['name' => 'papaya', 'description' => '']);
-        Farm::create(['name' => 'banano', 'description' => '']);
         Farm::create(['name' => 'Hortalizas verduras y legunbre', 'description' => '']);
         Farm::create(['name' => 'plantas aromáticas condimentarias y medicinales', 'description' => '']);
         Farm::create(['name' => 'Plantaciones  forestales', 'description' => '']);
@@ -37,6 +40,6 @@ class FarmTableSeeder extends Seeder
         Farm::create(['name' => 'equinos', 'description' => '']);
         Farm::create(['name' => 'porcinos', 'description' => '']);
         Farm::create(['name' => 'acuicola', 'description' => '']);
-        Farm::create(['name' => 'Caña panelera', 'description' => '']);
+        Farm::create(['name' => 'Caña panelera', 'description' => '']);*/
     }
 }

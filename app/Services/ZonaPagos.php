@@ -52,7 +52,7 @@ class ZonaPagos {
                 "clave" => $this->key,
                 "codigo_servicio_principal" => $this->serviceCode,
                 "total_con_iva"  => $inputs["total_con_iva"],
-                "valor_iva" => $inputs['total_con_iva'] * 16 / 116,
+                "valor_iva" => 0,
                 "email" => auth()->user()->email,
                 "id_pago" => date_format(new \Jenssegers\Date\Date(), 'YmdHis') . rand(100, 999),
                 "id_cliente" => $inputs["id_cliente"],
@@ -79,7 +79,7 @@ class ZonaPagos {
     public function insertPayResult($inputs){
 
         $data = [];
-        foreach (Session::get('cart') as $item) {
+        /*foreach (Session::get('cart') as $item) {
 
             if(!$item->offers)
                 $value = $item->price;
@@ -89,7 +89,7 @@ class ZonaPagos {
                     : $item->price;
 
             $data[$item->id] = ['quantity' => $item->quantity, 'state_order_id' => 2, 'value' => $value];
-        }
+        }*/
 
 
         $user = User::where('identification', $inputs['id_cliente'])->first();
@@ -109,10 +109,10 @@ class ZonaPagos {
         $user->orders()->save($order);
         $order->products()->attach($data);
 
-        if($inputs['estado_pago']) {
+        /*if($inputs['estado_pago']) {
             Session::forget('cart');
             Session::forget('valueTotal');
-        }
+        }*/
     }
 
     /** Retorna la instancia de zona pagos **/

@@ -35,7 +35,7 @@ $(document).ready(function () {
 
         $categories = $('#categories'),
         $subcategories = $('#subcategories'),
-        $options = $('#categories').children('option'),
+        $options = $categories.children('option'),
         optionsNumber = $options.length,
         $categoriesList = $('#categoriesList'),
         $subcategoriesList = $('#subcategoriesList'),

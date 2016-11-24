@@ -1387,7 +1387,7 @@ body {
   margin: 0; }
 
 .Step-3 .Button {
-  width: 10rem;
+  min-width: 10rem;
   margin: 1rem 0; }
 
 .Step-3Offers {

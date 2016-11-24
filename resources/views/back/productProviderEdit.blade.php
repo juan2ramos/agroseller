@@ -1,5 +1,7 @@
 @extends('layoutBack')
 @section('content')
+    <input type="hidden" id="callProducts" value="{{route('callProducts')}}">
+    <input id="productAdminId" type="hidden" value="{{$productEdit->product_id}}">
     <section class="BackContainer row" style="position: relative">
             <input id="ps-description" type="hidden" value="{{ $productEdit->description }}">
             <!--<input id="ps-offerDescription" type="hidden" value="{ $offerEdit->offer_description }}">-->
@@ -14,8 +16,7 @@
             endforeach-->
 
             <article id="editable" class="col-12">
-                <form id="Product-form" role="form" method="POST" action="{{ route('updateProduct', [$productEdit->id]) }}"
-                      enctype="multipart/form-data">
+                <form id="Product-form" role="form" method="POST" action="{{ route('updateProductProvider', [$productEdit->id]) }}" enctype="multipart/form-data">
                     <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" id="deleteImages" name="deleteImages" value="">
                     <section class="Wizard">
@@ -130,6 +131,7 @@
                 </form>
                 <form style="display:none" class="formProductPreview" action="{{route('productDetailPreview')}}" method="post" target="_blank"></form>
             </article>
+
     </section>
 
     @if (session('messageSuccess'))
@@ -157,26 +159,32 @@
 
             var subcategories = $('#subcategoriesList'),
                 productTable = $('#productTable');
+
                 subcategories.on('click', 'li', function(){
                 var params = {
                     subcategory_id : $(this).data('id'),
                     _token : $('#token').val()
                 };
 
-                $.post('callProducts', params, function (data) {
+                $.post($('#callProducts').val(), params, function (data) {
                     var products = data.products,
+                        checked = "",
+                        flag = false,
                         html = "";
 
                     $.each(products, function(i, product){
+                        checked = product.id == $('#productAdminId').val() ? "checked='checked'" : "";
+                        if(checked != '') flag = true;
+
+                        console.log(checked + ' - ' + $('#productAdminId').val());
                         html += "<tr>" +
                                     "<td>" + product.name + "</td>" +
-                                    "<td><input style='opacity:1' value='" + product.id + "' name='product_id' type='radio' class='productSelected'></td>" +
+                                    "<td><input style='opacity:1' value='" + product.id + "' name='product_id' type='radio' class='productSelected' " + checked + " ></td>" +
                                 "</tr>";
                     });
 
-                    productTable.append(html);
-                    $('.productSelected').eq(0).attr('checked', 'checked');
-
+                    productTable.html(html);
+                    if(!flag) $('.productSelected').eq(0).attr('checked', 'checked');
                 }, 'json');
             });
 

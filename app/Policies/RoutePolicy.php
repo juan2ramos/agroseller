@@ -45,7 +45,7 @@ class RoutePolicy
 
                     'agentsGet', 'editProduct', 'deleteProduct', 'updateProduct','newUserAdmin','user',
                     'budgetShow', 'indexProfile', 'userUpdate', 'productAgentPreview', 'productDetailPreview','validateProduct',
-                    'payPlan', 'searchUser', 'category', 'products', 'products', 'adminEditProduct'
+                    'payPlan', 'searchUser', 'category', 'products', 'products', 'adminEditProduct', 'farmCategories.create', 'farms.create'
 
                 ],
             '2' =>
@@ -59,7 +59,7 @@ class RoutePolicy
                     'admin', 'products', 'questions', 'orders', 'registerProvider', 'isValidateProviders', 'questions',
                     'subcategoriesQuery','featuresQuery', 'newProduct', 'insertProvider', 'questionDetail', 'questionNew',
                     'editProduct', 'deleteProduct', 'updateProduct', 'indexProfile', 'userUpdate','orderShowProvider','updateStateOrder',
-                    'productDetailPreview','payPlan', 'productDetailPreview','pay','historyPay', 'inactivePlan', 'callProducts', 'newProductProvider'
+                    'productDetailPreview','payPlan', 'productDetailPreview','pay','historyPay', 'inactivePlan', 'callProducts', 'newProductProvider', 'updateProductProvider'
                 ],
 
             '4' =>

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
 use Agrosellers\Http\Controllers\Controller;
 use Agrosellers\Entities\Farm;
+use Agrosellers\Entities\FarmCategory;
+use Validator;
 
 class FarmController extends Controller
 {
@@ -17,8 +19,8 @@ class FarmController extends Controller
      */
     public function index()
     {
-        $farms = Farm::paginate(5);
-        return view('back.farms', compact('farms'));
+        $farmCategories = FarmCategory::with('farms')->paginate(5);
+        return view('back.farms', compact('farmCategories'));
     }
 
     /**
@@ -26,9 +28,24 @@ class FarmController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), ['farmCategory' => 'required']);
+        if($validator->fails())
+            return redirect()->back()->withInput()->withErrors($validator);
+        FarmCategory::create(['name' => $request->get('farmCategory')]);
+        return redirect()->back();
+    }
+
+    public function farmCreate(Request $request){
+        $validator = Validator::make($request->all(), ['farm' => 'required']);
+        if($validator->fails())
+            return redirect()->back()->withInput()->withErrors($validator);
+        Farm::create([
+            'name' => $request->get('farm'),
+            'farm_category_id' => $request->get('farmCategory')
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -39,7 +56,7 @@ class FarmController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
