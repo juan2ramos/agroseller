@@ -172,23 +172,21 @@
     </div>
     <div class="BarNav">
         <div class="BarNav-content row middle">
-            <div class="smaller-6 medium-3 row">
-                <button id="Menu" class="to-large">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+            <div class="smaller-6 medium-3 col-2 row">
+
             </div>
-            <div class="BarNav-a medium-6  center">
+            <div class="BarNav-a medium-6  col-8  center">
                {{-- <a href="{{route('pricing')}}">Ver Planes</a>--}}
 
                 <a href="{{url('/')}}">Inicio</a>
+                <a href="{{url('como-vender')}}">Productos Cercanos</a>
                 <a href="{{url('como-cotizar')}}">¿Cómo cotizar?</a>
                 <a href="{{url('como-comprar')}}">¿Cómo comprar?</a>
                 <a href="{{url('como-vender')}}">¿Cómo vender?</a>
+
             </div>
 
-            <div class="Cart AlignRight smaller-6 medium-3">
+            <div class="Cart AlignRight smaller-6 medium-3  col-2 ">
                 <div class="Cart-content">
                     <div class="Cart-button" id="CartButton">
 
