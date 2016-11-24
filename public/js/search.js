@@ -50,15 +50,13 @@ function searchQuery(){
         data     :  input,
         success  :  function(json) {
             result.empty();
-            var productProviders = json.products;
-            console.log(productProviders[0].product.product_files);
-            if(productProviders.length > 0){
-                for(var i = 0; i < productProviders.length; i++) {
-                    var productProvider = productProviders[i];
-                    var product = productProvider.product;
+            var products = json.products;
+            if(products.length > 0){
+                for(var i = 0; i < products.length; i++) {
+                    var product = products[i];
                     var nameItem = String(product.name.toLowerCase()).replace(value, '<b>' + value + '</b>');
                     var slugItem = '/producto/' + product.slug + '/' + product.id;
-                    var imageItem = '/uploads/products/' + product.product_files[0].name;
+                    var imageItem = '/uploads/products/' + product.files[0].name;
 
                     result.append('<li><a class="thisSearch" href="' + slugItem + '"></a></li>');
                     $('.thisSearch')
