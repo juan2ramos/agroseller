@@ -58,14 +58,15 @@
 
 
     <select class="presentation DataForm" name="presentation">
-        @if(isset($productEdit) && $productEdit->presentation)
-        <option value="{{ $productEdit->presentation }}">{{  $productEdit->presentation }}</option>
-        @else
         <option value="">Selecione la presentación</option>
-        @endif
-        <option value="Bolsa">Bolsa</option>
-        <option value="Caja">Caja</option>
-        <option value="Botella">Botella</option>
+        <option value="Bolsa" {{(isset($productEdit) && $productEdit->presentation == 'Bolsa')?'selected':''}}>Bolsa</option>
+        <option value="Bulto" {{(isset($productEdit) && $productEdit->presentation == 'Bulto')?'selected':''}}>Bulto</option>
+        <option value="envase-plastico" {{(isset($productEdit) && $productEdit->presentation == 'envase-plastico')?'selected':''}}>Caja</option>
+        <option value="envase-vidrio" {{(isset($productEdit) && $productEdit->presentation == 'envase-vidrio')?'selected':''}}>Vidrio</option>
+        <option value="Caja" {{(isset($productEdit) && $productEdit->presentation == 'Caja')?'selected':''}}>Caja</option>
+        <option value="sobre" {{(isset($productEdit) && $productEdit->presentation == 'sobre')?'selected':''}}>Sobre</option>
+
+
     </select>
         <!--
     <label for="size" class="DataForm size" >
