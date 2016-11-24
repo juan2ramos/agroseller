@@ -90,7 +90,7 @@
                                         </g>
                                     </g>
                                 </svg>
-                                Oferta
+                                Cultivos
                             </li>
                             <li class="col-3" data-id="4">
                                 <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -241,10 +241,12 @@
         </script>
 
         <script>
-            $('#farm-all').on('change click', function(){
-                var isChecked = $(this).is(':checked');
-                $('[id*="farm"]').prop('checked', isChecked);
+
+            $('.farm-all, .farm-single').on('click change', function(){
+                var isChecked = $(this).is(':checked') ? 'checked' : false;
+                $(this).attr('checked', isChecked).prop('checked', isChecked).siblings('ul').children('label').children('input').attr('checked', isChecked).prop('checked', isChecked);
             });
+
         </script>
 @endsection
 @section('styles')

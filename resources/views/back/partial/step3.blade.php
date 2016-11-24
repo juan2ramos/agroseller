@@ -5,31 +5,45 @@
         </p>
         <div class="row">
             @if(isset($productEdit))
-                <label for="farm-all" class="Forms-checkout capitalize col-6">
-                    <input type="checkbox" id="farm-all" value="">
-                    <sub></sub>
-                    Todos
-                </label>
-                <?php $farmsProduct = explode(',' , $productEdit['farms']); ?>
                 @foreach($farms as $farm)
-                    <label for="farm-{{$farm->id}}" class="Forms-checkout capitalize col-6">
-                        <input type="checkbox" name="farm-{{$farm->id}}" id="farm-{{$farm->id}}" value="{{$farm->name}}" @if(in_array($farm->name, $farmsProduct, false))checked='checked'@endif >
+                    <?php $flag = true; ?>
+                    @foreach($farm->farms as $f)
+                        @if(!(strpos($productEdit['farms'], $f->name) !== false))
+                            <?php $flag = false; ?>
+                            @break
+                        @endif
+                    @endforeach
+                    <label for="farmCategory-{{$farm->id}}" class="Forms-checkout capitalize col-6">
+                        <input class="farm-all" type="checkbox" id="farmCategory-{{$farm->id}}" value="{{$farm->name}}" @if($flag) checked='checked' @endif >
                         <sub></sub>
                         {{$farm->name}}
+                        <ul style="padding-left: 35px">
+                            @foreach($farm->farms as $f)
+                                <label for="farm-{{$f->id}}" class="Forms-checkout capitalize col-6">
+                                    <input class="farm-single" type="checkbox" name="farm-{{$f->id}}" id="farm-{{$f->id}}" value="{{$f->name}}" @if(strpos($productEdit['farms'], $f->name) !== false) checked='checked'@endif >
+                                    <sub></sub>
+                                    {{$f->name}}
+                                </label>
+                            @endforeach
+                        </ul>
                     </label>
                 @endforeach
             @else
                 @if(isset($farms))
-                    <label for="farm-all" class="Forms-checkout capitalize col-6">
-                        <input type="checkbox" id="farm-all" value="">
-                        <sub></sub>
-                        Todos
-                    </label>
                     @foreach($farms as $farm)
-                        <label for="farm-{{$farm->id}}" class="Forms-checkout capitalize col-6">
-                            <input type="checkbox" name="farm-{{$farm->id}}" id="farm-{{$farm->id}}" value="{{$farm->name}}">
+                        <label for="farmCategory-{{$farm->id}}" class="Forms-checkout capitalize col-6">
+                            <input class="farm-all" type="checkbox" id="farmCategory-{{$farm->id}}" value="{{$farm->name}}" @if(old("farmCategory-{$farm->id}")) checked='checked' @endif >
                             <sub></sub>
                             {{$farm->name}}
+                            <ul style="padding-left: 35px">
+                                @foreach($farm->farms as $f)
+                                    <label for="farm-{{$f->id}}" class="Forms-checkout capitalize col-6">
+                                        <input class="farm-single" type="checkbox" name="farm-{{$f->id}}" id="farm-{{$f->id}}" value="{{$f->name}}" @if(old("farm-{$f->id}")) checked='checked'@endif >
+                                        <sub></sub>
+                                        {{$f->name}}
+                                    </label>
+                                @endforeach
+                            </ul>
                         </label>
                     @endforeach
                 @endif

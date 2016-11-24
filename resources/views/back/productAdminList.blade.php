@@ -359,10 +359,12 @@
             });
         </script>
         <script>
-            $('#farm-all').on('change click', function () {
-                var isChecked = $(this).is(':checked');
-                $('[id*="farm"]').prop('checked', isChecked);
+
+            $('.farm-all, .farm-single').on('click change', function(){
+                var isChecked = $(this).is(':checked') ? 'checked' : false;
+                $(this).attr('checked', isChecked).prop('checked', isChecked).siblings('ul').children('label').children('input').attr('checked', isChecked).prop('checked', isChecked);
             });
+
         </script>
 @endsection
 @section('styles')

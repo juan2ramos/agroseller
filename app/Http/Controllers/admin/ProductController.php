@@ -4,6 +4,7 @@ namespace Agrosellers\Http\Controllers\admin;
 
 use Agrosellers\Entities\Brand;
 use Agrosellers\Entities\Farm;
+use Agrosellers\Entities\FarmCategory;
 use Agrosellers\Entities\Notification;
 use Agrosellers\Entities\ProductProvider;
 use Validator;
@@ -57,7 +58,7 @@ class ProductController extends Controller
     function index()
     {
         $brands = Brand::all();
-        $farms = Farm::all();
+        $farms = FarmCategory::with('farms')->get();
         $categories = Category::all();
         $user = auth()->user();
         if($user->role_id == 1){
@@ -72,7 +73,7 @@ class ProductController extends Controller
     
     function editProduct($id){
         $brands = Brand::all();
-        $farms = Farm::all();
+        $farms = FarmCategory::with('farms')->get();
         $categories = Category::all();
         $user = auth()->user();
         //$offerEdit = $productEdit->offers()->first();
