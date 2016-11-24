@@ -3,6 +3,7 @@
 namespace Agrosellers\Http\Controllers;
 
 use Agrosellers\Entities\Client;
+use Agrosellers\Entities\FarmCategory;
 use Agrosellers\User;
 use Illuminate\Http\Request;
 use Agrosellers\Entities\Farm;
@@ -22,7 +23,7 @@ class ClientController extends Controller
         if(auth()->user()->client)
             return redirect()->route('admin');
 
-        $farms = Farm::all();
+        $farms = FarmCategory::with('farms')->get();
         return view('back.registerClientInformation', compact('farms'));
     }
 

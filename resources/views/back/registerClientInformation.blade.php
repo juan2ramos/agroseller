@@ -16,10 +16,19 @@
             <div class="row" style="margin:  2rem 0">
                 @if(isset($farms))
                     @foreach($farms as $farm)
-                        <label for="farm-{{$farm->id}}" class="Forms-checkout capitalize col-6">
-                            <input type="checkbox" name="farm-{{$farm->id}}" id="farm-{{$farm->id}}" value="{{$farm->id}}">
+                        <label for="farmCategory-{{$farm->id}}" class="Forms-checkout capitalize col-12">
+                            <input class="farm-all" type="checkbox" id="farmCategory-{{$farm->id}}" value="{{$farm->name}}" @if(old("farmCategory-{$farm->id}")) checked='checked' @endif >
                             <sub></sub>
                             {{$farm->name}}
+                            <ul style="padding-left: 35px">
+                                @foreach($farm->farms as $f)
+                                    <label for="farm-{{$f->id}}" class="Forms-checkout capitalize col-12">
+                                        <input class="farm-single" type="checkbox" name="farm-{{$f->id}}" id="farm-{{$f->id}}" value="{{$f->name}}" @if(old("farm-{$f->id}")) checked='checked'@endif >
+                                        <sub></sub>
+                                        {{$f->name}}
+                                    </label>
+                                @endforeach
+                            </ul>
                         </label>
                     @endforeach
                 @endif
@@ -36,4 +45,10 @@
             async defer></script>
     <script src="{{asset('js/maps.js')}}"></script>
     <script src="{{asset('js/forms.js')}}"></script>
+    <script>
+        $('.farm-all, .farm-single').on('click change', function(){
+            var isChecked = $(this).is(':checked') ? 'checked' : false;
+            $(this).attr('checked', isChecked).prop('checked', isChecked).siblings('ul').children('label').children('input').attr('checked', isChecked).prop('checked', isChecked);
+        });
+    </script>
 @endsection
