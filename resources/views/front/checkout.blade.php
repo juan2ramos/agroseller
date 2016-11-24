@@ -120,8 +120,7 @@
                                        value="{{auth()->user()->mobile_phone}}">
                                 <span>Teléfono</span>
                             </label>
-                            <p class="Button">NO DISPONIBLE </p>
-                            {{--<button class="Button">FINALIZAR COMPRA</button>--}}
+                            <button class="Button">FINALIZAR COMPRA</button>
                             <!--<a href="#" id="finishBuy" class="Button">FINALIZAR COMPRA</a>-->
                         </form>
                     @else
