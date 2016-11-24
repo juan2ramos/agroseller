@@ -7,6 +7,6 @@
         @endif
     </div>
     <div class="row">
-        <div class="productDetailAction Button col-12">PREVISUALIZAR PRODUCTO</div>
+        <!--<div class="productDetailAction Button col-12">PREVISUALIZAR PRODUCTO</div>-->
     </div>
 </section>

@@ -201,6 +201,8 @@ class ProductController extends Controller
     function newProductProvider(Request $request){
         $inputs = $request->all();
         $inputs['provider_id'] = auth()->user()->provider->id;
+        if($request->has('taxes'))
+            $inputs['taxes'] = implode(';', $inputs['taxes']);
         ProductProvider::create($inputs);
         return redirect()->back()->with('messageSuccess', 1);
     }

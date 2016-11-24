@@ -1,5 +1,6 @@
 @extends('layoutBack')
 @section('content')
+    <input type="hidden" id="callProducts" value="{{route('callProducts')}}">
     <section class="BackContainer row" style="position: relative">
         <input type="hidden" id="categorySelected" value="">
         <input class="Tab" id="tab1" type="radio" name="tabs" checked>
@@ -39,8 +40,8 @@
                                 @endif
                                 <td>
                                     <div class="Item-actions row center">
-                                        <input class="ProductId" type="hidden" value="{{$product->product->id}}">
-                                        <a href="{{route('editProduct', [$product->product->id])}}" class="icon-update">
+                                        <input class="ProductId" type="hidden" value="{{$product->id}}">
+                                        <a href="{{route('editProduct', [$product->id])}}" class="icon-update">
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                  xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px"
                                                  y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100"
@@ -291,13 +292,14 @@
 
             var subcategories = $('#subcategoriesList'),
                 productTable = $('#productTable');
+
             subcategories.on('click', 'li', function(){
                 var params = {
                     subcategory_id : $(this).data('id'),
                     _token : $('#token').val()
                 };
 
-                $.post('callProducts', params, function (data) {
+                $.post($('#callProducts').val(), params, function (data) {
                     var products = data.products,
                         html = "";
 
@@ -308,7 +310,7 @@
                                 "</tr>";
                     });
 
-                    productTable.append(html);
+                    productTable.html(html);
                     $('.productSelected').eq(0).attr('checked', 'checked');
 
                 }, 'json');
