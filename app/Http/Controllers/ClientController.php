@@ -39,10 +39,9 @@ class ClientController extends Controller
                     'user_id' => auth()->user()->id,
                     'location' => $request->location
                   ]);
-
         foreach($request->all() as $key => $data){
             if(strstr($key, 'farm')){
-                $farm = Farm::find($data);
+                $farm = Farm::where('name', $data)->first();
                 $client->farms()->save($farm);
             }
         }
