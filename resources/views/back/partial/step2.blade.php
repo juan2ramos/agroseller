@@ -61,8 +61,8 @@
         <option value="">Selecione la presentación</option>
         <option value="Bolsa" {{(isset($productEdit) && $productEdit->presentation == 'Bolsa')?'selected':''}}>Bolsa</option>
         <option value="Bulto" {{(isset($productEdit) && $productEdit->presentation == 'Bulto')?'selected':''}}>Bulto</option>
-        <option value="envase-plastico" {{(isset($productEdit) && $productEdit->presentation == 'envase-plastico')?'selected':''}}>Plastico</option>
-        <option value="envase-vidrio" {{(isset($productEdit) && $productEdit->presentation == 'envase-vidrio')?'selected':''}}>Vidrio</option>
+        <option value="envase-plastico" {{(isset($productEdit) && $productEdit->presentation == 'envase-plastico')?'selected':''}}>Envase lastico</option>
+        <option value="envase-vidrio" {{(isset($productEdit) && $productEdit->presentation == 'envase-vidrio')?'selected':''}}>Envase Vidrio</option>
         <option value="Caja" {{(isset($productEdit) && $productEdit->presentation == 'Caja')?'selected':''}}>Caja</option>
         <option value="sobre" {{(isset($productEdit) && $productEdit->presentation == 'sobre')?'selected':''}}>Sobre</option>
 
