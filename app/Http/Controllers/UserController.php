@@ -77,8 +77,6 @@ class UserController extends Controller
         $provider = auth()->user()->provider;
         $validator = Validator::make($request->all(), [
             'company-name' => 'required',
-            'web-site' => 'required',
-            'dispatch-time' => 'required',
             'contact' => 'required',
             'contact-phone' => 'required',
             'description' => 'required',
