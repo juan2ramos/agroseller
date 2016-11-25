@@ -47,11 +47,11 @@
                 <div class="FormGroup">
                     <label class="form-control" for="web-site">
                         <p> URL sitio web </p>
-                        <input type="text" class="form-control" placeholder="URL sitio web" name="web-site" value="{{$user->provider['web-site']}}">
+                        <input type="text" class="form-control" placeholder="URL sitio web" name="web-site" value="{{$user->provider['web-site']}}" disabled>
                     </label>
                     <label class="form-control" for="dispatch-time">
                         <p> Tiempo promedio de despacho (días) </p>
-                        <input type="number" id="dispatch-time" class="form-control" placeholder="Tiempo promedio de despacho (Días)" name="dispatch-time" value="{{$user->provider['dispatch-time']}}">
+                        <input type="number" id="dispatch-time" class="form-control" placeholder="Tiempo promedio de despacho (Días)" name="dispatch-time" value="{{$user->provider['dispatch-time']}}" disabled>
                     </label>
                 </div>
 

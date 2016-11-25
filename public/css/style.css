@@ -1079,6 +1079,8 @@ label.file {
 
 .Forms.form-little .form-control {
   margin-top: 0.3125rem !important; }
+  .Forms.form-little .form-control p {
+    color: #bfbcbf; }
   .Forms.form-little .form-control input, .Forms.form-little .form-control textarea {
     margin: 0.3125rem 0 0 0; }
 
