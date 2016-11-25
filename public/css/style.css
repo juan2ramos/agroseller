@@ -1126,6 +1126,9 @@ label.file {
     margin: 0;
     font-weight: 400; }
 
+input:disabled {
+  background: rgba(128, 128, 128, 0.06); }
+
 body {
   background: #F8F8F8; }
 

@@ -58,8 +58,9 @@ class RoutePolicy
                 [
                     'admin', 'products', 'questions', 'orders', 'registerProvider', 'isValidateProviders', 'questions',
                     'subcategoriesQuery','featuresQuery', 'newProduct', 'insertProvider', 'questionDetail', 'questionNew',
-                    'editProduct', 'deleteProduct', 'updateProduct', 'indexProfile', 'userUpdate','orderShowProvider','updateStateOrder',
-                    'productDetailPreview','payPlan', 'productDetailPreview','pay','historyPay', 'inactivePlan', 'callProducts', 'newProductProvider', 'updateProductProvider'
+                    'editProduct', 'deleteProduct', 'updateProduct', 'indexProfile','orderShowProvider','updateStateOrder',
+                    'productDetailPreview','payPlan', 'productDetailPreview','pay','historyPay', 'inactivePlan', 'callProducts',
+                    'newProductProvider', 'updateProductProvider', 'providerUpdate'
                 ],
 
             '4' =>

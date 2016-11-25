@@ -299,6 +299,12 @@ Route::post('perfil', [
     'uses' => 'UserController@userUpdate',
     'as' => 'userUpdate'
 ]);
+
+Route::post('perfil-proveedor', [
+    'uses' => 'UserController@providerUpdate',
+    'as' => 'providerUpdate'
+]);
+
 Route::post('updateStateOrder', [
     'uses' => 'OrderController@updateStateOrder',
     'as' => 'updateStateOrder'

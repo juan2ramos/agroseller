@@ -3,6 +3,7 @@
 namespace Agrosellers\Http\Controllers;
 
 use DB;
+use Validator;
 use Gbrock\Table\Facades\Table;
 use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
@@ -71,15 +72,33 @@ class UserController extends Controller
         return redirect()->route('admin');
     }
 
+
+    function providerUpdate(Request $request){
+        $provider = auth()->user()->provider;
+        $validator = Validator::make($request->all(), [
+            'company-name' => 'required',
+            'web-site' => 'required',
+            'dispatch-time' => 'required',
+            'contact' => 'required',
+            'contact-phone' => 'required',
+            'description' => 'required',
+            'address' => 'required',
+            'location' => 'required'
+        ]);
+
+        if($validator->fails())
+            return redirect()->back()->withErrors($validator);
+
+        $provider->update($request->all());
+        return redirect()->to('/admin');
+    }
+
     function showUser($id){
         $user = User::find($id);
         $products = Product::where('user_id', $id)->get();
         $provider = Provider::where('user_id', $id)->first();
         return view('back.user',compact('user', 'products', 'provider'));
     }
-
-
-
 
     function validateProvider($id){
         $provider = Provider::where('user_id', $id)->first();
