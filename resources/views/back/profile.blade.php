@@ -33,20 +33,37 @@
                 </div>
 
                 <div class="col-9">
-                    <input type="text" class="form-control" placeholder="Nombre de la empresa" name="company-name" value="{{ $user->provider['company-name'] }}">
-                    <input type="number" class="form-control" placeholder="NIT" value="{{$user->provider['NIT']}}" disabled >
-                    <input type="text" class="form-control" value="{{$user->provider['taxpayer']}}" disabled>
+                    <label class="form-control" for="company-name">
+                        <p> Razón social </p>
+                        <input id="company-name" type="text" placeholder="Razón social" name="company-name" value="{{ $user->provider['company-name'] }}">
+                    </label>
+                    <label class="form-control" for="NIT">
+                        <p> NIT </p>
+                        <input type="number" class="form-control" placeholder="NIT" value="{{$user->provider['NIT']}}" disabled >
+                    </label>
                         <!--<input   placeholder="Tipo de contribuyente"  value="{ old('taxpayer')}}">-->
                 </div>
 
                 <div class="FormGroup">
-                    <input type="text" class="form-control" placeholder="URL sitio web" name="web-site" value="{{$user->provider['web-site']}}">
-                    <input type="number" class="form-control" placeholder="Tiempo promedio de despacho (Días)" name="dispatch-time" value="{{$user->provider['dispatch-time']}}">
+                    <label class="form-control" for="web-site">
+                        <p> URL sitio web </p>
+                        <input type="text" class="form-control" placeholder="URL sitio web" name="web-site" value="{{$user->provider['web-site']}}">
+                    </label>
+                    <label class="form-control" for="dispatch-time">
+                        <p> Tiempo promedio de despacho (días) </p>
+                        <input type="number" id="dispatch-time" class="form-control" placeholder="Tiempo promedio de despacho (Días)" name="dispatch-time" value="{{$user->provider['dispatch-time']}}">
+                    </label>
                 </div>
 
                 <div class="FormGroup">
-                    <input type="text" class="form-control" placeholder="Contacto" name="contact" value="{{$user->provider['contact']}}">
-                    <input type="number" class="form-control" placeholder="Telefono de contacto" name="contact-phone" value="{{$user->provider['contact-phone']}}">
+                    <label class="form-control" for="dispatch-time">
+                        <p> Contacto </p>
+                        <input type="text" class="form-control" placeholder="Contacto" name="contact" value="{{$user->provider['contact']}}">
+                    </label>
+                    <label class="form-control" for="dispatch-time">
+                        <p> Teléfono de contacto </p>
+                        <input type="number" class="form-control" placeholder="Telefono de contacto" name="contact-phone" value="{{$user->provider['contact-phone']}}">
+                    </label>
                 </div>
 
                 <div class="FormGroup">
@@ -59,8 +76,14 @@
                         <input id="licence" type="file" class="form-control" name="licence">
                     </label>-->
                 </div>
-                <textarea class="form-control" placeholder="Descripcion de la empresa" name="description" >{{$user->provider['description']}}</textarea>
-                <input type="text" class="form-control" placeholder="Direccion" name="address" value="{{$user->provider['address']}}">
+                <label class="form-control smaller-12" for="dispatch-time">
+                    <p> Descripción de la empresa </p>
+                    <textarea placeholder="Descripcion de la empresa" name="description" >{{$user->provider['description']}}</textarea>
+                </label>
+                <label class="form-control smaller-12" for="dispatch-time">
+                    <p> Dirección empresa </p>
+                    <input type="text" class="form-control" placeholder="Direccion" name="address" value="{{$user->provider['address']}}">
+                </label>
 
                 <article class="Step-location col-12">
                     <span class="Marker Button" id="addMaker">AÑADE UNA UBICACIÓN</span>
