@@ -14,6 +14,7 @@ class ZonaPagos {
     private $shop;
     private $serviceCode;
     private $routeCode;
+    private $products;
 
     public function __construct(){
         $this->key = env('ZP_KEY');
@@ -41,6 +42,7 @@ class ZonaPagos {
     /** Retorna el id del pago **/
 
     public function invoiceRequest($inputs){
+        dd(Session::get('cart'));
         $url = 'https://www.zonapagos.com/api_inicio_pago/api/inicio_pagoV2';
         $user = auth()->user();
         $user->identification = $inputs['id_cliente'];
@@ -78,7 +80,6 @@ class ZonaPagos {
 
     public function insertPayResult($inputs){
         $data = [];
-        dd($_SESSION['cart']);
         /*foreach (Session::get('cart') as $item) {
 
             if(!$item->offers)
