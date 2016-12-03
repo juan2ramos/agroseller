@@ -77,8 +77,8 @@ class ZonaPagos {
     }
 
     public function insertPayResult($inputs){
-
         $data = [];
+        dd($_SESSION['cart']);
         /*foreach (Session::get('cart') as $item) {
 
             if(!$item->offers)
