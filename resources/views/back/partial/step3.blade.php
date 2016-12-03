@@ -35,7 +35,7 @@
                             <input class="farm-all" type="checkbox" id="farmCategory-{{$farm->id}}" value="{{$farm->name}}" @if(old("farmCategory-{$farm->id}")) checked='checked' @endif >
                             <sub></sub>
                             {{$farm->name}}
-                            <ul style="padding-left: 35px">
+                            <ul style="padding-left: 35px; display: none">
                                 @foreach($farm->farms as $f)
                                     <label for="farm-{{$f->id}}" class="Forms-checkout capitalize col-6">
                                         <input class="farm-single" type="checkbox" name="farm-{{$f->id}}" id="farm-{{$f->id}}" value="{{$f->name}}" @if(old("farm-{$f->id}")) checked='checked'@endif >
