@@ -12,37 +12,46 @@ use Illuminate\Support\Facades\Auth;
 class PositionAlgorithmController extends Controller
 {
 
-    function closeToMe($lat, $lng){
-        $products = Product::has('providers')->with(['subcategory','files'])->where('active',1)->get();
-
+    function closeToMe($lat, $lng)
+    {
+        $products = Product::whereHas('providers', function ($query) {
+            $query->where('isActive', 1);
+        })->with(['subcategory', 'files'])->where('active', 1)->get();
         foreach ($products as $product) {
             $providers = $product->providers;
-            foreach ($providers as $provider){
+            foreach ($providers as $provider) {
                 $provider->distance = $this->distance($lat, $lng, explode(';', $provider->pivot->location));
             }
             $product->distance = $providers->sortBy('distance')->first()->distance;
 
         }
 
-        return  $products->sortBy('distance');
+        return $products->sortBy('distance');
 
 
     }
 
+    /**
+     * @param $name Name subcategories
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
     function index($name)
     {
+
         if (!$name) {
-            return Product::has('providers')->with(['subcategory','files'])->whereRaw('active = 1 ')->get();
+            return Product::whereHas('providers', function ($query) {
+                $query->where('isActive', 1);
+            })->with(['subcategory', 'files'])->whereRaw('active = 1 ')->get();
         }
-
-        return Product::where('active',1)->has('providers')->with(['files','subcategory' => function($sql) use ($name){
-           $sql->where('slug', $name);
+        return Product::where('active', 1)->whereHas('providers', function ($query) {
+            $query->where('isActive', 1);
+        })->with(['files', 'subcategory' => function ($sql) use ($name) {
+            $sql->where('slug', $name);
         }])->whereHas(
-            'subcategory' ,  function($sql) use ($name){
-                $sql->where('slug', $name);
-            }
+            'subcategory', function ($sql) use ($name) {
+            $sql->where('slug', $name);
+        }
         )->get();
-
 
 
         /* Esto es temoporal focus group */

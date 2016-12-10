@@ -6,6 +6,7 @@ use Agrosellers\Entities\Brand;
 use Agrosellers\Entities\Farm;
 use Agrosellers\Entities\FarmCategory;
 use Agrosellers\Entities\Notification;
+use Agrosellers\Entities\Offer;
 use Agrosellers\Entities\ProductProvider;
 use Validator;
 use Session;
@@ -134,7 +135,8 @@ class ProductController extends Controller
     }
 
     function lockProduct($id){
-        $product = Product::find($id);
+
+        $product = ProductProvider::find($id);
         if($product->isActive)
             $product->update(['isActive' => 0]);
         else
@@ -200,11 +202,25 @@ class ProductController extends Controller
     }
 
     function newProductProvider(Request $request){
+
         $inputs = $request->all();
         $inputs['provider_id'] = auth()->user()->provider->id;
+
         if($request->has('taxes'))
             $inputs['taxes'] = implode(';', $inputs['taxes']);
-        ProductProvider::create($inputs);
+
+        $productProvider = ProductProvider::create($inputs);
+        if ($request->has('offerCheck')){
+
+            $dataOffer = [
+                'offer_on' => $inputs['offer_on'],
+                'offer_off' => $inputs['offer_off'],
+                'offer_price' => $inputs['offer_price'],
+            ];
+            $offer = new Offer($dataOffer);
+            $productProvider->offer()->save($offer);
+        }
+
         return redirect()->back()->with('messageSuccess', 1);
     }
 }

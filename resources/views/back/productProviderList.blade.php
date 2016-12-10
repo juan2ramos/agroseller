@@ -5,7 +5,7 @@
         <input type="hidden" id="categorySelected" value="">
         <input class="Tab" id="tab1" type="radio" name="tabs" checked>
         <label class="Tab col-6" for="tab1">Ver Productos</label>
-        
+
         <input class="Tab" id="tab2" type="radio" name="tabs">
         <label class="Tab col-6" for="tab2">Nuevo Producto</label>
 
@@ -70,7 +70,7 @@
                                                 </button>
                                             </form>
                                         @else
-                                            <span style="cursor: inherit" class="icon-" onclick="return false;">
+                                            <span class="icon-" onclick="return false;">
                                             <svg viewBox="0 0 489.4 489.4">
                                                 <g>
                                                     <g>
@@ -82,6 +82,7 @@
                                         </span>
                                         @endif
                                     </div>
+
                                 </td>
                             </tr>
                         @endforeach
@@ -112,18 +113,21 @@
         </article>
 
         <article class="TabContainer col-12" id="NewProduct">
-            <form id="Product-form" role="form" method="POST" action="{{ route('newProductProvider') }}" enctype="multipart/form-data">
+            <form id="Product-form" role="form" method="POST" action="{{ route('newProductProvider') }}"
+                  enctype="multipart/form-data">
                 <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
                 <section class="Wizard">
                     <ul class=" row middle center">
                         <li class="col-3 current" data-id="1">
-                            <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <g id="Paso-1" transform="translate(-342.000000, -138.000000)" fill="#C5D257">
                                         <g id="icons" transform="translate(315.000000, 138.000000)">
                                             <g id="noun_106902_cc" transform="translate(27.000000, 0.000000)">
                                                 <g id="Group">
-                                                    <path d="M15,2 L7.8755,2 L7.266,0.752 C6.969,0.0955 6.5035,0 5.9505,0 L0.9525,0 C0.401,0 0,0.4475 0,1 L0,14.992 C0,15.545 0.448,16 0.9995,16 L15,16 C15.5525,16 16,15.5525 16,15 L16,2.998 C16,2.4475 15.5525,2 15,2 L15,2 Z M12,11 L4,11 L4,10 L12,10 L12,11 L12,11 Z M12,9 L4,9 L4,8 L12,8 L12,9 L12,9 Z" id="Shape"></path>
+                                                    <path d="M15,2 L7.8755,2 L7.266,0.752 C6.969,0.0955 6.5035,0 5.9505,0 L0.9525,0 C0.401,0 0,0.4475 0,1 L0,14.992 C0,15.545 0.448,16 0.9995,16 L15,16 C15.5525,16 16,15.5525 16,15 L16,2.998 C16,2.4475 15.5525,2 15,2 L15,2 Z M12,11 L4,11 L4,10 L12,10 L12,11 L12,11 Z M12,9 L4,9 L4,8 L12,8 L12,9 L12,9 Z"
+                                                          id="Shape"></path>
                                                 </g>
                                             </g>
                                         </g>
@@ -133,17 +137,22 @@
                             Categorías
                         </li>
                         <li class="col-3" data-id="2">
-                            <svg width="16px" height="15px" viewBox="0 0 16 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <svg width="16px" height="15px" viewBox="0 0 16 15" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <g id="Paso-1" transform="translate(-555.000000, -138.000000)" fill="#D9D9D9">
                                         <g id="icons" transform="translate(315.000000, 138.000000)">
                                             <g id="noun_347582_cc" transform="translate(240.000000, 0.000000)">
                                                 <g id="Group">
                                                     <g>
-                                                        <path d="M2.93095248,6.74190512 L3.66927083,6.74190512 L4.68952397,6.74190512 L4.68952397,8.50047661 L3.71335565,8.50047661 L2.93095248,8.50047661 L2.93095248,6.74190512 Z" id="Rectangle-path"></path>
-                                                        <rect id="Rectangle-path" x="2.93095248" y="10.8452386" width="1.75857149" height="1.75857149"></rect>
-                                                        <rect id="Rectangle-path" x="2.93095248" y="1.58285722" width="9.37904794" height="2.98857135"></rect>
-                                                        <path d="M0,14.4761905 L15.2409529,14.4761905 L15.2409529,0 L0,0 L0,14.4761905 Z M5.27571447,13.1900006 L2.34476198,13.1900006 L2.34476198,10.2590481 L5.27571447,10.2590481 L5.27571447,13.1900006 L5.27571447,13.1900006 Z M2.34476198,9.08666711 L2.34476198,6.15571463 L5.27571447,6.15571463 L5.27571447,9.08666711 L2.34476198,9.08666711 Z M12.8961909,12.6038101 L6.44809546,12.6038101 L6.44809546,12.0176196 L12.8961909,12.0176196 L12.8961909,12.6038101 L12.8961909,12.6038101 Z M6.44809546,11.4314291 L6.44809546,10.8452386 L11.7238099,10.8452386 L11.7238099,11.4314291 L6.44809546,11.4314291 L6.44809546,11.4314291 Z M12.8961909,8.50047661 L6.44809546,8.50047661 L6.44809546,7.91428611 L12.8961909,7.91428611 L12.8961909,8.50047661 L12.8961909,8.50047661 Z M6.44809546,7.32809562 L6.44809546,6.74190512 L11.7238099,6.74190512 L11.7238099,7.32809562 L6.44809546,7.32809562 L6.44809546,7.32809562 Z M12.8961909,5.33333333 L2.34476198,5.33333333 L2.34476198,0.996666727 L12.8961909,0.996666727 L12.8961909,5.33333333 L12.8961909,5.33333333 Z" id="Shape"></path>
+                                                        <path d="M2.93095248,6.74190512 L3.66927083,6.74190512 L4.68952397,6.74190512 L4.68952397,8.50047661 L3.71335565,8.50047661 L2.93095248,8.50047661 L2.93095248,6.74190512 Z"
+                                                              id="Rectangle-path"></path>
+                                                        <rect id="Rectangle-path" x="2.93095248" y="10.8452386"
+                                                              width="1.75857149" height="1.75857149"></rect>
+                                                        <rect id="Rectangle-path" x="2.93095248" y="1.58285722"
+                                                              width="9.37904794" height="2.98857135"></rect>
+                                                        <path d="M0,14.4761905 L15.2409529,14.4761905 L15.2409529,0 L0,0 L0,14.4761905 Z M5.27571447,13.1900006 L2.34476198,13.1900006 L2.34476198,10.2590481 L5.27571447,10.2590481 L5.27571447,13.1900006 L5.27571447,13.1900006 Z M2.34476198,9.08666711 L2.34476198,6.15571463 L5.27571447,6.15571463 L5.27571447,9.08666711 L2.34476198,9.08666711 Z M12.8961909,12.6038101 L6.44809546,12.6038101 L6.44809546,12.0176196 L12.8961909,12.0176196 L12.8961909,12.6038101 L12.8961909,12.6038101 Z M6.44809546,11.4314291 L6.44809546,10.8452386 L11.7238099,10.8452386 L11.7238099,11.4314291 L6.44809546,11.4314291 L6.44809546,11.4314291 Z M12.8961909,8.50047661 L6.44809546,8.50047661 L6.44809546,7.91428611 L12.8961909,7.91428611 L12.8961909,8.50047661 L12.8961909,8.50047661 Z M6.44809546,7.32809562 L6.44809546,6.74190512 L11.7238099,6.74190512 L11.7238099,7.32809562 L6.44809546,7.32809562 L6.44809546,7.32809562 Z M12.8961909,5.33333333 L2.34476198,5.33333333 L2.34476198,0.996666727 L12.8961909,0.996666727 L12.8961909,5.33333333 L12.8961909,5.33333333 Z"
+                                                              id="Shape"></path>
                                                     </g>
                                                 </g>
                                             </g>
@@ -151,7 +160,7 @@
                                     </g>
                                 </g>
                             </svg>
-                            Producto
+                            Productos
                         </li>
                         <li class="col-3" data-id="3">
                             <svg width="17px" height="16px" viewBox="0 0 17 16" version="1.1"
@@ -179,7 +188,7 @@
                                     </g>
                                 </g>
                             </svg>
-                            Oferta
+                            Detalle del producto
                         </li>
                         <li class="col-3" data-id="4">
                             <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1"
@@ -242,13 +251,17 @@
         @section('scripts')
                 <!--<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
         <script src="{{asset('js/maps.js')}}"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap" async defer></script>
-        <script src="{{asset('js/jquery.datetimepicker.full.min.js')}}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap"
+                async defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.js"></script>
         <script src="{{asset('js/products.js')}}"></script>
         <script src="{{asset('js/forms.js')}}"></script>
         <script src="{{asset('js/images.js')}}"></script>
-        <script src="https://cdn.quilljs.com/1.0.0-rc.0/quill.js"></script>
+
         <script>
+
+            $(".datepicker").datetimepicker();
+
             var toolbarOptions = [
                 ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
                 ['blockquote', 'code-block'],
@@ -291,22 +304,23 @@
         <script>
 
             var subcategories = $('#subcategoriesList'),
-                productTable = $('#productTable');
+                    productTable = $('#productTable');
 
-            subcategories.on('click', 'li', function(){
+            subcategories.on('click', 'li', function () {
                 var params = {
-                    subcategory_id : $(this).data('id'),
-                    _token : $('#token').val()
+                    subcategory_id: $(this).data('id'),
+                    _token: $('#token').val()
                 };
 
                 $.post($('#callProducts').val(), params, function (data) {
-                    var products = data.products,
-                        html = "";
 
-                    $.each(products, function(i, product){
+                    var products = data.products,
+                            html = "";
+
+                    $.each(products, function (i, product) {
                         html += "<tr>" +
-                                    "<td>" + product.name + "</td>" +
-                                    "<td><input style='opacity:1' value='" + product.id + "' name='product_id' type='radio' class='productSelected'></td>" +
+                                "<td>" + product.name + "</td>" +
+                                "<td><input style='opacity:1' value='" + product.id + "' name='product_id' type='radio' class='productSelected'></td>" +
                                 "</tr>";
                     });
 

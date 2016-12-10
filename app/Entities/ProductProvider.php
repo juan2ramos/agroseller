@@ -26,4 +26,7 @@ class ProductProvider extends Model
     public function getTotalValueAttribute(){
         return $this->pivot->quantity * $this->price;
     }
+    public function offer(){
+        return $this->hasMany(Offer::class);
+    }
 }

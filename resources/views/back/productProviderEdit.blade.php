@@ -63,7 +63,7 @@
                                         </g>
                                     </g>
                                 </svg>
-                                Producto
+                                Productos
                             </li>
                             <li class="col-3" data-id="3">
                                 <svg width="17px" height="16px" viewBox="0 0 17 16" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +90,7 @@
                                         </g>
                                     </g>
                                 </svg>
-                                Oferta
+                                Detalle del producto
                             </li>
                             <li class="col-3" data-id="4">
                                 <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg"

@@ -35,33 +35,79 @@
 
     <article>
 
-        <label for="priceCurrent" >
-            <input type="text" id="priceCurrent" name="price" @if(isset($productEdit)) value="{{$productEdit->price}}" @endif>
+        <label for="priceCurrent">
+            <input type="text" id="priceCurrent" name="price"
+                   @if(isset($productEdit)) value="{{$productEdit->price}}" @endif>
             <span>Precio</span>
             <em>$</em>
         </label>
 
         <label for="available_quantity">
-            <input type="number" id="available_quantity" name="available_quantity" @if(isset($productEdit)) value="{{$productEdit->available_quantity}}" @endif>
+            <input type="number" id="available_quantity" name="available_quantity"
+                   @if(isset($productEdit)) value="{{$productEdit->available_quantity}}" @endif>
             <span>Cantidad disponible</span>
             <em></em>
         </label>
 
         <label for="min_quantity">
-            <input type="number" id="min_quantity" name="min_quantity" @if(isset($productEdit)) value="{{$productEdit->min_quantity}}" @endif>
+            <input type="number" id="min_quantity" name="min_quantity"
+                   @if(isset($productEdit)) value="{{$productEdit->min_quantity}}" @endif>
             <span>Cantidad mínima para despacho</span>
             <em></em>
         </label>
+
+
+        <label for="video">
+            <input type="text" id="video" name="video"
+                   @if(isset($productEdit)) value="{{$productEdit->video}}" @endif>
+            <span>URL Video (id de Youtube)</span>
+            <em></em>
+        </label>
+
+        <label for="link">
+            <input type="text" id="link" name="link"
+                   @if(isset($productEdit)) value="{{$productEdit->link}}" @endif>
+            <span>Link de página del producto</span>
+            <em></em>
+        </label>
+
         <div class="row">
             <label for="iva" class="col-6">
-                <input type="checkbox" name="taxes[]" value="iva" id="iva" @if(isset($productEdit) && strpos($productEdit->taxes, 'iva') !== false) checked="checked" @endif >
+                <input type="checkbox" name="taxes[]" value="iva" id="iva"
+                       @if(isset($productEdit) && strpos($productEdit->taxes, 'iva') !== false) checked="checked" @endif >
                 <sub></sub>
                 Iva 16%
             </label>
             <label for="rete" class="col-6">
-                <input type="checkbox" name="taxes[]" value="retefuente" id="rete" @if(isset($productEdit) && strpos($productEdit->taxes, 'rete') !== false) checked="checked" @endif>
+                <input type="checkbox" name="taxes[]" value="retefuente" id="rete"
+                       @if(isset($productEdit) && strpos($productEdit->taxes, 'rete') !== false) checked="checked" @endif>
                 <sub></sub>
                 Retefuente 2.5%
+            </label>
+        </div>
+        <h2 style="margin: 36px 0 0;">
+            <label for="offerCheck" class="col-6" style="display: inline-block">
+                <input type="checkbox" name="offerCheck" id="offerCheck" value="1">
+                <sub></sub>
+                Producto con oferta
+            </label>
+
+        </h2>
+        <div id="NewProduct-offer" style="display: none">
+            <label for="offer_on">
+                <input type="text" id="offer_on" name="offer_on" class="datepicker">
+                <span>Fecha inicial de la oferta</span>
+                <em></em>
+            </label>
+            <label for="offer_off">
+                <input type="text" id="offer_off" name="offer_off" class="datepicker">
+                <span>Fecha final de la oferta </span>
+                <em></em>
+            </label>
+            <label for="offer_price">
+                <input type="number" id="offer_price" name="offer_price">
+                <span>Valor de la oferta</span>
+                <em></em>
             </label>
         </div>
     </article>

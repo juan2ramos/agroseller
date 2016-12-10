@@ -60,8 +60,6 @@ class ProductController extends Controller
     function productDetailFront(Request $request, $slug, $id)
     {
 
-
-
         $product = Product::with(['subcategory','files','providers.user'] )->find($id);
 
         $questions = $this->reloadQuestions($id);

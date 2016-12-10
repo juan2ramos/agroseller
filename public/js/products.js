@@ -5,6 +5,14 @@ var currentStep = 1,
         'DescriptionOffer': 'Descripción oferta'
     };
 $(document).ready(function () {
+    $('#offerCheck').on('click', function(){
+
+        if($(this).is(':checked')){
+            $('#NewProduct-offer').show();
+        }else{
+            $('#NewProduct-offer').hide();
+        }
+    });
     jQuery.datetimepicker.setLocale('es');
     var dateTimePicker = $('.datetimepicker_mask');
     dateTimePicker.datetimepicker({
@@ -41,12 +49,12 @@ $(document).ready(function () {
         $subcategoriesList = $('#subcategoriesList'),
         inputsForm = new Array;
 
-        for (var i = 0; i < optionsNumber; i++) {
-            $('<li />', {
-                html: $options.eq(i).text() + '<svg width="7px" height="12px"><use xlink:href="#arrow" /></svg>',
-                'data-id': $options.eq(i).val()
-            }).appendTo($categoriesList);
-        }
+    for (var i = 0; i < optionsNumber; i++) {
+        $('<li />', {
+            html: $options.eq(i).text() + '<svg width="7px" height="12px"><use xlink:href="#arrow" /></svg>',
+            'data-id': $options.eq(i).val()
+        }).appendTo($categoriesList);
+    }
 
     $categoriesList.on('click', 'li', function () {
         $('#stepOneButton').addClass('invalid');
@@ -74,7 +82,7 @@ $(document).ready(function () {
                 }).appendTo($subcategoriesList);
 
                 $subcategories.append($("<option></option>").attr("value", subcategories[j].id).text(subcategories[j].name));
-                if(subcategoryId == subcategory.attr('data-id')){
+                if (subcategoryId == subcategory.attr('data-id')) {
                     $subcategoriesList.children('li').eq(j).click();
                 }
             }
@@ -123,14 +131,14 @@ $(document).ready(function () {
         }
     });
 
-    compositionFile.on('change', function(){
+    compositionFile.on('change', function () {
         var file = $(this).val();
         $('#compositionText').text(file);
     });
 
-    $categoriesList.children('li:nth-child(' + categoryId +')').click();
+    $categoriesList.children('li:nth-child(' + categoryId + ')').click();
 
-    $('.productDetailAction').on('click', function(){
+    $('.productDetailAction').on('click', function () {
         var $form = $('.formProductPreview');
         $form.html('<input style="display:none" type="submit" class="productDetailSession">');
 
@@ -140,10 +148,10 @@ $(document).ready(function () {
             categories = $('#categoriesList').children(),
             subcategories = $('#subcategoriesList').children();
 
-        var searchData = function(object, attr, type, name){
+        var searchData = function (object, attr, type, name) {
             var elements = "";
 
-            for(var i = 0; i < object.length; i++){
+            for (var i = 0; i < object.length; i++) {
                 var flag = false,
                     item = object.eq(i),
                     idItem = item.attr('id'),
@@ -151,43 +159,43 @@ $(document).ready(function () {
                     finalValue = "",
                     finalName = "";
 
-                if(!valueItem) valueItem = item.val();
+                if (!valueItem) valueItem = item.val();
 
-                if(type == 'select'){
-                    if(item.hasClass('selected')){
+                if (type == 'select') {
+                    if (item.hasClass('selected')) {
                         flag = true;
                         finalValue = valueItem;
-                        finalName  = name + '';
+                        finalName = name + '';
                     }
                 }
-                else if(type == 'image'){
-                    if(valueItem){
+                else if (type == 'image') {
+                    if (valueItem) {
                         flag = true;
                         finalValue = valueItem;
-                        finalName  = name + i;
-                    }
-                }
-
-                else if(type == 'checkbox'){
-                    if(item.attr('checked') == 'checked'){
-                        flag = true;
-                        finalValue = valueItem;
-                        finalName  = idItem;
+                        finalName = name + i;
                     }
                 }
 
-                else if(type == 'text'){
-                    if(valueItem && idItem){
-                        if(idItem == 'token')
+                else if (type == 'checkbox') {
+                    if (item.attr('checked') == 'checked') {
+                        flag = true;
+                        finalValue = valueItem;
+                        finalName = idItem;
+                    }
+                }
+
+                else if (type == 'text') {
+                    if (valueItem && idItem) {
+                        if (idItem == 'token')
                             idItem = '_token';
                         flag = true;
                         finalValue = valueItem;
-                        finalName  = idItem;
+                        finalName = idItem;
                     }
                 }
 
-                if(flag)
-                    elements += "<input type='text' value='" + finalValue + "' name='" + finalName +"'>";
+                if (flag)
+                    elements += "<input type='text' value='" + finalValue + "' name='" + finalName + "'>";
             }
             return elements;
         };
@@ -230,21 +238,21 @@ function steps(from, to) {
 
 function DetailsProduct() {
     /*$('.owl-wrapper').html('');
-    var count = 0;
+     var count = 0;
 
-    for(i = 0; i < 4; i++){
-        var $result = $('.result').eq(i);
-        if($result.children().length > 0){
-            var image = $result.children('figure').children('img').attr('src');
-            $('#sync1 .owl-wrapper').append('<div style="width: 379px;" class="owl-item"><figure class="item"><img src="'+ image + '" alt=""></figure></div>');
-            $('#sync2 .owl-wrapper').append('<div style="width: 95px;" class="owl-item"><figure class="item"><img src="'+ image + '" alt=""></figure></div>');
-            count += 1;
-        }
-        else
-            break;
-    }
-    $('#sync1 .owl-wrapper').css('width', (379 * count) + 'px');
-    $('#sync2 .owl-wrapper').css('width', (95 * count) + 'px');*/
+     for(i = 0; i < 4; i++){
+     var $result = $('.result').eq(i);
+     if($result.children().length > 0){
+     var image = $result.children('figure').children('img').attr('src');
+     $('#sync1 .owl-wrapper').append('<div style="width: 379px;" class="owl-item"><figure class="item"><img src="'+ image + '" alt=""></figure></div>');
+     $('#sync2 .owl-wrapper').append('<div style="width: 95px;" class="owl-item"><figure class="item"><img src="'+ image + '" alt=""></figure></div>');
+     count += 1;
+     }
+     else
+     break;
+     }
+     $('#sync1 .owl-wrapper').css('width', (379 * count) + 'px');
+     $('#sync2 .owl-wrapper').css('width', (95 * count) + 'px');*/
 
     var $DetailsProduct = $("#detailsProduct");
     $DetailsProduct.html('');
@@ -258,7 +266,7 @@ function DetailsProduct() {
 
         var nameProduct = $(this).siblings('span').text(),
             ValueProduct = String($(this).val());
-            html = "";
+        html = "";
 
         if (nameProduct == "") {
 
@@ -326,6 +334,7 @@ function DetailsProduct() {
 
     });
 
+
 }
 
 /********* Eliminar productos *********/
@@ -339,38 +348,39 @@ var tab1 = $('[for="tab1"]'),
     productId;
 
 
-    if (tab2.is(':checked')) {
-        line.addClass('right');
+if (tab2.is(':checked')) {
+    line.addClass('right');
+}
+
+tab2.on('click', function () {
+    line.addClass('right');
+});
+
+tab1.on('click', function () {
+    line.removeClass('right');
+});
+
+$('#ProductUpdate-close').on('click', function () {
+    productUpdate.removeClass('left');
+});
+
+$('.Item-actions').on('click', '.icon-remove', function () {
+    productId = $(this).siblings('.ProductId').val();
+
+    if ($(this).hasClass('icon-update'))
+        productUpdate.addClass('left');
+    else
+        deleteMessage.show();
+});
+
+deleteMessage.on('click', '#Cancel, #Accept', function () {
+    if ($(this).attr('id') == "Accept") {
+        var deleteForm = $('#DeleteForm');
+        var url = deleteForm.attr('action') + '/' + productId;
+        deleteForm.attr('action', url);
+        deleteForm.children('.submit').trigger('click');
     }
 
-    tab2.on('click', function () {
-        line.addClass('right');
-    });
+    deleteMessage.hide();
+});
 
-    tab1.on('click', function () {
-        line.removeClass('right');
-    });
-
-    $('#ProductUpdate-close').on('click', function () {
-        productUpdate.removeClass('left');
-    });
-
-    $('.Item-actions').on('click', '.icon-remove',function () {
-        productId = $(this).siblings('.ProductId').val();
-
-        if ($(this).hasClass('icon-update'))
-            productUpdate.addClass('left');
-        else
-            deleteMessage.show();
-    });
-
-    deleteMessage.on('click', '#Cancel, #Accept', function () {
-        if($(this).attr('id') == "Accept"){
-            var deleteForm = $('#DeleteForm');
-            var url = deleteForm.attr('action') + '/' + productId;
-            deleteForm.attr('action', url);
-            deleteForm.children('.submit').trigger('click');
-        }
-
-        deleteMessage.hide();
-    });

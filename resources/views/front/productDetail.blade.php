@@ -115,7 +115,7 @@
 
                     <li id="distributor" data-product_provider="{{$product->providers->first()->pivot->id}}"
                         data-distributor="{{$product->providers->first()->id}}"> Distribuidor:
-                        <val>{{$product->providers->first()->user->name}}</val>
+                        <val>{{$product->providers->first()['company-name']}}</val>
                     </li>
                     <li>Calificación: <b>★★★★★</b></li>
                     {{--<li>Presentación: </li>
@@ -158,8 +158,8 @@
 
                         <input type="radio" class="ope" @if($key == 0) checked @endif name="provider">
                     </td>
-                    <td class="name-provider" data-nameprovider="{{$provider->user->name}}">
-                        <p>{{$provider->user->name}}</p>
+                    <td class="name-provider" data-nameprovider="{{$provider['company-name']}}">
+                        <p>{{$provider['company-name']}}</p>
                         <b class="ranking">★★★★★</b>
                     </td>
                     <td class="price-provider" data-price="{{$provider->pivot->price}}">
