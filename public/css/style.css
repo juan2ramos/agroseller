@@ -1019,6 +1019,7 @@ label.file {
   padding: 3rem; }
 
 .Forms-checkout {
+  position: relative;
   font-weight: 100;
   color: gray;
   line-height: 1.25rem;

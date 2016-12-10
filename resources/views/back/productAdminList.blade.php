@@ -363,6 +363,9 @@
             $('.farm-all, .farm-single').on('click change', function(){
                 var isChecked = $(this).is(':checked') ? 'checked' : false;
                 $(this).attr('checked', isChecked).prop('checked', isChecked).siblings('ul').children('label').children('input').attr('checked', isChecked).prop('checked', isChecked);
+                isChecked
+                        ? $(this).siblings('ul').slideDown()
+                        : $(this).siblings('ul').slideUp();
             });
 
         </script>

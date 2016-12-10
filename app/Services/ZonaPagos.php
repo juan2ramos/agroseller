@@ -14,6 +14,7 @@ class ZonaPagos {
     private $shop;
     private $serviceCode;
     private $routeCode;
+    private $products;
 
     public function __construct(){
         $this->key = env('ZP_KEY');
@@ -41,6 +42,7 @@ class ZonaPagos {
     /** Retorna el id del pago **/
 
     public function invoiceRequest($inputs){
+
         $url = 'https://www.zonapagos.com/api_inicio_pago/api/inicio_pagoV2';
         $user = auth()->user();
         $user->identification = $inputs['id_cliente'];
@@ -62,7 +64,7 @@ class ZonaPagos {
                 "descripcion_pago" => $inputs["descripcion_pago"],
                 "telefono_cliente" => $inputs["telefono_cliente"],
                 "info_opcional1" => $inputs["info_opcional1"],
-                "info_opcional2" => ".",
+                "info_opcional2" => $inputs["products_id"],
                 "info_opcional3" => ".",
                 "lista_codigos_servicio_multicredito" => "",
                 "lista_nit_codigos_servicio_multicredito" => "",
@@ -77,7 +79,6 @@ class ZonaPagos {
     }
 
     public function insertPayResult($inputs){
-
         $data = [];
         /*foreach (Session::get('cart') as $item) {
 
@@ -90,7 +91,6 @@ class ZonaPagos {
 
             $data[$item->id] = ['quantity' => $item->quantity, 'state_order_id' => 2, 'value' => $value];
         }*/
-
 
         $user = User::where('identification', $inputs['id_cliente'])->first();
 
@@ -109,10 +109,10 @@ class ZonaPagos {
         $user->orders()->save($order);
         $order->products()->attach($data);
 
-        /*if($inputs['estado_pago']) {
+        if($inputs['estado_pago']) {
             Session::forget('cart');
             Session::forget('valueTotal');
-        }*/
+        }
     }
 
     /** Retorna la instancia de zona pagos **/

@@ -17,6 +17,8 @@ class OrderController extends Controller
             return back();
         
         $inputs = $request->all();
+        $inputs['products_id'] = implode(',', array_keys( Session::get('cart')));
+
         $zp = ZonaPagos::create();
         $id = $zp->invoiceRequest($inputs);
 
