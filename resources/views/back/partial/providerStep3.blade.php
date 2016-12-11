@@ -57,9 +57,9 @@
         </label>
 
 
-        <label for="video">
-            <input type="text" id="video" name="video"
-                   @if(isset($productEdit)) value="{{$productEdit->video}}" @endif>
+        <label for="youtube">
+            <input type="text" id="youtube" name="youtube"
+                   @if(isset($productEdit)) value="{{$productEdit->youtube}}" @endif>
             <span>URL Video (id de Youtube)</span>
             <em></em>
         </label>
@@ -70,7 +70,14 @@
             <span>Link de página del producto</span>
             <em></em>
         </label>
-
+        @if(!isset($productEdit->canServientrega))
+            <label for="isServientrega" style="margin: 40px 0 32px;" class="col-12">
+                <input type="checkbox" name="isServientrega" value="1" id="isServientrega"
+                       @if(isset($productEdit->isServientrega)) checked="checked" @endif >
+                <sub></sub>
+                Desea que este producto sea enviado por servientrega
+            </label>
+        @endif
         <div class="row">
             <label for="iva" class="col-6">
                 <input type="checkbox" name="taxes[]" value="iva" id="iva"
@@ -86,30 +93,91 @@
             </label>
         </div>
         <h2 style="margin: 36px 0 0;">
-            <label for="offerCheck" class="col-6" style="display: inline-block">
-                <input type="checkbox" name="offerCheck" id="offerCheck" value="1">
+            <label for="has_offer" class="col-6" style="display: inline-block">
+                <input type="checkbox" name="has_offer"
+                       @if(isset($productEdit) && $productEdit->has_offer) checked="checked" @endif id="has_offer"
+                       value="1">
                 <sub></sub>
                 Producto con oferta
             </label>
 
         </h2>
-        <div id="NewProduct-offer" style="display: none">
+
+        <div id="NewProduct-offer" @if(!isset($productEdit)) style="display: none"
+             @else @if(!$productEdit->has_offer) style="display: none" @endif  @endif >
             <label for="offer_on">
-                <input type="text" id="offer_on" name="offer_on" class="datepicker">
+                <input type="text" id="offer_on" @if(isset($offer)) value="{{$offer->offer_on}}" @endif name="offer_on"
+                       class="datepicker">
                 <span>Fecha inicial de la oferta</span>
                 <em></em>
             </label>
             <label for="offer_off">
-                <input type="text" id="offer_off" name="offer_off" class="datepicker">
+                <input type="text" id="offer_off" @if(isset($offer)) value="{{$offer->offer_off}}"
+                       @endif  name="offer_off" class="datepicker">
                 <span>Fecha final de la oferta </span>
                 <em></em>
             </label>
             <label for="offer_price">
-                <input type="number" id="offer_price" name="offer_price">
+                <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" @endif id="offer_price"
+                       name="offer_price">
                 <span>Valor de la oferta</span>
                 <em></em>
             </label>
         </div>
+
+
+        <h2 style="margin: 36px 0 0;"> Embalaje </h2>
+        <div class="Packing">
+            <div class="row ">
+                <div class="col-3" style="padding: 0 2px;">
+                    <label for="high">
+                        <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" @endif id="high"
+                               name="high">
+                        <span>Alto</span>
+                        <em></em>
+                    </label>
+                </div>
+                <div class="col-3" style="padding: 0 2px;">
+                    <label for="width">
+                        <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" @endif id="width"
+                               name="width">
+                        <span>Ancho</span>
+                        <em></em>
+                    </label>
+                </div>
+                <div class="col-3" style="padding: 0 2px;">
+                    <label for="long">
+                        <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" @endif id="long"
+                               name="long">
+                        <span>Largo</span>
+                        <em></em>
+                    </label>
+                </div>
+                <div class="col-3" style="padding: 0 2px;">
+                    <label for="quantity">
+                        <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" @endif id="quantity"
+                               name="quantity">
+                        <span>Cantidad</span>
+                        <em></em>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row middle " id="addPacking" style="cursor: pointer">
+
+            <svg width="30px" height="30px" viewBox="435 593 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+                   transform="translate(435.000000, 593.000000)">
+                    <path d="M15,0 C6.75,0 0,6.75 0,15 C0,23.25 6.75,30 15,30 C23.25,30 30,23.25 30,15 C30,6.75 23.25,0 15,0 Z"
+                          id="Shape" fill="#C5D257"></path>
+                    <path d="M19.875,16.3125 L16.3125,16.3125 L16.3125,19.875 C16.3125,20.625 15.75,21.1875 15,21.1875 C14.25,21.1875 13.6875,20.625 13.6875,19.875 L13.6875,16.3125 L10.125,16.3125 C9.375,16.3125 8.8125,15.75 8.8125,15 C8.8125,14.25 9.375,13.6875 10.125,13.6875 L13.6875,13.6875 L13.6875,10.125 C13.6875,9.375 14.25,8.8125 15,8.8125 C15.75,8.8125 16.3125,9.375 16.3125,10.125 L16.3125,13.6875 L19.875,13.6875 C20.625,13.6875 21.1875,14.25 21.1875,15 C21.1875,15.75 20.625,16.3125 19.875,16.3125 Z"
+                          id="Path" fill="#253A1B"></path>
+                </g>
+            </svg>
+            <p style="margin: 0 5px; color: #253a1b;">Añadir otro</p>
+        </div>
+
     </article>
 
     <div class="Button  Next" id="stepThreeButton">SIGUIENTE</div>

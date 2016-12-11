@@ -13,7 +13,7 @@ class Product extends Model
     protected $fillable = [
         'name', 'slug', 'presentation', 'size', 'subcategory_id',
         'brand_id', 'weight', 'measure', 'material', 'description',
-        'composition', 'forms_employment', 'taxes', 'image_scale', 'farms'
+        'composition', 'forms_employment', 'taxes', 'image_scale', 'farms','canServientrega'
     ];
 
     /*protected $mappingProperties = [

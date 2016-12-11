@@ -16,7 +16,7 @@
         <span class="smaller-12">1. Seleccione o cree la marca del producto.</span>
         <select name="brand" id="brand" class="smaller-9">
             <option value=""></option>
-            @if(isset($productEdit)) 
+            @if(isset($productEdit))
                 @foreach($brands as $brand)
                     <option value="{{$brand->id}}" @if($productEdit->brand_id == $brand->id) selected @endif >{{$brand->name}}</option>
                 @endforeach
@@ -100,6 +100,17 @@
         <div class="file" id="compositionText">Composición , propiedades(Ficha tecnica)</div>
         <em>PDF</em>
     </label>
+    <label for="canServientrega" class="col-12 col-sm-12" style=" margin: 40px 0 32px;">
+        @if(isset($productEdit))
+            <input type="checkbox" name="canServientrega" id="canServientrega"  @if( $productEdit->canServientrega ) checked="checked" @endif value="{{$productEdit->canServientrega}}">
+        @else
+            <input type="checkbox" name="canServientrega" id="canServientrega" value="1">
+        @endif
+
+        <sub></sub>
+        Este producto cumple con las especiicaciones para ser enviado por servientrega
+    </label>
+
 
     <!-- <label for="priceCurrent" >
         @if(isset($productEdit))

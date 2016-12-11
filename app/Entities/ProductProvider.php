@@ -10,7 +10,7 @@ class ProductProvider extends Model
 {
     protected $fillable = [
         'product_id', 'provider_id', 'price', 'location', 'available_quantity',
-        'min_quantity', 'available', 'isValidate', 'isActive', 'taxes'
+        'min_quantity', 'available', 'isValidate', 'isActive', 'taxes','has_offer','youtube','link'
     ];
 
     public function provider(){
@@ -27,6 +27,9 @@ class ProductProvider extends Model
         return $this->pivot->quantity * $this->price;
     }
     public function offer(){
-        return $this->hasMany(Offer::class);
+        return $this->hasOne(Offer::class);
+    }
+    public function packing(){
+        return $this->hasMany(Packing::class);
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnsPpTable extends Migration
+class AddColumnsProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,8 @@ class AddColumnsPpTable extends Migration
      */
     public function up()
     {
-        Schema::table('product_providers', function($table){
-            $table->string('has_offer')->default(0);
-            $table->string('youtube');
-            $table->string('link');
+        Schema::table('products', function($table){
+            $table->tinyInteger('canServientrega')->default(0);
         });
     }
 

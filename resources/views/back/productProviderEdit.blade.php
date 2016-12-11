@@ -156,7 +156,7 @@
         <script src="https://cdn.quilljs.com/1.0.0-rc.0/quill.js"></script>
 
         <script>
-
+            $(".datepicker").datetimepicker();
             var subcategories = $('#subcategoriesList'),
                 productTable = $('#productTable');
 

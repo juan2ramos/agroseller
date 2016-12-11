@@ -77,13 +77,14 @@ class ProductController extends Controller
         $farms = FarmCategory::with('farms')->get();
         $categories = Category::all();
         $user = auth()->user();
-        //$offerEdit = $productEdit->offers()->first();
+
         if($user->role_id == 1){
             $productEdit = Product::find($id);
             return view('back.productAdminEdit', compact('productEdit', 'offerEdit', 'categories', 'farms', 'brands'));
         }else{
             $productEdit = ProductProvider::find($id);
-            return view('back.productProviderEdit', compact('productEdit', 'offerEdit', 'categories', 'farms', 'brands'));
+            $offer = $productEdit->offer()->first();
+            return view('back.productProviderEdit', compact('productEdit', 'offer', 'categories', 'farms', 'brands'));
         }
     }
 
@@ -92,6 +93,19 @@ class ProductController extends Controller
         if($request->has('taxes'))
             $inputs['taxes'] = implode(';', $inputs['taxes']);
         $product = ProductProvider::find($id);
+
+        if ($request->has('has_offer')){
+
+            $offer = $product->offer;
+            $offer->offer_on = $inputs['offer_on'];
+            $offer->offer_off = $inputs['offer_off'];
+            $offer->offer_price = $inputs['offer_price'];
+
+            $product->offer()->save($offer);
+        }else{
+            $inputs['has_offer'] = 0;
+
+        }
         $product->update($inputs);
         return redirect()->back()->with('messageSuccess', 1);
     }
@@ -106,6 +120,9 @@ class ProductController extends Controller
                 $farms .= $data . ',';
             }
         }
+
+        if(!$request->has('canServientrega'))
+            $inputs['canServientrega'] = 0;
 
         if ($request->has('taxes'))
             $inputs['taxes'] = implode(';', $inputs['taxes']);
@@ -209,8 +226,9 @@ class ProductController extends Controller
         if($request->has('taxes'))
             $inputs['taxes'] = implode(';', $inputs['taxes']);
 
+
         $productProvider = ProductProvider::create($inputs);
-        if ($request->has('offerCheck')){
+        if ($request->has('has_offer')){
 
             $dataOffer = [
                 'offer_on' => $inputs['offer_on'],

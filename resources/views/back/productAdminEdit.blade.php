@@ -148,7 +148,7 @@
         <script src="{{asset('js/maps.js')}}"></script>
         <script>getPosition('{!!$productEdit->location!!}')</script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap" async defer></script>
-        <script src="{{asset('js/jquery.datetimepicker.full.min.js')}}"></script>
+            <script src="{{asset('js/jquery.datetimepicker.full.min.js')}}"></script>
         <script src="{{asset('js/products.js')}}"></script>
         <script src="{{asset('js/forms.js')}}"></script>
         <script src="{{asset('js/images.js')}}"></script>

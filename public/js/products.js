@@ -5,7 +5,14 @@ var currentStep = 1,
         'DescriptionOffer': 'Descripción oferta'
     };
 $(document).ready(function () {
-    $('#offerCheck').on('click', function(){
+
+    $('#addPacking').on('click', function(){
+
+
+    });
+
+
+    $('#has_offer').on('click', function(){
 
         if($(this).is(':checked')){
             $('#NewProduct-offer').show();
