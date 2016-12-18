@@ -47,16 +47,8 @@
 
             </div>
             <div>
-                <img src="{{url('images/2.jpg')}}" alt="">
-                <div class="BannerTop-info row middle">
-                    <div class="smaller-12 medium-6">
-                        <h2>DISEÑO LOGÍSTICA DE COSECHA </h2>
-                        <h3>DISEÑO DE PLANTACIONES AGRÍCOLAS</h3>
-                        <!--<p class="BannerTop-infoPrice"><span>$80.000.000</span> Ahora $50.000.000</p>-->
-                    </div>
-                    <div class="smaller-12 medium-6 row end" style="padding: 10px 0;"><a class="Button" href="#">VER
-                            OFERTA</a></div>
-                </div>
+                <img src="{{url('images/perkins.png')}}" alt="">
+
 
             </div>
 
@@ -86,7 +78,7 @@
 
             @foreach($products as $product)
 
-                <article class="smaller-12 small-6 medium-4 col-3" >
+                <article class="smaller-12 small-6 medium-4 col-3">
                     <figure class="Product-Image">
                         <a href="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}">
                             @foreach($product->productFiles as $file)
@@ -102,12 +94,12 @@
                             <h4>{{$product->name}}</h4></a>
                         <h5>{{$product->subcategory->name}}</h5>
                         <?php /*$hasOffer = strtotime($product->offers->offer_on) < strtotime('now') && strtotime($product->offers->offer_off) - strtotime('now') > 0 */?>
-                       {{-- @if($hasOffer)
-                            <p>${{number_format($product->offers->offer_price, 0, " ", ".")}}
-                                <span>${{number_format($product->price, 0, " ", ".")}}</span></p>
-                        @else
-                            <p>${{number_format($product->price, 0, " ", ".")}}</p>
-                        @endif--}}
+                        {{-- @if($hasOffer)
+                             <p>${{number_format($product->offers->offer_price, 0, " ", ".")}}
+                                 <span>${{number_format($product->price, 0, " ", ".")}}</span></p>
+                         @else
+                             <p>${{number_format($product->price, 0, " ", ".")}}</p>
+                         @endif--}}
                         <a href="{{route('productDetail',[$product->slug, $product->id])}}" class="Button">COMPRAR</a>
                     </div>
                 </article>
