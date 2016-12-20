@@ -13,6 +13,7 @@
 <section class="Step Step-2 Forms">
 
     <h2>Listado de Productos</h2>
+    <input type="text" placeholder="Buscar producto" class="searchProduct" style="padding: 2px 1rem 0;" id="searchProduct">
 
     <table class="Table BackContainer capitalize">
         <thead>

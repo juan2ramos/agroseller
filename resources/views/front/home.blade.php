@@ -68,7 +68,7 @@
 
         </div>
     </section>
-    <figure class="offset-3 col-9"><img style="margin: auto" src="{{asset('images/zona-pagos.jpg')}}" alt=""></figure>
+    <figure class=" col-12 Header-security"><img style="margin: auto" src="{{asset('images/zona-pagos.png')}}" alt=""></figure>
 
     <section class="Products" id="productsRecommended" data-routegetproductsrecommended="{{route('recommended')}}"
              data-routegetproducts="{{route('allProduct')}}">

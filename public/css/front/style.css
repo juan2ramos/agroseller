@@ -640,6 +640,11 @@ body {
     .Header-container {
       height: 7.5rem; } }
 
+.Header-security {
+  background: #c5d257;
+  padding: 0.4375rem;
+  margin: 1.25rem 0 0.25rem; }
+
 .Header-search {
   position: relative; }
   @media (min-width: 65rem) {
@@ -776,7 +781,7 @@ body {
 
 .owl-carousel.owl-loaded {
   overflow: hidden;
-  height: 14.1875rem; }
+  height: 15.4375rem; }
 
 .BannerTop-info {
   position: relative;
@@ -830,7 +835,7 @@ body {
     display: block; }
   .Nav-categories li {
     border-bottom: 0.0625rem dashed;
-    padding: 0.5rem 0;
+    padding: 0.6rem 0;
     max-width: 92%;
     position: relative;
     font-size: 0.8125rem;

@@ -257,6 +257,7 @@
         <script src="{{asset('js/products.js')}}"></script>
         <script src="{{asset('js/forms.js')}}"></script>
         <script src="{{asset('js/images.js')}}"></script>
+        <script src="{{asset('js/selectproducts.js')}}"></script>
 
         <script>
 
@@ -303,32 +304,7 @@
         </script>
         <script>
 
-            var subcategories = $('#subcategoriesList'),
-                    productTable = $('#productTable');
 
-            subcategories.on('click', 'li', function () {
-                var params = {
-                    subcategory_id: $(this).data('id'),
-                    _token: $('#token').val()
-                };
-
-                $.post($('#callProducts').val(), params, function (data) {
-
-                    var products = data.products,
-                            html = "";
-
-                    $.each(products, function (i, product) {
-                        html += "<tr>" +
-                                "<td>" + product.name + "</td>" +
-                                "<td><input style='opacity:1' value='" + product.id + "' name='product_id' type='radio' class='productSelected'></td>" +
-                                "</tr>";
-                    });
-
-                    productTable.html(html);
-                    $('.productSelected').eq(0).attr('checked', 'checked');
-
-                }, 'json');
-            });
 
             $('.productDetailAction').on('click', function () {
                 var $form = $('.formProductPreview');
