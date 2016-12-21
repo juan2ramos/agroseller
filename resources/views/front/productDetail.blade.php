@@ -47,7 +47,13 @@
             <div class="col-12 row bottom">
                 <div class="col-8">
                     <button id="moreInfo" class="Button">MÁS INFO</button>
-                    <a href="" target="_blank" class="Button">FICHA TECNICA</a>
+                    @foreach($product->files as $file)
+                        @if($file->extension == 'pdf')
+                            <a href="{{url('uploads/products/'. $file->name)}}" target="_blank" class="Button">FICHA
+                                TECNICA</a>
+                        @endif
+                    @endforeach
+
                 </div>
                 <div class="col-4">
                     <ul class=" row end ">
@@ -222,6 +228,7 @@
             </div>
         </article>
     </section>
+    {{--Comentado mientras se define que hacer con los comentarios--}}
     <aside class="Comments">
         <h2>Comentarios y preguntas</h2>
 
@@ -293,9 +300,9 @@
         </ul>
     </aside>
 
-    @endsection
-    @section('scripts')
-            <!-- ******* Slider ******* -->
+@endsection
+@section('scripts')
+    <!-- ******* Slider ******* -->
     <script src="{{asset('js/owl.carousel.js')}}"></script>
     <script src="{{asset('js/front/slide.js')}}"></script>
 
@@ -309,29 +316,29 @@
     <script src="{{asset('js/comments.js')}}"></script>
 
     @if($offer)
-    <?php
-    $fecha = explode('-', $product->offers->offer_off);
-    $day = explode(' ', $fecha[2]);
-    $time = explode(':', $day[1]);
+        <?php
+        $fecha = explode('-', $product->offers->offer_off);
+        $day = explode(' ', $fecha[2]);
+        $time = explode(':', $day[1]);
 
-    $year = $fecha[0];
-    $month = $fecha[1];
-    $day = $day[0];
-    $hour = $time[0];
-    $minute = $time[1];
-    ?>
+        $year = $fecha[0];
+        $month = $fecha[1];
+        $day = $day[0];
+        $hour = $time[0];
+        $minute = $time[1];
+        ?>
 
-            <!-- ******* Timer ******* -->
-    <script src="{{asset('js/front/product.js')}}"></script>
-    <script>
-        countDown({
-            'year': {!! $year !!},
-            'month': {!! $month !!},
-            'day': {!! $day !!},
-            'hour': {!! $hour !!},
-            'minute': {!! $minute !!}
-        });
-    </script>
+        <!-- ******* Timer ******* -->
+        <script src="{{asset('js/front/product.js')}}"></script>
+        <script>
+            countDown({
+                'year': {!! $year !!},
+                'month': {!! $month !!},
+                'day': {!! $day !!},
+                'hour': {!! $hour !!},
+                'minute': {!! $minute !!}
+            });
+        </script>
     @endif
     <script>
         $('#buy').on('click', function (e) {

@@ -45,14 +45,16 @@ class RoutePolicy
 
                     'agentsGet', 'editProduct', 'deleteProduct', 'updateProduct','newUserAdmin','user',
                     'budgetShow', 'indexProfile', 'userUpdate', 'productAgentPreview', 'productDetailPreview','validateProduct',
-                    'payPlan', 'searchUser', 'category', 'products', 'products', 'adminEditProduct', 'farmCategories.create', 'farms.create'
+                    'payPlan', 'searchUser', 'category', 'products', 'products', 'adminEditProduct', 'farmCategories.create', 'farms.create',
+                    'viewProduct'
 
                 ],
             '2' =>
                 [
                     'admin', 'users', 'providers', 'category', 'farmIndex', 'clients', 'bills',
                     'orders', 'subcategoriesQuery','featuresQuery','agentsGet','newUserAdmin','user', 'indexProfile',
-                    'userUpdate', 'payPlan','searchUser'
+                    'userUpdate', 'payPlan','searchUser',
+                    'viewProduct'
                 ],
             '3' =>
                 [
@@ -60,7 +62,8 @@ class RoutePolicy
                     'subcategoriesQuery','featuresQuery', 'newProduct', 'insertProvider', 'questionDetail', 'questionNew',
                     'editProduct', 'deleteProduct', 'updateProduct', 'indexProfile','orderShowProvider','updateStateOrder',
                     'productDetailPreview','payPlan', 'productDetailPreview','pay','historyPay', 'inactivePlan', 'callProducts',
-                    'newProductProvider', 'updateProductProvider', 'providerUpdate'
+                    'newProductProvider', 'updateProductProvider', 'providerUpdate',
+                    'viewProduct'
                 ],
 
             '4' =>
@@ -73,7 +76,8 @@ class RoutePolicy
             '5' =>
                 [
                     'admin', 'providers', 'clients', 'reports', 'showUser', 'validateProvider', 'indexProfile', 'userUpdate',
-                    'productAgentPreview', 'productDetailPreview' , 'validateProduct', 'NotifyIsActive','NotifyAll', 'payPlan'
+                    'productAgentPreview', 'productDetailPreview' , 'validateProduct', 'NotifyIsActive','NotifyAll', 'payPlan',
+                    'viewProduct'
                 ],
             '6' =>
                 [

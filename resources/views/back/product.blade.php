@@ -257,8 +257,7 @@
         <script src="{{asset('js/jquery.datetimepicker.full.min.js')}}"></script>
         <script src="{{asset('js/products.js')}}"></script>
         <script src="{{asset('js/forms.js')}}"></script>
-        <script src="{{asset('js/images.js')}}"></script>
-        <script src="https://cdn.quilljs.com/1.0.0-rc.0/quill.js"></script>
+        <script src="{{asset('js/images.js')}}"></script><script src="//cdn.quilljs.com/1.1.7/quill.min.js"></script>
         <script>
             var toolbarOptions = [
                 ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
@@ -289,7 +288,7 @@
             editor.on('text-change', function (delta, source) {
                 $('#Description').val(editor.getText());
             });
-            var editorOffer = new Quill('#editorOffer', {
+           /* var editorOffer = new Quill('#editorOffer', {
                 theme: 'snow',
                 modules: {
                     toolbar: toolbarOptions
@@ -298,6 +297,7 @@
             editorOffer.on('text-change', function (delta, source) {
                 $('#DescriptionOffer').val(editorOffer.getText());
             });
+
         </script>
         <script>
             $('.productDetailAction').on('click', function () {

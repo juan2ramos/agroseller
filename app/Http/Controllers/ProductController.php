@@ -20,10 +20,11 @@ use Jenssegers\Date\Date;
 class ProductController extends Controller
 {
 
-    public function callProducts(Request $request){
-        if($request->ajax())
+    public function callProducts(Request $request)
+    {
+        if ($request->ajax())
             $products = Product::where('subcategory_id', $request->get('subcategory_id'))->get();
-            return ['products' => $products];
+        return ['products' => $products];
     }
 
     function productFront(Request $request, $subcategoriesName = null)
@@ -33,9 +34,9 @@ class ProductController extends Controller
             return view('front.home', compact('products'));
         }
         return redirect()->route('home');*/
-        $subcategory = Subcategory::where('slug',$subcategoriesName)->first();
+        $subcategory = Subcategory::where('slug', $subcategoriesName)->first();
         $subcategoryId = $subcategory->id;
-        return view('front.home',compact('subcategoryId'));
+        return view('front.home', compact('subcategoryId'));
     }
 
     function checkout(Request $request)
@@ -60,49 +61,51 @@ class ProductController extends Controller
     function productDetailFront(Request $request, $slug, $id)
     {
 
-        $product = Product::with(['subcategory','files','providers.user'] )->find($id);
+        $product = Product::with(['subcategory', 'files', 'providers.user'])->find($id);
 
         $questions = $this->reloadQuestions($id);
         $featuresTranslate = $this->setFeaturesTranslate($product);
         $offer = false;
-        return view('front.productDetail', compact('questions', 'product', 'featuresTranslate','offer'));
+        return view('front.productDetail', compact('questions', 'product', 'featuresTranslate', 'offer'));
 
 
         /* Versión anterior al cambio de productos con muchos proveedores*/
         $product = Product::find($id);
-        if(($product->isActive && $product->isValidate) || $request->ajax()){
+        if (($product->isActive && $product->isValidate) || $request->ajax()) {
             $offer = ($offerModel = $product->offers()->first()) ?
                 (Carbon::now()->between(new Carbon($offerModel->offer_on), new Carbon($offerModel->offer_off)))
                     ? $offerModel->offer_price : null : null;
             //$description = $offerModel->offer_description;
             $questions = $this->reloadQuestions($id);
             $featuresTranslate = $this->setFeaturesTranslate($product);
-            return view('front.productDetail', compact('questions', 'product', 'featuresTranslate','offer','description'));
+            return view('front.productDetail', compact('questions', 'product', 'featuresTranslate', 'offer', 'description'));
         }
         return redirect()->route('home');
     }
 
-    private function reloadQuestions($id){
+    private function reloadQuestions($id)
+    {
 
         $questions = Question::where('product_id', $id)->orderBy('created_at', 'DESC')->get();
 
-        foreach($questions as $question){
+        foreach ($questions as $question) {
             $question['texts'] = Text::with('user')->where('question_id', $question->id)->get();
-            foreach($question->texts as $text){
+            foreach ($question->texts as $text) {
                 $text['date'] = Date::parse($text->created_at)->diffForHumans();
             }
         }
         return $questions;
     }
+
     public function setFeaturesTranslate(Product $product)
     {
         $features = $product->subcategory->features;
         $featuresTranslate =
-            [   [
-                    'id' => 1,
-                    'name' => 'Presentación',
-                    'value' => $product->presentation
-                ],
+            [[
+                'id' => 1,
+                'name' => 'Presentación',
+                'value' => $product->presentation
+            ],
                 [
                     'id' => 2,
                     'name' => 'Tamaño',
@@ -133,11 +136,11 @@ class ProductController extends Controller
                     'name' => 'Composición',
                     'value' => null
                 ],
-                [
+                /*[
                     'id' => 8,
                     'name' => 'Precio',
                     'value' => '$' . number_format($product->price, 0, ',', '.')
-                ],
+                ],*/
                 [
                     'id' => 9,
                     'name' => 'Impuestos',

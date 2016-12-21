@@ -60,21 +60,19 @@ $searchProduct.on('keydown', function (e) {
     });
 });
 
-function strInArray(str, strArray) {
+function strInArray(str, products) {
 
-    for (var j = 0; j < strArray.length; j++) {
-        if (strArray[j].name.toLowerCase().match(str)) {
-            console.log(strArray[j].name)
+    for (var j = 0; j < products.length; j++) {
+        if (products[j].name.toLowerCase().match(str)) {
+            console.log(products[j].name)
             $return.push("<tr>" +
-                "<td>" + strArray[j].name + "</td>" +
-                "<td><input style='opacity:1' value='" + strArray[j].id + "' name='product_id' type='radio' class='productSelected'></td>" +
+                "<td>" + products[j].name + "</td>" +
+                "<td>" + '<a target="_blank" href="'+ $('#productsProviderUrl').data('urlproduct') + '/ver-producto/' + products[j].id +'">Ver' + "</a></td>" +
+                "<td><input style='opacity:1' value='" + products[j].id + "' name='product_id' type='radio' class='productSelected'></td>" +
                 "</tr>"
             );
         }
     }
 
 }
-
-
-
 

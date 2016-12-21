@@ -50,6 +50,16 @@ Route::group(['namespace' => 'admin'], function () {
         'as' => 'newProduct',
     ]);
 
+    Route::get('ver-producto/{id}', [
+        'uses' => 'ProductController@viewProduct',
+        'as' => 'viewProduct',
+    ]);
+
+    Route::post('productosProveedor', [
+        'uses' => 'ProductController@newProductProvider',
+        'as' => 'newProductProvider',
+    ]);
+
     Route::post('productosProveedor', [
         'uses' => 'ProductController@newProductProvider',
         'as' => 'newProductProvider',

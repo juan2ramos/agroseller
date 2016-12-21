@@ -207,13 +207,6 @@ class ProductController extends Controller
 
         $this->product = Product::create($inputs);
         $this->createFile($request);
-        //$provider = Provider::where('user_id', auth()->user()->id)->first();
-
-        /*Notification::create([
-            'user_id' => $provider->agent()->first()->user_id,
-            'text' => 'El proveedor ' . $provider['company-name'] . ' ha creado un producto',
-            'url' => route('productAgentPreview', $this->product->id)
-        ]);*/
 
         return redirect()->back()->with('messageSuccess', 1);
     }
@@ -240,5 +233,14 @@ class ProductController extends Controller
         }
 
         return redirect()->back()->with('messageSuccess', 1);
+    }
+
+    function viewProduct($id){
+
+
+        $product = Product::findOrFail($id);
+        $productAdmin = new \Agrosellers\Http\Controllers\ProductController();
+        $featuresTranslate = $productAdmin->setFeaturesTranslate($product);
+        return view('back.productDetail', compact('product','featuresTranslate'));
     }
 }

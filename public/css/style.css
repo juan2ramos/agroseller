@@ -1389,6 +1389,12 @@ body {
   display: none; }
 
 /* Step 3 */
+.Step-3.editProductProvider {
+  display: block; }
+
+h2.editProductProvider-h2 {
+  margin: -2rem 0 2rem !important; }
+
 .Step-3 article {
   margin: 2.125rem 0; }
 
@@ -1442,6 +1448,32 @@ body {
 
 .importOffer sub {
   left: 3rem; }
+
+.ProductDetailView {
+  padding: 1.625rem; }
+  .ProductDetailView h1 {
+    margin: 0.5rem 0 1.25rem;
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: #27383f; }
+    .ProductDetailView h1 span {
+      display: block;
+      font-weight: 300;
+      font-size: 1.25rem; }
+
+.ProductDetail-description li {
+  list-style: inherit; }
+
+.ProductDetail-description ul {
+  display: block;
+  list-style-type: disc;
+  margin: 0 1em; }
+
+.ProductDetail-description .ql-indent-1 {
+  margin-left: 1rem; }
+
+.ProductDetail-description .ql-indent-2 {
+  margin-left: 2rem; }
 
 .QuestionList,
 .Question {
