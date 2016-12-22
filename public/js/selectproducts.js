@@ -3,7 +3,8 @@ var subcategories = $('#subcategoriesList'),
     products,
     $searchProduct = $('#searchProduct'),
     $return = [],
-    html = "";
+    html = "",
+    itemPacking = $('.Packing .Packing-item').length;
 ;
 
 /*
@@ -19,6 +20,7 @@ var subcategories = $('#subcategoriesList'),
  html = "";
 
  $.each(products, function (i, product) {
+
  html += "<tr>" +
  "<td>" + product.name + "</td>" +
  "<td><input style='opacity:1' value='" + product.id + "' name='product_id' type='radio' class='productSelected'></td>" +
@@ -76,3 +78,55 @@ function strInArray(str, products) {
 
 }
 
+$('#addPacking').on('click',function () {
+    itemPacking++;
+
+    $('.Packing').append(
+
+        '<div class="row Packing-item">'+
+        '    <div class="col-3 Field"  >'+
+        '   <label for="high">'+
+        '     <input type="number"  min="1" id="high"'+
+        '          name="packing[packing'+ itemPacking +'][high]" >'+
+        '    <span>Alto</span>'+
+        '     <em></em>'+
+        '  </label>'+
+        ' </div>'+
+        ' <div class="col-3 Field"  >'+
+        '     <label for="width">'+
+        '         <input type="number" min="1"  id="width"'+
+        '                 name="packing[packing'+ itemPacking +'][width]" >'+
+        '        <span>Ancho</span>'+
+        '         <em></em>'+
+        '      </label>'+
+        '   </div>'+
+        ' <div class="col-3 Field"  >'+
+        '    <label for="long">'+
+        '        <input type="number" min="1"  @endif id="long"'+
+        '            name="packing[packing'+ itemPacking +'][long]">'+
+        '  <span>Largo</span>'+
+        '   <em></em>'+
+        '   </label>'+
+        ' </div>'+
+        ' <div class="col-3 Field"  >'+
+        '     <label for="quantity">'+
+        '         <input type="number"  min="1" id="quantity"'+
+        '             name="packing[packing'+ itemPacking +'][quantity]">'+
+        '       <span>Cantidad</span>'+
+        '      <em></em>'+
+        '    </label>'+
+        ' </div>'+
+        '</div>'
+
+    );
+
+});
+
+$('#deletePacking').on('click',function () {
+    console.log(itemPacking);
+    if(itemPacking > 0){
+        itemPacking--;
+    }
+
+    $('.Packing .Packing-item:last-child').remove();
+});

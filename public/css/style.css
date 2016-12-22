@@ -1475,6 +1475,13 @@ h2.editProductProvider-h2 {
 .ProductDetail-description .ql-indent-2 {
   margin-left: 2rem; }
 
+.Packing {
+  padding: 1.25rem 0; }
+  .Packing .Field {
+    padding: 0 0.125rem; }
+    .Packing .Field input {
+      margin: 0.125rem 0; }
+
 .QuestionList,
 .Question {
   height: calc(100vh - 164px); }

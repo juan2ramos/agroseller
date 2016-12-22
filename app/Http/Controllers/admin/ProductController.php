@@ -7,6 +7,7 @@ use Agrosellers\Entities\Farm;
 use Agrosellers\Entities\FarmCategory;
 use Agrosellers\Entities\Notification;
 use Agrosellers\Entities\Offer;
+use Agrosellers\Entities\Packing;
 use Agrosellers\Entities\ProductProvider;
 use Validator;
 use Session;
@@ -82,7 +83,7 @@ class ProductController extends Controller
             $productEdit = Product::find($id);
             return view('back.productAdminEdit', compact('productEdit', 'offerEdit', 'categories', 'farms', 'brands'));
         }else{
-            $productEdit = ProductProvider::find($id);
+            $productEdit = ProductProvider::with('packing')->find($id);
             $offer = $productEdit->offer()->first();
             return view('back.productProviderEdit', compact('productEdit', 'offer', 'categories', 'farms', 'brands'));
         }
@@ -104,8 +105,15 @@ class ProductController extends Controller
             $product->offer()->save($offer);
         }else{
             $inputs['has_offer'] = 0;
-
         }
+
+
+        $product->packing()->delete();
+        $packings = [];
+        foreach ($inputs['packing'] as $packing){
+            $packings[] = new Packing($packing);
+        }
+        $product->packing()->saveMany($packings);
         $product->update($inputs);
         return redirect()->back()->with('messageSuccess', 1);
     }
@@ -133,6 +141,7 @@ class ProductController extends Controller
 
         if ($request->has('deleteImages')){
             $deleteImages = explode(';', $inputs['deleteImages']);
+
             $files = $this->product->productFiles()->get();
             foreach($deleteImages as $imageName){
                 foreach($files as $file){
@@ -143,9 +152,15 @@ class ProductController extends Controller
                 }
             }
         }
+        if ($request->hasFile('composition') && isset($inputs['IdPdf'])) {
+            ProductFile::find($inputs['IdPdf'])->delete();
+        }
+
 
         $this->product->update($inputs);
         //$this->product->offers()->first()->update($inputs);
+
+
         $this->createFile($request);
 
         return redirect()->back()->with('messageSuccess', 1);
@@ -214,13 +229,19 @@ class ProductController extends Controller
     function newProductProvider(Request $request){
 
         $inputs = $request->all();
+        
         $inputs['provider_id'] = auth()->user()->provider->id;
 
         if($request->has('taxes'))
             $inputs['taxes'] = implode(';', $inputs['taxes']);
 
-
         $productProvider = ProductProvider::create($inputs);
+        $packings = [];
+        foreach ($inputs['packing'] as $packing){
+            $packings[] = new Packing($packing);
+        }
+        $productProvider->packing()->saveMany($packings);
+
         if ($request->has('has_offer')){
 
             $dataOffer = [

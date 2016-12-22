@@ -5,10 +5,12 @@ for(var i = 0; i < $name.length; i++){
         $name.eq(i).parent('label').addClass('open');
 }
 
-$name.on('focus', function() {
+$('.Forms').on('focus', 'input', function() {
     $(this).parent('label').addClass('open');
     $(this).siblings('.password-validator').show();
-}).blur(function() {
+})
+$('.Forms').on('blur', 'input', function() {
+    console.log('s')
     if( $.trim($(this).val()) == "")
         $(this).parent('label').removeClass('open');
     $(this).siblings('.password-validator').hide();

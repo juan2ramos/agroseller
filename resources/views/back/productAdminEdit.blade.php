@@ -6,13 +6,13 @@
         <input id="ps-taxes" type="hidden" value="{{ $productEdit->taxes }}">
         <!--<input id="ps-importantOffer" type="hidden" value="{ $offerEdit->important_offer }}"> -->
 
-        <!--foreach($productEdit->productFiles as $file)
-            if($file->extension == 'pdf')
-                <input id="ps-composition" type="hidden" value="{ $file->name }}">
-            else
-                <input class="ps-images" type="hidden" value="{ $file->name }}">
-            endif
-        endforeach-->
+        @foreach($productEdit->productFiles as $file)
+            @if($file->extension == 'pdf')
+            <input id="ps-composition" type="hidden" value="{{ $file->name }}">
+            @else
+            <input class="ps-images" type="hidden" value="{{ $file->name }}">
+            @endif
+        @endforeach
 
         <article id="editable" class="col-12">
             <form id="Product-form" role="form" method="POST" action="{{ route('updateProduct', [$productEdit->id]) }}"
@@ -223,8 +223,10 @@
         var imagesList = "";
 
         $('.StepImages').on('change', function () {
+
             imagesList += $(this).siblings('.imageName').val() + ";";
             $('#deleteImages').val(imagesList);
+            console.log(imagesList);
         });
 
         $('.delete').on('click', function () {

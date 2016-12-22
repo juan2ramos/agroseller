@@ -18,11 +18,12 @@
             <option value=""></option>
             @if(isset($productEdit))
                 @foreach($brands as $brand)
-                    <option value="{{$brand->id}}" @if($productEdit->brand_id == $brand->id) selected @endif >{{$brand->name}}</option>
+                    <option value="{{$brand->id}}"
+                            @if($productEdit->brand_id == $brand->id) selected @endif >{{$brand->name}}</option>
                 @endforeach
             @else
                 @foreach($brands as $brand)
-                    <option value="{{$brand->id}}" >{{$brand->name}}</option>
+                    <option value="{{$brand->id}}">{{$brand->name}}</option>
                 @endforeach
             @endif
         </select>
@@ -38,9 +39,9 @@
         </p>
         <label for="nameProduct">
             @if(isset($productEdit))
-            <input type="text" id="nameProduct" name="name" value="{{ $productEdit->name }}">
+                <input type="text" id="nameProduct" name="name" value="{{ $productEdit->name }}">
             @else
-            <input type="text" id="nameProduct" name="name" value="{{ old('name') }}">
+                <input type="text" id="nameProduct" name="name" value="{{ old('name') }}">
             @endif
             <span>Nombre del producto</span>
         </label>
@@ -49,7 +50,7 @@
         <p>3. Información del producto</p>
 
         <div id="toolbar" class="border--top">
-                {{ old('description') }}
+            {{ old('description') }}
         </div>
 
         <div id="editor" ql-container></div>
@@ -59,34 +60,42 @@
 
     <select class="presentation DataForm" name="presentation">
         <option value="">Selecione la presentación</option>
-        <option value="Bolsa" {{(isset($productEdit) && $productEdit->presentation == 'Bolsa')?'selected':''}}>Bolsa</option>
-        <option value="Bulto" {{(isset($productEdit) && $productEdit->presentation == 'Bulto')?'selected':''}}>Bulto</option>
-        <option value="envase-plastico" {{(isset($productEdit) && $productEdit->presentation == 'envase-plastico')?'selected':''}}>Envase lastico</option>
-        <option value="envase-vidrio" {{(isset($productEdit) && $productEdit->presentation == 'envase-vidrio')?'selected':''}}>Envase Vidrio</option>
-        <option value="Caja" {{(isset($productEdit) && $productEdit->presentation == 'Caja')?'selected':''}}>Caja</option>
-        <option value="sobre" {{(isset($productEdit) && $productEdit->presentation == 'sobre')?'selected':''}}>Sobre</option>
+        <option value="Bolsa" {{(isset($productEdit) && $productEdit->presentation == 'Bolsa')?'selected':''}}>Bolsa
+        </option>
+        <option value="Bulto" {{(isset($productEdit) && $productEdit->presentation == 'Bulto')?'selected':''}}>Bulto
+        </option>
+        <option value="envase-plastico" {{(isset($productEdit) && $productEdit->presentation == 'envase-plastico')?'selected':''}}>
+            Envase lastico
+        </option>
+        <option value="envase-vidrio" {{(isset($productEdit) && $productEdit->presentation == 'envase-vidrio')?'selected':''}}>
+            Envase Vidrio
+        </option>
+        <option value="Caja" {{(isset($productEdit) && $productEdit->presentation == 'Caja')?'selected':''}}>Caja
+        </option>
+        <option value="sobre" {{(isset($productEdit) && $productEdit->presentation == 'sobre')?'selected':''}}>Sobre
+        </option>
 
 
     </select>
-        <!--
-    <label for="size" class="DataForm size" >
-        if(isset($productEdit))
-        <input type="number" id="size" name="size" value="{ $productEdit->size }}">
-        else
-        <input type="number" id="size" name="size" value="{ old('size') }}">
-        endif
-        <span>Tamaño del producto</span>
-        <em>Kg</em>
-    </label>-->
+    <!--
+<label for="size" class="DataForm size" >
+    if(isset($productEdit))
+    <input type="number" id="size" name="size" value="{ $productEdit->size }}">
+    else
+    <input type="number" id="size" name="size" value="{ old('size') }}">
+    endif
+    <span>Tamaño del producto</span>
+    <em>Kg</em>
+</label>-->
     <label for="weight" class="DataForm weight">
         @if(isset($productEdit))
-        <input type="text" id="weight" name="weight" value="{{ $productEdit->weight }}">
+            <input type="text" id="weight" name="weight" value="{{ $productEdit->weight }}">
         @else
-        <input type="text" id="weight" name="weight" value="{{ old('weight') }}">
+            <input type="text" id="weight" name="weight" value="{{ old('weight') }}">
         @endif
         <span>Peso del producto</span>
     </label>
-    <label for="measure"   class="DataForm measure">
+    <label for="measure" class="DataForm measure">
         @if(isset($productEdit))
             <input type="text" id="measure" name="measure" value="{{ $productEdit->measure }}">
         @else
@@ -95,6 +104,15 @@
         <span>Medida</span>
 
     </label>
+    @if(isset($productEdit))
+        @foreach($productEdit->productFiles as $image)
+            @if($image->extension == 'pdf')
+                <input type="hidden" name="IdPdf" value="{{$image->id}}">
+                <a target="_blank" href="{{asset('uploads/products/'.$image->name)}}">Ver composición</a>
+            @endif
+        @endforeach
+    @endif
+
     <label for="composition" class="DataForm composition">
         <input type="file" id="composition" name="composition" placeholder="sds">
         <div class="file" id="compositionText">Composición , propiedades(Ficha tecnica)</div>
@@ -102,7 +120,9 @@
     </label>
     <label for="canServientrega" class="col-12 col-sm-12" style=" margin: 40px 0 32px;">
         @if(isset($productEdit))
-            <input type="checkbox" name="canServientrega" id="canServientrega"  @if( $productEdit->canServientrega ) checked="checked" @endif value="{{$productEdit->canServientrega}}">
+            <input type="checkbox" name="canServientrega" id="canServientrega"
+                   @if( $productEdit->canServientrega ) checked="checked"
+                   @endif value="{{$productEdit->canServientrega}}">
         @else
             <input type="checkbox" name="canServientrega" id="canServientrega" value="1">
         @endif
@@ -112,11 +132,11 @@
     </label>
 
 
-    <!-- <label for="priceCurrent" >
+<!-- <label for="priceCurrent" >
         @if(isset($productEdit))
-        <input type="text" id="priceCurrent" name="price" value="{{ $productEdit->price }}">
+    <input type="text" id="priceCurrent" name="price" value="{{ $productEdit->price }}">
         @else
-        <input type="text" id="priceCurrent" name="price" value="{{ old('price') }}">
+    <input type="text" id="priceCurrent" name="price" value="{{ old('price') }}">
         @endif
         <span>Precio</span>
         <em>$</em>
@@ -140,8 +160,8 @@
         @else
         <input type="number" id="available_quantity" name="available_quantity" value="{{ old('available_quantity') }}">
         @endif
-        <span>Cantidad disponible</span>
-        <em></em>-->
+            <span>Cantidad disponible</span>
+            <em></em>-->
     </label>
 
     <h4>IMAGENES
@@ -149,7 +169,8 @@
             <li><span>Dimensión 640 x 640.</span></li>
             <li><span>Fondo blanco.</span></li>
             <li><span>Peso máximo 2 MB.</span></li>
-            <li><span>Para cargar una imagen haz clic sobre el recuadro y busca la ubicación de tu imagen o solo arrástrala hasta el recuadro.</span></li>
+            <li><span>Para cargar una imagen haz clic sobre el recuadro y busca la ubicación de tu imagen o solo arrástrala hasta el recuadro.</span>
+            </li>
         </ul>
     </h4>
 
@@ -185,7 +206,7 @@
                                 <use xlink:href="#imageTemp"></use>
                             </svg>
                         </figure>
-                        <output class="result" />
+                        <output class="result"/>
                     </label>
                 </div>
             @endfor
@@ -198,34 +219,34 @@
                         <use xlink:href="#imageTemp"></use>
                     </svg>
                 </figure>
-                <output class="result" />
+                <output class="result"/>
             </label>
-            <label for="image2"  class="col-3 ">
-                <input type="file"  class="StepImages" name="image2" id="image2">
+            <label for="image2" class="col-3 ">
+                <input type="file" class="StepImages" name="image2" id="image2">
                 <figure class=" row middle center">
                     <svg width="81px" height="47px">
                         <use xlink:href="#imageTemp"></use>
                     </svg>
                 </figure>
-                <output class="result" />
+                <output class="result"/>
             </label>
             <label for="image3" class="col-3 ">
-                <input type="file"  class="StepImages" name="image3" id="image3">
+                <input type="file" class="StepImages" name="image3" id="image3">
                 <figure class=" row middle center">
                     <svg width="81px" height="47px">
                         <use xlink:href="#imageTemp"></use>
                     </svg>
                 </figure>
-                <output class="result" />
+                <output class="result"/>
             </label>
             <label for="image4" class="col-3 ">
-                <input type="file" class="StepImages"  name="image4" id="image4">
+                <input type="file" class="StepImages" name="image4" id="image4">
                 <figure class=" row middle center">
                     <svg width="81px" height="47px">
                         <use xlink:href="#imageTemp"></use>
                     </svg>
                 </figure>
-                <output class="result" />
+                <output class="result"/>
             </label>
         @endif
 

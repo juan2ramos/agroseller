@@ -14,7 +14,7 @@
 
     <article class="Step-location">
         <p>1. Añadir los lugares donde está ubicado tu producto
-                    <span>Navega por el mapa y ubica el lugar que
+            <span>Navega por el mapa y ubica el lugar que
                         deseas añadir, da un clic sobre el botón
                         “AÑADE UNA UBICACIÓN”, después de que el
                         marcador esta sobre el mapa puedes desplazarlo
@@ -43,14 +43,14 @@
         </label>
 
         <label for="available_quantity">
-            <input type="number" id="available_quantity" name="available_quantity"
+            <input type="number" id="available_quantity" min="1" name="available_quantity"
                    @if(isset($productEdit)) value="{{$productEdit->available_quantity}}" @endif>
             <span>Cantidad disponible</span>
             <em></em>
         </label>
 
         <label for="min_quantity">
-            <input type="number" id="min_quantity" name="min_quantity"
+            <input type="number" id="min_quantity" name="min_quantity" min="1"
                    @if(isset($productEdit)) value="{{$productEdit->min_quantity}}" @endif>
             <span>Cantidad mínima para despacho</span>
             <em></em>
@@ -129,56 +129,79 @@
         <h2 style="margin: 36px 0 0;"> Embalaje </h2>
         <div class="Packing">
             <div class="row ">
-                <div class="col-3" style="padding: 0 2px;">
+                <div class="col-3 Field">
                     <label for="high">
-                        <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" @endif id="high"
-                               name="high">
+                        <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" min="1" @endif id="high"
+                               name="packing[packing1][high]">
                         <span>Alto</span>
                         <em></em>
                     </label>
                 </div>
-                <div class="col-3" style="padding: 0 2px;">
+                <div class="col-3 Field">
                     <label for="width">
-                        <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" @endif id="width"
-                               name="width">
+                        <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" @endif min="1"
+                               id="width"
+                               name="packing[packing1][width]">
                         <span>Ancho</span>
                         <em></em>
                     </label>
                 </div>
-                <div class="col-3" style="padding: 0 2px;">
+                <div class="col-3 Field">
                     <label for="long">
-                        <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" @endif id="long"
-                               name="long">
+                        <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" @endif  min="1"
+                               id="long"
+                               name="packing[packing1][long]">
                         <span>Largo</span>
                         <em></em>
                     </label>
                 </div>
-                <div class="col-3" style="padding: 0 2px;">
+                <div class="col-3 Field">
                     <label for="quantity">
-                        <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" @endif id="quantity"
-                               name="quantity">
+                        <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" @endif min="1"
+                               id="quantity"
+                               name="packing[packing1][quantity]">
                         <span>Cantidad</span>
                         <em></em>
                     </label>
                 </div>
             </div>
         </div>
-        <div class="row middle " id="addPacking" style="cursor: pointer">
+        <div class="row">
+            <div class="row middle col-3" id="addPacking" style="cursor: pointer">
 
-            <svg width="30px" height="30px" viewBox="435 593 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink">
-                <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
-                   transform="translate(435.000000, 593.000000)">
-                    <path d="M15,0 C6.75,0 0,6.75 0,15 C0,23.25 6.75,30 15,30 C23.25,30 30,23.25 30,15 C30,6.75 23.25,0 15,0 Z"
-                          id="Shape" fill="#C5D257"></path>
-                    <path d="M19.875,16.3125 L16.3125,16.3125 L16.3125,19.875 C16.3125,20.625 15.75,21.1875 15,21.1875 C14.25,21.1875 13.6875,20.625 13.6875,19.875 L13.6875,16.3125 L10.125,16.3125 C9.375,16.3125 8.8125,15.75 8.8125,15 C8.8125,14.25 9.375,13.6875 10.125,13.6875 L13.6875,13.6875 L13.6875,10.125 C13.6875,9.375 14.25,8.8125 15,8.8125 C15.75,8.8125 16.3125,9.375 16.3125,10.125 L16.3125,13.6875 L19.875,13.6875 C20.625,13.6875 21.1875,14.25 21.1875,15 C21.1875,15.75 20.625,16.3125 19.875,16.3125 Z"
-                          id="Path" fill="#253A1B"></path>
-                </g>
-            </svg>
-            <p style="margin: 0 5px; color: #253a1b;">Añadir otro</p>
+                <svg width="30px" height="30px" viewBox="435 593 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+                       transform="translate(435.000000, 593.000000)">
+                        <path d="M15,0 C6.75,0 0,6.75 0,15 C0,23.25 6.75,30 15,30 C23.25,30 30,23.25 30,15 C30,6.75 23.25,0 15,0 Z"
+                              id="Shape" fill="#C5D257"></path>
+                        <path d="M19.875,16.3125 L16.3125,16.3125 L16.3125,19.875 C16.3125,20.625 15.75,21.1875 15,21.1875 C14.25,21.1875 13.6875,20.625 13.6875,19.875 L13.6875,16.3125 L10.125,16.3125 C9.375,16.3125 8.8125,15.75 8.8125,15 C8.8125,14.25 9.375,13.6875 10.125,13.6875 L13.6875,13.6875 L13.6875,10.125 C13.6875,9.375 14.25,8.8125 15,8.8125 C15.75,8.8125 16.3125,9.375 16.3125,10.125 L16.3125,13.6875 L19.875,13.6875 C20.625,13.6875 21.1875,14.25 21.1875,15 C21.1875,15.75 20.625,16.3125 19.875,16.3125 Z"
+                              id="Path" fill="#253A1B"></path>
+                    </g>
+                </svg>
+                <p style="margin: 0 5px; color: #253a1b;">Añadir embalaje</p>
+            </div>
+            <div class="row middle col-3" id="deletePacking" style="cursor: pointer">
+                <svg width="30px" height="30px" viewBox="404 205 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+                       transform="translate(404.000000, 205.000000)">
+                        <path d="M15,0 C6.75,0 0,6.75 0,15 C0,23.25 6.75,30 15,30 C23.25,30 30,23.25 30,15 C30,6.75 23.25,0 15,0 Z"
+                              id="Shape" fill="#C5D257"></path>
+                        <path d="M10,15 L20,15" id="Line" stroke="#253A1B" stroke-width="3"
+                              stroke-linecap="square"></path>
+                    </g>
+                </svg>
+                <p style="margin: 0 5px; color: #253a1b;">Eliminar embalaje</p>
+            </div>
         </div>
-
     </article>
 
     <div class="Button  Next" id="stepThreeButton">SIGUIENTE</div>
 </section>
+
+
+
+
+
+
