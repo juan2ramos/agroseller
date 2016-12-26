@@ -122,7 +122,7 @@
         @if(isset($productEdit))
             <input type="checkbox" name="canServientrega" id="canServientrega"
                    @if( $productEdit->canServientrega ) checked="checked"
-                   @endif value="{{$productEdit->canServientrega}}">
+                   @endif value="1">
         @else
             <input type="checkbox" name="canServientrega" id="canServientrega" value="1">
         @endif

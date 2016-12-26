@@ -128,7 +128,6 @@ class ProductController extends Controller
                 $farms .= $data . ',';
             }
         }
-
         if(!$request->has('canServientrega'))
             $inputs['canServientrega'] = 0;
 
