@@ -2,6 +2,7 @@
 
 namespace Agrosellers\Http\Controllers;
 
+use Agrosellers\Entities\City;
 use Agrosellers\Entities\ProductProvider;
 use Agrosellers\Entities\Provider;
 use Agrosellers\Entities\Subcategory;
@@ -65,8 +66,10 @@ class ProductController extends Controller
 
         $questions = $this->reloadQuestions($id);
         $featuresTranslate = $this->setFeaturesTranslate($product);
+        $cities = City::lists('nombre_ciudad','id_ciudad');
+
         $offer = false;
-        return view('front.productDetail', compact('questions', 'product', 'featuresTranslate', 'offer'));
+        return view('front.productDetail', compact('questions', 'product', 'featuresTranslate', 'offer','cities'));
 
 
         /* Versión anterior al cambio de productos con muchos proveedores*/

@@ -106,5 +106,5 @@ $('#Provider-form,#Product-form, #Client-form').on('submit', function () {
     for (var i = 0; i < arrayMarkers.length; i++) {
         pos += arrayMarkers[i].getPosition().lat() + '&' + arrayMarkers[i].getPosition().lng() + ';';
     }
-    $('#Location').val(pos)
+    $('#Location').val(pos);
 });
