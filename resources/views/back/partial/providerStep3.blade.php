@@ -10,7 +10,7 @@
         </g>
     </g>
 </svg>
-<section class="Step Step-3 Forms">
+<section class="Step Step-3 Forms" id="contentValidate">
 
     <article class="Step-location">
         <p>1. Añadir los lugares donde está ubicado tu producto
@@ -31,26 +31,31 @@
         @else
             <div id="Map" class="Map"></div>
         @endif
+        <div style="position: relative; top: -64px;">
+            <input type="hidden" id="Location" name="location" class="requerid" value="">
+            <div class="errorInputs "></div>
+        </div>
     </article>
 
     <article>
 
         <label for="priceCurrent">
-            <input type="text" id="priceCurrent" name="price"
+            <input type="text" id="priceCurrent" name="price" class="requerid"
                    @if(isset($productEdit)) value="{{$productEdit->price}}" @endif>
             <span>Precio</span>
             <em>$</em>
+            <div class="errorInputs"></div>
         </label>
 
         <label for="available_quantity">
-            <input type="number" id="available_quantity" min="1" name="available_quantity"
+            <input type="number" id="available_quantity" min="1" name="available_quantity" class="requerid"
                    @if(isset($productEdit)) value="{{$productEdit->available_quantity}}" @endif>
             <span>Cantidad disponible</span>
             <em></em>
         </label>
 
         <label for="min_quantity">
-            <input type="number" id="min_quantity" name="min_quantity" min="1"
+            <input type="number" id="min_quantity" name="min_quantity" min="1" class="requerid"
                    @if(isset($productEdit)) value="{{$productEdit->min_quantity}}" @endif>
             <span>Cantidad mínima para despacho</span>
             <em></em>
@@ -131,7 +136,8 @@
             <div class="row ">
                 <div class="col-3 Field">
                     <label for="high">
-                        <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" min="1" @endif id="high"
+                        <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" min="1" @endif
+                        id="high"  class="requerid"
                                name="packing[packing1][high]">
                         <span>Alto</span>
                         <em></em>
@@ -140,7 +146,7 @@
                 <div class="col-3 Field">
                     <label for="width">
                         <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" @endif min="1"
-                               id="width"
+                               id="width" class="requerid"
                                name="packing[packing1][width]">
                         <span>Ancho</span>
                         <em></em>
@@ -149,7 +155,7 @@
                 <div class="col-3 Field">
                     <label for="long">
                         <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" @endif  min="1"
-                               id="long"
+                               id="long" class="requerid"
                                name="packing[packing1][long]">
                         <span>Largo</span>
                         <em></em>
@@ -158,7 +164,7 @@
                 <div class="col-3 Field">
                     <label for="quantity">
                         <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" @endif min="1"
-                               id="quantity"
+                               id="quantity" class="requerid"
                                name="packing[packing1][quantity]">
                         <span>Cantidad</span>
                         <em></em>
@@ -197,7 +203,7 @@
         </div>
     </article>
 
-    <div class="Button  Next" id="stepThreeButton">SIGUIENTE</div>
+    <div class="Button  Next validateDataProduct invalid" id="stepThreeButton">SIGUIENTE</div>
 </section>
 
 

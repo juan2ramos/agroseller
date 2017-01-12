@@ -26,5 +26,5 @@
         <tbody id="productTable"></tbody>
     </table>
 
-    <div class="Button  Next" id="stepTwoButton">SIGUIENTE</div>
+    <div class="Button  Next invalid" id="stepTwoButton" >SIGUIENTE</div>
 </section>

@@ -128,7 +128,22 @@
                 <li>Formato: envases 45 g</li>
                 <li> Distribuidor: Alejandra</li>
                 <li>Calificación: <b>★★★★★</b></li>--}}
+                    <li>
+                        <select name="" id="" style="max-width: 192px">
+                            <option value=""> Ciudad origen</option>
+                            <option value="10">BOGOTA-CUNDINAMARCA</option>
+                        </select>
+                    </li>
+                    <li>
+                        <select name="" id="" style="max-width: 192px">
+                            <option value=""> Ciudad destino</option>
+                            @foreach($cities as $key => $city)
+                                <option value="{{$key}}">{{$city}}</option>
+                            @endforeach
+                        </select>
+                    </li>
                 </ul>
+                <input type="hidden" value="">
                 <div class="col-12 row end" style="margin: 10px 0">
 
                     <p>Total $

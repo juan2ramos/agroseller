@@ -224,7 +224,7 @@
                 @include('back.partial.providerStep3')
                 @include('back.partial.providerStep4')
 
-                <input type="hidden" id="Location" name="location" value="">
+
             </form>
             <form style="display:none" class="formProductPreview" action="{{route('productDetailPreview')}}"
                   method="post" target="_blank"></form>

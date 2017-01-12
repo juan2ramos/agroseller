@@ -1482,6 +1482,12 @@ h2.editProductProvider-h2 {
     .Packing .Field input {
       margin: 0.125rem 0; }
 
+.errorInputs {
+  position: absolute;
+  top: 4.0625rem;
+  color: #F44336;
+  font-size: 0.8125rem; }
+
 .QuestionList,
 .Question {
   height: calc(100vh - 164px); }

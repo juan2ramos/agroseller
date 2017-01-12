@@ -123,13 +123,19 @@ $(document).ready(function () {
         }
     });
     $('#stepTwoButton').on('click', function () {
-        steps(2, 3)
+        if (!$(this).hasClass('invalid')) {
+            steps(2, 3)
+        }
+
     });
     $('.MessagePlatform-close').on('click', function () {
         $('.MessagePlatform').hide();
     });
     $('#stepThreeButton, #omitir').on('click', function () {
-        steps(3, 4)
+        if (!$(this).hasClass('invalid')) {
+            steps(3, 4)
+        }
+
     });
     $('.Wizard li').on('click', function () {
         var index = $(this).data('id');
@@ -274,6 +280,7 @@ function DetailsProduct() {
         var nameProduct = $(this).siblings('span').text(),
             ValueProduct = String($(this).val());
         html = "";
+
 
         if (nameProduct == "") {
 
