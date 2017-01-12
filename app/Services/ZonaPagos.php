@@ -86,15 +86,15 @@ class ZonaPagos {
             'zp_state' => $inputs['estado_pago'],
         ]);
 
-        foreach ($order->productProviders as $product){
-            $order->productProviders()->updateExistingPivot($product->id, [
-                'state' => 1
-            ], true);
-        }
-
         if($inputs['estado_pago']) {
             Session::forget('cart');
             Session::forget('valueTotal');
+
+            foreach ($order->productProviders as $product){
+                $order->productProviders()->updateExistingPivot($product->id, [
+                    'state' => 2
+                ], true);
+            }
         }
 
         /*foreach (Session::get('cart') as $item) {
