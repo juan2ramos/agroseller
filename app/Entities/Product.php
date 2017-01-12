@@ -78,10 +78,6 @@ class Product extends Model
     public function productFiles(){
         return $this->hasMany(ProductFile::class);
     }
-
-    public function taxes(){
-        return $this->belongsToMany(Tax::class);
-    }
 }
 
 
