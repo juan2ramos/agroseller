@@ -119,8 +119,38 @@ $('#ProductInfo-body tr').on('click', function () {
         };
     }
 
-
     changeTotal($quantity.val())
+});
+
+
+$("#shipping").on('click',function () {
+
+
+        var data={
+            'api_token': 'xWN8axpBFvULbFNUcxT9ghBxkGHjxYAqGEpDkKdpCmuJDlNIZdz48rH4tkQs',
+            'valor': '10000',
+            'id_ciudad_origen':'10',
+            'id_ciudad_destino':'20',
+            'peso_fisico':'200',
+            'packing[largo]':'10',
+            'packing[ancho]':'20',
+            'packing[cantidad]':'20',
+            'packing[alto]':'2',
+            'cantidad':'10'
+        }
+    var url = "https://104.236.238.126/api/shipping"
+    $.ajax({
+        url: url,
+        data: data,
+        type: 'POST',
+        success: function(results) {
+            console.log(results);
+        }
+    });
+
+     /*   $.post( "http://servientrega.app/api/shipping", data , function( data ) {
+            console.log(data);
+        });*/
 });
 
 function changeTotal(quantity) {
@@ -134,6 +164,8 @@ $("#moreInfo").click(function () {
         scrollTop: $("#description").offset().top
     }, 400);
 });
+
+
 (function ($) {
     $.fn.prettynumber = function (options) {
         var opts = $.extend({}, $.fn.prettynumber.defaults, options);
