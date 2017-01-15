@@ -54,7 +54,7 @@ class ZonaPagos {
                 "clave" => $this->key,
                 "codigo_servicio_principal" => $this->serviceCode,
                 "total_con_iva"  => $inputs["total_con_iva"],
-                "valor_iva" => 0,
+                "valor_iva" => $inputs['valor_iva'],
                 "email" => auth()->user()->email,
                 "id_pago" => date_format(new \Jenssegers\Date\Date(), 'YmdHis') . rand(100, 999),
                 "id_cliente" => $inputs["id_cliente"],
@@ -64,7 +64,7 @@ class ZonaPagos {
                 "descripcion_pago" => $inputs["descripcion_pago"],
                 "telefono_cliente" => $inputs["telefono_cliente"],
                 "info_opcional1" => $inputs["info_opcional1"],
-                "info_opcional2" => $inputs["products_id"],
+                "info_opcional2" => '.',
                 "info_opcional3" => ".",
                 "lista_codigos_servicio_multicredito" => "",
                 "lista_nit_codigos_servicio_multicredito" => "",
@@ -79,7 +79,24 @@ class ZonaPagos {
     }
 
     public function insertPayResult($inputs){
-        $data = [];
+
+        $order = Order::where('zp_buy_id', $inputs['id_pago'])->first();
+        $order->update([
+            'zp_buy_token' => $inputs['ticketID'],
+            'zp_state' => $inputs['estado_pago'],
+        ]);
+
+        if($inputs['estado_pago']) {
+            Session::forget('cart');
+            Session::forget('valueTotal');
+
+            foreach ($order->productProviders as $product){
+                $order->productProviders()->updateExistingPivot($product->id, [
+                    'state' => 2
+                ], true);
+            }
+        }
+
         /*foreach (Session::get('cart') as $item) {
 
             if(!$item->offers)
@@ -92,27 +109,6 @@ class ZonaPagos {
             $data[$item->id] = ['quantity' => $item->quantity, 'state_order_id' => 2, 'value' => $value];
         }*/
 
-        $user = User::where('identification', $inputs['id_cliente'])->first();
-
-        $order = Order::create([
-            //'phone' => $inputs['telefono_cliente'],
-            //'description' => $inputs['descripcion_pago'],
-            //'name_client' => $inputs['nombre_cliente'] . ' ' . $inputs['apellido_cliente'],
-            'identification_client' => $inputs['id_cliente'],
-            'user_id' => $user->id,
-            'address_client' => $inputs['campo1'],
-            'zp_buy_id' => $inputs['id_pago'],
-            'zp_buy_token' => $inputs['ticketID'],
-            'zp_state' => $inputs['estado_pago']
-        ]);
-
-        $user->orders()->save($order);
-        $order->products()->attach($data);
-
-        if($inputs['estado_pago']) {
-            Session::forget('cart');
-            Session::forget('valueTotal');
-        }
     }
 
     /** Retorna la instancia de zona pagos **/

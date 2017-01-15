@@ -150,12 +150,12 @@ class ProductController extends Controller
                     'id' => 8,
                     'name' => 'Precio',
                     'value' => '$' . number_format($product->price, 0, ',', '.')
-                ],*/
+                ],
                 [
                     'id' => 9,
                     'name' => 'Impuestos',
                     'value' => $product->taxes
-                ],
+                ],*/
                 [
                     'id' => 10,
                     'name' => 'Cantidad disponible',

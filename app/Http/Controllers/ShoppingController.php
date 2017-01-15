@@ -34,10 +34,7 @@ class ShoppingController extends Controller
     public function add($product, $quantity, $provider)
     {
 
-
-        $product = ProductProvider::with('product','provider')->find($product);
-
-
+        $product = ProductProvider::with('product','provider','taxes')->find($product);
         $cart = Session::get('cart');
 
         $product->quantity = $quantity;

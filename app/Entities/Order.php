@@ -24,12 +24,16 @@ class Order extends Model
         return $this->belongsToMany(Product::class)->withPivot('quantity','state_order_id','value');
     }
 
+    public function productProviders(){
+        return $this->belongsToMany(ProductProvider::class)->withPivot('quantity','state','value');
+    }
+
     public function stateOrder(){
         return $this->belongsTo(StateOrder::class);
     }
 
     public function getNumberProductsAttribute(){
-        return count($this->products()->get());
+        return count($this->productProviders()->get());
     }
 
     public function getCreatedBudgetAttribute(){

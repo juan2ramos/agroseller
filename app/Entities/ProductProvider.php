@@ -10,13 +10,12 @@ class ProductProvider extends Model
 {
     protected $fillable = [
         'product_id', 'provider_id', 'price', 'location', 'available_quantity',
-        'min_quantity', 'available', 'isValidate', 'isActive', 'taxes','has_offer','youtube','link'
+        'min_quantity', 'available', 'isValidate', 'isActive','has_offer','youtube','link'
     ];
 
     public function provider(){
         return $this->belongsTo(Provider::class);
     }
-
     public function product(){
         return $this->belongsTo(Product::class);
     }
@@ -31,5 +30,11 @@ class ProductProvider extends Model
     }
     public function packing(){
         return $this->hasMany(Packing::class);
+    }
+    public function taxes(){
+        return $this->belongsToMany(Tax::class);
+    }
+    public function orders(){
+        return $this->belongsToMany(Order::class);
     }
 }

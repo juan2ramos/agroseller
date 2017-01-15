@@ -27,7 +27,7 @@
                         <div class="draggable">Fertilizantes Edáficos</div>
                     </td>
                 </tr>
-                <tr>
+                <tr>d
                     <td class="droppable">
                     </td>
                 </tr>
