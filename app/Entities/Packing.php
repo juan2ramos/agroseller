@@ -9,7 +9,7 @@ class Packing extends Model
     protected $table = 'packing';
     protected $fillable = ['high','width','long','quantity'];
 
-    public function product(){
+    public function productProvider(){
         return $this->belongsTo(ProductProvider::class);
     }
 

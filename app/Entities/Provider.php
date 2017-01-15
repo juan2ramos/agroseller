@@ -5,7 +5,7 @@ namespace Agrosellers\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Agrosellers\User;
 
-class Provider extends Model
+class   Provider extends Model
 {
     protected $fillable = [
         'company-name', 'location', 'address', 'contact', 'contact-phone',

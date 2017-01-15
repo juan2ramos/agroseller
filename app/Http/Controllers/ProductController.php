@@ -3,6 +3,7 @@
 namespace Agrosellers\Http\Controllers;
 
 use Agrosellers\Entities\City;
+use Agrosellers\Entities\Packing;
 use Agrosellers\Entities\ProductProvider;
 use Agrosellers\Entities\Provider;
 use Agrosellers\Entities\Subcategory;
@@ -61,15 +62,21 @@ class ProductController extends Controller
 
     function productDetailFront(Request $request, $slug, $id)
     {
-
+        $ids = [];
         $product = Product::with(['subcategory', 'files', 'providers.user'])->find($id);
+
+        foreach ($product->providers as $provider ){
+            $ids[] = $provider->pivot->id;
+        }
+        $productProvider = ProductProvider::with('packing')->whereIn('id',$ids)->get()->toJson();
+
 
         $questions = $this->reloadQuestions($id);
         $featuresTranslate = $this->setFeaturesTranslate($product);
-        $cities = City::lists('nombre_ciudad','id_ciudad');
+        $cities = City::lists('nombre_ciudad', 'id_ciudad');
 
         $offer = false;
-        return view('front.productDetail', compact('questions', 'product', 'featuresTranslate', 'offer','cities'));
+        return view('front.productDetail', compact('questions', 'product', 'featuresTranslate', 'offer', 'cities','productProvider'));
 
 
         /* Versión anterior al cambio de productos con muchos proveedores*/

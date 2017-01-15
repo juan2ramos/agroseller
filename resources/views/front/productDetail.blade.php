@@ -128,19 +128,22 @@
                 <li>Formato: envases 45 g</li>
                 <li> Distribuidor: Alejandra</li>
                 <li>Calificación: <b>★★★★★</b></li>--}}
-                    <li>
-                        <select name="" id="" style="max-width: 192px">
-                            <option value=""> Ciudad origen</option>
+
+                    <li class="row col-12 between" style="margin: 10px 0;">
+                        <select name="" id="" style="max-width: 120px ; border: 1px solid #27383f;background: white; margin-right: 2px" class="col-6">
+                            <option value="">  ORIGEN</option>
                             <option value="10">BOGOTA-CUNDINAMARCA</option>
                         </select>
-                    </li>
-                    <li>
-                        <select name="" id="" style="max-width: 192px">
-                            <option value=""> Ciudad destino</option>
+                        <select name="" id="" style="max-width: 120px;border: 1px solid #27383f;background: white;" class="col-6">
+                            <option value="">  DESTINO</option>
                             @foreach($cities as $key => $city)
                                 <option value="{{$key}}">{{$city}}</option>
                             @endforeach
                         </select>
+                    </li>
+                    <li class="row center">
+                        <a href="#" id="shipping" class="Button" style="    background: #c5d257;color: #27383f;padding: 4px;height: 28px;text-transform: capitalize">
+                            Calcular Envío</a>
                     </li>
                 </ul>
                 <input type="hidden" value="">
@@ -317,6 +320,17 @@
 
 @endsection
 @section('scripts')
+
+
+
+    <script>
+
+       var productProviders =  {!! $productProvider  !!};
+
+        console.log(productProviders);
+    </script>
+
+
     <!-- ******* Slider ******* -->
     <script src="{{asset('js/owl.carousel.js')}}"></script>
     <script src="{{asset('js/front/slide.js')}}"></script>
