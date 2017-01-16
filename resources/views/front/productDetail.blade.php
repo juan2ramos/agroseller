@@ -6,7 +6,6 @@
     <meta property="og:type" content="{{route('home')}}"/>
     <meta property="og:title" content="{{$product->name}}"/>
     <meta property="og:description" content="{{$product->description}}"/>
-
     @foreach($product->files as $file)
         @if($file->extension != 'pdf')
             <meta property="og:image" content="{{url('uploads/products/' . $file->name)}}"/>
@@ -128,23 +127,47 @@
                 <li>Formato: envases 45 g</li>
                 <li> Distribuidor: Alejandra</li>
                 <li>Calificación: <b>★★★★★</b></li>--}}
-
+                    <input type="hidden" id="weightProduct" value="{{$product->weight}}">
                     <li class="row col-12 between" style="margin: 10px 0;">
-                        <select name="" id="" style="max-width: 120px ; border: 1px solid #27383f;background: white; margin-right: 2px" class="col-6">
-                            <option value="">  ORIGEN</option>
+                        <select name="" id="originCity"
+                                style="max-width: 120px ; border: 1px solid #27383f;background: white; margin-right: 2px"
+                                class="col-6">
+                            <option value=""> ORIGEN</option>
                             <option value="10">BOGOTA-CUNDINAMARCA</option>
                         </select>
-                        <select name="" id="" style="max-width: 120px;border: 1px solid #27383f;background: white;" class="col-6">
-                            <option value="">  DESTINO</option>
+                        <select name="" id="destinationCity"
+                                style="max-width: 120px;border: 1px solid #27383f;background: white;"
+                                class="col-6">
+                            <option value=""> DESTINO</option>
                             @foreach($cities as $key => $city)
                                 <option value="{{$key}}">{{$city}}</option>
                             @endforeach
                         </select>
                     </li>
+                    <li style="margin: 0 0 10px 0; text-align: center; font-size: 16px;">
+                        <svg width="27px" style="vertical-align: bottom;" height="19px" viewBox="37 42 27 19"
+                             version="1.1" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+                            <desc>Created with Sketch.</desc>
+                            <defs></defs>
+                            <g id="noun_690633_cc" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+                               transform="translate(38.000000, 42.000000)">
+                                <g id="Group" transform="translate(0.000000, 0.191346)" fill="#A9A9A9">
+                                    <path d="M0.595240774,0.108666 C0.595240774,0.108666 2.58928571e-06,0.408666 2.58928571e-06,0.708666 L2.58928571e-06,10.02741 L16.3690503,10.02741 L16.3690503,4.008666 L16.3690503,0.708666 C16.3690503,0.408666 16.0719313,0.106146 15.7738122,0.108666 L0.595240774,0.108666 Z M16.9642884,4.008666 L16.9642884,10.00866 C16.9642497,10.32282 16.6807051,10.60863 16.3690503,10.60866 L2.58928572e-06,10.60866 C2.58928572e-06,11.84484 -6.33928571e-06,12.92034 2.58928572e-06,14.49927 L1.85082113,14.49927 C2.13303542,13.14009 3.33297292,12.10866 4.76190744,12.10866 C6.19083899,12.10866 7.39077946,13.14009 7.67299375,14.49927 C10.8163271,14.50257 13.9045801,14.50857 17.3270116,14.50857 C17.6057914,13.14492 18.8060265,12.10857 20.2380979,12.10857 C21.6670295,12.10857 22.8669699,13.14 23.1491842,14.49918 C23.7324134,14.49918 24.2379777,14.50218 25.0000015,14.49918 L25.0000015,9.10857 L21.4285741,4.008576 L16.9642884,4.008666 Z M19.0476217,6.108666 L19.0476217,8.50866 L21.8098985,8.50866 L20.2194967,6.108666 L19.0476217,6.108666 Z M4.76190744,12.70866 C3.44692827,12.70866 2.38095506,13.78317 2.38095506,15.10866 C2.38095506,16.43415 3.44692827,17.50866 4.76190744,17.50866 C6.07688661,17.50866 7.14285982,16.43415 7.14285982,15.10866 C7.14285982,13.78317 6.07688661,12.70866 4.76190744,12.70866 Z M20.2380979,12.70866 C18.9231188,12.70866 17.8571455,13.78317 17.8571455,15.10866 C17.8571455,16.43415 18.9231188,17.50866 20.2380979,17.50866 C21.5530771,17.50866 22.6190503,16.43415 22.6190503,15.10866 C22.6190503,13.78317 21.5530771,12.70866 20.2380979,12.70866 Z"
+                                          id="Shape"></path>
+                                </g>
+                            </g>
+                        </svg>
+                        Valor del envio <span id="shippingValue"
+                                              style=" font-weight: 500; display: inline; color: #27383f; font-size: 16px;"></span>
+                    </li>
                     <li class="row center">
-                        <a href="#" id="shipping" class="Button" style="    background: #c5d257;color: #27383f;padding: 4px;height: 28px;text-transform: capitalize">
+                        <a href="#" id="shipping" class=""
+                           style=" width: 160px;   background: #ff9d53;color: #ffffff;padding: 4px;height: 28px;text-transform: capitalize">
                             Calcular Envío</a>
                     </li>
+
                 </ul>
                 <input type="hidden" value="">
                 <div class="col-12 row end" style="margin: 10px 0">
@@ -318,6 +341,25 @@
         </ul>
     </aside>
 
+    <aside class="row center middle" id="loadingShipping">
+        <div class="loadingContainer">
+            <svg version="1.1" id="loadingIcon" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="100px" width="100px"
+                 viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+        <path fill="#C5D257"
+              d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+            <animateTransform
+                    attributeName="transform"
+                    attributeType="XML"
+                    type="rotate"
+                    dur="1s"
+                    from="0 50 50"
+                    to="360 50 50"
+                    repeatCount="indefinite"/>
+        </path>
+     </svg>
+        </div>
+    </aside>
 @endsection
 @section('scripts')
 
@@ -325,7 +367,7 @@
 
     <script>
 
-       var productProviders =  {!! $productProvider  !!};
+        var productProviders =  {!! $productProvider  !!};
 
         console.log(productProviders);
     </script>

@@ -15,7 +15,6 @@ main
 body
   background: white
   color: $greenDark
-
 @import "front/header"
 @import "front/menus"
 @import "front/products"
@@ -27,6 +26,16 @@ body
 @import "lib/autocomplete"
 @import "front/loader"
 @import "front/productDetail"
+
+#loadingShipping
+  width: 100vw
+  height: 100vh
+  background: rgba(255, 255, 255, 0.76)
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 10
+  display: none
 
 .Chat
   position: fixed

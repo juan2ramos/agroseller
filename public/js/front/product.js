@@ -79,8 +79,12 @@ $('#quantity').on('focusout', function () {
 
     var min = $(this).data('min'),
         max = $(this).data('max');
-    if (this.value < min) {this.value = min}
-    if (this.value > max) {this.value = max}
+    if (this.value < min) {
+        this.value = min
+    }
+    if (this.value > max) {
+        this.value = max
+    }
 
     changeTotal($('#quantity').val())
 
@@ -101,58 +105,66 @@ $('#ProductInfo-body tr').on('click', function () {
 
     $(this).find('.idprovider').data('product_provider');
 
-    $quantity.data('min',min);
-    $quantity.data('max',max);
+    $quantity.data('min', min);
+    $quantity.data('max', max);
 
 
-    if($quantity.val() < $quantity.data('min') ){
+    if ($quantity.val() < $quantity.data('min')) {
         $quantity.val(min)
 
-    } else{
+    } else {
 
-        if($quantity.val() > $quantity.data('max')) {
+        if ($quantity.val() > $quantity.data('max')) {
 
             console.log('val' + $quantity.val());
             console.log('min' + $quantity.data('min'));
             console.log('max' + $quantity.data('max'));
             $quantity.val(max);
-        };
+        }
+        ;
     }
 
     changeTotal($quantity.val())
 });
 
 
-$("#shipping").on('click',function () {
+$("#shipping").on('click', function () {
+    calculateShipping();
 
+});
+function calculateShipping() {
 
-        var data={
-            'api_token': 'xWN8axpBFvULbFNUcxT9ghBxkGHjxYAqGEpDkKdpCmuJDlNIZdz48rH4tkQs',
-            'valor': '10000',
-            'id_ciudad_origen':'10',
-            'id_ciudad_destino':'20',
-            'peso_fisico':'200',
-            'packing[largo]':'10',
-            'packing[ancho]':'20',
-            'packing[cantidad]':'20',
-            'packing[alto]':'2',
-            'cantidad':'10'
-        }
+    $('#loadingShipping').show().css('display', 'flex');
+    var data = {
+        'api_token': 'xWN8axpBFvULbFNUcxT9ghBxkGHjxYAqGEpDkKdpCmuJDlNIZdz48rH4tkQs',
+        'valor': $('#total').text(),
+        'id_ciudad_origen': $('#originCity').val(),
+        'id_ciudad_destino': $('#destinationCity').val(),
+        'peso_fisico': $('#weightProduct').val(),
+        'packing[largo]': '10',
+        'packing[ancho]': '20',
+        'packing[cantidad]': '20',
+        'packing[alto]': '2',
+        'cantidad':  $('#quantity').val(),
+    }
     var url = "https://104.236.238.126/api/shipping"
     $.ajax({
         url: url,
         data: data,
         type: 'POST',
-        success: function(results) {
-            console.log(results);
-        }
+
+    }).done(function (data) {
+        if (data.success)
+            $('#shippingValue').text(formatNumber(data.price.precio));
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        alert('Error!!');
+    }).always(function () {
+        $('#loadingShipping').hide();
     });
-
-     /*   $.post( "http://servientrega.app/api/shipping", data , function( data ) {
-            console.log(data);
-        });*/
-});
-
+}
+function formatNumber(num) {
+    return "$" + num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+}
 function changeTotal(quantity) {
     var priceUnit = $('#priceUnit').data('price'),
         total = quantity * priceUnit;
