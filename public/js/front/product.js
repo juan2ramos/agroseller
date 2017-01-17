@@ -147,7 +147,7 @@ function calculateShipping() {
         'packing[alto]': '2',
         'cantidad':  $('#quantity').val(),
     }
-    var url = "https://104.236.238.126/api/shipping"
+    var url = "https://api.agrosellers.co/api/shipping"
     $.ajax({
         url: url,
         data: data,
