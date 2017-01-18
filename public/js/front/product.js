@@ -136,7 +136,7 @@ function calculateShipping() {
 
     $('#loadingShipping').show().css('display', 'flex');
     var data = {
-        'api_token': 'nZRRxavre4NhO6CrQl4SMjn43p2dDc9uW2UajxEwJkzWB45Mrmx5QBhI2QB3',
+        'api_token': 'xWN8axpBFvULbFNUcxT9ghBxkGHjxYAqGEpDkKdpCmuJDlNIZdz48rH4tkQs',
         'valor': $('#total').text(),
         'id_ciudad_origen': $('#originCity').val(),
         'id_ciudad_destino': $('#destinationCity').val(),
@@ -152,7 +152,7 @@ function calculateShipping() {
     console.log($('#total').text())
     console.log($('#weightProduct').val())
     console.log($('#quantity').val())
-    var url = "https://servientrega.app/api/shipping"
+    var url = "https://api.agrosellers.co/api/shipping"
     $.ajax({
         url: url,
         data: data,
