@@ -94,13 +94,13 @@ class ShoppingController extends Controller
         $open = $request->get('open') ;
         $orders = Auth::user()->orders()->where('zp_state', 1)->orderBy('created_at','DESC')->get();
 
-        /*foreach ($orders as $order) {
+        foreach ($orders as $order) {
             $value = 0;
-            foreach ($order->products as $product) {
+            foreach ($order->productProviders as $product) {
                 $value += $product->totalValue = $product->pivot->value * $product->pivot->quantity;
             }
             $order->total = $value;
-        }*/
+        }
         $states = StateOrder::lists('id', 'name');
         return view('back.orders', compact('orders','states','open'));
     }
