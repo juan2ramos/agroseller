@@ -136,7 +136,7 @@ function calculateShipping() {
 
     $('#loadingShipping').show().css('display', 'flex');
     var data = {
-        'api_token': 'xWN8axpBFvULbFNUcxT9ghBxkGHjxYAqGEpDkKdpCmuJDlNIZdz48rH4tkQs',
+        'api_token': 'nZRRxavre4NhO6CrQl4SMjn43p2dDc9uW2UajxEwJkzWB45Mrmx5QBhI2QB3',
         'valor': $('#total').text(),
         'id_ciudad_origen': $('#originCity').val(),
         'id_ciudad_destino': $('#destinationCity').val(),
@@ -147,15 +147,26 @@ function calculateShipping() {
         'packing[alto]': '2',
         'cantidad':  $('#quantity').val(),
     }
-    var url = "https://api.agrosellers.co/api/shipping"
+    console.log($('#originCity').val())
+    console.log($('#destinationCity').val())
+    console.log($('#total').text())
+    console.log($('#weightProduct').val())
+    console.log($('#quantity').val())
+    var url = "https://servientrega.app/api/shipping"
     $.ajax({
         url: url,
         data: data,
         type: 'POST',
 
-    }).done(function (data) {
-        if (data.success)
-            $('#shippingValue').text(formatNumber(data.price.precio));
+    }).done(function (response) {
+
+        if (response.success == true){
+            console.log(response.data)
+            $('#shippingValue').text(formatNumber(response.data.precio));
+        }else{
+            alert(response.message)
+        }
+
     }).fail(function (jqXHR, textStatus, errorThrown) {
         alert('Error!!');
     }).always(function () {
