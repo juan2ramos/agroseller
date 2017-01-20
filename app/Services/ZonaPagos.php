@@ -81,6 +81,8 @@ class ZonaPagos {
     public function insertPayResult($inputs){
 
         $order = Order::where('zp_buy_id', $inputs['id_pago'])->first();
+        print_r($inputs);
+        dd($order);
         $order->update([
             'zp_buy_token' => $inputs['ticketID'],
             'zp_state' => $inputs['estado_pago'],
