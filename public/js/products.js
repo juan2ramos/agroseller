@@ -226,14 +226,7 @@ $(document).ready(function () {
 
 function steps(from, to) {
     currentStep = to;
-    if (to == 3) {
-        $("#Map").animate({"height": "400px"}, 500, function () {
-            google.maps.event.trigger(map, 'resize');
-            var myLatlngCenter = new google.maps.LatLng(4.716397271832087, -74.13149477499996);
-            map.setCenter(myLatlngCenter);
-            map.setZoom(4);
-        });
-    }
+
     if (to == 3) {
         var stringPrice = parseInt($('#priceCurrent').val()).toLocaleString('de-DE');
         $('#priceForOffer').text(stringPrice);

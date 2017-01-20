@@ -304,7 +304,7 @@
         </script>
         <script>
 
-
+            var cities =  {!! $cities  !!};
 
             $('.productDetailAction').on('click', function () {
                 var $form = $('.formProductPreview');

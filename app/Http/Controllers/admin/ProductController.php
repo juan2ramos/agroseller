@@ -3,6 +3,7 @@
 namespace Agrosellers\Http\Controllers\admin;
 
 use Agrosellers\Entities\Brand;
+use Agrosellers\Entities\City;
 use Agrosellers\Entities\Farm;
 use Agrosellers\Entities\FarmCategory;
 use Agrosellers\Entities\Notification;
@@ -63,12 +64,14 @@ class ProductController extends Controller
         $farms = FarmCategory::with('farms')->get();
         $categories = Category::all();
         $user = auth()->user();
+        $cities = City::lists('nombre_ciudad','id');
+
         if($user->role_id == 1){
             $products = Product::orderBy('id', 'DESC')->paginate(10);
-            return view('back.productAdminList', compact('categories', 'products', 'farms', 'brands'));
+            return view('back.productAdminList', compact('categories', 'products', 'farms', 'brands','cities'));
         } else {
             $products = ProductProvider::where('provider_id', auth()->user()->provider->id)->orderBy('id', 'DESC')->paginate(10);
-            return view('back.productProviderList', compact('categories', 'products', 'farms', 'brands'));
+            return view('back.productProviderList', compact('categories', 'products', 'farms', 'brands','cities'));
         }
 
     }
@@ -78,19 +81,31 @@ class ProductController extends Controller
         $farms = FarmCategory::with('farms')->get();
         $categories = Category::all();
         $user = auth()->user();
-
+        $cities = City::lists('nombre_ciudad','id');
         if($user->role_id == 1){
             $productEdit = Product::find($id);
-            return view('back.productAdminEdit', compact('productEdit', 'offerEdit', 'categories', 'farms', 'brands'));
+            return view('back.productAdminEdit', compact('productEdit', 'offerEdit', 'categories', 'farms', 'brands','cities'));
         }else{
-            $productEdit = ProductProvider::with('packing')->find($id);
+            $productEdit = ProductProvider::with('packing','cities')->find($id);
             $offer = $productEdit->offer()->first();
-            return view('back.productProviderEdit', compact('productEdit', 'offer', 'categories', 'farms', 'brands'));
+            return view('back.productProviderEdit', compact('productEdit', 'offer', 'categories', 'farms', 'brands','cities'));
         }
     }
 
     function updateProductProvider(Request $request, $id){
+
+        $this->validate($request, [
+            'city.*' => 'required|numeric',
+            'packing.*.high' => 'required|numeric',
+            'packing.*.width' => 'required|numeric',
+            'packing.*.long' => 'required|numeric',
+            'packing.*.quantity' => 'required|numeric',
+            'price' => 'required',
+            'min_quantity' => 'required',
+            'available_quantity' => 'required',
+        ]);
         $inputs = $request->all();
+
         if($request->has('taxes'))
             $inputs['taxes'] = implode(';', $inputs['taxes']);
         $product = ProductProvider::find($id);
@@ -106,7 +121,8 @@ class ProductController extends Controller
         }else{
             $inputs['has_offer'] = 0;
         }
-
+        $product->cities()->detach();
+        $product->cities()->attach($inputs['city']);
 
         $product->packing()->delete();
         $packings = [];
@@ -227,6 +243,7 @@ class ProductController extends Controller
 
     function newProductProvider(Request $request){
 
+
         $inputs = $request->all();
         
         $inputs['provider_id'] = auth()->user()->provider->id;
@@ -240,6 +257,8 @@ class ProductController extends Controller
             $packings[] = new Packing($packing);
         }
         $productProvider->packing()->saveMany($packings);
+
+        $productProvider->cities()->attach($inputs['city']);
 
         if ($request->has('has_offer')){
 

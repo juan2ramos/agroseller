@@ -14,7 +14,7 @@
             </g>
         </g>
     </svg>
-    <section class="BackContainer row" style="position: relative">
+    <section class="BackContainer row " id="contentValidate" style="position: relative">
         <section class="Step Step-3 editProductProvider  Forms">
             <form id="Product-form" role="form" method="POST"
                   action="{{ route('updateProductProvider', [$productEdit->id]) }}" enctype="multipart/form-data">
@@ -22,28 +22,57 @@
                 <input type="hidden" id="deleteImages" name="deleteImages" value="">
                 <article class="Step-location">
                     <h2 class="editProductProvider-h2">{{$productEdit->product->name}}</h2>
-                    <p>1. Añadir los lugares donde está ubicado tu producto
-                        <span>Navega por el mapa y ubica el lugar que
-                        deseas añadir, da un clic sobre el botón
-                        “AÑADE UNA UBICACIÓN”, después de que el
-                        marcador esta sobre el mapa puedes desplazarlo
-                        a una ubicación más exacta; si deseas eliminar
-                        da doble clic sobre el marcador, si deseas
-                        eliminar todas tus ubicaciones para empezar
-                        de nuevo oprime “ELIMINAR TODAS LAS UBICACIONES".
-                    </span>
-                    </p>
-                    <span class="Marker Button" id="addMaker">AÑADE UNA UBICACIÓN</span>
-                    <span class="Marker Button" id="removeMaker">ELIMINAR TODAS LAS UBICACIONES</span>
-                    @if(isset($productEdit))
-                        <div id="Map" class="Map Editable"></div>
-                    @else
-                        <div id="Map" class="Map"></div>
-                    @endif
+
                 </article>
-
+                @if (count($errors) > 0)
+                    <div style="color: #a5250b">
+                        ¡Hay un error en el formulario, revisar y volver a enviar!
+                    </div>
+                @endif
                 <article>
+                    <div id="Cities">
+                        @php($i = 1)
+                        @foreach($productEdit->cities as $productCity)
+                            <label for="citi{{$i}}" class=" {{($i > 0)?'cities':''}}">
+                                <select class="requerid" name="city[{{$i}}]" id="citi{{$i}}">
+                                    <option value="">Selecciona Ciudad despacho</option>
+                                    @foreach($cities as $key => $city)
+                                        <option {{($key == $productCity->id) ? 'selected':'' }} value="{{$key}}">{{$city}}</option>
+                                    @endforeach
+                                </select>
+                            </label>
+                            @php($i++)
+                        @endforeach
+                    </div>
+                    <div class="row">
+                        <div class="row middle col-3" id="addCity" style="cursor: pointer">
 
+                            <svg width="30px" height="30px" viewBox="435 593 30 30" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+                                   transform="translate(435.000000, 593.000000)">
+                                    <path d="M15,0 C6.75,0 0,6.75 0,15 C0,23.25 6.75,30 15,30 C23.25,30 30,23.25 30,15 C30,6.75 23.25,0 15,0 Z"
+                                          id="Shape" fill="#C5D257"></path>
+                                    <path d="M19.875,16.3125 L16.3125,16.3125 L16.3125,19.875 C16.3125,20.625 15.75,21.1875 15,21.1875 C14.25,21.1875 13.6875,20.625 13.6875,19.875 L13.6875,16.3125 L10.125,16.3125 C9.375,16.3125 8.8125,15.75 8.8125,15 C8.8125,14.25 9.375,13.6875 10.125,13.6875 L13.6875,13.6875 L13.6875,10.125 C13.6875,9.375 14.25,8.8125 15,8.8125 C15.75,8.8125 16.3125,9.375 16.3125,10.125 L16.3125,13.6875 L19.875,13.6875 C20.625,13.6875 21.1875,14.25 21.1875,15 C21.1875,15.75 20.625,16.3125 19.875,16.3125 Z"
+                                          id="Path" fill="#253A1B"></path>
+                                </g>
+                            </svg>
+                            <p style="margin: 0 5px; color: #253a1b;">Añadir ciudad</p>
+                        </div>
+                        <div class="row middle col-3" id="deleteCity" style="cursor: pointer">
+                            <svg width="30px" height="30px" viewBox="404 205 30 30" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+                                   transform="translate(404.000000, 205.000000)">
+                                    <path d="M15,0 C6.75,0 0,6.75 0,15 C0,23.25 6.75,30 15,30 C23.25,30 30,23.25 30,15 C30,6.75 23.25,0 15,0 Z"
+                                          id="Shape" fill="#C5D257"></path>
+                                    <path d="M10,15 L20,15" id="Line" stroke="#253A1B" stroke-width="3"
+                                          stroke-linecap="square"></path>
+                                </g>
+                            </svg>
+                            <p style="margin: 0 5px; color: #253a1b;">Eliminar ciudad</p>
+                        </div>
+                    </div>
                     <label for="priceCurrent">
                         <input type="text" id="priceCurrent" name="price"
                                @if(isset($productEdit)) value="{{$productEdit->price}}" @endif>
@@ -140,15 +169,16 @@
 
                     <h2 style="margin: 36px 0 0;"> Embalaje </h2>
                     <div class="Packing ">
-                        @php $i = 1 @endphp
+
+                        @php $i = 0 @endphp
                         @foreach($productEdit->packing as $packing)
 
-                            <div class="row Packing-item">
+                            <div class="row {{($i > 0)?'Packing-item':''}}">
                                 <div class="col-3 Field">
                                     <label for="high">
-                                        <input type="number"  value="{{$packing->high}}" min="1"
+                                        <input type="number" value="{{$packing->high}}" min="1"
                                                id="high"
-                                               name="packing[packing{{$i}}][high]">
+                                               name="packing[{{$i}}][high]">
                                         <span>Alto</span>
                                         <em></em>
                                     </label>
@@ -156,9 +186,9 @@
                                 <div class="col-3 Field">
                                     <label for="width">
                                         <input type="number" value="{{$packing->width}}"
-                                              min="1"
+                                               min="1"
                                                id="width"
-                                               name="packing[packing{{$i}}][width]">
+                                               name="packing[{{$i}}][width]">
                                         <span>Ancho</span>
                                         <em></em>
                                     </label>
@@ -168,7 +198,7 @@
                                         <input type="number" value="{{$packing->long}}"
                                                min="1"
                                                id="long"
-                                               name="packing[packing{{$i}}][long]">
+                                               name="packing[{{$i}}][long]">
                                         <span>Largo</span>
                                         <em></em>
                                     </label>
@@ -176,9 +206,9 @@
                                 <div class="col-3 Field">
                                     <label for="quantity">
                                         <input type="number" value="{{$packing->quantity}}"
-                                                min="1"
+                                               min="1"
                                                id="quantity"
-                                               name="packing[packing{{$i}}][quantity]">
+                                               name="packing[{{$i}}][quantity]">
                                         <span>Cantidad</span>
                                         <em></em>
                                     </label>
@@ -246,6 +276,9 @@
     @endif
 @endsection
 @section('scripts')
+    <script>
+        var cities =  {!! $cities  !!};
+    </script>
     <!--<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
     <script src="{{asset('js/maps.js')}}"></script>
     <script>getPosition('{!!$productEdit->location!!}')</script>
@@ -258,6 +291,7 @@
     <script src="https://cdn.quilljs.com/1.0.0-rc.0/quill.js"></script>
     <script src="{{asset('js/selectproducts.js')}}"></script>
     <script>
+
         $(".datepicker").datetimepicker();
         var subcategories = $('#subcategoriesList'),
             productTable = $('#productTable');

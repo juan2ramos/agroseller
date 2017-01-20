@@ -13,20 +13,9 @@
 <section class="Step Step-3 Forms" id="contentValidate">
 
     <article class="Step-location">
-        <p>1. Añadir los lugares donde está ubicado tu producto
-            <span>Navega por el mapa y ubica el lugar que
-                        deseas añadir, da un clic sobre el botón
-                        “AÑADE UNA UBICACIÓN”, después de que el
-                        marcador esta sobre el mapa puedes desplazarlo
-                        a una ubicación más exacta; si deseas eliminar
-                        da doble clic sobre el marcador, si deseas
-                        eliminar todas tus ubicaciones para empezar
-                        de nuevo oprime “ELIMINAR TODAS LAS UBICACIONES".
-                    </span>
-        </p>
-        <span class="Marker Button" id="addMaker">AÑADE UNA UBICACIÓN</span>
-        <span class="Marker Button" id="removeMaker">ELIMINAR TODAS LAS UBICACIONES</span>
-        @if(isset($productEdit))
+
+
+        {{--@if(isset($productEdit))
             <div id="Map" class="Map Editable"></div>
         @else
             <div id="Map" class="Map"></div>
@@ -34,10 +23,52 @@
         <div style="position: relative; top: -64px;">
             <input type="hidden" id="Location" name="location" class="requerid" value="">
             <div class="errorInputs "></div>
-        </div>
+        </div>--}}
     </article>
 
     <article>
+
+        <div>
+            <div id="Cities">
+                <label for="citi">
+                    <select class="requerid"  name="city[0]" id="citi">
+                        <option value="">Selecciona Ciudad despacho</option>
+                        @foreach($cities as $key => $city)
+                            <option value="{{$key}}">{{$city}}</option>
+                        @endforeach
+                    </select>
+                </label>
+            </div>
+            <div class="row">
+                <div class="row middle col-3" id="addCity" style="cursor: pointer">
+
+                    <svg width="30px" height="30px" viewBox="435 593 30 30" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+                           transform="translate(435.000000, 593.000000)">
+                            <path d="M15,0 C6.75,0 0,6.75 0,15 C0,23.25 6.75,30 15,30 C23.25,30 30,23.25 30,15 C30,6.75 23.25,0 15,0 Z"
+                                  id="Shape" fill="#C5D257"></path>
+                            <path d="M19.875,16.3125 L16.3125,16.3125 L16.3125,19.875 C16.3125,20.625 15.75,21.1875 15,21.1875 C14.25,21.1875 13.6875,20.625 13.6875,19.875 L13.6875,16.3125 L10.125,16.3125 C9.375,16.3125 8.8125,15.75 8.8125,15 C8.8125,14.25 9.375,13.6875 10.125,13.6875 L13.6875,13.6875 L13.6875,10.125 C13.6875,9.375 14.25,8.8125 15,8.8125 C15.75,8.8125 16.3125,9.375 16.3125,10.125 L16.3125,13.6875 L19.875,13.6875 C20.625,13.6875 21.1875,14.25 21.1875,15 C21.1875,15.75 20.625,16.3125 19.875,16.3125 Z"
+                                  id="Path" fill="#253A1B"></path>
+                        </g>
+                    </svg>
+                    <p style="margin: 0 5px; color: #253a1b;">Añadir ciudad</p>
+                </div>
+                <div class="row middle col-3" id="deleteCity" style="cursor: pointer">
+                    <svg width="30px" height="30px" viewBox="404 205 30 30" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g id="Group" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+                           transform="translate(404.000000, 205.000000)">
+                            <path d="M15,0 C6.75,0 0,6.75 0,15 C0,23.25 6.75,30 15,30 C23.25,30 30,23.25 30,15 C30,6.75 23.25,0 15,0 Z"
+                                  id="Shape" fill="#C5D257"></path>
+                            <path d="M10,15 L20,15" id="Line" stroke="#253A1B" stroke-width="3"
+                                  stroke-linecap="square"></path>
+                        </g>
+                    </svg>
+                    <p style="margin: 0 5px; color: #253a1b;">Eliminar ciudad</p>
+                </div>
+            </div>
+        </div>
 
         <label for="priceCurrent">
             <input type="text" id="priceCurrent" name="price" class="requerid"
@@ -48,7 +79,7 @@
         </label>
 
         <label for="available_quantity">
-            <input type="number" id="available_quantity" min="1" name="available_quantity" class="requerid"
+            <input type="number"  id="available_quantity" min="1" name="available_quantity" class="requerid"
                    @if(isset($productEdit)) value="{{$productEdit->available_quantity}}" @endif>
             <span>Cantidad disponible</span>
             <em></em>
@@ -123,7 +154,7 @@
                 <em></em>
             </label>
             <label for="offer_price">
-                <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" @endif id="offer_price"
+                <input type="number"  min="1"  @if(isset($offer)) value="{{$offer->offer_price}}" @endif id="offer_price"
                        name="offer_price">
                 <span>Valor de la oferta</span>
                 <em></em>
@@ -136,18 +167,18 @@
             <div class="row ">
                 <div class="col-3 Field">
                     <label for="high">
-                        <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" min="1" @endif
-                        id="high"  class="requerid"
-                               name="packing[packing1][high]">
+                        <input type="number"   @if(isset($offer)) value="{{$offer->offer_price}}" min="1" @endif
+                        id="high" class="requerid"
+                               name="packing[0][high]">
                         <span>Alto</span>
                         <em></em>
                     </label>
                 </div>
                 <div class="col-3 Field">
                     <label for="width">
-                        <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" @endif min="1"
+                        <input type="number"   @if(isset($offer)) value="{{$offer->offer_price}}" @endif min="1"
                                id="width" class="requerid"
-                               name="packing[packing1][width]">
+                               name="packing[0][width]">
                         <span>Ancho</span>
                         <em></em>
                     </label>
@@ -156,7 +187,7 @@
                     <label for="long">
                         <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" @endif  min="1"
                                id="long" class="requerid"
-                               name="packing[packing1][long]">
+                               name="packing[0][long]">
                         <span>Largo</span>
                         <em></em>
                     </label>
@@ -165,7 +196,7 @@
                     <label for="quantity">
                         <input type="number" @if(isset($offer)) value="{{$offer->offer_price}}" @endif min="1"
                                id="quantity" class="requerid"
-                               name="packing[packing1][quantity]">
+                               name="packing[0][quantity]">
                         <span>Cantidad</span>
                         <em></em>
                     </label>
@@ -205,9 +236,3 @@
 
     <div class="Button  Next validateDataProduct invalid" id="stepThreeButton">SIGUIENTE</div>
 </section>
-
-
-
-
-
-
