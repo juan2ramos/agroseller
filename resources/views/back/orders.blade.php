@@ -18,7 +18,7 @@
             @foreach($orders as $key => $order)
 
                 <tr>
-                    <td>@if($order->products->count())
+                    <td>@if($order->productProviders->count())
                             <button class="iconPlus {{($open && $key == 0)?'open':''}}"></button>@endif</td>
                     <td> {{$order->created_budget}}</td>
                     <td> ${{$order->total}}</td>
@@ -48,7 +48,7 @@
                             </thead>
 
                             <tbody>
-                            @foreach($order->products as $products)
+                            @foreach($order->productProviders as $products)
 
                                 <tr>
                                     <td colspan="3"><a

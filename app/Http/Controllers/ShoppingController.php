@@ -89,14 +89,14 @@ class ShoppingController extends Controller
     public function showBack(Request $request)
     {
 
-        return redirect()->to('/');
+        //return redirect()->to('/');
 
         $open = $request->get('open') ;
-        $orders = Auth::user()->orders()->where('zp_state', 1)->with('products')->orderBy('created_at','DESC')->get();
+        $orders = Auth::user()->orders()->where('zp_state', 1)->orderBy('created_at','DESC')->get();
 
         foreach ($orders as $order) {
             $value = 0;
-            foreach ($order->products as $product) {
+            foreach ($order->productProviders as $product) {
                 $value += $product->totalValue = $product->pivot->value * $product->pivot->quantity;
             }
             $order->total = $value;
