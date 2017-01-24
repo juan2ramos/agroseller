@@ -56,7 +56,7 @@ class ZonaPagos {
                 "total_con_iva"  => $inputs["total_con_iva"],
                 "valor_iva" => $inputs['valor_iva'],
                 "email" => auth()->user()->email,
-                "id_pago" => date_format(new \Jenssegers\Date\Date(), 'YmdHis') . rand(100, 999),
+                "id_pago" => $inputs['id_pago'],
                 "id_cliente" => $inputs["id_cliente"],
                 "tipo_id" => $inputs["tipo_id"],
                 "nombre_cliente" => $inputs["nombre_cliente"],
@@ -81,8 +81,10 @@ class ZonaPagos {
     public function insertPayResult($inputs){
 
         $order = Order::where('zp_buy_id', $inputs['id_pago'])->first();
+
         print_r($inputs);
-        dd($order);
+        print_r($order);
+        dd($this->checkPay($inputs['id_pago']));
         $order->update([
             'zp_buy_token' => $inputs['ticketID'],
             'zp_state' => $inputs['estado_pago'],
@@ -99,17 +101,17 @@ class ZonaPagos {
             }
         }
 
-        /*foreach (Session::get('cart') as $item) {
+                /*foreach (Session::get('cart') as $item) {
 
-            if(!$item->offers)
-                $value = $item->price;
-            else
-                $value = (Carbon::now()->between(new Carbon($item->offers->offer_on), new Carbon($item->offers->offer_off)))
-                    ? $item->offers->offer_price
-                    : $item->price;
+                    if(!$item->offers)
+                        $value = $item->price;
+                    else
+                        $value = (Carbon::now()->between(new Carbon($item->offers->offer_on), new Carbon($item->offers->offer_off)))
+                            ? $item->offers->offer_price
+                            : $item->price;
 
-            $data[$item->id] = ['quantity' => $item->quantity, 'state_order_id' => 2, 'value' => $value];
-        }*/
+                    $data[$item->id] = ['quantity' => $item->quantity, 'state_order_id' => 2, 'value' => $value];
+                }*/
 
     }
 
