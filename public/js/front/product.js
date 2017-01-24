@@ -9,7 +9,8 @@ $('.YouCart-closed  ').on('click', function () {
 
 /************************ CONTADOR **************************/
 
-var dateGlobal;
+var dateGlobal,
+    ChangeServientrega = 0;
 function getTime() {
     now = new Date();
     promo = new Date(dateGlobal["year"], dateGlobal["month"], dateGlobal["day"], dateGlobal["hour"], dateGlobal["minute"], 59);
@@ -145,7 +146,7 @@ function calculateShipping() {
         'packing[ancho]': '20',
         'packing[cantidad]': '20',
         'packing[alto]': '2',
-        'cantidad':  $('#quantity').val(),
+        'cantidad': $('#quantity').val(),
     }
     console.log($('#originCity').val())
     console.log($('#destinationCity').val())
@@ -160,10 +161,10 @@ function calculateShipping() {
 
     }).done(function (response) {
 
-        if (response.success == true){
+        if (response.success == true) {
             console.log(response.data)
             $('#shippingValue').text(formatNumber(response.data.precio));
-        }else{
+        } else {
             alert(response.message)
         }
 

@@ -93,7 +93,8 @@ class UserController extends Controller
 
     function showUser($id){
         $user = User::find($id);
-        $products = Product::where('user_id', $id)->get();
+        /*$products = Product::where('user_id', $id)->get();*/
+        $products = [];
         $provider = Provider::where('user_id', $id)->first();
         return view('back.user',compact('user', 'products', 'provider'));
     }

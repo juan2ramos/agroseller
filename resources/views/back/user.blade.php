@@ -115,7 +115,7 @@
                     </g>
                 </g>
             </svg>
-            <div class="BackContainer">
+            <div class="BackContainer">{{--
                 <section class="Products row" style="padding: 0 40px; margin: 40px 0;">
                     @if(count($products))
                         <table class="Table">
@@ -164,7 +164,7 @@
                         </section>
                     @endif
                 </section>
-            </div>
+           --}} </div>
         </article>
     </section>
 @endsection

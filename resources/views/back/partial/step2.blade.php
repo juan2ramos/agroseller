@@ -65,7 +65,7 @@
         <option value="Bulto" {{(isset($productEdit) && $productEdit->presentation == 'Bulto')?'selected':''}}>Bulto
         </option>
         <option value="envase-plastico" {{(isset($productEdit) && $productEdit->presentation == 'envase-plastico')?'selected':''}}>
-            Envase lastico
+            Envase Plastico
         </option>
         <option value="envase-vidrio" {{(isset($productEdit) && $productEdit->presentation == 'envase-vidrio')?'selected':''}}>
             Envase Vidrio

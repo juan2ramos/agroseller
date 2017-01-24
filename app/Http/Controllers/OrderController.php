@@ -22,22 +22,23 @@ class OrderController extends Controller
         $inputs = $request->all();
         $products = [];
 
-        foreach (Session::get('cart') as $product){
+        foreach (Session::get('cart') as $product) {
             $taxesVal = 0;
             $price = $product->price * intval($product->quantity);
 
-            foreach ($product->taxes as $tax){
+            foreach ($product->taxes as $tax) {
                 $taxesVal += $tax->percent;
                 $iva += strtolower($tax->name) == 'iva' ? ($price * $tax->percent / 100) : 0;
             }
 
             $total += $price + ($price * $taxesVal / 100);
-            $products[] = [
-                'quantity' => $product->quantity,
-                'value' => $product->price,
-                'product_provider_id' => $product->id,
-                'state' => 1
-            ];
+            $products[$product->id] =
+                [
+                    'quantity' => $product->quantity,
+                    'value' => $product->price,
+                    'product_provider_id' => $product->id,
+                    'state' => 1
+                ];
         }
 
         $inputs['total_con_iva'] = $total;
@@ -63,11 +64,10 @@ class OrderController extends Controller
 
     public function updateStateOrder(Request $request)
     {
-
         $ids = $request->input('ids');
         $sync = [];
-        foreach($ids as $id){
-            $sync[$id] = [ 'state_order_id' => $request->input('state')];
+        foreach ($ids as $id) {
+            $sync[$id] = ['state_order_id' => $request->input('state')];
         }
 
         Order::find($request->input('order'))->products()->sync($sync, false);
