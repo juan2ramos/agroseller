@@ -66,7 +66,7 @@ class ProviderController extends Controller
                 'company-name' => 'required',
                 'licence' => 'required',
                 'logo' => 'required',
-                'taxpayer' => 'required',
+                /*'taxpayer' => 'required',*/
             ],
             [
                 'location.required' => 'Debe agregar al menos una ubicación',
@@ -78,7 +78,7 @@ class ProviderController extends Controller
                 'company-name' => 'El nombre de la empresa es requerido',
                 'licence' => 'Es necesario que adjunte su licencia de ventas',
                 'logo' => 'Debe adjuntar el logo de la empresa',
-                'taxpayer' => 'El tipo de contribuyente es requerido',
+               /* 'taxpayer' => 'El tipo de contribuyente es requerido',*/
             ]
         );
         $user = Auth::user();
