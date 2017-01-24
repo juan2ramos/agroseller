@@ -64,7 +64,7 @@ class ProviderController extends Controller
                 'description' => 'required',
                 'NIT' => 'required',
                 'company-name' => 'required',
-                'licence' => 'required',
+                /*'licence' => 'required',*/
                 'logo' => 'required',
                 /*'taxpayer' => 'required',*/
             ],
@@ -76,7 +76,7 @@ class ProviderController extends Controller
                 'description.required' => 'La descripción es requerida',
                 'NIT.required' => 'El número del NIT es requerido',
                 'company-name' => 'El nombre de la empresa es requerido',
-                'licence' => 'Es necesario que adjunte su licencia de ventas',
+                /*'licence' => 'Es necesario que adjunte su licencia de ventas',*/
                 'logo' => 'Debe adjuntar el logo de la empresa',
                /* 'taxpayer' => 'El tipo de contribuyente es requerido',*/
             ]
