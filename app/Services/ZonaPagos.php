@@ -82,13 +82,17 @@ class ZonaPagos {
 
         $order = Order::where('zp_buy_id', $inputs['id_pago'])->first();
 
-        $p[0]= $inputs;
-        $p[1]= $order;
-        $p[2]= $this->checkPay($inputs['id_pago']);
-        dd($p);
+
+        $verifiedData  = $this->checkPay($inputs['id_pago']);
+
         $order->update([
-            'zp_buy_token' => $inputs['ticketID'],
-            'zp_state' => $inputs['estado_pago'],
+            'zp_buy_token' => $verifiedData['str_ticketID'],
+            'zp_state' => $verifiedData['int_estado_pago'],
+            'id_bank' => $verifiedData['int_codigo_banco'],
+            'bank' => $verifiedData['str_nombre_banco'],
+            'transaction_code' => $verifiedData['str_codigo_transaccion'],
+            'way_to_pay' => $verifiedData['int_id_forma_pago'],
+            'date_pay' => $verifiedData['dat_fecha'],
         ]);
 
         if($inputs['estado_pago']) {
