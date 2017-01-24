@@ -616,7 +616,7 @@
                             <div>
                                 <small>Cantidad:</small>
                                 <span>{{$product->quantity}}</span>
-                                <small></small>
+                                <small>{{($product->shipping)?'+ Envio':''}}</small>
                                 <val>
                                     @if($product->offer_price)
                                         ${{number_format($product->offer_price, 0, " ", ".")}}

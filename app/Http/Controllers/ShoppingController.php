@@ -31,19 +31,21 @@ class ShoppingController extends Controller
      * @param $quantity
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function add($product, $quantity, $provider)
+    public function add($product, $quantity, $provider, $shipping = 0)
     {
 
         $product = ProductProvider::with('product','provider','taxes')->find($product);
         $cart = Session::get('cart');
 
         $product->quantity = $quantity;
+        $product->shipping = $shipping;
         Session::flash('buy', 1);
 
         $cart[$product->id] = $product;
         $this->valueTotal($cart);
 
         Session::put('cart', $cart);
+
         return back();
     }
 
@@ -73,7 +75,7 @@ class ShoppingController extends Controller
             $valueTotal += $product->quantity * $price;*/
 
             $valueTotal += $product
-                    ->price * $product->quantity;
+                    ->price * $product->quantity + $product->shipping ;
         }
 
         Session::put('valueTotal', number_format($valueTotal, 0, " ", "."));

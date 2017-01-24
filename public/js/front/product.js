@@ -164,6 +164,7 @@ function calculateShipping() {
         if (response.success == true) {
             console.log(response.data)
             $('#shippingValue').text(formatNumber(response.data.precio));
+            $('#shippingValueInput').val(response.data.precio);
         } else {
             alert(response.message)
         }

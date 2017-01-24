@@ -44,8 +44,8 @@
                                 <div>
                                     <small>Cantidad:</small>
                                     <span>{{$product->quantity}}</span>
-                                    <small></small>
-                                    <val> ${{number_format($product->price, 0, " ", ".")}}</val>
+                                    <p style="margin: 4px 0">Valor envio: ${{number_format($product->shipping, 0, " ", ".")}}</p>
+                                    <p style="margin: 4px 0">Valor producto: ${{number_format($product->price, 0, " ", ".")}}</p>
                                 </div>
                             </div>
                         </li>

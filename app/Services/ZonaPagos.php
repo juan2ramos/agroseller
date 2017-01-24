@@ -83,7 +83,9 @@ class ZonaPagos {
         $order = Order::where('zp_buy_id', $inputs['id_pago'])->first();
 
         print_r($inputs);
+        echo '+++++++++++++++';
         print_r($order);
+        echo '+++++++++++++++';
         dd($this->checkPay($inputs['id_pago']));
         $order->update([
             'zp_buy_token' => $inputs['ticketID'],

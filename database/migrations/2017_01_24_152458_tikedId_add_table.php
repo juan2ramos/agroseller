@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class OrdersUpdateTable extends Migration
+class TikedIdAddTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class OrdersUpdateTable extends Migration
     public function up()
     {
         Schema::table('orders', function($table){
-            $table->string('id_bank');
-            $table->string('bank');
-            $table->string('transaction_code');
-            $table->string('way_to_pay');
-            $table->string('date_pay');
+
+            $table->string('tiked_id');
 
         });
     }

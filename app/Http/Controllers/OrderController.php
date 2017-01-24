@@ -24,7 +24,7 @@ class OrderController extends Controller
 
         foreach (Session::get('cart') as $product) {
             $taxesVal = 0;
-            $price = $product->price * intval($product->quantity);
+            $price = $product->price * intval($product->quantity) + $product->shipping;
 
             foreach ($product->taxes as $tax) {
                 $taxesVal += $tax->percent;

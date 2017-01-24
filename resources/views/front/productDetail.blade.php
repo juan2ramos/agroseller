@@ -128,22 +128,24 @@
                 <li> Distribuidor: Alejandra</li>
                 <li>Calificación: <b>★★★★★</b></li>--}}
                     <input type="hidden" id="weightProduct" value="{{$product->weight}}">
-                    <li class="row col-12 between" style="margin: 10px 0;">
-                        <select name="" id="originCity"
-                                style="max-width: 120px ; border: 1px solid #27383f;background: white; margin-right: 2px"
-                                class="col-6">
-                            <option value=""> ORIGEN</option>
-                            <option value="10">BOGOTA-CUNDINAMARCA</option>
-                        </select>
-                        <select name="" id="destinationCity"
-                                style="max-width: 120px;border: 1px solid #27383f;background: white;"
-                                class="col-6">
-                            <option value=""> DESTINO</option>
-                            @foreach($cities as $key => $city)
-                                <option value="{{$key}}">{{$city}}</option>
-                            @endforeach
-                        </select>
-                    </li>
+                    @if($product->canServientrega)
+                        <li class="row col-12 between" style="margin: 10px 0;">
+                            <select name="" id="originCity"
+                                    style="max-width: 120px ; border: 1px solid #27383f;background: white; margin-right: 2px"
+                                    class="col-6">
+                                <option value=""> ORIGEN</option>
+                                <option value="10">BOGOTA-CUNDINAMARCA</option>
+                            </select>
+                            <select name="" id="destinationCity"
+                                    style="max-width: 120px;border: 1px solid #27383f;background: white;"
+                                    class="col-6">
+                                <option value=""> DESTINO</option>
+                                @foreach($cities as $key => $city)
+                                    <option value="{{$key}}">{{$city}}</option>
+                                @endforeach
+                            </select>
+                        </li>
+                    @endif
                     <li style="margin: 0 0 10px 0; text-align: center; font-size: 16px;">
                         <svg width="27px" style="vertical-align: bottom;" height="19px" viewBox="37 42 27 19"
                              version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -159,8 +161,8 @@
                                 </g>
                             </g>
                         </svg>
-                        Valor del envio <span id="shippingValue"
-                                              style=" font-weight: 500; display: inline; color: #27383f; font-size: 16px;"></span>
+                        Valor del envio <span id="shippingValue" style=" font-weight: 500; display: inline; color: #27383f; font-size: 16px;"></span>
+                        <input type="hidden" id="shippingValueInput" value="0">
                     </li>
                     <li class="row center">
                         <a href="#" id="shipping" class=""
@@ -414,7 +416,7 @@
     <script>
         $('#buy').on('click', function (e) {
             e.preventDefault();
-            window.location.href = $(this).data('url') + '/compras/' + $('#distributor').data('product_provider') + '/' + $('#quantity').val() + '/' + $("#distributor").data('distributor')
+            window.location.href = $(this).data('url') + '/compras/' + $('#distributor').data('product_provider') + '/' + $('#quantity').val() + '/' + $("#distributor").data('distributor') + '/' + $('#shippingValueInput').val()
         });
     </script>
 @endsection
