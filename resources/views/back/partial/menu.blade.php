@@ -2,7 +2,7 @@
 <nav class="Nav col-2">
     <ul>
         @foreach($menu->getMenu() as $key => $link)
-            @if($link['route'] == 'orderShowProvider' || $link['route'] == 'questions')
+            @if( $link['route'] == 'questions')
                 <a class="" style="    opacity: 0.3;" href="#">
                     <figure>
                         <img src="{{asset('images/'.$link['class'].'.svg')}}" alt="">

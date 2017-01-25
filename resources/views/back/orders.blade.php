@@ -21,7 +21,8 @@
                     <td>@if($order->productProviders->count())
                             <button class="iconPlus {{($open && $key == 0)?'open':''}}"></button>@endif</td>
                     <td> {{$order->created_budget}}</td>
-                    <td> ${{$order->total}}</td>
+                    <td> ${{number_format($order->total, 0, " ", ".")}}</td>
+
                     @if($order->zp_state == 888)
                         <td>Pendiente</td>
                         <td>
@@ -41,7 +42,7 @@
                             <tr>
                                 <th colspan="3">Producto</th>
                                 <th>Cantidad</th>
-                                <th>Valor Unidad</th>
+                                <th>Valor Unidad + envio</th>
                                 <th>Valor Total</th>
                                 <th>Estado</th>
                             </tr>
@@ -52,12 +53,14 @@
 
                                 <tr>
                                     <td colspan="3"><a
-                                                href="{{url('producto/' . $products->slug . '/' . $products->id) }}">{{$products->name}}</a>
+                                                href="{{url('producto/' . $products->product->slug . '/' . $products->id) }}">{{$products->product->name}}</a>
                                     </td>
                                     <td>{{$products->pivot->quantity}}</td>
-                                    <td>${{$products->pivot->value}}</td>
-                                    <td>${{$products->totalValue}}</td>
-                                    <td>{{$states->search($products->pivot->state_order_id) }}</td>
+                                    <td>${{number_format($products->pivot->value, 0, " ", ".")}} +
+                                        ${{number_format($products->pivot->lading, 0, " ", ".")}}
+                                    </td>
+                                    <td>${{number_format($products->totalValue + $products->pivot->lading, 0, " ", ".")}}</td>
+                                    <td>{{$states->search($products->pivot->state) }}</td>
                                 </tr>
                             @endforeach
                             </tbody>

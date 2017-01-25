@@ -34,7 +34,7 @@ class ShoppingController extends Controller
     public function add($product, $quantity, $provider, $shipping = 0)
     {
 
-        $product = ProductProvider::with('product','provider','taxes')->find($product);
+        $product = ProductProvider::with('product', 'provider', 'taxes')->find($product);
         $cart = Session::get('cart');
 
         $product->quantity = $quantity;
@@ -75,7 +75,7 @@ class ShoppingController extends Controller
             $valueTotal += $product->quantity * $price;*/
 
             $valueTotal += $product
-                    ->price * $product->quantity + $product->shipping ;
+                    ->price * $product->quantity;
         }
 
         Session::put('valueTotal', number_format($valueTotal, 0, " ", "."));
@@ -93,46 +93,50 @@ class ShoppingController extends Controller
 
         //return redirect()->to('/');
 
-        $open = $request->get('open') ;
-        $orders = Auth::user()->orders()->where('zp_state', 1)->orderBy('created_at','DESC')->get();
+        $open = $request->get('open');
+        $orders = Auth::user()->orders()->with('productProviders.product')->where('zp_state', 1)->orderBy('created_at', 'DESC')->get();
 
         foreach ($orders as $order) {
             $value = 0;
             foreach ($order->productProviders as $product) {
-                $value += $product->totalValue = $product->pivot->value * $product->pivot->quantity;
+                $value += $product->totalValue = $product->pivot->value * $product->pivot->quantity + $product->pivot->lading;
             }
             $order->total = $value;
         }
         $states = StateOrder::lists('id', 'name');
-        return view('back.orders', compact('orders','states','open'));
+        return view('back.orders', compact('orders', 'states', 'open'));
     }
 
     public function showBackProvider()
     {
-        $user = Auth::user();
-        $orders = Order::whereHas('products', function ($query) use ($user) {
-            $query->where('products.user_id', $user->id);
-        })->with(['products' => function ($q) use ($user) {
-            $q->where('products.user_id', $user->id)->with('offers');
-        },'user'])->get();
+
+        $user = Auth::user()->provider;
+        $orders = Order::whereHas('productProviders', function ($query) use ($user) {
+            $query->where('product_providers.provider_id', $user->id);
+        })->with(['productProviders' => function ($q) use ($user) {
+            $q->where('provider_id', $user->id);
+        }, 'user'])->get();
 
         foreach ($orders as $order) {
-            $order->quantityProducts = count($order->products);
+            $order->quantityProducts = count($order->productProviders);
             $order->totalValueProducts = 0;
-            foreach ($order->products as $product) {
+
+            foreach ($order->productProviders as $product) {
                 $value = 0;
-                foreach ($order->products as $product) {
-                    $value += $product->totalValue = $product->pivot->value * $product->pivot->quantity;
-                }
+
+                $value += $product->totalValue = $product->pivot->value * $product->pivot->quantity;
+
                 $order->total = $value;
             }
 
         }
+
         $states = StateOrder::lists('id', 'name');
         return view('back.ordersProvider', compact('orders', 'states'));
     }
 
-    public function finalPay(Request $request){
+    public function finalPay(Request $request)
+    {
         $zp = ZonaPagos::create();
         $zp->insertPayResult($request->all());
     }

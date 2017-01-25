@@ -31,7 +31,7 @@ class Order extends Model
     }
 
     public function productProviders(){
-        return $this->belongsToMany(ProductProvider::class)->withPivot('quantity','state','value')->withTimestamps();
+        return $this->belongsToMany(ProductProvider::class)->withPivot('quantity','state','value','lading')->withTimestamps();
     }
 
     public function stateOrder(){

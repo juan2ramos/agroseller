@@ -23,7 +23,7 @@
                 <td> {{$order->created_budget}}</td>
                 <td> {{$order->updated_budget}}</td>
                 <td> {{$order->quantityProducts}}</td>
-                <td> {{$order->products->count()}}</td>
+                <td> {{$order->productsProvider}}</td>
                 <td> ${{$order->total}}</td>
             </tr>
             <tr class="SubTable2"  data-order="{{$order->id}}">
@@ -50,7 +50,8 @@
                         </thead>
 
                         <tbody >
-                        @foreach($order->products as $products)
+
+                        @foreach($order->productProviders as $products)
                             <tr data-products="{{$products->id}}">
                                 <td><a href="{{url('producto/' . $products->slug . '/' . $products->id) }}">{{$products->name}}</a></td>
                                 <td>{{$products->pivot->quantity}}</td>
@@ -65,7 +66,7 @@
                     <div class="Order-formUpdate">
                         <select name="stateOrder" class="stateOrderSelect">
                             @foreach($states as $key => $state)
-                                <option {{($state == $order->products->first()->pivot->state_order_id)?'selected':''}} value="{{$state}}">{{$key}}</option>
+                                <option {{($state == $order->productProviders->first()->pivot->state_order_id)?'selected':''}} value="{{$state}}">{{$key}}</option>
                             @endforeach
                         </select>
                         <button class="Button stateOrder"> Actualizar Pedido</button>
