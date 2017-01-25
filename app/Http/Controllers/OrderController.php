@@ -37,9 +37,11 @@ class OrderController extends Controller
                     'quantity' => $product->quantity,
                     'value' => $product->price,
                     'product_provider_id' => $product->id,
-                    'state' => 1
+                    'state' => 1,
+                    'lading' =>  $product->shipping
                 ];
         }
+
 
         $inputs['total_con_iva'] = $total;
         $inputs['valor_iva'] = $iva;
@@ -57,6 +59,7 @@ class OrderController extends Controller
         ]);
 
         $order->productProviders()->attach($products);
+
         $zp = ZonaPagos::create();
         $id = $zp->invoiceRequest($inputs);
         return redirect()->to("https://www.zonapagos.com/" . env('ZP_ROUTE_CODE') . "/pago.asp?estado_pago=iniciar_pago&identificador=" . $id);
