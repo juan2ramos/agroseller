@@ -13,7 +13,8 @@ class Order extends Model
     protected $fillable = [
         'user_id', 'description', 'name_client', 'identification_client',
         'address_client', 'phone_client', 'zp_buy_id', 'zp_buy_token',
-        'zp_state', 'zp_pay_form', 'zp_pay_value', 'zp_pay_credit'
+        'zp_state', 'zp_pay_form', 'zp_pay_value', 'zp_pay_credit','int_codigo_banco','str_nombre_banco',
+        'str_codigo_transaccion','int_id_forma_pago','dat_fecha','str_ticketID'
     ];
 
     public function user(){
