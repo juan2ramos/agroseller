@@ -75,7 +75,7 @@ class ShoppingController extends Controller
             $valueTotal += $product->quantity * $price;*/
 
             $valueTotal += $product
-                    ->price * $product->quantity;
+                    ->price * $product->quantity + $product->shipping;
         }
 
         Session::put('valueTotal', number_format($valueTotal, 0, " ", "."));
