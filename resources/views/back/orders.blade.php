@@ -10,7 +10,7 @@
                 <th></th>
                 <th>Fecha de orden</th>
                 <th>Valor total</th>
-                <th>Estado</th>
+                <th>Estado del pago</th>
                 <th>Acciones</th>
             </tr>
             </thead>
@@ -60,7 +60,7 @@
                                         ${{number_format($products->pivot->lading, 0, " ", ".")}}
                                     </td>
                                     <td>${{number_format($products->totalValue + $products->pivot->lading, 0, " ", ".")}}</td>
-                                    <td>{{$states->search($products->pivot->state) }}</td>
+                                    <td>{{$states->search($products->pivot->state) }} </td>
                                 </tr>
                             @endforeach
                             </tbody>

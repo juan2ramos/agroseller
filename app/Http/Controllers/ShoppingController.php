@@ -94,7 +94,7 @@ class ShoppingController extends Controller
         //return redirect()->to('/');
 
         $open = $request->get('open');
-        $orders = Auth::user()->orders()->with('productProviders.product')->where('zp_state', 1)->orderBy('created_at', 'DESC')->get();
+        $orders = Auth::user()->orders()->with('productProviders.product')->orderBy('created_at', 'DESC')->get();
 
         foreach ($orders as $order) {
             $value = 0;
