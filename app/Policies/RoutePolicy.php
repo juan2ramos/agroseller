@@ -62,8 +62,7 @@ class RoutePolicy
                     'subcategoriesQuery','featuresQuery', 'newProduct', 'insertProvider', 'questionDetail', 'questionNew',
                     'editProduct', 'deleteProduct', 'updateProduct', 'indexProfile','orderShowProvider','updateStateOrder',
                     'productDetailPreview','payPlan', 'productDetailPreview','pay','historyPay', 'inactivePlan', 'callProducts',
-                    'newProductProvider', 'updateProductProvider', 'providerUpdate',
-                    'viewProduct'
+                    'newProductProvider', 'updateProductProvider', 'providerUpdate', 'viewProduct',
                 ],
 
             '4' =>

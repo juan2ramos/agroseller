@@ -73,8 +73,22 @@ class UserController extends Controller
     }
 
 
+    /**
+     * @param Request $request
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
     function providerUpdate(Request $request){
-        $provider = auth()->user()->provider;
+
+
+
+
+
+
+
+
+
+        $user = auth()->user();
+        $provider = $user->provider;
         $validator = Validator::make($request->all(), [
             'company-name' => 'required',
             'contact' => 'required',
@@ -86,9 +100,16 @@ class UserController extends Controller
 
         if($validator->fails())
             return redirect()->back()->withErrors($validator);
+        $file = $request->file('logo');
+        if($file){
+            $fileName = str_random(40) . '**' . $file->getClientOriginalName();
+            $file->move(base_path() . '/public/uploads/users/', $fileName);
+            $user->photo = $fileName;
+            $user->save();
+        }
 
         $provider->update($request->all());
-        return redirect()->to('/admin');
+        return  redirect()->back();
     }
 
     function showUser($id){
