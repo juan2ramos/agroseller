@@ -205,3 +205,25 @@ $("#moreInfo").click(function () {
         delimiter: '.'
     };
 })(jQuery);
+
+$('#RequestShipping').on('submit', function () {
+    $('#loadingShipping').show().css('display', 'flex');
+    if (window.confirm("Estamos a punto de contactarte, solo debes confirmar!")) {
+        var data = $(this).serialize();
+
+        $.post($(this).attr('action'), data, function (data) {
+
+        }).done(function () {
+            $('#RequestShipping').hide();
+            $('#formShipping').append(
+                '<p class="center row"> Solicitud enviada  </p>'
+            );
+        }).fail(function () {
+            alert("error");
+        }).always(function () {
+            $('#loadingShipping').hide();
+        });
+
+    }
+    return false;
+});

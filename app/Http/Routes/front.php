@@ -122,3 +122,10 @@ Route::post('zonapagos', [
     'as' => 'finalPay',
     'uses' => 'ShoppingController@finalPay'
 ]);
+
+/*** Ruta para recibir datos de zona pagos ***/
+
+Route::post('requestShipping', [
+    'as' => 'requestShipping',
+    'uses' => 'ShoppingController@sendMailRequest'
+]);

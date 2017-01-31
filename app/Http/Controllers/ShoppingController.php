@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Agrosellers\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class ShoppingController extends Controller
@@ -139,6 +140,17 @@ class ShoppingController extends Controller
     {
         $zp = ZonaPagos::create();
         $zp->insertPayResult($request->all());
+    }
+
+    public function sendMailRequest(Request $request)
+    {
+
+        $product = Product::where('id', $request->productShipping)->first();
+        Mail::send('emails.shipping', ['product' => $product->name, 'user' => $request->all()], function ($m) {
+            $m->from('logistica@agrosellers.com', 'Logistica');
+            $m->to('juan2ramos@gmail.com', 'Alejandra')->subject('Solicitud envío');
+        });
+        return $request->all();
     }
 
 }
