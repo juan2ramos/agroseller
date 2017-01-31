@@ -148,7 +148,7 @@ class ShoppingController extends Controller
         $product = Product::where('id', $request->productShipping)->first();
         Mail::send('emails.shipping', ['product' => $product->name, 'user' => $request->all()], function ($m) {
             $m->from('logistica@agrosellers.com', 'Logistica');
-            $m->to('juan2ramos@gmail.com', 'Alejandra')->subject('Solicitud envío');
+            $m->to('alejandra.betancur@pypgroup.net', 'Alejandra')->subject('Solicitud envío');
         });
         return $request->all();
     }
