@@ -144,7 +144,9 @@ class HomeController extends Controller
     {
         $value = $request->value;
         return ['products' => Product::has('providers')
-            ->with(['files'])
+            ->with(['files' => function($q){
+                $q->where('extension','!=','pdf')->first();
+            }])
             ->where("name", "like", "%{$value}%")
             ->where("active", 1)->limit(10)->get()];
 
