@@ -28,17 +28,17 @@ $stateOrder.on('click', function () {
 
 });
 $('.formUpdateOrder').on('click', function () {
-
+    var $thisbutton = $(this);
     var url= $('#urlUpdate').data('url'),
         arrayId = [] ;
 
     if (window.confirm("¡Esta seguro de actualizar los datos!")) {
 
-        $(this).parents('.SubTable2').find('.productProviders').each(function (e) {
+        $thisbutton.parents('.SubTable2').find('.productProviders').each(function (e) {
             arrayId.push($(this).data('products'))
 
         });
-        console.log(arrayId);
+        $thisbutton.siblings('.formUpdateOrderLoad').show()
 
         var data = {
             '_token': $('#token').val(),
@@ -46,14 +46,17 @@ $('.formUpdateOrder').on('click', function () {
             'order_id' : $(this).parents('.SubTable2').data('order'),
             'productProvider' : arrayId
         };
+        $thisbutton.hide();
         $.post(url, data, function (data) {
-            console.log(data);
+            $thisbutton.siblings('span').show()
         }).done(function () {
 
         }).fail(function () {
             alert("error");
+            $thisbutton.show();
         }).always(function () {
 
+            $thisbutton.siblings('.formUpdateOrderLoad').hide()
         });
 
     }
