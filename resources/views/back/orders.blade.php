@@ -11,7 +11,6 @@
                 <th>Fecha de orden</th>
                 <th>Valor total</th>
                 <th>Estado del pago</th>
-                <th>Acciones</th>
             </tr>
             </thead>
             <tbody>
@@ -22,17 +21,7 @@
                             <button class="iconPlus {{($open && $key == 0)?'open':''}}"></button>@endif</td>
                     <td> {{$order->created_budget}}</td>
                     <td> ${{number_format($order->total, 0, " ", ".")}}</td>
-
-                    @if($order->zp_state == 888)
-                        <td>Pendiente</td>
-                        <td>
-                            <a target="_blank"
-                               href="https://www.zonapagos.com/t_managementpas/pago.asp?estado_pago=iniciar_pago&identificador={{$order->zp_buy_token}}">Pagar</a>
-                        </td>
-                    @else
-                        <td>Pago exitoso</td>
-                        <td><a href="">Ver detalles</a></td>
-                    @endif
+                    <td>{{$statesPayments->search($order->zp_state)}}</td>
                 </tr>
                 <tr class="SubTable2" style="{{($open && $key == 0)?'display: table-row;':''}} ">
                     <td colspan="6">
@@ -50,7 +39,6 @@
 
                             <tbody>
                             @foreach($order->productProviders as $products)
-
                                 <tr>
                                     <td colspan="3"><a
                                                 href="{{url('producto/' . $products->product->slug . '/' . $products->id) }}">{{$products->product->name}}</a>
@@ -59,8 +47,15 @@
                                     <td>${{number_format($products->pivot->value, 0, " ", ".")}} +
                                         ${{number_format($products->pivot->lading, 0, " ", ".")}}
                                     </td>
-                                    <td>${{number_format($products->totalValue + $products->pivot->lading, 0, " ", ".")}}</td>
-                                    <td>{{$states->search($products->pivot->state) }} </td>
+                                    <td>
+                                        ${{number_format($products->totalValue + $products->pivot->lading, 0, " ", ".")}}</td>
+                                    <td>
+                                        @if($order->zp_state == 1)
+                                            {{$states->search($products->pivot->state) }}
+                                        @else
+                                            {{$statesPayments->search($order->zp_state)}}
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

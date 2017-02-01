@@ -3,6 +3,7 @@
 
     <h2>Mis Compras</h2>
     <hr>
+    <input type="hidden" value="{{ csrf_token() }}" id="token" name="_token">
     <table class="Table Table-first BackContainer capitalize Order">
         <thead>
         <tr>
@@ -11,10 +12,10 @@
             <th>Fecha de actualización</th>
             <th>Productos</th>
             <th>Valor total</th>
-            <th>Estado</th>
+
         </tr>
         </thead>
-        <tbody>
+        <tbody id="urlUpdate" data-url="{{route("updateStateOrderProvider")}}">
         @foreach($orders as $order)
 
             <tr>
@@ -23,8 +24,7 @@
                 <td> {{$order->created_budget}}</td>
                 <td> {{$order->updated_budget}}</td>
                 <td> {{$order->quantityProducts}}</td>
-                <td> {{$order->productsProvider}}</td>
-                <td> ${{$order->total}}</td>
+                <td> ${{number_format($order->total, 0, " ", ".")}}</td>
             </tr>
             <tr class="SubTable2"  data-order="{{$order->id}}">
                 <td colspan="6">
@@ -49,14 +49,16 @@
                         </tr>
                         </thead>
 
-                        <tbody >
+                        <tbody>
 
                         @foreach($order->productProviders as $products)
-                            <tr data-products="{{$products->id}}">
-                                <td><a href="{{url('producto/' . $products->slug . '/' . $products->id) }}">{{$products->name}}</a></td>
+                            <tr class="productProviders" data-products="{{$products->id}}">
+                                <td>
+                                    <a href="{{url('producto/' . $products->product->slug . '/' . $products->product->id) }}">{{$products->product->name}}</a>
+                                </td>
                                 <td>{{$products->pivot->quantity}}</td>
-                                <td>${{$products->pivot->value}}</td>
-                                <td>${{$products->totalValue}}</td>
+                                <td>${{number_format($products->pivot->value, 0, " ", ".")}}</td>
+                                <td>${{number_format($products->totalValue, 0, " ", ".")}}</td>
 
                             </tr>
                         @endforeach
@@ -64,12 +66,14 @@
                     </table>
 
                     <div class="Order-formUpdate">
+
                         <select name="stateOrder" class="stateOrderSelect">
                             @foreach($states as $key => $state)
                                 <option {{($state == $order->productProviders->first()->pivot->state_order_id)?'selected':''}} value="{{$state}}">{{$key}}</option>
                             @endforeach
                         </select>
-                        <button class="Button stateOrder"> Actualizar Pedido</button>
+                        <button class="Button formUpdateOrder"> Actualizar Pedido</button>
+
                     </div>
                     <p class="successStateOrder "></p>
                 </td>

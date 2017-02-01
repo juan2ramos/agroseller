@@ -27,3 +27,35 @@ $stateOrder.on('click', function () {
     });
 
 });
+$('.formUpdateOrder').on('click', function () {
+
+    var url= $('#urlUpdate').data('url'),
+        arrayId = [] ;
+
+    if (window.confirm("¡Esta seguro de actualizar los datos!")) {
+
+        $(this).parents('.SubTable2').find('.productProviders').each(function (e) {
+            arrayId.push($(this).data('products'))
+
+        });
+        console.log(arrayId);
+
+        var data = {
+            '_token': $('#token').val(),
+            'stateOrderSelect' : $(this).siblings('.stateOrderSelect').val(),
+            'order_id' : $(this).parents('.SubTable2').data('order'),
+            'productProvider' : arrayId
+        };
+        $.post(url, data, function (data) {
+            console.log(data);
+        }).done(function () {
+
+        }).fail(function () {
+            alert("error");
+        }).always(function () {
+
+        });
+
+    }
+
+});

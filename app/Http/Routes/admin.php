@@ -298,7 +298,10 @@ Route::get('mis-ordenes', [
     'uses' => 'ShoppingController@showBackProvider',
     'as' => 'orderShowProvider',
 ]);
-
+Route::post('updateStateOrderProvider', [
+    'uses' => 'ShoppingController@updateStateOrder',
+    'as' => 'updateStateOrderProvider',
+]);
 
 Route::get('perfil', [
     'uses' => 'UserController@indexProfile',

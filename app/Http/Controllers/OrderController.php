@@ -75,6 +75,7 @@ class OrderController extends Controller
 
         Order::find($request->input('order'))->products()->sync($sync, false);
 
+
         return ['success' => 1];
     }
 }

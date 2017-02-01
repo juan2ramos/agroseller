@@ -8,6 +8,7 @@ use Agrosellers\Entities\Product;
 use Agrosellers\Entities\ProductProvider;
 use Agrosellers\Entities\Provider;
 use Agrosellers\Entities\StateOrder;
+use Agrosellers\Entities\StatePayments;
 use Agrosellers\Services\ZonaPagos;
 use Agrosellers\User;
 use Carbon\Carbon;
@@ -91,9 +92,6 @@ class ShoppingController extends Controller
 
     public function showBack(Request $request)
     {
-
-        //return redirect()->to('/');
-
         $open = $request->get('open');
         $orders = Auth::user()->orders()->with('productProviders.product')->orderBy('created_at', 'DESC')->get();
 
@@ -105,31 +103,32 @@ class ShoppingController extends Controller
             $order->total = $value;
         }
         $states = StateOrder::lists('id', 'name');
-        return view('back.orders', compact('orders', 'states', 'open'));
+        $statesPayments = StatePayments::lists('state_zp', 'name');
+        return view('back.orders', compact('orders', 'states', 'statesPayments', 'open'));
     }
 
     public function showBackProvider()
     {
 
         $user = Auth::user()->provider;
+
         $orders = Order::whereHas('productProviders', function ($query) use ($user) {
-            $query->where('product_providers.provider_id', $user->id);
+            $query->whereRaw('product_providers.provider_id = ' . $user->id . ' and orders.zp_state = 1');
         })->with(['productProviders' => function ($q) use ($user) {
             $q->where('provider_id', $user->id);
-        }, 'user'])->get();
+        }, 'user', 'productProviders.product'])->get();
 
         foreach ($orders as $order) {
-            $order->quantityProducts = count($order->productProviders);
-            $order->totalValueProducts = 0;
+            $order->quantityProducts = $order->productProviders->count();
 
+            $order->totalValueProducts = 0;
+            $value = 0;
             foreach ($order->productProviders as $product) {
-                $value = 0;
 
                 $value += $product->totalValue = $product->pivot->value * $product->pivot->quantity;
 
                 $order->total = $value;
             }
-
         }
 
         $states = StateOrder::lists('id', 'name');
@@ -151,6 +150,21 @@ class ShoppingController extends Controller
             $m->to('alejandra.betancur@pypgroup.net', 'Alejandra')->subject('Solicitud envío');
         });
         return $request->all();
+    }
+
+    public function updateStateOrder(Request $request)
+    {
+
+        $orders = Order::with(['productProviders' => function ($query) use ($request) {
+            $query->whereIn('product_provider_id', $request->input('productProvider'));
+        }])->find($request->input('order_id'));
+
+        foreach ($orders->productProviders as $productProvider) {
+            $productProvider->pivot->state = $request->input('stateOrderSelect');
+            $productProvider->pivot->save();
+        }
+
+        return $request->input('stateOrderSelect');
     }
 
 }

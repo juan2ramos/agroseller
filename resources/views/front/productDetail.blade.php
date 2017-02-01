@@ -455,7 +455,8 @@
     <script>
         $('#buy').on('click', function (e) {
             e.preventDefault();
-            window.location.href = $(this).data('url') + '/compras/' + $('#distributor').data('product_provider') + '/' + $('#quantity').val() + '/' + $("#distributor").data('distributor') + '/' + $('#shippingValueInput').val()
+            var shippingValue = ($('#shippingValueInput').val())?$('#shippingValueInput').val():0;
+            window.location.href = $(this).data('url') + '/compras/' + $('#distributor').data('product_provider') + '/' + $('#quantity').val() + '/' + $("#distributor").data('distributor') + '/' + shippingValue
         });
     </script>
 @endsection

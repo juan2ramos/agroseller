@@ -17,7 +17,7 @@
                                 <div class="CartDetail-hGroup">
                                     <h3>{{$product->name}}</h3>
                                     <h4>{{$product->provider->user->name}}</h4>
-                        <span class="CartDetail-close" >
+                                    <span class="CartDetail-close">
                         <a href="{{route('cartDelete',['id' => $product->id])}}">
                             <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -44,8 +44,10 @@
                                 <div>
                                     <small>Cantidad:</small>
                                     <span>{{$product->quantity}}</span>
-                                    <p style="margin: 4px 0">Valor envio: ${{number_format($product->shipping, 0, " ", ".")}}</p>
-                                    <p style="margin: 4px 0">Valor producto: ${{number_format($product->price, 0, " ", ".")}}</p>
+                                    <p style="margin: 4px 0">Valor envio:
+                                        ${{number_format($product->shipping, 0, " ", ".")}}</p>
+                                    <p style="margin: 4px 0">Valor producto:
+                                        ${{number_format($product->price, 0, " ", ".")}}</p>
                                 </div>
                             </div>
                         </li>
@@ -54,7 +56,8 @@
                 @endif
             </ul>
 
-            <div class="smaller-12 Total AlignRight">Subtotal: ${{( !empty(session('valueTotal')))? session('valueTotal') : '' }}</div>
+            <div class="smaller-12 Total AlignRight">Subtotal:
+                ${{( !empty(session('valueTotal')))? session('valueTotal') : '' }}</div>
         </section>
         <section class="smaller-8">
             <h2>2. Detalle de facturación</h2>
@@ -69,17 +72,21 @@
                 @if(Auth::check())
                     @if(auth()->user()->role_id == 4)
                         <h3>Completa los campos requeridos para realizar tu solicitud</h3>
-                        <!-- GUARDAR ORDEN POR POST EN {{route('newOrder')}} -->
-                        <form action="{{route('newOrder')}}" method="POST" class="Checkout-form" id="newOrderForm" >
+                    <!-- GUARDAR ORDEN POR POST EN {{route('newOrder')}} -->
+                        <form action="{{route('newOrder')}}" method="POST" class="Checkout-form" id="newOrderForm">
 
                             <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
 
                             <input type="hidden" id="email" name="email" value="{{auth()->user()->email}}">
-                            <input type="hidden" id="total_con_iva" name="total_con_iva" value="{{( !empty(session('valueTotal'))) ? (int)str_replace('.', '', session('valueTotal')) : '' }}">
-                            <input type="hidden" id="id_pago" name="id_pago" value="{{date_format(new \Jenssegers\Date\Date(), 'YmdHis') . rand(100, 999)}}">
+                            <input type="hidden" id="total_con_iva" name="total_con_iva"
+                                   value="{{( !empty(session('valueTotal'))) ? (int)str_replace('.', '', session('valueTotal')) : '' }}">
+                            <input type="hidden" id="id_pago" name="id_pago"
+                                   value="{{date_format(new \Jenssegers\Date\Date(), 'YmdHis') . rand(100, 999)}}">
 
                             @if(Session::has('cart') &&  Session::get('cart'))
-                                <textarea id="descripcion_pago" name="descripcion_pago" style="display: none">@foreach(Session::get('cart') as $product){!!$product->name!!} , @endforeach</textarea>
+                                <textarea id="descripcion_pago" name="descripcion_pago"
+                                          style="display: none">@foreach(Session::get('cart') as $product){!!$product->name!!}
+                                    , @endforeach</textarea>
                             @endif
 
                             <label for="name">
