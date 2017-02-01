@@ -52,7 +52,7 @@
                 </g>
             </g>
         </svg>
-        <a href="tel:3168704270">
+        <a href="tel:0317678401">
             {{-- <svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg"
                   xmlns:xlink="http://www.w3.org/1999/xlink">
                  <title>phone</title>
@@ -70,7 +70,7 @@
                      </g>
                  </g>
              </svg>--}}
-            CEL: 3168704270
+            TEL: (1) 7678401
         </a>
         <a href="mailto:info@agrosellers.com">
             {{-- <svg width="18px" height="13px" viewBox="0 0 18 13" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -570,18 +570,18 @@
         </div>
     </nav>
 </div>
-
 <div class="LightBoxContent {{(Session::has('buy')?'Show':'')}}" id="CartContainer">
     <div class="LightBoxContent-close"></div>
     <section class="CartDetail">
         <h2>TUS COMPRAS</h2>
         <ul>
+
             @if(Session::has('cart'))
                 @foreach(Session::get('cart') as $product)
                     <li class="row middle">
                         <figure class="smaller-5 col-3">
-                            <a href="{{route('productDetail',[$product->product->slug, $product->id])}}">
-                                <img src="{{ url('uploads/products/'.$product->product->files()->first()->name )}}"
+                            <a href="{{route('productDetail',[$product->product->slug, $product->product->id])}}">
+                                <img src="{{ url('uploads/products/'.$product->product->files()->where('extension','!=','pdf')->first()->name )}}"
                                      alt="">
                             </a>
                         </figure>
