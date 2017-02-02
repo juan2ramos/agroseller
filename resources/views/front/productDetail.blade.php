@@ -15,14 +15,30 @@
 @endsection
 @section('content')
 
+
+
     <section class="row Header-product">
         <article class="ProductDetail-slider smaller-12 col-3 ">
-            <div class="owl-carousel" id="sync1">
+            {{--<div class="owl-carousel" id="sync1">
+
+
                 @foreach($product->files as $file)
                     @if($file->extension != 'pdf')
-                        <figure class="item"><img src="{{url('uploads/products/'. $file->name)}}" alt=""></figure>
+                        <figure class="item">
+                                <img class="zoom_01" id="2" data-zoom-image="{{url('uploads/products/'. $file->name)}}" src="{{url('uploads/products/'. $file->name)}}" alt=""  >
+                        </figure>
                     @endif
                 @endforeach
+            </div>--}}
+            <div class="owl-carousel2" style="    background: #FFFFFF;
+    box-shadow: 0 0 0.375rem 0 rgba(176, 176, 176, 0.5);
+    max-width: 16.75rem;
+    max-height: 16.75rem;
+    width: 16.75rem;
+    height: 16.75rem;">
+            <figure class="item">
+            <img class="zoom_01" data-zoom-image="{{url('uploads/products/'. $file->name)}}" src="{{url('uploads/products/'. $file->name)}}"   />
+            </figure>
             </div>
         </article>
         <div class="col-6 row">
@@ -362,6 +378,7 @@
                                         @if($question->texts[$i]->user->photo)
                                             <img src="{{url('images/' . $question->texts[$i]->user->photo)}}">
                                         @else
+
                                             <img src="{{url('images/user.png')}}">
                                         @endif
                                     </figure>
@@ -419,14 +436,12 @@
     <script src="{{asset('js/front/slide.js')}}"></script>
 
     <!-- ******* Maps ******* -->
-    <script src="{{asset('js/maps.js')}}"></script>
-    <script>getPosition('{!!$product->location!!}')</script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbS0xs79_QKS4HFEJ_1PcT5bZYSBIByaA&signed_in=true&callback=initMap"
-            async defer></script>
+
     <script src="{{asset('js/front/product.js')}}"></script>
     <!-- ******* Comments ******* -->
     <script src="{{asset('js/comments.js')}}"></script>
 
+    <script src="{{asset('js/front/jquery.elevateZoom-3.0.8.min.js')}}"></script>
     @if($offer)
         <?php
         $fecha = explode('-', $product->offers->offer_off);
@@ -442,6 +457,7 @@
 
         <!-- ******* Timer ******* -->
         <script src="{{asset('js/front/product.js')}}"></script>
+
         <script>
             countDown({
                 'year': {!! $year !!},
@@ -457,6 +473,24 @@
             e.preventDefault();
             var shippingValue = ($('#shippingValueInput').val())?$('#shippingValueInput').val():0;
             window.location.href = $(this).data('url') + '/compras/' + $('#distributor').data('product_provider') + '/' + $('#quantity').val() + '/' + $("#distributor").data('distributor') + '/' + shippingValue
+        });
+    </script>
+    <script>
+
+        $('.owl-carousel').on('mouseover', function(event) {
+            console.log('sdsd');
+            $('#2').elevateZoom({
+                zoomType: "inner",
+                cursor: "crosshair",
+                zoomWindowFadeIn: 500,
+                zoomWindowFadeOut: 750
+            });
+        })
+
+        $('.zoom_01').elevateZoom({
+            cursor: "crosshair",
+            zoomWindowFadeIn: 500,
+            zoomWindowFadeOut: 750
         });
     </script>
 @endsection

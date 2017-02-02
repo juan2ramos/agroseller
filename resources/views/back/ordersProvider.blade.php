@@ -65,11 +65,7 @@
                         </tbody>
                     </table>
 
-                    <div class="Order-formUpdate">
-
-                        <select name="stateOrder" class="stateOrderSelect">
-                            @foreach($states as $key => $state)
-                                <option {{($state == $order->productProviders->first()->pivot->state)?'selected':''}} value="{{$state}}">{{$key}}</option>
+                    <div class="Order-formUpdate">detaorder->productProviders->first()->pivot->state)?'selected':''}} value="{{$state}}">{{$key}}</option>
                             @endforeach
                         </select>
                         <button class="Button formUpdateOrder"> Actualizar Pedido</button>
