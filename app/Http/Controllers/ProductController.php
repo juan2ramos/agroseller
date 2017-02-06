@@ -69,7 +69,7 @@ class ProductController extends Controller
             $ids[] = $provider->pivot->id;
         }
         $productProvider = ProductProvider::with('packing')->whereIn('id',$ids)->where('isActive', 1)->get()->toJson();
-º
+
         dd($productProvider);
         $questions = $this->reloadQuestions($id);
         $featuresTranslate = $this->setFeaturesTranslate($product);
