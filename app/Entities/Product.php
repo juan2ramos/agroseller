@@ -50,6 +50,10 @@ class Product extends Model
     public function providers(){
         return $this->belongsToMany(Provider::class, 'product_providers')->withPivot('price', 'location','available_quantity','min_quantity','id');
     }
+    public function providersIsActive(){
+        return $this->belongsToMany(Provider::class, 'product_providers')->withPivot('price', 'location','available_quantity','min_quantity','id')
+            ->where('isActive' , 1);
+    }
 
     public function offers(){
         return $this->hasMany(Offer::class);

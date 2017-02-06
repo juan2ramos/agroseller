@@ -255,7 +255,7 @@
             </tr>
             </thead>
             <tbody id="ProductInfo-body">
-            @foreach($product->providers as $key =>  $provider)
+            @foreach($product->providersIsActive as $key =>  $provider)
                 <tr>
                     <td data-product_provider="{{$provider->pivot->id}}" data-idprovider="{{$provider->id}}"
                         class=" idprovider center">
