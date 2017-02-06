@@ -70,6 +70,7 @@ class ProductController extends Controller
         }
         $productProvider = ProductProvider::with('packing')->whereIn('id',$ids)->where('isActive', 1)->get()->toJson();
 
+        dd($productProvider);
         $questions = $this->reloadQuestions($id);
         $featuresTranslate = $this->setFeaturesTranslate($product);
         $cities = City::lists('nombre_ciudad', 'id_ciudad');
