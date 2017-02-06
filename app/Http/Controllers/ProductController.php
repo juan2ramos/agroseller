@@ -68,7 +68,7 @@ class ProductController extends Controller
         foreach ($product->providers as $provider ){
             $ids[] = $provider->pivot->id;
         }
-        $productProvider = ProductProvider::with('packing')->whereIn('id',$ids)->get()->toJson();
+        $productProvider = ProductProvider::with('packing')->whereIn('id',$ids)->where('isActive', 1)->get()->toJson();
 
 
         $questions = $this->reloadQuestions($id);
