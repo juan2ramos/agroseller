@@ -68,46 +68,53 @@
 
         </div>
     </section>
-    <figure class=" col-12 Header-security"><img style="margin: auto" src="{{asset('images/zona-pagos.png')}}" alt=""></figure>
+    <figure class=" col-12 Header-security"><img style="margin: auto" src="{{asset('images/zona-pagos.png')}}" alt="">
+    </figure>
 
     <section class="Products" id="productsRecommended" data-routegetproductsrecommended="{{route('recommended')}}"
              data-routegetproducts="{{route('allProduct')}}">
-        <h2 class="Title">Lo Más Destacado</h2>
-        <div class="Product-content row" data-urlpath="{{url('/')}}"
-             data-subcategory="{{(isset($subcategoryId))? $subcategoryId : 0 }}">
+        @if($products->count() == 0)
+            <h2 class="Title">¡Muy pronto productos para esta categoría! </h2>
+        @else
+            <h2 class="Title">Lo Más Destacado</h2>
+            <div class="Product-content row" data-urlpath="{{url('/')}}"
+                 data-subcategory="{{(isset($subcategoryId))? $subcategoryId : 0 }}">
 
-            @foreach($products as $product)
+                @foreach($products as $product)
 
-                <article class="smaller-12 small-6 medium-4 col-3">
-                    <figure class="Product-Image">
-                        <a href="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}">
-                            @foreach($product->productFiles as $file)
-                                @if($file->extension != 'pdf')
-                                    <img style="margin: auto;" src="{{url('uploads/products/'.$file->name)}}" alt="">
-                                    @break
-                                @endif
-                            @endforeach
-                        </a>
-                    </figure>
-                    <div class="Product-info">
-                        <a href="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}">
-                            <h4>{{$product->name}}</h4></a>
-                        <h5>{{$product->subcategory->name}}</h5>
-                        <?php /*$hasOffer = strtotime($product->offers->offer_on) < strtotime('now') && strtotime($product->offers->offer_off) - strtotime('now') > 0 */?>
-                        {{-- @if($hasOffer)
-                             <p>${{number_format($product->offers->offer_price, 0, " ", ".")}}
-                                 <span>${{number_format($product->price, 0, " ", ".")}}</span></p>
-                         @else
-                             <p>${{number_format($product->price, 0, " ", ".")}}</p>
-                         @endif--}}
-                        <a href="{{route('productDetail',[$product->slug, $product->id])}}" class="Button">COMPRAR</a>
-                    </div>
-                </article>
-            @endforeach
-        </div>
-        <div class="paginator">
+                    <article class="smaller-12 small-6 medium-4 col-3">
+                        <figure class="Product-Image">
+                            <a href="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}">
+                                @foreach($product->productFiles as $file)
+                                    @if($file->extension != 'pdf')
+                                        <img style="margin: auto;" src="{{url('uploads/products/'.$file->name)}}"
+                                             alt="">
+                                        @break
+                                    @endif
+                                @endforeach
+                            </a>
+                        </figure>
+                        <div class="Product-info">
+                            <a href="{{route('productDetail', ['slug' => $product->slug, 'id' => $product->id])}}">
+                                <h4>{{$product->name}}</h4></a>
+                            <h5>{{$product->subcategory->name}}</h5>
+                            <?php /*$hasOffer = strtotime($product->offers->offer_on) < strtotime('now') && strtotime($product->offers->offer_off) - strtotime('now') > 0 */?>
+                            {{-- @if($hasOffer)
+                                 <p>${{number_format($product->offers->offer_price, 0, " ", ".")}}
+                                     <span>${{number_format($product->price, 0, " ", ".")}}</span></p>
+                             @else
+                                 <p>${{number_format($product->price, 0, " ", ".")}}</p>
+                             @endif--}}
+                            <a href="{{route('productDetail',[$product->slug, $product->id])}}"
+                               class="Button">COMPRAR</a>
+                        </div>
+                    </article>
+                @endforeach
+                @endif
+            </div>
+            <div class="paginator">
 
-        </div>
+            </div>
     </section>
     <script>
         /*  $(document).ready(function () {

@@ -22,11 +22,13 @@ use Agrosellers\Entities\ProductFile;
 use Agrosellers\Entities\Provider;
 use Agrosellers\Entities\Subcategory;
 use Agrosellers\Entities\Product;
+
 class ProductController extends Controller
 {
     private $product;
 
-    private function validator($data){
+    private function validator($data)
+    {
         $validator = Validator::make($data, [
             'composition' => 'mimes:pdf',
             'image1' => 'mimes:jpeg,svg,jpg,png',
@@ -35,7 +37,7 @@ class ProductController extends Controller
             'image4' => 'mimes:jpeg,svg,jpg,png',
         ]);
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return redirect()
                 ->route('products')
                 ->withErrors($validator)
@@ -43,7 +45,8 @@ class ProductController extends Controller
         }
     }
 
-    private function createFile(Request $request){
+    private function createFile(Request $request)
+    {
         $files = $request->file();
         foreach ($files as $key => $file) {
 
@@ -64,35 +67,37 @@ class ProductController extends Controller
         $farms = FarmCategory::with('farms')->get();
         $categories = Category::all();
         $user = auth()->user();
-        $cities = City::lists('nombre_ciudad','id');
+        $cities = City::lists('nombre_ciudad', 'id');
 
-        if($user->role_id == 1){
+        if ($user->role_id == 1) {
             $products = Product::orderBy('id', 'DESC')->paginate(10);
-            return view('back.productAdminList', compact('categories', 'products', 'farms', 'brands','cities'));
+            return view('back.productAdminList', compact('categories', 'products', 'farms', 'brands', 'cities'));
         } else {
             $products = ProductProvider::where('provider_id', auth()->user()->provider->id)->orderBy('id', 'DESC')->paginate(10);
-            return view('back.productProviderList', compact('categories', 'products', 'farms', 'brands','cities'));
+            return view('back.productProviderList', compact('categories', 'products', 'farms', 'brands', 'cities'));
         }
 
     }
-    
-    function editProduct($id){
+
+    function editProduct($id)
+    {
         $brands = Brand::all();
         $farms = FarmCategory::with('farms')->get();
         $categories = Category::all();
         $user = auth()->user();
-        $cities = City::lists('nombre_ciudad','id');
-        if($user->role_id == 1){
+        $cities = City::lists('nombre_ciudad', 'id');
+        if ($user->role_id == 1) {
             $productEdit = Product::find($id);
-            return view('back.productAdminEdit', compact('productEdit', 'offerEdit', 'categories', 'farms', 'brands','cities'));
-        }else{
-            $productEdit = ProductProvider::with('packing','cities')->find($id);
+            return view('back.productAdminEdit', compact('productEdit', 'offerEdit', 'categories', 'farms', 'brands', 'cities'));
+        } else {
+            $productEdit = ProductProvider::with('packing', 'cities')->find($id);
             $offer = $productEdit->offer()->first();
-            return view('back.productProviderEdit', compact('productEdit', 'offer', 'categories', 'farms', 'brands','cities'));
+            return view('back.productProviderEdit', compact('productEdit', 'offer', 'categories', 'farms', 'brands', 'cities'));
         }
     }
 
-    function updateProductProvider(Request $request, $id){
+    function updateProductProvider(Request $request, $id)
+    {
 
         $this->validate($request, [
             'city.*' => 'required|numeric',
@@ -106,11 +111,11 @@ class ProductController extends Controller
         ]);
         $inputs = $request->all();
 
-        if($request->has('taxes'))
+        if ($request->has('taxes'))
             $inputs['taxes'] = implode(';', $inputs['taxes']);
         $product = ProductProvider::find($id);
 
-        if ($request->has('has_offer')){
+        if ($request->has('has_offer')) {
 
             $offer = $product->offer;
             $offer->offer_on = $inputs['offer_on'];
@@ -118,15 +123,18 @@ class ProductController extends Controller
             $offer->offer_price = $inputs['offer_price'];
 
             $product->offer()->save($offer);
-        }else{
+        } else {
             $inputs['has_offer'] = 0;
         }
+        if (!$request->has('iva'))
+            $inputs['iva'] = 0;
+
         $product->cities()->detach();
         $product->cities()->attach($inputs['city']);
 
         $product->packing()->delete();
         $packings = [];
-        foreach ($inputs['packing'] as $packing){
+        foreach ($inputs['packing'] as $packing) {
             $packings[] = new Packing($packing);
         }
         $product->packing()->saveMany($packings);
@@ -134,33 +142,33 @@ class ProductController extends Controller
         return redirect()->back()->with('messageSuccess', 1);
     }
 
-    function updateProduct(Request $request, $id){
+    function updateProduct(Request $request, $id)
+    {
         $inputs = $request->all();
         $this->validator($request->file());
         $farms = "";
 
-        foreach($request->all() as $key => $data){
-            if(strstr($key, 'farm')){
+        foreach ($request->all() as $key => $data) {
+            if (strstr($key, 'farm')) {
                 $farms .= $data . ',';
             }
         }
-        if(!$request->has('canServientrega'))
+        if (!$request->has('canServientrega'))
             $inputs['canServientrega'] = 0;
 
-        if ($request->has('taxes'))
-            $inputs['taxes'] = implode(';', $inputs['taxes']);
+
         $inputs['user_id'] = Auth::user()->id;
         $inputs['farms'] = $farms;
 
         $this->product = Product::find($id);
 
-        if ($request->has('deleteImages')){
+        if ($request->has('deleteImages')) {
             $deleteImages = explode(';', $inputs['deleteImages']);
 
             $files = $this->product->productFiles()->get();
-            foreach($deleteImages as $imageName){
-                foreach($files as $file){
-                    if($file->name == $imageName){
+            foreach ($deleteImages as $imageName) {
+                foreach ($files as $file) {
+                    if ($file->name == $imageName) {
                         unlink('uploads/products/' . $imageName);
                         $file->delete();
                     }
@@ -181,24 +189,27 @@ class ProductController extends Controller
         return redirect()->back()->with('messageSuccess', 1);
     }
 
-    function lockProduct($id){
+    function lockProduct($id)
+    {
 
         $product = ProductProvider::find($id);
-        if($product->isActive)
+        if ($product->isActive)
             $product->update(['isActive' => 0]);
         else
             $product->update(['isActive' => 1]);
         return redirect()->route('newProduct');
     }
 
-    function productAgentPreview($id){
+    function productAgentPreview($id)
+    {
         $product = Product::find($id);
         return view('back.productAgentPreview', compact('product'));
     }
 
-    function productDetailPreview(Request $request){
+    function productDetailPreview(Request $request)
+    {
         $input = $request->all();
-        if(isset($input['subcategoryId']))
+        if (isset($input['subcategoryId']))
             $id = $input['subcategoryId'];
         else
             $id = $input['subcategoriesId'];
@@ -206,9 +217,10 @@ class ProductController extends Controller
         return view('front.productDetailSession', compact('input', 'subcategory'));
     }
 
-    function validateProduct($id){
+    function validateProduct($id)
+    {
         $product = Product::find($id);
-        if($product->isValidate)
+        if ($product->isValidate)
             $product->update(['isValidate' => 0]);
         else
             $product->update(['isValidate' => 1, 'isActive' => 1]);
@@ -222,8 +234,8 @@ class ProductController extends Controller
         $this->validator($request->file());
         $farms = "";
 
-        foreach($request->all() as $key => $data){
-            if(strstr($key, 'farm')){
+        foreach ($request->all() as $key => $data) {
+            if (strstr($key, 'farm')) {
                 $farms .= $data . ',';
             }
         }
@@ -241,26 +253,27 @@ class ProductController extends Controller
         return redirect()->back()->with('messageSuccess', 1);
     }
 
-    function newProductProvider(Request $request){
+    function newProductProvider(Request $request)
+    {
 
 
         $inputs = $request->all();
-        
+
         $inputs['provider_id'] = auth()->user()->provider->id;
 
-        if($request->has('taxes'))
-            $inputs['taxes'] = implode(';', $inputs['taxes']);
+
 
         $productProvider = ProductProvider::create($inputs);
+
         $packings = [];
-        foreach ($inputs['packing'] as $packing){
+        foreach ($inputs['packing'] as $packing) {
             $packings[] = new Packing($packing);
         }
         $productProvider->packing()->saveMany($packings);
 
         $productProvider->cities()->attach($inputs['city']);
 
-        if ($request->has('has_offer')){
+        if ($request->has('has_offer')) {
 
             $dataOffer = [
                 'offer_on' => $inputs['offer_on'],
@@ -274,12 +287,13 @@ class ProductController extends Controller
         return redirect()->back()->with('messageSuccess', 1);
     }
 
-    function viewProduct($id){
+    function viewProduct($id)
+    {
 
 
         $product = Product::findOrFail($id);
         $productAdmin = new \Agrosellers\Http\Controllers\ProductController();
         $featuresTranslate = $productAdmin->setFeaturesTranslate($product);
-        return view('back.productDetail', compact('product','featuresTranslate'));
+        return view('back.productDetail', compact('product', 'featuresTranslate'));
     }
 }

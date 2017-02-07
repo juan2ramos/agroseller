@@ -118,17 +118,12 @@
                     @endif
                     <div class="row">
                         <label for="iva" class="col-6">
-                            <input type="checkbox" name="taxes[]" value="iva" id="iva"
-                                   @if(isset($productEdit) && strpos($productEdit->taxes, 'iva') !== false) checked="checked" @endif >
+                            <input type="checkbox" name="iva" value="1" id="iva"
+                                   @if(isset($productEdit) && $productEdit->iva) checked="checked" @endif >
                             <sub></sub>
-                            Iva 16%
+                            Iva 19%
                         </label>
-                        <label for="rete" class="col-6">
-                            <input type="checkbox" name="taxes[]" value="retefuente" id="rete"
-                                   @if(isset($productEdit) && strpos($productEdit->taxes, 'rete') !== false) checked="checked" @endif>
-                            <sub></sub>
-                            Retefuente 2.5%
-                        </label>
+
                     </div>
                     <h2 style="margin: 36px 0 0;">
                         <label for="has_offer" class="col-6" style="display: inline-block">

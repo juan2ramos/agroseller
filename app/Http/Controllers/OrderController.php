@@ -3,6 +3,8 @@
 namespace Agrosellers\Http\Controllers;
 
 use Agrosellers\Entities\Order;
+use Agrosellers\Entities\Product;
+use Agrosellers\Entities\ProductProvider;
 use Illuminate\Http\Request;
 use Agrosellers\Services\ZonaPagos;
 
@@ -21,27 +23,28 @@ class OrderController extends Controller
         $iva = 0;
         $inputs = $request->all();
         $products = [];
+        $session = Session::get('cart') ;
+        $productsProvider = ProductProvider::whereIn('id',array_keys($session))->get();
 
-        foreach (Session::get('cart') as $product) {
-            $taxesVal = 0;
+        foreach ($productsProvider as $product) {
+
+            dd($session[$product->id]->shipping);
+
             $price = $product->price * intval($product->quantity) + $product->shipping;
 
-            foreach ($product->taxes as $tax) {
-                $taxesVal += $tax->percent;
-                $iva += strtolower($tax->name) == 'iva' ? ($price * $tax->percent / 100) : 0;
+            if( $product->iva ){
+                $iva += $product->price * 0.19;
             }
-
-            $total += $price + ($price * $taxesVal / 100);
+            $total += $price ;
             $products[$product->id] =
                 [
-                    'quantity' => $product->quantity,
+                    'quantity' => $session[$product->id]->quantity,
                     'value' => $product->price,
                     'product_provider_id' => $product->id,
                     'state' => 1,
-                    'lading' =>  $product->shipping
+                    'lading' =>  $session[$product->id]->shipping
                 ];
         }
-
 
         $inputs['total_con_iva'] = $total;
         $inputs['valor_iva'] = $iva;

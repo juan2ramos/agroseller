@@ -9,7 +9,7 @@ use Agrosellers\User;
 class ProductProvider extends Model
 {
     protected $fillable = [
-        'product_id', 'provider_id', 'price', 'location', 'available_quantity',
+        'product_id', 'provider_id', 'price', 'location', 'available_quantity', 'iva',
         'min_quantity', 'available', 'isValidate', 'isActive','has_offer','youtube','link','lading'
     ];
 

@@ -98,7 +98,7 @@
                             <label for="last_name">
                                 <input type="text" id="last_name" name="apellido_cliente"
                                        value="{{auth()->user()->last_name .' '. auth()->user()->second_last_name}}">
-                                <span>Nombre completos</span>
+                                <span>Apellidos completos</span>
                             </label>
 
                             <label for="tipo_id">

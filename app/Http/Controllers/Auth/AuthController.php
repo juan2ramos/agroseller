@@ -83,9 +83,12 @@ class AuthController extends Controller
     protected function create(array $data)
     {
 
+        $last_name = (isset($data['last_name']))?$data['last_name']:'';
         $user = new User([
             'name' => $data['name'],
+            'last_name' => $last_name,
             'email' => $data['email'],
+            'mobile_phone' => $data['mobile_phone'],
             'password' => bcrypt($data['password']),
             'role_id' => $data['role_id'],
         ]);
