@@ -73,7 +73,6 @@ class ZonaPagos {
                 "total_codigos_servicio" => ""
             ]
         ];
-
         $response = $this->client->post($url, $data);
         return str_replace('"', '',$response->getBody()->getContents());
     }

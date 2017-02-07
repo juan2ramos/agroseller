@@ -28,10 +28,10 @@ class OrderController extends Controller
 
         foreach ($productsProvider as $product) {
 
-            $price = $product->price * intval($product->quantity) + $product->shipping;
+            $price = $product->price * intval($session[$product->id]->quantity) + $product->shipping;
 
             if( $product->iva ){
-                $iva += $product->price * 0.19;
+                $iva += $price * 0.19;
             }
             $total += $price ;
             $products[$product->id] =
