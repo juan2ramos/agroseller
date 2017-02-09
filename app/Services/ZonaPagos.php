@@ -102,7 +102,7 @@ class ZonaPagos
             'date_pay' => $verifiedData->res_pagos_v3[0]->dat_fecha,
             'tiked_id' => $verifiedData->res_pagos_v3[0]->str_ticketID,
         ]);
-dd($inputs);
+
         if ($inputs['estado_pago']) {
             Session::forget('cart');
             Session::forget('valueTotal');
@@ -114,7 +114,7 @@ dd($inputs);
                 ], true);
                 $user = $productProvider->provider->user;
                 $data = ['user' => $user,'order' =>  $order];
-
+                dd($usera);
                 Mail::send('emails.orders', $data , function ($m) use ($user) {
                     $m->to($user->email, $user->name)
                         ->subject('¡Tienes una compra en agrosellers.com!');
