@@ -114,11 +114,11 @@ class ZonaPagos
                 ], true);
                 $user = $productProvider->provider->user;
                 $data = ['user' => $user,'order' =>  $order];
-               /* dd($user);
+               dd($user);
                 Mail::send('emails.orders', $data , function ($m) use ($user) {
                     $m->to($user->email, $user->name)
                         ->subject('¡Tienes una compra en agrosellers.com!');
-                });*/
+                });
 
 
             }
