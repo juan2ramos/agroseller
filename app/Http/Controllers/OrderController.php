@@ -48,6 +48,7 @@ class OrderController extends Controller
         $inputs['total_con_iva'] = $total;
         $inputs['valor_iva'] = $iva;
         $inputs['id_pago'] = date_format(new \Jenssegers\Date\Date(), 'YmdHis') . rand(100, 999);
+        dd($inputs['id_pago']);
         $order = Order::create([
             'description' => $inputs['descripcion_pago'],
             'name_client' => $inputs['nombre_cliente'],
