@@ -102,7 +102,7 @@ class ZonaPagos
             'date_pay' => $verifiedData->res_pagos_v3[0]->dat_fecha,
             'tiked_id' => $verifiedData->res_pagos_v3[0]->str_ticketID,
         ]);
-
+dd($inputs);
         if ($inputs['estado_pago']) {
             Session::forget('cart');
             Session::forget('valueTotal');
