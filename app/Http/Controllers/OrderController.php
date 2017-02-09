@@ -15,6 +15,7 @@ class OrderController extends Controller
 {
     public function add(Request $request)
     {
+
         if (empty(Session::get('cart')))
             return back();
 
@@ -73,7 +74,7 @@ class OrderController extends Controller
         foreach ($ids as $id) {
             $sync[$id] = ['state_order_id' => $request->input('state')];
         }
-        dd($request->input('state'));
+
         Order::find($request->input('order'))->products()->sync($sync, false);
 
 

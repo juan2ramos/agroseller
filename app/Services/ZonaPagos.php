@@ -1,13 +1,15 @@
 <?php
 
 namespace Agrosellers\Services;
+
 use GuzzleHttp\Client;
 use Agrosellers\Entities\Order;
 use Agrosellers\User;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 
-class ZonaPagos {
+class ZonaPagos
+{
 
     private $client;
     private $key;
@@ -16,7 +18,8 @@ class ZonaPagos {
     private $routeCode;
     private $products;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->key = env('ZP_KEY');
         $this->shop = env('ZP_SHOP');
         $this->serviceCode = env('ZP_SERVICE_CODE');
@@ -26,22 +29,24 @@ class ZonaPagos {
 
     /** Retorna los datos y estado del pago **/
 
-    public function checkPay($payId){
+    public function checkPay($payId)
+    {
         $url = 'https://www.zonapagos.com/api_verificar_pagoV3/api/verificar_pago_v3';
         $data = [
-                    'body' => [
-                        'str_id_clave' => $this->key,
-                        'int_id_tienda' => $this->shop,
-                        'str_id_pago' => $payId,
-                    ]
-                ];
+            'body' => [
+                'str_id_clave' => $this->key,
+                'int_id_tienda' => $this->shop,
+                'str_id_pago' => $payId,
+            ]
+        ];
         $response = $this->client->post($url, $data);
         return $response->getBody()->getContents();
     }
 
     /** Retorna el id del pago **/
 
-    public function invoiceRequest($inputs){
+    public function invoiceRequest($inputs)
+    {
 
         $url = 'https://www.zonapagos.com/api_inicio_pago/api/inicio_pagoV2';
         $user = auth()->user();
@@ -53,7 +58,7 @@ class ZonaPagos {
                 "id_tienda" => $this->shop,
                 "clave" => $this->key,
                 "codigo_servicio_principal" => $this->serviceCode,
-                "total_con_iva"  => $inputs["total_con_iva"],
+                "total_con_iva" => $inputs["total_con_iva"],
                 "valor_iva" => $inputs['valor_iva'],
                 "email" => auth()->user()->email,
                 "id_pago" => $inputs['id_pago'],
@@ -74,17 +79,17 @@ class ZonaPagos {
             ]
         ];
         $response = $this->client->post($url, $data);
-        return str_replace('"', '',$response->getBody()->getContents());
+        return str_replace('"', '', $response->getBody()->getContents());
     }
 
-    public function insertPayResult($inputs){
+    public function insertPayResult($inputs)
+    {
+        $order = Order::with('productProviders.product')->where('zp_buy_id', $inputs['id_pago'])->first();
 
-        $order = Order::where('zp_buy_id', $inputs['id_pago'])->first();
+        $p[0] = $inputs;
+        $p[1] = $order;
 
-        $p[0]= $inputs;
-        $p[1]= $order;
-
-        $verifiedData  = json_decode($this->checkPay($inputs['id_pago']));
+        $verifiedData = json_decode($this->checkPay($inputs['id_pago']));
         $order->update([
             'zp_buy_token' => $verifiedData->res_pagos_v3[0]->str_ticketID,
             'zp_state' => $verifiedData->res_pagos_v3[0]->int_estado_pago,
@@ -98,34 +103,45 @@ class ZonaPagos {
             'tiked_id' => $verifiedData->res_pagos_v3[0]->str_ticketID,
         ]);
 
-        if($inputs['estado_pago']) {
+        if ($inputs['estado_pago']) {
             Session::forget('cart');
             Session::forget('valueTotal');
 
-            foreach ($order->productProviders as $product){
-                $order->productProviders()->updateExistingPivot($product->id, [
+            foreach ($order->productProviders as $productProvider) {
+
+                $order->productProviders()->updateExistingPivot($productProvider->id, [
                     'state' => 2
                 ], true);
+                $user = $productProvider->provider->user;
+                $data = ['user' => $user,'order' =>  $order];
+
+                Mail::send('emails.orders', $data , function ($m) use ($user) {
+                    $m->to($user->email, $user->name)
+                        ->subject('¡Tienes una compra en agrosellers.com!');
+                });
+
+
             }
         }
 
-                /*foreach (Session::get('cart') as $item) {
+        /*foreach (Session::get('cart') as $item) {
 
-                    if(!$item->offers)
-                        $value = $item->price;
-                    else
-                        $value = (Carbon::now()->between(new Carbon($item->offers->offer_on), new Carbon($item->offers->offer_off)))
-                            ? $item->offers->offer_price
-                            : $item->price;
+            if(!$item->offers)
+                $value = $item->price;
+            else
+                $value = (Carbon::now()->between(new Carbon($item->offers->offer_on), new Carbon($item->offers->offer_off)))
+                    ? $item->offers->offer_price
+                    : $item->price;
 
-                    $data[$item->id] = ['quantity' => $item->quantity, 'state_order_id' => 2, 'value' => $value];
-                }*/
+            $data[$item->id] = ['quantity' => $item->quantity, 'state_order_id' => 2, 'value' => $value];
+        }*/
 
     }
 
     /** Retorna la instancia de zona pagos **/
 
-    public static function create(){
+    public static function create()
+    {
         return new ZonaPagos();
     }
 }
