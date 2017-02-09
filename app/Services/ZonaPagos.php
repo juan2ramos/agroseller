@@ -5,6 +5,7 @@ namespace Agrosellers\Services;
 use GuzzleHttp\Client;
 use Agrosellers\Entities\Order;
 use Agrosellers\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 
@@ -20,6 +21,7 @@ class ZonaPagos
 
     public function __construct()
     {
+
         $this->key = env('ZP_KEY');
         $this->shop = env('ZP_SHOP');
         $this->serviceCode = env('ZP_SERVICE_CODE');
