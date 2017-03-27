@@ -1,8 +1,10 @@
 @extends('layoutFront')
 
 @section('content')
+
     <div class="row Checkout">
-        <section class="smaller-12 medium-4">
+
+        <section class="smaller-12 medium-4 Checkout-details">
             <h2>1. Resumen de la compra</h2>
             <h3>Verifica tu compra y método ed envío</h3>
             <ul>
@@ -61,6 +63,7 @@
         </section>
         <section class="smaller-8">
             <h2>2. Detalle de facturación</h2>
+
             @if(!  Session::get('cart'))
                 @include('messages',[
                     'type' => 'warning',
@@ -72,6 +75,18 @@
                 @if(Auth::check())
                     @if(auth()->user()->role_id == 4)
                         <h3>Completa los campos requeridos para realizar tu solicitud</h3>
+                        @if (count($errors) > 0)
+                            <div class="Checkout-errors">
+                                <div>
+                                    <h5 class="col-12">Tienes errores en los siguientes campos</h5>
+                                    <ul class="">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        @endif
                     <!-- GUARDAR ORDEN POR POST EN {{route('newOrder')}} -->
                         <form action="{{route('newOrder')}}" method="POST" class="Checkout-form" id="newOrderForm">
 
@@ -127,6 +142,22 @@
                                        value="{{auth()->user()->mobile_phone}}">
                                 <span>Teléfono</span>
                             </label>
+                            <h6>Método de pago</h6>
+                            <label for="zp" class="Forms">
+                                <div>
+                                    <input type="radio" id="zp" style="margin: 0" name="pay_type" value="zp">
+                                    <sub></sub>
+                                    Pago por PSE
+                                </div>
+                            </label>
+                            <label for="p2p" style="margin: 20px 0" class="Forms">
+                                <div>
+                                    <input type="radio" style="margin: 0" name="pay_type" id="p2p" value="p2p">
+                                    <sub></sub>
+                                    Pago en efectivo
+                                </div>
+                            </label>
+
                             <button class="Button">FINALIZAR COMPRA</button>
                             <!--<a href="#" id="finishBuy" class="Button">FINALIZAR COMPRA</a>-->
                         </form>
@@ -164,4 +195,14 @@
             @endif
         </section>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        $('#Checkout-errors-close').on('click', function () {
+            $('.Checkout-errors').css('display', 'none')
+        });
+    </script>
+@endsection
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 @endsection

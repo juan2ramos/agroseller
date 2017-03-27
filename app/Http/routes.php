@@ -1,6 +1,4 @@
 <?php
-
-
 Route::group(['middleware' => ['web']], function () {
     require __DIR__ . '/Routes/front.php';
     require __DIR__ . '/Routes/auth.php';
@@ -39,5 +37,7 @@ Route::get('consulta/{id}', function ($id) {
     $a = json_decode($zp->checkPay($id));
     dd($a->res_pagos_v3[0]->str_id_pago);
 });
+
+
 
 

@@ -1634,7 +1634,7 @@ body {
     position: absolute;
     right: 1rem;
     bottom: 0; }
-  .Checkout li {
+  .Checkout .Checkout-details li {
     margin-top: 1.625rem;
     box-shadow: 0 0.125rem 0.25rem rgba(187, 187, 187, 0.5);
     border-bottom: .0625rem solid #D9D9D9; }
@@ -1675,11 +1675,23 @@ body {
     width: 100%;
     padding: .375rem 0;
     margin-bottom: 1rem; }
+  .Checkout-form h6, .Form-Control h6 {
+    font-size: 1rem;
+    margin: 1rem; }
 
 .open span {
   font-size: .875rem;
   top: .75rem;
   color: gray; }
+
+.Checkout-errors {
+  margin: 1.25rem 0; }
+  .Checkout-errors h5 {
+    font-size: 1.0625rem;
+    color: #e68181;
+    margin: 0.5rem 0; }
+  .Checkout-errors li {
+    color: #e68181; }
 
 .autocomplete {
   position: relative;
