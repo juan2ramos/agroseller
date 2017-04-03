@@ -78,7 +78,7 @@
                         @if (count($errors) > 0)
                             <div class="Checkout-errors">
                                 <div>
-                                    <h5 class="col-12">Tienes errores en los siguientes campos</h5>
+                                    <h5 class="col-12">Tiene los siguientes errores</h5>
                                     <ul class="">
                                         @foreach ($errors->all() as $error)
                                             <li>{{ $error }}</li>

@@ -23,20 +23,13 @@ Route::get('mailjk', [function () {
     dd($m);
 }, 'as' => 'sesiones']);
 
-use Agrosellers\User;
+
 
 
 Route::get('pasarela', function () {
     return view('pasarelaPrueba');
 });
 
-use Agrosellers\Services\ZonaPagos;
-
-Route::get('consulta/{id}', function ($id) {
-    $zp = ZonaPagos::create();
-    $a = json_decode($zp->checkPay($id));
-    dd($a->res_pagos_v3[0]->str_id_pago);
-});
 
 
 

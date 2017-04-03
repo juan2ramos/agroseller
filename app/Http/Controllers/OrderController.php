@@ -8,6 +8,7 @@ use Agrosellers\Entities\ProductProvider;
 use Agrosellers\Services\P2P;
 use Illuminate\Http\Request;
 use Agrosellers\Services\ZonaPagos;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use Agrosellers\Http\Requests;
 use Illuminate\Support\Facades\Session;
@@ -18,6 +19,14 @@ class OrderController extends Controller
     {
         if (empty(Session::get('cart')))
             return back();
+        if (Auth::user()->whereHas('orders', function ($q) {
+            $q->where('zp_state', '999')->orWhere('zp_state', '888');
+        })->count()
+        ) {
+            return redirect('finalizar-compra')
+                ->withErrors(['Tiene una compra pendiente, por favor espere que nuestro sistema valide el pago, esto puede tardar algunos minutos'])
+                ->withInput();
+        }
 
         $validator = $this->validateCheckout($request);
 
@@ -81,7 +90,6 @@ class OrderController extends Controller
             return redirect()->to($p2p->createPay($inputs));
         }
     }
-
 
 
     private function validateCheckout($request)

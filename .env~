@@ -7,13 +7,13 @@ LOCALE=es
 DB_HOST=localhost
 DB_DATABASE=agroseller
 DB_USERNAME=root
-DB_PASSWORD=secret
+DB_PASSWORD=
 
 CACHE_DRIVER=file
 SESSION_DRIVER=database
 QUEUE_DRIVER=sync
 
-MAIL_DRIVER=log
+MAIL_DRIVER=mailgun
 MAIL_HOST=smtp.mailgun.org
 MAIL_PORT=587
 MAIL_USERNAME=luza.231@hotmail.com

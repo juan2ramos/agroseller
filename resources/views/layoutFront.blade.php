@@ -280,7 +280,16 @@
 </header>
 <main>
     @yield('content')
+    <div class="BannerFooter col-12 center row" style="margin: 20px 10px 40px;">
+        <figure class="col-9">
+
+        </figure>
+        <figure class="col-3">
+
+        </figure>
+    </div>
 </main>
+
 @if(isset($relate))
     <section class="Relate">
         <article class="row">
@@ -433,6 +442,8 @@
                     </ul>
                 </li>
             </ul>
+
+
             <ul class="center col-2 from-large">
                 <li class="NavFooter-TitleUL"><a href="#">Seguridad y Privacidad</a>
                     <ul>

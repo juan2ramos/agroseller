@@ -133,6 +133,7 @@ return [
         Bogardo\Mailgun\MailgunServiceProvider::class,
         Elasticquent\ElasticquentServiceProvider::class,
         'Torann\GeoIP\GeoIPServiceProvider',
+        'Spatie\Activitylog\ActivitylogServiceProvider',
     ],
     /*
     |--------------------------------------------------------------------------
@@ -186,5 +187,6 @@ return [
         'Mailgun' => Bogardo\Mailgun\Facades\Mailgun::class,
         'Es' => Elasticquent\ElasticquentElasticsearchFacade::class,
         'GeoIP' => 'Torann\GeoIP\GeoIPFacade',
+        'Activity' => 'Spatie\Activitylog\ActivitylogFacade',
     ],
 ];
