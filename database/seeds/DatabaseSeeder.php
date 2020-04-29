@@ -20,11 +20,11 @@ class DatabaseSeeder extends Seeder
         $this->call(SubcategoryTableSeeder::class);
         $this->call(FeatureTableSeeder::class);
         $this->call(Feature_SubcategoryTableSeeder::class);
+        $this->call(FarmCategoryTableSeeder::class);
         $this->call(FarmTableSeeder::class);
         $this->call(StateOrdersSeeder::class);
         $this->call(ProductTableSeeder::class);
         $this->call(BrandsTableSeeder::class);
-        $this->call(FarmCategoryTableSeeder::class);
         $this->call(TaxTableSeeder::class);
         $this->call(StatePaymentsTableSeeder::class);
         Model::reguard();
