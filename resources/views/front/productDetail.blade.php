@@ -241,8 +241,8 @@
                     <span class="col-12" style="font-size: 12px">IVA incluido</span>
                 </div>
                 <div class="row col-12 center">
-                @if($product->subcategory->category->name == 'PRODUCTOS AGRÍCOLAS')
-                    <a href="#" data-url="{{url('/')}}" id="buy" class="Button">Contactar Agroseller</a>
+                @if($product->subcategory->categories->name == 'PRODUCTOS AGRÍCOLAS')
+                    <a href="#" data-url="{{url('/')}}"  class="Button">Contactar Agroseller</a>
                 @else
                     <a href="#" data-url="{{url('/')}}" id="buy" class="Button">AÑADIR AL CARRITO</a>
                 @endif
