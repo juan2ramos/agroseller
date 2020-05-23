@@ -22,7 +22,7 @@ class Subcategory extends Model
         return $this->products()->where('status', 'public');
     }
     public function category(){
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Category::class);
     }
 
 }
