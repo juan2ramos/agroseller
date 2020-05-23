@@ -63,7 +63,7 @@ class ProductController extends Controller
     function productDetailFront(Request $request, $slug, $id)
     {
         $ids = [];
-        $product = Product::with(['subcategory.category', 'files', 'providers.user'])->find($id);
+        $product = Product::with(['subcategory.categories', 'files', 'providers.user'])->find($id);
 
         foreach ($product->providers as $provider ){
             $ids[] = $provider->pivot->id;

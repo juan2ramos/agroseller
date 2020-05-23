@@ -143,7 +143,7 @@
                 <li>Formato: envases 45 g</li>
                 <li> Distribuidor: Alejandra</li>
                 <li>Calificación: <b>★★★★★</b></li>--}}
-                @if($product->subcategory->category->name == 'PRODUCTOS AGRÍCOLAS')
+                @if($product->subcategory->categories->name == 'PRODUCTOS AGRÍCOLAS')
                     <p>Contáctanos a las líneas: 0131313</p>
                 @else
                     @if($product->canServientrega)

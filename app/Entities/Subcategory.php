@@ -21,7 +21,7 @@ class Subcategory extends Model
     public function getProductsPublicAttribute(){
         return $this->products()->where('status', 'public');
     }
-    public function category(){
+    public function categories(){
         return $this->belongsTo(Category::class);
     }
 
