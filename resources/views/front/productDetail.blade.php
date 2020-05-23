@@ -143,6 +143,9 @@
                 <li>Formato: envases 45 g</li>
                 <li> Distribuidor: Alejandra</li>
                 <li>Calificación: <b>★★★★★</b></li>--}}
+                @if($product->subcategory->category->name == 'PRODUCTOS AGRÍCOLAS')
+                    <p>Contáctanos a las líneas: 0131313</p>
+                @else
                     @if($product->canServientrega)
                         <input type="hidden" id="weightProduct" value="{{$product->weight}}">
 
@@ -225,6 +228,7 @@
                             </li>
                         @endif
                     @endif
+                @endif
                 </ul>
                 <input type="hidden" value="">
                 <div class="col-12 row end" style="margin: 10px 0">
@@ -237,7 +241,11 @@
                     <span class="col-12" style="font-size: 12px">IVA incluido</span>
                 </div>
                 <div class="row col-12 center">
+                @if($product->subcategory->category->name == 'PRODUCTOS AGRÍCOLAS')
+                    <a href="#" data-url="{{url('/')}}" id="buy" class="Button">Contactar Agroseller</a>
+                @else
                     <a href="#" data-url="{{url('/')}}" id="buy" class="Button">AÑADIR AL CARRITO</a>
+                @endif
                 </div>
             </div>
         </div>
